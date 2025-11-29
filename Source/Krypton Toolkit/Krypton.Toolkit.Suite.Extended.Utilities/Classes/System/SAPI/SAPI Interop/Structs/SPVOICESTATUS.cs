@@ -26,34 +26,33 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+internal struct SPVOICESTATUS
 {
-    internal struct SPVOICESTATUS
-    {
-        internal uint ulCurrentStream;
+    internal uint ulCurrentStream;
 
-        internal uint ulLastStreamQueued;
+    internal uint ulLastStreamQueued;
 
-        internal int hrLastResult;
+    internal int hrLastResult;
 
-        internal SpeechRunState dwRunningState;
+    internal SpeechRunState dwRunningState;
 
-        internal uint ulInputWordPos;
+    internal uint ulInputWordPos;
 
-        internal uint ulInputWordLen;
+    internal uint ulInputWordLen;
 
-        internal uint ulInputSentPos;
+    internal uint ulInputSentPos;
 
-        internal uint ulInputSentLen;
+    internal uint ulInputSentLen;
 
-        internal int lBookmarkId;
+    internal int lBookmarkId;
 
-        internal ushort PhonemeId;
+    internal ushort PhonemeId;
 
-        internal int VisemeId;
+    internal int VisemeId;
 
-        internal uint dwReserved1;
+    internal uint dwReserved1;
 
-        internal uint dwReserved2;
-    }
+    internal uint dwReserved2;
 }

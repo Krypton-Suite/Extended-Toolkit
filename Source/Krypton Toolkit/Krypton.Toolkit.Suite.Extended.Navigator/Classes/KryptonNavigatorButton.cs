@@ -25,103 +25,102 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator;
+
+[ToolboxBitmap(typeof(KryptonButton)), ToolboxItem(false)]
+public class KryptonNavigatorButton : KryptonButton
 {
-    [ToolboxBitmap(typeof(KryptonButton)), ToolboxItem(false)]
-    public class KryptonNavigatorButton : KryptonButton
+
+    private static PaletteBase? _palette;
+    private static PaletteRedirect _paletteRedirect;
+
+    public KryptonNavigatorButton()
     {
 
-        private static PaletteBase? _palette;
-        private static PaletteRedirect _paletteRedirect;
-
-        public KryptonNavigatorButton()
+        // add Palette Handler
+        if (_palette != null)
         {
-
-            // add Palette Handler
-            if (_palette != null)
-            {
-                _palette.PalettePaint += OnPalettePaint;
-            }
-
-            KryptonManager.GlobalPaletteChanged += GlobalPaletteChanged;
-
-            _palette = KryptonManager.CurrentGlobalPalette;
-            _paletteRedirect = new PaletteRedirect(_palette);
-
-            AutoSize = false;
-            Values.ExtraText = null;
-            Values.Text = null;
-            Values.Image = null;
-            Values.ImageStates.ImageCheckedNormal = null;
-            Values.ImageStates.ImageCheckedPressed = null;
-            Values.ImageStates.ImageCheckedTracking = null;
-
-            ButtonStyle = ButtonStyle.Standalone;
-            if (_palette != null)
-            {
-                StateNormal.Back.Color1 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
-                StateNormal.Back.Color2 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
-                StateNormal.Back.ColorStyle = PaletteColorStyle.Solid;
-
-                StateNormal.Border.Color1 = _palette.ColorTable.ToolStripBorder;
-                StateCommon.Border.Rounding = 0;
-                Size = new Size(23, 23);
-                StateCommon.Content.ShortText.Color1 = _palette.ColorTable.StatusStripText;
-            }
-
-            StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
-            StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
-            StateCommon.Content.ShortText.Font = new Font("Marlett", 11.00f, FontStyle.Regular, GraphicsUnit.Point, 2);
+            _palette.PalettePaint += OnPalettePaint;
         }
-        #region ...Krypton...
-        private new void GlobalPaletteChanged(object sender, EventArgs e)
+
+        KryptonManager.GlobalPaletteChanged += GlobalPaletteChanged;
+
+        _palette = KryptonManager.CurrentGlobalPalette;
+        _paletteRedirect = new PaletteRedirect(_palette);
+
+        AutoSize = false;
+        Values.ExtraText = null;
+        Values.Text = null;
+        Values.Image = null;
+        Values.ImageStates.ImageCheckedNormal = null;
+        Values.ImageStates.ImageCheckedPressed = null;
+        Values.ImageStates.ImageCheckedTracking = null;
+
+        ButtonStyle = ButtonStyle.Standalone;
+        if (_palette != null)
+        {
+            StateNormal.Back.Color1 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
+            StateNormal.Back.Color2 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
+            StateNormal.Back.ColorStyle = PaletteColorStyle.Solid;
+
+            StateNormal.Border.Color1 = _palette.ColorTable.ToolStripBorder;
+            StateCommon.Border.Rounding = 0;
+            Size = new Size(23, 23);
+            StateCommon.Content.ShortText.Color1 = _palette.ColorTable.StatusStripText;
+        }
+
+        StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+        StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+        StateCommon.Content.ShortText.Font = new Font("Marlett", 11.00f, FontStyle.Regular, GraphicsUnit.Point, 2);
+    }
+    #region ...Krypton...
+    private new void GlobalPaletteChanged(object sender, EventArgs e)
+    {
+
+        if (_palette != null)
+        {
+            _palette.PalettePaint -= OnPalettePaint;
+        }
+
+
+        _palette = KryptonManager.CurrentGlobalPalette;
+        _paletteRedirect.Target = _palette;
+
+
+        if (_palette != null)
+        {
+            _palette.PalettePaint += OnPalettePaint;
+            //repaint with new values
+            StateNormal.Back.Color1 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
+            StateNormal.Back.Color2 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
+
+            StateNormal.Border.Color1 = _palette.ColorTable.ToolStripBorder;
+            StateCommon.Content.ShortText.Color1 = _palette.ColorTable.StatusStripText;
+        }
+
+        Invalidate();
+    }
+    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    {
+        Invalidate();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
         {
 
             if (_palette != null)
             {
                 _palette.PalettePaint -= OnPalettePaint;
+                _palette = null;
             }
 
 
-            _palette = KryptonManager.CurrentGlobalPalette;
-            _paletteRedirect.Target = _palette;
-
-
-            if (_palette != null)
-            {
-                _palette.PalettePaint += OnPalettePaint;
-                //repaint with new values
-                StateNormal.Back.Color1 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
-                StateNormal.Back.Color2 = _palette.ColorTable.ToolStripContentPanelGradientEnd;
-
-                StateNormal.Border.Color1 = _palette.ColorTable.ToolStripBorder;
-                StateCommon.Content.ShortText.Color1 = _palette.ColorTable.StatusStripText;
-            }
-
-            Invalidate();
-        }
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
-        {
-            Invalidate();
+            KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-
-                if (_palette != null)
-                {
-                    _palette.PalettePaint -= OnPalettePaint;
-                    _palette = null;
-                }
-
-
-                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
-            }
-
-            base.Dispose(disposing);
-        }
-        #endregion
+        base.Dispose(disposing);
     }
+    #endregion
 }

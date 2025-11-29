@@ -25,21 +25,20 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+internal class ExpandedItem : ExpandingMenuItem
 {
-    internal class ExpandedItem : ExpandingMenuItem
+    public ExpandedItem() : base()
     {
-        public ExpandedItem() : base()
-        {
-            Name = "ExpandableMenuItem";
+        Name = "ExpandableMenuItem";
 
-            var bitmap = ProjectResources.Expand_large;
+        var bitmap = ProjectResources.Expand_large;
 
-            bitmap.MakeTransparent(Color.Magenta);
+        bitmap.MakeTransparent(Color.Magenta);
 
-            BackgroundImageLayout = ImageLayout.Center;
+        BackgroundImageLayout = ImageLayout.Center;
 
-            BackgroundImage = bitmap;
-        }
+        BackgroundImage = bitmap;
     }
 }

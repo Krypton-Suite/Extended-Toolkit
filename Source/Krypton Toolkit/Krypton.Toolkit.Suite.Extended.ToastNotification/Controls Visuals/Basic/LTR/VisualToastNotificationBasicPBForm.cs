@@ -27,295 +27,294 @@
 
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.ToastNotification
+namespace Krypton.Toolkit.Suite.Extended.ToastNotification;
+
+internal partial class VisualToastNotificationBasicPBForm : KryptonForm
 {
-    internal partial class VisualToastNotificationBasicPBForm : KryptonForm
+    #region Instance Fields
+
+    private int _time, _countdownValue;
+
+    private Timer _timer;
+
+    private SoundPlayer? _soundPlayer;
+
+    private PaletteBase _palette;
+
+    private readonly KryptonBasicToastNotificationData _toastNotificationData;
+
+    #endregion
+
+    public VisualToastNotificationBasicPBForm(KryptonBasicToastNotificationData toastNotificationData)
     {
-        #region Instance Fields
+        InitializeComponent();
 
-        private int _time, _countdownValue;
+        _toastNotificationData = toastNotificationData;
 
-        private Timer _timer;
+        GotFocus += VisualToastNotificationBasicWithProgressBarForm_GotFocus;
 
-        private SoundPlayer? _soundPlayer;
+        DoubleBuffered = true;
+    }
 
-        private PaletteBase _palette;
+    private void VisualToastNotificationBasicWithProgressBarForm_Load(object sender, EventArgs e)
+    {
+        UpdateLocation();
 
-        private readonly KryptonBasicToastNotificationData _toastNotificationData;
+        ShowCloseButton();
 
-        #endregion
+        _timer.Start();
 
-        public VisualToastNotificationBasicPBForm(KryptonBasicToastNotificationData toastNotificationData)
+        _soundPlayer?.Play();
+
+        kbtnDismiss.Text = KryptonManager.Strings.ToastNotificationStrings.Dismiss;
+    }
+
+    private void kbtnClose_Click(object sender, EventArgs e) => Close();
+
+    private void kbtnDismiss_Click(object sender, EventArgs e) => Close();
+
+    private void kbtnExtraAction_Click(object sender, EventArgs e)
+    {
+        try
         {
-            InitializeComponent();
 
-            _toastNotificationData = toastNotificationData;
-
-            GotFocus += VisualToastNotificationBasicWithProgressBarForm_GotFocus;
-
-            DoubleBuffered = true;
         }
-
-        private void VisualToastNotificationBasicWithProgressBarForm_Load(object sender, EventArgs e)
+        catch (Exception exception)
         {
-            UpdateLocation();
-
-            ShowCloseButton();
-
-            _timer.Start();
-
-            _soundPlayer?.Play();
-
-            kbtnDismiss.Text = KryptonManager.Strings.ToastNotificationStrings.Dismiss;
+            KryptonMessageBox.Show($"An error has occurred: {exception}", @"Error", KryptonMessageBoxButtons.OK,
+                KryptonMessageBoxIcon.Error);
         }
+    }
 
-        private void kbtnClose_Click(object sender, EventArgs e) => Close();
+    private void VisualToastNotificationBasicWithProgressBarForm_GotFocus(object sender, EventArgs e)
+    {
+        kbtnDismiss.Focus();
+    }
 
-        private void kbtnDismiss_Click(object sender, EventArgs e) => Close();
+    private void UpdateText()
+    {
+        krtbNotificationContent.Text = _toastNotificationData.NotificationContent ?? string.Empty;
 
-        private void kbtnExtraAction_Click(object sender, EventArgs e)
+        klblNotificationTitle.Text = _toastNotificationData.NotificationTitle;
+
+        klblNotificationTitle.StateCommon.ShortText.TextH =
+            _toastNotificationData.TitleAlignment ?? PaletteRelativeAlign.Inherit;
+    }
+
+    private void UpdateFonts()
+    {
+        krtbNotificationContent.Font = _toastNotificationData.NotificationContentFont ??
+                                       KryptonManager.CurrentGlobalPalette.BaseFont;
+
+        if (_toastNotificationData.NotificationTitleFont != null)
         {
-            try
-            {
+            krtbNotificationContent.InputControlStyle = InputControlStyle.PanelClient;
 
-            }
-            catch (Exception exception)
-            {
-                KryptonMessageBox.Show($"An error has occurred: {exception}", @"Error", KryptonMessageBoxButtons.OK,
-                    KryptonMessageBoxIcon.Error);
-            }
+            klblNotificationTitle.Font =
+                _toastNotificationData.NotificationTitleFont ?? _palette.Header1ShortFont;
         }
-
-        private void VisualToastNotificationBasicWithProgressBarForm_GotFocus(object sender, EventArgs e)
+        else
         {
-            kbtnDismiss.Focus();
+            klblNotificationTitle.LabelStyle = LabelStyle.TitleControl;
         }
+    }
 
-        private void UpdateText()
+    private void UpdateIcon()
+    {
+        switch (_toastNotificationData.NotificationIcon)
         {
-            krtbNotificationContent.Text = _toastNotificationData.NotificationContent ?? string.Empty;
-
-            klblNotificationTitle.Text = _toastNotificationData.NotificationTitle;
-
-            klblNotificationTitle.StateCommon.ShortText.TextH =
-                _toastNotificationData.TitleAlignment ?? PaletteRelativeAlign.Inherit;
-        }
-
-        private void UpdateFonts()
-        {
-            krtbNotificationContent.Font = _toastNotificationData.NotificationContentFont ??
-                                            KryptonManager.CurrentGlobalPalette.BaseFont;
-
-            if (_toastNotificationData.NotificationTitleFont != null)
-            {
-                krtbNotificationContent.InputControlStyle = InputControlStyle.PanelClient;
-
-                klblNotificationTitle.Font =
-                    _toastNotificationData.NotificationTitleFont ?? _palette.Header1ShortFont;
-            }
-            else
-            {
-                klblNotificationTitle.LabelStyle = LabelStyle.TitleControl;
-            }
-        }
-
-        private void UpdateIcon()
-        {
-            switch (_toastNotificationData.NotificationIcon)
-            {
-                case KryptonToastNotificationIcon.None:
-                    SetIcon(null);
-                    break;
-                case KryptonToastNotificationIcon.Hand:
-                    SetIcon(Resources.Toast_Notification_Hand_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.SystemHand:
+            case KryptonToastNotificationIcon.None:
+                SetIcon(null);
+                break;
+            case KryptonToastNotificationIcon.Hand:
+                SetIcon(Resources.Toast_Notification_Hand_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.SystemHand:
 #if NET8_0_OR_GREATER
                     //SetIcon(GraphicsExtensions.ScaleImage());
 #else
-                    SetIcon(GraphicsExtensions.ScaleImage(SystemIcons.Hand.ToBitmap(), 128, 128));
+                SetIcon(GraphicsExtensions.ScaleImage(SystemIcons.Hand.ToBitmap(), 128, 128));
 #endif
-                    break;
-                case KryptonToastNotificationIcon.Question:
-                    SetIcon(Resources.Toast_Notification_Question_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.SystemQuestion:
-                    break;
-                case KryptonToastNotificationIcon.Exclamation:
-                    SetIcon(Resources.Toast_Notification_Warning_128_x_115);
-                    break;
-                case KryptonToastNotificationIcon.SystemExclamation:
-                    break;
-                case KryptonToastNotificationIcon.Asterisk:
-                    SetIcon(Resources.Toast_Notification_Asterisk_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.SystemAsterisk:
-                    break;
-                case KryptonToastNotificationIcon.Stop:
-                    SetIcon(Resources.Toast_Notification_Stop_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.Error:
-                    SetIcon(Resources.Toast_Notification_Critical_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.Warning:
-                    SetIcon(Resources.Toast_Notification_Warning_128_x_115);
-                    break;
-                case KryptonToastNotificationIcon.Information:
-                    SetIcon(Resources.Toast_Notification_Information_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.Shield:
-                    if (OSUtilities.IsAtLeastWindowsEleven)
-                    {
-                        SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_11_128_x_128);
-                    }
-                    else if (OSUtilities.IsWindowsTen)
-                    {
-                        SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_10_128_x_128);
-                    }
-                    else
-                    {
-                        SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_7_and_8_128_x_128);
-                    }
-                    break;
-                case KryptonToastNotificationIcon.WindowsLogo:
-                    break;
-                case KryptonToastNotificationIcon.Application:
-                    break;
-                case KryptonToastNotificationIcon.SystemApplication:
-                    break;
-                case KryptonToastNotificationIcon.Ok:
-                    SetIcon(Resources.Toast_Notification_Ok_128_x_128);
-                    break;
-                case KryptonToastNotificationIcon.Custom:
-                    SetIcon(_toastNotificationData.CustomImage != null
-                        ? new Bitmap(_toastNotificationData.CustomImage)
-                        : null);
-                    break;
-                case null:
-                    SetIcon(null);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                break;
+            case KryptonToastNotificationIcon.Question:
+                SetIcon(Resources.Toast_Notification_Question_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.SystemQuestion:
+                break;
+            case KryptonToastNotificationIcon.Exclamation:
+                SetIcon(Resources.Toast_Notification_Warning_128_x_115);
+                break;
+            case KryptonToastNotificationIcon.SystemExclamation:
+                break;
+            case KryptonToastNotificationIcon.Asterisk:
+                SetIcon(Resources.Toast_Notification_Asterisk_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.SystemAsterisk:
+                break;
+            case KryptonToastNotificationIcon.Stop:
+                SetIcon(Resources.Toast_Notification_Stop_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.Error:
+                SetIcon(Resources.Toast_Notification_Critical_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.Warning:
+                SetIcon(Resources.Toast_Notification_Warning_128_x_115);
+                break;
+            case KryptonToastNotificationIcon.Information:
+                SetIcon(Resources.Toast_Notification_Information_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.Shield:
+                if (OSUtilities.IsAtLeastWindowsEleven)
+                {
+                    SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_11_128_x_128);
+                }
+                else if (OSUtilities.IsWindowsTen)
+                {
+                    SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_10_128_x_128);
+                }
+                else
+                {
+                    SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_7_and_8_128_x_128);
+                }
+                break;
+            case KryptonToastNotificationIcon.WindowsLogo:
+                break;
+            case KryptonToastNotificationIcon.Application:
+                break;
+            case KryptonToastNotificationIcon.SystemApplication:
+                break;
+            case KryptonToastNotificationIcon.Ok:
+                SetIcon(Resources.Toast_Notification_Ok_128_x_128);
+                break;
+            case KryptonToastNotificationIcon.Custom:
+                SetIcon(_toastNotificationData.CustomImage != null
+                    ? new Bitmap(_toastNotificationData.CustomImage)
+                    : null);
+                break;
+            case null:
+                SetIcon(null);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+    }
 
-        private void SetIcon(Bitmap? image) => pbxNotificationIcon.Image = image;
+    private void SetIcon(Bitmap? image) => pbxNotificationIcon.Image = image;
 
-        private void UpdateLocation()
+    private void UpdateLocation()
+    {
+        //Once loaded, position the form, or position it to the bottom left of the screen with added padding
+        Location = _toastNotificationData.NotificationLocation ?? new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5,
+            Screen.PrimaryScreen!.WorkingArea.Height - Height - 5);
+    }
+
+    private void ShowCloseButton() => kbtnClose.Visible = _toastNotificationData.ShowCloseButton ?? false;
+
+    private void UpdateProgressBarText() => kpbCountDown.Text = _toastNotificationData.ShowCountDownSecondsOnProgressBar ? $@"{_toastNotificationData.CountDownSeconds - _time}" : string.Empty;
+
+    public new void Show()
+    {
+        TopMost = _toastNotificationData.TopMost ?? true;
+
+        UpdateText();
+
+        UpdateIcon();
+
+        if (_toastNotificationData.CountDownSeconds != 0)
         {
-            //Once loaded, position the form, or position it to the bottom left of the screen with added padding
-            Location = _toastNotificationData.NotificationLocation ?? new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5,
-                Screen.PrimaryScreen!.WorkingArea.Height - Height - 5);
-        }
+            _countdownValue = _toastNotificationData.CountDownSeconds ?? 60;
 
-        private void ShowCloseButton() => kbtnClose.Visible = _toastNotificationData.ShowCloseButton ?? false;
+            kpbCountDown.Maximum = _countdownValue;
 
-        private void UpdateProgressBarText() => kpbCountDown.Text = _toastNotificationData.ShowCountDownSecondsOnProgressBar ? $@"{_toastNotificationData.CountDownSeconds - _time}" : string.Empty;
+            kpbCountDown.Value = _countdownValue;
 
-        public new void Show()
-        {
-            TopMost = _toastNotificationData.TopMost ?? true;
+            UpdateProgressBarText();
 
-            UpdateText();
+            _timer = new Timer();
 
-            UpdateIcon();
+            _timer.Interval = _toastNotificationData.CountDownTimerInterval ?? 1000;
 
-            if (_toastNotificationData.CountDownSeconds != 0)
+            _timer.Tick += (sender, args) =>
             {
-                _countdownValue = _toastNotificationData.CountDownSeconds ?? 60;
+                _time++;
 
-                kpbCountDown.Maximum = _countdownValue;
-
-                kpbCountDown.Value = _countdownValue;
+                kpbCountDown.Value -= 1;
 
                 UpdateProgressBarText();
 
-                _timer = new Timer();
-
-                _timer.Interval = _toastNotificationData.CountDownTimerInterval ?? 1000;
-
-                _timer.Tick += (sender, args) =>
+                if (kpbCountDown.Value == kpbCountDown.Minimum)
                 {
-                    _time++;
+                    _timer.Stop();
 
-                    kpbCountDown.Value -= 1;
-
-                    UpdateProgressBarText();
-
-                    if (kpbCountDown.Value == kpbCountDown.Minimum)
-                    {
-                        _timer.Stop();
-
-                        Close();
-                    }
-                };
-            }
-
-
-            base.Show();
+                    Close();
+                }
+            };
         }
 
-        public new DialogResult ShowDialog()
+
+        base.Show();
+    }
+
+    public new DialogResult ShowDialog()
+    {
+        TopMost = _toastNotificationData.TopMost ?? true;
+
+        UpdateText();
+
+        UpdateIcon();
+
+        //if (_toastNotificationData.IsDoNotShowAgainOptionChecked)
+        //{
+        //    UpdateDoNotShowAgainOptionChecked();
+        //}
+
+        //if (_toastNotificationData.DoNotShowAgainOptionCheckState != null)
+        //{
+        //    UpdateDoNotShowAgainOptionCheckState();
+        //}
+
+        if (_toastNotificationData.CountDownSeconds != 0)
         {
-            TopMost = _toastNotificationData.TopMost ?? true;
+            _countdownValue = _toastNotificationData.CountDownSeconds ?? 60;
 
-            UpdateText();
+            kpbCountDown.Maximum = _countdownValue;
 
-            UpdateIcon();
+            kpbCountDown.Value = _countdownValue;
 
-            //if (_toastNotificationData.IsDoNotShowAgainOptionChecked)
-            //{
-            //    UpdateDoNotShowAgainOptionChecked();
-            //}
+            UpdateProgressBarText();
 
-            //if (_toastNotificationData.DoNotShowAgainOptionCheckState != null)
-            //{
-            //    UpdateDoNotShowAgainOptionCheckState();
-            //}
+            kbtnDismiss.Text = $@"{KryptonManager.Strings.ToastNotificationStrings.Dismiss}";
 
-            if (_toastNotificationData.CountDownSeconds != 0)
+            _timer = new Timer();
+
+            _timer.Interval = _toastNotificationData.CountDownTimerInterval ?? 1000;
+
+            _timer.Tick += (sender, args) =>
             {
-                _countdownValue = _toastNotificationData.CountDownSeconds ?? 60;
+                _time++;
 
-                kpbCountDown.Maximum = _countdownValue;
-
-                kpbCountDown.Value = _countdownValue;
+                kpbCountDown.Value -= 1;
 
                 UpdateProgressBarText();
 
                 kbtnDismiss.Text = $@"{KryptonManager.Strings.ToastNotificationStrings.Dismiss}";
 
-                _timer = new Timer();
-
-                _timer.Interval = _toastNotificationData.CountDownTimerInterval ?? 1000;
-
-                _timer.Tick += (sender, args) =>
+                if (_time == _toastNotificationData.CountDownSeconds)
                 {
-                    _time++;
+                    _timer.Stop();
 
-                    kpbCountDown.Value -= 1;
-
-                    UpdateProgressBarText();
-
-                    kbtnDismiss.Text = $@"{KryptonManager.Strings.ToastNotificationStrings.Dismiss}";
-
-                    if (_time == _toastNotificationData.CountDownSeconds)
-                    {
-                        _timer.Stop();
-
-                        Close();
-                    }
-                };
-            }
-
-            return base.ShowDialog();
+                    Close();
+                }
+            };
         }
 
-        internal static void InternalShow(KryptonBasicToastNotificationData toastNotificationData)
-        {
-            var kt = new VisualToastNotificationBasicPBForm(toastNotificationData);
+        return base.ShowDialog();
+    }
 
-            kt.Show();
-        }
+    internal static void InternalShow(KryptonBasicToastNotificationData toastNotificationData)
+    {
+        var kt = new VisualToastNotificationBasicPBForm(toastNotificationData);
+
+        kt.Show();
     }
 }

@@ -26,78 +26,77 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal class TtsProxyCom : ITtsEngineProxy
 {
-    internal class TtsProxyCom : ITtsEngineProxy
+    private ITtsEngineSsml _comEngine;
+
+    private IntPtr _iSite;
+
+    internal override AlphabetType EngineAlphabet => AlphabetType.Ipa;
+
+    internal TtsProxyCom(ITtsEngineSsml comEngine, IntPtr iSite, int lcid)
+        : base(lcid)
     {
-        private ITtsEngineSsml _comEngine;
+        _iSite = iSite;
+        _comEngine = comEngine;
+    }
 
-        private IntPtr _iSite;
+    internal override IntPtr GetOutputFormat(IntPtr targetFormat)
+    {
+        IntPtr waveHeader;
+        _comEngine.GetOutputFormat(!(targetFormat != IntPtr.Zero) ? SpeakOutputFormat.Text : SpeakOutputFormat.WaveFormat, targetFormat, out waveHeader);
+        return waveHeader;
+    }
 
-        internal override AlphabetType EngineAlphabet => AlphabetType.Ipa;
+    internal override void AddLexicon(Uri lexicon, string mediaType)
+    {
+        _comEngine.AddLexicon(lexicon.ToString(), mediaType, _iSite);
+    }
 
-        internal TtsProxyCom(ITtsEngineSsml comEngine, IntPtr iSite, int lcid)
-            : base(lcid)
+    internal override void RemoveLexicon(Uri lexicon)
+    {
+        _comEngine.RemoveLexicon(lexicon.ToString(), _iSite);
+    }
+
+    internal override void Speak(List<TextFragment> frags, byte[] wfx)
+    {
+        GCHandle gCHandle = GCHandle.Alloc(wfx, GCHandleType.Pinned);
+        try
         {
-            _iSite = iSite;
-            _comEngine = comEngine;
-        }
-
-        internal override IntPtr GetOutputFormat(IntPtr targetFormat)
-        {
-            IntPtr waveHeader;
-            _comEngine.GetOutputFormat(!(targetFormat != IntPtr.Zero) ? SpeakOutputFormat.Text : SpeakOutputFormat.WaveFormat, targetFormat, out waveHeader);
-            return waveHeader;
-        }
-
-        internal override void AddLexicon(Uri lexicon, string mediaType)
-        {
-            _comEngine.AddLexicon(lexicon.ToString(), mediaType, _iSite);
-        }
-
-        internal override void RemoveLexicon(Uri lexicon)
-        {
-            _comEngine.RemoveLexicon(lexicon.ToString(), _iSite);
-        }
-
-        internal override void Speak(List<TextFragment> frags, byte[] wfx)
-        {
-            GCHandle gCHandle = GCHandle.Alloc(wfx, GCHandleType.Pinned);
+            IntPtr waveHeader = gCHandle.AddrOfPinnedObject();
+            Collection<IntPtr> collection = [];
+            IntPtr fragments = TextFragmentInterop.FragmentToPtr(frags, collection);
             try
             {
-                IntPtr waveHeader = gCHandle.AddrOfPinnedObject();
-                Collection<IntPtr> collection = new Collection<IntPtr>();
-                IntPtr fragments = TextFragmentInterop.FragmentToPtr(frags, collection);
-                try
-                {
-                    _comEngine.Speak(fragments, frags.Count, waveHeader, _iSite);
-                }
-                finally
-                {
-                    foreach (IntPtr item in collection)
-                    {
-                        Marshal.FreeCoTaskMem(item);
-                    }
-                }
+                _comEngine.Speak(fragments, frags.Count, waveHeader, _iSite);
             }
             finally
             {
-                gCHandle.Free();
+                foreach (IntPtr item in collection)
+                {
+                    Marshal.FreeCoTaskMem(item);
+                }
             }
         }
-
-        internal override void ReleaseInterface()
+        finally
         {
-            Marshal.ReleaseComObject(_comEngine);
+            gCHandle.Free();
         }
+    }
 
-        internal override char[] ConvertPhonemes(char[] phones, AlphabetType alphabet)
+    internal override void ReleaseInterface()
+    {
+        Marshal.ReleaseComObject(_comEngine);
+    }
+
+    internal override char[] ConvertPhonemes(char[] phones, AlphabetType alphabet)
+    {
+        if (alphabet == AlphabetType.Ipa)
         {
-            if (alphabet == AlphabetType.Ipa)
-            {
-                return phones;
-            }
-            return _alphabetConverter.SapiToIpa(phones);
+            return phones;
         }
+        return _alphabetConverter.SapiToIpa(phones);
     }
 }

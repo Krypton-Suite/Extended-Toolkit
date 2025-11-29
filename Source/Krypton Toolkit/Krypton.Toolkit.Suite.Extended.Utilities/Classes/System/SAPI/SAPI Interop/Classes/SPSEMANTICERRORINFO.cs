@@ -26,19 +26,18 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+[StructLayout(LayoutKind.Sequential)]
+internal class SPSEMANTICERRORINFO
 {
-    [StructLayout(LayoutKind.Sequential)]
-    internal class SPSEMANTICERRORINFO
-    {
-        internal uint ulLineNumber;
+    internal uint ulLineNumber;
 
-        internal uint pszScriptLineOffset;
+    internal uint pszScriptLineOffset;
 
-        internal uint pszSourceOffset;
+    internal uint pszSourceOffset;
 
-        internal uint pszDescriptionOffset;
+    internal uint pszDescriptionOffset;
 
-        internal int hrResultCode;
-    }
+    internal int hrResultCode;
 }

@@ -26,11 +26,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+internal enum PromptPriority
 {
-	internal enum PromptPriority
-	{
-		Normal,
-		High
-	}
+    Normal,
+    High
 }

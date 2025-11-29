@@ -26,263 +26,260 @@
 #endregion
 
 // ReSharper disable RedundantOverriddenMember
-namespace Krypton.Toolkit.Suite.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator;
+
+[ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)]
+public class KryptonEmptyTabControl : TabControl
 {
-    [ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)]
-    public class KryptonEmptyTabControl : TabControl
+    private PaletteBase? _palette;
+    private PaletteRedirect _paletteRedirect;
+    private PaletteBorderInheritRedirect _paletteBorder;
+    private IDisposable? _mementoBack;
+
+    private Color _bgcolor;
+    private bool _drawBorder = false;
+    [Browsable(true), Category("Appearance-Extended")]
+    [DefaultValue("false")]
+    public bool DrawBorder
     {
-        private PaletteBase? _palette;
-        private PaletteRedirect _paletteRedirect;
-        private PaletteBorderInheritRedirect _paletteBorder;
-        private IDisposable? _mementoBack;
+        get => _drawBorder;
+        set { _drawBorder = value; Invalidate(); }
+    }
 
-        private Color _bgcolor;
-        private bool _drawBorder = false;
-        [Browsable(true), Category("Appearance-Extended")]
-        [DefaultValue("false")]
-        public bool DrawBorder
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public new virtual Size ItemSize
+    {
+        get => base.ItemSize;
+        set { base.ItemSize = value; Invalidate(); }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public new virtual TabSizeMode SizeMode
+    {
+        get => base.SizeMode;
+        set { base.SizeMode = value; Invalidate(); }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public new virtual TabAppearance Appearance
+    {
+        get => base.Appearance;
+        set { base.Appearance = value; Invalidate(); }
+    }
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public new virtual TabDrawMode DrawMode
+    {
+        get => base.DrawMode;
+        set { base.DrawMode = value; Invalidate(); }
+    }
+
+    ///
+    /// Indicates if the current view is being utilized in the VS.NET IDE or not.
+    ///
+    private bool _designMode;
+    public new bool DesignMode =>
+        //return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
+        _designMode;
+
+    public KryptonEmptyTabControl()
+    {
+        //Design Mode
+        _designMode = System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
+
+        Init();
+    }
+
+    public KryptonEmptyTabControl(IContainer container)
+    {
+        container.Add(this);
+
+        //Design Mode
+        _designMode = System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
+
+        Init();
+    }
+    private void Init()
+    {
+        // double buffering
+        SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+        SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
+        if (!DesignMode)
         {
-            get => _drawBorder;
-            set { _drawBorder = value; Invalidate(); }
+            SetStyle(ControlStyles.UserPaint, true);
+            SizeMode = TabSizeMode.Fixed;
+            DrawMode = TabDrawMode.OwnerDrawFixed;
+            //this.ItemSize = new Size(0, 1);
+            Appearance = TabAppearance.Buttons;
+            Margin = new Padding(0);
+        }
+        else
+        {
+            SetStyle(ControlStyles.UserPaint, false);
+            DrawMode = TabDrawMode.Normal;
+            SizeMode = TabSizeMode.Normal;
+            ItemSize = new Size(41, 10);
+            Appearance = TabAppearance.Normal;
         }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new virtual Size ItemSize
+        _palette = KryptonManager.CurrentGlobalPalette;
+
+        if (_palette != null)
         {
-            get => base.ItemSize;
-            set { base.ItemSize = value; Invalidate(); }
+            _palette.PalettePaint += OnPalettePaint;
         }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new virtual TabSizeMode SizeMode
+        KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
+
+        _paletteRedirect = new PaletteRedirect(_palette);
+        _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+
+        InitColours();
+
+    }
+
+    private void InitColours()
+    {
+        _bgcolor = _palette.ColorTable.MenuStripGradientEnd;
+        if (!DesignMode)
         {
-            get => base.SizeMode;
-            set { base.SizeMode = value; Invalidate(); }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new virtual TabAppearance Appearance
-        {
-            get => base.Appearance;
-            set { base.Appearance = value; Invalidate(); }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new virtual TabDrawMode DrawMode
-        {
-            get => base.DrawMode;
-            set { base.DrawMode = value; Invalidate(); }
-        }
-
-        ///
-        /// Indicates if the current view is being utilized in the VS.NET IDE or not.
-        ///
-        private bool _designMode;
-        public new bool DesignMode =>
-            //return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
-            _designMode;
-
-        public KryptonEmptyTabControl()
-        {
-            //Design Mode
-            _designMode = System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
-
-            Init();
-        }
-
-        public KryptonEmptyTabControl(IContainer container)
-        {
-            container.Add(this);
-
-            //Design Mode
-            _designMode = System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv";
-
-            Init();
-        }
-        private void Init()
-        {
-            // double buffering
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-
-            if (!DesignMode)
+            foreach (TabPage tp in TabPages)
             {
-                SetStyle(ControlStyles.UserPaint, true);
-                SizeMode = TabSizeMode.Fixed;
-                DrawMode = TabDrawMode.OwnerDrawFixed;
-                //this.ItemSize = new Size(0, 1);
-                Appearance = TabAppearance.Buttons;
-                Margin = new Padding(0);
+                tp.BackColor = _palette.GetBackColor1(PaletteBackStyle.ControlClient, PaletteState.Normal);
             }
-            else
+        }
+    }
+
+    protected override void OnControlAdded(ControlEventArgs e)
+    {
+        base.OnControlAdded(e);
+        if (!DesignMode)
+        {
+            ItemSize = new Size(0, 1);
+            // draw tabs
+            for (int i = 0; i < TabCount; i++)
             {
-                SetStyle(ControlStyles.UserPaint, false);
-                DrawMode = TabDrawMode.Normal;
-                SizeMode = TabSizeMode.Normal;
-                ItemSize = new Size(41, 10);
-                Appearance = TabAppearance.Normal;
+                TabPages[i].Padding = new Padding(0);
+                TabPages[i].Margin = new Padding(0);
             }
+        }
+    }
 
-            _palette = KryptonManager.CurrentGlobalPalette;
+    protected override void OnPaint(PaintEventArgs e)
+    {
 
-            if (_palette != null)
-            {
-                _palette.PalettePaint += OnPalettePaint;
-            }
-
-            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
-
-            _paletteRedirect = new PaletteRedirect(_palette);
-            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
-
-            InitColours();
-
+        if (!Visible)
+        {
+            return;
         }
 
-        private void InitColours()
+        base.OnPaint(e);
+
+        if (DesignMode)
         {
-            _bgcolor = _palette.ColorTable.MenuStripGradientEnd;
-            if (!DesignMode)
+            return;
+        }
+
+        InitColours();
+
+        Graphics g = e.Graphics;
+
+        Rectangle tabControlArea = ClientRectangle;
+        Rectangle tabArea = DisplayRectangle;
+
+        e.Graphics.FillRectangle(new SolidBrush(_bgcolor), tabControlArea);
+
+        if (_palette != null)
+        {
+            IRenderer? renderer = _palette.GetRenderer();
+            _paletteBorder.Style = PaletteBorderStyle.HeaderPrimary;
+
+            //Draw border
+            using (GraphicsPath path = new GraphicsPath())
             {
-                foreach (TabPage tp in TabPages)
+                Rectangle rect = tabControlArea;
+                path.AddRectangle(rect);
+
+                using (RenderContext context = new RenderContext(this, e.Graphics, rect, renderer))
                 {
-                    tp.BackColor = _palette.GetBackColor1(PaletteBackStyle.ControlClient, PaletteState.Normal);
-                }
-            }
-        }
-
-        protected override void OnControlAdded(ControlEventArgs e)
-        {
-            base.OnControlAdded(e);
-            if (!DesignMode)
-            {
-                ItemSize = new Size(0, 1);
-                // draw tabs
-                for (int i = 0; i < TabCount; i++)
-                {
-                    TabPages[i].Padding = new Padding(0);
-                    TabPages[i].Margin = new Padding(0);
-                }
-            }
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-
-            if (!Visible)
-            {
-                return;
-            }
-
-            base.OnPaint(e);
-
-            if (DesignMode)
-            {
-                return;
-            }
-
-            InitColours();
-
-            Graphics g = e.Graphics;
-
-            Rectangle tabControlArea = ClientRectangle;
-            Rectangle tabArea = DisplayRectangle;
-
-            e.Graphics.FillRectangle(new SolidBrush(_bgcolor), tabControlArea);
-
-            if (_palette != null)
-            {
-                IRenderer? renderer = _palette.GetRenderer();
-                _paletteBorder.Style = PaletteBorderStyle.HeaderPrimary;
-
-                //Draw border
-                using (GraphicsPath path = new GraphicsPath())
-                {
-                    Rectangle rect = tabControlArea;
-                    path.AddRectangle(rect);
-
-                    using (RenderContext context = new RenderContext(this, e.Graphics, rect, renderer))
+                    if (_drawBorder)
                     {
-                        if (_drawBorder)
-                        {
-                            renderer?.RenderStandardBorder.DrawBorder(context, rect, _paletteBorder, VisualOrientation.Top, PaletteState.Normal);
-                        }
+                        renderer?.RenderStandardBorder.DrawBorder(context, rect, _paletteBorder, VisualOrientation.Top, PaletteState.Normal);
                     }
                 }
             }
+        }
 
-            if (!DesignMode)
+        if (!DesignMode)
+        {
+            if (SelectedTab != null)
             {
-                if (SelectedTab != null)
-                {
-                    TabPage tabPage = SelectedTab;
-                    tabPage.BackColor = _bgcolor;
-                }
+                TabPage tabPage = SelectedTab;
+                tabPage.BackColor = _bgcolor;
+            }
+        }
+
+    }
+
+    protected override void WndProc(ref Message m)
+    {
+        base.WndProc(ref m);
+    }
+
+    #region ... Krypton ...
+    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    {
+
+        if (_palette != null)
+        {
+            _palette.PalettePaint -= OnPalettePaint;
+        }
+
+
+        _palette = KryptonManager.CurrentGlobalPalette;
+        _paletteRedirect.Target = _palette;
+
+
+        if (_palette != null)
+        {
+            _palette.PalettePaint += OnPalettePaint;
+            InitColours();
+        }
+
+        Invalidate();
+    }
+
+    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    {
+
+        Invalidate();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+
+
+            if (_mementoBack != null)
+            {
+                _mementoBack.Dispose();
+                _mementoBack = null;
             }
 
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-        }
-
-        #region ... Krypton ...
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
-        {
 
             if (_palette != null)
             {
                 _palette.PalettePaint -= OnPalettePaint;
+                _palette = null;
             }
 
 
-            _palette = KryptonManager.CurrentGlobalPalette;
-            _paletteRedirect.Target = _palette;
-
-
-            if (_palette != null)
-            {
-                _palette.PalettePaint += OnPalettePaint;
-                InitColours();
-            }
-
-            Invalidate();
+            KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
-        {
-
-            Invalidate();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-
-
-                if (_mementoBack != null)
-                {
-                    _mementoBack.Dispose();
-                    _mementoBack = null;
-                }
-
-
-                if (_palette != null)
-                {
-                    _palette.PalettePaint -= OnPalettePaint;
-                    _palette = null;
-                }
-
-
-                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
-            }
-
-            base.Dispose(disposing);
-        }
-        #endregion
+        base.Dispose(disposing);
     }
-
-
+    #endregion
 }

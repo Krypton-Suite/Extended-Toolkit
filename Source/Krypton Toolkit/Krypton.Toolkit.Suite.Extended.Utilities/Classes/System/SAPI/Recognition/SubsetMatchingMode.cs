@@ -26,17 +26,16 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+
+public enum SubsetMatchingMode
 {
-	public enum SubsetMatchingMode
-	{
-		/// <summary />
-		Subsequence,
-		/// <summary />
-		OrderedSubset,
-		/// <summary />
-		SubsequenceContentRequired,
-		/// <summary />
-		OrderedSubsetContentRequired
-	}
+    /// <summary />
+    Subsequence,
+    /// <summary />
+    OrderedSubset,
+    /// <summary />
+    SubsequenceContentRequired,
+    /// <summary />
+    OrderedSubsetContentRequired
 }

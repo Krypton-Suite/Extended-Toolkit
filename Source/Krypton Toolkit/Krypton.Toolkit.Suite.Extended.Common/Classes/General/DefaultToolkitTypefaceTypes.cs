@@ -25,18 +25,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+public static class DefaultToolkitTypefaceTypes
 {
-    public static class DefaultToolkitTypefaceTypes
-    {
-        public static Font DEFAULT_BOLD_TYPEFACE = new("Segoe UI", 8.25f, FontStyle.Bold);
+    public static Font DEFAULT_BOLD_TYPEFACE = new("Segoe UI", 8.25f, FontStyle.Bold);
 
-        public static Font DEFAULT_CUE_TYPEFACE = new("Segoe UI", 8.25f);
+    public static Font DEFAULT_CUE_TYPEFACE = new("Segoe UI", 8.25f);
 
-        public static Font DEFAULT_NORMAL_TYPEFACE = new("Segoe UI", 8.25f);
+    public static Font DEFAULT_NORMAL_TYPEFACE = new("Segoe UI", 8.25f);
 
-        public static Font DEFAULT_MESSAGEBOX_BUTTONS_TYPEFACE = new("Segoe UI", 8.25f);
+    public static Font DEFAULT_MESSAGEBOX_BUTTONS_TYPEFACE = new("Segoe UI", 8.25f);
 
-        public static Font DEFAULT_MESSAGEBOX_CONTENT_TYPEFACE = new("Segoe UI", 8.25f);
-    }
+    public static Font DEFAULT_MESSAGEBOX_CONTENT_TYPEFACE = new("Segoe UI", 8.25f);
 }

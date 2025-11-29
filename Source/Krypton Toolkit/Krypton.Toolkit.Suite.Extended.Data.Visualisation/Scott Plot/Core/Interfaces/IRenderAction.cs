@@ -1,7 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IRenderAction
 {
-    public interface IRenderAction
-    {
-        void Render(RenderPack renderPack);
-    }
+    void Render(RenderPack renderPack);
 }

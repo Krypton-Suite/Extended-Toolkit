@@ -1,0 +1,212 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Canary" />
+    <BuildType Name="CanaryLite" />
+    <BuildType Name="Debug" />
+    <BuildType Name="Nightly" />
+    <BuildType Name="NightlyLite" />
+    <BuildType Name="Release" />
+    <BuildType Name="ReleaseLite" />
+  </Configurations>
+  <Folder Name="/Applications/">
+    <Project Path="AutoUpdateCreator/AutoUpdateCreator.csproj" />
+    <Project Path="ZipExtractor/ZipExtractor.csproj" />
+  </Folder>
+  <Folder Name="/Documentation/">
+    <Project Path="../Documentation/Extended Toolkit API Documentation/Extended Toolkit API Documentation.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4" />
+  </Folder>
+  <Folder Name="/Examples/">
+    <Project Path="Examples/Examples.csproj">
+      <BuildDependency Project="Krypton.Toolkit.Suite.Extended.Wizard/Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
+      <BuildType Solution="Canary|*" Project="Debug" />
+      <BuildType Solution="Nightly|*" Project="Debug" />
+    </Project>
+  </Folder>
+  <Folder Name="/Main/">
+    <Project Path="Krypton.Toolkit.Suite.Extended.AdvancedDataGridView/Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Buttons/Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj">
+      <BuildDependency Project="Krypton.Toolkit.Suite.Extended.Debug.Tools/Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
+    </Project>
+    <Project Path="Krypton.Toolkit.Suite.Extended.Calendar/Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.CheckSum.Tools/Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Circular.ProgressBar/Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.ComboBox/Krypton.Toolkit.Suite.Extended.ComboBox 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Compression/Krypton.Toolkit.Suite.Extended.Compression 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Controls/Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Data.Visualisation/Krypton.Toolkit.Suite.Extended.Data.Visualisation 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.DataGridView/Krypton.Toolkit.Suite.Extended.DataGridView 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Dialogs/Krypton.Toolkit.Suite.Extended.Dialogs 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Dock.Extender/Krypton.Toolkit.Suite.Extended.Dock.Extender 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Error.Reporting/Krypton.Toolkit.Suite.Extended.Error.Reporting 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.File.Copier/Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Floating.Toolbars/Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Forms/Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.InputBox/Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.IO/Krypton.Toolkit.Suite.Extended.IO 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Memory.Box/Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Messagebox/Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.MessageDialog/Krypton.Toolkit.Suite.Extended.MessageDialog.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Navi.Suite/Krypton.Toolkit.Suite.Extended.Navi.Suite 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Navigator/Krypton.Toolkit.Suite.Extended.Navigator 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Networking/Krypton.Toolkit.Suite.Extended.Networking 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Notifications/Krypton.Toolkit.Suite.Extended.Notifications 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Panels/Krypton.Toolkit.Suite.Extended.Panels 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ribbon/Krypton.Toolkit.Suite.Extended.Ribbon 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Specialised.Dialogs/Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Theme.Switcher/Krypton.Toolkit.Suite.Extended.Theme.Switcher 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.ToastNotification/Krypton.Toolkit.Suite.Extended.ToastNotification 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Toggle.Switch/Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Tool.Box/Krypton.Toolkit.Suite.Extended.Tool.Box 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.TreeGridView/Krypton.Toolkit.Suite.Extended.TreeGridView 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView/Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Wizard/Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
+  </Folder>
+  <Folder Name="/Projects to Work On/">
+    <Project Path="Krypton.Toolkit.Suite.Extended.File.Explorer/Krypton.Toolkit.Suite.Extended.File.Explorer 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Gages/Krypton.Toolkit.Suite.Extended.Gages 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Outlook.Grid/Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Palette.Selectors/Krypton.Toolkit.Suite.Extended.Palette.Selectors 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.PDF/Krypton.Toolkit.Suite.Extended.PDF 2022.csproj">
+      <BuildType Solution="Nightly|*" Project="Debug" />
+    </Project>
+    <Project Path="Krypton.Toolkit.Suite.Extended.Scintilla.NET/Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Security/Krypton.Toolkit.Suite.Extended.Security 2022.csproj">
+      <BuildType Solution="Canary|*" Project="Release" />
+      <BuildType Solution="Nightly|*" Project="Release" />
+    </Project>
+    <Project Path="Krypton.Toolkit.Suite.Extended.Software.Updater/Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.TaskDialogs/Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Themes/Krypton.Toolkit.Suite.Extended.Themes 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Tools/Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
+  </Folder>
+  <Folder Name="/Repository Items/" />
+  <Folder Name="/Repository Items/Assets/">
+    <File Path="../../Assets/ToggleSwich.bmp" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/Examples/">
+    <File Path="../../Assets/Examples/CircularProgressBar.png" />
+    <File Path="../../Assets/Examples/CommandLinks.png" />
+    <File Path="../../Assets/Examples/ExtendedKryptonMessageBox1.png" />
+    <File Path="../../Assets/Examples/ExtendedKryptonMessageBox2.png" />
+    <File Path="../../Assets/Examples/FloatableToolStrip.png" />
+    <File Path="../../Assets/Examples/FlotableMenuStrip.png" />
+    <File Path="../../Assets/Examples/KryptonColourMixer.png" />
+    <File Path="../../Assets/Examples/KryptonColourWheel.png" />
+    <File Path="../../Assets/Examples/KryptonInputBoxExtended.png" />
+    <File Path="../../Assets/Examples/KryptonKnobControl.png" />
+    <File Path="../../Assets/Examples/KryptonPaletteColourShader.png" />
+    <File Path="../../Assets/Examples/KryptonPropertyGrid.png" />
+    <File Path="../../Assets/Examples/KryptonScrollBars.png" />
+    <File Path="../../Assets/Examples/KryptonThemeSelector.png" />
+    <File Path="../../Assets/Examples/KryptonToastNotificationV1.png" />
+    <File Path="../../Assets/Examples/KryptonToggleSwitch.png" />
+    <File Path="../../Assets/Examples/KryptonViewBar.png" />
+    <File Path="../../Assets/Examples/TreeViews.png" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/ICO/" />
+  <Folder Name="/Repository Items/Assets/ICO/256 x 256/">
+    <File Path="../../Assets/ICO/256 x 256/KR 256 x 256 Orange.ico" />
+    <File Path="../../Assets/ICO/256 x 256/PE Icon 256 x 256.ico" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/ICO/48 x 48/">
+    <File Path="../../Assets/ICO/48 x 48/KR 48 x 48 Orange.ico" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/JPEG/" />
+  <Folder Name="/Repository Items/Assets/JPEG/48 x 48/">
+    <File Path="../../Assets/JPEG/48 x 48/Logo Stable.jpg" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/License/">
+    <File Path="../../Assets/License/LICENSE.md" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/NuGet/" />
+  <Folder Name="/Repository Items/Assets/NuGet/Schemas/">
+    <File Path="../../Assets/NuGet/Schemas/Krypton.Toolkit.Suite.Extended.Lite.nuspec" />
+    <File Path="../../Assets/NuGet/Schemas/Krypton.Toolkit.Suite.Extended.nuspec" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/Package Icon/">
+    <File Path="../../Assets/Package Icon/Canary_Icon_128_x_128.png" />
+    <File Path="../../Assets/Package Icon/Stable_Icon_128_x_128.png" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/PNG/" />
+  <Folder Name="/Repository Items/Assets/PSD/">
+    <File Path="../../Assets/PSD/Command Link Button.psd" />
+    <File Path="../../Assets/PSD/Main Icon 512 x 512 Canary.psd" />
+    <File Path="../../Assets/PSD/Main Icon 512 x 512 Nightly.psd" />
+    <File Path="../../Assets/PSD/PE Icon 512 x 512.psd" />
+    <File Path="../../Assets/PSD/Square Design 512 x 512 Orange.psd" />
+    <File Path="../../Assets/PSD/ToggleSwich.psd" />
+  </Folder>
+  <Folder Name="/Repository Items/Assets/PSD/Arrows/">
+    <File Path="../../Assets/PSD/Arrows/Arrow-1.psd" />
+    <File Path="../../Assets/PSD/Arrows/Arrow-2.psd" />
+    <File Path="../../Assets/PSD/Arrows/Arrow-3.psd" />
+    <File Path="../../Assets/PSD/Arrows/Arrow-4.psd" />
+    <File Path="../../Assets/PSD/Arrows/Template.psd" />
+  </Folder>
+  <Folder Name="/Repository Items/Build System/">
+    <File Path="../../build.cmd" />
+    <File Path="../../build.proj" />
+    <File Path="../../debug.cmd" />
+    <File Path="../../debug.proj" />
+    <File Path="../../purge.cmd" />
+  </Folder>
+  <Folder Name="/Repository Items/Build System/Generate Packages/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Folder Name="/Repository Items/Build System/Generic/">
+    <File Path="../../Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Repository Items/GitHub/" />
+  <Folder Name="/Repository Items/GitHub/Issue Templates/">
+    <File Path="../../.github/ISSUE_TEMPLATE/bug_report.md" />
+    <File Path="../../.github/ISSUE_TEMPLATE/feature-request.md" />
+    <File Path="../../.github/ISSUE_TEMPLATE/other-issues.md" />
+    <File Path="../../.github/ISSUE_TEMPLATE/post-a-question.md" />
+  </Folder>
+  <Folder Name="/Repository Items/GitHub/Workflows/">
+    <File Path="../../.github/workflows/build.yml" />
+    <File Path="../../.github/workflows/codeql.yml" />
+    <File Path="../../.github/workflows/release.yml" />
+  </Folder>
+  <Folder Name="/Repository Items/Markdown/">
+    <File Path="../../Documents/Examples/Examples.md" />
+    <File Path="../../Documents/Help/Changelog.md" />
+    <File Path="../../Documents/Help/Prerequisites.md" />
+    <File Path="../../Documents/Modules/NuGet Package Information.md" />
+    <File Path="../../README.md" />
+  </Folder>
+  <Folder Name="/Repository Items/Markdown/License/">
+    <File Path="../../Documents/License/License.md" />
+  </Folder>
+  <Folder Name="/Repository Items/Miscellaneous/">
+    <File Path="../.editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Krypton.Toolkit.Suite.Extended.Common/Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Core/Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Debug.Tools/Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Developer.Utilities/Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Drawing.Utilities/Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Drawing/Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Effects/Krypton.Toolkit.Suite.Extended.Effects 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Global.Utilities/Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Language.Model/Krypton.Toolkit.Suite.Extended.Language.Model 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Resources/Krypton.Toolkit.Suite.Extended.Resources 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Settings/Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Shared/Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Software.Updater.Core/Krypton.Toolkit.Suite.Extended.Software.Updater.Core 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Utilities/Krypton.Toolkit.Suite.Extended.Utilities 2022.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".nuspec" />
+  </Folder>
+  <Folder Name="/Ultimate/">
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ultimate.Lite/Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj" />
+  </Folder>
+</Solution>

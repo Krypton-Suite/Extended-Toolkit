@@ -1,50 +1,49 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public struct CoordinateSize : IEquatable<CoordinateSize>
 {
-    public struct CoordinateSize : IEquatable<CoordinateSize>
+    public double Width;
+    public double Height;
+    public double Area => Width * Height;
+
+    public CoordinateSize(double width, double height)
     {
-        public double Width;
-        public double Height;
-        public double Area => Width * Height;
+        Width = width;
+        Height = height;
+    }
 
-        public CoordinateSize(double width, double height)
+    public bool Equals(CoordinateSize other)
+    {
+        return Equals(Width, other.Width) && Equals(Height, other.Height);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null)
         {
-            Width = width;
-            Height = height;
-        }
-
-        public bool Equals(CoordinateSize other)
-        {
-            return Equals(Width, other.Width) && Equals(Height, other.Height);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (obj is null)
-            {
-                return false;
-            }
-
-            if (obj is CoordinateSize other)
-            {
-                return Equals(other);
-            }
-
             return false;
         }
 
-        public static bool operator ==(CoordinateSize a, CoordinateSize b)
+        if (obj is CoordinateSize other)
         {
-            return a.Equals(b);
+            return Equals(other);
         }
 
-        public static bool operator !=(CoordinateSize a, CoordinateSize b)
-        {
-            return !a.Equals(b);
-        }
+        return false;
+    }
 
-        public override int GetHashCode()
-        {
-            return Width.GetHashCode() ^ Height.GetHashCode();
-        }
+    public static bool operator ==(CoordinateSize a, CoordinateSize b)
+    {
+        return a.Equals(b);
+    }
+
+    public static bool operator !=(CoordinateSize a, CoordinateSize b)
+    {
+        return !a.Equals(b);
+    }
+
+    public override int GetHashCode()
+    {
+        return Width.GetHashCode() ^ Height.GetHashCode();
     }
 }

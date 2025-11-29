@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+/// <summary>
+/// Represents a range of indexes in an array (inclusive)
+/// </summary>
+public readonly record struct IndexRange(int Min, int Max)
 {
-    /// <summary>
-    /// Represents a range of indexes in an array (inclusive)
-    /// </summary>
-    public readonly record struct IndexRange(int Min, int Max)
-    {
-        public int Length => Max - Min + 1;
-    }
+    public int Length => Max - Min + 1;
 }

@@ -26,37 +26,36 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+
+[StructLayout(LayoutKind.Sequential)]
+internal class SPSERIALIZEDPHRASEELEMENT
 {
-    [StructLayout(LayoutKind.Sequential)]
-    internal class SPSERIALIZEDPHRASEELEMENT
-    {
-        internal uint ulAudioTimeOffset;
+    internal uint ulAudioTimeOffset;
 
-        internal uint ulAudioSizeTime;
+    internal uint ulAudioSizeTime;
 
-        internal uint ulAudioStreamOffset;
+    internal uint ulAudioStreamOffset;
 
-        internal uint ulAudioSizeBytes;
+    internal uint ulAudioSizeBytes;
 
-        internal uint ulRetainedStreamOffset;
+    internal uint ulRetainedStreamOffset;
 
-        internal uint ulRetainedSizeBytes;
+    internal uint ulRetainedSizeBytes;
 
-        internal uint pszDisplayTextOffset;
+    internal uint pszDisplayTextOffset;
 
-        internal uint pszLexicalFormOffset;
+    internal uint pszLexicalFormOffset;
 
-        internal uint pszPronunciationOffset;
+    internal uint pszPronunciationOffset;
 
-        internal byte bDisplayAttributes;
+    internal byte bDisplayAttributes;
 
-        internal char RequiredConfidence;
+    internal char RequiredConfidence;
 
-        internal char ActualConfidence;
+    internal char ActualConfidence;
 
-        internal byte Reserved;
+    internal byte Reserved;
 
-        internal float SREngineConfidence;
-    }
+    internal float SREngineConfidence;
 }

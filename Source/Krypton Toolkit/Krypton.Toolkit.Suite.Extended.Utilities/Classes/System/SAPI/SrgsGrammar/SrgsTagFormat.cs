@@ -26,13 +26,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+
+[Flags]
+internal enum SrgsTagFormat
 {
-	internal enum SrgsTagFormat
-	{
-		Default,
-		MssV1,
-		W3cV1,
-		KeyValuePairs
-	}
+    Default,
+    MssV1,
+    W3cV1,
+    KeyValuePairs
 }

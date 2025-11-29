@@ -27,232 +27,233 @@
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 #pragma warning disable CS8602, CS8622
-namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
+namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars;
+
+[ToolboxBitmap(typeof(FloatableToolStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
+public class FloatableToolStrip : ToolStrip
 {
-    [ToolboxBitmap(typeof(FloatableToolStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
-    public class FloatableToolStrip : ToolStrip
+    #region Variables
+    private ToolStripContainerWindow _toolStripContainerWindow;
+
+    private Control? _originalParent = null;
+
+    private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
+
+    private List<ToolStripPanelExtended> _toolStripPanelExtendedList = [];
+
+    private string _floatingToolBarWindowText;
+    #endregion
+
+    #region Properties
+    internal Control? OriginalParent => _originalParent;
+
+    /// <summary>
+    /// Gets or sets the tool strip panel extened list.
+    /// </summary>
+    /// <value>
+    /// The tool strip panel extened list.
+    /// </value>
+    [Editor(typeof(ToolStripPanelCollectionEditor), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public List<ToolStripPanelExtended> ToolStripPanelExtendedList { get => _toolStripPanelExtendedList; set => _toolStripPanelExtendedList = value; }
+
+    /// <summary>
+    /// Gets a value indicating whether this instance is floating.
+    /// </summary>
+    /// <value>
+    ///   <c>true</c> if this instance is floating; otherwise, <c>false</c>.
+    /// </value>
+    public bool IsFloating => _isFloating;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the control and all its child controls are displayed.
+    /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public new bool Visible
     {
-        #region Variables
-        private ToolStripContainerWindow _toolStripContainerWindow;
+        get => base.Visible;
 
-        private Control? _originalParent = null;
-
-        private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
-
-        private List<ToolStripPanelExtended> _toolStripPanelExtendedList = new();
-
-        private string _floatingToolBarWindowText;
-        #endregion
-
-        #region Properties
-        internal Control? OriginalParent => _originalParent;
-
-        /// <summary>
-        /// Gets or sets the tool strip panel extened list.
-        /// </summary>
-        /// <value>
-        /// The tool strip panel extened list.
-        /// </value>
-        [Editor(typeof(ToolStripPanelCollectionEditor), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<ToolStripPanelExtended> ToolStripPanelExtenedList { get => _toolStripPanelExtendedList; set => _toolStripPanelExtendedList = value; }
-
-        /// <summary>
-        /// Gets a value indicating whether this instance is floating.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is floating; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsFloating => _isFloating;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the control and all its child controls are displayed.
-        /// </summary>
-        public new bool Visible
+        set
         {
-            get => base.Visible;
-
-            set
+            if (_isFloating)
             {
-                if (_isFloating)
-                {
-                    _toolStripContainerWindow.Visible = value;
-                }
-                else
-                {
-                    base.Visible = value;
-                }
+                _toolStripContainerWindow.Visible = value;
+            }
+            else
+            {
+                base.Visible = value;
             }
         }
+    }
 
-        public string FloatingToolBarWindowText { get => _floatingToolBarWindowText; set => _floatingToolBarWindowText = value; }
-        #endregion
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public string FloatingToolBarWindowText { get => _floatingToolBarWindowText; set => _floatingToolBarWindowText = value; }
+    #endregion
 
-        #region Constructor
-        public FloatableToolStrip()
+    #region Constructor
+    public FloatableToolStrip()
+    {
+        FloatingToolBarWindowText = "Tool Bar";
+    }
+    #endregion
+
+    #region Overrides
+    protected override void OnParentChanged(EventArgs e)
+    {
+        base.OnParentChanged(e);
+
+        if (Parent != null)
         {
-            FloatingToolBarWindowText = "Tool Bar";
-        }
-        #endregion
+            _originalParent = Parent;
 
-        #region Overrides
-        protected override void OnParentChanged(EventArgs e)
-        {
-            base.OnParentChanged(e);
-
-            if (Parent != null)
+            if (_aboutToFloat)
             {
-                _originalParent = Parent;
-
-                if (_aboutToFloat)
-                {
-                    _parentChanged = true;
-                }
+                _parentChanged = true;
             }
         }
+    }
 
-        protected override void OnMouseEnter(EventArgs e)
+    protected override void OnMouseEnter(EventArgs e)
+    {
+        base.OnMouseEnter(e);
+
+        Focus();
+    }
+
+    protected override void OnMouseDown(MouseEventArgs mea)
+    {
+        base.OnMouseDown(mea);
+
+        if (!_isFloating && GripRectangle.Contains(mea.Location))
         {
-            base.OnMouseEnter(e);
+            _aboutToFloat = true;
+        }
+    }
 
-            Focus();
+    protected override void OnMouseUp(MouseEventArgs mea)
+    {
+        base.OnMouseUp(mea);
+
+        if (_parentChanged)
+        {
+            _parentChanged = false;
+
+            _aboutToFloat = false;
+
+            return;
         }
 
-        protected override void OnMouseDown(MouseEventArgs mea)
-        {
-            base.OnMouseDown(mea);
+        Point p0 = PointToScreen(mea.Location), p1 = _originalParent.PointToClient(p0);
 
-            if (!_isFloating && GripRectangle.Contains(mea.Location))
+        if (_aboutToFloat && !_originalParent.ClientRectangle.Contains(p1))
+        {
+            if (_toolStripContainerWindow == null)
             {
-                _aboutToFloat = true;
+                _toolStripContainerWindow = new ToolStripContainerWindow();
+
+                _toolStripContainerWindow.NCLBUTTONDBLCLK += _toolStripContainerWindow_NCLBUTTONDBLCLK;
+
+                _toolStripContainerWindow.LocationChanged += _toolStripContainerWindow_LocationChanged;
+
+                _toolStripContainerWindow.FormClosing += _toolStripContainerWindow_FormClosing;
             }
+
+            _originalParent.Controls.Remove(this);
+
+            _toolStripContainerWindow.FloatableToolStrip = this;
+
+            _toolStripContainerWindow.Location = p0;
+
+            _toolStripContainerWindow.Show(Parent.Parent);
+
+            _aboutToFloat = false;
+
+            _isFloating = true;
         }
+    }
+    #endregion
 
-        protected override void OnMouseUp(MouseEventArgs mea)
+    #region Runtime Methods
+    [DllImport("User32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+    private static extern void GetCursorPos(out Point point);
+    #endregion
+
+    #region Event Handlers
+    private void _toolStripContainerWindow_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (e.CloseReason == CloseReason.UserClosing)
         {
-            base.OnMouseUp(mea);
-
-            if (_parentChanged)
-            {
-                _parentChanged = false;
-
-                _aboutToFloat = false;
-
-                return;
-            }
-
-            Point p0 = PointToScreen(mea.Location), p1 = _originalParent.PointToClient(p0);
-
-            if (_aboutToFloat && !_originalParent.ClientRectangle.Contains(p1))
-            {
-                if (_toolStripContainerWindow == null)
-                {
-                    _toolStripContainerWindow = new ToolStripContainerWindow();
-
-                    _toolStripContainerWindow.NCLBUTTONDBLCLK += _toolStripContainerWindow_NCLBUTTONDBLCLK;
-
-                    _toolStripContainerWindow.LocationChanged += _toolStripContainerWindow_LocationChanged;
-
-                    _toolStripContainerWindow.FormClosing += _toolStripContainerWindow_FormClosing;
-                }
-
-                _originalParent.Controls.Remove(this);
-
-                _toolStripContainerWindow.FloatableToolStrip = this;
-
-                _toolStripContainerWindow.Location = p0;
-
-                _toolStripContainerWindow.Show(Parent.Parent);
-
-                _aboutToFloat = false;
-
-                _isFloating = true;
-            }
-        }
-        #endregion
-
-        #region Runtime Methods
-        [DllImport("User32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        private static extern void GetCursorPos(out Point point);
-        #endregion
-
-        #region Event Handlers
-        private void _toolStripContainerWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-
-                _toolStripContainerWindow.Visible = false;
-
-                base.OnVisibleChanged(new EventArgs());
-            }
-        }
-
-        private void _toolStripContainerWindow_LocationChanged(object sender, EventArgs e)
-        {
-            Point point;
-
-            if (_parentChanged)
-            {
-                _parentChanged = false;
-            }
-
-            GetCursorPos(out point);
-
-            foreach (ToolStripPanelExtended item in _toolStripPanelExtendedList)
-            {
-                if (item.ActiveRectangle.Contains(item.PointToClient(point)))
-                {
-                    _toolStripContainerWindow.Controls.Remove(this);
-
-                    item.SuspendLayout();
-
-                    base.Dock = DockStyle.None;
-
-                    base.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-
-                    item.Controls.Add(this);
-
-                    item.ResumeLayout();
-
-                    _toolStripContainerWindow.Hide();
-
-                    _isFloating = false;
-
-                    _parentChanged = false;
-
-                    if (_originalParent.Parent != null)
-                    {
-                        _originalParent.Parent.Focus();
-                    }
-                    else
-                    {
-                        _originalParent.Focus();
-                    }
-
-                    return;
-                }
-            }
-        }
-
-        private void _toolStripContainerWindow_NCLBUTTONDBLCLK(object sender, EventArgs e)
-        {
-            _toolStripContainerWindow.Controls.Remove(this);
+            e.Cancel = true;
 
             _toolStripContainerWindow.Visible = false;
 
-            _originalParent.SuspendLayout();
-
-            base.Dock = DockStyle.None;
-
-            base.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-
-            _originalParent.Controls.Add(this);
-
-            _originalParent.ResumeLayout();
-
-            _isFloating = false;
+            base.OnVisibleChanged(new EventArgs());
         }
-        #endregion
     }
+
+    private void _toolStripContainerWindow_LocationChanged(object sender, EventArgs e)
+    {
+        Point point;
+
+        if (_parentChanged)
+        {
+            _parentChanged = false;
+        }
+
+        GetCursorPos(out point);
+
+        foreach (ToolStripPanelExtended item in _toolStripPanelExtendedList)
+        {
+            if (item.ActiveRectangle.Contains(item.PointToClient(point)))
+            {
+                _toolStripContainerWindow.Controls.Remove(this);
+
+                item.SuspendLayout();
+
+                base.Dock = DockStyle.None;
+
+                base.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+                item.Controls.Add(this);
+
+                item.ResumeLayout();
+
+                _toolStripContainerWindow.Hide();
+
+                _isFloating = false;
+
+                _parentChanged = false;
+
+                if (_originalParent.Parent != null)
+                {
+                    _originalParent.Parent.Focus();
+                }
+                else
+                {
+                    _originalParent.Focus();
+                }
+
+                return;
+            }
+        }
+    }
+
+    private void _toolStripContainerWindow_NCLBUTTONDBLCLK(object sender, EventArgs e)
+    {
+        _toolStripContainerWindow.Controls.Remove(this);
+
+        _toolStripContainerWindow.Visible = false;
+
+        _originalParent.SuspendLayout();
+
+        base.Dock = DockStyle.None;
+
+        base.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+        _originalParent.Controls.Add(this);
+
+        _originalParent.ResumeLayout();
+
+        _isFloating = false;
+    }
+    #endregion
 }

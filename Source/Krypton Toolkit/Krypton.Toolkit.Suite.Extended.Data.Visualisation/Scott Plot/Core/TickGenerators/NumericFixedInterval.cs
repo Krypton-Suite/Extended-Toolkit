@@ -1,35 +1,34 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class NumericFixedInterval : ITickGenerator
 {
-    public class NumericFixedInterval : ITickGenerator
+    public double Interval { get; set; }
+
+    public Tick[] Ticks { get; set; } = [];
+
+    public int MaxTickCount { get; set; } = 10_000;
+
+    public NumericFixedInterval(int interval = 1)
     {
-        public double Interval { get; set; }
+        Interval = interval;
+    }
 
-        public Tick[] Ticks { get; set; } = Array.Empty<Tick>();
+    public void Regenerate(CoordinateRange range, Edge edge, PixelLength size)
+    {
+        List<Tick> ticks = [];
 
-        public int MaxTickCount { get; set; } = 10_000;
+        double lowest = range.Min - range.Min % Interval;
+        double highest = range.Max - range.Max % Interval + Interval;
+        int tickCount = (int)((highest - lowest) / Interval);
+        tickCount = Math.Min(tickCount, MaxTickCount);
 
-        public NumericFixedInterval(int interval = 1)
+        for (int i = 0; i < tickCount; i++)
         {
-            Interval = interval;
+            double position = lowest + i * Interval;
+            string label = position.ToString();
+            ticks.Add(new Tick(position, label, true));
         }
 
-        public void Regenerate(CoordinateRange range, Edge edge, PixelLength size)
-        {
-            List<Tick> ticks = new();
-
-            double lowest = range.Min - range.Min % Interval;
-            double highest = range.Max - range.Max % Interval + Interval;
-            int tickCount = (int)((highest - lowest) / Interval);
-            tickCount = Math.Min(tickCount, MaxTickCount);
-
-            for (int i = 0; i < tickCount; i++)
-            {
-                double position = lowest + i * Interval;
-                string label = position.ToString();
-                ticks.Add(new Tick(position, label, true));
-            }
-
-            Ticks = ticks.Where(x => range.Contains(x.Position)).ToArray();
-        }
+        Ticks = ticks.Where(x => range.Contains(x.Position)).ToArray();
     }
 }

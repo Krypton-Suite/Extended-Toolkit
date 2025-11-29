@@ -25,62 +25,61 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Forms;
+
+/// <summary>
+/// Implementation for the fixed navigator buttons.
+/// </summary>
+[TypeConverter(typeof(ButtonSpecFormFixedConverter))]
+public abstract class ButtonSpecFormFixed : ButtonSpec
 {
+    #region Instance Fields
+
+    #endregion
+
+    #region Identity
     /// <summary>
-    /// Implementation for the fixed navigator buttons.
+    /// Initialize a new instance of the ButtonSpecFormFixed class.
     /// </summary>
-    [TypeConverter(typeof(ButtonSpecFormFixedConverter))]
-    public abstract class ButtonSpecFormFixed : ButtonSpec
+    /// <param name="form">Reference to owning krypton form.</param>
+    /// <param name="fixedStyle">Fixed style to use.</param>
+    protected ButtonSpecFormFixed(VisualKryptonFormExtended form,
+        PaletteButtonSpecStyle fixedStyle)
     {
-        #region Instance Fields
+        Debug.Assert(form != null);
 
-        #endregion
+        // Remember back reference to owning navigator.
+        KryptonForm = form;
 
-        #region Identity
-        /// <summary>
-        /// Initialize a new instance of the ButtonSpecFormFixed class.
-        /// </summary>
-        /// <param name="form">Reference to owning krypton form.</param>
-        /// <param name="fixedStyle">Fixed style to use.</param>
-        protected ButtonSpecFormFixed(VisualKryptonFormExtended form,
-            PaletteButtonSpecStyle fixedStyle)
-        {
-            Debug.Assert(form != null);
-
-            // Remember back reference to owning navigator.
-            KryptonForm = form;
-
-            // Fix the type
-            ProtectedType = fixedStyle;
-        }
-        #endregion
-
-        #region AllowComponent
-        /// <summary>
-        /// Can a component be associated with the view.
-        /// </summary>
-        public override bool AllowComponent => false;
-
-        #endregion
-
-        #region KryptonForm
-        /// <summary>
-        /// Gets access to the owning krypton form.
-        /// </summary>
-        protected VisualKryptonFormExtended KryptonForm { get; }
-
-        #endregion
-
-        #region ButtonSpecType
-        /// <summary>
-        /// Gets and sets the actual type of the button.
-        /// </summary>
-        public virtual PaletteButtonSpecStyle ButtonSpecType
-        {
-            get => ProtectedType;
-            set => ProtectedType = value;
-        }
-        #endregion
+        // Fix the type
+        ProtectedType = fixedStyle;
     }
+    #endregion
+
+    #region AllowComponent
+    /// <summary>
+    /// Can a component be associated with the view.
+    /// </summary>
+    public override bool AllowComponent => false;
+
+    #endregion
+
+    #region KryptonForm
+    /// <summary>
+    /// Gets access to the owning krypton form.
+    /// </summary>
+    protected VisualKryptonFormExtended? KryptonForm { get; }
+
+    #endregion
+
+    #region ButtonSpecType
+    /// <summary>
+    /// Gets and sets the actual type of the button.
+    /// </summary>
+    public virtual PaletteButtonSpecStyle ButtonSpecType
+    {
+        get => ProtectedType;
+        set => ProtectedType = value;
+    }
+    #endregion
 }

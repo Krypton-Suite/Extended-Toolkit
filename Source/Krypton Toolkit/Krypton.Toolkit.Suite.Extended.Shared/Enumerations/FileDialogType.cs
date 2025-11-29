@@ -27,15 +27,14 @@
 #endregion
 
 // ReSharper disable InconsistentNaming
-namespace Krypton.Toolkit.Suite.Extended.Shared
+namespace Krypton.Toolkit.Suite.Extended.Shared;
+
+public enum FileDialogType
 {
-    public enum FileDialogType
-    {
-        /// <summary>The Krypton dialog types.</summary>
-        Krypton = 0,
-        /// <summary>The standard Windows dialog types.</summary>
-        Standard = 1,
-        /// <summary>The Windows API Code Pack dialog types.</summary>
-        WindowsAPICodePack = 2
-    }
+    /// <summary>The Krypton dialog types.</summary>
+    Krypton = 0,
+    /// <summary>The standard Windows dialog types.</summary>
+    Standard = 1,
+    /// <summary>The Windows API Code Pack dialog types.</summary>
+    WindowsAPICodePack = 2
 }

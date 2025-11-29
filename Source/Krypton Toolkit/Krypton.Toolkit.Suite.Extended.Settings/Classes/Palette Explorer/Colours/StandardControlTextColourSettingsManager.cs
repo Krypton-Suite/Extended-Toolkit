@@ -26,312 +26,311 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
+namespace Krypton.Toolkit.Suite.Extended.Settings;
+
+public class StandardControlTextColourSettingsManager
 {
-    public class StandardControlTextColourSettingsManager
+    #region Variables
+    private bool _alwaysUsePrompt = false, _settingsModified = false;
+
+    private StandardControlTextColourSettings _standardControlTextColourSettings = new();
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Gets or sets a value indicating whether [always use prompt].
+    /// </summary>
+    /// <value>
+    ///   <c>true</c> if [always use prompt]; otherwise, <c>false</c>.
+    /// </value>
+    public bool AlwaysUsePrompt
     {
-        #region Variables
-        private bool _alwaysUsePrompt = false, _settingsModified = false;
+        get => _alwaysUsePrompt;
 
-        private StandardControlTextColourSettings _standardControlTextColourSettings = new();
-        #endregion
+        set => _alwaysUsePrompt = value;
+    }
 
-        #region Properties
-        /// <summary>
-        /// Gets or sets a value indicating whether [always use prompt].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [always use prompt]; otherwise, <c>false</c>.
-        /// </value>
-        public bool AlwaysUsePrompt
-        {
-            get => _alwaysUsePrompt;
+    /// <summary>
+    /// Gets or sets a value indicating whether [settings modified].
+    /// </summary>
+    /// <value>
+    ///   <c>true</c> if [settings modified]; otherwise, <c>false</c>.
+    /// </value>
+    public bool SettingsModified
+    {
+        get => _settingsModified;
 
-            set => _alwaysUsePrompt = value;
-        }
+        set => _settingsModified = value;
+    }
+    #endregion
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [settings modified].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [settings modified]; otherwise, <c>false</c>.
-        /// </value>
-        public bool SettingsModified
-        {
-            get => _settingsModified;
+    #region Settings Manipulation
+    /// <summary>
+    /// Sets the value of AlwaysUsePrompt to value.
+    /// </summary>
+    /// <param name="value">The value of AlwaysUsePrompt.</param>
+    public void SetAlwaysUsePrompt(bool value)
+    {
+        AlwaysUsePrompt = value;
+    }
 
-            set => _settingsModified = value;
-        }
-        #endregion
+    /// <summary>
+    /// Returns the value of AlwaysUsePrompt.
+    /// </summary>
+    /// <returns>The value of AlwaysUsePrompt.</returns>
+    public bool GetAlwaysUsePrompt()
+    {
+        return AlwaysUsePrompt;
+    }
 
-        #region Settings Manipulation
-        /// <summary>
-        /// Sets the value of AlwaysUsePrompt to value.
-        /// </summary>
-        /// <param name="value">The value of AlwaysUsePrompt.</param>
-        public void SetAlwaysUsePrompt(bool value)
-        {
-            AlwaysUsePrompt = value;
-        }
+    /// <summary>
+    /// Sets the value of SettingsModified to value.
+    /// </summary>
+    /// <param name="value">The value of SettingsModified.</param>
+    public void SetSettingsModified(bool value)
+    {
+        SettingsModified = value;
+    }
 
-        /// <summary>
-        /// Returns the value of AlwaysUsePrompt.
-        /// </summary>
-        /// <returns>The value of AlwaysUsePrompt.</returns>
-        public bool GetAlwaysUsePrompt()
-        {
-            return AlwaysUsePrompt;
-        }
+    /// <summary>
+    /// Returns the value of SettingsModified.
+    /// </summary>
+    /// <returns>The value of SettingsModified.</returns>
+    public bool GetSettingsModified()
+    {
+        return SettingsModified;
+    }
+    #endregion
 
-        /// <summary>
-        /// Sets the value of SettingsModified to value.
-        /// </summary>
-        /// <param name="value">The value of SettingsModified.</param>
-        public void SetSettingsModified(bool value)
-        {
-            SettingsModified = value;
-        }
+    #region Constructors
+    public StandardControlTextColourSettingsManager()
+    {
 
-        /// <summary>
-        /// Returns the value of SettingsModified.
-        /// </summary>
-        /// <returns>The value of SettingsModified.</returns>
-        public bool GetSettingsModified()
-        {
-            return SettingsModified;
-        }
-        #endregion
+    }
+    #endregion
 
-        #region Constructors
-        public StandardControlTextColourSettingsManager()
-        {
+    #region Setters and Getters
+    /// <summary>
+    /// Sets the value of MenuTextColour to colour.
+    /// </summary>
+    /// <param name="colour">The value of MenuTextColour.</param>
+    public void SetMenuTextColour(Color colour)
+    {
+        _standardControlTextColourSettings.MenuTextColour = colour;
 
-        }
-        #endregion
+        SetSettingsModified(true);
+    }
 
-        #region Setters and Getters
-        /// <summary>
-        /// Sets the value of MenuTextColour to colour.
-        /// </summary>
-        /// <param name="colour">The value of MenuTextColour.</param>
-        public void SetMenuTextColour(Color colour)
-        {
-            _standardControlTextColourSettings.MenuTextColour = colour;
+    /// <summary>
+    /// Returns the value of MenuTextColour.
+    /// </summary>
+    /// <returns>The value of MenuTextColour.</returns>
+    public Color GetMenuTextColour()
+    {
+        return _standardControlTextColourSettings.MenuTextColour;
+    }
 
-            SetSettingsModified(true);
-        }
+    /// <summary>
+    /// Sets the value of StatusStripTextColour to colour.
+    /// </summary>
+    /// <param name="colour">The value of StatusStripTextColour.</param>
+    public void SetStatusStripTextColour(Color colour)
+    {
+        _standardControlTextColourSettings.StatusStripTextColour = colour;
 
-        /// <summary>
-        /// Returns the value of MenuTextColour.
-        /// </summary>
-        /// <returns>The value of MenuTextColour.</returns>
-        public Color GetMenuTextColour()
-        {
-            return _standardControlTextColourSettings.MenuTextColour;
-        }
+        SetSettingsModified(true);
+    }
 
-        /// <summary>
-        /// Sets the value of StatusStripTextColour to colour.
-        /// </summary>
-        /// <param name="colour">The value of StatusStripTextColour.</param>
-        public void SetStatusStripTextColour(Color colour)
-        {
-            _standardControlTextColourSettings.StatusStripTextColour = colour;
+    /// <summary>
+    /// Returns the value of StatusStripTextColour.
+    /// </summary>
+    /// <returns>The value of StatusStripTextColour.</returns>
+    public Color GetStatusStripTextColour()
+    {
+        return _standardControlTextColourSettings.StatusStripTextColour;
+    }
 
-            SetSettingsModified(true);
-        }
+    /// <summary>
+    /// Sets the value of RibbonTabTextColour to colour.
+    /// </summary>
+    /// <param name="colour">The value of RibbonTabTextColour.</param>
+    public void SetRibbonTabTextColour(Color colour)
+    {
+        _standardControlTextColourSettings.RibbonTabTextColour = colour;
 
-        /// <summary>
-        /// Returns the value of StatusStripTextColour.
-        /// </summary>
-        /// <returns>The value of StatusStripTextColour.</returns>
-        public Color GetStatusStripTextColour()
-        {
-            return _standardControlTextColourSettings.StatusStripTextColour;
-        }
+        SetSettingsModified(true);
+    }
 
-        /// <summary>
-        /// Sets the value of RibbonTabTextColour to colour.
-        /// </summary>
-        /// <param name="colour">The value of RibbonTabTextColour.</param>
-        public void SetRibbonTabTextColour(Color colour)
-        {
-            _standardControlTextColourSettings.RibbonTabTextColour = colour;
+    /// <summary>
+    /// Returns the value of RibbonTabTextColour.
+    /// </summary>
+    /// <returns>The value of RibbonTabTextColour.</returns>
+    public Color GetRibbonTabTextColour()
+    {
+        return _standardControlTextColourSettings.RibbonTabTextColour;
+    }
+    #endregion
 
-            SetSettingsModified(true);
-        }
-
-        /// <summary>
-        /// Returns the value of RibbonTabTextColour.
-        /// </summary>
-        /// <returns>The value of RibbonTabTextColour.</returns>
-        public Color GetRibbonTabTextColour()
-        {
-            return _standardControlTextColourSettings.RibbonTabTextColour;
-        }
-        #endregion
-
-        #region Methods
-        /// <summary>
-        /// Resets to defaults.
-        /// </summary>
-        public void ResetToDefaults()
-        {
-            if (MessageBox.Show(@"WARNING! You are about to reset these settings back to their original state. This action cannot be undone!
+    #region Methods
+    /// <summary>
+    /// Resets to defaults.
+    /// </summary>
+    public void ResetToDefaults()
+    {
+        if (MessageBox.Show(@"WARNING! You are about to reset these settings back to their original state. This action cannot be undone!
 Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+        {
+            SetMenuTextColour(Color.Empty);
+
+            SetStatusStripTextColour(Color.Empty);
+
+            SetRibbonTabTextColour(Color.Empty);
+
+            if (MessageBox.Show($@"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                SetMenuTextColour(Color.Empty);
-
-                SetStatusStripTextColour(Color.Empty);
-
-                SetRibbonTabTextColour(Color.Empty);
-
-                if (MessageBox.Show($@"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    Application.Restart();
-                }
+                Application.Restart();
             }
         }
+    }
 
-        /// <summary>
-        /// Saves the standard control text colour settings.
-        /// </summary>
-        /// <param name="alwaysUsePrompt">if set to <c>true</c> [always use prompt].</param>
-        public void SaveStandardControlTextColourSettings(bool alwaysUsePrompt = false)
+    /// <summary>
+    /// Saves the standard control text colour settings.
+    /// </summary>
+    /// <param name="alwaysUsePrompt">if set to <c>true</c> [always use prompt].</param>
+    public void SaveStandardControlTextColourSettings(bool alwaysUsePrompt = false)
+    {
+        if (alwaysUsePrompt)
         {
-            if (alwaysUsePrompt)
-            {
-                if (MessageBox.Show(@"You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    _standardControlTextColourSettings.Save();
-
-                    SetSettingsModified(false);
-                }
-            }
-            else
+            if (MessageBox.Show(@"You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 _standardControlTextColourSettings.Save();
 
                 SetSettingsModified(false);
             }
         }
-
-        public static void WriteARGBColoursToFile(string colourConfigurationPath)
+        else
         {
+            _standardControlTextColourSettings.Save();
 
+            SetSettingsModified(false);
         }
-
-        public static void WriteRGBColoursToFile(string colourConfigurationPath)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
-
-        #region Detection
-        public static bool AreStandardControlTextColoursEmpty()
-        {
-            StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new();
-
-            if (standardControlTextColourSettingsManager.GetMenuTextColour() == Color.Empty || standardControlTextColourSettingsManager.GetRibbonTabTextColour() == Color.Empty || standardControlTextColourSettingsManager.GetStatusStripTextColour() == Color.Empty)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        #endregion
-
-        #region IO Methods
-        /// <summary>
-        /// Creates a ARGB colour configuration file.
-        /// </summary>
-        public static void CreateARGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
-        {
-            try
-            {
-                // TODO: Complete this
-                switch (fileDialogType)
-                {
-                    case FileDialogType.Krypton:
-                        break;
-                    case FileDialogType.Standard:
-                        break;
-                    case FileDialogType.WindowsAPICodePack:
-
-                        CommonSaveFileDialog csfd = new();
-
-                        csfd.Title = "Save Colours To:";
-
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
-
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
-
-                        csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
-
-                        csfd.AlwaysAppendDefaultExtension = true;
-
-                        csfd.DefaultExtension = "ccf";
-
-                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            WriteARGBColoursToFile(csfd.FileName);
-                        }
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
-                }
-            }
-            catch (Exception exc)
-            {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// Creates a RGB colour configuration file.
-        /// </summary>
-        public static void CreateRGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
-        {
-            try
-            {
-                // TODO: Complete this
-                switch (fileDialogType)
-                {
-                    case FileDialogType.Krypton:
-                        break;
-                    case FileDialogType.Standard:
-                        break;
-                    case FileDialogType.WindowsAPICodePack:
-                        CommonSaveFileDialog csfd = new();
-
-                        csfd.Title = "Save Colours To:";
-
-                        csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
-
-                        csfd.Filters.Add(new("Normal Text File", ".txt"));
-
-                        csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
-
-                        csfd.AlwaysAppendDefaultExtension = true;
-
-                        csfd.DefaultExtension = "ccf";
-
-                        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
-                        {
-                            WriteRGBColoursToFile(csfd.FileName);
-                        }
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
-                }
-            }
-            catch (Exception exc)
-            {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
-            }
-        }
-        #endregion
     }
+
+    public static void WriteARGBColoursToFile(string? colourConfigurationPath)
+    {
+
+    }
+
+    public static void WriteRGBColoursToFile(string? colourConfigurationPath)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
+
+    #region Detection
+    public static bool AreStandardControlTextColoursEmpty()
+    {
+        StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new();
+
+        if (standardControlTextColourSettingsManager.GetMenuTextColour() == Color.Empty || standardControlTextColourSettingsManager.GetRibbonTabTextColour() == Color.Empty || standardControlTextColourSettingsManager.GetStatusStripTextColour() == Color.Empty)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    #endregion
+
+    #region IO Methods
+    /// <summary>
+    /// Creates a ARGB colour configuration file.
+    /// </summary>
+    public static void CreateARGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
+    {
+        try
+        {
+            // TODO: Complete this
+            switch (fileDialogType)
+            {
+                case FileDialogType.Krypton:
+                    break;
+                case FileDialogType.Standard:
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+
+                    CommonSaveFileDialog csfd = new();
+
+                    csfd.Title = "Save Colours To:";
+
+                    csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                    csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                    csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                    csfd.AlwaysAppendDefaultExtension = true;
+
+                    csfd.DefaultExtension = "ccf";
+
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        WriteARGBColoursToFile(csfd.FileName);
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
+            }
+        }
+        catch (Exception exc)
+        {
+            KryptonExceptionDialog.Show(exc, null, null);
+        }
+    }
+
+    /// <summary>
+    /// Creates a RGB colour configuration file.
+    /// </summary>
+    public static void CreateRGBConfigurationFile(FileDialogType fileDialogType = FileDialogType.Standard)
+    {
+        try
+        {
+            // TODO: Complete this
+            switch (fileDialogType)
+            {
+                case FileDialogType.Krypton:
+                    break;
+                case FileDialogType.Standard:
+                    break;
+                case FileDialogType.WindowsAPICodePack:
+                    CommonSaveFileDialog csfd = new();
+
+                    csfd.Title = "Save Colours To:";
+
+                    csfd.Filters.Add(new("Colour Configuration File", ".ccf"));
+
+                    csfd.Filters.Add(new("Normal Text File", ".txt"));
+
+                    csfd.DefaultFileName = $"Custom Colours Configuration File - {TranslationMethods.ReturnSafeFileNameDateTimeString()}";
+
+                    csfd.AlwaysAppendDefaultExtension = true;
+
+                    csfd.DefaultExtension = "ccf";
+
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        WriteRGBColoursToFile(csfd.FileName);
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fileDialogType), fileDialogType, null);
+            }
+        }
+        catch (Exception exc)
+        {
+            KryptonExceptionDialog.Show(exc, null, null);
+        }
+    }
+    #endregion
 }

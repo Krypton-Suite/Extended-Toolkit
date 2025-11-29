@@ -25,12 +25,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView;
+
+public class ExpandedEventArgs : TreeGridNodeEventBase
 {
-    public class ExpandedEventArgs : TreeGridNodeEventBase
+    public ExpandedEventArgs(KryptonTreeGridNodeRow node) : base(node)
     {
-        public ExpandedEventArgs(KryptonTreeGridNodeRow node) : base(node)
-        {
-        }
     }
 }

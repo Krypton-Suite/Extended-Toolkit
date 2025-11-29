@@ -1,6 +1,5 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Controls.Classes
+﻿namespace Krypton.Toolkit.Suite.Extended.Controls.Classes;
+
+internal class Utilities
 {
-    internal class Utilities
-    {
-    }
 }

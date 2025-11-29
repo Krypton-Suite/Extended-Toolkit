@@ -25,13 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+namespace Krypton.Toolkit.Suite.Extended.Buttons;
+
+public enum UACShieldSize
 {
-    public enum UACShieldSize
-    {
-        Small = 0,
-        Medium = 1,
-        Large = 2,
-        Custom = 3
-    }
+    Small = 0,
+    Medium = 1,
+    Large = 2,
+    Custom = 3
 }

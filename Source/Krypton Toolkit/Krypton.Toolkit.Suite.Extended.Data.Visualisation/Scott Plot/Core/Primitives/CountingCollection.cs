@@ -1,42 +1,41 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+internal class CountingCollection<T> where T : notnull
 {
-    internal class CountingCollection<T> where T : notnull
+    public readonly Dictionary<T, int> Counts = [];
+
+    public bool Any() => Counts.Any();
+    public int Count => Counts.Count;
+
+    public IEnumerable<T> SortedKeys => Counts.OrderBy(x => x.Value).Select(x => x.Key);
+
+    public void Add(T item)
     {
-        public readonly Dictionary<T, int> Counts = [];
-
-        public bool Any() => Counts.Any();
-        public int Count => Counts.Count;
-
-        public IEnumerable<T> SortedKeys => Counts.OrderBy(x => x.Value).Select(x => x.Key);
-
-        public void Add(T item)
+        if (Counts.ContainsKey(item))
         {
-            if (Counts.ContainsKey(item))
-            {
-                Counts[item]++;
-            }
-            else
-            {
-                Counts[item] = 1;
-            }
+            Counts[item]++;
         }
-
-        public void AddRange(IEnumerable<T> items)
+        else
         {
-            foreach (T item in items)
-            {
-                Add(item);
-            }
+            Counts[item] = 1;
         }
+    }
 
-        public override string ToString()
+    public void AddRange(IEnumerable<T> items)
+    {
+        foreach (T item in items)
         {
-            return $"CountingCollection<{typeof(T)}> with {Count} items";
+            Add(item);
         }
+    }
 
-        public string GetLongString()
-        {
-            return string.Join(", ", SortedKeys.Select(x => $"{x} ({Counts[x]})"));
-        }
+    public override string ToString()
+    {
+        return $"CountingCollection<{typeof(T)}> with {Count} items";
+    }
+
+    public string GetLongString()
+    {
+        return string.Join(", ", SortedKeys.Select(x => $"{x} ({Counts[x]})"));
     }
 }

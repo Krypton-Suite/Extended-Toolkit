@@ -22,28 +22,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2025.
  *
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Wizard
-{
-    /// <summary>
-    /// WizardCollectionEditor:
-    /// 
-    /// Enables WizardPages to be added to our control through the propertygrid;
-    /// 
-    /// Assigned to the AdvancedWizard WizardPages property through the 
-    /// [Editor(typeof(WizardCollectionEditor), typeof(UITypeEditor))] attribute;
-    /// </summary>
-    public class KryptonAdvancedWizardCollectionEditor : CollectionEditor
-    {
-        public KryptonAdvancedWizardCollectionEditor(Type wizardPage)
-            : base(wizardPage)
-        {
-        }
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
 
-        protected override Type[] CreateNewItemTypes() => new[] { typeof(KryptonAdvancedWizardPage) };
+/// <summary>
+/// WizardCollectionEditor:
+/// 
+/// Enables WizardPages to be added to our control through the propertygrid;
+/// 
+/// Assigned to the AdvancedWizard WizardPages property through the 
+/// [Editor(typeof(WizardCollectionEditor), typeof(UITypeEditor))] attribute;
+/// </summary>
+public class KryptonAdvancedWizardCollectionEditor : CollectionEditor
+{
+    public KryptonAdvancedWizardCollectionEditor(Type wizardPage)
+        : base(wizardPage)
+    {
     }
+
+    protected override Type[] CreateNewItemTypes() => [typeof(KryptonAdvancedWizardPage)];
 }

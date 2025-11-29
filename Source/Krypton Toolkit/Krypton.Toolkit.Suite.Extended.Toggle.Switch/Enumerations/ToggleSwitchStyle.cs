@@ -25,19 +25,18 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
+namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch;
+
+public enum ToggleSwitchStyle
 {
-    public enum ToggleSwitchStyle
-    {
-        Metro,
-        Android,
-        iOS5,
-        BrushedMetal,
-        macOS,
-        Carbon,
-        iPhone,
-        Fancy,
-        Modern,
-        PlainAndSimple
-    }
+    Metro,
+    Android,
+    iOS5,
+    BrushedMetal,
+    macOS,
+    Carbon,
+    iPhone,
+    Fancy,
+    Modern,
+    PlainAndSimple
 }

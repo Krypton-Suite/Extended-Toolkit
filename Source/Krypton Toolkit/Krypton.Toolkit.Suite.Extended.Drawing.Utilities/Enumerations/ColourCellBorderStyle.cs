@@ -27,29 +27,28 @@
 
 
 #pragma warning disable CS1574, CS1584, CS1581, CS1580
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+/// <summary>
+/// Specifies the style of a color cell border.
+/// </summary>
+public enum ColourCellBorderStyle
 {
     /// <summary>
-    /// Specifies the style of a color cell border.
+    /// No border.
     /// </summary>
-    public enum ColourCellBorderStyle
-    {
-        /// <summary>
-        /// No border.
-        /// </summary>
-        None,
+    None,
 
-        /// <summary>
-        /// A single line border.
-        /// </summary>
-        FixedSingle,
+    /// <summary>
+    /// A single line border.
+    /// </summary>
+    FixedSingle,
 
-        /// <summary>
-        /// A contrasting double border with a soft inner outline using the color of the cell.
-        /// </summary>
-        DoubleSoft
-    }
+    /// <summary>
+    /// A contrasting double border with a soft inner outline using the color of the cell.
+    /// </summary>
+    DoubleSoft
+}
 
 
 #pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
-}

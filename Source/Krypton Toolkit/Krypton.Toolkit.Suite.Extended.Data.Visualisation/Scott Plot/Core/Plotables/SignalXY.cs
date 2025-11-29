@@ -1,43 +1,42 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class SignalXy : IPlottable
 {
-    public class SignalXy : IPlottable
+    public ISignalXySource Data { get; set; }
+
+    public bool IsVisible { get; set; } = true;
+    public int XAxisIndex { get; set; } = 0;
+    public int YAxisIndex { get; set; } = 0;
+    public IAxes Axes { get; set; } = new Axes();
+    public LineStyle LineStyle { get; set; } = new();
+
+    public Color Color
     {
-        public ISignalXySource Data { get; set; }
+        get => LineStyle.Color;
+        set => LineStyle.Color = value;
+    }
 
-        public bool IsVisible { get; set; } = true;
-        public int XAxisIndex { get; set; } = 0;
-        public int YAxisIndex { get; set; } = 0;
-        public IAxes Axes { get; set; } = new Axes();
-        public LineStyle LineStyle { get; set; } = new();
+    public float LineWidth
+    {
+        get => LineStyle.Width;
+        set => LineStyle.Width = value;
+    }
 
-        public Color Color
-        {
-            get => LineStyle.Color;
-            set => LineStyle.Color = value;
-        }
+    public string Label = string.Empty;
+    public IEnumerable<LegendItem> LegendItems => LegendItem.Single(Label, LineStyle);
 
-        public float LineWidth
-        {
-            get => LineStyle.Width;
-            set => LineStyle.Width = value;
-        }
+    public SignalXy(ISignalXySource dataSource)
+    {
+        Data = dataSource;
+    }
 
-        public string Label = string.Empty;
-        public IEnumerable<LegendItem> LegendItems => LegendItem.Single(Label, LineStyle);
+    public AxisLimits GetAxisLimits() => Data.GetAxisLimits();
 
-        public SignalXy(ISignalXySource dataSource)
-        {
-            Data = dataSource;
-        }
+    public void Render(RenderPack rp)
+    {
+        Pixel[] pixels = Data.GetPixelsToDraw(rp, Axes);
 
-        public AxisLimits GetAxisLimits() => Data.GetAxisLimits();
-
-        public void Render(RenderPack rp)
-        {
-            Pixel[] pixels = Data.GetPixelsToDraw(rp, Axes);
-
-            using SKPaint paint = new();
-            Drawing.DrawLines(rp.Canvas, paint, pixels, LineStyle);
-        }
+        using SKPaint paint = new();
+        Drawing.DrawLines(rp.Canvas, paint, pixels, LineStyle);
     }
 }

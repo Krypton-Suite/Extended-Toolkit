@@ -25,21 +25,20 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+public class NaviToolstripRenderer : ToolStripProfessionalRenderer
 {
-    public class NaviToolstripRenderer : ToolStripProfessionalRenderer
+    #region Constructor
+
+    /// <summary>
+    /// Initializes a new instance of the ToolstripOffice07Renderer class
+    /// </summary>
+    /// <param name="colourTable">The colors used to draw the MenuStrip</param>
+    public NaviToolstripRenderer(ProfessionalColorTable colourTable)
+        : base(colourTable)
     {
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the ToolstripOffice07Renderer class
-        /// </summary>
-        /// <param name="colourTable">The colors used to draw the MenuStrip</param>
-        public NaviToolstripRenderer(ProfessionalColorTable colourTable)
-           : base(colourTable)
-        {
-        }
-
-        #endregion
     }
+
+    #endregion
 }

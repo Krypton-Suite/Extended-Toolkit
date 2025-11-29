@@ -26,14 +26,13 @@
 #endregion
 
 
-namespace Krypton.Toolkit.Suite.Extended.Memory.Box
+namespace Krypton.Toolkit.Suite.Extended.Memory.Box;
+
+public enum KryptonMemoryBoxDefaultButton
 {
-    public enum KryptonMemoryBoxDefaultButton
-    {
-        ButtonOne = 0,
-        ButtonTwo = 1,
-        ButtonThree = 2,
-        ButtonFour = 3,
-        ButtonFive = 4
-    }
+    ButtonOne = 0,
+    ButtonTwo = 1,
+    ButtonThree = 2,
+    ButtonFour = 3,
+    ButtonFive = 4
 }

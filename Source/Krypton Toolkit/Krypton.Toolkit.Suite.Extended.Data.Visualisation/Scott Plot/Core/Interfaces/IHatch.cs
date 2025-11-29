@@ -1,7 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IHatch
 {
-    public interface IHatch
-    {
-        SKShader GetShader(Color backgroundColor, Color hatchColor);
-    }
+    SKShader GetShader(Color backgroundColor, Color hatchColor);
 }

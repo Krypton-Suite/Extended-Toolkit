@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+public partial class KryptonRunDialogOptions : KryptonForm
 {
-    public partial class KryptonRunDialogOptions : KryptonForm
+    public KryptonRunDialogOptions()
     {
-        public KryptonRunDialogOptions()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

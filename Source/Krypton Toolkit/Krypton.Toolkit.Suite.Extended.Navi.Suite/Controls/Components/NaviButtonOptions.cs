@@ -25,22 +25,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+[ToolboxItem(false)]
+public partial class NaviButtonOptions : NaviButton
 {
-    [ToolboxItem(false)]
-    public partial class NaviButtonOptions : NaviButton
+    #region Overrides
+
+    protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
     {
-        #region Overrides
-
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Renderer.DrawOptionsTriangle(e.Graphics, ClientRectangle);
-        }
-
-        #endregion
-
-        #region Event Handling
-        #endregion
+        base.OnPaint(e);
+        Renderer.DrawOptionsTriangle(e.Graphics, ClientRectangle);
     }
+
+    #endregion
+
+    #region Event Handling
+    #endregion
 }

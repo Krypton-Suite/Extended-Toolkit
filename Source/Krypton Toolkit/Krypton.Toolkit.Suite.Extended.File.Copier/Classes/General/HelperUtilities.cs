@@ -25,52 +25,51 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.File.Copier
+namespace Krypton.Toolkit.Suite.Extended.File.Copier;
+
+internal static class HelperUtilities
 {
-    internal static class HelperUtilities
+    #region Variables
+
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #region Methods
+    public static List<string> PopulateDirectoryListing(string inputPath)
     {
-        #region Variables
+        List<string> tempList = [];
 
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
-        public static List<string> PopulateDirectoryListing(string inputPath)
+        foreach (string directory in Directory.GetDirectories(inputPath))
         {
-            List<string> tempList = new();
-
-            foreach (string directory in Directory.GetDirectories(inputPath))
+            foreach (string file in Directory.GetFiles(directory))
             {
-                foreach (string file in Directory.GetFiles(directory))
-                {
-                    tempList.Add(file);
-                }
+                tempList.Add(file);
             }
-
-            return tempList;
         }
 
-        public static string[]? ReturnDirectoryListing(List<string> inputList)
-        {
-            try
-            {
-                if (inputList.Count > 0)
-                {
-                    return inputList.ToArray();
-                }
-            }
-            catch (Exception exc)
-            {
-                DebugUtilities.NotImplemented(exc.ToString());
-
-                return null;
-            }
-
-            return inputList.ToArray();
-        }
-        #endregion
+        return tempList;
     }
+
+    public static string[]? ReturnDirectoryListing(List<string> inputList)
+    {
+        try
+        {
+            if (inputList.Count > 0)
+            {
+                return inputList.ToArray();
+            }
+        }
+        catch (Exception exc)
+        {
+            DebugUtilities.NotImplemented(exc.ToString());
+
+            return null;
+        }
+
+        return inputList.ToArray();
+    }
+    #endregion
 }

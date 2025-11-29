@@ -143,3 +143,70 @@ PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 
 
 
 ***Note:*** Some packages may install third-party libraries in order to make them function correctly.
+
+=======
+
+# Building from Source
+
+The Krypton Extended Toolkit can be built using several methods:
+
+## Using Build.proj (Recommended for Releases)
+
+The fastest way to build the entire toolkit:
+
+```bash
+# Standard configurations (Full TFMs - includes net472)
+dotnet build -c Release         # Stable, 6 frameworks
+dotnet build -c Canary          # Beta, 6 frameworks
+dotnet build -c Nightly         # Alpha, 6 frameworks
+
+# Lite configurations (Smaller packages - excludes net472)
+dotnet build -c ReleaseLite     # Stable, 5 frameworks
+dotnet build -c CanaryLite      # Beta, 5 frameworks
+dotnet build -c NightlyLite     # Alpha, 5 frameworks
+
+# Create NuGet packages
+dotnet pack -c Release          # Create Release packages
+dotnet pack -c ReleaseLite      # Create Lite packages
+```
+
+**Build outputs:**
+- Compiled assemblies: `Bin/{Configuration}/`
+- NuGet packages: `Bin/NuGet Packages/{Configuration}/`
+
+**Documentation:**
+- [Global Dependency Inclusion](GLOBAL_DEPENDENCY_INCLUSION.md) - Smart dependency management for all projects
+- [Centralized TFM Configuration](CENTRALIZED_TFM_CONFIGURATION.md) - Framework targeting strategy
+- [Lite Configuration](LITE_CONFIGURATION.md) - Build smaller packages for modern frameworks
+- [Workflow Implementation](WORKFLOW_IMPLEMENTATION.md) - GitHub Actions CI/CD workflows
+
+## Using Visual Studio
+
+For daily development:
+1. Open `Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln`
+2. Build using Visual Studio's standard build commands
+
+## Release Channels
+
+### **Standard Configurations (Full Framework Support)**
+| Configuration | Branch | Package Suffix | Version Suffix | TFMs |
+|--------------|--------|----------------|----------------|------|
+| Release | `master` | _(none)_ | _(none)_ | 6 (includes net472) |
+| Canary | `canary` | `.Canary` | `-beta` | 6 (includes net472) |
+| Nightly | `alpha` | `.Nightly` | `-alpha` | 6 (includes net472) |
+
+### **Lite Configurations (Smaller Packages)**
+| Configuration | Branch | Package Suffix | Version Suffix | TFMs |
+|--------------|--------|----------------|----------------|------|
+| ReleaseLite | `master` | `.Lite` | _(none)_ | 5 (excludes net472) |
+| CanaryLite | `canary` | `.Lite.Canary` | `-beta` | 5 (excludes net472) |
+| NightlyLite | `alpha` | `.Lite.Nightly` | `-alpha` | 5 (excludes net472) |
+
+## Prerequisites
+
+- Windows (required for .NET Framework and WinForms)
+- Visual Studio 2022 or later
+- .NET SDK 8.0 or later
+- MSBuild (included with Visual Studio)
+
+For more details, see the [build documentation](BUILD_SYSTEM.md).

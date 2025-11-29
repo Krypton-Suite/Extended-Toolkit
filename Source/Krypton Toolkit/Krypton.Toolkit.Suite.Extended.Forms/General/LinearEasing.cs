@@ -24,16 +24,15 @@
  *
  */
 #endregion
-namespace Krypton.Toolkit.Suite.Extended.Forms
-{
-    public class LinearEasing : Easing
-    {
-        #region Implementation
+namespace Krypton.Toolkit.Suite.Extended.Forms;
 
-        /// <inheritdoc />
-        public override double CalculateStep(int frame, int frames, double start, double end)
+public class LinearEasing : Easing
+{
+    #region Implementation
+
+    /// <inheritdoc />
+    public override double CalculateStep(int frame, int frames, double start, double end)
         => start + frame * (end - start) / frames;
 
-        #endregion
-    }
+    #endregion
 }

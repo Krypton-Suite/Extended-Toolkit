@@ -27,66 +27,60 @@
 
 using ExtendedMessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons;
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+public class ColourHexadecimalTextBox : KryptonTextBox
 {
-    public class ColourHexadecimalTextBox : KryptonTextBox
+    private Color _colour;
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Color Color { get => _colour; set { _colour = value; Invalidate(); } }
+
+    public ColourHexadecimalTextBox()
     {
-        private Color _colour;
+        MaxLength = 6;
 
-        public Color Colour { get => _colour; set { _colour = value; Invalidate(); } }
+        CueHint.CueHintText = "000000";
 
-        public ColourHexadecimalTextBox()
+        StateCommon.Content.TextH = PaletteRelativeAlign.Center;
+
+        // ReSharper disable VirtualMemberCallInConstructor
+        Text = string.Empty;
+        // ReSharper restore VirtualMemberCallInConstructor
+    }
+
+    protected override void OnPaint(PaintEventArgs? e)
+    {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        if (Color != Color.Empty || Color != Color.Transparent || Color != null)
         {
-            MaxLength = 6;
-
-            CueHint.CueHintText = "000000";
-
-            StateCommon.Content.TextH = PaletteRelativeAlign.Center;
-
-            // ReSharper disable VirtualMemberCallInConstructor
-            Text = string.Empty;
-            // ReSharper restore VirtualMemberCallInConstructor
+            Text = ColorTranslator.ToHtml(Color);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        if (Color == Color.Empty || Color == Color.Transparent)
         {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (Colour != Color.Empty || Colour != Color.Transparent || Colour != null)
+            Text = @"000000";
+        }
+
+        base.OnPaint(e);
+    }
+
+    protected override void OnValidating(CancelEventArgs e)
+    {
+        char[] allowedCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'a', 'b', 'c', 'd', 'e', 'f'
+        ];
+
+        foreach (char character in Text.ToUpper().ToArray())
+        {
+            if (!allowedCharacters.Contains(character))
             {
-                Text = ColorTranslator.ToHtml(Colour);
-            }
+                KryptonMessageBoxExtended.Show($"'{character}' is not a hexadecimal character", "Illegal Character",
+                    ExtendedMessageBoxButtons.OK, Messagebox.ExtendedKryptonMessageBoxIcon.Information, null, ContentAlignment.MiddleLeft);
 
-            if (Colour == Color.Empty || Colour == Color.Transparent)
-            {
-                Text = @"000000";
+                e.Cancel = true;
             }
-
-            base.OnPaint(e);
         }
 
-        protected override void OnValidating(CancelEventArgs e)
-        {
-            char[] allowedCharacters = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'a', 'b', 'c', 'd', 'e', 'f' };
-
-            foreach (char character in Text.ToUpper().ToArray())
-            {
-                if (!allowedCharacters.Contains(character))
-                {
-                    KryptonMessageBoxExtended.Show($"'{character}' is not a hexadecimal character", "Illegal Character",
-                        ExtendedMessageBoxButtons.OK, Messagebox.ExtendedKryptonMessageBoxIcon.Information, null, ContentAlignment.MiddleLeft);
-
-                    e.Cancel = true;
-                }
-            }
-
-            base.OnValidating(e);
-        }
-
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-
-
-            base.OnKeyDown(e);
-        }
+        base.OnValidating(e);
     }
 }

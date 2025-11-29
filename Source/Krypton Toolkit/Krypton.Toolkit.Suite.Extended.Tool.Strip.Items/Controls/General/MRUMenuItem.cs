@@ -25,94 +25,93 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items;
+
+//[ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip | )]
+public class MRUMenuItem : ToolStripMenuItem
 {
-    //[ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip | )]
-    public class MRUMenuItem : ToolStripMenuItem
+    #region Variables
+
+    private Control _outputControl;
+
+    private string? _applicationName;
+    private string _defaultText = @"Mo&st Recently Used...";
+
+    private readonly MostRecentlyUsedFileManager? _recentlyUsedFileManager;
+    #endregion
+
+    #region Public
+
+    public string DefaultText { get => _defaultText; set { _defaultText = value; Invalidate(); } }
+
+    #endregion
+
+    #region Constructor
+    public MRUMenuItem(string defaultText)
     {
-        #region Variables
+        _defaultText = defaultText;
 
-        private Control _outputControl;
+        Text = _defaultText;
 
-        private string? _applicationName;
-        private string _defaultText = @"Mo&st Recently Used...";
-
-        private readonly MostRecentlyUsedFileManager? _recentlyUsedFileManager;
-        #endregion
-
-        #region Public
-
-        public string DefaultText { get => _defaultText; set { _defaultText = value; Invalidate(); } }
-
-        #endregion
-
-        #region Constructor
-        public MRUMenuItem(string defaultText)
-        {
-            _defaultText = defaultText;
-
-            Text = _defaultText;
-
-            _recentlyUsedFileManager = new MostRecentlyUsedFileManager(this, _applicationName, MyOwnRecentFileGotClicked_Handler, MyOwnRecentFilesGotCleared_Handler);
-        }
-        #endregion
-
-        #region Implementation
-
-        private void MyOwnRecentFileGotClicked_Handler(object sender, EventArgs e)
-        {
-            var fileName = (sender as ToolStripItem)?.Text;
-
-            if (!File.Exists(fileName))
-            {
-                if (KryptonMessageBox.Show($"{fileName} doesn't exist. Remove from recent workspaces?", "File not found", KryptonMessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    _recentlyUsedFileManager?.RemoveRecentFile(fileName);
-                }
-                else
-                {
-                    return;
-                }
-            }
-
-            OpenFile(fileName, _outputControl);
-        }
-
-        private void MyOwnRecentFilesGotCleared_Handler(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OpenFile(string? filePath, Control? outputControl)
-        {
-            try
-            {
-                if (File.Exists(filePath))
-                {
-                    if (outputControl != null)
-                    {
-                        StreamReader sr = new StreamReader(filePath!);
-
-                        outputControl.Text = sr.ReadToEnd();
-
-                        sr.Close();
-
-                        sr.Dispose();
-                    }
-
-                    _recentlyUsedFileManager?.AddRecentFile(filePath);
-                }
-                else
-                {
-                    KryptonMessageBox.Show($"Error: file '{filePath}' could not be found!");
-                }
-            }
-            catch (IOException e)
-            {
-                DebugUtilities.NotImplemented(e.ToString());
-            }
-        }
-
-        #endregion
+        _recentlyUsedFileManager = new MostRecentlyUsedFileManager(this, _applicationName, MyOwnRecentFileGotClicked_Handler, MyOwnRecentFilesGotCleared_Handler);
     }
+    #endregion
+
+    #region Implementation
+
+    private void MyOwnRecentFileGotClicked_Handler(object sender, EventArgs e)
+    {
+        var fileName = (sender as ToolStripItem)?.Text;
+
+        if (!File.Exists(fileName))
+        {
+            if (KryptonMessageBox.Show($"{fileName} doesn't exist. Remove from recent workspaces?", "File not found", KryptonMessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _recentlyUsedFileManager?.RemoveRecentFile(fileName);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        OpenFile(fileName, _outputControl);
+    }
+
+    private void MyOwnRecentFilesGotCleared_Handler(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OpenFile(string? filePath, Control? outputControl)
+    {
+        try
+        {
+            if (File.Exists(filePath))
+            {
+                if (outputControl != null)
+                {
+                    StreamReader sr = new StreamReader(filePath!);
+
+                    outputControl.Text = sr.ReadToEnd();
+
+                    sr.Close();
+
+                    sr.Dispose();
+                }
+
+                _recentlyUsedFileManager?.AddRecentFile(filePath);
+            }
+            else
+            {
+                KryptonMessageBox.Show($"Error: file '{filePath}' could not be found!");
+            }
+        }
+        catch (IOException e)
+        {
+            DebugUtilities.NotImplemented(e.ToString());
+        }
+    }
+
+    #endregion
 }

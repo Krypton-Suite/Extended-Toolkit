@@ -1,13 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public interface IPlotMenu
 {
-    public interface IPlotMenu
-    {
-        public void Reset();
+    public void Reset();
 
-        public void Clear();
+    public void Clear();
 
-        public void Add(string label, Action<IPlotControl> action);
+    public void Add(string label, Action<IPlotControl> action);
 
-        void ShowContextMenu(Pixel pixel);
-    }
+    void ShowContextMenu(Pixel pixel);
 }

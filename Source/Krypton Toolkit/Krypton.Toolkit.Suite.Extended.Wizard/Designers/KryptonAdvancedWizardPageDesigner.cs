@@ -22,43 +22,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2023.
+ * Base code by Steve Bate 2003 - 2017 (https://github.com/SteveBate/AdvancedWizard), modifications by Peter Wagner (aka Wagnerp) 2021 - 2025.
  *
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard;
+
+/// <summary>
+/// WizardPageDesigner: 
+/// 
+/// Allows drag-drop operations to be performed on our pages;
+/// 
+/// Stops a user from selecting pages and being able to drag them out of the
+/// Wizard control;
+/// 
+/// Assigned to a WizardPage through the [Designer(typeof(WizardPageDesigner))]
+/// attribute;
+/// </summary>
+internal class KryptonAdvancedWizardPageDesigner : ParentControlDesigner
 {
-    /// <summary>
-    /// WizardPageDesigner: 
-    /// 
-    /// Allows drag-drop operations to be performed on our pages;
-    /// 
-    /// Stops a user from selecting pages and being able to drag them out of the
-    /// Wizard control;
-    /// 
-    /// Assigned to a WizardPage through the [Designer(typeof(WizardPageDesigner))]
-    /// attribute;
-    /// </summary>
-    internal class KryptonAdvancedWizardPageDesigner : ParentControlDesigner
+    public override void Initialize(IComponent c)
     {
-        public override void Initialize(IComponent c)
-        {
-            base.Initialize(c);
-            _page = (KryptonAdvancedWizardPage)Control;
-            _page.AllowDrop = false;
-            DrawGrid = true;
-            EnableDragDrop(true);
-        }
-
-        public override SelectionRules SelectionRules => base.SelectionRules & SelectionRules.None;
-
-        protected override void OnDragDrop(DragEventArgs de)
-        {
-            de.Effect = DragDropEffects.Move;
-            base.OnDragDrop(de);
-        }
-
-        private KryptonAdvancedWizardPage _page;
+        base.Initialize(c);
+        _page = (KryptonAdvancedWizardPage)Control;
+        _page.AllowDrop = false;
+        DrawGrid = true;
+        EnableDragDrop(true);
     }
+
+    public override SelectionRules SelectionRules => base.SelectionRules & SelectionRules.None;
+
+    protected override void OnDragDrop(DragEventArgs de)
+    {
+        de.Effect = DragDropEffects.Move;
+        base.OnDragDrop(de);
+    }
+
+    private KryptonAdvancedWizardPage _page;
 }

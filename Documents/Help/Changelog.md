@@ -5,6 +5,63 @@
 
 =======
 
+## 2025-11-24 - Build 2511 - November 2025
+
+### **Major Build System Overhaul**
+* Implemented [#550](https://github.com/Krypton-Suite/Extended-Toolkit/issues/550), Use workflows to build the toolkit
+* **New Centralized Build System** - Complete rewrite of build infrastructure
+  - Centralized Target Framework Monikers (TFMs) configuration in `Directory.Build.props`
+  - Global dependency inclusion system in `Directory.Build.targets`
+  - Automated version management across all 70 projects
+  - Smart framework assembly filtering (excludes System.*, Microsoft.*, etc.)
+  - Automatic NuGet warning suppression (NU1012, NU5128)
+
+### **New Build Configurations**
+* **7 Build Configurations** now available (was 4):
+  - `Debug` - Development
+  - `Release` - Stable, Full framework support (6 TFMs)
+  - `ReleaseLite` - Stable, Modern frameworks (5 TFMs, excludes net472)
+  - `Canary` - Beta, Full framework support (6 TFMs)
+  - `CanaryLite` - Beta, Modern frameworks (5 TFMs, excludes net472)
+  - `Nightly` - Alpha, Full framework support (6 TFMs)
+  - `NightlyLite` - Alpha, Modern frameworks (5 TFMs, excludes net472)
+
+### **Package Variants**
+* **366 possible package variants** (61 projects × 6 release configurations)
+* **Lite packages** are 15-20% smaller than Full packages
+* **Package naming convention**:
+  - Full: `PackageName`, `PackageName.Canary`, `PackageName.Nightly`
+  - Lite: `PackageName.Lite`, `PackageName.Lite.Canary`, `PackageName.Lite.Nightly`
+
+### **Build System Features**
+* **Single-point TFM management** - Update framework versions in one place, affects all 61+ projects
+* **Automatic dependency inclusion** - All packages include proper dependencies without framework assemblies
+* **Dynamic TFM switching** - Projects automatically use Full or Lite TFMs based on configuration
+* **Professional package quality** - Clean, consistent packages across entire toolkit
+
+### **Build Scripts & Tools**
+* `build-all-packages.cmd` - Build all 366 package variants
+* `build-release-all.cmd` - Build both Release and ReleaseLite packages
+* `build-canary-all.cmd` - Build both Canary and CanaryLite packages  
+* `build-nightly-all.cmd` - Build both Nightly and NightlyLite packages
+* Full Visual Studio Batch Build support for all configurations
+
+### **Other Updates**
+* Implemented [#540](https://github.com/Krypton-Suite/Extended-Toolkit/issues/540), Set the baseline support to .NET Framework 4.7.2
+	- **Note:** The minimum supported version of .NET Framework for the Extended Toolkit is now .NET Framework 4.7.2
+* Implemented [#536](https://github.com/Krypton-Suite/Extended-Toolkit/issues/536), Use `filescoped` namespaces
+* Implemented [#522](https://github.com/Krypton-Suite/Extended-Toolkit/issues/522), Support the new `slnx` format
+* Rollback [#514](https://github.com/Krypton-Suite/Standard-Toolkit/issues/514), Move `KryptonOutlookGrid` back to Extended ToolKit for further evaluation & development
+* Add support for .NET 10.0 across all projects with platform-specific TFMs (`net10.0-windows7.0`)
+* Updated standard toolkit to build `2511`
+
+=======
+
+## 2025-05-25 - Build 2505 - May 2025 (Patch 1)
+* Resolved [#529](https://github.com/Krypton-Suite/Extended-Toolkit/issues/529), Error when installing Krypton Ultimate LITE - 95.25.4.111
+
+=======
+
 ## 2024-11-12 - Build 2411 - November 2024
 * Simplified TFM project configuration
 * RollBack [#1584](https://github.com/Krypton-Suite/Standard-Toolkit/issues/1584), Disable the FadeValues property in VisualForm and move the FadeValues class to Extended. It was a V90 feature but is up for further development in V100.
@@ -16,7 +73,7 @@
 * `KryptonFormExtended` - `AllowFormIntegrate` property has now been removed to fall in line with the standard toolkit
 * Resolved [#446](https://github.com/Krypton-Suite/Extended-Toolkit/issues/446), Throwing exceptions using the Circularprogressbar control of The Ultimate 80.0 package during design
 * New `KryptonAboutExtendedToolkit` API
-* * Add support for .NET 9.0
+* Add support for .NET 9.0
 * Removed support for .NET 6 and 7, in accordance with their official release cadences
 * Updated standard toolkit to build `2411`
 

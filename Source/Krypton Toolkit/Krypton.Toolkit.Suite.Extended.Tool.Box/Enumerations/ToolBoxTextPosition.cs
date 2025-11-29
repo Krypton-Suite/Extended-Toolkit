@@ -25,13 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Box
+namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
+
+[Serializable]
+public enum ToolBoxTextPosition
 {
-    [Serializable]
-    public enum ToolBoxTextPosition
-    {
-        Top,
-        Bottom,
-        Hidden,
-    }
+    Top,
+    Bottom,
+    Hidden,
 }

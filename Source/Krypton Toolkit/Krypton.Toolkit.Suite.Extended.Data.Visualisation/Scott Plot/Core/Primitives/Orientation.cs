@@ -1,8 +1,7 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public enum Orientation
 {
-    public enum Orientation
-    {
-        Horizontal,
-        Vertical
-    }
+    Horizontal,
+    Vertical
 }

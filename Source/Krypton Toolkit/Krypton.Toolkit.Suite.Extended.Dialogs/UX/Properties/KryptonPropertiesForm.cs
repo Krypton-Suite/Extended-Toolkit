@@ -25,13 +25,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+
+public partial class KryptonPropertiesForm : KryptonForm
 {
-    public partial class KryptonPropertiesForm : KryptonForm
+    public KryptonPropertiesForm()
     {
-        public KryptonPropertiesForm()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -26,74 +26,73 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Shared
+namespace Krypton.Toolkit.Suite.Extended.Shared;
+
+/// <summary>
+/// Event arguments for the ToolTipNeeded event raised by a KryptonComboBox when it
+/// needs to render a tooltip.
+/// </summary>
+public class ToolTipNeededEventArgs : EventArgs
 {
+    #region Public
+
     /// <summary>
-    /// Event arguments for the ToolTipNeeded event raised by a KryptonComboBox when it
-    /// needs to render a tooltip.
+    /// The title of the tooltip.
     /// </summary>
-    public class ToolTipNeededEventArgs : EventArgs
+    public string Title { get; set; }
+    /// <summary>
+    /// The body of the tooltip.
+    /// </summary>
+    public string Body { get; set; }
+    /// <summary>
+    /// The icon of the tooltip.
+    /// </summary>
+    public Image Icon { get; set; }
+
+    /// <summary>
+    /// The index of the item of the <see cref="KryptonComboBox"/> for which a tooltip is
+    /// being requested.
+    /// </summary>
+    public int Index
     {
-        #region Public
-
-        /// <summary>
-        /// The title of the tooltip.
-        /// </summary>
-        public string Title { get; set; }
-        /// <summary>
-        /// The body of the tooltip.
-        /// </summary>
-        public string Body { get; set; }
-        /// <summary>
-        /// The icon of the tooltip.
-        /// </summary>
-        public Image Icon { get; set; }
-
-        /// <summary>
-        /// The index of the item of the <see cref="KryptonComboBox"/> for which a tooltip is
-        /// being requested.
-        /// </summary>
-        public int Index
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// The item of the <see cref="KryptonComboBox"/> for which a tooltip is being
-        /// requested.
-        /// </summary>
-        public object Item
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets whether the instance is empty.
-        /// </summary>
-        public bool IsEmpty => string.IsNullOrEmpty(Title) && string.IsNullOrEmpty(Body) && Icon == null;
-
-        #endregion
-
-        #region Identity
-
-        /// <summary>
-        /// Initializes a new instance of the ToolTipNeededEventArgs class.
-        /// </summary>
-        /// <param name="index">
-        /// The index of the item for which a tooltip is being requested.
-        /// </param>
-        /// <param name="item">
-        /// The item for which a tooltip is being requested.
-        /// </param>
-        public ToolTipNeededEventArgs(int index, object item)
-        {
-            Index = index;
-            Item = item;
-        }
-
-        #endregion
-
+        get;
+        private set;
     }
+
+    /// <summary>
+    /// The item of the <see cref="KryptonComboBox"/> for which a tooltip is being
+    /// requested.
+    /// </summary>
+    public object Item
+    {
+        get;
+        private set;
+    }
+
+    /// <summary>
+    /// Gets whether the instance is empty.
+    /// </summary>
+    public bool IsEmpty => string.IsNullOrEmpty(Title) && string.IsNullOrEmpty(Body) && Icon == null;
+
+    #endregion
+
+    #region Identity
+
+    /// <summary>
+    /// Initializes a new instance of the ToolTipNeededEventArgs class.
+    /// </summary>
+    /// <param name="index">
+    /// The index of the item for which a tooltip is being requested.
+    /// </param>
+    /// <param name="item">
+    /// The item for which a tooltip is being requested.
+    /// </param>
+    public ToolTipNeededEventArgs(int index, object item)
+    {
+        Index = index;
+        Item = item;
+    }
+
+    #endregion
+
 }

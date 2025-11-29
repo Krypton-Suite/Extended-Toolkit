@@ -25,26 +25,25 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
+
+/// <summary>
+/// Indicates in what state the control currently is. 
+/// </summary>
+public enum ControlState
 {
     /// <summary>
-    /// Indicates in what state the control currently is. 
+    /// Indicates that the control is in it's normal state
     /// </summary>
-    public enum ControlState
-    {
-        /// <summary>
-        /// Indicates that the control is in it's normal state
-        /// </summary>
-        Normal,
+    Normal,
 
-        /// <summary>
-        /// Indicates that the control is the active control
-        /// </summary>
-        Active,
+    /// <summary>
+    /// Indicates that the control is the active control
+    /// </summary>
+    Active,
 
-        /// <summary>
-        /// Indicates that the control is the focused control
-        /// </summary>
-        Focused
-    }
+    /// <summary>
+    /// Indicates that the control is the focused control
+    /// </summary>
+    Focused
 }

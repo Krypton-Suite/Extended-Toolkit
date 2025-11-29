@@ -26,127 +26,58 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class SettingsManager
 {
-    public class SettingsManager
+    #region Variables
+
+    #endregion
+
+    #region Constructor
+    public SettingsManager()
+    {
+    }
+    #endregion
+
+    #region Methods        
+    /// <summary>
+    /// Merges all colour settings together.
+    /// </summary>
+    /// <param name="usePrompt">if set to <c>true</c> [use prompt].</param>
+    public static void MergeAllColourSettings(bool usePrompt = false)
     {
         #region Variables
+        BasicColourSettingsManager basicPaletteColourManager = new();
 
+        CustomColourSettingsManager customPaletteColourManager = new();
+
+        CustomTextColourSettingsManager customPaletteTextColourManager = new();
+
+        LinkTextColourSettingsManager linkTextPaletteColourManager = new();
+
+        MiscellaneousColourSettingsManager miscellaneousPaletteColourManager = new();
+
+        StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new();
+
+        TextColourSettingsManager textPaletteColourManager = new();
+
+        AllMergedColourSettingsManager colourSettingsManager = new();
         #endregion
 
-        #region Constructor
-        public SettingsManager()
+        try
         {
-        }
-        #endregion
-
-        #region Methods        
-        /// <summary>
-        /// Merges all colour settings together.
-        /// </summary>
-        /// <param name="usePrompt">if set to <c>true</c> [use prompt].</param>
-        public static void MergeAllColourSettings(bool usePrompt = false)
-        {
-            #region Variables
-            BasicColourSettingsManager basicPaletteColourManager = new();
-
-            CustomColourSettingsManager customPaletteColourManager = new();
-
-            CustomTextColourSettingsManager customPaletteTextColourManager = new();
-
-            LinkTextColourSettingsManager linkTextPaletteColourManager = new();
-
-            MiscellaneousColourSettingsManager miscellaneousPaletteColourManager = new();
-
-            StandardControlTextColourSettingsManager standardControlTextColourSettingsManager = new();
-
-            TextColourSettingsManager textPaletteColourManager = new();
-
-            AllMergedColourSettingsManager colourSettingsManager = new();
-            #endregion
-
-            try
+            if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
             {
-                if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
+                KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+            }
+            else
+            {
+                if (usePrompt)
                 {
-                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
-                }
-                else
-                {
-                    if (usePrompt)
-                    {
-                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                    DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
-                        if (result == DialogResult.Yes)
-                        {
-                            colourSettingsManager.SetAlternativeNormalTextColour(textPaletteColourManager.GetAlternativeNormalTextColour());
-
-                            colourSettingsManager.SetBaseColour(basicPaletteColourManager.GetBaseColour());
-
-                            colourSettingsManager.SetBorderColour(miscellaneousPaletteColourManager.GetBorderColour());
-
-                            colourSettingsManager.SetCustomColourOne(customPaletteColourManager.GetCustomColourOne());
-
-                            colourSettingsManager.SetCustomColourTwo(customPaletteColourManager.GetCustomColourTwo());
-
-                            colourSettingsManager.SetCustomColourThree(customPaletteColourManager.GetCustomColourThree());
-
-                            colourSettingsManager.SetCustomColourFour(customPaletteColourManager.GetCustomColourFour());
-
-                            colourSettingsManager.SetCustomColourFive(customPaletteColourManager.GetCustomColourFive());
-
-                            colourSettingsManager.SetCustomColourSix(customPaletteColourManager.GetCustomColourSix());
-
-                            colourSettingsManager.SetCustomTextColourOne(customPaletteTextColourManager.GetCustomTextColourOne());
-
-                            colourSettingsManager.SetCustomTextColourTwo(customPaletteTextColourManager.GetCustomTextColourTwo());
-
-                            colourSettingsManager.SetCustomTextColourThree(customPaletteTextColourManager.GetCustomTextColourThree());
-
-                            colourSettingsManager.SetCustomTextColourFour(customPaletteTextColourManager.GetCustomTextColourFour());
-
-                            colourSettingsManager.SetCustomTextColourFive(customPaletteTextColourManager.GetCustomTextColourFive());
-
-                            colourSettingsManager.SetCustomTextColourSix(customPaletteTextColourManager.GetCustomTextColourSix());
-
-                            colourSettingsManager.SetDarkColour(basicPaletteColourManager.GetDarkColour());
-
-                            colourSettingsManager.SetDisabledControlColour(miscellaneousPaletteColourManager.GetDisabledControlColour());
-
-                            colourSettingsManager.SetDisabledTextColour(textPaletteColourManager.GetDisabledTextColour());
-
-                            colourSettingsManager.SetFocusedTextColour(textPaletteColourManager.GetFocusedTextColour());
-
-                            colourSettingsManager.SetLightColour(basicPaletteColourManager.GetLightColour());
-
-                            colourSettingsManager.SetLightestColour(basicPaletteColourManager.GetLightestColour());
-
-                            colourSettingsManager.SetLinkDisabledColour(linkTextPaletteColourManager.GetLinkDisabledColour());
-
-                            colourSettingsManager.SetLinkFocusedColour(linkTextPaletteColourManager.GetLinkFocusedColour());
-
-                            colourSettingsManager.SetLinkHoverColour(linkTextPaletteColourManager.GetLinkHoverColour());
-
-                            colourSettingsManager.SetLinkNormalColour(linkTextPaletteColourManager.GetLinkNormalColour());
-
-                            colourSettingsManager.SetLinkVisitedColour(linkTextPaletteColourManager.GetLinkVisitedColour());
-
-                            colourSettingsManager.SetMediumColour(basicPaletteColourManager.GetMediumColour());
-
-                            colourSettingsManager.SetMenuTextColour(standardControlTextColourSettingsManager.GetMenuTextColour());
-
-                            colourSettingsManager.SetNormalTextColour(textPaletteColourManager.GetNormalTextColour());
-
-                            colourSettingsManager.SetPressedTextColour(textPaletteColourManager.GetPressedTextColour());
-
-                            colourSettingsManager.SetRibbonTabTextColour(standardControlTextColourSettingsManager.GetRibbonTabTextColour());
-
-                            colourSettingsManager.SetStatusStripTextColour(standardControlTextColourSettingsManager.GetStatusStripTextColour());
-
-                            colourSettingsManager.SaveAllMergedColourSettings(usePrompt);
-                        }
-                    }
-                    else
+                    if (result == DialogResult.Yes)
                     {
                         colourSettingsManager.SetAlternativeNormalTextColour(textPaletteColourManager.GetAlternativeNormalTextColour());
 
@@ -164,6 +95,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                         colourSettingsManager.SetCustomColourFive(customPaletteColourManager.GetCustomColourFive());
 
+                        colourSettingsManager.SetCustomColourSix(customPaletteColourManager.GetCustomColourSix());
+
                         colourSettingsManager.SetCustomTextColourOne(customPaletteTextColourManager.GetCustomTextColourOne());
 
                         colourSettingsManager.SetCustomTextColourTwo(customPaletteTextColourManager.GetCustomTextColourTwo());
@@ -173,6 +106,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                         colourSettingsManager.SetCustomTextColourFour(customPaletteTextColourManager.GetCustomTextColourFour());
 
                         colourSettingsManager.SetCustomTextColourFive(customPaletteTextColourManager.GetCustomTextColourFive());
+
+                        colourSettingsManager.SetCustomTextColourSix(customPaletteTextColourManager.GetCustomTextColourSix());
 
                         colourSettingsManager.SetDarkColour(basicPaletteColourManager.GetDarkColour());
 
@@ -208,135 +143,131 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                         colourSettingsManager.SetStatusStripTextColour(standardControlTextColourSettingsManager.GetStatusStripTextColour());
 
-                        colourSettingsManager.SaveAllMergedColourSettings();
+                        colourSettingsManager.SaveAllMergedColourSettings(usePrompt);
                     }
-                }
-            }
-            catch (Exception exc)
-            {
-                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
-            }
-        }
-
-        /// <summary>
-        /// Merges all colours.
-        /// </summary>
-        /// <param name="darkColour">The dark colour.</param>
-        /// <param name="middleColour">The middle colour.</param>
-        /// <param name="lightColour">The light colour.</param>
-        /// <param name="lightestColour">The lightest colour.</param>
-        /// <param name="borderColourPreview">The border colour preview.</param>
-        /// <param name="alternativeNormalTextColourPreview">The alternative normal text colour preview.</param>
-        /// <param name="normalTextColourPreview">The normal text colour preview.</param>
-        /// <param name="disabledTextColourPreview">The disabled text colour preview.</param>
-        /// <param name="focusedTextColourPreview">The focused text colour preview.</param>
-        /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
-        /// <param name="disabledColourPreview">The disabled colour preview.</param>
-        /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
-        /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
-        /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
-        /// <param name="customColourOne">The custom colour one.</param>
-        /// <param name="customColourTwo">The custom colour two.</param>
-        /// <param name="customColourThree">The custom colour three.</param>
-        /// <param name="customColourFour">The custom colour four.</param>
-        /// <param name="customColourFive">The custom colour five.</param>
-        /// <param name="customTextColourOne">The custom text colour one.</param>
-        /// <param name="customTextColourTwo">The custom text colour two.</param>
-        /// <param name="customTextColourThree">The custom text colour three.</param>
-        /// <param name="customTextColourFour">The custom text colour four.</param>
-        /// <param name="customTextColourFive">The custom text colour five.</param>
-        /// <param name="menuTextColour">The menu text colour.</param>
-        /// <param name="statusTextColour">The status text colour.</param>
-        /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
-        /// <param name="usePrompt">if set to <c>true</c> [use prompt].</param>
-        public static void MergeAllColours(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColour, Color alternativeNormalTextColour, Color normalTextColour, Color disabledTextColour, Color focusedTextColour, Color pressedTextColour, Color disabledControlColour, Color linkDisabledColour, Color linkFocusedColour, Color linkNormalColour, Color linkHoverColour, Color linkVisitedColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customColourSix, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color customTextColourSix, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, bool usePrompt = false)
-        {
-            #region Variables
-            AllMergedColourSettingsManager colourSettingsManager = new();
-            #endregion
-
-            try
-            {
-                if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
-                {
-                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (usePrompt)
-                    {
-                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+                    colourSettingsManager.SetAlternativeNormalTextColour(textPaletteColourManager.GetAlternativeNormalTextColour());
 
-                        if (result == DialogResult.Yes)
-                        {
-                            colourSettingsManager.SetAlternativeNormalTextColour(alternativeNormalTextColour);
+                    colourSettingsManager.SetBaseColour(basicPaletteColourManager.GetBaseColour());
 
-                            colourSettingsManager.SetBaseColour(baseColour);
+                    colourSettingsManager.SetBorderColour(miscellaneousPaletteColourManager.GetBorderColour());
 
-                            colourSettingsManager.SetBorderColour(borderColour);
+                    colourSettingsManager.SetCustomColourOne(customPaletteColourManager.GetCustomColourOne());
 
-                            colourSettingsManager.SetCustomColourOne(customColourOne);
+                    colourSettingsManager.SetCustomColourTwo(customPaletteColourManager.GetCustomColourTwo());
 
-                            colourSettingsManager.SetCustomColourTwo(customColourTwo);
+                    colourSettingsManager.SetCustomColourThree(customPaletteColourManager.GetCustomColourThree());
 
-                            colourSettingsManager.SetCustomColourThree(customColourThree);
+                    colourSettingsManager.SetCustomColourFour(customPaletteColourManager.GetCustomColourFour());
 
-                            colourSettingsManager.SetCustomColourFour(customColourFour);
+                    colourSettingsManager.SetCustomColourFive(customPaletteColourManager.GetCustomColourFive());
 
-                            colourSettingsManager.SetCustomColourFive(customColourFive);
+                    colourSettingsManager.SetCustomTextColourOne(customPaletteTextColourManager.GetCustomTextColourOne());
 
-                            colourSettingsManager.SetCustomColourSix(customColourSix);
+                    colourSettingsManager.SetCustomTextColourTwo(customPaletteTextColourManager.GetCustomTextColourTwo());
 
-                            colourSettingsManager.SetCustomTextColourOne(customTextColourOne);
+                    colourSettingsManager.SetCustomTextColourThree(customPaletteTextColourManager.GetCustomTextColourThree());
 
-                            colourSettingsManager.SetCustomTextColourTwo(customTextColourTwo);
+                    colourSettingsManager.SetCustomTextColourFour(customPaletteTextColourManager.GetCustomTextColourFour());
 
-                            colourSettingsManager.SetCustomTextColourThree(customTextColourThree);
+                    colourSettingsManager.SetCustomTextColourFive(customPaletteTextColourManager.GetCustomTextColourFive());
 
-                            colourSettingsManager.SetCustomTextColourFour(customTextColourFour);
+                    colourSettingsManager.SetDarkColour(basicPaletteColourManager.GetDarkColour());
 
-                            colourSettingsManager.SetCustomTextColourFive(customTextColourFive);
+                    colourSettingsManager.SetDisabledControlColour(miscellaneousPaletteColourManager.GetDisabledControlColour());
 
-                            colourSettingsManager.SetCustomTextColourSix(customTextColourSix);
+                    colourSettingsManager.SetDisabledTextColour(textPaletteColourManager.GetDisabledTextColour());
 
-                            colourSettingsManager.SetDarkColour(darkColour);
+                    colourSettingsManager.SetFocusedTextColour(textPaletteColourManager.GetFocusedTextColour());
 
-                            colourSettingsManager.SetDisabledControlColour(disabledControlColour);
+                    colourSettingsManager.SetLightColour(basicPaletteColourManager.GetLightColour());
 
-                            colourSettingsManager.SetDisabledTextColour(disabledTextColour);
+                    colourSettingsManager.SetLightestColour(basicPaletteColourManager.GetLightestColour());
 
-                            colourSettingsManager.SetFocusedTextColour(focusedTextColour);
+                    colourSettingsManager.SetLinkDisabledColour(linkTextPaletteColourManager.GetLinkDisabledColour());
 
-                            colourSettingsManager.SetLightColour(lightColour);
+                    colourSettingsManager.SetLinkFocusedColour(linkTextPaletteColourManager.GetLinkFocusedColour());
 
-                            colourSettingsManager.SetLightestColour(lightestColour);
+                    colourSettingsManager.SetLinkHoverColour(linkTextPaletteColourManager.GetLinkHoverColour());
 
-                            colourSettingsManager.SetLinkDisabledColour(linkDisabledColour);
+                    colourSettingsManager.SetLinkNormalColour(linkTextPaletteColourManager.GetLinkNormalColour());
 
-                            colourSettingsManager.SetLinkFocusedColour(linkFocusedColour);
+                    colourSettingsManager.SetLinkVisitedColour(linkTextPaletteColourManager.GetLinkVisitedColour());
 
-                            colourSettingsManager.SetLinkHoverColour(linkHoverColour);
+                    colourSettingsManager.SetMediumColour(basicPaletteColourManager.GetMediumColour());
 
-                            colourSettingsManager.SetLinkNormalColour(linkNormalColour);
+                    colourSettingsManager.SetMenuTextColour(standardControlTextColourSettingsManager.GetMenuTextColour());
 
-                            colourSettingsManager.SetLinkVisitedColour(linkVisitedColour);
+                    colourSettingsManager.SetNormalTextColour(textPaletteColourManager.GetNormalTextColour());
 
-                            colourSettingsManager.SetMediumColour(middleColour);
+                    colourSettingsManager.SetPressedTextColour(textPaletteColourManager.GetPressedTextColour());
 
-                            colourSettingsManager.SetMenuTextColour(menuTextColour);
+                    colourSettingsManager.SetRibbonTabTextColour(standardControlTextColourSettingsManager.GetRibbonTabTextColour());
 
-                            colourSettingsManager.SetNormalTextColour(normalTextColour);
+                    colourSettingsManager.SetStatusStripTextColour(standardControlTextColourSettingsManager.GetStatusStripTextColour());
 
-                            colourSettingsManager.SetPressedTextColour(pressedTextColour);
+                    colourSettingsManager.SaveAllMergedColourSettings();
+                }
+            }
+        }
+        catch (Exception exc)
+        {
+            ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+        }
+    }
 
-                            colourSettingsManager.SetRibbonTabTextColour(ribbonTabTextColour);
+    /// <summary>
+    /// Merges all colours.
+    /// </summary>
+    /// <param name="darkColour">The dark colour.</param>
+    /// <param name="middleColour">The middle colour.</param>
+    /// <param name="lightColour">The light colour.</param>
+    /// <param name="lightestColour">The lightest colour.</param>
+    /// <param name="borderColourPreview">The border colour preview.</param>
+    /// <param name="alternativeNormalTextColourPreview">The alternative normal text colour preview.</param>
+    /// <param name="normalTextColourPreview">The normal text colour preview.</param>
+    /// <param name="disabledTextColourPreview">The disabled text colour preview.</param>
+    /// <param name="focusedTextColourPreview">The focused text colour preview.</param>
+    /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
+    /// <param name="disabledColourPreview">The disabled colour preview.</param>
+    /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
+    /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
+    /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
+    /// <param name="customColourOne">The custom colour one.</param>
+    /// <param name="customColourTwo">The custom colour two.</param>
+    /// <param name="customColourThree">The custom colour three.</param>
+    /// <param name="customColourFour">The custom colour four.</param>
+    /// <param name="customColourFive">The custom colour five.</param>
+    /// <param name="customTextColourOne">The custom text colour one.</param>
+    /// <param name="customTextColourTwo">The custom text colour two.</param>
+    /// <param name="customTextColourThree">The custom text colour three.</param>
+    /// <param name="customTextColourFour">The custom text colour four.</param>
+    /// <param name="customTextColourFive">The custom text colour five.</param>
+    /// <param name="menuTextColour">The menu text colour.</param>
+    /// <param name="statusTextColour">The status text colour.</param>
+    /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
+    /// <param name="usePrompt">if set to <c>true</c> [use prompt].</param>
+    public static void MergeAllColours(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColour, Color alternativeNormalTextColour, Color normalTextColour, Color disabledTextColour, Color focusedTextColour, Color pressedTextColour, Color disabledControlColour, Color linkDisabledColour, Color linkFocusedColour, Color linkNormalColour, Color linkHoverColour, Color linkVisitedColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customColourSix, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color customTextColourSix, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour, bool usePrompt = false)
+    {
+        #region Variables
+        AllMergedColourSettingsManager colourSettingsManager = new();
+        #endregion
 
-                            colourSettingsManager.SetStatusStripTextColour(statusTextColour);
+        try
+        {
+            if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
+            {
+                KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+            }
+            else
+            {
+                if (usePrompt)
+                {
+                    DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
-                            colourSettingsManager.SaveAllMergedColourSettings(usePrompt);
-                        }
-                    }
-                    else
+                    if (result == DialogResult.Yes)
                     {
                         colourSettingsManager.SetAlternativeNormalTextColour(alternativeNormalTextColour);
 
@@ -402,15 +333,83 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                         colourSettingsManager.SetStatusStripTextColour(statusTextColour);
 
-                        colourSettingsManager.SaveAllMergedColourSettings();
+                        colourSettingsManager.SaveAllMergedColourSettings(usePrompt);
                     }
                 }
-            }
-            catch (Exception exc)
-            {
-                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+                else
+                {
+                    colourSettingsManager.SetAlternativeNormalTextColour(alternativeNormalTextColour);
+
+                    colourSettingsManager.SetBaseColour(baseColour);
+
+                    colourSettingsManager.SetBorderColour(borderColour);
+
+                    colourSettingsManager.SetCustomColourOne(customColourOne);
+
+                    colourSettingsManager.SetCustomColourTwo(customColourTwo);
+
+                    colourSettingsManager.SetCustomColourThree(customColourThree);
+
+                    colourSettingsManager.SetCustomColourFour(customColourFour);
+
+                    colourSettingsManager.SetCustomColourFive(customColourFive);
+
+                    colourSettingsManager.SetCustomColourSix(customColourSix);
+
+                    colourSettingsManager.SetCustomTextColourOne(customTextColourOne);
+
+                    colourSettingsManager.SetCustomTextColourTwo(customTextColourTwo);
+
+                    colourSettingsManager.SetCustomTextColourThree(customTextColourThree);
+
+                    colourSettingsManager.SetCustomTextColourFour(customTextColourFour);
+
+                    colourSettingsManager.SetCustomTextColourFive(customTextColourFive);
+
+                    colourSettingsManager.SetCustomTextColourSix(customTextColourSix);
+
+                    colourSettingsManager.SetDarkColour(darkColour);
+
+                    colourSettingsManager.SetDisabledControlColour(disabledControlColour);
+
+                    colourSettingsManager.SetDisabledTextColour(disabledTextColour);
+
+                    colourSettingsManager.SetFocusedTextColour(focusedTextColour);
+
+                    colourSettingsManager.SetLightColour(lightColour);
+
+                    colourSettingsManager.SetLightestColour(lightestColour);
+
+                    colourSettingsManager.SetLinkDisabledColour(linkDisabledColour);
+
+                    colourSettingsManager.SetLinkFocusedColour(linkFocusedColour);
+
+                    colourSettingsManager.SetLinkHoverColour(linkHoverColour);
+
+                    colourSettingsManager.SetLinkNormalColour(linkNormalColour);
+
+                    colourSettingsManager.SetLinkVisitedColour(linkVisitedColour);
+
+                    colourSettingsManager.SetMediumColour(middleColour);
+
+                    colourSettingsManager.SetMenuTextColour(menuTextColour);
+
+                    colourSettingsManager.SetNormalTextColour(normalTextColour);
+
+                    colourSettingsManager.SetPressedTextColour(pressedTextColour);
+
+                    colourSettingsManager.SetRibbonTabTextColour(ribbonTabTextColour);
+
+                    colourSettingsManager.SetStatusStripTextColour(statusTextColour);
+
+                    colourSettingsManager.SaveAllMergedColourSettings();
+                }
             }
         }
-        #endregion
+        catch (Exception exc)
+        {
+            ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+        }
     }
+    #endregion
 }

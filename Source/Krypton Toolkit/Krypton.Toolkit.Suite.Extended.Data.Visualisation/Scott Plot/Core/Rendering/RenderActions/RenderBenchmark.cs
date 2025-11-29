@@ -1,10 +1,9 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class RenderBenchmark : IRenderAction
 {
-    public class RenderBenchmark : IRenderAction
+    public void Render(RenderPack rp)
     {
-        public void Render(RenderPack rp)
-        {
-            rp.Plot.Benchmark.Render(rp);
-        }
+        rp.Plot.Benchmark.Render(rp);
     }
 }

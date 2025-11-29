@@ -26,57 +26,57 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+[ToolboxItem(false)]
+public class CircularPictureBox : PictureBox, IContentValues
 {
-    [ToolboxItem(false)]
-    public class CircularPictureBox : PictureBox, IContentValues
+    private ToolTipValues? _values;
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public ToolTipValues? ToolTipValues
     {
-        private ToolTipValues _values;
-
-        public ToolTipValues ToolTipValues
-        {
-            get => _values; set => _values = value;
-        }
-
-        public CircularPictureBox()
-        {
-            BackColor = SystemColors.Control;
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            using (GraphicsPath graphicsPath = new())
-            {
-                graphicsPath.AddEllipse(new(0, 0, Width - 1, Height - 1));
-
-                Region = new(graphicsPath);
-            }
-
-            base.OnResize(e);
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            using (GraphicsPath graphicsPath = new())
-            {
-                graphicsPath.AddEllipse(0, 0, Width - 1, Height - 1);
-
-                Region = new(graphicsPath);
-
-                pe.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-                pe.Graphics.DrawEllipse(new(new SolidBrush(BackColor), 1), 0, 0, Width - 1, Height - 1);
-            }
-
-            base.OnPaint(pe);
-        }
-
-        public Image GetImage(PaletteState state) => throw new NotImplementedException();
-
-        public Color GetImageTransparentColor(PaletteState state) => throw new NotImplementedException();
-
-        public string GetShortText() => throw new NotImplementedException();
-
-        public string GetLongText() => throw new NotImplementedException();
+        get => _values; set => _values = value;
     }
+
+    public CircularPictureBox()
+    {
+        BackColor = SystemColors.Control;
+    }
+
+    protected override void OnResize(EventArgs e)
+    {
+        using (GraphicsPath graphicsPath = new())
+        {
+            graphicsPath.AddEllipse(new(0, 0, Width - 1, Height - 1));
+
+            Region = new(graphicsPath);
+        }
+
+        base.OnResize(e);
+    }
+
+    protected override void OnPaint(PaintEventArgs pe)
+    {
+        using (GraphicsPath graphicsPath = new())
+        {
+            graphicsPath.AddEllipse(0, 0, Width - 1, Height - 1);
+
+            Region = new(graphicsPath);
+
+            pe.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            pe.Graphics.DrawEllipse(new(new SolidBrush(BackColor), 1), 0, 0, Width - 1, Height - 1);
+        }
+
+        base.OnPaint(pe);
+    }
+
+    public Image GetImage(PaletteState state) => throw new NotImplementedException();
+
+    public Color GetImageTransparentColor(PaletteState state) => throw new NotImplementedException();
+
+    public string GetShortText() => throw new NotImplementedException();
+
+    public string GetLongText() => throw new NotImplementedException();
 }

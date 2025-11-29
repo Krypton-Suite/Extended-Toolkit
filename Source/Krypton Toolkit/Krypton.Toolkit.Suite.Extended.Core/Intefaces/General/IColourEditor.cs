@@ -26,30 +26,29 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+/// <summary>
+/// Provides functionality required by colour editors that are bindable
+/// </summary>
+public interface IColourEditor
 {
+    #region Events
+
     /// <summary>
-    /// Provides functionality required by colour editors that are bindable
+    /// Occurs when the <see cref="Color"/> property is changed.
     /// </summary>
-    public interface IColourEditor
-    {
-        #region Events
+    event EventHandler ColourChanged;
 
-        /// <summary>
-        /// Occurs when the <see cref="Color"/> property is changed.
-        /// </summary>
-        event EventHandler ColourChanged;
+    #endregion
 
-        #endregion
+    #region Properties
 
-        #region Properties
+    /// <summary>
+    /// Gets or sets the component colour.
+    /// </summary>
+    /// <value>The component colour.</value>
+    Color Colour { get; set; }
 
-        /// <summary>
-        /// Gets or sets the component colour.
-        /// </summary>
-        /// <value>The component colour.</value>
-        Color Colour { get; set; }
-
-        #endregion
-    }
+    #endregion
 }

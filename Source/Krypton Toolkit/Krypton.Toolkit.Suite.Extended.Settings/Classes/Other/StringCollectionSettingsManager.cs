@@ -26,9 +26,8 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Settings.Classes.Other
+namespace Krypton.Toolkit.Suite.Extended.Settings.Classes.Other;
+
+class StringCollectionSettingsManager
 {
-    class StringCollectionSettingsManager
-    {
-    }
 }

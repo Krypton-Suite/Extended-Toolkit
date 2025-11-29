@@ -26,135 +26,134 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+
+internal struct CfgArc
 {
-    internal struct CfgArc
+    private uint _flag1;
+
+    private uint _flag2;
+
+    internal bool RuleRef
     {
-        private uint _flag1;
-
-        private uint _flag2;
-
-        internal bool RuleRef
+        get => (_flag1 & 1) != 0;
+        set
         {
-            get => (_flag1 & 1) != 0;
-            set
+            if (value)
             {
-                if (value)
-                {
-                    _flag1 |= 1u;
-                }
-                else
-                {
-                    _flag1 &= 4294967294u;
-                }
+                _flag1 |= 1u;
+            }
+            else
+            {
+                _flag1 &= 4294967294u;
             }
         }
+    }
 
-        internal bool LastArc
+    internal bool LastArc
+    {
+        get => (_flag1 & 2) != 0;
+        set
         {
-            get => (_flag1 & 2) != 0;
-            set
+            if (value)
             {
-                if (value)
-                {
-                    _flag1 |= 2u;
-                }
-                else
-                {
-                    _flag1 &= 4294967293u;
-                }
+                _flag1 |= 2u;
+            }
+            else
+            {
+                _flag1 &= 4294967293u;
             }
         }
+    }
 
-        internal bool HasSemanticTag
+    internal bool HasSemanticTag
+    {
+        get => (_flag1 & 4) != 0;
+        set
         {
-            get => (_flag1 & 4) != 0;
-            set
+            if (value)
             {
-                if (value)
-                {
-                    _flag1 |= 4u;
-                }
-                else
-                {
-                    _flag1 &= 4294967291u;
-                }
+                _flag1 |= 4u;
+            }
+            else
+            {
+                _flag1 &= 4294967291u;
             }
         }
+    }
 
-        internal bool LowConfRequired
+    internal bool LowConfRequired
+    {
+        get => (_flag1 & 8) != 0;
+        set
         {
-            get => (_flag1 & 8) != 0;
-            set
+            if (value)
             {
-                if (value)
-                {
-                    _flag1 |= 8u;
-                }
-                else
-                {
-                    _flag1 &= 4294967287u;
-                }
+                _flag1 |= 8u;
+            }
+            else
+            {
+                _flag1 &= 4294967287u;
             }
         }
+    }
 
-        internal bool HighConfRequired
+    internal bool HighConfRequired
+    {
+        get => (_flag1 & 0x10) != 0;
+        set
         {
-            get => (_flag1 & 0x10) != 0;
-            set
+            if (value)
             {
-                if (value)
-                {
-                    _flag1 |= 16u;
-                }
-                else
-                {
-                    _flag1 &= 4294967279u;
-                }
+                _flag1 |= 16u;
+            }
+            else
+            {
+                _flag1 &= 4294967279u;
             }
         }
+    }
 
-        internal uint TransitionIndex
+    internal uint TransitionIndex
+    {
+        get => (_flag1 >> 5) & 0x3FFFFF;
+        set
         {
-            get => (_flag1 >> 5) & 0x3FFFFF;
-            set
+            if (value > 4194303)
             {
-                if (value > 4194303)
-                {
-                    XmlParser.ThrowSrgsException(SRID.TooManyArcs);
-                }
-                _flag1 &= 4160749599u;
-                _flag1 |= value << 5;
+                XmlParser.ThrowSrgsException(SRID.TooManyArcs);
             }
+            _flag1 &= 4160749599u;
+            _flag1 |= value << 5;
         }
+    }
 
-        internal uint MatchMode
+    internal uint MatchMode
+    {
+        set
         {
-            set
+            _flag1 &= 3355443199u;
+            _flag1 |= value << 27;
+        }
+    }
+
+    internal uint NextStartArcIndex
+    {
+        get => (_flag2 >> 8) & 0x3FFFFF;
+        set
+        {
+            if (value > 4194303)
             {
-                _flag1 &= 3355443199u;
-                _flag1 |= value << 27;
+                XmlParser.ThrowSrgsException(SRID.TooManyArcs);
             }
+            _flag2 &= 3221225727u;
+            _flag2 |= value << 8;
         }
+    }
 
-        internal uint NextStartArcIndex
-        {
-            get => (_flag2 >> 8) & 0x3FFFFF;
-            set
-            {
-                if (value > 4194303)
-                {
-                    XmlParser.ThrowSrgsException(SRID.TooManyArcs);
-                }
-                _flag2 &= 3221225727u;
-                _flag2 |= value << 8;
-            }
-        }
-
-        internal CfgArc(CfgArc arc)
-        {
-            _flag1 = arc._flag1;
-            _flag2 = arc._flag2;
-        }
+    internal CfgArc(CfgArc arc)
+    {
+        _flag1 = arc._flag1;
+        _flag2 = arc._flag2;
     }
 }

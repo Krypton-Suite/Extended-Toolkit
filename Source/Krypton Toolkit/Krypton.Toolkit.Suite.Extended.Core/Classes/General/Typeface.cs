@@ -26,18 +26,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class Typeface
 {
-    public class Typeface
+    public Typeface()
     {
-        public Typeface()
-        {
 
-        }
-
-
-        /// <summary>Gets the default typeface.</summary>
-        /// <returns>Microsoft Sans Serif, 8.25</returns>
-        public static Font GetDefaultTypeface() => new("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
     }
+
+
+    /// <summary>Gets the default typeface.</summary>
+    /// <returns>Microsoft Sans Serif, 8.25</returns>
+    public static Font GetDefaultTypeface() => new("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
 }

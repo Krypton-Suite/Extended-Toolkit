@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
-{
-    internal interface ISrgsParser
-    {
-        IElementFactory ElementFactory
-        {
-            set;
-        }
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 
-        void Parse();
+internal interface ISrgsParser
+{
+    IElementFactory ElementFactory
+    {
+        set;
     }
+
+    void Parse();
 }

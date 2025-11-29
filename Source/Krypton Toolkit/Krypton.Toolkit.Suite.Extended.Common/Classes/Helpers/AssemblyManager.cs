@@ -26,18 +26,17 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+public class AssemblyManager
 {
-    public class AssemblyManager
+    public AssemblyManager()
     {
-        public AssemblyManager()
-        {
 
-        }
-
-        /// <summary>Gets the file version information.</summary>
-        /// <param name="assemblyPath">The assembly path.</param>
-        /// <returns>The file version of the selected assembly.</returns>
-        public static FileVersionInfo GetFileVersionInformation(string assemblyPath) => FileVersionInfo.GetVersionInfo(assemblyPath);
     }
+
+    /// <summary>Gets the file version information.</summary>
+    /// <param name="assemblyPath">The assembly path.</param>
+    /// <returns>The file version of the selected assembly.</returns>
+    public static FileVersionInfo GetFileVersionInformation(string assemblyPath) => FileVersionInfo.GetVersionInfo(assemblyPath);
 }

@@ -25,54 +25,54 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+
+/// <summary>
+/// Retrieves system information using WMI
+/// </summary>
+internal class SysInfoRetriever
 {
+    private ManagementObjectSearcher _sysInfoSearcher;
+    private SysInfoResult _sysInfoResult;
+    private SysInfoQuery _sysInfoQuery;
+
     /// <summary>
-    /// Retrieves system information using WMI
+    /// Retrieve system information, using the given SysInfoQuery to determine what information to retrieve
     /// </summary>
-    internal class SysInfoRetriever
+    /// <param name="sysInfoQuery">the query to determine what information to retrieve</param>
+    /// <returns>a SysInfoResult ie containing the results of the query</returns>
+    public SysInfoResult Retrieve(SysInfoQuery sysInfoQuery)
     {
-        private ManagementObjectSearcher _sysInfoSearcher;
-        private SysInfoResult _sysInfoResult;
-        private SysInfoQuery _sysInfoQuery;
+        _sysInfoQuery = sysInfoQuery;
+        _sysInfoSearcher = new ManagementObjectSearcher($"SELECT * FROM {_sysInfoQuery.QueryText}");
+        _sysInfoResult = new SysInfoResult(_sysInfoQuery.Name);
 
-        /// <summary>
-        /// Retrieve system information, using the given SysInfoQuery to determine what information to retrieve
-        /// </summary>
-        /// <param name="sysInfoQuery">the query to determine what information to retrieve</param>
-        /// <returns>a SysInfoResult ie containing the results of the query</returns>
-        public SysInfoResult Retrieve(SysInfoQuery sysInfoQuery)
+        foreach (var o in _sysInfoSearcher.Get())
         {
-            _sysInfoQuery = sysInfoQuery;
-            _sysInfoSearcher = new ManagementObjectSearcher($"SELECT * FROM {_sysInfoQuery.QueryText}");
-            _sysInfoResult = new SysInfoResult(_sysInfoQuery.Name);
-
-            foreach (ManagementObject managementObject in _sysInfoSearcher.Get())
-            {
-                _sysInfoResult.AddNode(managementObject.GetPropertyValue(_sysInfoQuery.DisplayField).ToString().Trim());
-                _sysInfoResult.AddChildren(GetChildren(managementObject));
-            }
-            return _sysInfoResult;
+            var managementObject = (ManagementObject)o;
+            _sysInfoResult.AddNode(managementObject.GetPropertyValue(_sysInfoQuery.DisplayField).ToString().Trim());
+            _sysInfoResult.AddChildren(GetChildren(managementObject));
         }
+        return _sysInfoResult;
+    }
 
-        private IEnumerable<SysInfoResult> GetChildren(ManagementBaseObject managementObject)
+    private IEnumerable<SysInfoResult?> GetChildren(ManagementBaseObject managementObject)
+    {
+        SysInfoResult? childResult = null;
+        ICollection<SysInfoResult?> childList = new List<SysInfoResult?>();
+
+        foreach (var propertyData in managementObject.Properties)
         {
-            SysInfoResult childResult = null;
-            ICollection<SysInfoResult> childList = new List<SysInfoResult>();
-
-            foreach (var propertyData in managementObject.Properties)
+            if (childResult == null)
             {
-                if (childResult == null)
-                {
-                    childResult = new SysInfoResult($"{_sysInfoQuery.Name}_Child");
-                    childList.Add(childResult);
-                }
-
-                var nodeValue = $"{propertyData.Name} = {Convert.ToString(propertyData.Value)}";
-                childResult.Nodes.Add(nodeValue);
+                childResult = new SysInfoResult($"{_sysInfoQuery.Name}_Child");
+                childList.Add(childResult);
             }
 
-            return childList;
+            var nodeValue = $"{propertyData.Name} = {Convert.ToString(propertyData.Value)}";
+            childResult.Nodes.Add(nodeValue);
         }
+
+        return childList;
     }
 }

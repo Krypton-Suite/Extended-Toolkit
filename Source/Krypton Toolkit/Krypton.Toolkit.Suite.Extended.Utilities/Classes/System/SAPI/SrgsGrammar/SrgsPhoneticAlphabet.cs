@@ -26,15 +26,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+
+public enum SrgsPhoneticAlphabet
 {
-	public enum SrgsPhoneticAlphabet
-	{
-		/// <summary />
-		Sapi,
-		/// <summary />
-		Ipa,
-		/// <summary />
-		Ups
-	}
+    /// <summary />
+    Sapi,
+    /// <summary />
+    Ipa,
+    /// <summary />
+    Ups
 }

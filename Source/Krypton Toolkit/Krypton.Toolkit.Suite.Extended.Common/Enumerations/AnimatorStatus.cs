@@ -26,31 +26,30 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common;
+
+/// <summary>
+///     The possible statuses for an animator instance
+/// </summary>
+public enum AnimatorStatus
 {
     /// <summary>
-    ///     The possible statuses for an animator instance
+    ///     Animation is stopped
     /// </summary>
-    public enum AnimatorStatus
-    {
-        /// <summary>
-        ///     Animation is stopped
-        /// </summary>
-        Stopped,
+    Stopped,
 
-        /// <summary>
-        ///     Animation is now playing
-        /// </summary>
-        Playing,
+    /// <summary>
+    ///     Animation is now playing
+    /// </summary>
+    Playing,
 
-        /// <summary>
-        ///     Animation is now on hold for path delay, consider this value as playing
-        /// </summary>
-        OnHold,
+    /// <summary>
+    ///     Animation is now on hold for path delay, consider this value as playing
+    /// </summary>
+    OnHold,
 
-        /// <summary>
-        ///     Animation is paused
-        /// </summary>
-        Paused
-    }
+    /// <summary>
+    ///     Animation is paused
+    /// </summary>
+    Paused
 }

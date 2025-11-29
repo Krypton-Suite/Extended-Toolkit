@@ -63,7 +63,6 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
-{
-    public delegate void AdvancedDataGridViewSearchToolBarSearchEventHandler(object sender, AdvancedDataGridViewSearchToolBarSearchEventArgs e);
-}
+namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView;
+
+public delegate void AdvancedDataGridViewSearchToolBarSearchEventHandler(object sender, AdvancedDataGridViewSearchToolBarSearchEventArgs e);

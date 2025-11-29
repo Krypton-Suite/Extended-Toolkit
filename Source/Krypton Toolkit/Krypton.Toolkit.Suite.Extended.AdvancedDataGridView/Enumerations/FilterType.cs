@@ -63,15 +63,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
+namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView;
+
+public enum FilterType
 {
-    public enum FilterType
-    {
-        Unknown,
-        DateTime,
-        TimeSpan,
-        String,
-        Float,
-        Integer
-    }
+    Unknown,
+    DateTime,
+    TimeSpan,
+    String,
+    Float,
+    Integer
 }

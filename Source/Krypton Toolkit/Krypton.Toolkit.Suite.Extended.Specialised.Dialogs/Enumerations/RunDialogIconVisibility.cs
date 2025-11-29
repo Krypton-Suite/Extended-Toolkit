@@ -25,11 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs;
+
+public enum RunDialogIconVisibility
 {
-    public enum RunDialogIconVisibility
-    {
-        Hidden = 0,
-        Visible = 1
-    }
+    Hidden = 0,
+    Visible = 1
 }

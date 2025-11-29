@@ -26,22 +26,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+
+/// <filterpriority>2</filterpriority>
+public enum PromptBreak
 {
-	/// <filterpriority>2</filterpriority>
-	public enum PromptBreak
-	{
-		/// <summary />
-		None,
-		/// <summary />
-		ExtraSmall,
-		/// <summary />
-		Small,
-		/// <summary />
-		Medium,
-		/// <summary />
-		Large,
-		/// <summary />
-		ExtraLarge
-	}
+    /// <summary />
+    None,
+    /// <summary />
+    ExtraSmall,
+    /// <summary />
+    Small,
+    /// <summary />
+    Medium,
+    /// <summary />
+    Large,
+    /// <summary />
+    ExtraLarge
 }

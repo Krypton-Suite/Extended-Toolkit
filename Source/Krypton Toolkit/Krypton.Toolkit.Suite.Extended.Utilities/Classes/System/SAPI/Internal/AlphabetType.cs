@@ -26,12 +26,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+
+internal enum AlphabetType
 {
-    internal enum AlphabetType
-    {
-        Sapi,
-        Ipa,
-        Ups
-    }
+    Sapi,
+    Ipa,
+    Ups
 }

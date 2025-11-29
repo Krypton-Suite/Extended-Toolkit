@@ -63,55 +63,54 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView
+namespace Krypton.Toolkit.Suite.Extended.AdvancedDataGridView;
+
+/// <summary>
+/// Available translation keys
+/// </summary>
+public enum TranslationKey
 {
-    /// <summary>
-    /// Available translation keys
-    /// </summary>
-    public enum TranslationKey
-    {
-        KryptonAdvancedDataGridViewSortDateTimeAscending,
-        KryptonAdvancedDataGridViewSortDateTimeDescending,
-        KryptonAdvancedDataGridViewSortBoolAscending,
-        KryptonAdvancedDataGridViewSortBoolDescending,
-        KryptonAdvancedDataGridViewSortNumAscending,
-        KryptonAdvancedDataGridViewSortNumDescending,
-        KryptonAdvancedDataGridViewSortTextAscending,
-        KryptonAdvancedDataGridViewSortTextDescending,
-        KryptonAdvancedDataGridViewAddCustomFilter,
-        KryptonAdvancedDataGridViewCustomFilter,
-        KryptonAdvancedDataGridViewClearFilter,
-        KryptonAdvancedDataGridViewClearSort,
-        KryptonAdvancedDataGridViewButtonFilter,
-        KryptonAdvancedDataGridViewButtonUndoFilter,
-        KryptonAdvancedDataGridViewNodeSelectAll,
-        KryptonAdvancedDataGridViewNodeSelectEmpty,
-        KryptonAdvancedDataGridViewNodeSelectTrue,
-        KryptonAdvancedDataGridViewNodeSelectFalse,
-        KryptonAdvancedDataGridViewFilterChecklistDisable,
-        KryptonAdvancedDataGridViewEquals,
-        KryptonAdvancedDataGridViewDoesNotEqual,
-        KryptonAdvancedDataGridViewEarlierThan,
-        KryptonAdvancedDataGridViewEarlierThanOrEqualTo,
-        KryptonAdvancedDataGridViewLaterThan,
-        KryptonAdvancedDataGridViewLaterThanOrEqualTo,
-        KryptonAdvancedDataGridViewBetween,
-        KryptonAdvancedDataGridViewGreaterThan,
-        KryptonAdvancedDataGridViewGreaterThanOrEqualTo,
-        KryptonAdvancedDataGridViewLessThan,
-        KryptonAdvancedDataGridViewLessThanOrEqualTo,
-        KryptonAdvancedDataGridViewBeginsWith,
-        KryptonAdvancedDataGridViewDoesNotBeginWith,
-        KryptonAdvancedDataGridViewEndsWith,
-        KryptonAdvancedDataGridViewDoesNotEndWith,
-        KryptonAdvancedDataGridViewContains,
-        KryptonAdvancedDataGridViewDoesNotContain,
-        KryptonAdvancedDataGridViewInvalidValue,
-        KryptonAdvancedDataGridViewFilterStringDescription,
-        KryptonAdvancedDataGridViewFormTitle,
-        KryptonAdvancedDataGridViewLabelColumnNameText,
-        KryptonAdvancedDataGridViewLabelAnd,
-        KryptonAdvancedDataGridViewButtonOk,
-        KryptonAdvancedDataGridViewButtonCancel
-    }
+    KryptonAdvancedDataGridViewSortDateTimeAscending,
+    KryptonAdvancedDataGridViewSortDateTimeDescending,
+    KryptonAdvancedDataGridViewSortBoolAscending,
+    KryptonAdvancedDataGridViewSortBoolDescending,
+    KryptonAdvancedDataGridViewSortNumAscending,
+    KryptonAdvancedDataGridViewSortNumDescending,
+    KryptonAdvancedDataGridViewSortTextAscending,
+    KryptonAdvancedDataGridViewSortTextDescending,
+    KryptonAdvancedDataGridViewAddCustomFilter,
+    KryptonAdvancedDataGridViewCustomFilter,
+    KryptonAdvancedDataGridViewClearFilter,
+    KryptonAdvancedDataGridViewClearSort,
+    KryptonAdvancedDataGridViewButtonFilter,
+    KryptonAdvancedDataGridViewButtonUndoFilter,
+    KryptonAdvancedDataGridViewNodeSelectAll,
+    KryptonAdvancedDataGridViewNodeSelectEmpty,
+    KryptonAdvancedDataGridViewNodeSelectTrue,
+    KryptonAdvancedDataGridViewNodeSelectFalse,
+    KryptonAdvancedDataGridViewFilterChecklistDisable,
+    KryptonAdvancedDataGridViewEquals,
+    KryptonAdvancedDataGridViewDoesNotEqual,
+    KryptonAdvancedDataGridViewEarlierThan,
+    KryptonAdvancedDataGridViewEarlierThanOrEqualTo,
+    KryptonAdvancedDataGridViewLaterThan,
+    KryptonAdvancedDataGridViewLaterThanOrEqualTo,
+    KryptonAdvancedDataGridViewBetween,
+    KryptonAdvancedDataGridViewGreaterThan,
+    KryptonAdvancedDataGridViewGreaterThanOrEqualTo,
+    KryptonAdvancedDataGridViewLessThan,
+    KryptonAdvancedDataGridViewLessThanOrEqualTo,
+    KryptonAdvancedDataGridViewBeginsWith,
+    KryptonAdvancedDataGridViewDoesNotBeginWith,
+    KryptonAdvancedDataGridViewEndsWith,
+    KryptonAdvancedDataGridViewDoesNotEndWith,
+    KryptonAdvancedDataGridViewContains,
+    KryptonAdvancedDataGridViewDoesNotContain,
+    KryptonAdvancedDataGridViewInvalidValue,
+    KryptonAdvancedDataGridViewFilterStringDescription,
+    KryptonAdvancedDataGridViewFormTitle,
+    KryptonAdvancedDataGridViewLabelColumnNameText,
+    KryptonAdvancedDataGridViewLabelAnd,
+    KryptonAdvancedDataGridViewButtonOk,
+    KryptonAdvancedDataGridViewButtonCancel
 }

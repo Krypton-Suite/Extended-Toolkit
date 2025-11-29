@@ -4,28 +4,27 @@
  * https://github.com/xgfs/coloropt
  */
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot;
+
+public class Tsitsulin : IPalette
 {
-    public class Tsitsulin : IPalette
-    {
-        public string Name { get; } = "Xgfs 25";
+    public string Name { get; } = "Xgfs 25";
 
-        public string Description { get; } = "A 25-color palette by Arthurits " +
-                                             "adapted from Tsitsulin's 12-color xgfs palette: http://tsitsul.in/blog/coloropt";
+    public string Description { get; } = "A 25-color palette by Arthurits " +
+                                         "adapted from Tsitsulin's 12-color xgfs palette: http://tsitsul.in/blog/coloropt";
 
-        public Color[] Colors { get; } = Color.FromHex(_hexColors);
+    public Color[] Colors { get; } = Color.FromHex(_hexColors);
 
-        private static readonly string[] _hexColors =
-        [
-            "#ebac23", "#b80058", "#008cf9", "#006e00", "#00bbad",
-            "#d163e6", "#b24502", "#ff9287", "#5954d6", "#00c6f8",
-            "#878500", "#00a76c",
-            "#f6da9c", "#ff5caa", "#8accff", "#4bff4b", "#6efff4",
-            "#edc1f5", "#feae7c", "#ffc8c3", "#bdbbef", "#bdf2ff",
-            "#fffc43", "#65ffc8",
-            "#aaaaaa"
-        ];
+    private static readonly string[] _hexColors =
+    [
+        "#ebac23", "#b80058", "#008cf9", "#006e00", "#00bbad",
+        "#d163e6", "#b24502", "#ff9287", "#5954d6", "#00c6f8",
+        "#878500", "#00a76c",
+        "#f6da9c", "#ff5caa", "#8accff", "#4bff4b", "#6efff4",
+        "#edc1f5", "#feae7c", "#ffc8c3", "#bdbbef", "#bdf2ff",
+        "#fffc43", "#65ffc8",
+        "#aaaaaa"
+    ];
 
-        public Color GetColor(int index) => Colors[index % Colors.Length];
-    }
+    public Color GetColor(int index) => Colors[index % Colors.Length];
 }

@@ -25,183 +25,184 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+[ToolboxItem(true)]
+public class LightnessColourSliderControl : ColourSliderControl, IColourEditor
 {
-    [ToolboxItem(true)]
-    public class LightnessColourSliderControl : ColourSliderControl, IColourEditor
+    #region Constants
+
+    private static readonly object _eventColourChanged = new object();
+
+    #endregion
+
+    #region Fields
+
+    private Color _colour;
+
+    #endregion
+
+    #region Constructors
+
+    public LightnessColourSliderControl()
     {
-        #region Constants
+        this.BarStyle = ColourBarStyle.TwoColour;
+        this.Colour = Color.Black;
+        BackColor = Color.Transparent;
+    }
 
-        private static readonly object _eventColourChanged = new object();
+    #endregion
 
-        #endregion
+    #region Properties
 
-        #region Fields
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override ColourBarStyle BarStyle
+    {
+        get => base.BarStyle;
+        set => base.BarStyle = value;
+    }
 
-        private Color _colour;
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour1
+    {
+        get => base.Colour1;
+        set => base.Colour1 = value;
+    }
 
-        #endregion
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour2
+    {
+        get => base.Colour2;
+        set => base.Colour2 = value;
+    }
 
-        #region Constructors
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override Color Colour3
+    {
+        get => base.Colour3;
+        set => base.Colour3 = value;
+    }
 
-        public LightnessColourSliderControl()
-        {
-            this.BarStyle = ColourBarStyle.TwoColour;
-            this.Colour = Color.Black;
-            BackColor = Color.Transparent;
-        }
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Maximum
+    {
+        get => base.Maximum;
+        set => base.Maximum = value;
+    }
 
-        #endregion
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Minimum
+    {
+        get => base.Minimum;
+        set => base.Minimum = value;
+    }
 
-        #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override float Value
+    {
+        get => base.Value;
+        set => base.Value = (int)value;
+    }
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override ColourBarStyle BarStyle
-        {
-            get => base.BarStyle;
-            set => base.BarStyle = value;
-        }
+    /// <summary>
+    /// Gets or sets a value indicating whether input changes should be processed.
+    /// </summary>
+    /// <value><c>true</c> if input changes should be processed; otherwise, <c>false</c>.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
+    protected bool LockUpdates { get; set; }
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour1
-        {
-            get => base.Colour1;
-            set => base.Colour1 = value;
-        }
+    #endregion
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour2
-        {
-            get => base.Colour2;
-            set => base.Colour2 = value;
-        }
+    #region Methods
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override Color Colour3
-        {
-            get => base.Colour3;
-            set => base.Colour3 = value;
-        }
+    protected virtual void CreateScale()
+    {
+        HSLColour color;
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Maximum
-        {
-            get => base.Maximum;
-            set => base.Maximum = value;
-        }
+        color = new HSLColour(this.Colour);
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override float Minimum
-        {
-            get => base.Minimum;
-            set => base.Minimum = value;
-        }
+        color.L = 0;
+        this.Colour1 = color.ToRgbColour();
 
-        public override float Value
-        {
-            get => base.Value;
-            set => base.Value = (int)value;
-        }
+        color.L = 1;
+        this.Colour2 = color.ToRgbColour();
+    }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether input changes should be processed.
-        /// </summary>
-        /// <value><c>true</c> if input changes should be processed; otherwise, <c>false</c>.</value>
-        protected bool LockUpdates { get; set; }
+    /// <summary>
+    /// Raises the <see cref="ColourChanged" /> event.
+    /// </summary>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+    protected virtual void OnColorChanged(EventArgs e)
+    {
+        EventHandler handler;
 
-        #endregion
+        this.CreateScale();
+        this.Invalidate();
 
-        #region Methods
+        handler = (EventHandler)this.Events[_eventColourChanged];
 
-        protected virtual void CreateScale()
+        handler?.Invoke(this, e);
+    }
+
+    /// <summary>
+    /// Raises the <see cref="ColorSlider.ValueChanged" /> event.
+    /// </summary>
+    /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+    protected override void OnValueChanged(EventArgs e)
+    {
+        if (!this.LockUpdates)
         {
             HSLColour color;
 
+            this.LockUpdates = true;
             color = new HSLColour(this.Colour);
-
-            color.L = 0;
-            this.Colour1 = color.ToRgbColour();
-
-            color.L = 1;
-            this.Colour2 = color.ToRgbColour();
+            color.L = this.Value / 100D;
+            _colour = color.ToRgbColour();
+            this.OnColorChanged(e);
+            this.LockUpdates = false;
         }
 
-        /// <summary>
-        /// Raises the <see cref="ColourChanged" /> event.
-        /// </summary>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColorChanged(EventArgs e)
+        base.OnValueChanged(e);
+    }
+
+    #endregion
+
+    #region IColorEditor Interface
+
+    [Category("Property Changed")]
+    public event EventHandler ColourChanged
+    {
+        add => this.Events.AddHandler(_eventColourChanged, value);
+        remove => this.Events.RemoveHandler(_eventColourChanged, value);
+    }
+
+    [Category("Appearance")]
+    [DefaultValue(typeof(Color), "Black")]
+    public virtual Color Colour
+    {
+        get => _colour;
+        set
         {
-            EventHandler handler;
-
-            this.CreateScale();
-            this.Invalidate();
-
-            handler = (EventHandler)this.Events[_eventColourChanged];
-
-            handler?.Invoke(this, e);
-        }
-
-        /// <summary>
-        /// Raises the <see cref="ColorSlider.ValueChanged" /> event.
-        /// </summary>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected override void OnValueChanged(EventArgs e)
-        {
-            if (!this.LockUpdates)
+            if (this.Colour != value)
             {
-                HSLColour color;
+                _colour = value;
 
-                this.LockUpdates = true;
-                color = new HSLColour(this.Colour);
-                color.L = this.Value / 100D;
-                _colour = color.ToRgbColour();
-                this.OnColorChanged(e);
-                this.LockUpdates = false;
-            }
-
-            base.OnValueChanged(e);
-        }
-
-        #endregion
-
-        #region IColorEditor Interface
-
-        [Category("Property Changed")]
-        public event EventHandler ColourChanged
-        {
-            add => this.Events.AddHandler(_eventColourChanged, value);
-            remove => this.Events.RemoveHandler(_eventColourChanged, value);
-        }
-
-        [Category("Appearance")]
-        [DefaultValue(typeof(Color), "Black")]
-        public virtual Color Colour
-        {
-            get => _colour;
-            set
-            {
-                if (this.Colour != value)
+                if (!this.LockUpdates)
                 {
-                    _colour = value;
-
-                    if (!this.LockUpdates)
-                    {
-                        this.LockUpdates = true;
-                        this.Value = (float)new HSLColour(value).L * 100;
-                        this.OnColorChanged(EventArgs.Empty);
-                        this.LockUpdates = false;
-                    }
+                    this.LockUpdates = true;
+                    this.Value = (float)new HSLColour(value).L * 100;
+                    this.OnColorChanged(EventArgs.Empty);
+                    this.LockUpdates = false;
                 }
             }
         }
-
-        #endregion
     }
+
+    #endregion
 }

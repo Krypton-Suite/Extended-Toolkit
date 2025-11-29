@@ -25,22 +25,21 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
+namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView;
+
+[TypeConverter(typeof(ExpandableObjectConverter))]
+public class VirtualTreeHeader
 {
-    [TypeConverter(typeof(ExpandableObjectConverter))]
-    public class VirtualTreeHeader
-    {
-        [Category("Behavior")]
-        [DefaultValue(true)]
-        public bool Visible { get; set; } = true;
+    [Category("Behavior")]
+    [DefaultValue(true)]
+    public bool Visible { get; set; } = true;
 
-        [Category("Behavior")]
-        [DefaultValue(20)]
-        [Description(@"Will be equivalent to the RowHeight")]
-        public int MinHeight { get; set; } = 20;
+    [Category("Behavior")]
+    [DefaultValue(20)]
+    [Description(@"Will be equivalent to the RowHeight")]
+    public int MinHeight { get; set; } = 20;
 
-        [Category("Behavior")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<VirtualTreeColumn> Columns { get; set; } = new();
-    }
+    [Category("Behavior")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public List<VirtualTreeColumn> Columns { get; set; } = [];
 }

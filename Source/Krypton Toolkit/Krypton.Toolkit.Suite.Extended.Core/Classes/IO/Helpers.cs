@@ -28,24 +28,24 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core;
+
+public class Helpers
 {
-    public class Helpers
+    #region Arrays
+    public string[] DriveLetters = [@"A:\\", @"B:\\", @"C:\\", @"D:\\", @"E:\\", @"F:\\", @"G:\\", @"H:\\", @"I:\\", @"J:\\", @"K:\\", @"L:\\", @"M:\\", @"N:\\", @"O:\\", @"P:\\", @":\\"
+    ];
+    #endregion
+
+    #region Methods
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static string GetCurrentMethod()
     {
-        #region Arrays
-        public string[] DriveLetters = new string[] { @"A:\\", @"B:\\", @"C:\\", @"D:\\", @"E:\\", @"F:\\", @"G:\\", @"H:\\", @"I:\\", @"J:\\", @"K:\\", @"L:\\", @"M:\\", @"N:\\", @"O:\\", @"P:\\", @":\\" };
-        #endregion
+        var stackTrace = new StackTrace();
 
-        #region Methods
-        [MethodImpl(MethodImplOptions.NoInlining)]
-        public static string GetCurrentMethod()
-        {
-            var stackTrace = new StackTrace();
+        var stackFrame = stackTrace.GetFrame(1);
 
-            var stackFrame = stackTrace.GetFrame(1);
-
-            return stackFrame.GetMethod().Name;
-        }
-        #endregion
+        return stackFrame.GetMethod().Name;
     }
+    #endregion
 }

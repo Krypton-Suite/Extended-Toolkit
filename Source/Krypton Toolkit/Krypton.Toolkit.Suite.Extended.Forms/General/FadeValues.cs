@@ -25,86 +25,85 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Forms
+namespace Krypton.Toolkit.Suite.Extended.Forms;
+
+[ToolboxItem(false), DesignerCategory(@"code")]
+public class FadeValues : Storage
 {
-    [ToolboxItem(false), DesignerCategory(@"code")]
-    public class FadeValues : Storage
+    #region Instance Variables
+
+    private bool _useFade;
+
+    private FadeController? _fadeController;
+
+    private int _fadeInterval;
+
+    private KryptonFormExtended _currentWindow;
+
+    private KryptonFormExtended _nextWindow;
+
+    private VisualForm _currentVirtualWindow;
+
+    private VisualForm _nextVirtualWindow;
+
+    #endregion
+
+    #region Public
+
+    [DefaultValue(false)]
+    public bool UseFade { get => _useFade; set => _useFade = value; }
+
+    internal FadeController? FadeController => _fadeController;
+
+    [DefaultValue(50)]
+    public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
+
+    [DefaultValue(null)]
+    public KryptonFormExtended? CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
+
+    [DefaultValue(null)]
+    public KryptonFormExtended? NextWindow { get => _nextWindow; set => _nextWindow = value; }
+
+    [DefaultValue(null)]
+    public VisualForm? CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
+
+    [DefaultValue(null)]
+    public VisualForm? NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
+
+    #endregion
+
+    #region Identity
+
+    public FadeValues() => Reset();
+
+    internal void Reset()
     {
-        #region Instance Variables
+        UseFade = false;
 
-        private bool _useFade;
+        FadeInterval = 50;
 
-        private FadeController? _fadeController;
+        CurrentWindow = null;
 
-        private int _fadeInterval;
+        NextWindow = null;
 
-        private KryptonFormExtended _currentWindow;
+        CurrentVirtualWindow = null;
 
-        private KryptonFormExtended _nextWindow;
+        NextVirtualWindow = null;
 
-        private VisualForm _currentVirtualWindow;
-
-        private VisualForm _nextVirtualWindow;
-
-        #endregion
-
-        #region Public
-
-        [DefaultValue(false)]
-        public bool UseFade { get => _useFade; set => _useFade = value; }
-
-        internal FadeController? FadeController => _fadeController;
-
-        [DefaultValue(50)]
-        public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
-
-        [DefaultValue(null)]
-        public KryptonFormExtended? CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
-
-        [DefaultValue(null)]
-        public KryptonFormExtended? NextWindow { get => _nextWindow; set => _nextWindow = value; }
-
-        [DefaultValue(null)]
-        public VisualForm? CurrentVirtualWindow { get => _currentVirtualWindow; set => _currentVirtualWindow = value; }
-
-        [DefaultValue(null)]
-        public VisualForm? NextVirtualWindow { get => _nextVirtualWindow; set => _nextVirtualWindow = value; }
-
-        #endregion
-
-        #region Identity
-
-        public FadeValues() => Reset();
-
-        internal void Reset()
-        {
-            UseFade = false;
-
-            FadeInterval = 50;
-
-            CurrentWindow = null;
-
-            NextWindow = null;
-
-            CurrentVirtualWindow = null;
-
-            NextVirtualWindow = null;
-
-            _fadeController = null;
-        }
-
-        #endregion
-
-        #region Default Instance
-
-        [Browsable(false)]
-        public override bool IsDefault => UseFade == false &&
-                                          FadeInterval.Equals(50) &&
-                                          CurrentWindow!.Equals(null) &&
-                                          NextWindow!.Equals(null) &&
-                                          CurrentVirtualWindow!.Equals(null) &&
-                                          NextVirtualWindow!.Equals(null);
-
-        #endregion
+        _fadeController = null;
     }
+
+    #endregion
+
+    #region Default Instance
+
+    [Browsable(false)]
+    public override bool IsDefault => UseFade == false &&
+                                      FadeInterval.Equals(50) &&
+                                      CurrentWindow!.Equals(null) &&
+                                      NextWindow!.Equals(null) &&
+                                      CurrentVirtualWindow!.Equals(null) &&
+                                      NextVirtualWindow!.Equals(null);
+
+    #endregion
 }

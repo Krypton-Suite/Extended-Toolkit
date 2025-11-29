@@ -25,21 +25,20 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Calendar;
+
+/// <summary>
+/// Enumerates the possible modes of the days visualization on the <see cref="KryptonCalendar"/>
+/// </summary>
+public enum CalendarDaysMode
 {
     /// <summary>
-    /// Enumerates the possible modes of the days visualization on the <see cref="KryptonCalendar"/>
+    /// A short version of the day is visible without time scale.
     /// </summary>
-    public enum CalendarDaysMode
-    {
-        /// <summary>
-        /// A short version of the day is visible without time scale.
-        /// </summary>
-        Short,
+    Short,
 
-        /// <summary>
-        /// The day is fully visible with time scale.
-        /// </summary>
-        Expanded
-    }
+    /// <summary>
+    /// The day is fully visible with time scale.
+    /// </summary>
+    Expanded
 }

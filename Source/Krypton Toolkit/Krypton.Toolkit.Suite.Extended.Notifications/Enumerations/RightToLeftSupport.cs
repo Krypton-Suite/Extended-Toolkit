@@ -25,14 +25,13 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Notifications
+namespace Krypton.Toolkit.Suite.Extended.Notifications;
+
+/// <summary>The layout of the UI elements on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
+public enum RightToLeftSupport
 {
-    /// <summary>The layout of the UI elements on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
-    public enum RightToLeftSupport
-    {
-        /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for left-to-right.</summary>
-        LeftToRight,
-        /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for right-to-left.</summary>
-        RightToLeft
-    }
+    /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for left-to-right.</summary>
+    LeftToRight,
+    /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for right-to-left.</summary>
+    RightToLeft
 }
