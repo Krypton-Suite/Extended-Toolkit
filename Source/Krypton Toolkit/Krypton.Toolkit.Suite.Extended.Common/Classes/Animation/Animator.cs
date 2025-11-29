@@ -36,9 +36,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common;
 public class Animator : IAnimator
 {
 
-    private readonly List<AnimationPath> _paths = [];
+    private readonly List<AnimationPath>? _paths = [];
 
-    private readonly List<AnimationPath> _tempPaths = [];
+    private readonly List<AnimationPath>? _tempPaths = [];
 
     private readonly AnimationTimer _timer;
 
@@ -57,7 +57,7 @@ public class Animator : IAnimator
     /// <summary>
     ///     The target object to change the property of
     /// </summary>
-    protected object TargetObject;
+    protected object? TargetObject;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="Animator" /> class.
@@ -135,13 +135,13 @@ public class Animator : IAnimator
     /// <exception cref="InvalidOperationException">Animation is running</exception>
     public AnimationPath[] Paths
     {
-        get => _paths.ToArray();
+        get => _paths?.ToArray()!;
         set
         {
             if (CurrentStatus == AnimatorStatus.Stopped)
             {
-                _paths.Clear();
-                _paths.AddRange(value);
+                _paths?.Clear();
+                _paths?.AddRange(value);
             }
             else
             {
@@ -153,7 +153,7 @@ public class Animator : IAnimator
     /// <summary>
     ///     Gets the currently active path.
     /// </summary>
-    public AnimationPath ActivePath { get; private set; }
+    public AnimationPath? ActivePath { get; private set; }
 
     /// <summary>
     ///     Gets or sets a value indicating whether animator should repeat the animation after its ending
@@ -304,10 +304,14 @@ public class Animator : IAnimator
     public virtual void Stop()
     {
         _timer.Stop();
-        lock (_tempPaths)
+        if (_tempPaths != null)
         {
-            _tempPaths.Clear();
+            lock (_tempPaths)
+            {
+                _tempPaths.Clear();
+            }
         }
+
         ActivePath = null;
         CurrentStatus = AnimatorStatus.Stopped;
         _tempReverseRepeat = false;
@@ -353,7 +357,7 @@ public class Animator : IAnimator
     /// </param>
     public virtual void Play(SafeInvoker<float> frameCallback)
     {
-        Play(frameCallback, (SafeInvoker<float>)null);
+        Play(frameCallback, null as SafeInvoker<float>);
     }
 
 
@@ -372,10 +376,17 @@ public class Animator : IAnimator
         FrameCallback = frameCallback;
         EndCallback = endCallback;
         _timer.ResetClock();
-        lock (_tempPaths)
+        if (_tempPaths != null)
         {
-            _tempPaths.AddRange(_paths);
+            lock (_tempPaths)
+            {
+                if (_paths != null)
+                {
+                    _tempPaths.AddRange(_paths);
+                }
+            }
         }
+
         _timer.Start();
     }
 
@@ -383,83 +394,119 @@ public class Animator : IAnimator
     {
         while (true)
         {
-            lock (_tempPaths)
-            {
-                if (_tempPaths != null && ActivePath == null && _tempPaths.Count > 0)
-                {
-                    while (ActivePath == null)
-                    {
-                        if (_tempReverseRepeat)
-                        {
-                            ActivePath = _tempPaths.LastOrDefault();
-                            _tempPaths.RemoveAt(_tempPaths.Count - 1);
-                        }
-                        else
-                        {
-                            ActivePath = _tempPaths.FirstOrDefault();
-                            _tempPaths.RemoveAt(0);
-                        }
-                        _timer.ResetClock();
-                        millSinceBeginning = 0;
-                    }
-                }
-                var ended = ActivePath == null;
-                if (ActivePath != null)
-                {
-                    if (!_tempReverseRepeat && millSinceBeginning < ActivePath.Delay)
-                    {
-                        CurrentStatus = AnimatorStatus.OnHold;
-                        return;
-                    }
-                    if (millSinceBeginning - (!_tempReverseRepeat ? ActivePath.Delay : 0) <= ActivePath.Duration)
-                    {
-                        if (CurrentStatus != AnimatorStatus.Playing)
-                        {
-                            CurrentStatus = AnimatorStatus.Playing;
-                        }
-                        var value = ActivePath.Function(_tempReverseRepeat ? ActivePath.Duration - millSinceBeginning : millSinceBeginning - ActivePath.Delay, ActivePath.Start, ActivePath.Change, ActivePath.Duration);
-                        FrameCallback.Invoke(value);
-                        return;
-                    }
-                    if (CurrentStatus == AnimatorStatus.Playing)
-                    {
-                        if (_tempPaths.Count == 0)
-                        {
-                            // For the last path, we make sure that control is in end point
-                            FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
-                            ended = true;
-                        }
-                        else
-                        {
-                            if ((_tempReverseRepeat && ActivePath.Delay > 0) || !_tempReverseRepeat && _tempPaths.FirstOrDefault()?.Delay > 0)
-                            {
-                                // Or if the next path or this one in revese order has a delay
-                                FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
-                            }
-                        }
-                    }
-                    if (_tempReverseRepeat && millSinceBeginning - ActivePath.Duration < ActivePath.Delay)
-                    {
-                        CurrentStatus = AnimatorStatus.OnHold;
-                        return;
-                    }
-                    ActivePath = null;
-                }
-                if (!ended)
-                {
-                    return;
-                }
-            }
-            if (Repeat)
+            if (_tempPaths != null)
             {
                 lock (_tempPaths)
                 {
-                    _tempPaths.AddRange(_paths);
-                    _tempReverseRepeat = ReverseRepeat && !_tempReverseRepeat;
+                    if (_tempPaths != null && ActivePath == null && _tempPaths.Count > 0)
+                    {
+                        while (ActivePath == null)
+                        {
+                            if (_tempReverseRepeat)
+                            {
+                                ActivePath = _tempPaths.LastOrDefault();
+                                _tempPaths.RemoveAt(_tempPaths.Count - 1);
+                            }
+                            else
+                            {
+                                ActivePath = _tempPaths.FirstOrDefault();
+                                _tempPaths.RemoveAt(0);
+                            }
+
+                            _timer.ResetClock();
+                            millSinceBeginning = 0;
+                        }
+                    }
+
+                    var ended = ActivePath == null;
+                    if (ActivePath != null)
+                    {
+                        if (!_tempReverseRepeat && millSinceBeginning < ActivePath.Delay)
+                        {
+                            CurrentStatus = AnimatorStatus.OnHold;
+                            return;
+                        }
+
+                        if (millSinceBeginning - (!_tempReverseRepeat ? ActivePath.Delay : 0) <= ActivePath.Duration)
+                        {
+                            if (CurrentStatus != AnimatorStatus.Playing)
+                            {
+                                CurrentStatus = AnimatorStatus.Playing;
+                            }
+
+                            var value = ActivePath.Function(
+                                _tempReverseRepeat
+                                    ? ActivePath.Duration - millSinceBeginning
+                                    : millSinceBeginning - ActivePath.Delay, ActivePath.Start, ActivePath.Change,
+                                ActivePath.Duration);
+                            FrameCallback.Invoke(value);
+                            return;
+                        }
+
+                        if (CurrentStatus == AnimatorStatus.Playing)
+                        {
+                            if (!(_tempPaths == null || _tempPaths.Count != 0))
+                            {
+                                // For the last path, we make sure that control is in end point
+                                FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
+                                ended = true;
+                            }
+                            else
+                            {
+                                AnimationPath? first = null;
+                                if (_tempPaths != null)
+                                {
+                                    foreach (var path in _tempPaths)
+                                    {
+                                        first = path;
+                                        break;
+                                    }
+                                }
+
+                                if ((_tempReverseRepeat && ActivePath.Delay > 0) ||
+                                    !_tempReverseRepeat && first?.Delay > 0)
+                                {
+                                    // Or if the next path or this one in revese order has a delay
+                                    FrameCallback.Invoke(_tempReverseRepeat ? ActivePath.Start : ActivePath.End);
+                                }
+                            }
+                        }
+
+                        if (_tempReverseRepeat && millSinceBeginning - ActivePath.Duration < ActivePath.Delay)
+                        {
+                            CurrentStatus = AnimatorStatus.OnHold;
+                            return;
+                        }
+
+                        ActivePath = null;
+                    }
+
+                    if (!ended)
+                    {
+                        return;
+                    }
                 }
-                millSinceBeginning = 0;
-                continue;
+
+                if (Repeat)
+                {
+                    if (_tempPaths != null)
+                    {
+                        lock (_tempPaths)
+                        {
+                            if (_paths != null)
+                            {
+                                _tempPaths.AddRange(_paths);
+                            }
+
+                            _tempReverseRepeat = ReverseRepeat && !_tempReverseRepeat;
+                        }
+                    }
+
+                    millSinceBeginning = 0;
+                    continue;
+                }
             }
+
             Stop();
             EndCallback?.Invoke();
             break;

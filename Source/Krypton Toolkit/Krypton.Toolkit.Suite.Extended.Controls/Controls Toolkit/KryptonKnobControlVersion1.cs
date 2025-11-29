@@ -60,7 +60,7 @@ public class KryptonKnobControlVersion1 : UserControl
     //private IDisposable m_mementoBack1;
     //private IDisposable m_mementoBack2;
 
-    private PaletteBase _palette;
+    private PaletteBase? _palette;
     private PaletteRedirect _paletteRedirect;
 
     // declare Off screen image and Offscreen graphics
@@ -713,7 +713,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     #region " Krypton "
     //Krypton Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         base.Invalidate();
     }

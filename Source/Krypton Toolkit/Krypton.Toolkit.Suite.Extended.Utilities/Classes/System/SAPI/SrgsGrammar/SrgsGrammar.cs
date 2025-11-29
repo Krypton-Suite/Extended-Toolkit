@@ -33,7 +33,7 @@ internal sealed class SrgsGrammar : IGrammar, IElement
 {
     private bool _isSapiExtensionUsed;
 
-    private Uri _xmlBase;
+    private Uri? _xmlBase;
 
     private CultureInfo _culture = CultureInfo.CurrentUICulture;
 
@@ -45,7 +45,7 @@ internal sealed class SrgsGrammar : IGrammar, IElement
 
     private bool _hasPronunciation;
 
-    private SrgsRule _root;
+    private SrgsRule? _root;
 
     private SrgsTagFormat _tagFormat;
 
@@ -55,15 +55,15 @@ internal sealed class SrgsGrammar : IGrammar, IElement
 
     private SrgsRulesCollection _rules;
 
-    private string _sRoot;
+    private string? _sRoot;
 
     internal bool _fContainsCode;
 
-    private string _language;
+    private string? _language;
 
     private Collection<string> _codebehind = [];
 
-    private string _namespace;
+    private string? _namespace;
 
     internal bool _fDebug;
 
@@ -75,13 +75,13 @@ internal sealed class SrgsGrammar : IGrammar, IElement
 
     private Collection<string> _assemblyReferences = [];
 
-    string IGrammar.Root
+    string? IGrammar.Root
     {
         get => _sRoot;
         set => _sRoot = value;
     }
 
-    public Uri XmlBase
+    public Uri? XmlBase
     {
         get => _xmlBase;
         set => _xmlBase = value;
@@ -120,7 +120,7 @@ internal sealed class SrgsGrammar : IGrammar, IElement
         set => _phoneticAlphabet = (SrgsPhoneticAlphabet)value;
     }
 
-    public SrgsRule Root
+    public SrgsRule? Root
     {
         get => _root;
         set => _root = value;
@@ -138,13 +138,13 @@ internal sealed class SrgsGrammar : IGrammar, IElement
         set => _globalTags = value;
     }
 
-    public string Language
+    public string? Language
     {
         get => _language;
         set => _language = value;
     }
 
-    public string Namespace
+    public string? Namespace
     {
         get => _namespace;
         set => _namespace = value;
@@ -229,7 +229,7 @@ internal sealed class SrgsGrammar : IGrammar, IElement
                     break;
             }
         }
-        string text = null;
+        string? text = null;
         switch (_tagFormat)
         {
             case SrgsTagFormat.MssV1:
@@ -354,7 +354,7 @@ internal sealed class SrgsGrammar : IGrammar, IElement
         Validate();
     }
 
-    internal void AddScript(string rule, string code)
+    internal void AddScript(string? rule, string code)
     {
         if (rule == null)
         {

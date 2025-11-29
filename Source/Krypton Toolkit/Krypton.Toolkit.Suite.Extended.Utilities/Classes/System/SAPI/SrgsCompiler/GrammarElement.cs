@@ -42,13 +42,13 @@ internal class GrammarElement : ParseElement, IGrammar, IElement
 
     private bool _hasRoot;
 
-    string IGrammar.Root
+    string? IGrammar.Root
     {
         get => _sRoot;
         set => _sRoot = value;
     }
 
-    Uri IGrammar.XmlBase
+    Uri? IGrammar.XmlBase
     {
         set
         {
@@ -94,13 +94,13 @@ internal class GrammarElement : ParseElement, IGrammar, IElement
 
     internal Backend Backend => _backend;
 
-    string IGrammar.Language
+    string? IGrammar.Language
     {
         get => _cg._language;
         set => _cg._language = value;
     }
 
-    string IGrammar.Namespace
+    string? IGrammar.Namespace
     {
         get => _cg._namespace;
         set => _cg._namespace = value;

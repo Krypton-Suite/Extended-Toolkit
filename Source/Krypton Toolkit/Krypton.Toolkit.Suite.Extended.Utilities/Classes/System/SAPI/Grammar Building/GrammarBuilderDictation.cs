@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
 
 internal sealed class GrammarBuilderDictation : GrammarBuilderBase
 {
-    private readonly string _category;
+    private readonly string? _category;
 
     internal override string DebugSummary
     {
@@ -46,14 +46,14 @@ internal sealed class GrammarBuilderDictation : GrammarBuilderBase
     {
     }
 
-    internal GrammarBuilderDictation(string category)
+    internal GrammarBuilderDictation(string? category)
     {
         _category = category;
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        GrammarBuilderDictation grammarBuilderDictation = obj as GrammarBuilderDictation;
+        GrammarBuilderDictation? grammarBuilderDictation = obj as GrammarBuilderDictation;
         if (grammarBuilderDictation == null)
         {
             return false;

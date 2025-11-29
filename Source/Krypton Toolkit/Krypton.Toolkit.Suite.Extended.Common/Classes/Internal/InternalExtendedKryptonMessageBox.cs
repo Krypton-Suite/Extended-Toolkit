@@ -492,8 +492,8 @@ internal class InternalExtendedKryptonMessageBox : KryptonForm
     /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
     /// <param name="topMost">Sets the topmost position.</param>
     /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-    /// <param name="showDoNotShowAgainOption">Enables the UI elements for a "Do not show again" checkbox.</summary>
-    /// <param name="doNotShowAgainOptionText">Specify the text on the "Do not show again" checkbox. (Default is "Do not show again")</summary>
+    /// <param name="showDoNotShowAgainOption">Enables the UI elements for a "Do not show again" checkbox.</param>
+    /// <param name="doNotShowAgainOptionText">Specify the text on the "Do not show again" checkbox. (Default is "Do not show again")</param>
     /// <param name="useTimeOutOption">Use a time out on the messagebox. (Default is set as false)</param>
     /// <param name="timeOut">Specify the time out time. (Default is set at 60 seconds)</param>
     /// <param name="timeOutDelay">Specify the time out delay timer. (Default is 250 milliseconds)</param>

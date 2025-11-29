@@ -138,7 +138,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
     {
         StringBuilder openFilter;
         StringBuilder saveFilter;
-        List<string> openExtensions;
+        List<string?> openExtensions;
 
         openExtensions = [];
         openFilter = new StringBuilder();
@@ -149,7 +149,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
             LoadSerializers();
         }
 
-        foreach (IPaletteSerializer? serializer in _serializerCache.Where(serializer => !(string.IsNullOrEmpty(serializer.DefaultExtension) || openExtensions.Contains(serializer.DefaultExtension))))
+        foreach (IPaletteSerializer? serializer in _serializerCache.Where(serializer => !(string.IsNullOrEmpty(serializer?.DefaultExtension) || openExtensions.Contains(serializer != null ? serializer.DefaultExtension : null))))
         {
             StringBuilder extensionMask;
             string filter;
@@ -158,7 +158,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
 
             foreach (string extension in serializer?.DefaultExtension.Split([
                          ';'
-                     ], StringSplitOptions.RemoveEmptyEntries))
+                     ], StringSplitOptions.RemoveEmptyEntries)!)
             {
                 string mask;
 
@@ -253,7 +253,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
 
         // sort the cache by name, that way the open/save filters won't need independant sorting
         // and can easily map FileDialog.FilterIndex to an item in this collection
-        _serializerCache.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));
+        _serializerCache.Sort((a, b) => string.CompareOrdinal(a?.Name, b?.Name));
     }
 
     #endregion
@@ -490,9 +490,9 @@ public abstract class PaletteSerializer : IPaletteSerializer
 
     #region Other
 
-    private static string _defaultOpenFilter;
+    private static string? _defaultOpenFilter;
 
-    private static string _defaultSaveFileter;
+    private static string? _defaultSaveFileter;
 
     #endregion
 }

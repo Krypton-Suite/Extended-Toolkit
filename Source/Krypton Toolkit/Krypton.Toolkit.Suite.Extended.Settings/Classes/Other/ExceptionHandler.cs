@@ -26,6 +26,8 @@
  */
 #endregion
 
+using System.Globalization;
+
 using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings;
@@ -91,6 +93,7 @@ public class ExceptionHandler
     /// <param name="defaultButton">The default button.</param>
     /// <param name="icon">The icon.</param>
     /// <param name="options">The options.</param>
+    /// <param name="winFormsDefaultButton"></param>
     public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel? toolStripLabel = null, object? args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button4, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxDefaultButton winFormsDefaultButton = MessageBoxDefaultButton.Button3)
     {
         if (useKryptonMessageBox)
@@ -107,7 +110,7 @@ public class ExceptionHandler
         }
         else if (useConsole)
         {
-            Console.WriteLine($"[ {DateTime.Now.ToString()} ]: {exceptionMessage}");
+            Console.WriteLine($@"[ {DateTime.Now.ToString(CultureInfo.InvariantCulture)} ]: {exceptionMessage}");
         }
     }
 

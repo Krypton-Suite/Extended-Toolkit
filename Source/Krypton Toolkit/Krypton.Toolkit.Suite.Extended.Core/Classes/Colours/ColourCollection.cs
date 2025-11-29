@@ -691,7 +691,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="left">A <see cref="ColourCollection"/> to compare.</param>
     /// <param name="right">A <see cref="ColourCollection"/> to compare.</param>
     /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <c>false</c>.</returns>
-    public static bool operator ==(ColourCollection left, ColourCollection right)
+    public static bool operator ==(ColourCollection? left, ColourCollection? right)
     {
         return ReferenceEquals(left, right) || !((object)left == null || (object)right == null) && left.Equals(right);
     }

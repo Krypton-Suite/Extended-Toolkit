@@ -32,7 +32,7 @@ public class SpeechRecognitionEngine : IDisposable
 {
     private bool _disposed;
 
-    private RecognizerBase _recognizerBase;
+    private RecognizerBase? _recognizerBase;
 
     private SapiRecognizer _sapiRecognizer;
 

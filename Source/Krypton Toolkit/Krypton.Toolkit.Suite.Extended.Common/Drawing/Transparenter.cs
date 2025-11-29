@@ -33,6 +33,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common;
 /// </summary>
 public class Transparenter
 {
+    /// <summary>
+    /// Makes the control transparent.
+    /// </summary>
+    /// <param name="control">The control.</param>
+    /// <param name="g">The g.</param>
     public static void MakeTransparent(Control control, Graphics g)
     {
         var parent = control.Parent;
@@ -44,7 +49,7 @@ public class Transparenter
         var bounds = control.Bounds;
         var siblings = parent.Controls;
         int index = siblings.IndexOf(control);
-        Bitmap behind = null;
+        Bitmap? behind = null;
         for (int i = siblings.Count - 1; i > index; i--)
         {
             var c = siblings[i];

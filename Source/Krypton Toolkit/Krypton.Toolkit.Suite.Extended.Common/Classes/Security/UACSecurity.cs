@@ -77,10 +77,11 @@ public static class UACSecurity
 
         try
         {
-            Process p = Process.Start(startInfo);
+            Process.Start(startInfo);
         }
-        catch (System.ComponentModel.Win32Exception ex)
+        catch (Win32Exception ex)
         {
+            KryptonExceptionDialog.Show(ex, null, null);
             return; //If cancelled, do nothing
         }
 

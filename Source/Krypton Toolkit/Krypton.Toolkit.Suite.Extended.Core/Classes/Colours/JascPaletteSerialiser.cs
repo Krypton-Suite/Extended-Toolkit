@@ -150,7 +150,7 @@ public class JascPaletteSerialiser : PaletteSerialiser
     /// </summary>
     /// <param name="stream">The <see cref="Stream" /> used to write the palette.</param>
     /// <param name="palette">The <see cref="ColourCollection" /> to serialize.</param>
-    public override void Serialise(Stream stream, ColourCollection palette)
+    public override void Serialise(Stream? stream, ColourCollection? palette)
     {
         if (stream == null)
         {

@@ -996,7 +996,7 @@ internal static class AudioFormatConverter
         return convertByteShort(data, data.Length);
     }
 
-    internal static byte[] Convert(short[] data, AudioCodec from, AudioCodec to)
+    internal static byte[] Convert(short[]? data, AudioCodec from, AudioCodec to)
     {
         ConvertShortByte convertShortByte = null;
         if (from == AudioCodec.PCM16)

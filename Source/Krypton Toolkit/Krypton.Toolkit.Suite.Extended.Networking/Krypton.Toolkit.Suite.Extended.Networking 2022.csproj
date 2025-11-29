@@ -73,25 +73,25 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
+						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
+						<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
 					</ItemGroup>
 				</When>
 
 				<Otherwise>
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="90.25.2.55" />
+						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
@@ -104,7 +104,7 @@
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="System.DirectoryServices" Version="10.0.0-rc.2.25502.107" />
+		<PackageReference Include="System.DirectoryServices" Version="10.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

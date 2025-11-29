@@ -282,7 +282,7 @@ public class SrgsItem : SrgsElement, IItem, IElement
                 _maxRepeat
             ]));
         }
-        Type right = null;
+        Type? right = null;
         foreach (SrgsElement element in _elements)
         {
             Type type = element.GetType();

@@ -112,7 +112,7 @@ internal class PcmConverter
 
     internal byte[] ConvertSamples(byte[] pvInSamples)
     {
-        short[] data = null;
+        short[]? data = null;
         short[] array = AudioFormatConverter.Convert(pvInSamples, _iInFormatType, AudioCodec.PCM16);
         if (_inWavFormat.nChannels == 2 && _outWavFormat.nChannels == 1)
         {
@@ -262,10 +262,10 @@ internal class PcmConverter
         }
         FindResampleFactors(inHz, outHz);
         int num = _iUpFactor > _iDownFactor ? _iUpFactor : _iDownFactor;
-        _iFilterHalf = (int)((float)(inHz * num) * 0.0005f);
+        _iFilterHalf = (int)(inHz * num * 0.0005f);
         _iFilterLen = 2 * _iFilterHalf + 1;
-        _filterCoeff = WindowedLowPass(0.5f / (float)num, _iUpFactor);
-        _iBuffLen = (int)((float)_iFilterLen / (float)_iUpFactor);
+        _filterCoeff = WindowedLowPass(0.5f / num, _iUpFactor);
+        _iBuffLen = (int)(_iFilterLen / (float)_iUpFactor);
         _leftMemory = new float[_iBuffLen];
         _rightMemory = new float[_iBuffLen];
         _eChunkStatus = Block.First;
@@ -273,15 +273,15 @@ internal class PcmConverter
 
     private float[] WindowedLowPass(float dCutOff, float dGain)
     {
-        float[] array = null;
-        float[] array2 = null;
+        float[]? array = null;
+        float[]? array2 = null;
         array2 = Blackman(_iFilterLen, true);
         array = new float[_iFilterLen];
-        double num = Math.PI * 2.0 * (double)dCutOff;
-        array[_iFilterHalf] = (float)((double)dGain * 2.0 * (double)dCutOff);
+        double num = Math.PI * 2.0 * dCutOff;
+        array[_iFilterHalf] = (float)(dGain * 2.0 * dCutOff);
         for (long num2 = 1L; num2 <= _iFilterHalf; num2++)
         {
-            double num3 = (double)dGain * Math.Sin(num * (double)num2) / (Math.PI * (double)num2) * (double)array2[_iFilterHalf - num2];
+            double num3 = dGain * Math.Sin(num * num2) / (Math.PI * num2) * array2[_iFilterHalf - num2];
             array[_iFilterHalf + num2] = (float)num3;
             array[_iFilterHalf - num2] = (float)num3;
         }
@@ -345,11 +345,11 @@ internal class PcmConverter
                 {
                     if (num5 + j >= 0 && num5 + j < num)
                     {
-                        num4 += (double)(inSamples[num5 + j] * _filterCoeff[_iUpFactor * j - num6]);
+                        num4 += inSamples[num5 + j] * _filterCoeff[_iUpFactor * j - num6];
                     }
                     else if (num5 + j < 0)
                     {
-                        num4 += (double)(pdMemory[_iBuffLen + num5 + j] * _filterCoeff[_iUpFactor * j - num6]);
+                        num4 += pdMemory[_iBuffLen + num5 + j] * _filterCoeff[_iUpFactor * j - num6];
                     }
                 }
             }
@@ -376,11 +376,11 @@ internal class PcmConverter
     {
         float[] array = new float[iLength];
         double num = Math.PI * 2.0;
-        num = !bSymmetric ? num / (double)(float)iLength : num / (double)(float)(iLength - 1);
+        num = !bSymmetric ? num / (float)iLength : num / (float)(iLength - 1);
         double num2 = 2.0 * num;
         for (int i = 0; i < iLength; i++)
         {
-            array[i] = (float)(0.42 - 0.5 * Math.Cos(num * (double)i) + 0.08 * Math.Cos(num2 * (double)i));
+            array[i] = (float)(0.42 - 0.5 * Math.Cos(num * i) + 0.08 * Math.Cos(num2 * i));
         }
         return array;
     }

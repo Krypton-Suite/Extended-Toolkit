@@ -887,7 +887,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An EventArgs containing event data.</param>
     /// <exception cref="ArgumentNullException"></exception>
-    protected override void OnButtonSpecChanged(object sender, EventArgs e)
+    protected override void OnButtonSpecChanged(object? sender, EventArgs e)
     {
         Debug.Assert(e != null);
 

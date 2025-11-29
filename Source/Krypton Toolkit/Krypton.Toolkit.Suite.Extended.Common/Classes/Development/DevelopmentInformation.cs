@@ -31,14 +31,15 @@ namespace Krypton.Toolkit.Suite.Extended.Common;
 public class DevelopmentInformation
 {
     #region Variables
-    private Version _internalVersion = Assembly.GetExecutingAssembly().GetName().Version, _assemblyVersion;
+    private readonly Version? _internalVersion;
+    private Version _assemblyVersion;
     private FileInfo _fileInfo;
     #endregion
 
     #region Properties
     public Version AssemblyVersion { get => _assemblyVersion; set => _assemblyVersion = value; }
 
-    public Version InternalVersion => _internalVersion;
+    public Version? InternalVersion => _internalVersion;
 
     #endregion
 
@@ -46,7 +47,7 @@ public class DevelopmentInformation
     /// <summary>Initializes a new instance of the <see cref="DevelopmentInformation"/> class.</summary>
     public DevelopmentInformation()
     {
-
+        _internalVersion = Assembly.GetExecutingAssembly().GetName().Version;
     }
     #endregion
 
@@ -65,22 +66,22 @@ public class DevelopmentInformation
             switch (state)
             {
                 case DevelopmentState.PreAlpha:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Pre-Alpha)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion?.Build.ToString()} - Pre-Alpha)";
                     break;
                 case DevelopmentState.Alpha:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Alpha)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion?.Build.ToString()} - Alpha)";
                     break;
                 case DevelopmentState.Beta:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Beta)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion?.Build.ToString()} - Beta)";
                     break;
                 case DevelopmentState.ReleaseToManufacturing:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - RTM)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion?.Build.ToString()} - RTM)";
                     break;
                 case DevelopmentState.Current:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - Current Build)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion?.Build.ToString()} - Current Build)";
                     break;
                 case DevelopmentState.EndOfLife:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion.Build.ToString()} - End of Life)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {developmentInformation.InternalVersion?.Build.ToString()} - End of Life)";
                     break;
             }
         }
@@ -134,7 +135,7 @@ public class DevelopmentInformation
 
     public static FileVersionInfo GetFileVersionInformation(string filePath) => FileVersionInfo.GetVersionInfo(filePath);
 
-    public static Version GetFileVersion(FileVersionInfo fileVersionInfo) => Version.Parse(fileVersionInfo.ProductVersion);
+    public static Version GetFileVersion(FileVersionInfo? fileVersionInfo) => fileVersionInfo != null ? Version.Parse(fileVersionInfo.ProductVersion!) : new Version();
 
     public static Version GetAssemblyVersion(Assembly executablePath) => executablePath.GetName().Version;
 

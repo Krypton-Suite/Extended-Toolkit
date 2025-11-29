@@ -61,19 +61,19 @@ public class FileUtilityMethods
         {
             suffix = "GB";
 
-            readable = (double)(fileSize >> 20);
+            readable = fileSize >> 20;
         }
         else if (fileSize >= 0x100000) // Megabyte
         {
             suffix = "MB";
 
-            readable = (double)(fileSize >> 10);
+            readable = fileSize >> 10;
         }
         else if (fileSize >= 0x400) // Kilobyte
         {
             suffix = "KB";
 
-            readable = (double)fileSize;
+            readable = fileSize;
         }
         else
         {
@@ -190,7 +190,7 @@ public class FileUtilityMethods
     /// <param name="fileSize">Size of the file.</param>
     public void ReturnOnlineFileSize(string onlineFileUrl, KryptonLabel fileSize)
     {
-        string url = onlineFileUrl, fileType = url.Substring(url.LastIndexOf(".") + 1, url.Length - url.LastIndexOf(".") - 1), fileName = url.Substring(url.LastIndexOf("/") + 1, url.Length - url.LastIndexOf("/") - 1);
+        string url = onlineFileUrl, fileType = url.Substring(url.LastIndexOf(".", StringComparison.Ordinal) + 1, url.Length - url.LastIndexOf(".", StringComparison.Ordinal) - 1), fileName = url.Substring(url.LastIndexOf("/", StringComparison.Ordinal) + 1, url.Length - url.LastIndexOf("/", StringComparison.Ordinal) - 1);
 
         WebRequest request = (HttpWebRequest)WebRequest.Create(onlineFileUrl);
 
@@ -236,7 +236,7 @@ public class FileUtilityMethods
     /// <param name="output">The output.</param>
     public void FormatFileLength(string filePath, KryptonLabel output)
     {
-        long fileSize = (long)ReturnFileLength(filePath), result;
+        long fileSize = ReturnFileLength(filePath), result;
 
         if (fileSize >= 1073741824)
         {

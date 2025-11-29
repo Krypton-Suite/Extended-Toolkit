@@ -34,7 +34,7 @@ public class ColourHexadecimalTextBox : KryptonTextBox
     private Color _colour;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public Color Colour { get => _colour; set { _colour = value; Invalidate(); } }
+    public Color Color { get => _colour; set { _colour = value; Invalidate(); } }
 
     public ColourHexadecimalTextBox()
     {
@@ -49,15 +49,15 @@ public class ColourHexadecimalTextBox : KryptonTextBox
         // ReSharper restore VirtualMemberCallInConstructor
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        if (Colour != Color.Empty || Colour != Color.Transparent || Colour != null)
+        if (Color != Color.Empty || Color != Color.Transparent || Color != null)
         {
-            Text = ColorTranslator.ToHtml(Colour);
+            Text = ColorTranslator.ToHtml(Color);
         }
 
-        if (Colour == Color.Empty || Colour == Color.Transparent)
+        if (Color == Color.Empty || Color == Color.Transparent)
         {
             Text = @"000000";
         }
@@ -82,12 +82,5 @@ public class ColourHexadecimalTextBox : KryptonTextBox
         }
 
         base.OnValidating(e);
-    }
-
-    protected override void OnKeyDown(KeyEventArgs e)
-    {
-
-
-        base.OnKeyDown(e);
     }
 }

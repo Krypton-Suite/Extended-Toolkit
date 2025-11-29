@@ -36,10 +36,10 @@ public class AssemblyDetails
     }
 
     // Return a particular assembly attribute value.
-    public static T GetAssemblyAttribute<T>(Assembly assembly) where T : Attribute
+    public static T? GetAssemblyAttribute<T>(Assembly assembly) where T : Attribute
     {
         // Get attributes of this type.
-        object[] attributes = assembly.GetCustomAttributes(typeof(T), true);
+        object[]? attributes = assembly.GetCustomAttributes(typeof(T), true);
 
         // If we didn't get anything, return null.
         if (attributes == null || attributes.Length == 0)

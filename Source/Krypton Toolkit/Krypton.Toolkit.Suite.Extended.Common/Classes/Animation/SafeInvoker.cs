@@ -34,9 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common;
 /// </summary>
 public class SafeInvoker
 {
-    private MethodInfo _invokeMethod;
+    private MethodInfo? _invokeMethod;
 
-    private PropertyInfo _invokeRequiredProperty;
+    private PropertyInfo? _invokeRequiredProperty;
     private object _targetControl;
 
     /// <summary>
@@ -48,7 +48,7 @@ public class SafeInvoker
     /// <param name="targetControl">
     ///     The control to be used to invoke the callback in UI thread
     /// </param>
-    public SafeInvoker(Action action, object targetControl) : this((Delegate)action, targetControl)
+    public SafeInvoker(Action action, object? targetControl) : this((Delegate)action, targetControl)
     {
     }
 
@@ -61,7 +61,7 @@ public class SafeInvoker
     /// <param name="targetControl">
     ///     The control to be used to invoke the callback in UI thread
     /// </param>
-    protected SafeInvoker(Delegate action, object targetControl)
+    protected SafeInvoker(Delegate action, object? targetControl)
     {
         UnderlyingDelegate = action;
         if (targetControl != null)
@@ -90,6 +90,7 @@ public class SafeInvoker
         {
             _invokeRequiredProperty = value.GetType()
                 .GetProperty("InvokeRequired", BindingFlags.Instance | BindingFlags.Public);
+
             _invokeMethod = value.GetType()
                 .GetMethod(
                     "Invoke",
@@ -122,7 +123,7 @@ public class SafeInvoker
     ///     Invoke the referenced callback
     /// </summary>
     /// <param name="value">The argument to send to the callback</param>
-    protected void Invoke(object value)
+    protected void Invoke(object? value)
     {
         try
         {
@@ -131,9 +132,9 @@ public class SafeInvoker
                 {
                     try
                     {
-                        if (TargetControl != null && (bool)_invokeRequiredProperty.GetValue(TargetControl, null))
+                        if (TargetControl != null && (_invokeRequiredProperty == null || (bool)_invokeRequiredProperty?.GetValue(TargetControl, null)!))
                         {
-                            _invokeMethod.Invoke(
+                            _invokeMethod?.Invoke(
                                 TargetControl,
                                 [
                                     new Action(

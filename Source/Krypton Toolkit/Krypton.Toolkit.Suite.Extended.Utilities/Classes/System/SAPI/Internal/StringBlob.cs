@@ -125,7 +125,7 @@ internal class StringBlob
         return value;
     }
 
-    internal string FromOffset(int offset)
+    internal string? FromOffset(int offset)
     {
         int num = 1;
         int num2 = 1;
