@@ -331,7 +331,7 @@ public class Path3D
     /// <param name="z">
     ///     The depth path.
     /// </param>
-    public Path3D(AnimationPath x, AnimationPath y, AnimationPath z)
+    public Path3D(AnimationPath? x, AnimationPath? y, AnimationPath? z)
     {
         HorizontalPath = x;
         VerticalPath = y;
@@ -341,29 +341,29 @@ public class Path3D
     /// <summary>
     ///     Gets the horizontal path
     /// </summary>
-    public AnimationPath HorizontalPath { get; }
+    public AnimationPath? HorizontalPath { get; }
 
     /// <summary>
     ///     Gets the vertical path
     /// </summary>
-    public AnimationPath VerticalPath { get; }
+    public AnimationPath? VerticalPath { get; }
 
     /// <summary>
     ///     Gets the depth path
     /// </summary>
-    public AnimationPath DepthPath { get; }
+    public AnimationPath? DepthPath { get; }
 
 
     /// <summary>
     ///     Gets the starting point of the path
     /// </summary>
-    public Float3D Start => new Float3D(HorizontalPath.Start, VerticalPath.Start, DepthPath.Start);
+    public Float3D Start => new Float3D(HorizontalPath!.Start, VerticalPath!.Start, DepthPath!.Start);
 
 
     /// <summary>
     ///     Gets the ending point of the path
     /// </summary>
-    public Float3D End => new Float3D(HorizontalPath.End, VerticalPath.End, DepthPath.End);
+    public Float3D End => new Float3D(HorizontalPath!.End, VerticalPath!.End, DepthPath!.End);
 
     /// <summary>
     ///     Creates and returns a new <see cref="Path3D" /> based on the current path but in reverse order
@@ -371,8 +371,5 @@ public class Path3D
     /// <returns>
     ///     A new <see cref="AnimationPath" /> which is the reverse of the current <see cref="Path3D" />
     /// </returns>
-    public Path3D Reverse()
-    {
-        return new Path3D(HorizontalPath.Reverse(), VerticalPath.Reverse(), DepthPath.Reverse());
-    }
+    public Path3D Reverse() => new(HorizontalPath?.Reverse(), VerticalPath?.Reverse(), DepthPath?.Reverse());
 }

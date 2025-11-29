@@ -73,7 +73,7 @@ internal class NetStat
     #endregion
 
     #region Event Handlers
-    private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
         ListView statView = (ListView)_updatePanel.Controls[0];
 
@@ -118,6 +118,8 @@ internal class NetStat
                 catch (Exception ex)
                 {
                     host = info.RemoteEndPoint.Address.ToString();
+
+                    KryptonExceptionDialog.Show(ex, null, null);
                 }
             }
             else

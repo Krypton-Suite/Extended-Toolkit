@@ -38,8 +38,10 @@ public class ToolTipValues : HeaderValues
     private LabelStyle _toolTipStyle;
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ToolTipValues"/> class.
     /// </summary>
-    /// <param name="needPaint"></param>
+    /// <param name="needPaint">Delegate for notifying paint requests.</param>
+    /// <param name="getDpiFactor"></param>
     public ToolTipValues(NeedPaintHandler needPaint, GetDpiFactor getDpiFactor)
         : base(needPaint, getDpiFactor)
     {
@@ -71,7 +73,7 @@ public class ToolTipValues : HeaderValues
     private bool ShouldSerializeEnableToolTips() => EnableToolTips;
 
     /// <inheritdoc />
-    protected override Image GetImageDefault() => null;
+    protected override Image? GetImageDefault() => null;
 
     /// <summary>
     /// 

@@ -257,12 +257,12 @@ public class LinkTextColourSettingsManager
         }
     }
 
-    public static void WriteARGBColoursToFile(string colourConfigurationPath)
+    public static void WriteARGBColoursToFile(string? colourConfigurationPath)
     {
 
     }
 
-    public static void WriteRGBColoursToFile(string colourConfigurationPath)
+    public static void WriteRGBColoursToFile(string? colourConfigurationPath)
     {
         throw new NotImplementedException();
     }

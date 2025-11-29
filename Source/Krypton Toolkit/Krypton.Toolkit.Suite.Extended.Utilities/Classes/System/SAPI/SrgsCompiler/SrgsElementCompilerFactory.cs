@@ -65,12 +65,12 @@ internal class SrgsElementCompilerFactory : IElementFactory
         return new SemanticTag((ParseElementCollection)parent, _backend);
     }
 
-    IElementText IElementFactory.CreateText(IElement parent, string value)
+    IElementText? IElementFactory.CreateText(IElement parent, string value)
     {
         return null;
     }
 
-    IToken IElementFactory.CreateToken(IElement parent, string content, string pronunciation, string display, float reqConfidence)
+    IToken? IElementFactory.CreateToken(IElement parent, string content, string pronunciation, string display, float reqConfidence)
     {
         ParseToken((ParseElementCollection)parent, content, pronunciation, display, reqConfidence);
         return null;
@@ -176,7 +176,7 @@ internal class SrgsElementCompilerFactory : IElementFactory
     {
     }
 
-    private void ParseToken(ParseElementCollection parent, string sToken, string pronunciation, string display, float reqConfidence)
+    private void ParseToken(ParseElementCollection parent, string sToken, string? pronunciation, string? display, float reqConfidence)
     {
         int requiredConfidence = parent?._confidence ?? 0;
         sToken = Backend.NormalizeTokenWhiteSpace(sToken);
@@ -184,18 +184,18 @@ internal class SrgsElementCompilerFactory : IElementFactory
         {
             return;
         }
-        parent._confidence = 0;
+        parent?._confidence = 0;
         if (reqConfidence is < 0f or 0.5f)
         {
-            parent._confidence = 0;
+            parent?._confidence = 0;
         }
         else if ((double)reqConfidence < 0.5)
         {
-            parent._confidence = -1;
+            parent?._confidence = -1;
         }
         else
         {
-            parent._confidence = 1;
+            parent?._confidence = 1;
         }
         if (pronunciation != null || display != null)
         {
@@ -214,7 +214,7 @@ internal class SrgsElementCompilerFactory : IElementFactory
                         num2 = pronunciation.Length;
                     }
                     string text3 = pronunciation.Substring(num, num2 - num);
-                    string text4 = null;
+                    string? text4 = null;
                     switch (_backend.Alphabet)
                     {
                         case AlphabetType.Sapi:
@@ -239,11 +239,11 @@ internal class SrgsElementCompilerFactory : IElementFactory
                     }
                     else
                     {
-                        parent.AddArc(_backend.WordTransition(sWord, 1f, requiredConfidence));
+                        parent?.AddArc(_backend.WordTransition(sWord, 1f, requiredConfidence));
                     }
                     num = num2 + 1;
                 }
-                ((IElement)oneOf)?.PostParse((IElement)parent);
+                ((IElement)oneOf!)?.PostParse(parent!);
             }
             else
             {
@@ -251,12 +251,12 @@ internal class SrgsElementCompilerFactory : IElementFactory
                     text2,
                     text
                 ]);
-                parent.AddArc(_backend.WordTransition(sWord2, 1f, requiredConfidence));
+                parent?.AddArc(_backend.WordTransition(sWord2, 1f, requiredConfidence));
             }
         }
         else
         {
-            parent.AddArc(_backend.WordTransition(sToken, 1f, requiredConfidence));
+            parent?.AddArc(_backend.WordTransition(sToken, 1f, requiredConfidence));
         }
     }
 

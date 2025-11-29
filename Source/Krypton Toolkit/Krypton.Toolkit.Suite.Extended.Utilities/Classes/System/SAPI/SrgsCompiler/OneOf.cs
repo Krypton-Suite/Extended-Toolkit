@@ -47,7 +47,7 @@ internal class OneOf : ParseElementCollection, IOneOf, IElement
 
     void IElement.PostParse(IElement parentElement)
     {
-        if (_startArc.End.OutArcs.IsEmpty)
+        if (_startArc.End != null && _startArc.End.OutArcs.IsEmpty)
         {
             XmlParser.ThrowSrgsException(SRID.EmptyOneOf);
         }
@@ -60,8 +60,8 @@ internal class OneOf : ParseElementCollection, IOneOf, IElement
     {
         start = ParseElementCollection.TrimStart(start, _backend);
         end = ParseElementCollection.TrimEnd(end, _backend);
-        State start2 = end.Start;
-        State end2 = start.End;
+        State? start2 = end.Start;
+        State? end2 = start.End;
         if (start.IsEpsilonTransition & start.IsPropertylessTransition && end2 != null && end2.InArcs.IsEmpty)
         {
             start.End = null;

@@ -283,7 +283,7 @@ public class Path2D
     /// <param name="y">
     ///     The vertical path.
     /// </param>
-    public Path2D(AnimationPath x, AnimationPath y)
+    public Path2D(AnimationPath? x, AnimationPath? y)
     {
         HorizontalPath = x;
         VerticalPath = y;
@@ -292,23 +292,23 @@ public class Path2D
     /// <summary>
     ///     Gets the horizontal path
     /// </summary>
-    public AnimationPath HorizontalPath { get; }
+    public AnimationPath? HorizontalPath { get; }
 
     /// <summary>
     ///     Gets the vertical path
     /// </summary>
-    public AnimationPath VerticalPath { get; }
+    public AnimationPath? VerticalPath { get; }
 
     /// <summary>
     ///     Gets the starting point of the path
     /// </summary>
-    public Float2D Start => new Float2D(HorizontalPath.Start, VerticalPath.Start);
+    public Float2D Start => new Float2D(HorizontalPath!.Start, VerticalPath!.Start);
 
 
     /// <summary>
     ///     Gets the ending point of the path
     /// </summary>
-    public Float2D End => new Float2D(HorizontalPath.End, VerticalPath.End);
+    public Float2D End => new Float2D(HorizontalPath!.End, VerticalPath!.End);
 
     /// <summary>
     ///     Creates and returns a new <see cref="Path2D" /> based on the current path but in reverse order
@@ -316,8 +316,5 @@ public class Path2D
     /// <returns>
     ///     A new <see cref="Path2D" /> which is the reverse of the current <see cref="Path2D" />
     /// </returns>
-    public Path2D Reverse()
-    {
-        return new Path2D(HorizontalPath.Reverse(), VerticalPath.Reverse());
-    }
+    public Path2D Reverse() => new(HorizontalPath?.Reverse(), VerticalPath?.Reverse());
 }

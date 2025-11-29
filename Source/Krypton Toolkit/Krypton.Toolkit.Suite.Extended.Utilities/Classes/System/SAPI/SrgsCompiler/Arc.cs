@@ -90,7 +90,7 @@ internal class Arc : IComparer<Arc>, IComparable<Arc>
         }
     }
 
-    internal State Start
+    internal State? Start
     {
         get => _start;
         set
@@ -110,7 +110,7 @@ internal class Arc : IComparer<Arc>, IComparable<Arc>
         }
     }
 
-    internal State End
+    internal State? End
     {
         get => _end;
         set

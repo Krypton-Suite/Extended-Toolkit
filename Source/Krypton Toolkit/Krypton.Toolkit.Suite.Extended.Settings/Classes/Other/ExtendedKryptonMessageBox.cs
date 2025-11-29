@@ -1584,7 +1584,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
     }
 
-    private void button_keyDown(object sender, KeyEventArgs e)
+    private void button_keyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if (e.KeyCode == Keys.Escape && ControlBox)

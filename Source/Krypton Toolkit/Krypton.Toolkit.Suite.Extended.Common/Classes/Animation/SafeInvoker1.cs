@@ -43,7 +43,7 @@ public class SafeInvoker<T> : SafeInvoker
     /// <param name="targetControl">
     ///     The control to be used to invoke the callback in UI thread
     /// </param>
-    public SafeInvoker(Action<T> action, object targetControl) : base(action, targetControl)
+    public SafeInvoker(Action<T> action, object? targetControl) : base(action, targetControl)
     {
     }
 
@@ -63,6 +63,6 @@ public class SafeInvoker<T> : SafeInvoker
     /// <param name="value"></param>
     public void Invoke(T value)
     {
-        Invoke((object)value);
+        Invoke(value as object);
     }
 }

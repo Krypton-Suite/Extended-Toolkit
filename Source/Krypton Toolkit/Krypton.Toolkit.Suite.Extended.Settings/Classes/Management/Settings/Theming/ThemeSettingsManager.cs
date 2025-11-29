@@ -62,7 +62,7 @@ public class ThemeSettingsManager
 
     /// <summary>Sets the CustomThemePath to the value of value.</summary>
     /// <param name="value">The desired value of CustomThemePath.</param>
-    public void SetCustomThemePath(string value) => _globalThemeSettings.CustomThemePath = value;
+    public void SetCustomThemePath(string? value) => _globalThemeSettings.CustomThemePath = value;
 
     /// <summary>Returns the value of the CustomThemePath.</summary>
     /// <returns>The value of the CustomThemePath.</returns>

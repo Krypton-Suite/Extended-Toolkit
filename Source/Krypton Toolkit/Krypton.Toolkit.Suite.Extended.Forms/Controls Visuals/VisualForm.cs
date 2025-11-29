@@ -54,7 +54,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     private bool _disposing;
     private int _compositionHeight;
     private int _ignoreCount;
-    private ViewBase _capturedElement;
+    private ViewBase? _capturedElement;
     private PaletteBase? _localPalette;
     private PaletteBase? _palette;
     private PaletteMode _paletteMode;
@@ -493,7 +493,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Advanced)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public IRenderer Renderer
+    public IRenderer? Renderer
     {
         [DebuggerStepThrough]
         get;
@@ -520,7 +520,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Advanced)]
-    public ToolStripRenderer CreateToolStripRenderer() => Renderer.RenderToolStrip(GetResolvedPalette());
+    public ToolStripRenderer? CreateToolStripRenderer() => Renderer?.RenderToolStrip(GetResolvedPalette()!);
 
     /// <summary>
     /// Send the provided system command to the window for processing.
@@ -930,7 +930,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     /// </summary>
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An EventArgs containing event data.</param>
-    protected virtual void OnButtonSpecChanged(object sender, EventArgs e)
+    protected virtual void OnButtonSpecChanged(object? sender, EventArgs e)
     {
     }
 
@@ -1665,7 +1665,7 @@ public abstract class VisualForm : Form, IKryptonDebug
 
         // If we moused down on a active view element
         // Ask the controller if the mouse down should be ignored by wnd proc processing
-        IMouseController controller = ViewManager.ActiveView?.FindMouseController();
+        IMouseController? controller = ViewManager.ActiveView?.FindMouseController();
         return controller is { IgnoreVisualFormLeftButtonDown: true };
     }
 
@@ -1693,7 +1693,7 @@ public abstract class VisualForm : Form, IKryptonDebug
 
     #region Implementation
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         // We only care if we are using the global palette
         if (PaletteMode == PaletteMode.Global)
@@ -1710,7 +1710,7 @@ public abstract class VisualForm : Form, IKryptonDebug
         }
     }
 
-    private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+    private void OnUserPreferenceChanged(object? sender, UserPreferenceChangedEventArgs e)
     {
         // If a change has occurred that could effect the color table then it needs regenerating
         switch (e.Category)
@@ -1745,7 +1745,7 @@ public abstract class VisualForm : Form, IKryptonDebug
             _palette = palette;
 
             // Get the renderer associated with the palette
-            Renderer = _palette.GetRenderer();
+            Renderer = _palette?.GetRenderer();
 
             // Hook to new palette events
             if (_palette != null)
@@ -1760,19 +1760,19 @@ public abstract class VisualForm : Form, IKryptonDebug
         }
     }
 
-    protected virtual void OnUseThemeFormChromeBorderWidthChanged(object sender, EventArgs e)
+    protected virtual void OnUseThemeFormChromeBorderWidthChanged(object? sender, EventArgs e)
     {
     }
 
-    private void OnBaseChanged(object sender, EventArgs e)
+    private void OnBaseChanged(object? sender, EventArgs e)
     {
         // Change in base renderer or base palette require we fetch the latest renderer
-        Renderer = _palette.GetRenderer();
+        Renderer = _palette?.GetRenderer();
         // PaletteImageScaler.ScalePalette(FactorDpiX, FactorDpiY, _palette);
     }
 
 #if !NET462
-        private void OnDpiChanged(object sender, DpiChangedEventArgs e)
+        private void OnDpiChanged(object? sender, DpiChangedEventArgs e)
         {
             UpdateDpiFactors();
         }

@@ -160,7 +160,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     {
         get => Values.Text;
 
-        set => Values.Text = value!;
+        set => Values.Text = value;
     }
 
     private bool ShouldSerializeText() =>

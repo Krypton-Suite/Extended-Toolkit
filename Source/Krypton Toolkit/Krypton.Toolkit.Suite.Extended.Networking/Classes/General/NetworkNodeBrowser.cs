@@ -77,14 +77,14 @@ public sealed class NetworkNodeBrowser
     /// (0x00000001) and SV_TYPE_SERVER (0x00000002)
     /// </summary>
     public static extern int NetServerEnum(
-        string serverName, // must be null
+        string? serverName, // must be null
         int dwLevel,
         ref IntPtr pBuf,
         int dwPrefMaxLen,
         out int dwEntriesRead,
         out int dwTotalEntries,
         int dwServerType,
-        string domain, // null for login domain
+        string? domain, // null for login domain
         out int dwResumeHandle
     );
 

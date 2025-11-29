@@ -66,8 +66,8 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
 
     protected override void Dispose(bool disposing)
     {
-        _changeService.ComponentAdded -= ChangeServiceComponentAdded;
-        _changeService.ComponentRemoved -= ChangeServiceComponentRemoved;
+        _changeService?.ComponentAdded -= ChangeServiceComponentAdded;
+        _changeService?.ComponentRemoved -= ChangeServiceComponentRemoved;
 
         base.Dispose(disposing);
     }
@@ -148,7 +148,7 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
     {
         try
         {
-            _designer.CreateComponent(typeof(KryptonAdvancedWizardPage));
+            _designer?.CreateComponent(typeof(KryptonAdvancedWizardPage));
         }
         catch (Exception ex)
         {
@@ -160,13 +160,14 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
 
     private void InitializeDesigner() => DrawGrid = false;
 
-    private void GetReferenceToWizardControl(IComponent c) => _wizard = (Control)c as KryptonAdvancedWizard;
+    private void GetReferenceToWizardControl(IComponent c) => _wizard = (KryptonAdvancedWizard)(Control)c;
 
-    private void GetReferenceToIDesignerHost() => _designer = (IDesignerHost)GetService(typeof(IDesignerHost));
+    private void GetReferenceToIDesignerHost() => _designer = GetService(typeof(IDesignerHost)) as IDesignerHost;
 
     private void GetReferenceToISelectionService() => _selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
 
-    private void SelectPageInProperyGrid(KryptonAdvancedWizardPage page) => _selectionService.SetSelectedComponents(new object[] { page }, SelectionTypes.MouseDown);
+    private void SelectPageInPropertyGrid(KryptonAdvancedWizardPage? page) =>
+        _selectionService?.SetSelectedComponents(new object[] { page }, SelectionTypes.MouseDown);
 
     private void GetReferenceToIComponentChangeService()
     {
@@ -179,19 +180,19 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
         _changeService.ComponentRemoved += ChangeServiceComponentRemoved;
     }
 
-    private void UpdateWizard(KryptonAdvancedWizardPage page)
+    private void UpdateWizard(KryptonAdvancedWizardPage? page)
     {
         _wizard.SelectWizardPage(page);
         _wizard.SetButtonStates();
     }
 
-    private static void DisplayPage(KryptonAdvancedWizardPage page)
+    private static void DisplayPage(KryptonAdvancedWizardPage? page)
     {
         page.Dock = DockStyle.Fill;
         page.BringToFront();
     }
 
-    private void AddPageToContainers(KryptonAdvancedWizardPage page)
+    private void AddPageToContainers(KryptonAdvancedWizardPage? page)
     {
         _wizard.WizardPages.Add(page);
         _wizard.Controls.Add(page);
@@ -215,7 +216,7 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
 
         AddPageToContainers(page);
         DisplayPage(page);
-        SelectPageInProperyGrid(page);
+        SelectPageInPropertyGrid(page);
         UpdateWizard(page);
     }
 
@@ -237,7 +238,7 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
     }
 
     private IComponentChangeService? _changeService;
-    private IDesignerHost _designer;
+    private IDesignerHost? _designer;
     private ISelectionService? _selectionService;
     private DesignerVerbCollection _verbs;
     private KryptonAdvancedWizard _wizard;

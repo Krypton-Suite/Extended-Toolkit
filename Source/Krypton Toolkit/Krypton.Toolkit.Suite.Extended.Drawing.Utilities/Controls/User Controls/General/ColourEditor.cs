@@ -1380,9 +1380,9 @@ public class ColourEditor : UserControl, IColourEditor
     }
 #endif
 
-    private string AddSpaces(string text)
+    private string? AddSpaces(string text)
     {
-        string result;
+        string? result;
 
         //http://stackoverflow.com/a/272929/148962
 

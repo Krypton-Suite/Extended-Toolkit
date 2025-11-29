@@ -31,7 +31,7 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
 {
     #region Fields
 
-    private Collection _originalItemCollection = new Collection();
+    private readonly List<OutlookBarButton> _originalItemCollection = new List<OutlookBarButton>();
 
     private OutlookBarButtonCollection _items;
 
@@ -46,7 +46,7 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
 
         _items = items;
 
-        foreach (OutlookBarButton button in _items)
+        foreach (OutlookBarButton button in items)
         {
             _originalItemCollection.Add(button);
         }

@@ -30,13 +30,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 
 public sealed class SpeechSynthesizer : IDisposable
 {
-    private VoiceSynthesis _voiceSynthesis;
+    private VoiceSynthesis? _voiceSynthesis;
 
     private bool _isDisposed;
 
     private bool paused;
 
-    private Stream _outputStream;
+    private Stream? _outputStream;
 
     private bool _closeStreamOnExit;
 
@@ -50,7 +50,7 @@ public sealed class SpeechSynthesizer : IDisposable
         {
             if (value is < -10 or > 10)
             {
-                throw new ArgumentOutOfRangeException("value", SR.Get(SRID.RateOutOfRange));
+                throw new ArgumentOutOfRangeException(nameof(value), SR.Get(SRID.RateOutOfRange));
             }
             VoiceSynthesizer.Rate = value;
         }
@@ -64,7 +64,7 @@ public sealed class SpeechSynthesizer : IDisposable
         {
             if (value is < 0 or > 100)
             {
-                throw new ArgumentOutOfRangeException("value", SR.Get(SRID.ResourceUsageOutOfRange));
+                throw new ArgumentOutOfRangeException(nameof(value), SR.Get(SRID.ResourceUsageOutOfRange));
             }
             VoiceSynthesizer.Volume = value;
         }
@@ -103,7 +103,7 @@ public sealed class SpeechSynthesizer : IDisposable
         {
             Helpers.ThrowIfNull(value, "value");
             VoiceSynthesis voiceSynthesizer = VoiceSynthesizer;
-            voiceSynthesizer._speakStarted = (EventHandler<SpeakStartedEventArgs>)Delegate.Remove(voiceSynthesizer._speakStarted, value);
+            voiceSynthesizer._speakStarted = Delegate.Remove(voiceSynthesizer._speakStarted, value) as EventHandler<SpeakStartedEventArgs>;
         }
     }
 
@@ -121,7 +121,7 @@ public sealed class SpeechSynthesizer : IDisposable
         {
             Helpers.ThrowIfNull(value, "value");
             VoiceSynthesis voiceSynthesizer = VoiceSynthesizer;
-            voiceSynthesizer._speakCompleted = (EventHandler<SpeakCompletedEventArgs>)Delegate.Remove(voiceSynthesizer._speakCompleted, value);
+            voiceSynthesizer._speakCompleted = Delegate.Remove(voiceSynthesizer._speakCompleted, value) as EventHandler<SpeakCompletedEventArgs>;
         }
     }
 
@@ -222,7 +222,7 @@ public sealed class SpeechSynthesizer : IDisposable
         {
             Helpers.ThrowIfNull(value, "value");
             VoiceSynthesis voiceSynthesizer = VoiceSynthesizer;
-            voiceSynthesizer._stateChanged = (EventHandler<StateChangedEventArgs>)Delegate.Remove(voiceSynthesizer._stateChanged, value);
+            voiceSynthesizer._stateChanged = Delegate.Remove(voiceSynthesizer._stateChanged, value) as EventHandler<StateChangedEventArgs>;
         }
     }
 
@@ -268,15 +268,15 @@ public sealed class SpeechSynthesizer : IDisposable
         Helpers.ThrowIfNull(culture, "culture");
         if (voiceAlternate < 0)
         {
-            throw new ArgumentOutOfRangeException("voiceAlternate", SR.Get(SRID.PromptBuilderInvalidVariant));
+            throw new ArgumentOutOfRangeException(nameof(voiceAlternate), SR.Get(SRID.PromptBuilderInvalidVariant));
         }
         if (!VoiceInfo.ValidateGender(gender))
         {
-            throw new ArgumentException(SR.Get(SRID.EnumInvalid, "VoiceGender"), "gender");
+            throw new ArgumentException(SR.Get(SRID.EnumInvalid, "VoiceGender"), nameof(gender));
         }
         if (!VoiceInfo.ValidateAge(age))
         {
-            throw new ArgumentException(SR.Get(SRID.EnumInvalid, "VoiceAge"), "age");
+            throw new ArgumentException(SR.Get(SRID.EnumInvalid, "VoiceAge"), nameof(age));
         }
         TTSVoice engine = VoiceSynthesizer.GetEngine(null, culture, gender, age, voiceAlternate, true);
         if (engine == null)
@@ -435,7 +435,7 @@ public sealed class SpeechSynthesizer : IDisposable
         Helpers.ThrowIfNull(culture, "culture");
         if (culture.Equals(CultureInfo.InvariantCulture))
         {
-            throw new ArgumentException(SR.Get(SRID.InvariantCultureInfo), "culture");
+            throw new ArgumentException(SR.Get(SRID.InvariantCultureInfo), nameof(culture));
         }
         return VoiceSynthesizer.GetInstalledVoices(culture);
     }
@@ -454,7 +454,7 @@ public sealed class SpeechSynthesizer : IDisposable
         VoiceSynthesizer.RemoveLexicon(uri);
     }
 
-    private void SetOutputStream(Stream stream, SpeechAudioFormatInfo formatInfo, bool headerInfo, bool closeStreamOnExit)
+    private void SetOutputStream(Stream? stream, SpeechAudioFormatInfo? formatInfo, bool headerInfo, bool closeStreamOnExit)
     {
         SetOutputToNull();
         _outputStream = stream;

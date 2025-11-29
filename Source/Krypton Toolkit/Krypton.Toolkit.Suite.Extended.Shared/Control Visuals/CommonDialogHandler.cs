@@ -40,11 +40,11 @@ public class CommonDialogHandler
 
     private readonly List<Attributes> _controls = [];
 
-    private readonly Color _backColour;
+    private readonly Color _backColor;
 
-    private readonly Color _defaultFontColour;
+    private readonly Color _defaultFontColor;
 
-    private readonly Color _inputFontColour;
+    private readonly Color _inputFontColor;
 
     private IntPtr _backBrush = IntPtr.Zero;
 
@@ -68,9 +68,13 @@ public class CommonDialogHandler
 
     #region Identity
 
-    public CommonDialogHandler(bool embed)
+    public CommonDialogHandler(bool embed, Color backColor, Color defaultFontColor, Color inputFontColor, Font labelFont)
     {
         _embed = embed;
+        _backColor = backColor;
+        _defaultFontColor = defaultFontColor;
+        _inputFontColor = inputFontColor;
+        _labelFont = labelFont;
         // Gain access to the global palette
         _manager = new KryptonManager();
         // ToDo: Use CurrentGlobal_Palette equivalent
@@ -238,7 +242,7 @@ public class CommonDialogHandler
                                 button.Click += delegate
                                 {
                                     PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                                    ClickCallback?.Invoke(control);
+                                    ClickCallback.Invoke(control);
                                 };
                                 PlatformInvoke.ShowWindow(control.hWnd, PlatformInvoke.ShowWindowCommands.SW_HIDE);
                             }
@@ -271,7 +275,7 @@ public class CommonDialogHandler
                                 button.Click += delegate
                                 {
                                     PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                                    ClickCallback?.Invoke(control);
+                                    ClickCallback.Invoke(control);
                                 };
                                 PlatformInvoke.ShowWindow(control.hWnd, PlatformInvoke.ShowWindowCommands.SW_HIDE);
                             }
@@ -296,7 +300,7 @@ public class CommonDialogHandler
                                 button.Click += delegate
                                 {
                                     PlatformInvoke.SendMessage(control.hWnd, PlatformInvoke.BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                                    ClickCallback?.Invoke(control);
+                                    ClickCallback.Invoke(control);
                                 };
                                 PlatformInvoke.ShowWindow(control.hWnd, PlatformInvoke.ShowWindowCommands.SW_HIDE);
 
@@ -354,7 +358,7 @@ public class CommonDialogHandler
                             DrawRoundedRectangle(g, new Pen(lineColor), new Point(0, 10), control.Size - new Size(1, 11), 5);
                             var font = _manager.GlobalCustomPalette!.GetContentShortTextFont(
                                 PaletteContentStyle.LabelNormalPanel, PaletteState.Normal);
-                            TextRenderer.DrawText(g, control.Text, font, new Point(4, 0), _defaultFontColour, _backColour,
+                            TextRenderer.DrawText(g, control.Text, font, new Point(4, 0), _defaultFontColor, _backColor,
                                 TextFormatFlags.HidePrefix | TextFormatFlags.NoClipping);
                         }
 
@@ -368,7 +372,7 @@ public class CommonDialogHandler
             {
                 if (_backBrush == IntPtr.Zero)
                 {
-                    _backBrush = PlatformInvoke.CreateSolidBrush(ColorTranslator.ToWin32(_backColour));
+                    _backBrush = PlatformInvoke.CreateSolidBrush(ColorTranslator.ToWin32(_backColor));
                 }
                 return (true, _backBrush);
             }
@@ -377,8 +381,8 @@ public class CommonDialogHandler
                 // However, it no longer works: If your application uses a manifest to include the version 6 comctl library,
                 // the Groupbox control no longer sends the WM_CTLCOLORSTATIC to its parent to get a brush
 
-                PlatformInvoke.SetTextColor(wparam, ColorTranslator.ToWin32(_defaultFontColour));
-                PlatformInvoke.SetBkColor(wparam, ColorTranslator.ToWin32(_backColour));
+                PlatformInvoke.SetTextColor(wparam, ColorTranslator.ToWin32(_defaultFontColor));
+                PlatformInvoke.SetBkColor(wparam, ColorTranslator.ToWin32(_backColor));
                 //PlatformInvoke.SetBkMode(wparam, ColorTranslator.ToWin32(Color.Transparent));
                 return (true, _backBrush);
             case PlatformInvoke.WM_.CTLCOLORBTN:
@@ -408,7 +412,7 @@ public class CommonDialogHandler
             case PlatformInvoke.WM_.CTLCOLOREDIT:
             {
                 var backColour = _manager.GlobalCustomPalette!.GetBackColor1(PaletteBackStyle.InputControlStandalone, PaletteState.Normal);
-                PlatformInvoke.SetTextColor(wparam, ColorTranslator.ToWin32(_inputFontColour));
+                PlatformInvoke.SetTextColor(wparam, ColorTranslator.ToWin32(_inputFontColor));
                 PlatformInvoke.SetBkColor(wparam, ColorTranslator.ToWin32(backColour));
                 PlatformInvoke.SetBkMode(wparam, ColorTranslator.ToWin32(Color.Black));
                 return (true, PlatformInvoke.CreateSolidBrush(ColorTranslator.ToWin32(backColour)));

@@ -594,15 +594,18 @@ public partial class ColourMixer : KryptonForm
     {
         InitializeComponent();
 
-        cpbColourPreview.BackColor = baseColour;
+        cpbColourPreview?.BackColor = baseColour;
 
-        SetAlphaChannelValue(cpbColourPreview.BackColor.A);
+        if (cpbColourPreview != null)
+        {
+            SetAlphaChannelValue(cpbColourPreview.BackColor.A);
 
-        SetRedColourChannelValue(cpbColourPreview.BackColor.R);
+            SetRedColourChannelValue(cpbColourPreview.BackColor.R);
 
-        SetGreenColourChannelValue(cpbColourPreview.BackColor.G);
+            SetGreenColourChannelValue(cpbColourPreview.BackColor.G);
 
-        SetBlueColourChannelValue(cpbColourPreview.BackColor.B);
+            SetBlueColourChannelValue(cpbColourPreview.BackColor.B);
+        }
     }
 
     public ColourMixer(bool paletteColourSelector)
@@ -633,15 +636,18 @@ public partial class ColourMixer : KryptonForm
 
         PaletteColourSelector = paletteColourSelector;
 
-        cpbColourPreview.BackColor = baseColour;
+        cpbColourPreview?.BackColor = baseColour;
 
-        SetAlphaChannelValue(cpbColourPreview.BackColor.A);
+        if (cpbColourPreview != null)
+        {
+            SetAlphaChannelValue(cpbColourPreview.BackColor.A);
 
-        SetRedColourChannelValue(cpbColourPreview.BackColor.R);
+            SetRedColourChannelValue(cpbColourPreview.BackColor.R);
 
-        SetGreenColourChannelValue(cpbColourPreview.BackColor.G);
+            SetGreenColourChannelValue(cpbColourPreview.BackColor.G);
 
-        SetBlueColourChannelValue(cpbColourPreview.BackColor.B);
+            SetBlueColourChannelValue(cpbColourPreview.BackColor.B);
+        }
     }
     #endregion
 
@@ -790,7 +796,7 @@ public partial class ColourMixer : KryptonForm
 
     #region CONVERSION FROM DECIMAL TO HEXADECIMAL AND VICE VERSA
 
-    private int HexadecimaltoDecimal(string hexadecimal)
+    private int HexadecimalToDecimal(string hexadecimal)
     {
         int result = 0;
 
@@ -802,11 +808,12 @@ public partial class ColourMixer : KryptonForm
         return Convert.ToInt32(result);
     }
 
-    private string DeciamlToHexadeciaml(int number)
+    private string? DecimalToHexadecimal(int number)
     {
         string[] hexvalues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 
-        string result = null, final = null;
+        string? result = null;
+        string? final = null;
 
         int rem = 0, div = 0;
 

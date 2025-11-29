@@ -136,7 +136,7 @@ public class KryptonDeveloperDebugConsole : KryptonForm
         this.Controls.Add(this.kryptonPanel2);
         this.Controls.Add(this.kryptonPanel1);
         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-        this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+        this.Icon = resources.GetObject("$this.Icon") as System.Drawing.Icon;
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Name = "KryptonDeveloperDebugConsole";
@@ -164,7 +164,7 @@ public class KryptonDeveloperDebugConsole : KryptonForm
     {
         InitializeComponent();
 
-        krtbDebugBox.Text = message;
+        krtbDebugBox?.Text = message;
     }
 
     public KryptonDeveloperDebugConsole(Exception exception, bool showMessageOnly = false, bool showInnerMessage = false, bool useStackTrace = false)
@@ -173,15 +173,15 @@ public class KryptonDeveloperDebugConsole : KryptonForm
 
         if (showMessageOnly)
         {
-            krtbDebugBox.Text = exception.Message;
+            krtbDebugBox?.Text = exception.Message;
         }
         else if (showInnerMessage)
         {
-            krtbDebugBox.Text = exception.InnerException.Message;
+            krtbDebugBox?.Text = exception.InnerException?.Message;
         }
         else if (useStackTrace)
         {
-            krtbDebugBox.Text = exception.StackTrace;
+            krtbDebugBox?.Text = exception.StackTrace;
         }
         else
         {
@@ -189,7 +189,7 @@ public class KryptonDeveloperDebugConsole : KryptonForm
 
             builder.Append($"{exception.Message}\n\n{exception.StackTrace}");
 
-            krtbDebugBox.Text = builder.ToString();
+            krtbDebugBox?.Text = builder.ToString();
         }
     }
 
@@ -199,7 +199,7 @@ public class KryptonDeveloperDebugConsole : KryptonForm
 
         foreach (string item in content)
         {
-            krtbDebugBox.Text = item;
+            krtbDebugBox?.Text = item;
         }
     }
     #endregion
@@ -251,7 +251,10 @@ public class KryptonDeveloperDebugConsole : KryptonForm
 
                 if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    krtbDebugBox.SaveFile(csfd.FileName);
+                    if (csfd.FileName != null)
+                    {
+                        krtbDebugBox.SaveFile(csfd.FileName);
+                    }
                 }
                 break;
             default:

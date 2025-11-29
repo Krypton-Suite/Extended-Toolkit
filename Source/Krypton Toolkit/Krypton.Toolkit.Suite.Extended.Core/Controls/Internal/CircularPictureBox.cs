@@ -31,10 +31,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core;
 [ToolboxItem(false)]
 public class CircularPictureBox : PictureBox, IContentValues
 {
-    private ToolTipValues _values;
+    private ToolTipValues? _values;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public ToolTipValues ToolTipValues
+    public ToolTipValues? ToolTipValues
     {
         get => _values; set => _values = value;
     }

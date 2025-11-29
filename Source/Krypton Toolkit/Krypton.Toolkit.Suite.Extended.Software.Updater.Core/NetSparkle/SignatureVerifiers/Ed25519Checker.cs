@@ -174,9 +174,9 @@ public class Ed25519Checker : ISignatureVerifier
 
         // convert signature
         byte[] bHash = Convert.FromBase64String(signature);
-        _signer.BlockUpdate(dataToVerify, 0, dataToVerify.Length);
+        _signer?.BlockUpdate(dataToVerify, 0, dataToVerify.Length);
         // verify
-        return _signer.VerifySignature(bHash) ? ValidationResult.Valid : ValidationResult.Invalid;
+        return _signer != null && _signer.VerifySignature(bHash) ? ValidationResult.Valid : ValidationResult.Invalid;
     }
 
     /// <inheritdoc/>
@@ -201,9 +201,9 @@ public class Ed25519Checker : ISignatureVerifier
                 int bytesRead;
                 while ((bytesRead = inputStream.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    _signer.BlockUpdate(buffer, 0, bytesRead);
+                    _signer?.BlockUpdate(buffer, 0, bytesRead);
                 }
-                return _signer.VerifySignature(bHash) ? ValidationResult.Valid : ValidationResult.Invalid;
+                return _signer != null && _signer.VerifySignature(bHash) ? ValidationResult.Valid : ValidationResult.Invalid;
             }
         }
         else

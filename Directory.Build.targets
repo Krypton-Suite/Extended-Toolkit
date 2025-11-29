@@ -37,6 +37,8 @@
 		<ItemGroup>
 			<!-- Include all referenced assemblies -->
 			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			<_NuGetReferences Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)' != ''" />
+			<_ProjectReferenceOutputs Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.ReferenceSourceTarget)' == 'ProjectReference'" />
 			
 			<!-- Filter out framework assemblies (System.*, Microsoft.*, WindowsBase, etc.) -->
 			<_FrameworkAssemblies Include="@(_AllReferences)" 
@@ -59,10 +61,11 @@
 						   '%(Filename)' == 'Accessibility'" />
 			
 			<!-- Include only non-framework assemblies -->
-			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies);@(_NuGetReferences);@(_ProjectReferenceOutputs)" />
+			<_AssemblyReferences Include="@(_NonFrameworkAssemblies)" Condition="'%(Extension)' == '.dll' Or '%(Extension)' == '.exe'" />
 			
 			<!-- Include filtered dependencies in package -->
-			<BuildOutputInPackage Include="@(_NonFrameworkAssemblies)" />
+			<BuildOutputInPackage Include="@(_AssemblyReferences)" />
 		</ItemGroup>
 		
 		<Message Text="Including dependency: %(_NonFrameworkAssemblies.Identity)" Importance="low" />
@@ -80,6 +83,8 @@
 		<ItemGroup>
 			<!-- Include all referenced assemblies -->
 			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
+			<_NuGetReferences Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)' != ''" />
+			<_ProjectReferenceOutputs Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.ReferenceSourceTarget)' == 'ProjectReference'" />
 			
 			<!-- Filter out framework assemblies -->
 			<_FrameworkAssemblies Include="@(_AllReferences)" 
@@ -102,8 +107,9 @@
 						   '%(Filename)' == 'Accessibility'" />
 			
 			<!-- Include only non-framework assemblies in the lib folder -->
-			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
-			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(TargetFramework)/" />
+			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies);@(_NuGetReferences);@(_ProjectReferenceOutputs)" />
+			<_AssemblyReferences Include="@(_NonFrameworkAssemblies)" Condition="'%(Extension)' == '.dll' Or '%(Extension)' == '.exe'" />
+			<TfmSpecificPackageFile Include="@(_AssemblyReferences)" PackagePath="lib/$(TargetFramework)/" />
 		</ItemGroup>
 		
 		<Message Text="Including in package: %(_NonFrameworkAssemblies.Identity)" Importance="low" />

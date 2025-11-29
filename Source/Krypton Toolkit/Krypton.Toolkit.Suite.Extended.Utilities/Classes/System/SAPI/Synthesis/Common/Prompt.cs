@@ -43,7 +43,7 @@ public class Prompt
 
     private bool _completed;
 
-    private object _synthesizer;
+    private object? _synthesizer;
 
     private static ResourceLoader _resourceLoader = new();
 
@@ -59,7 +59,7 @@ public class Prompt
         {
             if (value != null && (_synthesizer != null || _completed))
             {
-                throw new ArgumentException(SR.Get(SRID.SynthesizerPromptInUse), "value");
+                throw new ArgumentException(SR.Get(SRID.SynthesizerPromptInUse), nameof(value));
             }
             _synthesizer = value;
         }
@@ -85,7 +85,7 @@ public class Prompt
             _text = textToSpeak;
             return;
         }
-        throw new ArgumentException(SR.Get(SRID.SynthesizerUnknownMediaType), "media");
+        throw new ArgumentException(SR.Get(SRID.SynthesizerUnknownMediaType), nameof(media));
     }
 
     internal Prompt(Uri promptFile, SynthesisMediaType media)

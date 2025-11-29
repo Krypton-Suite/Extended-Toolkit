@@ -105,14 +105,14 @@ internal class EngineSiteSapi : ISpEngineSite
         _site.CompleteSkip(ulNumSkipped);
     }
 
-    void ISpEngineSite.LoadResource(string uri, ref string mediaType, out IStream stream)
+    void ISpEngineSite.LoadResource(string uri, ref string? mediaType, out IStream? stream)
     {
         mediaType = null;
         try
         {
             Stream stream2 = _site.LoadResource(new Uri(uri, UriKind.RelativeOrAbsolute), mediaType);
             BinaryReader br = new BinaryReader(stream2);
-            byte[] waveFormat = AudioBase.GetWaveFormat(br);
+            byte[]? waveFormat = AudioBase.GetWaveFormat(br);
             mediaType = null;
             if (waveFormat != null)
             {

@@ -407,7 +407,7 @@ public class Animator2D : IAnimator
     /// <param name="frameCallback">
     ///     The callback to get invoked at each frame
     /// </param>
-    public void Play(SafeInvoker<Float2D> frameCallback) => Play(frameCallback, (SafeInvoker)null);
+    public void Play(SafeInvoker<Float2D> frameCallback) => Play(frameCallback, null as SafeInvoker);
 
     /// <summary>
     ///     Starts the playing of the animation

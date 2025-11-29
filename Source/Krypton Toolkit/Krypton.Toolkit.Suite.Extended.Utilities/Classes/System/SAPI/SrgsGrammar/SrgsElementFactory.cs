@@ -68,12 +68,13 @@ internal class SrgsElementFactory : IElementFactory
         return new SrgsSemanticInterpretationTag();
     }
 
-    IElementText IElementFactory.CreateText(IElement parent, string value)
+    IElementText? IElementFactory.CreateText(IElement parent, string value)
     {
         return new SrgsText(value);
     }
 
-    IToken IElementFactory.CreateToken(IElement parent, string content, string pronunciation, string display, float reqConfidence)
+    IToken? IElementFactory.CreateToken(IElement parent, string content, string pronunciation, string display,
+        float reqConfidence)
     {
         SrgsToken srgsToken = new SrgsToken(content);
         if (!string.IsNullOrEmpty(pronunciation))

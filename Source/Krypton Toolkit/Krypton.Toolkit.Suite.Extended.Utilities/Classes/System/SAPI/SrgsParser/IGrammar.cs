@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 
 internal interface IGrammar : IElement
 {
-    string Root
+    string? Root
     {
         get;
         set;
@@ -58,7 +58,7 @@ internal interface IGrammar : IElement
         set;
     }
 
-    Uri XmlBase
+    Uri? XmlBase
     {
         set;
     }
@@ -68,13 +68,13 @@ internal interface IGrammar : IElement
         set;
     }
 
-    string Language
+    string? Language
     {
         get;
         set;
     }
 
-    string Namespace
+    string? Namespace
     {
         get;
         set;

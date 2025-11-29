@@ -43,14 +43,14 @@ public class IconExtractor
     /// </summary>
     /// <param name="path">The path.</param>
     /// <returns></returns>
-    public static Bitmap ExtractIcon(string path) => Icon.ExtractAssociatedIcon(path).ToBitmap();
+    public static Bitmap? ExtractIcon(string path) => Icon.ExtractAssociatedIcon(path)?.ToBitmap();
 
     /// <summary>
     /// Extracts the icon from file.
     /// </summary>
     /// <param name="path">The path.</param>
     /// <returns></returns>
-    public static Icon ExtractIconFromFile(string path) => Icon.ExtractAssociatedIcon(path);
+    public static Icon? ExtractIconFromFile(string path) => Icon.ExtractAssociatedIcon(path);
 
     /// <summary>
     /// Loads the icon.
@@ -59,7 +59,7 @@ public class IconExtractor
     /// <param name="size">The size.</param>
     /// <returns>The icon.</returns>
     /// <exception cref="System.PlatformNotSupportedException"></exception>
-    public static Icon LoadIcon(IconType type, Size size)
+    public static Icon? LoadIcon(IconType type, Size size)
     {
         IntPtr hIcon = CommonNativeMethods.LoadImage(IntPtr.Zero, $"#{(int) type}", 1, size.Width, size.Height, 0);
 

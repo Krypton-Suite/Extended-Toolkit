@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher;
 internal class ThemeSettingsParser
 {
     #region Variables
-    private SettingsManager _settingsManager;
+    private SettingsManager? _settingsManager;
 
     private ThemeSettingsManager _themeSettings = new ThemeSettingsManager();
     #endregion
@@ -38,18 +38,18 @@ internal class ThemeSettingsParser
     #region Constructor
     public ThemeSettingsParser()
     {
-
+        _settingsManager = null;
     }
     #endregion
 
     #region Methods
     public void ExportSettings()
     {
-        _themeSettings.SetCustomThemePath(_settingsManager.GetCustomThemePath());
+        _themeSettings.SetCustomThemePath(_settingsManager?.GetCustomThemePath());
 
-        _themeSettings.SetDarkModeThemePaletteMode(_settingsManager.GetDarkModeThemePaletteMode());
+        _themeSettings.SetDarkModeThemePaletteMode(_settingsManager!.GetDarkModeThemePaletteMode());
 
-        _themeSettings.SetLightModeThemePaletteMode(_settingsManager.GetLightModeThemePaletteMode());
+        _themeSettings.SetLightModeThemePaletteMode(_settingsManager!.GetLightModeThemePaletteMode());
 
         _themeSettings.SetSelectedThemePaletteMode(_settingsManager.GetSelectedThemePaletteMode());
 
