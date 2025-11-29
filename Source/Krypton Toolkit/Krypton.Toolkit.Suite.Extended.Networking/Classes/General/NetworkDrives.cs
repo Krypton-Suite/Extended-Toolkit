@@ -30,14 +30,14 @@ namespace Krypton.Toolkit.Suite.Extended.Networking;
 public class NetworkDrives
 {
     #region API
-    [DllImport("mpr.dll")] private static extern int WNetAddConnection2A(ref structNetResource pstNetRes, string psPassword, string psUsername, int piFlags);
+    [DllImport("mpr.dll")] private static extern int WNetAddConnection2A(ref StructNetResource pstNetRes, string? psPassword, string? psUsername, int piFlags);
     [DllImport("mpr.dll")] private static extern int WNetCancelConnection2A(string psName, int piFlags, int pfForce);
     [DllImport("mpr.dll")] private static extern int WNetConnectionDialog(int phWnd, int piType);
     [DllImport("mpr.dll")] private static extern int WNetDisconnectDialog(int phWnd, int piType);
-    [DllImport("mpr.dll")] private static extern int WNetRestoreConnectionW(int phWnd, string psLocalDrive);
+    [DllImport("mpr.dll")] private static extern int WNetRestoreConnectionW(int phWnd, string? psLocalDrive);
 
     [StructLayout(LayoutKind.Sequential)]
-    private struct structNetResource
+    private struct StructNetResource
     {
         public int iScope;
         public int iType;
@@ -49,7 +49,7 @@ public class NetworkDrives
         public string sProvider;
     }
 
-    private const int RESOURCETYPE_DISK = 0x1;
+    private const int ResourcetypeDisk = 0x1;
 
     //Standard	
     private const int CONNECT_INTERACTIVE = 0x00000008;
@@ -64,87 +64,87 @@ public class NetworkDrives
     #endregion
 
     #region Properties and options
-    private bool lf_SaveCredentials = false;
+    private bool _lfSaveCredentials = false;
     /// <summary>
     /// Option to save credentials are reconnection...
     /// </summary>
-    public bool SaveCredentials { get => lf_SaveCredentials; set => lf_SaveCredentials = value; }
+    public bool SaveCredentials { get => _lfSaveCredentials; set => _lfSaveCredentials = value; }
 
-    private bool lf_Persistent = false;
+    private bool _lfPersistent = false;
     /// <summary>
     /// Option to reconnect drive after log off / reboot ...
     /// </summary>
-    public bool Persistent { get => lf_Persistent; set => lf_Persistent = value; }
+    public bool Persistent { get => _lfPersistent; set => _lfPersistent = value; }
 
-    private bool lf_Force = false;
+    private bool _lfForce = false;
     /// <summary>
     /// Option to force connection if drive is already mapped...
     /// or force disconnection if network path is not responding...
     /// </summary>
-    public bool Force { get => lf_Force; set => lf_Force = value; }
+    public bool Force { get => _lfForce; set => _lfForce = value; }
 
-    private bool ls_PromptForCredentials = false;
+    private bool _lsPromptForCredentials = false;
     /// <summary>
     /// Option to prompt for user credintals when mapping a drive
     /// </summary>
-    public bool PromptForCredentials { get => ls_PromptForCredentials; set => ls_PromptForCredentials = value; }
+    public bool PromptForCredentials { get => _lsPromptForCredentials; set => _lsPromptForCredentials = value; }
 
-    private string ls_Drive = "s:";
+    private string _lsDrive = "s:";
     /// <summary>
     /// Drive to be used in mapping / unmapping...
     /// </summary>
     public string LocalDrive
     {
-        get => ls_Drive;
+        get => _lsDrive;
 
         set
         {
             if (value.Length >= 1)
             {
-                ls_Drive = $"{value.Substring(0, 1)}:";
+                _lsDrive = $"{value.Substring(0, 1)}:";
             }
             else
             {
-                ls_Drive = "";
+                _lsDrive = "";
             }
         }
     }
-    private string ls_ShareName = "\\\\Computer\\C$";
+    private string _lsShareName = "\\\\Computer\\C$";
     /// <summary>
     /// Share address to map drive to.
     /// </summary>
-    public string ShareName { get => ls_ShareName; set => ls_ShareName = value; }
+    public string ShareName { get => _lsShareName; set => _lsShareName = value; }
     #endregion
 
     #region Function mapping
     /// <summary>
     /// Map network drive
     /// </summary>
-    public void MapDrive() => zMapDrive(null, null);
+    public void MapDrive() => ZMapDrive(null, null);
     /// <summary>
     /// Map network drive (using supplied Password)
     /// </summary>
-    public void MapDrive(string Password) => zMapDrive(null, Password);
+    public void MapDrive(string password) => ZMapDrive(null, password);
     /// <summary>
     /// Map network drive (using supplied Username and Password)
     /// </summary>
-    public void MapDrive(string Username, string Password) => zMapDrive(Username, Password);
+    public void MapDrive(string username, string password) => ZMapDrive(username, password);
     /// <summary>
     /// Unmap network drive
     /// </summary>
-    public void UnMapDrive() => zUnMapDrive(lf_Force);
+    public void UnMapDrive() => ZUnMapDrive(_lfForce);
     /// <summary>
     /// Check / restore persistent network drive
     /// </summary>
-    public void RestoreDrives() => zRestoreDrive();
+    public void RestoreDrives() => ZRestoreDrive();
     /// <summary>
     /// Display windows dialog for mapping a network drive
     /// </summary>
-    public void ShowConnectDialog(KryptonForm ParentForm) => zDisplayDialog(ParentForm, 1);
+    public void ShowConnectDialog(KryptonForm parentForm) => ZDisplayDialog(parentForm, 1);
     /// <summary>
     /// Display windows dialog for disconnecting a network drive
     /// </summary>
-    public void ShowDisconnectDialog(KryptonForm ParentForm) => zDisplayDialog(ParentForm, 2);
+    public void ShowDisconnectDialog(KryptonForm parentForm) => ZDisplayDialog(parentForm, 2);
 
 
     #endregion
@@ -152,48 +152,48 @@ public class NetworkDrives
     #region Core functions
 
     // Map network drive
-    private void zMapDrive(string psUsername, string psPassword)
+    private void ZMapDrive(string? psUsername, string? psPassword)
     {
         //create struct data
-        structNetResource stNetRes = new structNetResource();
+        StructNetResource stNetRes = new StructNetResource();
         stNetRes.iScope = 2;
-        stNetRes.iType = RESOURCETYPE_DISK;
+        stNetRes.iType = ResourcetypeDisk;
         stNetRes.iDisplayType = 3;
         stNetRes.iUsage = 1;
-        stNetRes.sRemoteName = ls_ShareName;
-        stNetRes.sLocalName = ls_Drive;
+        stNetRes.sRemoteName = _lsShareName;
+        stNetRes.sLocalName = _lsDrive;
         //prepare params
         int iFlags = 0;
-        if (lf_SaveCredentials) { iFlags += CONNECT_CMD_SAVECRED; }
-        if (lf_Persistent) { iFlags += CONNECT_UPDATE_PROFILE; }
-        if (ls_PromptForCredentials) { iFlags += CONNECT_INTERACTIVE + CONNECT_PROMPT; }
+        if (_lfSaveCredentials) { iFlags += CONNECT_CMD_SAVECRED; }
+        if (_lfPersistent) { iFlags += CONNECT_UPDATE_PROFILE; }
+        if (_lsPromptForCredentials) { iFlags += CONNECT_INTERACTIVE + CONNECT_PROMPT; }
         if (psUsername == "") { psUsername = null; }
         if (psPassword == "") { psPassword = null; }
         //if force, unmap ready for new connection
-        if (lf_Force) { try { zUnMapDrive(true); } catch { } }
+        if (_lfForce) { try { ZUnMapDrive(true); } catch { } }
         //call and return
         int i = WNetAddConnection2A(ref stNetRes, psPassword, psUsername, iFlags);
         if (i > 0) { throw new Win32Exception(i); }
     }
 
     // Unmap network drive
-    private void zUnMapDrive(bool pfForce)
+    private void ZUnMapDrive(bool pfForce)
     {
         //call unmap and return
         int iFlags = 0;
-        if (lf_Persistent) { iFlags += CONNECT_UPDATE_PROFILE; }
-        int i = WNetCancelConnection2A(ls_Drive, iFlags, Convert.ToInt32(pfForce));
+        if (_lfPersistent) { iFlags += CONNECT_UPDATE_PROFILE; }
+        int i = WNetCancelConnection2A(_lsDrive, iFlags, Convert.ToInt32(pfForce));
         if (i > 0) { throw new Win32Exception(i); }
     }
     // Check / Restore a network drive
-    private void zRestoreDrive()
+    private void ZRestoreDrive()
     {
         //call restore and return
         int i = WNetRestoreConnectionW(0, null);
         if (i > 0) { throw new Win32Exception(i); }
     }
     // Display windows dialog
-    private void zDisplayDialog(KryptonForm poParentForm, int piDialog)
+    private void ZDisplayDialog(KryptonForm? poParentForm, int piDialog)
     {
         int i = -1;
         int iHandle = 0;
@@ -205,15 +205,15 @@ public class NetworkDrives
         //show dialog
         if (piDialog == 1)
         {
-            i = WNetConnectionDialog(iHandle, RESOURCETYPE_DISK);
+            i = WNetConnectionDialog(iHandle, ResourcetypeDisk);
         }
         else if (piDialog == 2)
         {
-            i = WNetDisconnectDialog(iHandle, RESOURCETYPE_DISK);
+            i = WNetDisconnectDialog(iHandle, ResourcetypeDisk);
         }
-        if (i > 0) { throw new System.ComponentModel.Win32Exception(i); }
+        if (i > 0) { throw new Win32Exception(i); }
         //set focus on parent form
-        poParentForm.BringToFront();
+        poParentForm?.BringToFront();
     }
     #endregion
 }

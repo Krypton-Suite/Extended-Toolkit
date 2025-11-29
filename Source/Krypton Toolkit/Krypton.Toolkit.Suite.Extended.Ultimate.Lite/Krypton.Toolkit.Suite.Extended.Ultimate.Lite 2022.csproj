@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
@@ -9,7 +9,7 @@
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Ultimate.Lite</AssemblyName>
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>..\_shared-assets\StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
@@ -81,37 +81,37 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.10.290-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.10.290-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.11.318-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.11.318-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.11.318-alpha" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.9.265-beta" />
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.9.265-beta" />
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.9.265-beta" />
-				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.9.265-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.11.318-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.11.318-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.11.318-beta" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Ribbon" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Navigator" Version="100.25.11.328" />
 			</ItemGroup>
 		</When>
 
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.8.235" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.8.235" />
+				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -209,9 +209,8 @@
 
 	<!-- Package Assets -->
 	<ItemGroup>
-		<None Include="..\..\..\Assets\PNG\NuGet Package Icons\Krypton Stable.png" Pack="true" PackagePath="\" />
 		<None Include="..\..\..\README.md" Pack="true" PackagePath="\" />
-		<None Include="License\License.txt" Pack="true" PackagePath="" />
+		<None Include="..\_shared-assets\License.txt" Pack="true" PackagePath="" Link="License\License.txt" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

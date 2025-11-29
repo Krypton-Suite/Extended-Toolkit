@@ -216,12 +216,12 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
     }
 
-    public static void WriteARGBColoursToFile(string colourConfigurationPath)
+    public static void WriteARGBColoursToFile(string? colourConfigurationPath)
     {
 
     }
 
-    public static void WriteRGBColoursToFile(string colourConfigurationPath)
+    public static void WriteRGBColoursToFile(string? colourConfigurationPath)
     {
         throw new NotImplementedException();
     }
@@ -285,7 +285,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
         catch (Exception exc)
         {
-            ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            KryptonExceptionDialog.Show(exc, null, null);
         }
     }
 
@@ -329,7 +329,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
         catch (Exception exc)
         {
-            ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: '{exc.Message}'", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            KryptonExceptionDialog.Show(exc, null, null);
         }
     }
     #endregion

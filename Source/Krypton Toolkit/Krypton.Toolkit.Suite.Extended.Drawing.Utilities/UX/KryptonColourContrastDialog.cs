@@ -664,7 +664,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         // 
         // chtxtBase
         // 
-        this.chtxtBase.Colour = System.Drawing.Color.Empty;
+        this.chtxtBase.Color = System.Drawing.Color.Empty;
         this.chtxtBase.CueHint.CueHintText = "000000";
         this.chtxtBase.CueHint.Padding = new System.Windows.Forms.Padding(0);
         this.chtxtBase.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -884,7 +884,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         // 
         // chtxtContrast
         // 
-        this.chtxtContrast.Colour = System.Drawing.Color.Empty;
+        this.chtxtContrast.Color = System.Drawing.Color.Empty;
         this.chtxtContrast.CueHint.CueHintText = "000000";
         this.chtxtContrast.CueHint.Padding = new System.Windows.Forms.Padding(0);
         this.chtxtContrast.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1000,7 +1000,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
 
         kbvnumContrast.Value = cbContrastColour.BackColor.B;
 
-        chtxtBase.Colour = cbBaseColour.BackColor;
+        chtxtBase.Color = cbBaseColour.BackColor;
     }
 
     private void cbContrastColour_BackColorChanged(object sender, EventArgs e)
@@ -1013,7 +1013,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
 
         kbvnumBase.Value = cbBaseColour.BackColor.B;
 
-        chtxtContrast.Colour = cbContrastColour.BackColor;
+        chtxtContrast.Color = cbContrastColour.BackColor;
     }
 
     private void useBaseColourToolStripMenuItem_Click(object sender, EventArgs e)

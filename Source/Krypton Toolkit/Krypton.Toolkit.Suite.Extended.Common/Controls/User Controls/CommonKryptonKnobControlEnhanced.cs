@@ -28,7 +28,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Common;
 
-public delegate void ValueChangedEventHandler(object sender, KnobValueChangedEventArgs e);
+public delegate void ValueChangedEventHandler(object? sender, KnobValueChangedEventArgs e);
 
 [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(System.Windows.Forms.Timer)), ToolboxItem(false)]
 public class CommonKryptonKnobControlEnhanced : UserControl
@@ -42,7 +42,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     #endregion
 
     #region Designer Code
-    private Container components = null;
+    private Container? components = null;
     #endregion
 
     #region Variables
@@ -79,7 +79,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
 
     private PaletteContentInheritRedirect _paletteContent;
 
-    private PaletteBase _palette;
+    private PaletteBase? _palette;
 
     private PaletteRedirect _paletteRedirect;
     #endregion
@@ -97,7 +97,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     // Invoke the ValueChanged event; called  when value     
     // is changed                                            
     //-------------------------------------------------------
-    protected virtual void OnValueChanged(object sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
+    protected virtual void OnValueChanged(object? sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
     #endregion
 
     #region Properties
@@ -738,7 +738,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     {
         try
         {
-            float radius = (float)(_rKnob.Width / 2);
+            float radius = _rKnob.Width / 2;
 
             // Draw a line
             if (_pointerStyle == KnobPointerStyles.LINE)
@@ -768,7 +768,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
                 if (_scaleTypefaceAutoSize)
                 {
                     // Use font family = _scaleTypeface, but size = automatic
-                    fSize = (float)(6F * _drawRatio);
+                    fSize = 6F * _drawRatio;
                     if (fSize < 6)
                     {
                         fSize = 6;
@@ -835,8 +835,8 @@ public class CommonKryptonKnobControlEnhanced : UserControl
         float incr = KryptonKnobUtilities.GetRadian((_endAngle - _startAngle) / ((_scaleDivisions - 1) * (_scaleSubDivisions + 1)));
         float currentAngle = KryptonKnobUtilities.GetRadian(_startAngle);
 
-        float radius = (float)(rc.Width / 2);
-        float rulerValue = (float)_minimum;
+        float radius = rc.Width / 2;
+        float rulerValue = _minimum;
 
         Font font;
 
@@ -863,7 +863,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
 
             if (_scaleTypefaceAutoSize)
             {
-                fSize = (float)(6F * _drawRatio);
+                fSize = 6F * _drawRatio;
                 if (fSize < 6)
                 {
                     fSize = 6;
@@ -938,7 +938,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
 
 
 
-                rulerValue += (float)((_maximum - _minimum) / (_scaleDivisions - 1));
+                rulerValue += (_maximum - _minimum) / (_scaleDivisions - 1);
 
                 if (n == _scaleDivisions - 1)
                 {
@@ -1016,7 +1016,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
 
             if (_scaleTypefaceAutoSize)
             {
-                fSize = (float)(6F * _drawRatio);
+                fSize = 6F * _drawRatio;
                 if (fSize < 6)
                 {
                     fSize = 6;
@@ -1139,9 +1139,10 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// <summary>
     /// return 2 points of a line starting from the center of the knob to the periphery
     /// </summary>
+    /// <param name="g"></param>
     /// <param name="l"></param>
     /// <returns></returns>
-    private Point[] GetKnobLine(Graphics Gr, int l)
+    private Point[] GetKnobLine(Graphics g, int l)
     {
         Point[] pret = new Point[2];
 
@@ -1149,7 +1150,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
         float cy = _pKnob.Y;
 
 
-        float radius = (float)(_rKnob.Width / 2);
+        float radius = _rKnob.Width / 2;
 
         // FAB: 21/08/18            
         float degree = _deltaAngle * (this.Value - _minimum) / (_maximum - _minimum);
@@ -1165,18 +1166,18 @@ public class CommonKryptonKnobControlEnhanced : UserControl
         if (!_scaleTypefaceAutoSize)
         {
             fSize = _scaleTypeface.Size;
-            strsize = Gr.MeasureString(str, _scaleTypeface);
+            strsize = g.MeasureString(str, _scaleTypeface);
         }
         else
         {
-            fSize = (float)(6F * _drawRatio);
+            fSize = 6F * _drawRatio;
             if (fSize < 6)
             {
                 fSize = 6;
             }
 
             _knobTypeface = new Font(_scaleTypeface.FontFamily, fSize);
-            strsize = Gr.MeasureString(str, _knobTypeface);
+            strsize = g.MeasureString(str, _knobTypeface);
         }
 
         int strw = (int)strsize.Width;
@@ -1228,7 +1229,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
 
         if (p.X <= _pKnob.X)
         {
-            degree = (float)(_pKnob.Y - p.Y) / (float)(_pKnob.X - p.X);
+            degree = (_pKnob.Y - p.Y) / (float)(_pKnob.X - p.X);
             degree = (float)Math.Atan(degree);
 
             degree = degree * (float)(180 / Math.PI) + (180 - _startAngle);
@@ -1236,7 +1237,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
         }
         else if (p.X > _pKnob.X)
         {
-            degree = (float)(p.Y - _pKnob.Y) / (float)(p.X - _pKnob.X);
+            degree = (p.Y - _pKnob.Y) / (float)(p.X - _pKnob.X);
             degree = (float)Math.Atan(degree);
 
             degree = degree * (float)(180 / Math.PI) + 360 - _startAngle;
@@ -1261,18 +1262,21 @@ public class CommonKryptonKnobControlEnhanced : UserControl
 
     private void InitiliseColourScheme()
     {
-        KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
+        if (_palette != null)
+        {
+            KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
 
-        PointerColour = _palette.ColorTable.OverflowButtonGradientMiddle;
+            PointerColour = _palette.ColorTable.OverflowButtonGradientMiddle;
 
-        ScaleColour = _palette.ColorTable.MenuItemText;
+            ScaleColour = _palette.ColorTable.MenuItemText;
 
-        BackColor = _palette.ColorTable.MenuStripGradientBegin;
+            BackColor = _palette.ColorTable.MenuStripGradientBegin;
+        }
     }
     #endregion
 
     #region Event Handlers
-    private void KryptonKnobControlEnhanced_Resize(object sender, EventArgs e)
+    private void KryptonKnobControlEnhanced_Resize(object? sender, EventArgs e)
     {
         // Control remains square
         Height = Width;
@@ -1282,7 +1286,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
         Invalidate();
     }
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -1303,7 +1307,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }

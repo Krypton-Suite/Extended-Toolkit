@@ -34,7 +34,7 @@ public class TextFragment
     private FragmentState _state;
 
     [MarshalAs(UnmanagedType.LPWStr)]
-    private string _textToSpeak = string.Empty;
+    private string? _textToSpeak = string.Empty;
 
     private int _textOffset;
 
@@ -46,7 +46,7 @@ public class TextFragment
         set => _state = value;
     }
 
-    public string TextToSpeak
+    public string? TextToSpeak
     {
         get => _textToSpeak;
         set
@@ -82,7 +82,7 @@ public class TextFragment
     {
     }
 
-    internal TextFragment(FragmentState fragState, string textToSpeak, string textFrag, int offset, int length)
+    internal TextFragment(FragmentState fragState, string? textToSpeak, string? textFrag, int offset, int length)
     {
         if (fragState.Action is TtsEngineAction.Speak or TtsEngineAction.Pronounce)
         {

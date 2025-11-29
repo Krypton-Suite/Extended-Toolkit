@@ -166,7 +166,7 @@ internal class EngineSite : ITtsEngineSite, ITtsEventSink
     {
     }
 
-    public Stream LoadResource(Uri uri, string mediaType)
+    public Stream LoadResource(Uri uri, string? mediaType)
     {
         try
         {

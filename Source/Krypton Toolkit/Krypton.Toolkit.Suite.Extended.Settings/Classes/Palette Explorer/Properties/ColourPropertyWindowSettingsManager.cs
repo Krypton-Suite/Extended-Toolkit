@@ -114,7 +114,7 @@ public class ColourPropertyWindowSettingsManager
     /// Sets the value of HotColourControl to control.
     /// </summary>
     /// <param name="control">The value of HotColourControl.</param>
-    public void SetHotColourControl(Control control)
+    public void SetHotColourControl(Control? control)
     {
         _colourPropertyWindowSettings.HotColourControl = control;
     }

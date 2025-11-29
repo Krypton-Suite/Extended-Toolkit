@@ -26,6 +26,7 @@
 #endregion
 
 global using System;
+global using System.Collections.Generic;
 global using System.ComponentModel;
 global using System.ComponentModel.Design;
 global using System.Drawing;
@@ -40,4 +41,3 @@ global using System.Windows.Forms.VisualStyles;
 global using Krypton.Navigator;
 global using Krypton.Toolkit.Suite.Extended.Drawing;
 
-global using Microsoft.VisualBasic;

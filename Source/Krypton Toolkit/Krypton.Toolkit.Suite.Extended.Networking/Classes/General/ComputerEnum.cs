@@ -169,13 +169,13 @@ public class ComputerEnum : IEnumerable, IDisposable
     // enumerates network computers
     [DllImport("Netapi32", CharSet = CharSet.Unicode)]
     private static extern int NetServerEnum(
-        string servername,      // must be null
+        string? servername,      // must be null
         int level,              // 100 or 101
         out IntPtr bufptr,      // pointer to buffer receiving data
         int prefmaxlen,         // max length of returned data
         out int entriesread,    // num entries read
         out int totalentries,   // total servers + workstations
-        uint servertype,        // server type filter
+        uint? servertype,        // server type filter
         [MarshalAs(UnmanagedType.LPWStr)]
         string domain,          // domain to enumerate
         IntPtr resume_handle);
@@ -189,7 +189,7 @@ public class ComputerEnum : IEnumerable, IDisposable
     private const int ERROR_ACCESS_DENIED = 5;
     private const int ERROR_MORE_DATA = 234;
 
-    private NetworkComputers[] _computers;
+    private NetworkComputers[]? _computers;
     private string _lastError = "";
 
     /// <summary>
@@ -205,8 +205,8 @@ public class ComputerEnum : IEnumerable, IDisposable
     /// Populates with broadcasting computers.
     /// </summary>
     /// <param name="serverType">Server type filter</param>
-    /// <param name="domain">The domain to search for computers in</param>
-    public ComputerEnum(uint serverType, string domainName)
+    /// <param name="domainName">The domain name to search for computers in</param>
+    public ComputerEnum(uint? serverType, string domainName)
     {
         int entriesread;  // number of entries actually read
         int totalentries; // total visible servers and workstations
@@ -247,7 +247,6 @@ public class ComputerEnum : IEnumerable, IDisposable
                         _lastError = $"Unknown error code {result}";
                         break;
                 }
-                return;
             }
             else
             {
@@ -276,20 +275,7 @@ public class ComputerEnum : IEnumerable, IDisposable
     /// <summary>
     /// Total computers in the collection
     /// </summary>
-    public int Length
-    {
-        get
-        {
-            if (_computers != null)
-            {
-                return _computers.Length;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-    }
+    public int Length => _computers != null ? _computers.Length : 0;
 
     /// <summary>
     /// Last error message
@@ -311,7 +297,7 @@ public class ComputerEnum : IEnumerable, IDisposable
         _computers = null;
     }
 
-    public NetworkComputers this[int item] => _computers[item];
+    public NetworkComputers this[int item] => _computers![item];
 
     // holds computer info.
     public struct NetworkComputers
@@ -348,10 +334,10 @@ public class ComputerEnum : IEnumerable, IDisposable
     /// </summary>
     public class ComputerEnumerator : IEnumerator
     {
-        private NetworkComputers[] aryComputers;
+        private NetworkComputers[]? aryComputers;
         private int indexer;
 
-        internal ComputerEnumerator(NetworkComputers[] networkComputers)
+        internal ComputerEnumerator(NetworkComputers[]? networkComputers)
         {
             aryComputers = networkComputers;
             indexer = -1;
@@ -362,7 +348,7 @@ public class ComputerEnum : IEnumerable, IDisposable
             indexer = -1;
         }
 
-        public object Current => aryComputers[indexer];
+        public object Current => aryComputers![indexer];
 
         public bool MoveNext()
         {
@@ -376,7 +362,7 @@ public class ComputerEnum : IEnumerable, IDisposable
                 indexer++;
             }
 
-            return !(indexer == aryComputers.Length);
+            return indexer != aryComputers.Length;
         }
     }
 }

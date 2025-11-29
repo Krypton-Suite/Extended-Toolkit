@@ -64,7 +64,7 @@ public static class ShellIcon
 
         [DllImport("shell32.dll")]
         public static extern IntPtr SHGetFileInfo(
-            string pszPath, uint dwFileAttributes, ref SHFILEINFO psfi,
+            string? pszPath, uint dwFileAttributes, ref SHFILEINFO psfi,
             uint cbSizeFileInfo, uint uFlags
         );
 
@@ -99,7 +99,7 @@ public static class ShellIcon
     public static Icon GetLargeIcon(string fileName) => GetIcon(fileName, Win32.FILE_ATTRIBUTE_NORMAL, Win32.SHGFI_LARGEICON);
 
 
-    private static Icon GetIcon(string fileName, uint dwAttributes, uint flags)
+    private static Icon GetIcon(string? fileName, uint dwAttributes, uint flags)
     {
         SHFILEINFO shinfo = new SHFILEINFO();
         IntPtr hImgSmall = Win32.SHGetFileInfo(fileName, dwAttributes,

@@ -50,5 +50,5 @@ internal interface ISpEngineSite
 
     void CompleteSkip(int skipped);
 
-    void LoadResource([MarshalAs(UnmanagedType.LPWStr)] string resource, ref string mediaType, out IStream stream);
+    void LoadResource([MarshalAs(UnmanagedType.LPWStr)] string resource, ref string? mediaType, out IStream? stream);
 }

@@ -54,7 +54,7 @@ public class Animator3D : IAnimator
     /// <summary>
     ///     The target object to change the property of
     /// </summary>
-    protected object TargetObject;
+    protected object? TargetObject;
 
     /// <summary>
     ///     The latest horizontal value
@@ -437,7 +437,7 @@ public class Animator3D : IAnimator
     /// </param>
     public void Play(SafeInvoker<Float3D> frameCallback)
     {
-        Play(frameCallback, (SafeInvoker)null);
+        Play(frameCallback, null as SafeInvoker);
     }
 
     /// <summary>

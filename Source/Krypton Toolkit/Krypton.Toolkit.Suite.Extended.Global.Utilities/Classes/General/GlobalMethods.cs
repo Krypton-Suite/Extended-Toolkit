@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities;
 public class GlobalMethods
 {
     #region Variables
-    private bool _isTargetPlatformSupported = false, _isTargetPlatform64BIT = false, _isAssemblies64BIT = false, _internetConnectionState = false;
+    private bool _isTargetPlatformSupported, _isTargetPlatform64BIT, _isAssemblies64BIT, _internetConnectionState;
     #endregion
 
     #region Properties
@@ -236,7 +236,7 @@ public class GlobalMethods
     {
         try
         {
-            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+            RegistryKey? registryKey = Registry.LocalMachine.OpenSubKey(path);
 
             if (registryKey == null)
             {
@@ -247,6 +247,8 @@ public class GlobalMethods
         }
         catch (Exception e)
         {
+            KryptonExceptionDialog.Show(e, null, null);
+
             return string.Empty;
         }
     }
@@ -364,7 +366,7 @@ public class GlobalMethods
 public static class GlobalMethodsStatic
 {
     #region Variables
-    public static bool _isTargetPlatformSupported = false, _isTargetPlatform64BIT = false, _isAssemblies64BIT = false, _internetConnectionState = false;
+    public static bool _isTargetPlatformSupported, _isTargetPlatform64BIT, _isAssemblies64BIT, _internetConnectionState;
     #endregion
 
     #region Properties
@@ -447,7 +449,7 @@ public static class GlobalMethodsStatic
         }
         catch (Exception exc)
         {
-            MessageBox.Show($"Error: {exc.Message}", "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            KryptonExceptionDialog.Show(exc, null, null);
 
             SetIsTargetPlatformSupported(false);
         }
@@ -527,10 +529,10 @@ public static class GlobalMethodsStatic
             }
             catch (Win32Exception wexc)
             {
+                KryptonExceptionDialog.Show(wexc, null, null);
+
                 DebugUtilities.NotImplemented(wexc.ToString());
             }
-
-            return;
         }
     }
 
@@ -556,7 +558,7 @@ public static class GlobalMethodsStatic
     {
         try
         {
-            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+            RegistryKey? registryKey = Registry.LocalMachine.OpenSubKey(path);
 
             if (registryKey == null)
             {
@@ -567,6 +569,8 @@ public static class GlobalMethodsStatic
         }
         catch (Exception e)
         {
+            KryptonExceptionDialog.Show(e, null, null);
+
             return string.Empty;
         }
     }
