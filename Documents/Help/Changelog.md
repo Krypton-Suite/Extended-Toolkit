@@ -5,6 +5,13 @@
 
 =======
 
+## 2026-11-xx - Build 2611 - November 2026
+
+* Support for .NET 11
+* Version bump `100.xx.xx.xx` -> `110.xx.xx.xx`
+
+=======
+
 ## 2025-11-24 - Build 2511 - November 2025
 
 ### **Major Build System Overhaul**
