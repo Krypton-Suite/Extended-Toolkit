@@ -2,8 +2,8 @@
 // BSD 3-Clause License (https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/LICENSE)
 //
 //  © Component Factory Pty Ltd, 2006 - 2024, (Version 6.8.0.0)
-//  © Simon Coghlan (aka Smurf-IV), 2017 - 2024, (Version 6.8.0.0)
-//  © Peter Wagner (aka Wagnerp), 2017 - 2024, (Version 6.8.0.0)
+//  © Simon Coghlan (aka Smurf-IV), 2017 - 2026, (Version 6.8.0.0)
+//  © Peter Wagner (aka Wagnerp), 2017 - 2026, (Version 6.8.0.0)
 //
 //  All modifications are distributed under the MIT license, unless otherwise stated.
 //  https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/LICENSE
