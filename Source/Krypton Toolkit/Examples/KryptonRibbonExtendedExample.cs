@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class KryptonRibbonExtendedExample : KryptonForm
 {
-    public partial class KryptonRibbonExtendedExample : KryptonForm
+    public KryptonRibbonExtendedExample()
     {
-        public KryptonRibbonExtendedExample()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

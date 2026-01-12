@@ -42,4 +42,8 @@ internal static class UnsafeNativeMethods
     [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = false)]
     internal static extern bool EndPaint(HandleRef hWnd, ref NativeMethods.PAINTSTRUCT lpPaint);
 
+    /* Sends the specified message to a window or windows. */
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    internal static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
 }

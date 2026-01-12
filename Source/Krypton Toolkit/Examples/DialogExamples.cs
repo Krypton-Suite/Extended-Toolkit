@@ -31,51 +31,50 @@ using Examples.Properties;
 using Krypton.Toolkit.Suite.Extended.Dialogs;
 using Krypton.Toolkit.Suite.Extended.Specialised.Dialogs;
 
-namespace Examples
+namespace Examples;
+
+public partial class DialogExamples : KryptonForm
 {
-    public partial class DialogExamples : KryptonForm
+    public DialogExamples()
     {
-        public DialogExamples()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void kbtnException_Click(object sender, EventArgs e)
-        {
-            //KryptonExceptionCaptureDialog exceptionCaptureDialog = new KryptonExceptionCaptureDialog();
+    private void kbtnException_Click(object sender, EventArgs e)
+    {
+        //KryptonExceptionCaptureDialog exceptionCaptureDialog = new KryptonExceptionCaptureDialog();
 
-            //exceptionCaptureDialog.ShowDialog();
-        }
+        //exceptionCaptureDialog.ShowDialog();
+    }
 
-        private void kbtnCheckSum_Click(object sender, EventArgs e)
-        {
-            KryptonPropertiesForm propertiesForm = new KryptonPropertiesForm();
+    private void kbtnCheckSum_Click(object sender, EventArgs e)
+    {
+        KryptonPropertiesForm propertiesForm = new KryptonPropertiesForm();
 
-            propertiesForm.ShowDialog();
-        }
+        propertiesForm.ShowDialog();
+    }
 
-        private void kbtnRun_Click(object sender, EventArgs e)
-        {
-            //KryptonRunDialog runDialog = new KryptonRunDialog(RunDialogStartPosition.BottomLeft, true, true, true);
+    private void kbtnRun_Click(object sender, EventArgs e)
+    {
+        //KryptonRunDialog runDialog = new KryptonRunDialog(RunDialogStartPosition.BottomLeft, true, true, true);
 
-            Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonRunDialog runDialog =
-                new Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonRunDialog(null, RunDialogIconVisibility.Visible, RunDialogType.Textbox);
+        Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonRunDialog runDialog =
+            new Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.KryptonRunDialog(null, RunDialogIconVisibility.Visible, RunDialogType.Textbox);
 
-            runDialog.ShowDialog();
-        }
+        runDialog.ShowDialog();
+    }
 
-        private void kbtnSplash_Click(object sender, EventArgs e)
-        {
-            KryptonSplashDialog splashDialog = new KryptonSplashDialog(true, @"Extended Toolkit Test App", Resources.Stable);
+    private void kbtnSplash_Click(object sender, EventArgs e)
+    {
+        KryptonSplashDialog splashDialog = new KryptonSplashDialog(true, @"Extended Toolkit Test App", Resources.Stable);
 
-            splashDialog.ShowDialog();
-        }
+        splashDialog.ShowDialog();
+    }
 
-        private void kbtnTextToSpeech_Click(object sender, EventArgs e)
-        {
-            KryptonTextToSpeechDialog textToSpeechDialog = new KryptonTextToSpeechDialog();
+    private void kbtnTextToSpeech_Click(object sender, EventArgs e)
+    {
+        KryptonTextToSpeechDialog textToSpeechDialog = new KryptonTextToSpeechDialog();
 
-            textToSpeechDialog.ShowDialog();
-        }
+        textToSpeechDialog.ShowDialog();
     }
 }

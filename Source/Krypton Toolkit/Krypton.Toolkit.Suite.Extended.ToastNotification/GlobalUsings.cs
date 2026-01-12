@@ -35,3 +35,5 @@ global using System.Media;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.ToastNotification.Properties;
+
+global using Krypton.Utilities;

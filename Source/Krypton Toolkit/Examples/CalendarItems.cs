@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class CalendarItems : KryptonForm
 {
-    public partial class CalendarItems : KryptonForm
+    public CalendarItems()
     {
-        public CalendarItems()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -28,111 +28,110 @@
 #endregion
 using System.Data;
 
-namespace Examples
+namespace Examples;
+
+public partial class TreeGridViewDataSourceExample : KryptonForm
 {
-    public partial class TreeGridViewDataSourceExample : KryptonForm
+    private DataTable _dataTableSource;
+
+    public TreeGridViewDataSourceExample()
     {
-        private DataTable _dataTableSource;
+        InitializeComponent();
 
-        public TreeGridViewDataSourceExample()
+        kryptonTreeGridView1.FontParentBold = true;
+    }
+
+    private void PopulateDataTable()
+    {
+        //read Data
+        var set = new DataSet();
+        //set.ReadXml(@"DataSource\invoices.xml");
         {
-            InitializeComponent();
-
-            kryptonTreeGridView1.FontParentBold = true;
+            set.ReadXml(@"DataSource\sales_by_category.xml");
+            kryptonTreeGridView1.IdColumnName = "CategoryID";
+            kryptonTreeGridView1.ParentIdColumnName = "CategoryName";
         }
+        //{
+        //set.ReadXml(@"DataSource\test.xml");
+        //treeGridView1.IdColumnName = "ID";
+        //treeGridView1.ParentIdColumnName = "ParentID";
+        //}
+        kryptonTreeGridView1.UseParentRelationship = true;
 
-        private void PopulateDataTable()
+        _dataTableSource = set.Tables[0];
+    }
+
+    private void TreeGridViewDataSourceExample_Load(object sender, EventArgs e)
+    {
+        attachmentColumn.DefaultCellStyle.NullValue = null;
+
+        // load image strip
+        this.imageStrip.ImageSize = new System.Drawing.Size(16, 16);
+        this.imageStrip.TransparentColor = System.Drawing.Color.Magenta;
+        this.imageStrip.ImageSize = new Size(16, 16);
+        this.imageStrip.Images.AddStrip(Properties.Resources.newGroupPostIconStrip);
+
+        kryptonTreeGridView1.ImageList = imageStrip;
+
+        //Populate Source
+        PopulateDataTable();
+
+        //populate Combo
+        for (int k = 0; k < _dataTableSource.Columns.Count; k++)
         {
-            //read Data
-            var set = new DataSet();
-            //set.ReadXml(@"DataSource\invoices.xml");
-            {
-                set.ReadXml(@"DataSource\sales_by_category.xml");
-                kryptonTreeGridView1.IdColumnName = "CategoryID";
-                kryptonTreeGridView1.ParentIdColumnName = "CategoryName";
-            }
-            //{
-            //set.ReadXml(@"DataSource\test.xml");
-            //treeGridView1.IdColumnName = "ID";
-            //treeGridView1.ParentIdColumnName = "ParentID";
-            //}
-            kryptonTreeGridView1.UseParentRelationship = true;
-
-            _dataTableSource = set.Tables[0];
+            toolStripComboBox1.ComboBox.Items.Add(k);
         }
+        toolStripComboBox1.ComboBox.SelectedIndex = 0;
+    }
 
-        private void TreeGridViewDataSourceExample_Load(object sender, EventArgs e)
-        {
-            attachmentColumn.DefaultCellStyle.NullValue = null;
+    private void toolStripButton1_Click(object sender, EventArgs e)
+    {
+        kryptonTreeGridView1.ExpandAll();
+    }
 
-            // load image strip
-            this.imageStrip.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageStrip.TransparentColor = System.Drawing.Color.Magenta;
-            this.imageStrip.ImageSize = new Size(16, 16);
-            this.imageStrip.Images.AddStrip(Properties.Resources.newGroupPostIconStrip);
+    private void toolStripButton2_Click(object sender, EventArgs e)
+    {
+        kryptonTreeGridView1.CollapseAll();
+    }
 
-            kryptonTreeGridView1.ImageList = imageStrip;
+    private void toolStripButton3_Click(object sender, EventArgs e)
+    {
+        kryptonTreeGridView1.GridNodes.Clear();
+        kryptonTreeGridView1.Columns.Clear();
 
-            //Populate Source
-            PopulateDataTable();
+        //set some properties
+        kryptonTreeGridView1.IsOneLevel = toolStripButton4.Checked;
+        kryptonTreeGridView1.ImageIndexParent = 0;
+        kryptonTreeGridView1.ImageIndexChild = 1;
 
-            //populate Combo
-            for (int k = 0; k < _dataTableSource.Columns.Count; k++)
-            {
-                toolStripComboBox1.ComboBox.Items.Add(k);
-            }
-            toolStripComboBox1.ComboBox.SelectedIndex = 0;
-        }
+        kryptonTreeGridView1.UseParentRelationship = false;
+        kryptonTreeGridView1.GroupByColumnIndex = (int)toolStripComboBox1.SelectedIndex;
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            kryptonTreeGridView1.ExpandAll();
-        }
+        //bind data
+        kryptonTreeGridView1.DataSource = _dataTableSource;
+    }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            kryptonTreeGridView1.CollapseAll();
-        }
+    private void toolStripButton4_Click(object sender, EventArgs e)
+    {
+        toolStripButton3_Click(sender, e);
+    }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            kryptonTreeGridView1.GridNodes.Clear();
-            kryptonTreeGridView1.Columns.Clear();
+    private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        toolStripButton3_Click(sender, e);
+    }
 
-            //set some properties
-            kryptonTreeGridView1.IsOneLevel = toolStripButton4.Checked;
-            kryptonTreeGridView1.ImageIndexParent = 0;
-            kryptonTreeGridView1.ImageIndexChild = 1;
+    private void toolStripButton5_Click(object sender, EventArgs e)
+    {
+        kryptonTreeGridView1.GridNodes.Clear();
+        kryptonTreeGridView1.Columns.Clear();
 
-            kryptonTreeGridView1.UseParentRelationship = false;
-            kryptonTreeGridView1.GroupByColumnIndex = (int)toolStripComboBox1.SelectedIndex;
+        //set some properties
+        kryptonTreeGridView1.IsOneLevel = toolStripButton4.Checked;
+        kryptonTreeGridView1.ImageIndexParent = 0;
+        kryptonTreeGridView1.ImageIndexChild = 1;
 
-            //bind data
-            kryptonTreeGridView1.DataSource = _dataTableSource;
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            toolStripButton3_Click(sender, e);
-        }
-
-        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            toolStripButton3_Click(sender, e);
-        }
-
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-            kryptonTreeGridView1.GridNodes.Clear();
-            kryptonTreeGridView1.Columns.Clear();
-
-            //set some properties
-            kryptonTreeGridView1.IsOneLevel = toolStripButton4.Checked;
-            kryptonTreeGridView1.ImageIndexParent = 0;
-            kryptonTreeGridView1.ImageIndexChild = 1;
-
-            //bind data
-            kryptonTreeGridView1.DataSource = _dataTableSource;
-        }
+        //bind data
+        kryptonTreeGridView1.DataSource = _dataTableSource;
     }
 }

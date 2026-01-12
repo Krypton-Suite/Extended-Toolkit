@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
@@ -85,7 +85,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.1.1-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.1.10-alpha" />
 			</ItemGroup>
 		</When>
 

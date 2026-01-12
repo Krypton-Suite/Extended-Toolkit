@@ -26,25 +26,24 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class FloatingMenuToolbarExampleMain : KryptonForm
 {
-    public partial class FloatingMenuToolbarExampleMain : KryptonForm
+    public FloatingMenuToolbarExampleMain()
     {
-        public FloatingMenuToolbarExampleMain()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void kbtnFloatingAdvanced_Click(object sender, EventArgs e)
-        {
-            FloatingMenuToolbarAdvancedExample floatingMenuToolbarAdvanced = new FloatingMenuToolbarAdvancedExample();
+    private void kbtnFloatingAdvanced_Click(object sender, EventArgs e)
+    {
+        FloatingMenuToolbarAdvancedExample floatingMenuToolbarAdvanced = new FloatingMenuToolbarAdvancedExample();
 
-            floatingMenuToolbarAdvanced.Show();
-        }
+        floatingMenuToolbarAdvanced.Show();
+    }
 
-        private void kryptonButton2_Click(object sender, EventArgs e)
-        {
+    private void kryptonButton2_Click(object sender, EventArgs e)
+    {
 
-        }
     }
 }

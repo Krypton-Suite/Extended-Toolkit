@@ -63,7 +63,7 @@ namespace Examples
             this.kryptonValidationBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox();
             this.kryptonStarRatingControl1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl();
             this.kryptonSecureTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox();
-            this.kryptonProgressBarExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended();
+            this.kryptonProgressBarExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedTest();
             this.kryptonProgressBarExtendedVersion11 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1();
             this.kryptonMarqueeLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel();
             this.kkcv2Test = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2();
@@ -261,7 +261,7 @@ namespace Examples
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2 kkcv2Test;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel kryptonMarqueeLabel1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1 kryptonProgressBarExtendedVersion11;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended kryptonProgressBarExtended1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedTest kryptonProgressBarExtended1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonSecureTextBox kryptonSecureTextBox1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl kryptonStarRatingControl1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox kryptonValidationBox1;

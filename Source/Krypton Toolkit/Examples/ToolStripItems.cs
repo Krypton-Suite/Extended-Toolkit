@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class ToolStripItems : KryptonForm
 {
-    public partial class ToolStripItems : KryptonForm
+    public ToolStripItems()
     {
-        public ToolStripItems()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

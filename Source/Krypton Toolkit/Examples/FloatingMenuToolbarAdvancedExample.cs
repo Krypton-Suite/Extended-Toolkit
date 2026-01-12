@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class FloatingMenuToolbarAdvancedExample : KryptonForm
 {
-    public partial class FloatingMenuToolbarAdvancedExample : KryptonForm
+    public FloatingMenuToolbarAdvancedExample()
     {
-        public FloatingMenuToolbarAdvancedExample()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

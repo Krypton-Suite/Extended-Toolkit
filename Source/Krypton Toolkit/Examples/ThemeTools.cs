@@ -28,32 +28,31 @@
 #endregion
 using Krypton.Toolkit.Suite.Extended.Theme.Switcher;
 
-namespace Examples
+namespace Examples;
+
+public partial class ThemeTools : KryptonForm
 {
-    public partial class ThemeTools : KryptonForm
+    public ThemeTools()
     {
-        public ThemeTools()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void kbtnExternalThemeSelector_Click(object sender, EventArgs e)
-        {
-            ExternalThemeSelectorChooser chooser = new();
+    private void kbtnExternalThemeSelector_Click(object sender, EventArgs e)
+    {
+        ExternalThemeSelectorChooser chooser = new();
 
-            chooser.Show();
-        }
+        chooser.Show();
+    }
 
-        private void kbtnThemeSelector_Click(object sender, EventArgs e)
-        {
-            ThemeSelector themeSelector = new(new KryptonManager());
+    private void kbtnThemeSelector_Click(object sender, EventArgs e)
+    {
+        ThemeSelector themeSelector = new(new KryptonManager());
 
-            themeSelector.Show();
-        }
+        themeSelector.Show();
+    }
 
-        private void ThemeTools_Load(object sender, EventArgs e)
-        {
+    private void ThemeTools_Load(object sender, EventArgs e)
+    {
 
-        }
     }
 }

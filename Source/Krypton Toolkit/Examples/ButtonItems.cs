@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class ButtonItems : KryptonForm
 {
-    public partial class ButtonItems : KryptonForm
+    public ButtonItems()
     {
-        public ButtonItems()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

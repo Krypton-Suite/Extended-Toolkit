@@ -56,12 +56,39 @@ namespace Examples
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.kryptonProgressBarExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended();
+            this.SuspendLayout();
+            // 
+            // kryptonProgressBarExtended1
+            // 
+            this.kryptonProgressBarExtended1.Location = new System.Drawing.Point(238, 211);
+            this.kryptonProgressBarExtended1.Name = "kryptonProgressBarExtended1";
+            this.kryptonProgressBarExtended1.Size = new System.Drawing.Size(100, 26);
+            this.kryptonProgressBarExtended1.StateCommon.Back.Color1 = System.Drawing.Color.Green;
+            this.kryptonProgressBarExtended1.StateDisabled.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.OneNote;
+            this.kryptonProgressBarExtended1.StateNormal.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.OneNote;
+            this.kryptonProgressBarExtended1.TabIndex = 0;
+            this.kryptonProgressBarExtended1.Text = "kryptonProgressBarExtended1";
+            this.kryptonProgressBarExtended1.TextBackdropColor = System.Drawing.Color.Empty;
+            this.kryptonProgressBarExtended1.TextShadowColor = System.Drawing.Color.Empty;
+            this.kryptonProgressBarExtended1.ThreeColorState.UseThreeColorState = true;
+            this.kryptonProgressBarExtended1.Value = 10;
+            this.kryptonProgressBarExtended1.Values.Text = "kryptonProgressBarExtended1";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.kryptonProgressBarExtended1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended kryptonProgressBarExtended1;
     }
 }

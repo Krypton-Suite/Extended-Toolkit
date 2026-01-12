@@ -30,13 +30,13 @@ using Krypton.Toolkit.Suite.Extended.Memory.Box;
 
 using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace Examples
-{
-    public partial class MemoryBoxExample : KryptonForm
-    {
-        #region Static Fields
+namespace Examples;
 
-        private const string SEED_TEXT = @"/*
+public partial class MemoryBoxExample : KryptonForm
+{
+    #region Static Fields
+
+    private const string SEED_TEXT = @"/*
                                              * MIT License
                                              *
                                              * Copyright (c) 2017 - 2026 Krypton Suite
@@ -61,116 +61,115 @@ namespace Examples
                                              *
                                              */";
 
-        #endregion
+    #endregion
 
-        #region Instance Fields
+    #region Instance Fields
 
-        private string _title;
+    private string _title;
 
-        private string _messageText;
+    private string _messageText;
 
-        private string _iconPath;
+    private string _iconPath;
 
-        private KryptonMemoryBoxIcon _icon = KryptonMemoryBoxIcon.None;
+    private KryptonMemoryBoxIcon _icon = KryptonMemoryBoxIcon.None;
 
-        private KryptonMemoryBoxDefaultButton _defaultButton = KryptonMemoryBoxDefaultButton.ButtonOne;
+    private KryptonMemoryBoxDefaultButton _defaultButton = KryptonMemoryBoxDefaultButton.ButtonOne;
 
-        private KryptonMemoryBoxDialogResult _dialogResult = KryptonMemoryBoxDialogResult.Yes;
+    private KryptonMemoryBoxDialogResult _dialogResult = KryptonMemoryBoxDialogResult.Yes;
 
-        #endregion
+    #endregion
 
-        public MemoryBoxExample()
+    public MemoryBoxExample()
+    {
+        InitializeComponent();
+    }
+
+    private void ShowBox()
+    {
+        KryptonMemoryBoxDialogResult result = KryptonMemoryBox.Show(ktxtTitle.Text, ktxtMessageContent.Text, _icon,
+            _iconPath, _defaultButton, _dialogResult);
+
+        kwlMemoryBoxResult.Text = $@"Memory Box Result = {result}";
+    }
+
+    private void kbtnShow_Click(object sender, EventArgs e) => ShowBox();
+
+    private void MemoryBoxExample_Load(object sender, EventArgs e)
+    {
+        foreach (string icon in Enum.GetNames(typeof(KryptonMemoryBoxIcon)))
         {
-            InitializeComponent();
+            kcmbMessageBoxIcon.Items.Add(icon);
         }
 
-        private void ShowBox()
-        {
-            KryptonMemoryBoxDialogResult result = KryptonMemoryBox.Show(ktxtTitle.Text, ktxtMessageContent.Text, _icon,
-                _iconPath, _defaultButton, _dialogResult);
+        kcmbMessageBoxIcon.SelectedIndex = 1;
 
-            kwlMemoryBoxResult.Text = $@"Memory Box Result = {result}";
+        foreach (string button in Enum.GetNames(typeof(KryptonMemoryBoxDefaultButton)))
+        {
+            kcmbMemoryBoxDefaultButton.Items.Add(button);
         }
 
-        private void kbtnShow_Click(object sender, EventArgs e) => ShowBox();
+        kcmbMemoryBoxDefaultButton.SelectedIndex = 0;
 
-        private void MemoryBoxExample_Load(object sender, EventArgs e)
+        foreach (string result in Enum.GetNames(typeof(KryptonMemoryBoxDialogResult)))
         {
-            foreach (string icon in Enum.GetNames(typeof(KryptonMemoryBoxIcon)))
-            {
-                kcmbMessageBoxIcon.Items.Add(icon);
-            }
-
-            kcmbMessageBoxIcon.SelectedIndex = 1;
-
-            foreach (string button in Enum.GetNames(typeof(KryptonMemoryBoxDefaultButton)))
-            {
-                kcmbMemoryBoxDefaultButton.Items.Add(button);
-            }
-
-            kcmbMemoryBoxDefaultButton.SelectedIndex = 0;
-
-            foreach (string result in Enum.GetNames(typeof(KryptonMemoryBoxDialogResult)))
-            {
-                kcmbMemoryBoxDefaultDialogResult.Items.Add(result);
-            }
-
-            kcmbMemoryBoxDefaultDialogResult.SelectedIndex = 0;
+            kcmbMemoryBoxDefaultDialogResult.Items.Add(result);
         }
 
-        private void kcmbMessageBoxIcon_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (kcmbMessageBoxIcon.SelectedIndex == 0)
-            {
-                ktxtCustomIconPath.Enabled = true;
-            }
-            else
-            {
-                ktxtCustomIconPath.Enabled = false;
-            }
+        kcmbMemoryBoxDefaultDialogResult.SelectedIndex = 0;
+    }
 
-            _icon = (KryptonMemoryBoxIcon)Enum.Parse(typeof(KryptonMemoryBoxIcon), kcmbMessageBoxIcon.Text);
+    private void kcmbMessageBoxIcon_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (kcmbMessageBoxIcon.SelectedIndex == 0)
+        {
+            ktxtCustomIconPath.Enabled = true;
+        }
+        else
+        {
+            ktxtCustomIconPath.Enabled = false;
         }
 
-        private void kcmbMemoryBoxDefaultButton_SelectedIndexChanged(object sender, EventArgs e)
+        _icon = (KryptonMemoryBoxIcon)Enum.Parse(typeof(KryptonMemoryBoxIcon), kcmbMessageBoxIcon.Text);
+    }
+
+    private void kcmbMemoryBoxDefaultButton_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _defaultButton = (KryptonMemoryBoxDefaultButton)Enum.Parse(typeof(KryptonMemoryBoxDefaultButton),
+            kcmbMemoryBoxDefaultButton.Text);
+    }
+
+    private void kcmbMemoryBoxDefaultDialogResult_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _dialogResult = (KryptonMemoryBoxDialogResult)Enum.Parse(typeof(KryptonMemoryBoxDialogResult),
+            kcmbMemoryBoxDefaultDialogResult.Text);
+    }
+
+    private void bsaBrowse_Click(object sender, EventArgs e)
+    {
+        CommonOpenFileDialog iconDialog = new()
         {
-            _defaultButton = (KryptonMemoryBoxDefaultButton)Enum.Parse(typeof(KryptonMemoryBoxDefaultButton),
-                kcmbMemoryBoxDefaultButton.Text);
-        }
+            Title = @"Select a image:",
+            //Filters = new CommonFileDialogFilterCollection()
+        };
 
-        private void kcmbMemoryBoxDefaultDialogResult_SelectedIndexChanged(object sender, EventArgs e)
+        if (iconDialog.ShowDialog() == CommonFileDialogResult.Ok)
         {
-            _dialogResult = (KryptonMemoryBoxDialogResult)Enum.Parse(typeof(KryptonMemoryBoxDialogResult),
-                kcmbMemoryBoxDefaultDialogResult.Text);
+            ktxtCustomIconPath.Text = Path.GetFullPath(iconDialog.FileName);
         }
+    }
 
-        private void bsaBrowse_Click(object sender, EventArgs e)
+    private void ktxtCustomIconPath_TextChanged(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(ktxtCustomIconPath.Text))
         {
-            CommonOpenFileDialog iconDialog = new()
-            {
-                Title = @"Select a image:",
-                //Filters = new CommonFileDialogFilterCollection()
-            };
-
-            if (iconDialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                ktxtCustomIconPath.Text = Path.GetFullPath(iconDialog.FileName);
-            }
+            _iconPath = ktxtCustomIconPath.Text;
         }
+    }
 
-        private void ktxtCustomIconPath_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(ktxtCustomIconPath.Text))
-            {
-                _iconPath = ktxtCustomIconPath.Text;
-            }
-        }
+    private void kbtnDummyText_Click(object sender, EventArgs e)
+    {
+        ktxtMessageContent.Text = string.Empty;
 
-        private void kbtnDummyText_Click(object sender, EventArgs e)
-        {
-            ktxtMessageContent.Text = string.Empty;
-
-            ktxtMessageContent.Text = SEED_TEXT;
-        }
+        ktxtMessageContent.Text = SEED_TEXT;
     }
 }

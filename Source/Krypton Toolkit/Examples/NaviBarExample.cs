@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class NaviBarExample : KryptonForm
 {
-    public partial class NaviBarExample : KryptonForm
+    public NaviBarExample()
     {
-        public NaviBarExample()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

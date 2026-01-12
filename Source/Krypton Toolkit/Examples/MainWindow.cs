@@ -26,174 +26,173 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class MainWindow : KryptonForm
 {
-    public partial class MainWindow : KryptonForm
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void kbtnButtonItems_Click(object sender, EventArgs e)
-        {
-            var buttonItems = new ButtonItems();
+    private void kbtnButtonItems_Click(object sender, EventArgs e)
+    {
+        var buttonItems = new ButtonItems();
 
-            buttonItems.Show();
-        }
+        buttonItems.Show();
+    }
 
-        private void ktnToolStripItems_Click(object sender, EventArgs e)
-        {
-            var tsi = new ToolStripItems();
+    private void ktnToolStripItems_Click(object sender, EventArgs e)
+    {
+        var tsi = new ToolStripItems();
 
-            tsi.Show();
-        }
+        tsi.Show();
+    }
 
-        private void kbtnCalendarItems_Click(object sender, EventArgs e)
-        {
-            var calendar = new CalendarItems();
+    private void kbtnCalendarItems_Click(object sender, EventArgs e)
+    {
+        var calendar = new CalendarItems();
 
-            calendar.Show();
-        }
+        calendar.Show();
+    }
 
-        private void kbtnCircularProgressBarItem_Click(object sender, EventArgs e)
-        {
-            var circularProgressBar = new CircularProgressBarExample();
+    private void kbtnCircularProgressBarItem_Click(object sender, EventArgs e)
+    {
+        var circularProgressBar = new CircularProgressBarExample();
 
-            circularProgressBar.Show();
-        }
+        circularProgressBar.Show();
+    }
 
-        private void kbtnCheckSum_Click(object sender, EventArgs e)
-        {
-            var checkSum = new CheckSumExample();
+    private void kbtnCheckSum_Click(object sender, EventArgs e)
+    {
+        var checkSum = new CheckSumExample();
 
-            checkSum.Show();
-        }
+        checkSum.Show();
+    }
 
-        private void kbtnExtendedControls_Click(object sender, EventArgs e)
-        {
-            var extendedControlExamples = new ExtendedControlExamples();
+    private void kbtnExtendedControls_Click(object sender, EventArgs e)
+    {
+        var extendedControlExamples = new ExtendedControlExamples();
 
-            extendedControlExamples.Show();
-        }
+        extendedControlExamples.Show();
+    }
 
-        private void kryptonButton7_Click(object sender, EventArgs e)
-        {
-            var messageBoxExample = new MessageBoxExample();
+    private void kryptonButton7_Click(object sender, EventArgs e)
+    {
+        var messageBoxExample = new MessageBoxExample();
 
-            messageBoxExample.Show();
-        }
+        messageBoxExample.Show();
+    }
 
-        private void kbtnFloating_Click(object sender, EventArgs e)
-        {
-            var floating = new FloatingMenuToolbarExampleMain();
+    private void kbtnFloating_Click(object sender, EventArgs e)
+    {
+        var floating = new FloatingMenuToolbarExampleMain();
 
-            floating.Show();
-        }
+        floating.Show();
+    }
 
-        private void kbtnKryptonFormExtendedExample_Click(object sender, EventArgs e)
-        {
-            var kryptonFormExtended = new KryptonFormExtended1();
+    private void kbtnKryptonFormExtendedExample_Click(object sender, EventArgs e)
+    {
+        var kryptonFormExtended = new KryptonFormExtended1();
 
-            kryptonFormExtended.Show();
-        }
+        kryptonFormExtended.Show();
+    }
 
-        private void kbtnDialogExamples_Click(object sender, EventArgs e)
-        {
-            var dialogExamples = new DialogExamples();
+    private void kbtnDialogExamples_Click(object sender, EventArgs e)
+    {
+        var dialogExamples = new DialogExamples();
 
-            dialogExamples.Show();
-        }
+        dialogExamples.Show();
+    }
 
-        private void kbtnInputBoxExamples_Click(object sender, EventArgs e)
-        {
-            var example = new KryptonInputBoxExtendedExample();
+    private void kbtnInputBoxExamples_Click(object sender, EventArgs e)
+    {
+        var example = new KryptonInputBoxExtendedExample();
 
-            example.Show();
-        }
+        example.Show();
+    }
 
-        private void kbtnTreeGridViewExample_Click(object sender, EventArgs e)
-        {
-            TreeGridViewExample treeGridView = new();
+    private void kbtnTreeGridViewExample_Click(object sender, EventArgs e)
+    {
+        TreeGridViewExample treeGridView = new();
 
-            treeGridView.Show();
-        }
+        treeGridView.Show();
+    }
 
-        private void kbtnTreeGridView2Example_Click(object sender, EventArgs e)
-        {
-            var treeGridViewAdvanced = new TreeGridViewAdvancedExample();
+    private void kbtnTreeGridView2Example_Click(object sender, EventArgs e)
+    {
+        var treeGridViewAdvanced = new TreeGridViewAdvancedExample();
 
-            treeGridViewAdvanced.Show();
-        }
+        treeGridViewAdvanced.Show();
+    }
 
-        private void kbtnAdvancedDataGridExample_Click(object sender, EventArgs e)
-        {
-            var advancedDataGrid = new AdvancedDataGridView();
+    private void kbtnAdvancedDataGridExample_Click(object sender, EventArgs e)
+    {
+        var advancedDataGrid = new AdvancedDataGridView();
 
-            advancedDataGrid.Show();
-        }
+        advancedDataGrid.Show();
+    }
 
-        private void kbtnDockExtenderExample_Click(object sender, EventArgs e)
-        {
-            var dockExtenderExample = new DockExtenderExample();
+    private void kbtnDockExtenderExample_Click(object sender, EventArgs e)
+    {
+        var dockExtenderExample = new DockExtenderExample();
 
-            dockExtenderExample.Show();
-        }
+        dockExtenderExample.Show();
+    }
 
-        private void kbtnThemeTools_Click(object sender, EventArgs e)
-        {
-            ThemeTools themeTools = new();
+    private void kbtnThemeTools_Click(object sender, EventArgs e)
+    {
+        ThemeTools themeTools = new();
 
-            themeTools.Show();
-        }
+        themeTools.Show();
+    }
 
-        private void kbtnRibbonExtended_Click(object sender, EventArgs e)
-        {
-            var ribbonExtendedExample = new KryptonRibbonExtendedExample();
+    private void kbtnRibbonExtended_Click(object sender, EventArgs e)
+    {
+        var ribbonExtendedExample = new KryptonRibbonExtendedExample();
 
-            ribbonExtendedExample.Show();
-        }
+        ribbonExtendedExample.Show();
+    }
 
-        private void kbtnMemoryBoxExample_Click(object sender, EventArgs e)
-        {
-            var memoryBoxExample = new MemoryBoxExample();
+    private void kbtnMemoryBoxExample_Click(object sender, EventArgs e)
+    {
+        var memoryBoxExample = new MemoryBoxExample();
 
-            memoryBoxExample.Show();
-        }
+        memoryBoxExample.Show();
+    }
 
-        private void kbtnProgressBars_Click(object sender, EventArgs e)
-        {
-            var progressBarExtendedExamples = new KryptonProgressBarExtendedExamples();
+    private void kbtnProgressBars_Click(object sender, EventArgs e)
+    {
+        var progressBarExtendedExamples = new KryptonProgressBarExtendedExamples();
 
-            progressBarExtendedExamples.Show();
-        }
+        progressBarExtendedExamples.Show();
+    }
 
-        private void kbtnCheckBoxComboBoxExample_Click(object sender, EventArgs e)
-        {
-            var example = new CheckBoxComboBoxTest();
+    private void kbtnCheckBoxComboBoxExample_Click(object sender, EventArgs e)
+    {
+        var example = new CheckBoxComboBoxTest();
 
-            example.Show();
-        }
+        example.Show();
+    }
 
-        private void kbtnNotificationExample_Click(object sender, EventArgs e)
-        {
-            var toasts = new ToastNotificationMenu();
+    private void kbtnNotificationExample_Click(object sender, EventArgs e)
+    {
+        var toasts = new ToastNotificationMenu();
 
-            toasts.Show();
-        }
+        toasts.Show();
+    }
 
-        private void kbtnControls_Click(object sender, EventArgs e)
-        {
-            var controls = new ExtendedControlExamples();
+    private void kbtnControls_Click(object sender, EventArgs e)
+    {
+        var controls = new ExtendedControlExamples();
 
-            controls.Show();
-        }
+        controls.Show();
+    }
 
-        private void kbtnRadialMenu_Click(object sender, EventArgs e)
-        {
-            var radialMenu = new RadialMenuExample();
+    private void kbtnRadialMenu_Click(object sender, EventArgs e)
+    {
+        var radialMenu = new RadialMenuExample();
 
-            radialMenu.Show();
-        }
+        radialMenu.Show();
     }
 }

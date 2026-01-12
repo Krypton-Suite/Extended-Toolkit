@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class Form1 : Form
 {
-    public partial class Form1 : Form
+    public Form1()
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

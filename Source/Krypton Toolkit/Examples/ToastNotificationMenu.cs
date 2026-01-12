@@ -27,20 +27,19 @@
 
 #endregion
 
-namespace Examples
+namespace Examples;
+
+public partial class ToastNotificationMenu : KryptonForm
 {
-    public partial class ToastNotificationMenu : KryptonForm
+    public ToastNotificationMenu()
     {
-        public ToastNotificationMenu()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void kbtnBasicNotification_Click(object sender, EventArgs e)
-        {
-            var basicNotification = new BasicToastNotificationTest();
+    private void kbtnBasicNotification_Click(object sender, EventArgs e)
+    {
+        var basicNotification = new BasicToastNotificationTest();
 
-            basicNotification.Show();
-        }
+        basicNotification.Show();
     }
 }

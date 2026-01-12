@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class CoreDialogExamples : KryptonForm
 {
-    public partial class CoreDialogExamples : KryptonForm
+    public CoreDialogExamples()
     {
-        public CoreDialogExamples()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

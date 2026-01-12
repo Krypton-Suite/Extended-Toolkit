@@ -26,13 +26,12 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class KryptonFormExtended2 : KryptonFormExtended
 {
-    public partial class KryptonFormExtended2 : KryptonFormExtended
+    public KryptonFormExtended2()
     {
-        public KryptonFormExtended2()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

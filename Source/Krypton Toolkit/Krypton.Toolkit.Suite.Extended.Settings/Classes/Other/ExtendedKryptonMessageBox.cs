@@ -52,6 +52,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _button1 = new();
         _button2 = new();
         _doNotShowAgainOption = new();
+        _panelFooter = new();
+        _footerBorderEdge = new();
+        _footerText = new();
+        _footerToggleLink = new();
         ((ISupportInitialize)_panelMessage).BeginInit();
         _panelMessage.SuspendLayout();
         ((ISupportInitialize)_panelMessageText).BeginInit();
@@ -61,6 +65,8 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         ((ISupportInitialize)_messageIcon).BeginInit();
         ((ISupportInitialize)_panelButtons).BeginInit();
         _panelButtons.SuspendLayout();
+        ((ISupportInitialize)_panelFooter).BeginInit();
+        _panelFooter.SuspendLayout();
         SuspendLayout();
         // 
         // _panelMessage
@@ -229,7 +235,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _footerText.Name = "_footerText";
         _footerText.Size = new(136, 50);
         _footerText.StateCommon.Font = new(@"Segoe UI", 9F);
-        _footerText.StateCommon.ShortText.Color1 = Color.FromArgb(30, 57, 91);
+        _footerText.StateCommon.TextColor = Color.FromArgb(30, 57, 91);
         _footerText.LabelStyle = LabelStyle.NormalPanel;
         _footerText.Text = @"Footer Text";
         // 
@@ -271,6 +277,9 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         ((ISupportInitialize)_panelButtons).EndInit();
         _panelButtons.ResumeLayout(false);
         _panelButtons.PerformLayout();
+        ((ISupportInitialize)_panelFooter).EndInit();
+        _panelFooter.ResumeLayout(false);
+        _panelFooter.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
 
@@ -302,6 +311,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     private string _doNotShowAgainOptionText;
     private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption;
     private DialogResult _defaultTimeOutResponse;
+    private KryptonPanel _panelFooter;
+    private KryptonBorderEdge _footerBorderEdge;
+    private KryptonWrapLabel _footerText;
+    private KryptonLinkLabel _footerToggleLink;
     #endregion
 
     #region Static Fields
@@ -1492,10 +1505,11 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     {
         Size messageSizing = UpdateMessageSizing(showOwner);
         Size buttonsSizing = UpdateButtonsSizing();
+        int footerHeight = _panelFooter.Visible ? _panelFooter.Height : 0;
 
         // Size of window is calculated from the client area
-        ClientSize = new(Math.Max(messageSizing.Width, buttonsSizing.Width),
-            messageSizing.Height + buttonsSizing.Height);
+        ClientSize = new(Math.Max(Math.Max(messageSizing.Width, buttonsSizing.Width), _panelFooter.Visible ? _panelFooter.Width : 0),
+            messageSizing.Height + buttonsSizing.Height + footerHeight);
     }
 
     private Size UpdateMessageSizing(IWin32Window showOwner)
@@ -1692,6 +1706,39 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         {
             Hide(); // May need to find a more elegant solution
         }
+    }
+
+    private void FooterToggleLink_Click(object sender, EventArgs e)
+    {
+        // Toggle the footer text visibility
+        bool isExpanded = _footerText.Visible;
+        _footerText.Visible = !isExpanded;
+
+        // Update toggle link text
+        _footerToggleLink.Values.Text = _footerText.Visible ? @"Hide details" : @"Show details";
+
+        // Adjust footer panel height
+        if (_footerText.Visible)
+        {
+            // Expanded: calculate height based on text content
+            using (Graphics g = CreateGraphics())
+            {
+                Font footerFont = _footerText.Font ?? _messageboxTypeface ?? new Font(@"Segoe UI", 9F);
+                SizeF textSize = g.MeasureString(_footerText.Text, footerFont, _footerText.Width);
+                int contentHeight = (int)Math.Ceiling(textSize.Height);
+                int footerHeight = contentHeight + 40; // Add padding for toggle button and borders
+                _panelFooter.Height = Math.Max(footerHeight, 50); // Minimum height
+            }
+        }
+        else
+        {
+            // Collapsed: minimal height for toggle button
+            _panelFooter.Height = 30;
+        }
+
+        // Update form sizing to accommodate footer changes
+        IWin32Window? showOwner = Owner;
+        UpdateSizing(showOwner);
     }
     #endregion
 }

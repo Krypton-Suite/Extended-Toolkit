@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.ToastNotification;
+﻿using Krypton.Utilities;
+
+namespace Krypton.Toolkit.Suite.Extended.ToastNotification;
 
 /// <summary>Contains the data and information required, to create a basic toast notification.</summary>
 public struct KryptonBasicToastNotificationData
@@ -103,7 +105,7 @@ public struct KryptonBasicToastNotificationData
 
     /// <summary>Gets or sets the notification icon.</summary>
     /// <value>The notification icon.</value>
-    public KryptonToastNotificationIcon? NotificationIcon { get; set; }
+    public KryptonToastIcon? NotificationIcon { get; set; }
 
     public PaletteRelativeAlign? TitleAlignment { get; set; }
 

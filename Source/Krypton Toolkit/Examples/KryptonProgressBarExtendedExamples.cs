@@ -26,22 +26,21 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class KryptonProgressBarExtendedExamples : KryptonForm
 {
-    public partial class KryptonProgressBarExtendedExamples : KryptonForm
+    public KryptonProgressBarExtendedExamples()
     {
-        public KryptonProgressBarExtendedExamples()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void ktbValue_ValueChanged(object sender, EventArgs e)
-        {
-            kryptonProgressBar1.Value = (int)ktbValue.Value;
+    private void ktbValue_ValueChanged(object sender, EventArgs e)
+    {
+        kryptonProgressBar1.Value = (int)ktbValue.Value;
 
-            kryptonProgressBarExtended1.Value = (int)ktbValue.Value;
+        kryptonProgressBarExtended1.Value = (int)ktbValue.Value;
 
-            kryptonProgressBarExtendedVersion11.Value = (int)ktbValue.Value;
-        }
+        kryptonProgressBarExtendedVersion11.Value = (int)ktbValue.Value;
     }
 }

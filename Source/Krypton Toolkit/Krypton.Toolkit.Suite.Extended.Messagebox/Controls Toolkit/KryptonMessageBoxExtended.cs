@@ -237,9 +237,9 @@ public static class KryptonMessageBoxExtended
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
-    public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
-        ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-        ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+    public static DialogResult Show(IWin32Window owner, string messageText, string caption,
+        ExtendedMessageBoxButtons buttons,
+        ExtendedKryptonMessageBoxIcon icon,
         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
         MessageBoxOptions options = 0,
         bool displayHelpButton = false,
@@ -523,7 +523,7 @@ public static class KryptonMessageBoxExtended
                 string.Empty, string.Empty, string.Empty,
                 ExtendedKryptonMessageBoxMessageContainerType.Normal,
                 null, null, null, null, ContentAlignment.MiddleLeft, null, null,
-                null, null, null, null, null, null, null, null, null,
+                null, null, null, null,
                 footerText, footerExpanded, footerContentType, footerRichTextBoxHeight);
 
     /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/> with expandable footer.</summary>
@@ -556,7 +556,7 @@ public static class KryptonMessageBoxExtended
                 string.Empty, string.Empty, string.Empty,
                 ExtendedKryptonMessageBoxMessageContainerType.Normal,
                 null, null, null, null, ContentAlignment.MiddleLeft, null, null,
-                null, null, null, null, null, null, null, null, null,
+                null, null, null, null,
                 footerText, footerExpanded, footerContentType, footerRichTextBoxHeight);
 
     #endregion
@@ -596,7 +596,9 @@ public static class KryptonMessageBoxExtended
         int? timeOutInterval,
         DialogResult? timerResult,
         string? footerText = null,
-        bool footerExpanded = false)
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -766,7 +768,9 @@ public static class KryptonMessageBoxExtended
         int? timeOutInterval,
         DialogResult? timerResult,
         string? footerText = null,
-        bool footerExpanded = false)
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 

@@ -30,116 +30,115 @@ using System.Data;
 
 using Krypton.Toolkit.Suite.Extended.Controls;
 
-namespace Examples
+namespace Examples;
+
+public partial class CheckBoxComboBoxTest : KryptonForm
 {
-    public partial class CheckBoxComboBoxTest : KryptonForm
+    private StatusList _statusList;
+
+    private ListSelectionWrapper<Status> _statusSelections;
+
+    public CheckBoxComboBoxTest()
     {
-        private StatusList _statusList;
+        InitializeComponent();
+    }
 
-        private ListSelectionWrapper<Status> _statusSelections;
+    private void CheckBoxComboBoxTest_Load(object sender, EventArgs e)
+    {
+        PopulateManualCombo();
 
-        public CheckBoxComboBoxTest()
-        {
-            InitializeComponent();
-        }
+        #region POPULATED USING A CUSTOM "IList" DATASOURCE
 
-        private void CheckBoxComboBoxTest_Load(object sender, EventArgs e)
-        {
-            PopulateManualCombo();
+        _statusList = new StatusList();
 
-            #region POPULATED USING A CUSTOM "IList" DATASOURCE
+        _statusList.Add(new Status(1, "New"));
+        _statusList.Add(new Status(2, "Loaded"));
+        _statusList.Add(new Status(3, "Inserted"));
+        Status UpdatedStatus = new Status(4, "Updated");
+        _statusList.Add(UpdatedStatus);
+        _statusList.Add(new Status(5, "Deleted"));
 
-            _statusList = new StatusList();
+        _statusSelections = new ListSelectionWrapper<Status>(_statusList, "Name");
 
-            _statusList.Add(new Status(1, "New"));
-            _statusList.Add(new Status(2, "Loaded"));
-            _statusList.Add(new Status(3, "Inserted"));
-            Status UpdatedStatus = new Status(4, "Updated");
-            _statusList.Add(UpdatedStatus);
-            _statusList.Add(new Status(5, "Deleted"));
+        //kcbcmbIListDataSource.DataSource = _statusSelections;
+        //kcbcmbIListDataSource.DisplayMemberSingleItem = "Name";
+        //kcbcmbIListDataSource.DisplayMember = "NameConcatenated";
+        //kcbcmbIListDataSource.ValueMember = "Selected";
 
-            _statusSelections = new ListSelectionWrapper<Status>(_statusList, "Name");
+        //kcbcmbIListDataSource.CheckBoxItems[3].DataBindings.DefaultDataSourceUpdateMode
+        //    = DataSourceUpdateMode.OnPropertyChanged;
+        //kcbcmbIListDataSource.DataBindings.DefaultDataSourceUpdateMode
+        //    = DataSourceUpdateMode.OnPropertyChanged;
 
-            //kcbcmbIListDataSource.DataSource = _statusSelections;
-            //kcbcmbIListDataSource.DisplayMemberSingleItem = "Name";
-            //kcbcmbIListDataSource.DisplayMember = "NameConcatenated";
-            //kcbcmbIListDataSource.ValueMember = "Selected";
+        _statusSelections.FindObjectWithItem(UpdatedStatus).Selected = true;
 
-            //kcbcmbIListDataSource.CheckBoxItems[3].DataBindings.DefaultDataSourceUpdateMode
-            //    = DataSourceUpdateMode.OnPropertyChanged;
-            //kcbcmbIListDataSource.DataBindings.DefaultDataSourceUpdateMode
-            //    = DataSourceUpdateMode.OnPropertyChanged;
+        #endregion
 
-            _statusSelections.FindObjectWithItem(UpdatedStatus).Selected = true;
+        #region POPULATED USING A DATATABLE
 
-            #endregion
+        DataTable DT = new DataTable("TEST TABLE FOR DEMO PURPOSES");
+        DT.Columns.AddRange(
+            new DataColumn[]
+            {
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("SomePropertyOrColumnName", typeof(string)),
+                new DataColumn("Description", typeof(string)),
+            });
+        DT.Rows.Add(1, "AAAA", "AAAAA");
+        DT.Rows.Add(2, "BBBB", "BBBBB");
+        DT.Rows.Add(3, "CCCC", "CCCCC");
+        DT.Rows.Add(3, "DDDD", "DDDDD");
 
-            #region POPULATED USING A DATATABLE
+        //kcbcmbDataTableDataSource.DataSource =
+        //    new ListSelectionWrapper<DataRow>(
+        //        DT.Rows,
+        //        "SomePropertyOrColumnName" // "SomePropertyOrColumnName" will populate the Name on ObjectSelectionWrapper.
+        //        );
+        //kcbcmbDataTableDataSource.DisplayMemberSingleItem = "Name";
+        //kcbcmbDataTableDataSource.DisplayMember = "NameConcatenated";
+        //kcbcmbDataTableDataSource.ValueMember = "Selected";
 
-            DataTable DT = new DataTable("TEST TABLE FOR DEMO PURPOSES");
-            DT.Columns.AddRange(
-                new DataColumn[]
-                {
-                    new DataColumn("Id", typeof(int)),
-                    new DataColumn("SomePropertyOrColumnName", typeof(string)),
-                    new DataColumn("Description", typeof(string)),
-                });
-            DT.Rows.Add(1, "AAAA", "AAAAA");
-            DT.Rows.Add(2, "BBBB", "BBBBB");
-            DT.Rows.Add(3, "CCCC", "CCCCC");
-            DT.Rows.Add(3, "DDDD", "DDDDD");
+        #endregion
+    }
 
-            //kcbcmbDataTableDataSource.DataSource =
-            //    new ListSelectionWrapper<DataRow>(
-            //        DT.Rows,
-            //        "SomePropertyOrColumnName" // "SomePropertyOrColumnName" will populate the Name on ObjectSelectionWrapper.
-            //        );
-            //kcbcmbDataTableDataSource.DisplayMemberSingleItem = "Name";
-            //kcbcmbDataTableDataSource.DisplayMember = "NameConcatenated";
-            //kcbcmbDataTableDataSource.ValueMember = "Selected";
+    private void PopulateManualCombo()
+    {
+        kccmbManual.Items.Add("Item 1");
+        kccmbManual.Items.Add("Item 2");
+        kccmbManual.Items.Add("Item 3");
+        kccmbManual.Items.Add("Item 4");
+        kccmbManual.Items.Add("Item 5");
+        kccmbManual.Items.Add("Item 6");
+        kccmbManual.Items.Add("Item 7");
+        kccmbManual.Items.Add("Item 8");
 
-            #endregion
-        }
+        kccmbManual.CheckBoxItems[1].Checked = true;
+    }
 
-        private void PopulateManualCombo()
-        {
-            kccmbManual.Items.Add("Item 1");
-            kccmbManual.Items.Add("Item 2");
-            kccmbManual.Items.Add("Item 3");
-            kccmbManual.Items.Add("Item 4");
-            kccmbManual.Items.Add("Item 5");
-            kccmbManual.Items.Add("Item 6");
-            kccmbManual.Items.Add("Item 7");
-            kccmbManual.Items.Add("Item 8");
+    private void kbtnCheckItem1_Click(object sender, EventArgs e)
+    {
+        kccmbManual.CheckBoxItems["Item 1"].Checked = !kccmbManual.CheckBoxItems["Item 1"].Checked;
+    }
 
-            kccmbManual.CheckBoxItems[1].Checked = true;
-        }
+    private void kbtnCheckItem5_Click(object sender, EventArgs e)
+    {
+        //kcbcmbStyle.CheckBoxItems["Item 5"].Checked = !kcbcmbStyle.CheckBoxItems["Item 5"].Checked;
+    }
 
-        private void kbtnCheckItem1_Click(object sender, EventArgs e)
-        {
-            kccmbManual.CheckBoxItems["Item 1"].Checked = !kccmbManual.CheckBoxItems["Item 1"].Checked;
-        }
+    private void kbtnCheckDDDD_Click(object sender, EventArgs e)
+    {
+        //kcbcmbDataTableDataSource.CheckBoxItems["DDDD"].Checked = !kcbcmbDataTableDataSource.CheckBoxItems["DDDD"].Checked;
+    }
 
-        private void kbtnCheckItem5_Click(object sender, EventArgs e)
-        {
-            //kcbcmbStyle.CheckBoxItems["Item 5"].Checked = !kcbcmbStyle.CheckBoxItems["Item 5"].Checked;
-        }
+    private void kbtnCheckInserted_Click(object sender, EventArgs e)
+    {
+        //kcbcmbIListDataSource.CheckBoxItems["Inserted"].Checked = !kcbcmbIListDataSource.CheckBoxItems["Inserted"].Checked;
+    }
 
-        private void kbtnCheckDDDD_Click(object sender, EventArgs e)
-        {
-            //kcbcmbDataTableDataSource.CheckBoxItems["DDDD"].Checked = !kcbcmbDataTableDataSource.CheckBoxItems["DDDD"].Checked;
-        }
+    private void kbtnClear_Click(object sender, EventArgs e)
+    {
+        kccmbManual.Clear();
 
-        private void kbtnCheckInserted_Click(object sender, EventArgs e)
-        {
-            //kcbcmbIListDataSource.CheckBoxItems["Inserted"].Checked = !kcbcmbIListDataSource.CheckBoxItems["Inserted"].Checked;
-        }
-
-        private void kbtnClear_Click(object sender, EventArgs e)
-        {
-            kccmbManual.Clear();
-
-            PopulateManualCombo();
-        }
+        PopulateManualCombo();
     }
 }

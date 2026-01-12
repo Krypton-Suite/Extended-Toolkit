@@ -57,7 +57,7 @@ namespace Examples
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonProgressBarExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended();
+            this.kryptonProgressBarExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedTest();
             this.kryptonProgressBar1 = new Krypton.Toolkit.KryptonProgressBar();
             this.kryptonProgressBarExtendedVersion11 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1();
             this.ktbValue = new Krypton.Toolkit.KryptonTrackBar();
@@ -135,7 +135,7 @@ namespace Examples
 
         private KryptonPanel kryptonPanel1;
         private KryptonProgressBar kryptonProgressBar1;
-        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtended kryptonProgressBarExtended1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedTest kryptonProgressBarExtended1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion1 kryptonProgressBarExtendedVersion11;
         private KryptonTrackBar ktbValue;
     }

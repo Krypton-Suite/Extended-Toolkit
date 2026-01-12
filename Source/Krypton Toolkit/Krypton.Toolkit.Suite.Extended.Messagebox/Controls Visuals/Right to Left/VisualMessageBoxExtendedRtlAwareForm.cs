@@ -130,7 +130,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
     private readonly PaletteRelativeAlign _richTextBoxTextAlignment;
 
-    private readonly string? _footerText;
+    private readonly string? _footerTextContent;
 
     private readonly bool _footerExpanded;
 
@@ -233,7 +233,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         _optionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
         _checkBoxText = optionalCheckBoxText ?? string.Empty;
         _useOptionalCheckBoxThreeState = useOptionalCheckBoxThreeState ?? false;
-        _footerText = footerText;
+        _footerTextContent = footerText;
         _footerExpanded = footerExpanded;
         _footerContentType = footerContentType;
         _footerRichTextBoxHeight = footerRichTextBoxHeight;
@@ -255,7 +255,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
         SetupOptionalCheckBox();
 
-        SetupFooter(_footerText, _footerExpanded, _footerContentType, _footerRichTextBoxHeight);
+        SetupFooter(_footerTextContent, _footerExpanded, _footerContentType, _footerRichTextBoxHeight);
 
         // Finally calculate and set form sizing
         UpdateSizing(showOwner);
@@ -1111,7 +1111,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
                 _footerCheckBox.Text = footerText ?? string.Empty;
                 if (_messageBoxTypeface != null)
                 {
-                    _footerCheckBox.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _footerCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
                 }
                 break;
 

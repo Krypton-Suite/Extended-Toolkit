@@ -252,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this._footerText.Name = "_footerText";
             this._footerText.Size = new System.Drawing.Size(176, 50);
             this._footerText.StateCommon.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this._footerText.StateCommon.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this._footerText.StateCommon.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this._footerText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalPanel;
             this._footerText.Text = "Footer Text";
             this._footerText.Visible = false;

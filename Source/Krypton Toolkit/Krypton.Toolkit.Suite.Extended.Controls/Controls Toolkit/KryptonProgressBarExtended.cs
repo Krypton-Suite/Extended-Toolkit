@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2026 Krypton Suite
+ * Copyright (c) 2026 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,277 +25,129 @@
  */
 #endregion
 
-#pragma warning disable CS1574, CS1584, CS1581, CS1580
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
+using System.Text;
+using Krypton.Toolkit;
+
 namespace Krypton.Toolkit.Suite.Extended.Controls;
 
 /// <summary>
-/// Represents a Windows progress bar control which displays 
-/// its <see cref="ProgressBar.Value" /> as text on a faded background.
-/// Based off of: https://www.codeproject.com/Articles/1082902/How-to-Paint-on-Top-of-a-ProgressBar-using-Csharp
+/// Represents a Krypton progress bar control with three-color state support.
 /// </summary>
 /// <remarks>
-/// KryptonProgressBarExtended is a specialized type of <see cref="ProgressBar" />, which it extends 
-/// to fade its background colors and to display its <see cref="KryptonProgressBarExtended.Text" />. 
-/// 
-/// <para>You can manipulate the background fading intensity by changing the value of 
-/// property <see cref="KryptonProgressBarExtended.Fade" /> which accepts values between 0 and 255. 
-/// Lower values make the background darker; higher values make the background lighter.</para>
-/// 
-/// <para>The current <see cref="ProgressBar.Text" /> is displayed using the values of properties 
-/// <see cref="KryptonProgressBarExtended.Font" /> and <see cref="KryptonProgressBarExtended.ForeColor" />.</para>
-/// 
-/// <para><note type="inherit">When you derive from KryptonProgressBarExtended, adding new functionality to the 
-/// derived class, if your derived class references objects that must be disposed of before an instance of 
-/// your class is destroyed, you must override the <see cref="KryptonProgressBarExtended.Dispose(bool)" /> 
-/// method, and call <see cref="System.ComponentModel.Component.Dispose()">Dispose()</see> on all objects 
-/// that are referenced in your class, before calling <c>Dispose(disposing)</c> on the base class.</note></para>
+/// This control extends <see cref="KryptonProgressBar"/> to add support for dynamic color changes
+/// based on progress value thresholds. When enabled, the progress bar color changes based on the current value:
+/// - Below low threshold: Low color (default: Red)
+/// - Between thresholds: Medium color (default: Orange)
+/// - Above high threshold: High color (default: Green)
 /// </remarks>
-[Description("Provides a ProgressBar which displays its Value as text on a faded background."),
- Designer(typeof(KryptonProgressBarExtendedVersion2Designer)),
- ToolboxBitmap(typeof(ProgressBar)),
- Obsolete(@"Please use the native KryptonProgressBar instead.")]
-public class KryptonProgressBarExtended : ProgressBar
+public class KryptonProgressBarExtended : KryptonProgressBar
 {
     #region Instance Fields
 
-    private int _fade = 150;
+    private ThreeColorStateProperties _stateProperties;
+    private int _lastPercentage = -1;
 
-    private SolidBrush? _fadeBrush;
+    #endregion
+
+    #region Identity
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="KryptonProgressBarExtended"/> class.
+    /// </summary>
+    public KryptonProgressBarExtended()
+    {
+        _stateProperties = new ThreeColorStateProperties();
+        _stateProperties.PropertyChanged += ThreeColorState_PropertyChanged;
+    }
 
     #endregion
 
     #region Public Properties
 
     /// <summary>
-    /// Gets or sets the opacity of the white overlay brush which fades 
-    /// the background colors of the <see cref="KryptonProgressBarExtended" />.
+    /// Gets or sets the three-color state properties.
     /// </summary>
-    /// <value>An <see cref="int" /> representing the alpha 
-    /// value of the overlay color. The default is <b>150</b>.</value>
+    /// <value>A <see cref="ThreeColorStateProperties"/> object containing the color and threshold settings.</value>
     /// <remarks>
-    /// You can use this property to manipulate the density of the background coloring of this control, 
-    /// to allow for better readability of any text within the <see cref="KryptonProgressBarExtended" />. You can use 
-    /// the <see cref="KryptonProgressBarExtended.Font" /> and <see cref="KryptonProgressBarExtended.ForeColor" /> properties 
-    /// to further optimize the display of text.
-    /// 
-    /// <para>Acceptable values for this property are between 0 and 255 inclusive. The default is 150; 
-    /// lower values make the background darker; higher values make the background lighter.</para>
+    /// This property provides access to the colors and thresholds used for the three-color state feature.
+    /// The property is expandable in the property grid, allowing easy customization of colors and thresholds.
+    /// Use <see cref="ThreeColorStateProperties.UseThreeColorState"/> to enable or disable the feature.
     /// </remarks>
-    /// <exception cref="System.ArgumentOutOfRangeException">The value assigned to the property is less than 0 or greater than 255.</exception>
     [Category("Appearance"),
-     DefaultValue(150),
-     Description("Specifies the opacity of the white overlay brush which fades the background colors of the KryptonProgressBarExtendedVersion2.")]
-    public int Fade
+     Description("Gets or sets the three-color state properties including colors and thresholds."),
+     DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public ThreeColorStateProperties ThreeColorState
     {
-        get => _fade;
+        get => _stateProperties;
         set
         {
-            if (value is < 0 or > 255)
+            if (_stateProperties != null)
             {
-                object[] str = [value];
-                throw new ArgumentOutOfRangeException("value", $"A value of '{str}' is not valid for 'Fade'. 'Fade' must be between 0 and 255.");
+                _stateProperties.PropertyChanged -= ThreeColorState_PropertyChanged;
             }
 
-            _fade = value;
+            _stateProperties = value ?? new ThreeColorStateProperties();
 
-            // Clean up previous brush
-            if (_fadeBrush != null)
+            if (_stateProperties != null)
             {
-                _fadeBrush.Dispose();
+                _stateProperties.PropertyChanged += ThreeColorState_PropertyChanged;
             }
 
-            _fadeBrush = new SolidBrush(Color.FromArgb(value, Color.White));
-
+            UpdateProgressBarColor();
             Invalidate();
         }
     }
 
-    /// <summary>
-    /// Gets or sets the <see cref="System.Drawing.Font" /> of 
-    /// the text displayed by the <see cref="KryptonProgressBarExtendedVersion2" />.
-    /// </summary>
-    /// <value>The <see cref="System.Drawing.Font" /> to 
-    /// apply to the text displayed by the control.</value>
-    /// <remarks>
-    /// You can use the Font property to change the <see cref="System.Drawing.Font" /> 
-    /// to use when drawing text. To change the text <see cref="Color" />, 
-    /// use the <see cref="KryptonProgressBarExtendedVersion2.ForeColor" /> property.
-    /// 
-    /// <para>The Font property is an ambient property. An ambient property is 
-    /// a control property that, if not set, is retrieved from the parent control.</para>
-    /// 
-    /// <para>Because the <see cref="System.Drawing.Font" /> class is immutable (meaning 
-    /// that you cannot adjust any of its properties), you can only assign the Font property 
-    /// a new Font. However, you can base the new font on the existing font.</para>
-    /// 
-    /// <para><note type="inherit">When overriding the Font property in a derived class, use the 
-    /// base class's Font property to extend the base implementation. Otherwise, you must provide 
-    /// all the implementation.</note></para>
-    /// </remarks>
-    [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public override Font Font { get => base.Font; set => base.Font = value; }
-
-    /// <summary>
-    /// Gets or sets the color of the text displayed by <see cref="KryptonProgressBarExtendedVersion2" />.
-    /// </summary>
-    /// <value>A <see cref="Color" /> that represents the 
-    /// control's foreground color. The default is <b>ControlText</b>.</value>
-    /// <remarks>
-    /// You can use the ForeColor property to change the color of the text within the 
-    /// <see cref="KryptonProgressBarExtendedVersion2" /> to match the text of other controls on your form.
-    /// To change the <see cref="System.Drawing.Font" /> to use when drawing text, use the 
-    /// <see cref="KryptonProgressBarExtendedVersion2.Font">KryptonProgressBarExtendedVersion2.Font</see> property.
-    /// 
-    /// <para><note type="inherit">When overriding the ForeColor property in a derived class, 
-    /// use the base class's ForeColor property to extend the base implementation. Otherwise, 
-    /// you must provide all the implementation.</note></para>
-    /// </remarks>
-    [DefaultValue(typeof(Color), "ControlText")]
-    public override Color ForeColor { get; set; }
-
-    /// <summary>
-    /// Gets the text associated with this <see cref="KryptonProgressBarExtendedVersion2" />.
-    /// </summary>
-    /// <value>A <see cref="string" /> representing the text displayed in the control.</value>
-    /// <remarks>
-    /// The <see cref="KryptonProgressBarExtendedVersion2" /> control supports display of a single line of 
-    /// text, consisting of the <see cref="ProgressBar.Value" /> followed by a percent sign.
-    /// 
-    /// <para>The text is displayed using the values of properties 
-    /// <see cref="KryptonProgressBarExtendedVersion2.Font" /> and <see cref="KryptonProgressBarExtendedVersion2.ForeColor" />.</para>
-    /// </remarks>
-    [Browsable(false),
-     EditorBrowsable(EditorBrowsableState.Always),
-     Bindable(false)]
-    public override string Text => $@"{Value.ToString(CultureInfo.CurrentCulture)}%";
-
     #endregion
 
-    #region Protected Properties
+    #region Overrides
 
     /// <summary>
-    /// Returns the parameters used to create the window 
-    /// for the <see cref="KryptonProgressBarExtendedVersion2" /> control.
+    /// Raises the <see cref="Control.HandleCreated" /> event.
     /// </summary>
-    /// <value>A <see cref="System.Windows.Forms.CreateParams" /> object that contains the 
-    /// required creation parameters for the <see cref="KryptonProgressBarExtendedVersion2" /> control.</value>
-    /// <remarks>
-    /// The information returned by the CreateParams property is used to 
-    /// pass information about the initial state and appearance of this 
-    /// control, at the time an instance of this class is being created.
-    /// 
-    /// <para><note type="inherit">When overriding the CreateParams property in a derived 
-    /// class, use the base class's CreateParams property to extend the base implementation. 
-    /// Otherwise, you must provide all the implementation.</note></para>
-    /// </remarks>
-    protected override CreateParams CreateParams
+    /// <param name="e">An <see cref="EventArgs" /> that contains the event data.</param>
+    protected override void OnHandleCreated(EventArgs e)
     {
-        get
-        {
-            CreateParams cp = base.CreateParams;
-
-            // Make the control use double buffering
-            cp.ExStyle |= NativeMethods.WS_EX_COMPOSITED;
-
-            return cp;
-        }
+        base.OnHandleCreated(e);
+        UpdateProgressBarColor();
     }
-
-    #endregion
-
-    #region Identity
-
-    /// <summary>Initializes a new instance of the <see cref="KryptonProgressBarExtended" /> class.</summary>
-    public KryptonProgressBarExtended()
-    {
-        ForeColor = SystemColors.ControlText;
-
-        _fadeBrush = new SolidBrush(Color.FromArgb(Fade, 255, 255, 255));
-    }
-
-    #endregion
-
-    #region Garbage Collection
-
-    /// <summary> 
-    /// Releases the unmanaged resources used by the <see cref="KryptonProgressBarExtendedVersion2" /> 
-    /// and optionally releases the managed resources.
-    /// </summary>
-    /// <param name="disposing"><b>True</b> to release both managed and unmanaged 
-    /// resources; <b>false</b> to release only unmanaged resources.</param> 
-    /// <remarks>
-    /// This method is called by the public <see cref="Control.Dispose" /> method and 
-    /// the <see cref="Object.Finalize" /> method. Dispose invokes Dispose with the 
-    /// <i>disposing</i> parameter set to <b>true</b>. Finalize invokes Dispose with 
-    /// <i>disposing</i> set to <b>false</b>.
-    /// 
-    /// <para><note type="inherit">Dispose might be called multiple times by other objects. 
-    /// When overriding <i>Dispose(Boolean)</i>, be careful not to reference objects that 
-    /// have been previously disposed of in an earlier call to Dispose.
-    /// 
-    /// <para>If your derived class references objects that must be disposed of before an 
-    /// instance of your class is destroyed, you must call <see cref="Control.Dispose" /> on 
-    /// all objects that are referenced in your class, before calling <c>Dispose(disposing)</c> 
-    /// on the base class.</para></note></para>
-    /// </remarks>
-    /// <overloads>Releases all resources used by the <see cref="KryptonProgressBarExtendedVersion2" />.
-    /// <para>This member is overloaded. For complete information about this member, 
-    /// click a name in the overload list.</para></overloads>
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-        {
-            if (_fadeBrush != null)
-            {
-                _fadeBrush.Dispose();
-
-                _fadeBrush = null;
-            }
-        }
-
-        base.Dispose(disposing);
-    }
-
-    #endregion
-
-    #region Implementation
 
     /// <summary>
     /// Processes Windows messages.
     /// </summary>
     /// <param name="m">The Windows Message to process.</param>
-    /// <remarks>
-    /// All messages are sent to the WndProc method after getting filtered 
-    /// through the PreProcessMessage method. The WndProc method corresponds 
-    /// exactly to the Windows WindowProc function. 
-    /// 
-    /// <para><note type="inherit">Inheriting controls should call the base class's 
-    /// WndProc method to process any messages that they do not handle.</note></para>
-    /// </remarks>
     protected override void WndProc(ref Message m)
     {
-        int msg = m.Msg;
-
-        if (msg == NativeMethods.WM_PAINT)
-        {
-            WmPaint(ref m);
-
-            return;
-        }
-
-        if (msg == NativeMethods.WM_PRINTCLIENT)
-        {
-            WmPrintClient(ref m);
-
-            return;
-        }
-
+        // Intercept PBM_SETPOS (0x402) to detect when Value changes
+        // This allows us to update the color immediately when the value changes
+        const int PBM_SETPOS = 0x402; // WM_USER + 2
+        
         base.WndProc(ref m);
+
+        // Update color after the message is processed, when the Value has actually changed
+        if (m.Msg == PBM_SETPOS && _stateProperties.UseThreeColorState && IsHandleCreated)
+        {
+            UpdateProgressBarColor();
+        }
     }
 
     /// <summary>
-    /// Returns a string representation for this <see cref="KryptonProgressBarExtendedVersion2" />.
+    /// Raises the <see cref="Control.Paint" /> event.
+    /// </summary>
+    /// <param name="e">A <see cref="PaintEventArgs" /> that contains the event data.</param>
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        // Update color before base paints to ensure it's applied
+        UpdateProgressBarColor();
+        base.OnPaint(e);
+    }
+
+    /// <summary>
+    /// Returns a string representation for this <see cref="KryptonProgressBarExtended" />.
     /// </summary>
     /// <returns>A <see cref="string" /> that describes this control.</returns>
     public override string ToString()
@@ -313,60 +165,99 @@ public class KryptonProgressBarExtended : ProgressBar
         return builder.ToString();
     }
 
-    private void PaintPrivate(IntPtr device)
+    #endregion
+
+    #region Implementation
+
+    /// <summary>
+    /// Updates the progress bar color based on the current value and three-color state settings.
+    /// </summary>
+    private void UpdateProgressBarColor()
     {
-        // Create a Graphics object for the device context
-        using (Graphics graphics = Graphics.FromHdc(device))
+        if (!_stateProperties.UseThreeColorState || !IsHandleCreated)
         {
-            Rectangle rect = ClientRectangle;
-
-            if (_fadeBrush != null)
-            {
-                // Paint a translucent white layer on top, to fade the colors a bit
-                graphics.FillRectangle(_fadeBrush, rect);
-            }
-
-            TextRenderer.DrawText(graphics, Text, Font, rect, ForeColor);
+            _lastPercentage = -1; // Reset tracking when disabled
+            return;
         }
-    }
 
-    private void WmPaint(ref Message m)
-    {
-        // Create a wrapper for the Handle
-        HandleRef myHandle = new HandleRef(this, Handle);
+        // Calculate the percentage
+        int range = Maximum - Minimum;
+        if (range == 0)
+        {
+            return;
+        }
 
-        // Prepare the window for painting and retrieve a device context
-        NativeMethods.PAINTSTRUCT pAINTSTRUCT = new NativeMethods.PAINTSTRUCT();
-        IntPtr hDC = UnsafeNativeMethods.BeginPaint(myHandle, ref pAINTSTRUCT);
+        int percentage = (int)(((double)(Value - Minimum) / range) * 100);
 
+        // Only update if percentage changed or if we're forcing an update
+        if (percentage == _lastPercentage)
+        {
+            return;
+        }
+
+        _lastPercentage = percentage;
+
+        Color colorToUse;
+
+        if (percentage < _stateProperties.LowThreshold)
+        {
+            colorToUse = _stateProperties.LowColor;
+        }
+        else if (percentage >= _stateProperties.HighThreshold)
+        {
+            colorToUse = _stateProperties.HighColor;
+        }
+        else
+        {
+            colorToUse = _stateProperties.MediumColor;
+        }
+
+        // Update the KryptonProgressBar color using StateCommon.Back for better integration with Krypton theming
         try
         {
-            // Apply hDC to message
-            m.WParam = hDC;
-
-            // Let Windows paint
-            base.WndProc(ref m);
-
-            // Custom painting
-            PaintPrivate(hDC);
+            if (StateCommon != null && StateCommon.Back != null)
+            {
+                StateCommon.Back.Color1 = colorToUse;
+                StateCommon.Back.Color2 = colorToUse;
+                // Force the control to repaint with the new color
+                Invalidate();
+            }
+            else
+            {
+                // Fallback to Windows message if StateCommon is not available
+                SetProgressBarColorViaMessage(colorToUse);
+            }
         }
-        finally
+        catch
         {
-            // Release the device context that BeginPaint retrieved
-            UnsafeNativeMethods.EndPaint(myHandle, ref pAINTSTRUCT);
+            // If StateCommon is not available or throws an exception, use Windows message (fallback)
+            SetProgressBarColorViaMessage(colorToUse);
         }
     }
 
-    private void WmPrintClient(ref Message m)
+    /// <summary>
+    /// Sets the progress bar color using Windows PBM_SETBARCOLOR message.
+    /// </summary>
+    /// <param name="color">The color to set.</param>
+    private void SetProgressBarColorViaMessage(Color color)
     {
-        // Retrieve the device context
-        IntPtr hDC = m.WParam;
+        // Convert Color to COLORREF (0x00BBGGRR format)
+        int colorRef = color.B | (color.G << 8) | (color.R << 16);
 
-        // Let Windows paint
-        base.WndProc(ref m);
+        // Send PBM_SETBARCOLOR message to change the progress bar color
+        UnsafeNativeMethods.SendMessage(Handle, NativeMethods.PBM_SETBARCOLOR, IntPtr.Zero, new IntPtr(colorRef));
+    }
 
-        // Custom painting
-        PaintPrivate(hDC);
+    /// <summary>
+    /// Handles the PropertyChanged event of the ThreeColorState object.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+    private void ThreeColorState_PropertyChanged(object? sender, EventArgs e)
+    {
+        _lastPercentage = -1; // Force update on property change
+        UpdateProgressBarColor();
+        Invalidate();
     }
 
     #endregion

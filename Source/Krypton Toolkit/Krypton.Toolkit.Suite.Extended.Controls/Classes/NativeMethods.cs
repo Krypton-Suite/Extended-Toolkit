@@ -63,6 +63,9 @@ internal class NativeMethods
     /* Paints all descendants of a window in bottom-to-top painting order using double-buffering. */
     public const int WS_EX_COMPOSITED = 0x2000000;
 
+    /* Progress bar message to set the bar color. */
+    public const int PBM_SETBARCOLOR = 0x0409; // WM_USER + 9
+
     #endregion
 
     #region Structures

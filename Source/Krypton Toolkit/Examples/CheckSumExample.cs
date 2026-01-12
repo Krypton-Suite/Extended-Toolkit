@@ -28,27 +28,26 @@
 #endregion
 using Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 
-namespace Examples
+namespace Examples;
+
+public partial class CheckSumExample : KryptonForm
 {
-    public partial class CheckSumExample : KryptonForm
+    public CheckSumExample()
     {
-        public CheckSumExample()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-            KryptonComputeFileCheckSum computeFileCheckSum = new(true);
+    private void kryptonButton1_Click(object sender, EventArgs e)
+    {
+        KryptonComputeFileCheckSum computeFileCheckSum = new(true);
 
-            computeFileCheckSum.ShowDialog();
-        }
+        computeFileCheckSum.ShowDialog();
+    }
 
-        private void kryptonButton2_Click(object sender, EventArgs e)
-        {
-            KryptonVerifyFileCheckSum varifyFileCheckSum = new(true);
+    private void kryptonButton2_Click(object sender, EventArgs e)
+    {
+        KryptonVerifyFileCheckSum varifyFileCheckSum = new(true);
 
-            varifyFileCheckSum.ShowDialog();
-        }
+        varifyFileCheckSum.ShowDialog();
     }
 }

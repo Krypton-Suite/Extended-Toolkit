@@ -26,18 +26,17 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class ToolBoxExample : KryptonForm
 {
-    public partial class ToolBoxExample : KryptonForm
+    public ToolBoxExample()
     {
-        public ToolBoxExample()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void ToolBoxExample_Load(object sender, EventArgs e)
-        {
+    private void ToolBoxExample_Load(object sender, EventArgs e)
+    {
 
-        }
     }
 }

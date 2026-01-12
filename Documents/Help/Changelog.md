@@ -6,6 +6,14 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Implemented [#452](https://github.com/Krypton-Suite/Extended-Toolkit/issues/452), `KryptonProgressBarExtended` Three-Color State Feature
+  - **Three-Color State Support** - Progress bar can now change color based on progress value thresholds
+  - **Customizable Colors** - Three configurable colors: Low (default: Red), Medium (default: Orange), and High (default: Green)
+  - **Configurable Thresholds** - Low threshold (default: 45%) and High threshold (default: 75%) can be customized
+  - **Expandable Property Grid** - `ThreeColorState` property uses `ExpandableObjectConverter` for easy customization in the designer
+  - **Automatic Color Updates** - Color automatically changes as the progress value crosses threshold boundaries
+  - **Property Organization** - All three-color state properties (including enable/disable flag) are grouped in a single expandable object
+  - **Use Cases** - Ideal for indicating progress status (e.g., low = warning, medium = in-progress, high = success)
 * Implemented [#511](https://github.com/Krypton-Suite/Extended-Toolkit/issues/511), `KryptonMessageBoxExtended` Expandable Footer Feature
   - **New Expandable Footer** - Similar to Windows TaskDialog, the message box now supports an expandable footer area
   - **Collapsed/Expanded States** - Footer can start collapsed or expanded, with user toggle capability

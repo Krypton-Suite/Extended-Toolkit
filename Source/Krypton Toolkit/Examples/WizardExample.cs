@@ -26,15 +26,14 @@
  */
 
 #endregion
-namespace Examples
+namespace Examples;
+
+public partial class WizardExample : KryptonForm
 {
-    public partial class WizardExample : KryptonForm
+    public WizardExample()
     {
-        public WizardExample()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
 
-        }
     }
 }

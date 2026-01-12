@@ -29,29 +29,28 @@
 using System.Data;
 using System.Data.SQLite;
 
-namespace Examples
+namespace Examples;
+
+public partial class TreeGridViewExample : KryptonForm
 {
-    public partial class TreeGridViewExample : KryptonForm
+    public TreeGridViewExample()
     {
-        public TreeGridViewExample()
+        InitializeComponent();
+
+        // DB obtained from https://github.com/jpwhite3/northwind-SQLite3/blob/master/Northwind_small.sqlite
+        string cs = @"URI=file:Northwind_small.sqlite";
+        using var con = new SQLiteConnection(cs);
+        con.Open();
+        DataSet customerOrders = new DataSet();
+        using (var custAdapter = new SQLiteDataAdapter(@"SELECT * FROM 'Employee'", con))
         {
-            InitializeComponent();
+            // Note: Why doesn't this work?
+            custAdapter.Fill(customerOrders, @"Employees");
+        }
 
-            // DB obtained from https://github.com/jpwhite3/northwind-SQLite3/blob/master/Northwind_small.sqlite
-            string cs = @"URI=file:Northwind_small.sqlite";
-            using var con = new SQLiteConnection(cs);
-            con.Open();
-            DataSet customerOrders = new DataSet();
-            using (var custAdapter = new SQLiteDataAdapter(@"SELECT * FROM 'Employee'", con))
-            {
-                // Note: Why doesn't this work?
-                custAdapter.Fill(customerOrders, @"Employees");
-            }
-
-            using (var ordAdapter = new SQLiteDataAdapter(@"SELECT * FROM 'Order'", con))
-            {
-                ordAdapter.Fill(customerOrders, @"Orders");
-            }
+        using (var ordAdapter = new SQLiteDataAdapter(@"SELECT * FROM 'Order'", con))
+        {
+            ordAdapter.Fill(customerOrders, @"Orders");
         }
     }
 }
