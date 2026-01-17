@@ -5,6 +5,13 @@
 
 =======
 
+## 2026-01-19 - Build 2601 (Version 105 - Patch 1) - January 2026
+
+* Standard toolkit updated from `100.25.11.328` to `105.26.1.19`
+* Updated major version number from `100.xx.xx.xxx` to `105.xx.xx.xxx`
+
+=======
+
 ## 2025-11-24 - Build 2511 - November 2025
 
 ### **Major Build System Overhaul**
