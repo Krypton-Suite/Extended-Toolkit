@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -494,6 +494,71 @@ public static class KryptonMessageBoxExtended
                 richTextBoxTextAlignment, messageTextBoxAlignment,
                 useTimeOut, timeOut, timeOutInterval, timerResult);
 
+    /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/> with expandable footer.</summary>
+    /// <param name="messageText">The message text.</param>
+    /// <param name="caption">The caption.</param>
+    /// <param name="buttons">The buttons.</param>
+    /// <param name="icon">The icon.</param>
+    /// <param name="footerText">The text to display in the expandable footer. If null or empty, footer will not be shown (unless footerContentType is CheckBox).</param>
+    /// <param name="footerExpanded">If true, the footer will be expanded by default; otherwise, it will be collapsed.</param>
+    /// <param name="footerContentType">The type of content to display in the footer (Text, CheckBox, or RichTextBox).</param>
+    /// <param name="footerRichTextBoxHeight">The height for the RichTextBox when footerContentType is RichTextBox. If null, uses default height.</param>
+    /// <param name="showCtrlCopy">The show control copy.</param>
+    /// <param name="messageBoxTypeface">The message box typeface.</param>
+    /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+    public static DialogResult Show(string messageText, string caption = @"",
+        ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
+        ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null,
+        bool? showCtrlCopy = null,
+        Font? messageBoxTypeface = null)
+        =>
+            ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
+                0, null, showCtrlCopy, messageBoxTypeface, null, null, null,
+                [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
+                null, null, null, null, string.Empty, string.Empty,
+                string.Empty, string.Empty, string.Empty,
+                ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                null, null, null, null, ContentAlignment.MiddleLeft, null, null,
+                null, null, null, null,
+                footerText, footerExpanded, footerContentType, footerRichTextBoxHeight);
+
+    /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/> with expandable footer.</summary>
+    /// <param name="owner">The owner.</param>
+    /// <param name="messageText">The message text.</param>
+    /// <param name="caption">The caption.</param>
+    /// <param name="buttons">The buttons.</param>
+    /// <param name="icon">The icon.</param>
+    /// <param name="footerText">The text to display in the expandable footer. If null or empty, footer will not be shown (unless footerContentType is CheckBox).</param>
+    /// <param name="footerExpanded">If true, the footer will be expanded by default; otherwise, it will be collapsed.</param>
+    /// <param name="footerContentType">The type of content to display in the footer (Text, CheckBox, or RichTextBox).</param>
+    /// <param name="footerRichTextBoxHeight">The height for the RichTextBox when footerContentType is RichTextBox. If null, uses default height.</param>
+    /// <param name="showCtrlCopy">The show control copy.</param>
+    /// <param name="messageBoxTypeface">The message box typeface.</param>
+    /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+    public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
+        ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
+        ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null,
+        bool? showCtrlCopy = null,
+        Font? messageBoxTypeface = null)
+        =>
+            ShowCore(owner, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
+                0, null, showCtrlCopy, messageBoxTypeface, null, null, null,
+                [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
+                null, null, null, null, string.Empty, string.Empty,
+                string.Empty, string.Empty, string.Empty,
+                ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                null, null, null, null, ContentAlignment.MiddleLeft, null, null,
+                null, null, null, null,
+                footerText, footerExpanded, footerContentType, footerRichTextBoxHeight);
+
     #endregion
 
     #region Implementation
@@ -529,7 +594,11 @@ public static class KryptonMessageBoxExtended
         bool? useTimeOut,
         int? timeOut,
         int? timeOutInterval,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -566,7 +635,11 @@ public static class KryptonMessageBoxExtended
                 useOptionalCheckBoxThreeState,
                 useTimeOut,
                 timeOut,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return true;
         }
@@ -607,7 +680,11 @@ public static class KryptonMessageBoxExtended
                 useTimeOut,
                 timeOut,
                 timeOutInterval,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             kmbe.Show();
 
@@ -689,7 +766,11 @@ public static class KryptonMessageBoxExtended
         bool? useTimeOut,
         int? timeOut,
         int? timeOutInterval,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -726,7 +807,11 @@ public static class KryptonMessageBoxExtended
                 useOptionalCheckBoxThreeState,
                 useTimeOut,
                 timeOut,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return CheckState.Unchecked;
         }
@@ -767,7 +852,11 @@ public static class KryptonMessageBoxExtended
                 useTimeOut,
                 timeOut,
                 timeOutInterval,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             kmbe.Show();
 
@@ -837,7 +926,11 @@ public static class KryptonMessageBoxExtended
         bool? useTimeOut,
         int? timeOut,
         int? timeOutInterval,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -874,7 +967,11 @@ public static class KryptonMessageBoxExtended
                 null,
                 useTimeOut,
                 timeOut,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return kmbertl.ShowDialog(showOwner);
         }
@@ -915,7 +1012,11 @@ public static class KryptonMessageBoxExtended
                 useTimeOut,
                 timeOut,
                 timeOutInterval,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return kmbe.ShowDialog(showOwner);
         }

@@ -47,15 +47,35 @@
 
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.323-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.11.323-alpha" />
-			</ItemGroup>
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.25.12.353-alpha" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.25.12.353-beta" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'Release'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</When>
+
+				<Otherwise>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</Otherwise>
+			</Choose>
 		</When>
 		<Otherwise>
 			<ItemGroup>
 				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Ribbon\Krypton.Ribbon 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -52,6 +52,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _button1 = new();
         _button2 = new();
         _doNotShowAgainOption = new();
+        _panelFooter = new();
+        _footerBorderEdge = new();
+        _footerText = new();
+        _footerToggleLink = new();
         ((ISupportInitialize)_panelMessage).BeginInit();
         _panelMessage.SuspendLayout();
         ((ISupportInitialize)_panelMessageText).BeginInit();
@@ -198,11 +202,57 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _doNotShowAgainOption.TabIndex = 1;
         _doNotShowAgainOption.Values.Text = @"&Do not show this again";
         // 
+        // _panelFooter
+        // 
+        _panelFooter.Dock = DockStyle.Top;
+        _panelFooter.Location = new(0, 78);
+        _panelFooter.Margin = new(0);
+        _panelFooter.Name = "_panelFooter";
+        _panelFooter.PanelBackStyle = PaletteBackStyle.PanelAlternate;
+        _panelFooter.Size = new(156, 0);
+        _panelFooter.TabIndex = 1;
+        _panelFooter.Visible = false;
+        // 
+        // _footerBorderEdge
+        // 
+        _footerBorderEdge.BorderStyle = PaletteBorderStyle.HeaderPrimary;
+        _footerBorderEdge.Dock = DockStyle.Top;
+        _footerBorderEdge.Location = new(0, 0);
+        _footerBorderEdge.Name = "_footerBorderEdge";
+        _footerBorderEdge.Size = new(156, 1);
+        _footerBorderEdge.Text = @"kryptonBorderEdge2";
+        _panelFooter.Controls.Add(_footerBorderEdge);
+        _panelFooter.Controls.Add(_footerText);
+        _panelFooter.Controls.Add(_footerToggleLink);
+        // 
+        // _footerText
+        // 
+        _footerText.AutoSize = false;
+        _footerText.Location = new(10, 25);
+        _footerText.Margin = new(0);
+        _footerText.Name = "_footerText";
+        _footerText.Size = new(136, 50);
+        _footerText.StateCommon.Font = new(@"Segoe UI", 9F);
+        _footerText.StateCommon.TextColor = Color.FromArgb(30, 57, 91);
+        _footerText.LabelStyle = LabelStyle.NormalPanel;
+        _footerText.Text = @"Footer Text";
+        // 
+        // _footerToggleLink
+        // 
+        _footerToggleLink.AutoSize = true;
+        _footerToggleLink.Location = new(10, 5);
+        _footerToggleLink.Margin = new(0);
+        _footerToggleLink.Name = "_footerToggleLink";
+        _footerToggleLink.Size = new(100, 25);
+        _footerToggleLink.Values.Text = @"Show details";
+        _footerToggleLink.Click += FooterToggleLink_Click;
+        // 
         // KryptonMessageBox
         // 
         AutoScaleDimensions = new(6F, 13F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new(156, 78);
+        Controls.Add(_panelFooter);
         Controls.Add(_panelButtons);
         Controls.Add(_panelMessage);
         FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -256,6 +306,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     private string _doNotShowAgainOptionText;
     private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption;
     private DialogResult _defaultTimeOutResponse;
+    private KryptonPanel _panelFooter;
+    private KryptonBorderEdge _footerBorderEdge;
+    private KryptonWrapLabel _footerText;
+    private KryptonButton _footerToggleLink;
     #endregion
 
     #region Static Fields
@@ -793,6 +847,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     {
         return InternalShow(null, text, caption, buttons, KryptonMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, 250, DialogResult.OK, button1Text, button2Text, button3Text);
     }
+
 
     /// <summary>
     /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -1645,6 +1700,12 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         {
             Hide(); // May need to find a more elegant solution
         }
+    }
+
+    private void FooterToggleLink_Click(object sender, EventArgs e)
+    {
+        // Toggle footer visibility
+        _panelFooter.Visible = !_panelFooter.Visible;
     }
     #endregion
 }

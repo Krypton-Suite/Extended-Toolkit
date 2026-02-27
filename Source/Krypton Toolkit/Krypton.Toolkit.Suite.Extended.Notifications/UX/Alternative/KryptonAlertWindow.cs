@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -58,11 +58,19 @@ public partial class KryptonAlertWindow : KryptonForm
     /// <param name="backColour">The back colour.</param>
     /// <param name="textColour">The text colour.</param>
     /// <param name="headerText">Define the header text.</param>
-    internal void DisplayAlert(string message, AlertType alertType, int interval, Image? image = null, Color backColour = default, Color textColour = default, string headerText = "")
+    /// <param name="owner">Optional parent window. When provided, the alert is positioned within the owner's bounds and owned by it.</param>
+    internal void DisplayAlert(string message, AlertType alertType, int interval, Image? image = null, Color backColour = default, Color textColour = default, string headerText = "", IWin32Window? owner = null)
     {
         Opacity = 0.0;
 
         StartPosition = FormStartPosition.Manual;
+
+        Rectangle referenceBounds = GetReferenceBounds(owner);
+
+        if (owner is Form ownerForm)
+        {
+            Owner = ownerForm;
+        }
 
         for (int i = 1; i < 10; i++)
         {
@@ -74,9 +82,8 @@ public partial class KryptonAlertWindow : KryptonForm
             {
                 Name = windowName;
 
-                _positionX = Screen.PrimaryScreen.WorkingArea.Width - Width - 5;
-
-                _positionY = Screen.PrimaryScreen.WorkingArea.Height - Height * i - 5 * i;
+                _positionX = Math.Max(referenceBounds.Left, referenceBounds.Right - Width - 5);
+                _positionY = Math.Min(referenceBounds.Bottom - Height - 5, Math.Max(referenceBounds.Top, referenceBounds.Bottom - Height * i - 5 * i));
 
                 Location = new Point(_positionX, _positionY);
 
@@ -84,7 +91,7 @@ public partial class KryptonAlertWindow : KryptonForm
             }
         }
 
-        _positionX = Screen.PrimaryScreen.WorkingArea.Width - Width - 5;
+        _positionX = Math.Max(referenceBounds.Left, referenceBounds.Right - Width - 5);
 
         switch (alertType)
         {
@@ -139,6 +146,44 @@ public partial class KryptonAlertWindow : KryptonForm
         _tmrAlert.Start();
 
         Show();
+    }
+
+    /// <summary>Gets the rectangle to position the alert within. Uses owner bounds when provided, otherwise the active form, or the primary screen.</summary>
+    private static Rectangle GetReferenceBounds(IWin32Window? owner)
+    {
+        if (owner is Form form)
+        {
+            return form.Bounds;
+        }
+
+        if (owner is Control control)
+        {
+            Form? parentForm = control.FindForm();
+            return parentForm?.Bounds ?? control.RectangleToScreen(control.DisplayRectangle);
+        }
+
+        if (owner != null)
+        {
+            Control? ctrl = Control.FromHandle(owner.Handle);
+            if (ctrl is Form ownerForm)
+            {
+                return ownerForm.Bounds;
+            }
+
+            if (ctrl != null)
+            {
+                Form? parentForm = ctrl.FindForm();
+                return parentForm?.Bounds ?? ctrl.RectangleToScreen(ctrl.DisplayRectangle);
+            }
+        }
+
+        Form? activeForm = Form.ActiveForm;
+        if (activeForm != null)
+        {
+            return activeForm.Bounds;
+        }
+
+        return Screen.PrimaryScreen.WorkingArea;
     }
 
     private void ChangeColour(Color backColour, Color textColour)

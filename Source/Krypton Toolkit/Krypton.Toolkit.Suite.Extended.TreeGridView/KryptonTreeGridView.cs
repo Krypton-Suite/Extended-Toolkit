@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -672,10 +672,10 @@ public class KryptonTreeGridView : KryptonDataGridView
                 _inExpandCollapse = true;
                 node.IsExpanded = false;
 
-                foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
+                // Optimized: Batch remove all child nodes efficiently
+                if (node.Nodes.Count > 0)
                 {
-                    Debug.Assert(childNode.RowIndex != -1, @"Row is NOT in the grid.");
-                    UnSiteNode(childNode);
+                    UnSiteNodes(node.Nodes);
                 }
 
                 var exped = new CollapsedEventArgs(node);
@@ -798,6 +798,150 @@ public class KryptonTreeGridView : KryptonDataGridView
         }
     }
 
+    /// <summary>
+    /// Optimized method to batch insert multiple child nodes efficiently.
+    /// Calculates the insertion position once and inserts all nodes sequentially.
+    /// </summary>
+    /// <param name="nodes">Collection of nodes to insert</param>
+    /// <param name="parentNode">Parent node after which to insert the children</param>
+    protected internal virtual void SiteNodes(TreeGridNodeCollection nodes, KryptonTreeGridNodeRow parentNode)
+    {
+        if (nodes.Count == 0)
+        {
+            return;
+        }
+
+        // Calculate the insertion position once (right after the parent node)
+        int insertIndex = parentNode.RowIndex + 1;
+
+        // Insert all child nodes sequentially
+        // Since we're inserting sequentially, each insertion shifts subsequent indices by 1
+        foreach (KryptonTreeGridNodeRow? childNode in nodes)
+        {
+            Debug.Assert(childNode.RowIndex == -1, @"Row is already in the grid.");
+            
+            childNode.Grid = this;
+            
+            // Insert at the calculated position
+            if (insertIndex < base.Rows.Count)
+            {
+                base.Rows.Insert(insertIndex, childNode);
+            }
+            else
+            {
+                base.Rows.Add(childNode);
+            }
+            
+            // Mark as sited
+            childNode.Sited();
+            
+            // Increment index for next sibling insertion
+            insertIndex++;
+            
+            // If this node is expanded, recursively site its children
+            // After recursive insertion, update insertIndex to account for all inserted descendants
+            if (childNode.IsExpanded && childNode.Nodes.Count > 0)
+            {
+                int beforeInsert = insertIndex - 1; // The current childNode's index
+                SiteNodes(childNode.Nodes, childNode);
+                // After recursive insertion, find the last descendant row index
+                // The next sibling should be inserted after all descendants
+                insertIndex = FindLastDescendantRowIndex(childNode) + 1;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Finds the row index of the last descendant of the given node.
+    /// </summary>
+    /// <param name="node">Node to find the last descendant for</param>
+    /// <returns>Row index of the last descendant, or the node's own row index if it has no descendants</returns>
+    private int FindLastDescendantRowIndex(KryptonTreeGridNodeRow node)
+    {
+        if (!node.IsExpanded || node.Nodes.Count == 0)
+        {
+            return node.RowIndex;
+        }
+
+        // Find the last child
+        KryptonTreeGridNodeRow? lastChild = node.Nodes[node.Nodes.Count - 1];
+        
+        // Recursively find the last descendant of the last child
+        return FindLastDescendantRowIndex(lastChild);
+    }
+
+    /// <summary>
+    /// Optimized method to batch remove multiple child nodes efficiently.
+    /// Collects all descendant nodes and removes them in reverse order to avoid index shifting issues.
+    /// </summary>
+    /// <param name="nodes">Collection of nodes to remove</param>
+    protected internal virtual void UnSiteNodes(TreeGridNodeCollection nodes)
+    {
+        if (nodes.Count == 0)
+        {
+            return;
+        }
+
+        // Collect all rows to remove (including descendants)
+        // We need to remove in reverse order (bottom-up) to avoid index shifting issues
+        var rowsToRemove = new List<KryptonTreeGridNodeRow>();
+        
+        foreach (KryptonTreeGridNodeRow? childNode in nodes)
+        {
+            CollectDescendantRows(childNode, rowsToRemove);
+        }
+        
+        // Sort by row index in descending order for safe removal
+        // This ensures we remove from bottom to top, preventing index shifts
+        rowsToRemove.Sort((a, b) => b.RowIndex.CompareTo(a.RowIndex));
+        
+        // Remove rows in reverse order using Remove() which is safer than RemoveAt()
+        foreach (KryptonTreeGridNodeRow? row in rowsToRemove)
+        {
+            if (row.IsSited && row.RowIndex >= 0)
+            {
+                try
+                {
+                    base.Rows.Remove(row);
+                    row.UnSited();
+                }
+                catch
+                {
+                    // Row may have already been removed or index may be invalid
+                    // This can happen if nodes are being manipulated concurrently
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Recursively collects all descendant rows that need to be removed.
+    /// </summary>
+    /// <param name="node">Node to start collecting from</param>
+    /// <param name="rowsToRemove">List to add rows to</param>
+    private void CollectDescendantRows(KryptonTreeGridNodeRow? node, List<KryptonTreeGridNodeRow> rowsToRemove)
+    {
+        if (node == null || !node.IsSited)
+        {
+            return;
+        }
+
+        // Add all expanded children first (they need to be removed before their parent)
+        if (node.IsExpanded)
+        {
+            foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
+            {
+                CollectDescendantRows(childNode, rowsToRemove);
+            }
+        }
+
+        // Add this node to the removal list
+        if (node.RowIndex >= 0)
+        {
+            rowsToRemove.Add(node);
+        }
+    }
+
     protected internal virtual bool ExpandNode(KryptonTreeGridNodeRow node)
     {
         if (!node.IsExpanded || VirtualNodes)
@@ -811,12 +955,10 @@ public class KryptonTreeGridView : KryptonDataGridView
                 _inExpandCollapse = true;
                 node.IsExpanded = true;
 
-                //TODO Convert this to a InsertRange
-                foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
+                // Optimized: Batch insert all child nodes efficiently
+                if (node.Nodes.Count > 0)
                 {
-                    Debug.Assert(childNode.RowIndex == -1, @"Row is already in the grid.");
-
-                    SiteNode(childNode);
+                    SiteNodes(node.Nodes, node);
                 }
 
                 var exped = new ExpandedEventArgs(node);

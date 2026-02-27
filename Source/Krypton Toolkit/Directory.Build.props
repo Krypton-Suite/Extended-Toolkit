@@ -18,9 +18,14 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Krypton Canary.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -48,9 +53,14 @@
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Krypton Nightly.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -78,9 +88,14 @@
 
 		<When Condition="'$(Configuration)' == 'CanaryLite'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Krypton Canary.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -108,9 +123,14 @@
 
 		<When Condition="'$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Krypton Nightly.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -138,9 +158,14 @@
 
 		<When Condition="'$(Configuration)' == 'ReleaseLite'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Krypton Stable.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -169,9 +194,14 @@
 
 		<Otherwise>
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Krypton Stable.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>

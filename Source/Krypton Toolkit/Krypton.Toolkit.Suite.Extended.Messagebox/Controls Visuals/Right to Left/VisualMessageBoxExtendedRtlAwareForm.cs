@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -130,6 +130,14 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
     private readonly PaletteRelativeAlign _richTextBoxTextAlignment;
 
+    private readonly string? _footerText;
+
+    private readonly bool _footerExpanded;
+
+    private readonly ExtendedKryptonMessageBoxFooterContentType _footerContentType;
+
+    private readonly int? _footerRichTextBoxHeight;
+
     #endregion
 
     #region Identity
@@ -175,7 +183,11 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         bool? useOptionalCheckBoxThreeState,
         bool? useTimeOut,
         int? timeOut,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         // Store incoming values
         _text = text;
@@ -221,6 +233,10 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         _optionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
         _checkBoxText = optionalCheckBoxText ?? string.Empty;
         _useOptionalCheckBoxThreeState = useOptionalCheckBoxThreeState ?? false;
+        _footerText = footerText;
+        _footerExpanded = footerExpanded;
+        _footerContentType = footerContentType;
+        _footerRichTextBoxHeight = footerRichTextBoxHeight;
 
         // Create the form contents
         InitializeComponent();
@@ -238,6 +254,8 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         UpdateContentLinkArea(contentLinkArea);
 
         SetupOptionalCheckBox();
+
+        SetupFooter(_footerText, _footerExpanded, _footerContentType, _footerRichTextBoxHeight);
 
         // Finally calculate and set form sizing
         UpdateSizing(showOwner);
@@ -692,10 +710,37 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
     {
         Size messageSizing = UpdateMessageSizing(showOwner);
         Size buttonsSizing = UpdateButtonsSizing();
+        Size footerSizing = UpdateFooterSizing();
 
         // Size of window is calculated from the client area
-        ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
-            messageSizing.Height + buttonsSizing.Height);
+        ClientSize = new Size(Math.Max(Math.Max(messageSizing.Width, buttonsSizing.Width), footerSizing.Width),
+            messageSizing.Height + buttonsSizing.Height + footerSizing.Height);
+    }
+
+    /// <summary>
+    /// Updates the footer panel sizing based on its content and expanded state.
+    /// </summary>
+    /// <returns>The size of the footer panel.</returns>
+    private Size UpdateFooterSizing()
+    {
+        if (!_panelFooter.Visible)
+        {
+            return Size.Empty;
+        }
+
+        // Calculate width to match message box width
+        int footerWidth = Math.Max(UpdateMessageSizing(Owner).Width, UpdateButtonsSizing().Width);
+
+        // Height is already set in UpdateFooterExpandedState, but ensure minimum width
+        _panelFooter.Width = footerWidth;
+        int contentWidth = footerWidth - 20; // Account for padding
+        
+        // Update width for all content controls
+        _footerWrapLabel.Width = contentWidth;
+        _footerCheckBox.Width = contentWidth;
+        _footerRichTextBox.Width = contentWidth;
+
+        return new Size(footerWidth, _panelFooter.Height);
     }
 
     private Size UpdateMessageSizing(IWin32Window? showOwner)
@@ -1025,6 +1070,149 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         kcbOptionalCheckBox.Text = _checkBoxText;
 
         kcbOptionalCheckBox.ThreeState = _useOptionalCheckBoxThreeState;
+    }
+
+    /// <summary>
+    /// Sets up the expandable footer with the specified content and initial expanded state.
+    /// </summary>
+    /// <param name="footerText">The text content to display in the footer. If null or empty, footer will not be shown (unless footerContentType is CheckBox).</param>
+    /// <param name="expanded">If true, the footer will be expanded initially; otherwise, it will be collapsed.</param>
+    /// <param name="contentType">The type of content to display in the footer (Text, CheckBox, or RichTextBox).</param>
+    /// <param name="richTextBoxHeight">The height for the RichTextBox when contentType is RichTextBox. If null, uses default height.</param>
+    private void SetupFooter(string? footerText, bool expanded, ExtendedKryptonMessageBoxFooterContentType contentType, int? richTextBoxHeight)
+    {
+        bool showFooter = !string.IsNullOrEmpty(footerText) || contentType == ExtendedKryptonMessageBoxFooterContentType.CheckBox;
+        _panelFooter.Visible = showFooter;
+        _footerToggleButton.Visible = showFooter;
+
+        if (!showFooter)
+        {
+            _panelFooter.Height = 0;
+            return;
+        }
+
+        // Hide all footer content controls initially
+        _footerWrapLabel.Visible = false;
+        _footerCheckBox.Visible = false;
+        _footerRichTextBox.Visible = false;
+
+        // Configure based on content type
+        switch (contentType)
+        {
+            case ExtendedKryptonMessageBoxFooterContentType.Text:
+                _footerWrapLabel.Text = footerText ?? string.Empty;
+                if (_messageBoxTypeface != null)
+                {
+                    _footerWrapLabel.StateCommon.Font = _messageBoxTypeface;
+                }
+                break;
+
+            case ExtendedKryptonMessageBoxFooterContentType.CheckBox:
+                _footerCheckBox.Text = footerText ?? string.Empty;
+                if (_messageBoxTypeface != null)
+                {
+                    _footerCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
+                }
+                break;
+
+            case ExtendedKryptonMessageBoxFooterContentType.RichTextBox:
+                _footerRichTextBox.Text = footerText ?? string.Empty;
+                if (_messageBoxTypeface != null)
+                {
+                    _footerRichTextBox.StateCommon.Content.Font = _messageBoxTypeface;
+                }
+                // Set RichTextBox height if specified
+                if (richTextBoxHeight.HasValue && richTextBoxHeight.Value > 0)
+                {
+                    _footerRichTextBox.Height = richTextBoxHeight.Value;
+                }
+                break;
+        }
+
+        // Set initial expanded state
+        UpdateFooterExpandedState(expanded, contentType);
+    }
+
+    /// <summary>
+    /// Updates the footer expanded state, adjusting visibility and toggle button text.
+    /// </summary>
+    /// <param name="expanded">If true, footer is expanded; otherwise, collapsed.</param>
+    /// <param name="contentType">The type of content displayed in the footer.</param>
+    private void UpdateFooterExpandedState(bool expanded, ExtendedKryptonMessageBoxFooterContentType contentType)
+    {
+        if (!_panelFooter.Visible)
+        {
+            return;
+        }
+
+        // Hide all content controls first
+        _footerWrapLabel.Visible = false;
+        _footerCheckBox.Visible = false;
+        _footerRichTextBox.Visible = false;
+
+        // Show the appropriate content control based on type and expanded state
+        if (expanded)
+        {
+            switch (contentType)
+            {
+                case ExtendedKryptonMessageBoxFooterContentType.Text:
+                    _footerWrapLabel.Visible = true;
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.CheckBox:
+                    _footerCheckBox.Visible = true;
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.RichTextBox:
+                    _footerRichTextBox.Visible = true;
+                    break;
+            }
+        }
+
+        // Update toggle button text
+        _footerToggleButton.Values.Text = expanded ? @"Hide details" : @"Show details";
+
+        // Calculate footer height based on expanded state and content type
+        if (expanded)
+        {
+            int contentHeight = 0;
+            switch (contentType)
+            {
+                case ExtendedKryptonMessageBoxFooterContentType.Text:
+                    // Measure the footer text to determine required height
+                    using (Graphics g = CreateGraphics())
+                    {
+                        Font footerFont = _footerWrapLabel.Font ?? _messageBoxTypeface ?? KryptonManager.CurrentGlobalPalette.BaseFont;
+                        SizeF textSize = g.MeasureString(_footerWrapLabel.Text, footerFont, _footerWrapLabel.Width);
+                        contentHeight = (int)Math.Ceiling(textSize.Height);
+                    }
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.CheckBox:
+                    contentHeight = _footerCheckBox.Height;
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.RichTextBox:
+                    contentHeight = _footerRichTextBox.Height;
+                    break;
+            }
+            int footerHeight = contentHeight + 40; // Add padding for toggle button and borders
+            _panelFooter.Height = Math.Max(footerHeight, 50); // Minimum height
+        }
+        else
+        {
+            // Collapsed state - just show the toggle button
+            _panelFooter.Height = 30;
+        }
+
+        // Recalculate form size (owner can be null, UpdateSizing handles it)
+        IWin32Window? owner = Owner;
+        UpdateSizing(owner);
+    }
+
+    /// <summary>
+    /// Handles the footer toggle button click event to expand or collapse the footer.
+    /// </summary>
+    private void FooterToggleButton_Click(object sender, EventArgs e)
+    {
+        bool currentExpanded = _footerWrapLabel.Visible || _footerCheckBox.Visible || _footerRichTextBox.Visible;
+        UpdateFooterExpandedState(!currentExpanded, _footerContentType);
     }
 
     internal static bool ReturnCheckBoxCheckedValue()

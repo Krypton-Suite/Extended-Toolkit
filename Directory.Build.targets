@@ -130,7 +130,60 @@
 		<PackageLicenseExpression Condition="'$(PackageLicenseExpression)' == '' and '$(PackageLicenseFile)' == ''">BSD-3-Clause</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">true</PackageRequireLicenseAcceptance>
 		<PackageTags Condition="'$(PackageTags)' == ''">Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core Extended</PackageTags>
+		
+		<!-- Prevent ProjectReferences from being converted to PackageReferences -->
+		<!-- This ensures that Extended Toolkit projects don't create package dependencies on each other -->
+		<!-- The assemblies are still included via the CopyProjectReferencesToPackage target -->
+		<SuppressDependenciesWhenPacking>false</SuppressDependenciesWhenPacking>
 	</PropertyGroup>
+	
+	<!-- 
+		Remove Extended Toolkit ProjectReferences from package dependencies.
+		This prevents Extended Toolkit projects from creating package dependencies on each other.
+		The assemblies are still included in the package via the CopyProjectReferencesToPackage target.
+	-->
+	<Target Name="RemoveExtendedToolkitProjectReferencesFromPackageDependencies" BeforeTargets="GenerateNuspec" Condition="'$(GeneratePackageOnBuild)' == 'true'">
+		<ItemGroup>
+			<!-- Find all ProjectReferences to Extended Toolkit projects -->
+			<_ExtendedToolkitProjectReferences Include="@(ProjectReference)" 
+				Condition="$([System.String]::Copy('%(Identity)').Contains('Krypton.Toolkit.Suite.Extended'))" />
+		</ItemGroup>
+		
+		<!-- Remove package dependencies that match Extended Toolkit project package IDs -->
+		<ItemGroup>
+			<_PackageDependenciesToRemove Include="@(_ExtendedToolkitProjectReferences->Metadata('PackageId'))" 
+				Condition="'%(_ExtendedToolkitProjectReferences.PackageId)' != ''" />
+			<!-- Also check by project name pattern -->
+			<_PackageDependenciesToRemove Include="@(_PackageDependencies)" 
+				Condition="$([System.String]::Copy('%(Identity)').StartsWith('Krypton.Toolkit.Suite.Extended'))" />
+		</ItemGroup>
+		
+		<ItemGroup>
+			<_PackageDependencies Remove="@(_PackageDependenciesToRemove)" />
+		</ItemGroup>
+	</Target>
+
+	<!-- 
+		Conditionally include README.md file in packages if it exists in the project directory.
+		This prevents the "Readme missing" warning for projects that don't have README files.
+	-->
+	<Target Name="IncludeReadmeIfExists" BeforeTargets="GenerateNuspec" Condition="'$(GeneratePackageOnBuild)' == 'true'">
+		<ItemGroup>
+			<!-- Check if README.md exists in the project directory -->
+			<_ReadmeFile Include="$(MSBuildProjectDirectory)\README.md" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+			<_ReadmeFile Include="$(MSBuildProjectDirectory)\Readme.md" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+		</ItemGroup>
+		
+		<!-- Include README.md in package if it exists -->
+		<ItemGroup Condition="'@(_ReadmeFile)' != ''">
+			<None Include="@(_ReadmeFile)" Pack="true" PackagePath="" />
+		</ItemGroup>
+		
+		<!-- Set PackageReadmeFile property if README exists and not already set -->
+		<PropertyGroup Condition="'@(_ReadmeFile)' != '' and '$(PackageReadmeFile)' == ''">
+			<PackageReadmeFile>README.md</PackageReadmeFile>
+		</PropertyGroup>
+	</Target>
 
 </Project>
 

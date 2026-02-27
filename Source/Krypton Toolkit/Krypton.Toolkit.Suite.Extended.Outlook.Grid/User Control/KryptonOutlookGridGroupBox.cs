@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -901,6 +901,24 @@ public partial class KryptonOutlookGridGroupBox : UserControl
 
     #region Methods
 
+    /// <summary>
+    /// Gets the display text for a DateInterval enum name.
+    /// </summary>
+    /// <param name="intervalName">The name of the DateInterval enum value.</param>
+    /// <returns>The localized display text.</returns>
+    private static string GetDateIntervalDisplayText(string intervalName)
+    {
+        return intervalName switch
+        {
+            nameof(DateInterval.Day) => KryptonOutlookGridLanguageManager.GeneralStrings.Day,
+            nameof(DateInterval.Month) => KryptonOutlookGridLanguageManager.GeneralStrings.Month,
+            nameof(DateInterval.Quarter) => KryptonOutlookGridLanguageManager.GeneralStrings.Quarter,
+            nameof(DateInterval.Year) => KryptonOutlookGridLanguageManager.GeneralStrings.Year,
+            nameof(DateInterval.Smart) => KryptonOutlookGridLanguageManager.GeneralStrings.Smart,
+            _ => intervalName
+        };
+    }
+
     /// <summary>Creates the group box.</summary>
     /// <param name="column">The column.</param>
     /// <param name="groupingType">Type of the grouping.</param>
@@ -989,7 +1007,8 @@ public partial class KryptonOutlookGridGroupBox : UserControl
             KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
             for (int i = 0; i < names.Length; i++)
             {
-                it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
+                string displayText = GetDateIntervalDisplayText(names[i]);
+                it = new KryptonContextMenuItem(displayText);
                 it.Tag = names[i];
                 it.Click += OnGroupIntervalClick;
                 arrayOptions[i] = it;

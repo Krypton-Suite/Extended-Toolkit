@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -184,9 +184,24 @@ public class FloatableToolStrip : ToolStrip
         {
             e.Cancel = true;
 
+            _toolStripContainerWindow.Controls.Remove(this);
+
             _toolStripContainerWindow.Visible = false;
 
-            base.OnVisibleChanged(new EventArgs());
+            if (_originalParent != null)
+            {
+                _originalParent.SuspendLayout();
+
+                base.Dock = DockStyle.None;
+
+                base.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+                _originalParent.Controls.Add(this);
+
+                _originalParent.ResumeLayout();
+            }
+
+            _isFloating = false;
         }
     }
 

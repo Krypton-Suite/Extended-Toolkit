@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -770,6 +770,49 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     public Color GetImageTransparentColor(PaletteState state) =>
         // We never mark any color as transparent
         Color.Empty;
+
+    /// <summary>
+    /// Gets the overlay image used for showing on the title bar.
+    /// </summary>
+    /// <param name="state">Form state.</param>
+    /// <returns>Overlay Image.</returns>
+    public Image? GetOverlayImage(PaletteState state) =>
+        // We don't use overlay images on the form title bar
+        null;
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    Size IContentValues.GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Gets the fixed size for the overlay image.
+    /// </summary>
+    /// <param name="state">Form state.</param>
+    /// <returns>Fixed size for overlay image.</returns>
+    public Size? GetOverlayImageFixedSize(PaletteState state) =>
+        // We don't use overlay images on the form title bar
+        null;
 
     /// <summary>
     /// Gets the short text used as the main caption title.

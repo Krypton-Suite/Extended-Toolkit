@@ -721,6 +721,37 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     {
         return string.Empty;
     }
+
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Size GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
     public string GetShortText()
     {
         return string.Empty;

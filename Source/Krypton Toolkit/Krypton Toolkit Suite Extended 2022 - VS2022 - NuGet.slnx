@@ -73,7 +73,6 @@
     <Project Path="Krypton.Toolkit.Suite.Extended.Scintilla.NET/Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Security/Krypton.Toolkit.Suite.Extended.Security 2022.csproj">
       <BuildType Solution="Canary|*" Project="Release" />
-      <BuildType Solution="Nightly|*" Project="Release" />
     </Project>
     <Project Path="Krypton.Toolkit.Suite.Extended.Software.Updater/Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.TaskDialogs/Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />
@@ -152,6 +151,7 @@
     <File Path="../../purge.cmd" />
   </Folder>
   <Folder Name="/Repository Items/Build System/Generate Packages/">
+    <File Path="../../Directory.Build.props" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
   </Folder>

@@ -25,6 +25,8 @@
  */
 #endregion
 
+using KryptonExceptionDialog = Krypton.Utilities.KryptonExceptionDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Networking;
 
 internal class NetStat

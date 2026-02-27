@@ -19,28 +19,28 @@
 		 <!-- Full framework support for Release, Nightly, Canary, and Debug configurations -->
 		 <When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Debug'">
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- Lite framework support for ReleaseLite, CanaryLite, and NightlyLite configurations -->
 		 <When Condition="'$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'NightlyLite'">
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- All configurations (Full+Lite) - Uses Full TFMs, but helper scripts build both -->
 		 <When Condition="'$(Configuration)' == 'ReleaseAll' Or '$(Configuration)' == 'CanaryAll' Or '$(Configuration)' == 'NightlyAll'">
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- Default: Full framework support for any other configurations -->
 		 <Otherwise>
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </Otherwise>
 	 </Choose>
@@ -51,13 +51,13 @@
 	 -->
 	 <PropertyGroup>
 		 <!-- Full framework support (all projects by default) -->
-		 <ExtendedToolkitTFMs>net472;net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ExtendedToolkitTFMs>
+		 <ExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ExtendedToolkitTFMs>
 		 
 		 <!-- Lite framework support (excludes net472 for smaller packages) -->
-		 <ExtendedToolkitLiteTFMs>net48;net481;net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ExtendedToolkitLiteTFMs>
+		 <ExtendedToolkitLiteTFMs>net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ExtendedToolkitLiteTFMs>
 		 
 		 <!-- Modern frameworks only (net8+) -->
-		 <ExtendedToolkitModernTFMs>net8.0-windows7.0;net9.0-windows7.0;net10.0-windows7.0</ExtendedToolkitModernTFMs>
+		 <ExtendedToolkitModernTFMs>net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ExtendedToolkitModernTFMs>
 		 
 		 <!-- Legacy frameworks only (net4x) -->
 		 <ExtendedToolkitLegacyTFMs>net472;net48;net481</ExtendedToolkitLegacyTFMs>
@@ -153,4 +153,16 @@
 			</PropertyGroup>
 		</Otherwise>
 	 </Choose>
+	 
+	 <!-- 
+		 Windows Forms Designer Configuration
+		 ForceDesignerDPIUnaware: Forces the Windows Forms Designer to operate in a DPI-unaware context.
+		 This improves the design-time experience on High DPI (HDPI) monitors by preventing layout issues
+		 such as overlapping controls or distorted layouts. Introduced in Visual Studio 2022 version 17.8.
+		 
+		 Reference: https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props-desktop
+	 -->
+	 <PropertyGroup>
+		 <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
+	 </PropertyGroup>
 </Project>

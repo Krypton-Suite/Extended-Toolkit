@@ -1,101 +1,102 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
-            <PropertyGroup>
-                <!-- Use centralized TFM configuration from Directory.Build.props -->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
+			<PropertyGroup>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
 		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <!--If all else fails-->
-            <PropertyGroup>
-                <!-- Use centralized TFM configuration from Directory.Build.props -->
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<!-- Use centralized TFM configuration from Directory.Build.props -->
 		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
 
-    <PropertyGroup>
-        <UseWindowsForms>true</UseWindowsForms>
-        <RootNamespace>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</AssemblyName>
-        <!-- Set the CheckEolTargetFramework property to false to fix the warning -->
-        <CheckEolTargetFramework>false</CheckEolTargetFramework>
-        <SignAssembly>True</SignAssembly>
-        <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
-        <NeutralLanguage>en</NeutralLanguage>        <LangVersion>preview</LangVersion>
-        <Nullable>enable</Nullable>
-        <WarningLevel>6</WarningLevel>
-        <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-    </PropertyGroup>
+	<PropertyGroup>
+		<UseWindowsForms>true</UseWindowsForms>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+		<NeutralLanguage>en</NeutralLanguage>      
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningLevel>6</WarningLevel>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+	</PropertyGroup>
 
-    <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.Canary</PackageId>
-            </PropertyGroup>
-        </When>
+	<!--Package Data-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.Canary</PackageId>
+			</PropertyGroup>
+		</When>
 
-        <When Condition="'$(Configuration)' == 'Nightly'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.Nightly</PackageId>
-            </PropertyGroup>
-        </When>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
 
-        <When Condition="'$(Configuration)' == 'Release'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
+		<When Condition="'$(Configuration)' == 'Release'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+	</ItemGroup>
 
 
-    <PropertyGroup>
-        <Description>
-            An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10. This package implements items to create a 'virtual tree column view' for your applications.
+	<PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10. This package implements items to create a 'virtual tree column view' for your applications.
 
-            This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10.
-            Also, all libraries are included targeting each specific framework version for performance purposes.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
 
-            To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
-        </Description>
-    </PropertyGroup>
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
 
     <Choose>
         <When Condition="'$(SolutionName.Endswith(`NuGet`))'">
             <Choose>
                 <When Condition="'$(Configuration)' == 'Nightly'">
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
+                        <PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.2.47-alpha" />
                     </ItemGroup>
                 </When>
 
                 <When Condition="'$(Configuration)' == 'Canary'">
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
+                        <PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.1.19-beta" />
                     </ItemGroup>
                 </When>
 
                 <When Condition="'$(Configuration)' == 'Release'">
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
+                        <PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
                     </ItemGroup>
                 </When>
 
                 <Otherwise>
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+                        <PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
                     </ItemGroup>
                 </Otherwise>
             </Choose>
@@ -107,73 +108,73 @@
         </Otherwise>
     </Choose>
 
-    <ItemGroup>
-        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>4.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>5.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>6.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-        <!--TODO: Need to specify version here-->
-    </ItemGroup>
+	<ItemGroup>
+		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>4.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>5.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>6.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<!--TODO: Need to specify version here-->
+	</ItemGroup>
 
-    <!--Binary/Documentation Output-->
-    <PropertyGroup>
-        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.xml</DocumentationFile>
-        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\</OutputPath>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\</OutputPath>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <EditorConfigFiles Remove=".editorconfig" />
-    </ItemGroup>
+	<ItemGroup>
+		<EditorConfigFiles Remove=".editorconfig" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <None Include=".editorconfig" />
-    </ItemGroup>
+	<ItemGroup>
+		<None Include=".editorconfig" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <None Update="License\License.txt">
-            <PackagePath></PackagePath>
-            <Pack>true</Pack>
-        </None>
-    </ItemGroup>
+	<ItemGroup>
+		<None Update="License\License.txt">
+			<PackagePath></PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
 
-    <!--Optimisation-->
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
-        <Optimize>True</Optimize>
-    </PropertyGroup>
+	<!--Optimisation-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net48|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net481|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net6.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
 
 </Project>

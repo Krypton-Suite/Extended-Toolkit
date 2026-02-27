@@ -2,11 +2,44 @@
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
-
 =======
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Resolved [#351](https://github.com/Krypton-Suite/Extended-Toolkit/issues/351), Closing a floating toolbar window causes the toolbar to disappear - Closing the floating toolbar or menustrip window (e.g. via the close button) now returns the control to its original host instead of making it disappear. Updated `FloatableToolStrip` and `FloatableMenuStrip` to re-parent the control back to the host in the FormClosing handler, consistent with double-clicking the title bar.
+* Implemented [#57](https://github.com/Krypton-Suite/Extended-Toolkit/issues/57), `Alert.ShowMessage` optional header/title
+  - **New API** - `Alert.ShowMessage(string message, string? headerText = null)` shows a message with an optional header or title
+  - When `headerText` is provided, the alert displays the header in bold with the message below; when omitted, only the message is shown (same behaviour as existing typed methods)
+* Resolved [#56](https://github.com/Krypton-Suite/Extended-Toolkit/issues/56), Alert.ShowMessage should be within the bounds of the parent application
+  - **Positioning Fix** - Alerts now appear within the parent application bounds instead of the primary screen bottom-right (fixes unnoticed alerts on 4K monitors or RDP sessions when the app is in a small window)
+  - **Optional Owner Parameter** - All `Alert` methods now accept an optional `IWin32Window? owner` parameter for explicit parent binding
+  - **Smart Fallback** - When no owner is passed, uses `Form.ActiveForm` when available for improved default behavior
+  - **Proper Ownership** - Sets form `Owner` when a Form is passed, ensuring correct z-order and window relationship
+* Resolved [#411](https://github.com/Krypton-Suite/Extended-Toolkit/issues/411), Exapanding a TreeGridView Node takes a long time when there are many children
+  - **Performance Optimization** - Significantly improved expansion/collapse performance for nodes with many children (250+ nodes)
+  - **Batch Operations** - Replaced individual row insertions/removals with optimized batch operations
+  - **Expected Performance** - Reduced expansion time from ~6 seconds to ~0.5 seconds for 250 children (approximately 12x faster)
+  - **Implementation Details**:
+    - Added `SiteNodes()` method for batch inserting child nodes efficiently
+    - Added `UnSiteNodes()` method for batch removing child nodes and descendants
+    - Optimized insertion position calculation to avoid redundant calculations
+    - Improved removal order to prevent index shifting issues
+* Resolved [#25](https://github.com/Krypton-Suite/Extended-Toolkit/issues/25), Can't add outlook grid group box control - Fixed language-related error when adding `KryptonOutlookGridGroupBox` control in Visual Studio designer. Replaced deprecated `LanguageManager.Instance.GetString()` calls with `KryptonOutlookGridLanguageManager.GeneralStrings` for DateInterval enum localization, eliminating dependency on resource files that could fail with EN/GB language settings.
+* Resolved [#156](https://github.com/Krypton-Suite/Extended-Toolkit/issues/156), `KryptonOutlookGrid` Group Header graphic issue with scaling at 150%
+* Implemented [#511](https://github.com/Krypton-Suite/Extended-Toolkit/issues/511), `KryptonMessageBoxExtended` Expandable Footer Feature
+  - **New Expandable Footer** - Similar to Windows TaskDialog, the message box now supports an expandable footer area
+  - **Collapsed/Expanded States** - Footer can start collapsed or expanded, with user toggle capability
+  - **Toggle Button** - "Show details" / "Hide details" button allows users to expand/collapse the footer
+  - **Multiple Content Types** - Footer supports three content types:
+    - **Text** (default) - Uses `KryptonWrapLabel` for simple text content
+    - **CheckBox** - Uses `KryptonCheckBox` for options like "Remember my choice"
+    - **RichTextBox** - Uses `KryptonRichTextBox` for formatted text with configurable height
+  - **Configurable Content** - Developers can specify footer text content, content type, initial expanded state, and RichTextBox height
+  - **Automatic Sizing** - Form automatically adjusts size when footer is expanded/collapsed
+  - **New API Overloads** - Added `Show` method overloads with `footerText`, `footerExpanded`, `footerContentType`, and `footerRichTextBoxHeight` parameters
+  - **Use Cases** - Ideal for displaying stack traces, error details, validation errors, system information, user preferences, and additional context without cluttering the main message
+* Implements [#562](https://github.com/Krypton-Suite/Extended-Toolkit/issues/562), Use `Krypton.Standard.Toolkit` NuGet Packages
+* Implements [#486](https://github.com/Krypton-Suite/Extended-Toolkit/issues/486), Add `ForceDesignerDPIUnaware` option to `csproj` files
 * Support for .NET 11
 * Version bump `100.xx.xx.xx` -> `110.xx.xx.xx`
 

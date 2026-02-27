@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -258,6 +258,10 @@ public class OutlookGridRow : DataGridViewRow
             int rowHeadersWidth = grid.RowHeadersVisible ? grid.RowHeadersWidth : 0;
             int groupLevelIndentation = _group.Level * StaticValues.GroupLevelMultiplier;
 
+            // Calculate DPI scaling factors for proper rendering at different DPI settings
+            float factorX = graphics.DpiX > 96 ? graphics.DpiX / 96f : 1f;
+            float factorY = graphics.DpiY > 96 ? graphics.DpiY / 96f : 1f;
+
             int gridwidth = grid.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
             Rectangle myRowBounds = rowBounds;
             myRowBounds.Width = gridwidth;
@@ -311,9 +315,10 @@ public class OutlookGridRow : DataGridViewRow
             }
             else
             {
+                int borderHeight = (int)(2 * factorY);
                 using (SolidBrush br = new(paletteBorder.GetBorderColor1(state)))
                 {
-                    graphics.FillRectangle(br, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset, rowBounds.Bottom - 2, gridwidth + 1, 2);
+                    graphics.FillRectangle(br, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset, rowBounds.Bottom - borderHeight, gridwidth + 1, borderHeight);
                 }
             }
 
@@ -327,26 +332,31 @@ public class OutlookGridRow : DataGridViewRow
             }
 
             //Set the icon and lines according to the renderer
+            // Scale icon positioning and size based on DPI
+            int iconLeftOffset = (int)(4 * factorX);
+            int iconBottomOffset = (int)(18 * factorY);
+            int iconSize = (int)(11 * factorX);
+            
             if (_group.Collapsed)
             {
                 if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                 {
-                    graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                    graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + iconLeftOffset + groupLevelIndentation, rowBounds.Bottom - iconBottomOffset, iconSize, iconSize);
                 }
                 else
                 {
-                    graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                    graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + iconLeftOffset + groupLevelIndentation, rowBounds.Bottom - iconBottomOffset, iconSize, iconSize);
                 }
             }
             else
             {
                 if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                 {
-                    graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                    graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + iconLeftOffset + groupLevelIndentation, rowBounds.Bottom - iconBottomOffset, iconSize, iconSize);
                 }
                 else
                 {
-                    graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                    graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + iconLeftOffset + groupLevelIndentation, rowBounds.Bottom - iconBottomOffset, iconSize, iconSize);
                 }
             }
 
@@ -367,15 +377,24 @@ public class OutlookGridRow : DataGridViewRow
             }
 
             //Draw text, using the current grid font
-            int offsetText = rowHeadersWidth - grid.HorizontalScrollingOffset + 18 + imageoffset + groupLevelIndentation;
+            // Scale text offset based on DPI
+            int textLeftOffset = (int)(18 * factorX);
+            int offsetText = rowHeadersWidth - grid.HorizontalScrollingOffset + textLeftOffset + imageoffset + groupLevelIndentation;
+            
             if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
             {
-                TextRenderer.DrawText(graphics, _group.Text, grid.GridPalette.GetContentShortTextFont(PaletteContentStyle.LabelBoldControl, state), new Rectangle(offsetText, rowBounds.Bottom - StaticValues._2013OffsetHeight, rowBounds.Width - offsetText, rowBounds.Height), grid.GridPalette.GetContentShortTextColor1(PaletteContentStyle.LabelNormalControl, state),
+                // Fix text rectangle: use proper height based on offset, not full row height
+                int textY = rowBounds.Bottom - StaticValues._2013OffsetHeight;
+                int textHeight = StaticValues._2013OffsetHeight;
+                TextRenderer.DrawText(graphics, _group.Text, grid.GridPalette.GetContentShortTextFont(PaletteContentStyle.LabelBoldControl, state), new Rectangle(offsetText, textY, rowBounds.Width - offsetText, textHeight), grid.GridPalette.GetContentShortTextColor1(PaletteContentStyle.LabelNormalControl, state),
                     TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.PreserveGraphicsClipping);
             }
             else
             {
-                TextRenderer.DrawText(graphics, _group.Text, grid.GridPalette.GetContentShortTextFont(PaletteContentStyle.LabelBoldControl, state), new Rectangle(offsetText, rowBounds.Bottom - StaticValues.DefaultOffsetHeight, rowBounds.Width - offsetText, rowBounds.Height), grid.GridPalette.GetContentShortTextColor1(PaletteContentStyle.LabelNormalControl, state),
+                // Fix text rectangle: use proper height based on offset, not full row height
+                int textY = rowBounds.Bottom - StaticValues.DefaultOffsetHeight;
+                int textHeight = StaticValues.DefaultOffsetHeight;
+                TextRenderer.DrawText(graphics, _group.Text, grid.GridPalette.GetContentShortTextFont(PaletteContentStyle.LabelBoldControl, state), new Rectangle(offsetText, textY, rowBounds.Width - offsetText, textHeight), grid.GridPalette.GetContentShortTextColor1(PaletteContentStyle.LabelNormalControl, state),
                     TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.PreserveGraphicsClipping);
             }
 
@@ -621,15 +640,29 @@ public class OutlookGridRow : DataGridViewRow
         KryptonOutlookGrid grid = (KryptonOutlookGrid)DataGridView;
         Rectangle rowBounds = grid.GetRowDisplayRectangle(Index, false);
 
-        int rowHeadersWidth = grid.RowHeadersVisible ? grid.RowHeadersWidth : 0;
-        int l = e.X + grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Left;
-        if (_isGroupRow &&
-            l >= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + _group.Level * StaticValues.GroupLevelMultiplier &&
-            l <= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + _group.Level * StaticValues.GroupLevelMultiplier + 11 &&
-            e.Y >= rowBounds.Height - 18 &&
-            e.Y <= rowBounds.Height - 7)
+        // Calculate DPI scaling factors for proper hit testing at different DPI settings
+        using (Graphics g = grid.CreateGraphics())
         {
-            return true;
+            float factorX = g.DpiX > 96 ? g.DpiX / 96f : 1f;
+            float factorY = g.DpiY > 96 ? g.DpiY / 96f : 1f;
+
+            int rowHeadersWidth = grid.RowHeadersVisible ? grid.RowHeadersWidth : 0;
+            int l = e.X + grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Left;
+            
+            // Scale hardcoded values based on DPI
+            int iconLeftOffset = (int)(4 * factorX);
+            int iconSize = (int)(11 * factorX);
+            int iconBottomOffset = (int)(18 * factorY);
+            int iconTopOffset = (int)(7 * factorY);
+            
+            if (_isGroupRow &&
+                l >= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + iconLeftOffset + _group.Level * StaticValues.GroupLevelMultiplier &&
+                l <= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + iconLeftOffset + _group.Level * StaticValues.GroupLevelMultiplier + iconSize &&
+                e.Y >= rowBounds.Height - iconBottomOffset &&
+                e.Y <= rowBounds.Height - iconTopOffset)
+            {
+                return true;
+            }
         }
 
         return false;
@@ -681,25 +714,37 @@ public class OutlookGridRow : DataGridViewRow
         KryptonOutlookGrid grid = (KryptonOutlookGrid)DataGridView;
         Rectangle rowBounds = grid.GetRowDisplayRectangle(Index, false);
 
-        int rowHeadersWidth = grid.RowHeadersVisible ? grid.RowHeadersWidth : 0;
-        int l = e.X + grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Left;
-        int offsetHeight;
-        if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+        // Calculate DPI scaling factors for proper hit testing at different DPI settings
+        using (Graphics g = grid.CreateGraphics())
         {
-            offsetHeight = StaticValues._2013OffsetHeight;
-        }
-        else
-        {
-            offsetHeight = StaticValues.DefaultOffsetHeight;
-        }
+            float factorX = g.DpiX > 96 ? g.DpiX / 96f : 1f;
+            float factorY = g.DpiY > 96 ? g.DpiY / 96f : 1f;
 
-        if (_isGroupRow &&
-            l >= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 18 + _group.Level * StaticValues.GroupLevelMultiplier &&
-            l <= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 18 + _group.Level * StaticValues.GroupLevelMultiplier + 16 &&
-            e.Y >= rowBounds.Height - offsetHeight &&
-            e.Y <= rowBounds.Height - 6)
-        {
-            return true;
+            int rowHeadersWidth = grid.RowHeadersVisible ? grid.RowHeadersWidth : 0;
+            int l = e.X + grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Left;
+            int offsetHeight;
+            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+            {
+                offsetHeight = StaticValues._2013OffsetHeight;
+            }
+            else
+            {
+                offsetHeight = StaticValues.DefaultOffsetHeight;
+            }
+
+            // Scale hardcoded values based on DPI
+            int imageLeftOffset = (int)(18 * factorX);
+            int imageSize = (int)(16 * factorX);
+            int imageBottomOffset = (int)(6 * factorY);
+
+            if (_isGroupRow &&
+                l >= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + imageLeftOffset + _group.Level * StaticValues.GroupLevelMultiplier &&
+                l <= rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + imageLeftOffset + _group.Level * StaticValues.GroupLevelMultiplier + imageSize &&
+                e.Y >= rowBounds.Height - offsetHeight &&
+                e.Y <= rowBounds.Height - imageBottomOffset)
+            {
+                return true;
+            }
         }
 
         return false;

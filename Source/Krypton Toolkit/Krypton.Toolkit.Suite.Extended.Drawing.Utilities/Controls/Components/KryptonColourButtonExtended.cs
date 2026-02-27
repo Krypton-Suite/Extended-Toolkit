@@ -838,6 +838,36 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
     /// <returns>String value.</returns>
     public string GetLongText() => KryptonCommand?.ExtraText ?? Values.GetLongText();
 
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Size GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Gets the content image.
     /// </summary>

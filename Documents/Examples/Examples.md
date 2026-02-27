@@ -45,6 +45,62 @@
 
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/ExtendedKryptonMessageBox2.png)
 
+### Expandable Footer Feature
+
+The `KryptonMessageBoxExtended` now supports an **expandable footer** feature, similar to Windows TaskDialog. This allows displaying additional information (error details, stack traces, help text) in a collapsible footer area.
+
+**Key Features:**
+- Collapsible footer with "Show details" / "Hide details" toggle
+- Multiple content types: Text (default), CheckBox, or RichTextBox
+- Configurable RichTextBox height for formatted content
+- Configurable initial state (expanded or collapsed)
+- Automatic form sizing
+- Works with all message box features (icons, buttons, timeout, etc.)
+
+**Example Usage:**
+
+```csharp
+using Krypton.Toolkit.Suite.Extended.Messagebox;
+
+// Text footer (default)
+KryptonMessageBoxExtended.Show(
+    this,
+    "An error occurred while processing your request.",
+    "Error",
+    ExtendedMessageBoxButtons.OK,
+    ExtendedKryptonMessageBoxIcon.Error,
+    footerText: "Stack Trace:\n   at Examples.MyClass.ProcessData()\n   ...",
+    footerExpanded: false  // Footer starts collapsed
+);
+
+// CheckBox footer
+KryptonMessageBoxExtended.Show(
+    this,
+    "Do you want to save your changes?",
+    "Save Changes?",
+    ExtendedMessageBoxButtons.YesNo,
+    ExtendedKryptonMessageBoxIcon.Question,
+    footerText: "Remember my choice",
+    footerContentType: ExtendedKryptonMessageBoxFooterContentType.CheckBox
+);
+
+// RichTextBox footer with custom height
+KryptonMessageBoxExtended.Show(
+    this,
+    "An error occurred.",
+    "Error",
+    ExtendedMessageBoxButtons.OK,
+    ExtendedKryptonMessageBoxIcon.Error,
+    footerText: "Detailed error information...",
+    footerContentType: ExtendedKryptonMessageBoxFooterContentType.RichTextBox,
+    footerRichTextBoxHeight: 150
+);
+```
+
+**Comprehensive Documentation:**
+- [KryptonMessageBoxExtended Footer Documentation](../Help/ExtendedKryptonMessageBox-Footer.md)
+- [MessageBox Footer Example Source Code](https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Source/Krypton%20Toolkit/Examples/MessageBoxFooterExample.cs)
+
 ## Krypton Colour Mixer
 
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/KryptonColourMixer.png)

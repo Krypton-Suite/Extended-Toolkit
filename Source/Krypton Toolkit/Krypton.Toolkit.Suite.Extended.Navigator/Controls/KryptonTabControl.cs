@@ -27,6 +27,8 @@
 
 // ReSharper disable RedundantOverriddenMember
 // ReSharper disable UnusedMember.Local
+using Krypton.Toolkit.Suite.Extended.Drawing;
+
 namespace Krypton.Toolkit.Suite.Extended.Navigator;
 
 /// <summary>

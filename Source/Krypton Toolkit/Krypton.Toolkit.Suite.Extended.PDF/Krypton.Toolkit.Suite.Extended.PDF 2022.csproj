@@ -25,7 +25,8 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
-		<NeutralLanguage>en</NeutralLanguage>		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<NeutralLanguage>en</NeutralLanguage>		
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 
@@ -71,25 +72,25 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="90.23.12.345-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.25.12.353-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.6.171-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.25.12.353-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 					</ItemGroup>
 				</When>
 
 				<Otherwise>
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>

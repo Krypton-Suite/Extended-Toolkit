@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -179,13 +179,22 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
 
         //Update StaticValues
         //ColumnHeadersHeight = (int)(ColumnHeadersHeight * factorY); //No need already done in KryptonDataGridView
-        StaticValues.DefaultGroupRowHeight = (int)(StaticValues.DefaultGroupRowHeight * _factorY);
-        StaticValues._2013GroupRowHeight = (int)(StaticValues._2013GroupRowHeight * _factorY);
-        StaticValues.DefaultOffsetHeight = (int)(StaticValues.DefaultOffsetHeight * _factorY);
-        StaticValues._2013OffsetHeight = (int)(StaticValues.DefaultOffsetHeight * _factorY);
-        StaticValues.ImageOffsetwidth = (int)(StaticValues.ImageOffsetwidth * _factorX);
-        StaticValues.GroupLevelMultiplier = (int)(StaticValues.GroupLevelMultiplier * _factorX);
-        StaticValues.GroupImageSide = (int)(StaticValues.GroupImageSide * _factorX);
+        // Store original values before scaling to avoid using already-scaled values
+        const int originalDefaultGroupRowHeight = 34;
+        const int original2013GroupRowHeight = 24;
+        const int originalDefaultOffsetHeight = 22;
+        const int original2013OffsetHeight = 11;
+        const int originalImageOffsetwidth = 18;
+        const int originalGroupLevelMultiplier = 15;
+        const int originalGroupImageSide = 16;
+        
+        StaticValues.DefaultGroupRowHeight = (int)(originalDefaultGroupRowHeight * _factorY);
+        StaticValues._2013GroupRowHeight = (int)(original2013GroupRowHeight * _factorY);
+        StaticValues.DefaultOffsetHeight = (int)(originalDefaultOffsetHeight * _factorY);
+        StaticValues._2013OffsetHeight = (int)(original2013OffsetHeight * _factorY);
+        StaticValues.ImageOffsetwidth = (int)(originalImageOffsetwidth * _factorX);
+        StaticValues.GroupLevelMultiplier = (int)(originalGroupLevelMultiplier * _factorX);
+        StaticValues.GroupImageSide = (int)(originalGroupImageSide * _factorX);
 
         //Strings = KryptonOutlookGrid.Strings;
 
@@ -1071,6 +1080,24 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         Fill();
     }
 
+    /// <summary>
+    /// Gets the display text for a DateInterval enum name.
+    /// </summary>
+    /// <param name="intervalName">The name of the DateInterval enum value.</param>
+    /// <returns>The localized display text.</returns>
+    private static string GetDateIntervalDisplayText(string intervalName)
+    {
+        return intervalName switch
+        {
+            nameof(DateInterval.Day) => KryptonOutlookGridLanguageManager.GeneralStrings.Day,
+            nameof(DateInterval.Month) => KryptonOutlookGridLanguageManager.GeneralStrings.Month,
+            nameof(DateInterval.Quarter) => KryptonOutlookGridLanguageManager.GeneralStrings.Quarter,
+            nameof(DateInterval.Year) => KryptonOutlookGridLanguageManager.GeneralStrings.Year,
+            nameof(DateInterval.Smart) => KryptonOutlookGridLanguageManager.GeneralStrings.Smart,
+            _ => intervalName
+        };
+    }
+
     private void OnGroupIntervalClick(object sender, EventArgs e)
     {
         KryptonContextMenuItem? item = (KryptonContextMenuItem)sender;
@@ -1876,7 +1903,8 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
             for (int i = 0; i < names.Length; i++)
             {
-                it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
+                string displayText = GetDateIntervalDisplayText(names[i]);
+                it = new KryptonContextMenuItem(displayText);
                 it.Tag = names[i];
                 it.Click += OnGroupIntervalClick;
                 arrayOptions[i] = it;
