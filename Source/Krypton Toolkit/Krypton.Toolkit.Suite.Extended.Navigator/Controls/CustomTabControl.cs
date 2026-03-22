@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -56,7 +56,7 @@ public class CustomTabControl : TabControl
     public new TabPageCollection TabPages => base.TabPages;
 
     private Boolean _preserveTabColour;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean PreserveTabColour
     {
         get => _preserveTabColour;
@@ -64,7 +64,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _buttonsBackColour = Color.FromArgb(191, 219, 255);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonsBackColour
     {
         get => _buttonsBackColour;
@@ -72,7 +72,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _buttonsBorderColour = Color.FromArgb(111, 157, 217);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonsBorderColour
     {
         get => _buttonsBorderColour;
@@ -80,7 +80,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _borderColour = SystemColors.ControlDark;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color BorderColour
     {
         get => _borderColour;
@@ -88,7 +88,7 @@ public class CustomTabControl : TabControl
     }
 
     private int _borderWidth = 1;
-    [Browsable(false), Category("Appearance-Extended")]
+    [Browsable(false), Category("Appearance-Extended"), DefaultValue(1)]
     public int BorderWidth
     {
         get => _borderWidth;
@@ -96,7 +96,7 @@ public class CustomTabControl : TabControl
     }
 
     private int _cornerRoundRadiusWidth = 12;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(12)]
     public int CornerRoundRadiusWidth
     {
         get => _cornerRoundRadiusWidth;
@@ -104,7 +104,7 @@ public class CustomTabControl : TabControl
     }
 
     private DrawingMethods.CornerType _cornerType = DrawingMethods.CornerType.Rounded;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DrawingMethods.CornerType CornerType
     {
         get => _cornerType;
@@ -112,7 +112,7 @@ public class CustomTabControl : TabControl
     }
 
     private bool _useExtendedLayout;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool UseExtendedLayout
     {
         get => _useExtendedLayout;
@@ -141,7 +141,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourHotLight = Color.FromArgb(255, 241, 196);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourHotLight
     {
         get => _tabColourHotLight;
@@ -149,7 +149,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourHotDark = Color.FromArgb(255, 215, 83);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourHotDark
     {
         get => _tabColourHotDark;
@@ -157,7 +157,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourSelectedLight = Color.FromArgb(255, 229, 196);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourSelectedLight
     {
         get => _tabColourSelectedLight;
@@ -165,7 +165,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourSelectedDark = Color.FromArgb(254, 182, 93);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourSelectedDark
     {
         get => _tabColourSelectedDark;
@@ -173,7 +173,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourPressedLight = Color.FromArgb(255, 229, 196);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourPressedLight
     {
         get => _tabColourPressedLight;
@@ -181,7 +181,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourPressedDark = Color.FromArgb(254, 182, 93);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourPressedDark
     {
         get => _tabColourPressedDark;
@@ -189,7 +189,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourDefaultLight = Color.FromArgb(227, 239, 255);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourDefaultLight
     {
         get => _tabColourDefaultLight;
@@ -197,7 +197,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourDefaultDark = Color.FromArgb(191, 219, 255);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourDefaultDark
     {
         get => _tabColourDefaultDark;
@@ -205,7 +205,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabHotForeColour = SystemColors.HotTrack;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabHotForeColour
     {
         get => _tabHotForeColour;
@@ -213,7 +213,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabSelectedForeColour = SystemColors.Highlight;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabSelectedForeColour
     {
         get => _tabSelectedForeColour;
@@ -221,7 +221,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabForeColour = Color.FromArgb(61, 66, 139);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabForeColour
     {
         get => _tabForeColour;
@@ -229,7 +229,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _standardBackColour = SystemColors.Control;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color StandardBackColour
     {
         get => _standardBackColour;
@@ -239,7 +239,7 @@ public class CustomTabControl : TabControl
     private int _cornerWidth = 2;
     private int _cornerLeftWidth;
     private int _cornerRightWidth;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public CornWidth CornerWidth
     {
         get => (CornWidth)_cornerWidth;
@@ -273,7 +273,7 @@ public class CustomTabControl : TabControl
     }
 
     private int _cornerSymmetry;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public CornSymmetry CornerSymmetry
     {
         get => (CornSymmetry)_cornerSymmetry;
@@ -308,7 +308,7 @@ public class CustomTabControl : TabControl
 
     private int _allowSelectedTabHighSize;
     private Boolean _allowSelectedTabHigh;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowSelectedTabHigh
     {
         get => _allowSelectedTabHigh;
@@ -316,7 +316,7 @@ public class CustomTabControl : TabControl
     }
 
     private Boolean _allowCloseButton;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowCloseButton
     {
         get => _allowCloseButton;
@@ -325,7 +325,7 @@ public class CustomTabControl : TabControl
 
     private Boolean _allowInternalNavigatorButtons;
     private Boolean _allowNavigatorButtons;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowNavigatorButtons
     {
         get => _allowNavigatorButtons;
@@ -333,7 +333,7 @@ public class CustomTabControl : TabControl
     }
 
     private Boolean _allowContextButton = true;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(true)]
     public Boolean AllowContextButton
     {
         get => _allowContextButton;

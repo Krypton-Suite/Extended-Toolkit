@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -36,6 +36,7 @@ public class SystemTabControl : TabControl
 
     #region   ... properties ...
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new TabAppearance Appearance
     {
         get => base.Appearance;
@@ -52,7 +53,7 @@ public class SystemTabControl : TabControl
     }
 
     private Color _hotForeColour;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HotForeColour
     {
         get => _hotForeColour;
@@ -60,7 +61,7 @@ public class SystemTabControl : TabControl
     }
 
     private Color _globalBackColour;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color GlobalBackColour
     {
         get => _globalBackColour;
@@ -76,7 +77,7 @@ public class SystemTabControl : TabControl
     }
 
     private Boolean _useKrypton = true;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(true)]
     public Boolean UseKrypton
     {
         get => _useKrypton;
@@ -84,7 +85,7 @@ public class SystemTabControl : TabControl
     }
 
     private Boolean _useExtendedLayout = false;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean UseExtendedLayout
     {
         get => _useExtendedLayout;

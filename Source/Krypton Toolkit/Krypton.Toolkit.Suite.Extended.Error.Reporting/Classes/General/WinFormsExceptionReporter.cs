@@ -56,7 +56,7 @@ public class ExceptionReporter : ExceptionReporterBase
     public bool Show(params Exception[] exceptions)
     {
         // silently ignore the mistake of passing null
-        if (exceptions == null || exceptions.Length == 0 || exceptions.Length >= 1 && exceptions[0] == null)
+        if (exceptions == null || exceptions.Length == 0 || exceptions is [null, ..])
         {
             return false;
         }

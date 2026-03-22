@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -56,19 +56,20 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
         return FindCore(0, prop, key);
     }
 
-    private int FindCore(int startIndex, PropertyDescriptor prop, object key)
+    private int FindCore(int startIndex, PropertyDescriptor prop, object? key)
     {
         // Get the property info for the specified property.
-        PropertyInfo propInfo = typeof(T).GetProperty(prop.Name);
+        PropertyInfo? propInfo = typeof(T).GetProperty(prop.Name);
 
-        if (key != null)
+        if (key != null && propInfo != null)
         {
             // Loop through the items to see if the key
             // value matches the property value.
             for (int i = startIndex; i < SourceItems.Count; ++i)
             {
                 var item = SourceItems[i];
-                if (propInfo.GetValue(item, null).Equals(key))
+                var value = propInfo.GetValue(item, null);
+                if (value != null && value.Equals(key))
                 {
                     return i;
                 }
@@ -82,7 +83,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
         // Check the properties for a property with the specified name.
         PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
 
-        PropertyDescriptor prop = properties.Find(property, true);
+        PropertyDescriptor? prop = properties.Find(property, true);
 
         // If there is not a match, return -1 otherwise pass search to
         // FindCore method.
@@ -126,7 +127,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
     public void ApplySort(string propertyName, ListSortDirection direction)
     {
         // Check the properties for a property with the specified name.
-        PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(T))[propertyName];
+        PropertyDescriptor? prop = TypeDescriptor.GetProperties(typeof(T))[propertyName];
         // If there is not a match, return -1 otherwise pass search to
         // FindCore method.
         if (prop == null)
@@ -149,7 +150,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
         // Check to see if the property type we are sorting by implements
         // the IComparable interface.
 
-        Type interfaceType = prop.PropertyType.GetInterface("IComparable");
+        Type? interfaceType = prop.PropertyType.GetInterface("IComparable");
         if (interfaceType != null)
         {
             // If so, set the SortPropertyValue and SortDirectionValue.
@@ -158,7 +159,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
             unsortedItems = new ArrayList(Count);
 
             // Loop through each item, adding it the the sortedItems ArrayList.
-            foreach (object item in SourceItems)
+            foreach (object? item in SourceItems)
             {
                 sortedList.Add(prop.GetValue(item));
                 unsortedItems.Add(item);
@@ -175,7 +176,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
 
             for (int i = 0; i < Count; i++)
             {
-                int position = Find(0, prop.Name, sortedList[i]);
+                int position = Find(0, prop.Name, sortedList[i] ?? string.Empty);
                 if (position != i
                     && position > -1
                     && position < Count
@@ -213,16 +214,17 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
             // Loop through the unsorted items and reorder the list per the unsorted list.
             for (int i = 0; i < unsortedItems.Count;)
             {
-                var position = Find(0, SortPropertyCore.Name,
-                    unsortedItems[i].GetType().
-                        GetProperty(SortPropertyCore.Name).GetValue(unsortedItems[i], null)
-                );
+                var sortPropName = SortPropertyCore?.Name ?? string.Empty;
+                var unsortedItem = unsortedItems[i];
+                var propertyInfo = unsortedItem?.GetType().GetProperty(sortPropName);
+                var keyValue = propertyInfo?.GetValue(unsortedItem, null) ?? string.Empty;
+                var position = Find(0, sortPropName, keyValue);
 
                 if (position >= 0 && position != i)
                 {
-                    object temp = this[i];
+                    T temp = this[i];
                     this[i] = this[position];
-                    this[position] = (T)temp;
+                    this[position] = temp;
                     i++;
                 }
                 else if (position == i)
@@ -268,7 +270,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
     public bool SupportsAdvancedSorting => false;
 
     /// <inheritdoc />
-    public ListSortDescriptionCollection SortDescriptions => null;
+    public ListSortDescriptionCollection SortDescriptions => new ListSortDescriptionCollection();
 
     /// <inheritdoc />
     public void ApplySort(ListSortDescriptionCollection sorts)
@@ -299,11 +301,11 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
     /// </summary>
     private string FilterPropertyName { get; set; }
 
-    private object FilterCompare { get; set; }
+    private object? FilterCompare { get; set; }
 
     private string filterValue = string.Empty;
     /// <inheritdoc />
-    public string Filter
+    public string? Filter
     {
         get => filterValue;
         set
@@ -320,7 +322,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
                         Items.Add(t);
                     }
 
-                    filterValue = value;
+                    filterValue = string.Empty;
                 }
 
                 // If the value is empty string, do nothing.
@@ -382,7 +384,7 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
 
         List<T> results = [];
 
-        PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
+        PropertyDescriptor? propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
 
         if (propDesc != null)
         {
@@ -411,12 +413,12 @@ public class SimpleFilteredList<T> : BindingList<T>, IBindingListView
 
     private void GetFilterParts()
     {
-        string[] filterParts = Filter.Split(['='], StringSplitOptions.RemoveEmptyEntries);
+        string[] filterParts = (Filter ?? string.Empty).Split(['='], StringSplitOptions.RemoveEmptyEntries);
         FilterPropertyName = filterParts[0].Replace("[", string.Empty)
             .Replace("]", string.Empty)
             .Trim();
 
-        PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName.ToString()];
+        PropertyDescriptor? propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName.ToString()];
 
         if (propDesc != null)
         {

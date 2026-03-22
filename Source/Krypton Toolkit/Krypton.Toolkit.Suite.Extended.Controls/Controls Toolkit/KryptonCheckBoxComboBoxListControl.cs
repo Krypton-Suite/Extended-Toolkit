@@ -134,8 +134,7 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
         #region Recreate the list in the same order of the combo box items
 
         bool hasHiddenItem =
-            _checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
-            && _checkBoxComboBox.DataSource == null
+            _checkBoxComboBox is { DropDownStyle: ComboBoxStyle.DropDownList, DataSource: null }
             && !DesignMode;
 
         KryptonCheckBoxComboBoxItemList newList = new KryptonCheckBoxComboBoxItemList(_checkBoxComboBox);
@@ -195,8 +194,7 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
         #endregion
 
         // Keep the first item invisible
-        if (_checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
-            && _checkBoxComboBox.DataSource == null
+        if (_checkBoxComboBox is { DropDownStyle: ComboBoxStyle.DropDownList, DataSource: null }
             && !DesignMode)
         {
             _checkBoxComboBox.CheckBoxItems[0].Visible = false;

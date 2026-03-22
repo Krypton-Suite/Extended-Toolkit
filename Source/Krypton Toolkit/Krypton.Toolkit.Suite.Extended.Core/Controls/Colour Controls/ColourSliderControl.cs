@@ -1386,7 +1386,7 @@ public class ColourSliderControl : Control
 
         angle = this.Orientation == Orientation.Horizontal ? 0 : 90;
 
-        if (this.BarBounds.Height > 0 && this.BarBounds.Width > 0)
+        if (this.BarBounds is { Height: > 0, Width: > 0 })
         {
             ColorBlend blend;
 

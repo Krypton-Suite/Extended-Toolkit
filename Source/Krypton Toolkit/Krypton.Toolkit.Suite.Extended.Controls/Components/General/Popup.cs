@@ -392,7 +392,7 @@ public partial class PopUp : ToolStripDropDown
 
     private bool InternalProcessResizing(ref Message m, bool contentControl)
     {
-        if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup != null && _childPopup.Visible)
+        if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup is { Visible: true })
         {
             _childPopup.Hide();
         }

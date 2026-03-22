@@ -992,7 +992,7 @@ internal sealed class VoiceSynthesis : IDisposable
                 if (defaultVoice != null || defaultVoiceId != null)
                 {
                     viDefault = InstalledVoice.Find(_installedVoices, defaultVoice != null ? defaultVoice.VoiceInfo : defaultVoiceId);
-                    if (viDefault != null && viDefault.Enabled && variant == 1)
+                    if (viDefault is { Enabled: true } && variant == 1)
                     {
                         VoiceInfo voiceInfo = viDefault.VoiceInfo;
                         if (viDefault.Enabled && voiceInfo.Culture.Equals(culture) && (gender == VoiceGender.NotSet || gender == VoiceGender.Neutral || gender == voiceInfo.Gender) && (age == VoiceAge.NotSet || age == voiceInfo.Age))
@@ -1327,7 +1327,7 @@ internal sealed class VoiceSynthesis : IDisposable
             {
                 foreach (ObjectToken item in objectTokenCategory.FindMatchingTokens(null, null))
                 {
-                    if (item != null && item.Attributes != null)
+                    if (item is { Attributes: not null })
                     {
                         list.Add(new InstalledVoice(voiceSynthesizer, new VoiceInfo(item)));
                     }

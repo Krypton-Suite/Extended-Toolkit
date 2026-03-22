@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -52,6 +52,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
     [Description("A 48x48 image for the wizard header")]
     public Color HeaderColourOne { get => HeaderPanel.StateCommon.Color1; set => HeaderPanel.StateCommon.Color1 = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HeaderColourTwo { get => HeaderPanel.StateCommon.Color2; set => HeaderPanel.StateCommon.Color2 = value; }
 
     /// <summary>
@@ -68,7 +69,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
 
     // Specify whether or not image is shown
     [Category("WizardPage")]
-    [Description("Shows/Hides the image in the header")]
+    [Description("Shows/Hides the image in the header"), DefaultValue(true)]
     public bool HeaderImageVisible
     {
         get => _imageVisible;
@@ -81,7 +82,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
 
     // Specify background colour of header
     [Category("WizardPage")]
-    [Description("The background color for the header")]
+    [Description("The background color for the header"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HeaderBackgroundColor
     {
         get => HeaderPanel.BackColor;
@@ -91,7 +92,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
     // Specify the main text for the page
     [Category("WizardPage")]
     [Description("Allows a title for the current page")]
-    [Localizable(true)]
+    [Localizable(true), DefaultValue("")]
     public string HeaderTitle
     {
         get => WizardText.Text;
@@ -100,7 +101,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
 
     // Specify the font used for text on the Header
     [Category("WizardPage")]
-    [Description("The font for the header title")]
+    [Description("The font for the header title"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Font HeaderFont
     {
         get => WizardText.Font;
@@ -110,7 +111,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
     // Specify the subtext for the page
     [Category("WizardPage")]
     [Description("Allows a subheading for the current page.")]
-    [Localizable(true)]
+    [Localizable(true), DefaultValue("")]
     public string SubTitle
     {
         get => WizardSubText.Text;
@@ -119,7 +120,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
 
     // Specify the font used for text on the subtitle
     [Category("WizardPage")]
-    [Description("The font for the subtitle")]
+    [Description("The font for the subtitle"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Font SubTitleFont
     {
         get => WizardSubText.Font;
@@ -129,7 +130,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
     // Specify whether or not the header is shown
     [Category("WizardPage")]
     [Description(
-        "The header gives you a head start in designing your pages. Turn it off for complete freedom of design.")]
+        "The header gives you a head start in designing your pages. Turn it off for complete freedom of design."), DefaultValue(true)]
     public bool Header
     {
         get => _headerVisible;

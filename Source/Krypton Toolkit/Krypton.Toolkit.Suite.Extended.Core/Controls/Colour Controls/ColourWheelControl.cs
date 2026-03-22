@@ -350,7 +350,7 @@ public class ColourWheelControl : Control, IColourEditor
         size = this.ClientSize;
 
         // Only define the points if the control is above a minimum size, otherwise if it's too small, you get an "out of memory" exceptions (of all things) when creating the brush
-        if (size.Width > 16 && size.Height > 16)
+        if (size is { Width: > 16, Height: > 16 })
         {
             int w;
             int h;

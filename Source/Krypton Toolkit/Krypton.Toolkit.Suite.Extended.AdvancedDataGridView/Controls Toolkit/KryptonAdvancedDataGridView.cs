@@ -937,12 +937,9 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
             {
                 dataview.RowFilter = filterEventArgs.FilterString;
             }
-            else if (DataSource is DataTable datatable)
+            else if (DataSource is DataTable { DefaultView: not null } datatable)
             {
-                if (datatable.DefaultView != null)
-                {
-                    datatable.DefaultView.RowFilter = filterEventArgs.FilterString;
-                }
+                datatable.DefaultView.RowFilter = filterEventArgs.FilterString;
             }
         }
         //invoke FilterStringChanged
@@ -1217,7 +1214,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     private IEnumerable<KryptonColumnHeaderCell> FilterableCells =>
         from DataGridViewColumn c in Columns
-        where c.HeaderCell != null && c.HeaderCell is KryptonColumnHeaderCell
+        where c.HeaderCell is KryptonColumnHeaderCell
         select c.HeaderCell as KryptonColumnHeaderCell;
 
     #endregion
@@ -1321,7 +1318,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// <param name="e"></param>
     protected override void OnCellValueChanged(DataGridViewCellEventArgs e)
     {
-        if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+        if (e is { RowIndex: >= 0, ColumnIndex: >= 0 })
         {
             _filteredColumns.Remove(Columns[e.ColumnIndex].Name);
         }

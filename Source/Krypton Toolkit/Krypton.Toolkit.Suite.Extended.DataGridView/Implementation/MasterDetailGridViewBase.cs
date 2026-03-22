@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -43,7 +43,7 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
         RowHeaderIconList = new ImageList(components)
         {
 #pragma warning disable CA1304 // Specify CultureInfo
-            ImageStream = (ImageListStreamer)resources.GetObject(@"RowHeaderIconList.ImageStream"),
+            ImageStream = (ImageListStreamer?)resources.GetObject(@"RowHeaderIconList.ImageStream"),
 #pragma warning restore CA1304 // Specify CultureInfo
             TransparentColor = Color.Transparent
         };
@@ -95,7 +95,7 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
 
         base.DataSource = new DataView(DataSet.Tables[tableName]);
         ForeignKey = masterColumn;
-        var keyType = DataSet.Tables[tableName].Columns[masterColumn].GetType();
+        var keyType = DataSet.Tables[tableName]?.Columns[masterColumn]?.GetType() ?? typeof(string);
         if (keyType == typeof(int)
             || keyType == typeof(float)
             || keyType == typeof(double)
@@ -176,12 +176,11 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     protected bool CollapseRow;
 
-    private void MasterDetailGridViewBase_CellClick(object sender, DataGridViewCellEventArgs e)
+    private void MasterDetailGridViewBase_CellClick(object? sender, DataGridViewCellEventArgs e)
     {
         if (SelectionMode == DataGridViewSelectionMode.FullRowSelect
             && ExpandDetailsWhenFullRowSelectClicked
-            && e.ColumnIndex >= 0
-            && e.RowIndex >= 0
+            && e is { ColumnIndex: >= 0, RowIndex: >= 0 }
            )
         {
             ExpandAndCollapseOther(e.RowIndex);
@@ -231,7 +230,7 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
         Rows[rowIndex].Selected = true;
     }
 
-    private void MasterDetailGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+    private void MasterDetailGridView_RowHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
     {
         if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
         {
@@ -259,17 +258,17 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
 
     private protected abstract bool HasNoChildDetails(int rowIndex);
 
-    private protected abstract void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e);
+    private protected abstract void MasterDetailGridView_RowPostPaint(object? sender, DataGridViewRowPostPaintEventArgs e);
 
-    private protected abstract void MasterDetailGridView_SelectionChanged(object sender, EventArgs e);
+    private protected abstract void MasterDetailGridView_SelectionChanged(object? sender, EventArgs e);
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
+    protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new Dictionary<int, (int Height, int divider)>();
 
-    private int rowExpandedHeight = 300;
+    private int _rowExpandedHeight = 300;
 
-    private void MasterDetailGridView_Scroll(object sender, ScrollEventArgs e)
+    private void MasterDetailGridView_Scroll(object? sender, ScrollEventArgs e)
     {
         if (RowCurrent.Count != 0)
         {
@@ -371,7 +370,7 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
     [Description("Detail DataGridView MaxHeight, Min is 100")]
     public int DetailRowExpandedMaxHeight
     {
-        get => rowExpandedHeight;
+        get => _rowExpandedHeight;
         set
         {
             if (value < 100)
@@ -379,7 +378,7 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
                 throw new ArgumentOutOfRangeException(nameof(DetailRowExpandedMaxHeight));
             }
 
-            rowExpandedHeight = value;
+            _rowExpandedHeight = value;
         }
     }
 
@@ -404,6 +403,7 @@ public abstract class MasterDetailGridViewBase : KryptonDataGridView
     /// </summary>
     [Category("Layout")]
     [Description("DataGridView RowHeaders Width")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new int RowHeadersWidth
     {
         get => base.RowHeadersWidth;

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -63,7 +63,7 @@ public class KryptonDataGridViewPercentageColumn : DataGridViewColumn// KryptonD
     /// Overrides CellTemplate
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public override DataGridViewCell CellTemplate
+    public override DataGridViewCell? CellTemplate
     {
         get => base.CellTemplate;
 
@@ -124,21 +124,22 @@ public class DataGridViewPercentageCell : KryptonDataGridViewTextBoxCell
     /// <param name="cellStyle"></param>
     /// <param name="advancedBorderStyle"></param>
     /// <param name="paintParts"></param>
-    protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
+    protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object? value, object? formattedValue, string? errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
         DataGridViewPaintParts paintParts)
     {
         //Draw the bar
+        double doubleValue = value is double d ? d : 0.0;
         int barWidth;
-        if ((double)value >= 1.0)
+        if (doubleValue >= 1.0)
         {
             barWidth = cellBounds.Width - 10;
         }
         else
         {
-            barWidth = (int)((cellBounds.Width - 10) * (double)value);
+            barWidth = (int)((cellBounds.Width - 10) * doubleValue);
         }
 
-        if ((double)value > 0 && barWidth > 0)
+        if (doubleValue > 0 && barWidth > 0)
         {
             Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
 

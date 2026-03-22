@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar;
 public class KryptonCalendar : ScrollableControl
 {
     #region "Reload Palette"
-    private void Calendar_Invalidated(object sender, InvalidateEventArgs e)
+    private void Calendar_Invalidated(object? sender, InvalidateEventArgs e)
     {
         Renderer!.ReloadPalette();
     }
@@ -42,10 +42,10 @@ public class KryptonCalendar : ScrollableControl
 
     #region ... Krypton ...
     private PaletteBase? _palette;
-    private PaletteRedirect _paletteRedirect;
+    private readonly PaletteRedirect _paletteRedirect;
 
-    //Kripton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    //Krypton Palette Events
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -1322,7 +1322,7 @@ public class KryptonCalendar : ScrollableControl
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void TextBox_KeyDown(object sender, KeyEventArgs e)
+    private void TextBox_KeyDown(object? sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Escape)
         {
@@ -1829,11 +1829,11 @@ public class KryptonCalendar : ScrollableControl
                     _itemOnStateChanged = true;
                     break;
                 case CalendarState.ResizingItem:
-                    if (_itemOnState != null && _itemOnState.IsResizingEndDate && hitted.Date.CompareTo(_itemOnState.StartDate) >= 0)
+                    if (_itemOnState is { IsResizingEndDate: true } && hitted.Date.CompareTo(_itemOnState.StartDate) >= 0)
                     {
                         _itemOnState.EndDate = hitted.Date.Add(hittedTop != null || DaysMode == CalendarDaysMode.Short ? new TimeSpan(23, 59, 59) : Days[0]!.TimeUnits[0]!.Duration);
                     }
-                    else if (_itemOnState != null && _itemOnState.IsResizingStartDate && hitted.Date.CompareTo(_itemOnState.EndDate) <= 0)
+                    else if (_itemOnState is { IsResizingStartDate: true } && hitted.Date.CompareTo(_itemOnState.EndDate) <= 0)
                     {
                         _itemOnState.StartDate = hitted.Date;
                     }

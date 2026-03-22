@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -76,6 +76,7 @@ public abstract class ButtonSpecFormFixed : ButtonSpec
     /// <summary>
     /// Gets and sets the actual type of the button.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public virtual PaletteButtonSpecStyle ButtonSpecType
     {
         get => ProtectedType;

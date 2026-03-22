@@ -153,7 +153,7 @@ internal abstract class RedBackList : IEnumerable
     {
         get
         {
-            if (_root != null && _root.Left == null)
+            if (_root is { Left: null })
             {
                 return _root.Right == null;
             }

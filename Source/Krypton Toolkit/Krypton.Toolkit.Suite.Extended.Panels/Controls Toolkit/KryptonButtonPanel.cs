@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -87,10 +87,13 @@ public class KryptonButtonPanel : UserControl
 
     #region Properties
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public KryptonButton[] Buttons { get => _buttons; set => _buttons = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PaletteBackStyle PanelPaletteBackStyle { get => _panelPaletteBackStyle; set { _panelPaletteBackStyle = value; Invalidate(); } }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PaletteBorderStyle EdgeBorderStyle { get => _edgeBorderStyle; set { _edgeBorderStyle = value; Invalidate(); } }
 
     #endregion

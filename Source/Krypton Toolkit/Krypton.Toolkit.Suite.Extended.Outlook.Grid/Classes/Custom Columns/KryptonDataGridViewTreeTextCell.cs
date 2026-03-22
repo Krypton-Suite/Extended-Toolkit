@@ -81,7 +81,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
     {
         OutlookGridRow? node = OwningNode;
         //Console.WriteLine(DateTime.Now.ToString() + " " + node.ToString());
-        bool hasChildNodes = node != null && node.HasChildren;
+        bool hasChildNodes = node is { HasChildren: true };
         int level = Level;
         int plus = 0;
         //if (hasChildNodes)
@@ -226,7 +226,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
 
                     while (previousNode != null)//.IsRoot)
                     {
-                        if (previousNode.HasChildren && !previousNode.IsLastSibling)
+                        if (previousNode is { HasChildren: true, IsLastSibling: false })
                         {
                             // paint vertical line
                             graphics.DrawLine(linePen, horizontalStop, cellBounds.Top, horizontalStop, cellBounds.Bottom);
@@ -239,7 +239,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
             }
         }
 
-        if (node != null && node.HasChildren)
+        if (node is { HasChildren: true })
         {
             // Paint node glyphs	
             if (node.Collapsed)

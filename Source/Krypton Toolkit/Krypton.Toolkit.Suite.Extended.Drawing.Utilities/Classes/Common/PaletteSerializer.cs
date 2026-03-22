@@ -237,7 +237,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
         _defaultOpenFilter = null;
         _defaultSaveFileter = null;
 
-        foreach (Type type in AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => GetLoadableTypes(assembly).Where(type => !type.IsAbstract && type.IsPublic && typeof(IPaletteSerializer).IsAssignableFrom(type))))
+        foreach (Type type in AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => GetLoadableTypes(assembly).Where(type => type is { IsAbstract: false, IsPublic: true } && typeof(IPaletteSerializer).IsAssignableFrom(type))))
         {
             try
             {

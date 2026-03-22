@@ -23,9 +23,9 @@
 				<!-- License file (excluded for Ultimate projects which use their own) -->
 				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
 				
-				<!-- Include README.md if it exists in the project directory -->
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
 				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
-				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -58,9 +58,9 @@
 				<!-- License file (excluded for Ultimate projects which use their own) -->
 				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
 				
-				<!-- Include README.md if it exists in the project directory -->
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
 				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
-				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -93,9 +93,9 @@
 				<!-- License file (excluded for Ultimate projects which use their own) -->
 				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
 				
-				<!-- Include README.md if it exists in the project directory -->
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
 				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
-				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -128,9 +128,9 @@
 				<!-- License file (excluded for Ultimate projects which use their own) -->
 				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
 				
-				<!-- Include README.md if it exists in the project directory -->
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
 				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
-				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -163,9 +163,9 @@
 				<!-- License file (excluded for Ultimate projects which use their own) -->
 				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
 				
-				<!-- Include README.md if it exists in the project directory -->
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
 				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
-				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -199,9 +199,9 @@
 				<!-- License file (excluded for Ultimate projects which use their own) -->
 				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
 				
-				<!-- Include README.md if it exists in the project directory -->
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
 				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
-				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>

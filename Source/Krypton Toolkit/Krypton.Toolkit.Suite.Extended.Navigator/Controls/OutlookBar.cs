@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -158,7 +158,7 @@ public class OutlookBar : Control
         }
     }
 
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Renderer Renderer
     {
         get => _Renderer;
@@ -175,7 +175,7 @@ public class OutlookBar : Control
         //do nothing...
         set { }
     }
-    [Category("Appearance"), DisplayName("LineColour")]
+    [Category("Appearance"), DisplayName("LineColour"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color OutlookBarLineColour
     {
         get => _OutlookBarLineColour;
@@ -185,7 +185,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance")]
+    [Category("Appearance"), DefaultValue(35)]
     public int ButtonHeight
     {
         get => _ButtonHeight;
@@ -210,7 +210,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ForeColourSelected
     {
         get => _ForeColourSelected;
@@ -230,7 +230,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonHovering1")]
+    [Category("Appearance"), DisplayName("ButtonHovering1"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourHoveringTop
     {
         get => _ButtonColourHoveringTop;
@@ -240,7 +240,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonSelected1")]
+    [Category("Appearance"), DisplayName("ButtonSelected1"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourSelectedTop
     {
         get => _ButtonColourSelectedTop;
@@ -250,7 +250,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonSelectedHovering1")]
+    [Category("Appearance"), DisplayName("ButtonSelectedHovering1"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourSelectedAndHoveringTop
     {
         get => _ButtonColourSelectedAndHoveringTop;
@@ -260,7 +260,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonPassive1")]
+    [Category("Appearance"), DisplayName("ButtonPassive1"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourPassiveTop
     {
         get => _ButtonColourPassiveTop;
@@ -270,7 +270,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonHovering2")]
+    [Category("Appearance"), DisplayName("ButtonHovering2"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourHoveringBottom
     {
         get => _ButtonColourHoveringBottom;
@@ -280,7 +280,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonSelected2")]
+    [Category("Appearance"), DisplayName("ButtonSelected2"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourSelectedBottom
     {
         get => _ButtonColourSelectedBottom;
@@ -290,7 +290,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonSelectedHovering2")]
+    [Category("Appearance"), DisplayName("ButtonSelectedHovering2"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourSelectedAndHoveringBottom
     {
         get => _ButtonColourSelectedAndHoveringBottom;
@@ -300,7 +300,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
-    [Category("Appearance"), DisplayName("ButtonPassive2")]
+    [Category("Appearance"), DisplayName("ButtonPassive2"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourPassiveBottom
     {
         get => _ButtonColoruPassiveBottom;

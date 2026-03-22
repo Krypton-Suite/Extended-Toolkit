@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -45,14 +45,20 @@ public class MultiDetailView : TabControl, IDetailView<TabControl>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DataGridViewCell DetailsCurrentCell
     {
-        get => ((KryptonDataGridView) SelectedTab.Controls[0]).CurrentCell;
-        set => ((KryptonDataGridView)SelectedTab.Controls[0]).CurrentCell = value;
+        get => ((KryptonDataGridView?)SelectedTab?.Controls[0])?.CurrentCell!;
+        set
+        {
+            if (SelectedTab?.Controls[0] is KryptonDataGridView dgv)
+            {
+                dgv.CurrentCell = value;
+            }
+        }
     }
 
     /// <inheritdoc />
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public DataGridViewRow DetailsCurrentRow => ((KryptonDataGridView)SelectedTab.Controls[0]).CurrentRow;
+    public DataGridViewRow DetailsCurrentRow => ((KryptonDataGridView?)SelectedTab?.Controls[0])?.CurrentRow!;
 
     /// <inheritdoc />
     [Browsable(false)]

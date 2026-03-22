@@ -40,7 +40,7 @@ internal static class SapiConstants
 
     internal static SRID SapiErrorCode2SRID(SAPIErrorCodes code)
     {
-        if (code >= SAPIErrorCodes.SPERR_FIRST && code <= SAPIErrorCodes.SPERR_LAST)
+        if (code is >= SAPIErrorCodes.SPERR_FIRST and <= SAPIErrorCodes.SPERR_LAST)
         {
             return (SRID)(258 + (code - -2147201023));
         }

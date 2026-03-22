@@ -90,7 +90,7 @@ public class SrgsToken : SrgsElement, IToken, IElement
         {
             writer.WriteAttributeString("sapi", "pron", "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions", _pronunciation);
         }
-        if (_text != null && _text.Length > 0)
+        if (_text is { Length: > 0 })
         {
             writer.WriteString(_text);
         }

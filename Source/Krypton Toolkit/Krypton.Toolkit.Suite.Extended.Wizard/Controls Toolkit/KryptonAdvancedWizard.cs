@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -106,6 +106,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
 
     [Category("Wizard")]
     [Description("Allows user to control the wizard through the Escape and Enter keys.")]
+    [DefaultValue(false)]
     public bool ProcessKeys { get; set; }
 
 
@@ -154,6 +155,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     [Category("Wizard")]
     [Browsable(true)]
     [Description("Show or hide the buttons. You can still access the pages programmatically if you hide them.")]
+    [DefaultValue(true)]
     public bool ButtonsVisible
     {
         get => _buttonsVisible;
@@ -162,6 +164,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
 
     [Description("Shows or hides the Cancel button")]
     [Category("Wizard")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool CancelButton
     {
         get => _kbtnCancel.Visible;
@@ -171,6 +174,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     [Category("Wizard")]
     [Browsable(true)]
     [Description("Increase the button size for easier use on a touchscreen")]
+    [DefaultValue(false)]
     public bool TouchScreen
     {
         get => _touchScreen;
@@ -185,6 +189,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     /// </summary>
     [Category("Wizard")]
     [Description("Allows a choice of a dedicated button to complete the wizard steps or to use the Next button.")]
+    [DefaultValue(true)]
     public bool FinishButton
     {
         get => _finishButton;
@@ -205,6 +210,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
 
     [Category("Wizard")]
     [Description("Allows a choice of a dedicated button to complete the wizard steps or to use the Next button.")]
+    [DefaultValue(true)]
     public bool HelpButton
     {
         get => _helpButton;

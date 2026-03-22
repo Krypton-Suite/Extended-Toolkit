@@ -108,7 +108,7 @@ public class OutlookGridRow : DataGridViewRow
         get
         {
             OutlookGridRow? parent = _parentNode;
-            if (parent != null && parent.HasChildren)
+            if (parent is { HasChildren: true })
             {
                 return NodeIndex == parent.Nodes.Count - 1;
             }

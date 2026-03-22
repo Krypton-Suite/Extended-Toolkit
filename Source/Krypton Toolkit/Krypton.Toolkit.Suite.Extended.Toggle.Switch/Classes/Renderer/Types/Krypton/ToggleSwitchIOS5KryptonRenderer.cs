@@ -126,8 +126,8 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             upperGradientPath.AddLine(upperGradientRectangle.X + upperGradientRectangle.Width, upperGradientRectangle.Y, upperGradientRectangle.X + upperGradientRectangle.Width, upperGradientRectangle.Y + upperGradientRectangle.Height);
             upperGradientPath.AddLine(upperGradientRectangle.X, upperGradientRectangle.Y + upperGradientRectangle.Height, upperGradientRectangle.X + upperGradientRectangle.Width, upperGradientRectangle.Y + upperGradientRectangle.Height);
 
-            Color upperColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideUpperColour1.ToGrayScale() : LeftSideUpperColour1;
-            Color upperColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideUpperColour2.ToGrayScale() : LeftSideUpperColour2;
+            Color upperColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideUpperColour1.ToGrayScale() : LeftSideUpperColour1;
+            Color upperColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideUpperColour2.ToGrayScale() : LeftSideUpperColour2;
 
             using (Brush upperGradientBrush = new LinearGradientBrush(upperGradientRectangle, upperColour1, upperColour2, LinearGradientMode.Vertical))
             {
@@ -153,8 +153,8 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             lowerGradientPath.AddLine(lowerGradientRectangle.X + buttonWidth / 4, lowerGradientRectangle.Y + lowerGradientRectangle.Height, lowerGradientRectangle.X + lowerGradientRectangle.Width, lowerGradientRectangle.Y + lowerGradientRectangle.Height);
             lowerGradientPath.AddArc(1, 1, ToggleSwitch.Height - 1, ToggleSwitch.Height - 1, 90, 70); //Arc from side to bottom
 
-            Color lowerColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideLowerColour1.ToGrayScale() : LeftSideLowerColour1;
-            Color lowerColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideLowerColour2.ToGrayScale() : LeftSideLowerColour2;
+            Color lowerColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideLowerColour1.ToGrayScale() : LeftSideLowerColour1;
+            Color lowerColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideLowerColour2.ToGrayScale() : LeftSideLowerColour2;
 
             using (Brush lowerGradientBrush = new LinearGradientBrush(lowerGradientRectangle, lowerColour1, lowerColour2, LinearGradientMode.Vertical))
             {
@@ -172,7 +172,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
         //Draw upper inside border
         Color upperBordercolor = LeftSideUpperBorderColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             upperBordercolor = upperBordercolor.ToGrayScale();
         }
@@ -185,7 +185,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
         //Draw lower inside border
         Color lowerBordercolor = LeftSideLowerBorderColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             lowerBordercolor = lowerBordercolor.ToGrayScale();
         }
@@ -225,7 +225,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -247,7 +247,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -276,7 +276,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                 Color textForeColour = ToggleSwitch.OnForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColour = textForeColour.ToGrayScale();
                 }
@@ -317,8 +317,8 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             upperGradientPath.AddLine(upperGradientRectangle.X + upperGradientRectangle.Width, upperGradientRectangle.Y + upperGradientRectangle.Height, upperGradientRectangle.X, upperGradientRectangle.Y + upperGradientRectangle.Height);
             upperGradientPath.AddLine(upperGradientRectangle.X, upperGradientRectangle.Y + upperGradientRectangle.Height, upperGradientRectangle.X, upperGradientRectangle.Y);
 
-            Color upperColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideUpperColour1.ToGrayScale() : RightSideUpperColour1;
-            Color upperColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideUpperColour2.ToGrayScale() : RightSideUpperColour2;
+            Color upperColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideUpperColour1.ToGrayScale() : RightSideUpperColour1;
+            Color upperColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideUpperColour2.ToGrayScale() : RightSideUpperColour2;
 
             using (Brush upperGradientBrush = new LinearGradientBrush(upperGradientRectangle, upperColour1, upperColour2, LinearGradientMode.Vertical))
             {
@@ -344,8 +344,8 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             lowerGradientPath.AddLine(lowerGradientRectangle.X + lowerGradientRectangle.Width, lowerGradientRectangle.Y + lowerGradientRectangle.Height, lowerGradientRectangle.X, lowerGradientRectangle.Y + lowerGradientRectangle.Height);
             lowerGradientPath.AddLine(lowerGradientRectangle.X, lowerGradientRectangle.Y + lowerGradientRectangle.Height, lowerGradientRectangle.X, lowerGradientRectangle.Y);
 
-            Color lowerColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideLowerColour1.ToGrayScale() : RightSideLowerColour1;
-            Color lowerColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideLowerColour2.ToGrayScale() : RightSideLowerColour2;
+            Color lowerColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideLowerColour1.ToGrayScale() : RightSideLowerColour1;
+            Color lowerColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideLowerColour2.ToGrayScale() : RightSideLowerColour2;
 
             using (Brush lowerGradientBrush = new LinearGradientBrush(lowerGradientRectangle, lowerColour1, lowerColour2, LinearGradientMode.Vertical))
             {
@@ -363,7 +363,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
         //Draw upper inside border
         Color upperBordercolour = RightSideUpperBorderColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             upperBordercolour = upperBordercolour.ToGrayScale();
         }
@@ -376,7 +376,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
         //Draw lower inside border
         Color lowerBordercolour = RightSideLowerBorderColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             lowerBordercolour = lowerBordercolour.ToGrayScale();
         }
@@ -416,7 +416,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -438,7 +438,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -467,7 +467,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                 Color textForeColour = ToggleSwitch.OffForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColour = textForeColour.ToGrayScale();
                 }
@@ -514,7 +514,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
         g.SetClip(shadowClipRectangle);
 
-        Color buttonShadowColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? ButtonShadowColour.ToGrayScale() : ButtonShadowColour;
+        Color buttonShadowColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? ButtonShadowColour.ToGrayScale() : ButtonShadowColour;
 
         using (Pen buttonShadowPen = new Pen(buttonShadowColour))
         {
@@ -537,7 +537,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             buttonOuterBorderColour = ButtonHoverOuterBorderColour;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonOuterBorderColour = buttonOuterBorderColour.ToGrayScale();
         }
@@ -561,7 +561,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             buttonInnerBorderColour = ButtonHoverInnerBorderColour;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonInnerBorderColour = buttonInnerBorderColour.ToGrayScale();
         }
@@ -585,7 +585,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             buttonUpperSurfaceColour = ButtonHoverSurfaceColour1;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonUpperSurfaceColour = buttonUpperSurfaceColour.ToGrayScale();
         }
@@ -601,7 +601,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
             buttonLowerSurfaceColour = ButtonHoverSurfaceColour2;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonLowerSurfaceColour = buttonLowerSurfaceColour.ToGrayScale();
         }
@@ -619,7 +619,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
         using (GraphicsPath borderPath = GetControlClipPath(controlRectangle))
         {
-            Color controlBorderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour.ToGrayScale() : BorderColour;
+            Color controlBorderColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour.ToGrayScale() : BorderColour;
 
             using (Pen borderPen = new Pen(controlBorderColour))
             {
@@ -662,7 +662,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                 imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                 }
@@ -684,7 +684,7 @@ public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Co
 
                 imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                 }

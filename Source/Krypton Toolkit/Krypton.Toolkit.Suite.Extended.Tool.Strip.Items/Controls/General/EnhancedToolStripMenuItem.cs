@@ -96,7 +96,7 @@ public class EnhancedToolStripMenuItem : ToolStripMenuItem
                 {
                     EnhancedToolStripMenuItem menuItem = (EnhancedToolStripMenuItem)items;
 
-                    if (menuItem.DisplayStyle == CheckMarkDisplayStyle.RadioButton && menuItem.CheckOnClick && menuItem.RadioButtonGroupName == RadioButtonGroupName)
+                    if (menuItem is { DisplayStyle: CheckMarkDisplayStyle.RadioButton, CheckOnClick: true } && menuItem.RadioButtonGroupName == RadioButtonGroupName)
                     {
                         menuItem.Checked = false;
                     }

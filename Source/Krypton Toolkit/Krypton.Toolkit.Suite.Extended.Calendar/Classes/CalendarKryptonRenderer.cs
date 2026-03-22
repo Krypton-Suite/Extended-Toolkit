@@ -162,12 +162,9 @@ public class CalendarKryptonRenderer : CalendarSystemRenderer
     {
         if (_palette != null)
         {
-            if (e.Calendar != null)
+            if (e.Calendar is not null)
             {
-                if (e.Calendar != null)
-                {
-                    e.Calendar.Font = _palette.GetContentShortTextFont(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
-                }
+                e.Calendar.Font = _palette.GetContentShortTextFont(PaletteContentStyle.InputControlStandalone, PaletteState.Normal);
             }
         }
 
@@ -195,7 +192,7 @@ public class CalendarKryptonRenderer : CalendarSystemRenderer
                 }
             }
 
-            if (e.Calendar != null && e.Calendar.DaysMode == CalendarDaysMode.Short)
+            if (e.Calendar is { DaysMode: CalendarDaysMode.Short })
             {
                 if (_palette != null)
                 {
@@ -220,17 +217,14 @@ public class CalendarKryptonRenderer : CalendarSystemRenderer
         {
             using (Pen p = new Pen(_palette.ColorTable.MenuItemSelectedGradientBegin))
             {
-                if (e.Graphics != null)
+                if (e.Graphics is not null)
                 {
-                    if (e.Graphics != null)
-                    {
-                        e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1, e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1);
-                    }
+                    e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1, e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1);
                 }
             }
         }
 
-        if (e.Item != null && e.Item.Selected && !e.Item.IsDragging)
+        if (e.Item is { Selected: true, IsDragging: false })
         {
             bool horizontal;
             bool vertical;

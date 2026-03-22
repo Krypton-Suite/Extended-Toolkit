@@ -84,8 +84,7 @@ internal class BlurManager
 
     private void RemoveBlur()
     {
-        if (!_parentForm.IsDisposed
-            && !_parentForm.Disposing
+        if (_parentForm is { IsDisposed: false, Disposing: false }
             && _parentBeforeOpacity.HasValue
            )
         {
