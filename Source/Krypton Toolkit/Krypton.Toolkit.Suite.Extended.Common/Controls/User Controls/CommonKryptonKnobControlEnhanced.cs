@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -106,6 +106,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Font of graduations")]
     [Category("KryptonKnobControlEnhanced")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Font ScaleTypeface
     {
         get => _scaleTypeface;
@@ -186,6 +187,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Set the style of the knob pointer: a circle or a line")]
     [Category("KryptonKnobControlEnhanced")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public KnobPointerStyles PointerStyle
     {
         get => _pointerStyle;
@@ -246,6 +248,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Colour of graduations")]
     [Category("KryptonKnobControlEnhanced")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ScaleColour
     {
         get => _scaleColour;
@@ -262,6 +265,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Colour of knob")]
     [Category("KryptonKnobControlEnhanced")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color KnobBackColour
     {
         get => _knobBackColour;
@@ -281,6 +285,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Set the number of intervals between minimum and maximum")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(0)]
     public int ScaleDivisions
     {
         get => _scaleDivisions;
@@ -300,6 +305,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Set the number of subdivisions between main divisions of graduation.")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(0)]
     public int ScaleSubDivisions
     {
         get => _scaleSubDivisions;
@@ -319,6 +325,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Show or hide subdivisions of graduations")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(false)]
     public bool ShowSmallScale
     {
         get => _showSmallScale;
@@ -347,6 +354,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("Show or hide graduations")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(false)]
     public bool ShowLargeScale
     {
         get => _showLargeScale;
@@ -365,6 +373,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("set the minimum value for the knob control")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(0)]
     public int Minimum
     {
         get => _minimum;
@@ -381,6 +390,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("set the maximum value for the knob control")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(25)]
     public int Maximum
     {
         get => _maximum;
@@ -408,6 +418,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("set the value for the large changes")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(5)]
     public int LargeChange
     {
         get => _largeChange;
@@ -424,6 +435,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("set the minimum value for the small changes")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(1)]
     public int SmallChange
     {
         get => _smallChange;
@@ -440,6 +452,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("set the current value of the knob control")]
     [Category("KryptonKnobControlEnhanced")]
+    [DefaultValue(0)]
     public int Value
     {
         get => _value;
@@ -464,6 +477,7 @@ public class CommonKryptonKnobControlEnhanced : UserControl
     /// </summary>
     [Description("set the color of the pointer")]
     [Category("KryptonKnobControlEnhanced")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color PointerColour
     {
         get => _pointerColour;

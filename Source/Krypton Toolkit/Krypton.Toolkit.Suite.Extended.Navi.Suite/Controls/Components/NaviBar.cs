@@ -602,7 +602,7 @@ public class NaviBar : NaviControl, IObservable
                     }
                 }
             }
-            if (newBand != null && newBand.Button != null)
+            if (newBand is { Button: not null })
             {
                 newBand.Button.Active = true;
             }

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -108,7 +108,7 @@ public class FormattingCell : KryptonDataGridViewTextBoxCell
     /// <param name="advancedBorderStyle">The advanced border style.</param>
     /// <param name="paintParts">The paint parts.</param>
     protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
-        DataGridViewElementStates cellState, object value, object formattedValue, string errorText,
+        DataGridViewElementStates cellState, object? value, object? formattedValue, string? errorText,
         DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
         DataGridViewPaintParts paintParts)
     {
@@ -120,8 +120,8 @@ public class FormattingCell : KryptonDataGridViewTextBoxCell
                     int barWidth;
                     BarParams par = (BarParams)FormatParams;
                     barWidth = (int)((cellBounds.Width - 10) * par.ProportionValue);
-                    Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-                    Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                    Style.BackColor = DataGridView!.DefaultCellStyle.BackColor;
+                    Style.ForeColor = DataGridView!.DefaultCellStyle.ForeColor;
 
                     if (barWidth > 0) //(double)value > 0 &&
                     {
@@ -160,15 +160,15 @@ public class FormattingCell : KryptonDataGridViewTextBoxCell
                     Style.ForeColor = ContrastColour(thCpar.ValueColour);
                     break;
                 default:
-                    Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-                    Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+                    Style.BackColor = DataGridView!.DefaultCellStyle.BackColor;
+                    Style.ForeColor = DataGridView!.DefaultCellStyle.ForeColor;
                     break;
             }
         }
         else
         {
-            Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
-            Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
+            Style.BackColor = DataGridView!.DefaultCellStyle.BackColor;
+            Style.ForeColor = DataGridView!.DefaultCellStyle.ForeColor;
         }
 
         base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,

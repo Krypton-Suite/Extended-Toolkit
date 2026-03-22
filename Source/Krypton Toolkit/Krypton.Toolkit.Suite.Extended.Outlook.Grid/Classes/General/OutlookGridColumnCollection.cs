@@ -93,7 +93,7 @@ public class OutlookGridColumnCollection : List<OutlookGridColumn>
         var tmp = this.OrderBy(x => x.GroupIndex);
         foreach (OutlookGridColumn col in tmp)
         {
-            if (col.IsGrouped && col.GroupIndex > -1)
+            if (col is { IsGrouped: true, GroupIndex: > -1 })
             {
                 res.Add(Tuple.Create<int, SortOrder, IComparer>(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
             }
@@ -125,7 +125,7 @@ public class OutlookGridColumnCollection : List<OutlookGridColumn>
         var tmp = this.OrderBy(x => x.SortIndex);
         foreach (OutlookGridColumn col in tmp)
         {
-            if (!col.IsGrouped && col.SortIndex > -1)
+            if (col is { IsGrouped: false, SortIndex: > -1 })
             {
                 res.Add(Tuple.Create(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
             }

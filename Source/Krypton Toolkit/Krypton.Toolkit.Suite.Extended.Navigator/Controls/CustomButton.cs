@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -108,6 +108,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color GradientBorderColour
     {
         get => _gradientBorderColor;
@@ -149,6 +150,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HotGradientBorderColour
     {
         get => _hotGradientBorderColor;
@@ -162,6 +164,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HotForeColour
     {
         get => _hotForeColor;
@@ -201,6 +204,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color PressedGradientBorderColour
     {
         get => _pressedGradientBorderColor;
@@ -214,6 +218,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color PressedForeColour
     {
         get => _pressedForeColor;

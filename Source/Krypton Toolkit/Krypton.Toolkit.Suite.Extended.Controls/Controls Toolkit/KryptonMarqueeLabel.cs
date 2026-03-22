@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -37,10 +37,12 @@ public class KryptonMarqueeLabel : KryptonLabel
 
     /// <summary>Gets or sets the speed of the marquee.</summary>
     /// <value>The speed.</value>
+    [DefaultValue(1)]
     public int Speed { get; set; }
 
     /// <summary>Gets or sets the y offset.</summary>
     /// <value>The y offset.</value>
+    [DefaultValue(0)]
     public int YOffset { get; set; }
 
     /// <summary>Initializes a new instance of the <see cref="KryptonMarqueeLabel" /> class.</summary>

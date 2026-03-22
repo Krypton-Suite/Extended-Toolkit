@@ -116,8 +116,7 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
             int startIndex =
                 // An invisible item exists in this scenario to help 
                 // with the Text displayed in the TextBox of the Combo
-                _checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
-                && _checkBoxComboBox.DataSource == null
+                _checkBoxComboBox is { DropDownStyle: ComboBoxStyle.DropDownList, DataSource: null }
                     ? 1 // Ubiklou : 2008-04-28 : Ignore first item. (http://www.codeproject.com/KB/combobox/extending_combobox.aspx?fid=476622&df=90&mpp=25&noise=3&sort=Position&view=Quick&select=2526813&fr=1#xx2526813xx)
                     : 0;
             for (int index = startIndex; index <= Count - 1; index++)

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -78,7 +78,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// <summary>
     ///     Gets or sets the animation speed in milliseconds.
     /// </summary>
-    [Category("Behavior")]
+    [Category("Behavior"), DefaultValue(500)]
     public int AnimationSpeed { get; set; }
 
     /// <summary>
@@ -123,83 +123,83 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color InnerColor { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(2)]
     public int InnerMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(-1)]
     public int InnerWidth { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color OuterColor { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(-25)]
     public int OuterMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(26)]
     public int OuterWidth { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance"), DefaultValue(typeof(Color), "_palette.ColorTable.ButtonCheckedGradientBegin")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ProgressColor { get => _progressColor; set => _progressColor = value; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(25)]
     public int ProgressWidth { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Font SecondaryFont { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(270)]
     public int StartAngle { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color SubscriptColor { get; set; }
 
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding SubscriptMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DefaultValue("")]
     public string SubscriptText { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color SuperscriptColor { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding SuperscriptMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DefaultValue("")]
     public string SuperscriptText { get; set; }
 
     /// <summary>
@@ -215,7 +215,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding TextMargin { get; set; }
 
     [Category("Appearance"), DefaultValue(false), Description("Use three colors to depict the current values.")]
@@ -445,7 +445,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
                 return;
             }
 
-            if (Parent != null && Parent.Width > 0 && Parent.Height > 0)
+            if (Parent is { Width: > 0, Height: > 0 })
             {
                 using (var parentImage = new Bitmap(Parent.Width, Parent.Height))
                 {

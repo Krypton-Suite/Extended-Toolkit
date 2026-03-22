@@ -880,7 +880,7 @@ public class ColourGridControl : Control, IColourEditor
                 break;
         }
 
-        if (cellLocation.X == -1 && cellLocation.Y == -1)
+        if (cellLocation is { X: -1, Y: -1 })
         {
             cellLocation = Point.Empty; // If no cell is selected, assume the first one is for the purpose of keyboard navigation
         }

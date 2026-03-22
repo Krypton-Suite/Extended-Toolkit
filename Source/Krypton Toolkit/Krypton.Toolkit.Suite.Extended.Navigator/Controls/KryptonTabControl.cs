@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -57,7 +57,7 @@ public class KryptonTabControl : TabControl
     public new TabPageCollection TabPages => base.TabPages;
 
     private bool _preserveTabColour;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool PreserveTabColour
     {
         get => _preserveTabColour;
@@ -92,7 +92,7 @@ public class KryptonTabControl : TabControl
     }
 
     private int _borderWidth;
-    [Browsable(false), Category("Appearance-Extended")]
+    [Browsable(false), Category("Appearance-Extended"), DefaultValue(0)]
     public int BorderWidth
     {
         get => _borderWidth;
@@ -100,7 +100,7 @@ public class KryptonTabControl : TabControl
     }
 
     private int _cornerRoundRadiusWidth;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(0)]
     public int CornerRoundRadiusWidth
     {
         get => _cornerRoundRadiusWidth;
@@ -108,7 +108,7 @@ public class KryptonTabControl : TabControl
     }
 
     private DrawingMethods.CornerType _cornerType;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DrawingMethods.CornerType CornerType
     {
         get => _cornerType;
@@ -116,7 +116,7 @@ public class KryptonTabControl : TabControl
     }
 
     private bool _useExtendedLayout;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool UseExtendedLayout
     {
         get => _useExtendedLayout;
@@ -255,7 +255,7 @@ public class KryptonTabControl : TabControl
     private int _cornerWidth;
     private int _cornerLeftWidth;
     private int _cornerRightWidth;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public CornWidth CornerWidth
     {
         get => (CornWidth)_cornerWidth;
@@ -289,7 +289,7 @@ public class KryptonTabControl : TabControl
     }
 
     private int _cornerSymmetry;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public CornSymmetry CornerSymmetry
     {
         get => (CornSymmetry)_cornerSymmetry;
@@ -324,7 +324,7 @@ public class KryptonTabControl : TabControl
 
     private int _allowSelectedTabHighSize;
     private bool _allowSelectedTabHigh;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool AllowSelectedTabHigh
     {
         get => _allowSelectedTabHigh;
@@ -332,7 +332,7 @@ public class KryptonTabControl : TabControl
     }
 
     private bool _allowCloseButton;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool AllowCloseButton
     {
         get => _allowCloseButton;
@@ -341,7 +341,7 @@ public class KryptonTabControl : TabControl
 
     private bool _allowInternalNavigatorButtons;
     private bool _allowNavigatorButtons;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool AllowNavigatorButtons
     {
         get => _allowNavigatorButtons;
@@ -349,7 +349,7 @@ public class KryptonTabControl : TabControl
     }
 
     private Boolean _allowContextButton;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowContextButton
     {
         get => _allowContextButton;

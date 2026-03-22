@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
+namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
 
 public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 {
@@ -49,7 +49,9 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 
     internal DockState DockState => _dockState;
 
+    [DefaultValue(false)]
     public bool DockOnHostOnly { get => _dockOnHostOnly; set => _dockOnHostOnly = value; }
+    [DefaultValue(false)]
     public bool DockOnInside { get => _dockOnInside; set => _dockOnInside = value; }
 
     #endregion
@@ -493,11 +495,11 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 
     #region Tracking
 
-    void Handle_MouseHover(object sender, EventArgs e) => _startFloating = true;
+    void Handle_MouseHover(object? sender, EventArgs e) => _startFloating = true;
 
-    void Handle_MouseLeave(object sender, EventArgs e) => _startFloating = false;
+    void Handle_MouseLeave(object? sender, EventArgs e) => _startFloating = false;
 
-    void Handle_MouseMove(object sender, MouseEventArgs e)
+    void Handle_MouseMove(object? sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left && _startFloating)
         {

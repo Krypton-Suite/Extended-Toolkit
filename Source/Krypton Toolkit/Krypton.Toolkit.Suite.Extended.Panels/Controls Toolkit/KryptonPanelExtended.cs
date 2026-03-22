@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -37,6 +37,7 @@ public class KryptonPanelExtended : KryptonPanel
     #endregion
 
     #region Public
+    [DefaultValue(0)]
     public int CornerRadius { get => _cornerRadius; set { _cornerRadius = value; Invalidate(); } }
     #endregion
 

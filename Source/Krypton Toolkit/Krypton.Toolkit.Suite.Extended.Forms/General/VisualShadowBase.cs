@@ -143,8 +143,7 @@ internal class VisualShadowBase : NativeWindow, IDisposable
     public void ReCalcShadow(Bitmap sourceBitmap, Rectangle windowBounds)
     {
         Rectangle clipRect = CalcRectangle(windowBounds);
-        if (clipRect.Width > 0
-            && clipRect.Height > 0)
+        if (clipRect is { Width: > 0, Height: > 0 })
         {
             _shadowClip = sourceBitmap.Clone(clipRect, sourceBitmap.PixelFormat);
         }

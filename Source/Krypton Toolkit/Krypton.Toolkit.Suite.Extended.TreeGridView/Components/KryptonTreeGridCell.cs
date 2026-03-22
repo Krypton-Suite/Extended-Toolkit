@@ -247,7 +247,7 @@ public class KryptonTreeGridCell : KryptonDataGridViewTextBoxCell
 
                 while (!previousNode.IsRoot)
                 {
-                    if (previousNode.HasChildren && !previousNode.IsLastSibling)
+                    if (previousNode is { HasChildren: true, IsLastSibling: false })
                     {
                         // paint vertical line
                         graphics.DrawLine(linePen, horizontalStop, cellBounds.Top, horizontalStop, cellBounds.Bottom);

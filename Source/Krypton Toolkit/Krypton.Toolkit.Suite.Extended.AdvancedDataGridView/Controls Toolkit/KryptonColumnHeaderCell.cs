@@ -125,7 +125,7 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         _filterEnabled = filterEnabled;
 
         KryptonColumnHeaderCell? oldCellt = oldCell as KryptonColumnHeaderCell;
-        if (oldCellt != null && oldCellt.MenuStrip != null)
+        if (oldCellt is { MenuStrip: not null })
         {
             MenuStrip = oldCellt.MenuStrip;
             _filterImage = oldCellt._filterImage;

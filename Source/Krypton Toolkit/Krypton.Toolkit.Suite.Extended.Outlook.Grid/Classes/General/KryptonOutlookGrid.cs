@@ -99,6 +99,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
 
     private int _groupHeaderHeight = 30; // Default value
 
+    [DefaultValue(30)]
     public int GroupHeaderHeight
     {
         get { return _groupHeaderHeight; }
@@ -259,7 +260,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
     /// <summary>
     /// Gets or sets the previous selected group row
     /// </summary>
-    [Browsable(false)]
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int PreviousSelectedGroupRow
     {
         get => _previousGroupRowSelected;
@@ -277,7 +278,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
     /// Gets or sets the group collection.
     /// </summary>
     /// <value>OutlookGridGroupCollection.</value>
-    [Browsable(false)]
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public OutlookGridGroupCollection GroupCollection
     {
         get => _groupCollection;
@@ -339,6 +340,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
     /// <value>
     /// The fill mode.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public FillMode FillMode
     {
         get => _fillMode;
@@ -2173,16 +2175,16 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             _menuGroupInterval.Visible = col.IsGrouped && col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable && col.GroupingType.GetType() == typeof(OutlookGridDateTimeGroup);
             if (_menuGroupInterval.Visible)
             {
-                string currentInterval = Enum.GetName(typeof(DateInterval), ((col.GroupingType as OutlookGridDateTimeGroup)!).Interval);
+                string? currentInterval = Enum.GetName(typeof(DateInterval), ((col.GroupingType as OutlookGridDateTimeGroup)!).Interval);
                 foreach (var kryptonContextMenuItemBase in ((KryptonContextMenuItems)_menuGroupInterval.Items[0]).Items)
                 {
                     var item = (KryptonContextMenuItem)kryptonContextMenuItemBase;
-                    item.Checked = item.Tag.ToString() == currentInterval;
+                    item.Checked = item.Tag?.ToString() == currentInterval;
                 }
             }
             _menuUngroupByThisColumn.Visible = col.IsGrouped && col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable;
-            _menuShowGroupBox.Visible = _groupBox != null && !_groupBox.Visible;
-            _menuHideGroupBox.Visible = _groupBox != null && _groupBox.Visible;
+            _menuShowGroupBox.Visible = _groupBox is { Visible: false };
+            _menuHideGroupBox.Visible = _groupBox is { Visible: true };
             _menuSeparator2.Visible = _menuGroupByThisColumn.Visible || _menuUngroupByThisColumn.Visible || _menuShowGroupBox.Visible || _menuHideGroupBox.Visible;
             _menuBestFitColumn.Visible = true;
             if (col.DataGridViewColumn.GetType() == typeof(KryptonDataGridViewFormattingColumn))
@@ -2195,7 +2197,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
 
                 for (int i = 0; i < _menuConditionalFormatting.Items[0].ItemChildCount; i++)
                 {
-                    if (format != null && ((KryptonContextMenuItems)_menuConditionalFormatting.Items[0]).Items[i].Tag.ToString().Equals(format.FormatType.ToString()))
+                    if (format != null && ((KryptonContextMenuItems)_menuConditionalFormatting.Items[0]).Items[i].Tag?.ToString()?.Equals(format.FormatType.ToString()) == true)
                     {
                         ((KryptonContextMenuItem)((KryptonContextMenuItems)_menuConditionalFormatting.Items[0]).Items[i]).Checked = true;
                     }
@@ -2612,17 +2614,16 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         {
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Cells[formatColumn].Value != null)
+                if (list[i].Cells[formatColumn].Value is TimeSpan tsVal)
                 {
-
-                    if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes < _formatConditions[j].MinValue)
+                    if (tsVal.TotalMinutes < _formatConditions[j].MinValue)
                     {
-                        _formatConditions[j].MinValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
+                        _formatConditions[j].MinValue = tsVal.TotalMinutes;
                     }
 
-                    if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes > _formatConditions[j].MaxValue)
+                    if (tsVal.TotalMinutes > _formatConditions[j].MaxValue)
                     {
-                        _formatConditions[j].MaxValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
+                        _formatConditions[j].MaxValue = tsVal.TotalMinutes;
                     }
                 }
                 if (list[i].HasChildren)
@@ -2635,16 +2636,17 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         {
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Cells[formatColumn].Value != null)
+                if (list[i].Cells[formatColumn].Value is object cellVal)
                 {
-                    if (Convert.ToDouble(list[i].Cells[formatColumn].Value) < _formatConditions[j].MinValue)
+                    double dVal = Convert.ToDouble(cellVal);
+                    if (dVal < _formatConditions[j].MinValue)
                     {
-                        _formatConditions[j].MinValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
+                        _formatConditions[j].MinValue = dVal;
                     }
 
-                    if (Convert.ToDouble(list[i].Cells[formatColumn].Value) > _formatConditions[j].MaxValue)
+                    if (dVal > _formatConditions[j].MaxValue)
                     {
-                        _formatConditions[j].MaxValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
+                        _formatConditions[j].MaxValue = dVal;
                     }
                 }
                 if (list[i].HasChildren)
@@ -2657,16 +2659,16 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         {
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].Cells[formatColumn].Value != null)
+                if (list[i].Cells[formatColumn].Value is double dblVal)
                 {
-                    if (Convert.ToDouble(list[i].Cells[formatColumn].Value) < _formatConditions[j].MinValue)
+                    if (dblVal < _formatConditions[j].MinValue)
                     {
-                        _formatConditions[j].MinValue = (double)list[i].Cells[formatColumn].Value;
+                        _formatConditions[j].MinValue = dblVal;
                     }
 
-                    if (Convert.ToDouble(list[i].Cells[formatColumn].Value) > _formatConditions[j].MaxValue)
+                    if (dblVal > _formatConditions[j].MaxValue)
                     {
-                        _formatConditions[j].MaxValue = (double)list[i].Cells[formatColumn].Value;
+                        _formatConditions[j].MaxValue = dblVal;
                     }
                 }
                 if (list[i].HasChildren)
@@ -2684,7 +2686,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             for (int j = 0; j < _formatConditions.Count; j++)
             {
                 formatColumn = Columns[_formatConditions[j].ColumnName]!.Index;
-                if (list[i].Cells[formatColumn].Value != null)
+                if (list[i].Cells[formatColumn].Value is object cellValue)
                 {
                     typeColumn = Columns[_formatConditions[j].ColumnName]!.ValueType;
                     FormattingCell fCell = new(list[i].Cells[formatColumn])
@@ -2696,48 +2698,36 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
                     switch (_formatConditions[j].FormatType)
                     {
                         case EnumConditionalFormatType.Bar:
-                            if (typeColumn == typeof(TimeSpan))
+                            if (cellValue is TimeSpan tsBar)
                             {
-                                ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, _formatConditions[j].MinValue, _formatConditions[j].MaxValue);
-                            }
-                            else if (typeColumn == typeof(Decimal))
-                            {
-                                ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(Convert.ToDouble(list[i].Cells[formatColumn].Value), _formatConditions[j].MinValue, _formatConditions[j].MaxValue);
+                                ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(tsBar.TotalMinutes, _formatConditions[j].MinValue, _formatConditions[j].MaxValue);
                             }
                             else
                             {
-                                ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar((double)list[i].Cells[formatColumn].Value, _formatConditions[j].MinValue, _formatConditions[j].MaxValue);
+                                ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(Convert.ToDouble(cellValue), _formatConditions[j].MinValue, _formatConditions[j].MaxValue);
                             }
                             break;
                         case EnumConditionalFormatType.TwoColoursRange:
-                            if (typeColumn == typeof(TimeSpan))
+                            if (cellValue is TimeSpan tsTwo)
                             {
-                                ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (TwoColoursParams)_formatConditions[j].FormatParams);
-                            }
-                            else if (typeColumn == typeof(Decimal))
-                            {
-                                ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (TwoColoursParams)_formatConditions[j].FormatParams);
+                                ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange(tsTwo.TotalMinutes, _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (TwoColoursParams)_formatConditions[j].FormatParams);
                             }
                             else
                             {
                                 ((TwoColoursParams)fCell.FormatParams).ValueColour =
                                     ColourFormatting.ConvertTwoRange(
-                                        Convert.ToDouble(list[i].Cells[formatColumn].Value), _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (TwoColoursParams)_formatConditions[j].FormatParams);
+                                        Convert.ToDouble(cellValue), _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (TwoColoursParams)_formatConditions[j].FormatParams);
                             }
                             //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                             break;
                         case EnumConditionalFormatType.ThreeColoursRange:
-                            if (typeColumn == typeof(TimeSpan))
+                            if (cellValue is TimeSpan tsThree)
                             {
-                                ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (ThreeColoursParams)_formatConditions[j].FormatParams);
-                            }
-                            else if (typeColumn == typeof(Decimal))
-                            {
-                                ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (ThreeColoursParams)_formatConditions[j].FormatParams);
+                                ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(tsThree.TotalMinutes, _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (ThreeColoursParams)_formatConditions[j].FormatParams);
                             }
                             else
                             {
-                                ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (ThreeColoursParams)_formatConditions[j].FormatParams);
+                                ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(cellValue), _formatConditions[j].MinValue, _formatConditions[j].MaxValue, (ThreeColoursParams)_formatConditions[j].FormatParams);
                             }
                             //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                             break;
@@ -2991,7 +2981,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         //We sort the groups
         if (groupCollection.Count > 0)
         {
-            if (groupCollection[0]!.Column.GroupingType.SortBySummaryCount)
+            if (groupCollection[0]!.Column?.GroupingType?.SortBySummaryCount == true)
             {
                 groupCollection.Sort(new OutlookGridGroupCountComparer());
             }
@@ -3128,7 +3118,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
                 writer.WriteElementString("Width", col.DataGridViewColumn.Width.ToString());
                 writer.WriteElementString("Index", col.DataGridViewColumn.Index.ToString());
                 writer.WriteElementString("DisplayIndex", col.DataGridViewColumn.DisplayIndex.ToString());
-                writer.WriteElementString("RowsComparer", col != null && col.RowsComparer == null ? "" : col.RowsComparer.GetType().AssemblyQualifiedName);
+                writer.WriteElementString("RowsComparer", col == null || col.RowsComparer == null ? "" : col.RowsComparer.GetType().AssemblyQualifiedName ?? "");
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();
@@ -3206,8 +3196,10 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         GroupHeaderHeight = (int)(GroupHeaderHeight * scaleFactor);
 
         // Adjust font size for better readability
-        DefaultCellStyle.Font = new Font(DefaultCellStyle.Font.FontFamily,
-            DefaultCellStyle.Font.Size * scaleFactor);
+        if (DefaultCellStyle.Font is Font currentFont)
+        {
+            DefaultCellStyle.Font = new Font(currentFont.FontFamily, currentFont.Size * scaleFactor);
+        }
     }
 
     #endregion

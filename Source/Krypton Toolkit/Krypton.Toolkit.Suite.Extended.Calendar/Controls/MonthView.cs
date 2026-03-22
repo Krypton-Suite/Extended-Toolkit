@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -247,6 +247,10 @@ public class MonthView
     /// <summary>
     /// Gets or sets the internal padding of items (Days, day names, month names)
     /// </summary>
+    [DefaultValue(typeof(Padding), "2, 2, 2, 2")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Description("Gets or sets the internal padding of items (Days, day names, month names)")]
+    [Category("Appearance")]
     public Padding ItemPadding
     {
         get => _itemPadding;
@@ -257,6 +261,9 @@ public class MonthView
     /// Gets or sets the maximum selection count of days
     /// </summary>
     [DefaultValue(0)]
+    [Description("Gets or sets the maximum selection count of days. 0 means no limit.")]
+    [Category("Behavior")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int MaxSelectionCount
     {
         get => _maxSelectionCount;
@@ -267,18 +274,25 @@ public class MonthView
     /// Gets the Months currently displayed on the calendar
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Data")]
+    [Description("Gets the Months currently displayed on the calendar")]
     public MonthViewMonth[] Months => _months;
 
     /// <summary>
     /// Gets the size of an entire month inside the <see cref="MonthView"/>
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Layout")]
+    [Description("Gets the size of an entire month inside the MonthView")]
     public Size MonthSize => _monthSize;
 
     /// <summary>
     /// Gets or sets the format of month titles
     /// </summary>
     [DefaultValue("MMMM yyyy")]
+    [Category("Appearance")]
+    [Description("Gets or sets the format of month titles")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string MonthTitleFormat
     {
         get => _monthTitleFormat;
@@ -289,6 +303,9 @@ public class MonthView
     /// Gets or sets the start of selection
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Behavior")]
+    [Description("Gets or sets the start of selection")]
+    [DefaultValue(typeof(DateTime), "")]
     public DateTime SelectionStart
     {
         get => _selectionStart;
@@ -312,6 +329,9 @@ public class MonthView
     /// Gets or sets the end of selection
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Behavior")]
+    [Description("Gets or sets the end of selection")]
+    [DefaultValue(typeof(DateTime), "")]
     public DateTime SelectionEnd
     {
         get => _selectionEnd;
@@ -335,6 +355,9 @@ public class MonthView
     /// Gets or sets the selection mode of <see cref="MonthView"/>
     /// </summary>
     [DefaultValue(MonthViewSelection.Manual)]
+    [Category("Behavior")]
+    [Description("Gets or sets the selection mode of MonthView")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public MonthViewSelection SelectionMode
     {
         get => _selectionMode;
@@ -345,6 +368,9 @@ public class MonthView
     /// Gets or sets the date of the first displayed month
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Behavior")]
+    [Description("Gets or sets the date of the first displayed month")]
+    [DefaultValue(typeof(DateTime), "")]
     public DateTime ViewStart
     {
         get => _viewStart;
@@ -354,6 +380,10 @@ public class MonthView
     /// <summary>
     /// Gets the last day of the last month showed on the view.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category("Behavior")]
+    [Description("Gets the last day of the last month showed on the view.")]
+    [DefaultValue(typeof(DateTime), "")]
     public DateTime ViewEnd
     {
         get
@@ -367,6 +397,9 @@ public class MonthView
     /// Gets or sets the day that starts a work-week
     /// </summary>
     [DefaultValue(DayOfWeek.Monday)]
+    [Category("Behavior")]
+    [Description("Gets or sets the day that starts a work-week")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public DayOfWeek WorkWeekStart
     {
         get => _workWeekStart;
@@ -377,6 +410,9 @@ public class MonthView
     /// Gets or sets the day that ends a work-week
     /// </summary>
     [DefaultValue(DayOfWeek.Friday)]
+    [Category("Behavior")]
+    [Description("Gets or sets the day that ends a work-week")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public DayOfWeek WorkWeekEnd
     {
         get => _workWeekEnd;
@@ -387,6 +423,7 @@ public class MonthView
 
     #region Color Properties
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ArrowsSelectedColour
     {
         get => _arrowsSelectedColour;
@@ -394,6 +431,7 @@ public class MonthView
     }
 
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ArrowsColour
     {
         get => _arrowsColour;
@@ -401,6 +439,7 @@ public class MonthView
     }
 
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DaySelectedTextColour
     {
         get => _daySelectedTextColour;
@@ -408,6 +447,7 @@ public class MonthView
     }
 
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DaySelectedColour
     {
         get => _dayTextColour;
@@ -415,12 +455,14 @@ public class MonthView
     }
 
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DaySelectedBackgroundColour
     {
         get => _daySelectedBackgroundColour;
         set => _daySelectedBackgroundColour = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DayBackgroundColour
     {
         get => _dayBackgroundColour;
@@ -428,24 +470,28 @@ public class MonthView
     }
 
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DayGrayedText
     {
         get => _dayGrayedText;
         set => _dayGrayedText = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color MonthTitleColour
     {
         get => _monthTitleColour;
         set => _monthTitleColour = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color MonthTitleTextColourInactive
     {
         get => _monthTitleTextColourInactive;
         set => _monthTitleTextColourInactive = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color MonthTitleTextColour
     {
         get => _monthTitleTextColour;
@@ -453,6 +499,7 @@ public class MonthView
     }
 
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color MonthTitleColourInactive
     {
         get => _monthTitleColourInactive;
@@ -462,6 +509,7 @@ public class MonthView
     /// <summary>
     /// Gets or sets the color of the today day border color
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TodayBorderColour
     {
         get => _todayBorderColour;

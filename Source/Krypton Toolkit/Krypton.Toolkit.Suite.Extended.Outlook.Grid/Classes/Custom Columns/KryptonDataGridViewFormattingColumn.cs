@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -44,5 +44,6 @@ public class KryptonDataGridViewFormattingColumn : KryptonDataGridViewTextBoxCol
     /// <value>
     ///   <c>true</c> if [contrast text color]; otherwise, <c>false</c>.
     /// </value>
+    [DefaultValue(false)]
     public bool ContrastTextColour { get => _contrastTextColour; set => _contrastTextColour = value; }
 }

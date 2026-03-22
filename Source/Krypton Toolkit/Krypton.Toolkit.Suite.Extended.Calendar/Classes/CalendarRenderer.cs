@@ -479,8 +479,7 @@ public class CalendarRenderer
         int pointerPadding = 5;
 
 
-        if (evtData.Calendar != null &&
-            evtData.Item != null &&
+        if (evtData is { Calendar: not null, Item: not null } &&
             (evtData.Item.Bounds.Top != evtData.Item.MinuteStartTop ||
              evtData.Item.Bounds.Bottom != evtData.Item.MinuteEndTop) &&
             evtData.Item.MinuteEndTop != 0 && evtData.Item.MinuteStartTop != 0 &&
@@ -829,7 +828,7 @@ public class CalendarRenderer
             #region Items on DayTops
             foreach (CalendarDay? day in Calendar.Days)
             {
-                if (day != null && day.DayTop != null)
+                if (day is { DayTop: not null })
                 {
                     maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
                 }
@@ -898,7 +897,7 @@ public class CalendarRenderer
             {
                 #region Create groups
 
-                if (day != null && day.DayTop != null)
+                if (day is { DayTop: not null })
                 {
                     maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
 
@@ -1442,7 +1441,7 @@ public class CalendarRenderer
         {
             CalendarTimeScaleUnit? unit = e.Calendar.Days[0]?.TimeUnits[i];
 
-            if (unit != null && !unit.Visible)
+            if (unit is { Visible: false })
             {
                 continue;
             }
@@ -1605,7 +1604,7 @@ public class CalendarRenderer
             {
                 CalendarTimeScaleUnit? unit = e.Day.TimeUnits[i];
 
-                if (unit != null && unit.Visible)
+                if (unit is { Visible: true })
                 {
                     OnDrawDayTimeUnit(new CalendarRendererTimeUnitEventArgs(e, unit));
                 }
@@ -1657,7 +1656,7 @@ public class CalendarRenderer
     /// <param name="e">Event info</param>
     public virtual void OnDrawItems(CalendarRendererEventArgs e)
     {
-        if (e.Calendar != null && e.Graphics != null)
+        if (e is { Calendar: not null, Graphics: not null })
         {
             Rectangle days = e.Calendar.DaysBodyRectangle; days.Inflate(-1, -1);
             Region oldclip = e.Graphics.Clip;
@@ -1775,7 +1774,7 @@ public class CalendarRenderer
 
                 OnDrawItemBackground(evt);
 
-                if (evt.Item != null && !evt.Item.PatternColor.IsEmpty)
+                if (evt.Item is { PatternColor.IsEmpty: false })
                 {
                     OnDrawItemPattern(evt);
                 }
@@ -2010,12 +2009,12 @@ public class CalendarRenderer
         {
             CalendarDay? day = e.Calendar?.Days[i];
 
-            if (day != null && day.OverflowStart)
+            if (day is { OverflowStart: true })
             {
                 OnDrawDayOverflowStart(new CalendarRendererDayEventArgs(e, day));
             }
 
-            if (day != null && day.OverflowEnd)
+            if (day is { OverflowEnd: true })
             {
                 OnDrawDayOverflowEnd(new CalendarRendererDayEventArgs(e, day));
             }

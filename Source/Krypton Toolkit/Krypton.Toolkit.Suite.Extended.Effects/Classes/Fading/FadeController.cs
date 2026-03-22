@@ -38,8 +38,8 @@ public class FadeController
     private float fadeSpeed;                                                     // The speed at which to fade.
     private FadeCompleted fadeFinished;                                          // The delegate to call when a fade has completed.
     private bool shouldClose;                                                    // If set to true, the form will close after fading out.
-    private readonly System.Threading.Tasks.TaskCompletionSource<DialogResult> showDialogResult         // The Async Task Completion Source for displaying as a dialog.
-        = new System.Threading.Tasks.TaskCompletionSource<DialogResult>();
+    private readonly TaskCompletionSource<DialogResult> showDialogResult         // The Async Task Completion Source for displaying as a dialog.
+        = new TaskCompletionSource<DialogResult>();
     #endregion
 
     #region Delegate
@@ -124,7 +124,7 @@ public class FadeController
     /// Fade the form in at the defined speed as a dialog
     /// based on parent form.
     /// </summary>
-    private async System.Threading.Tasks.Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted finished)
+    private async Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted? finished)
     {
         parentForm.BeginInvoke(new Action(() => showDialogResult.SetResult(form.ShowDialog(parentForm))));
 
@@ -212,7 +212,7 @@ public class FadeController
         BeginFade();
     }
 
-    private void FadeOut(FadeSpeedChoice fadeSpeedChoice, FadeCompleted finished, float fadeSpeed = 0)
+    private void FadeOut(FadeSpeedChoice fadeSpeedChoice, FadeCompleted? finished, float fadeSpeed = 0)
     {
         if (form.Opacity < 0.1)
         {
@@ -261,7 +261,7 @@ public class FadeController
     /// <summary>
     /// Fades a dialog in using parent form and defined fade speed.
     /// </summary>
-    public static async System.Threading.Tasks.Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed)
+    public static async Task<DialogResult> ShowDialog(KryptonForm? form, KryptonForm? parent, float fadeSpeed)
     {
         FadeController fader = new FadeController(form, parent);
         return await fader.ShowDialog(fadeSpeed, null);
@@ -269,9 +269,9 @@ public class FadeController
 
     /// <summary>
     /// Fades a dialog in using parent form and defined fade speed
-    /// and call the finished delegate.)
+    /// and call the finished delegate.
     /// </summary>
-    public static async System.Threading.Tasks.Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed, FadeCompleted finished)
+    public static async Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed, FadeCompleted finished)
     {
         FadeController fader = new FadeController(form, parent);
         return await fader.ShowDialog(fadeSpeed, finished);
@@ -312,7 +312,7 @@ public class FadeController
     /// <summary>
     /// Fade a form in at the defined speed.
     /// </summary>
-    public static void FadeIn(KryptonForm form, float fadeSpeed)
+    public static void FadeIn(KryptonForm? form, float fadeSpeed)
     {
         FadeController fader = new FadeController(form);
         fader.FadeIn(fadeSpeed, null);
@@ -321,7 +321,7 @@ public class FadeController
     /// <summary>
     /// Fade a form out at the defined speed.
     /// </summary>
-    public static void FadeOut(KryptonForm form, float fadeSpeed)
+    public static void FadeOut(KryptonForm? form, float fadeSpeed)
     {
         FadeController fader = new FadeController(form);
         fader.FadeOut(fadeSpeed, null);
@@ -331,7 +331,7 @@ public class FadeController
     /// Fade a form out at the defined speed and
     /// close it when the fade has completed.
     /// </summary>
-    public static void FadeOutAndClose(KryptonForm form, float fadeSpeed)
+    public static void FadeOutAndClose(KryptonForm? form, float fadeSpeed)
     {
         FadeController fader = new FadeController(form)
         {

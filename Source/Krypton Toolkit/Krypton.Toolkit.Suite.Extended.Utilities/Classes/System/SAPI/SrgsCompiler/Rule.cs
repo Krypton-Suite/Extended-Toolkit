@@ -121,7 +121,7 @@ internal sealed class Rule : ParseElementCollection, IRule, IElement, IComparabl
 
     internal void Validate()
     {
-        if (!_cfgRule.Dynamic && !_cfgRule.Import && _id != "VOID" && _firstState.NumArcs == 0)
+        if (_cfgRule is { Dynamic: false, Import: false } && _id != "VOID" && _firstState.NumArcs == 0)
         {
             XmlParser.ThrowSrgsException(SRID.EmptyRule);
         }
@@ -161,7 +161,7 @@ internal sealed class Rule : ParseElementCollection, IRule, IElement, IComparabl
 
     internal void Serialize(StreamMarshaler streamBuffer)
     {
-        _cfgRule.FirstArcIndex = (uint)(_firstState != null && !_firstState.OutArcs.IsEmpty ? _firstState.SerializeId : 0);
+        _cfgRule.FirstArcIndex = (uint)(_firstState is { OutArcs.IsEmpty: false } ? _firstState.SerializeId : 0);
         _cfgRule.DirtyRule = true;
         streamBuffer.WriteStream(_cfgRule);
     }
@@ -174,7 +174,7 @@ internal sealed class Rule : ParseElementCollection, IRule, IElement, IComparabl
             return;
         }
         TrimEndEpsilons(_endArc, _backend);
-        if (_startArc.IsEpsilonTransition && _startArc.End != null && Graph.MoveSemanticTagRight(_startArc))
+        if (_startArc is { IsEpsilonTransition: true, End: not null } && Graph.MoveSemanticTagRight(_startArc))
         {
             _firstState = _startArc.End;
             _startArc.End = null;

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -51,6 +51,7 @@ public class KryptonUACButtonVersion2 : KryptonButton
     #endregion
 
     #region Properties
+    [DefaultValue(false)]
     public bool UseAsUACElevatedButton
     {
         get => _useAsUACElevatedButton;
@@ -65,10 +66,13 @@ public class KryptonUACButtonVersion2 : KryptonButton
         }
     }
 
+    [DefaultValue("")]
     public string PathToElevatedObject { get => _pathToElevatedObject; set => _pathToElevatedObject = value; }
 
+    [DefaultValue("")]
     public string ExtraArguments { get => _extraArguments; set => _extraArguments = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Size CustomShieldSize { get => _customShieldSize; set { _customShieldSize = value; ShowUACShield(_useAsUACElevatedButton, UACShieldSize.Custom, value.Height, value.Width); UACShieldSize = UACShieldSize.Custom; } }
 
     [DefaultValue(typeof(UACShieldSize), "UACShieldSize.SMALL")]

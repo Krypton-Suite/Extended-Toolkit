@@ -139,37 +139,37 @@ public static class ColourExtensions
     {
         double chroma = hsb.S * hsb.B, hue2 = hsb.H / 60, x = chroma * (1 - Math.Abs(hue2 % 2 - 1)), r1 = 0d, g1 = 0d, b1 = 0d;
 
-        if (hue2 >= 0 && hue2 < 1)
+        if (hue2 is >= 0 and < 1)
         {
             r1 = chroma;
 
             g1 = x;
         }
-        else if (hue2 >= 1 && hue2 < 2)
+        else if (hue2 is >= 1 and < 2)
         {
             r1 = x;
 
             g1 = chroma;
         }
-        else if (hue2 >= 2 && hue2 < 3)
+        else if (hue2 is >= 2 and < 3)
         {
             g1 = chroma;
 
             b1 = x;
         }
-        else if (hue2 >= 3 && hue2 < 4)
+        else if (hue2 is >= 3 and < 4)
         {
             g1 = x;
 
             b1 = chroma;
         }
-        else if (hue2 >= 4 && hue2 < 5)
+        else if (hue2 is >= 4 and < 5)
         {
             r1 = x;
 
             b1 = chroma;
         }
-        else if (hue2 >= 5 && hue2 <= 6)
+        else if (hue2 is >= 5 and <= 6)
         {
             r1 = chroma;
 

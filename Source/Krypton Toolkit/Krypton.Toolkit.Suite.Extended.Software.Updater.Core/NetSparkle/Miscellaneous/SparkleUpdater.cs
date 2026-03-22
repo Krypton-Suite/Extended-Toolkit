@@ -836,7 +836,7 @@ public partial class SparkleUpdater : IDisposable
     /// <param name="item">the appcast item to download</param>
     public async Task InitAndBeginDownload(AppCastItem? item)
     {
-        if (UpdateDownloader != null && UpdateDownloader.IsDownloading)
+        if (UpdateDownloader is { IsDownloading: true })
         {
             return; // file is already downloading, don't do anything!
         }
@@ -1125,7 +1125,7 @@ public partial class SparkleUpdater : IDisposable
         }
         // test the item for signature
         var validationRes = ValidationResult.Invalid;
-        if (!e.Cancelled && e.Error == null)
+        if (e is { Cancelled: false, Error: null })
         {
             LogWriter.PrintMessage("Fully downloaded file exists at {0}", _downloadTempFileName);
 
@@ -1785,7 +1785,7 @@ public partial class SparkleUpdater : IDisposable
     public void CancelFileDownload()
     {
         LogWriter.PrintMessage("Canceling download...");
-        if (UpdateDownloader != null && UpdateDownloader.IsDownloading)
+        if (UpdateDownloader is { IsDownloading: true })
         {
             UpdateDownloader.CancelDownload();
         }

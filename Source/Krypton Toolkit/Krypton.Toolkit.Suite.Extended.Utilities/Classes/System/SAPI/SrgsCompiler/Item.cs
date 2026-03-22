@@ -48,13 +48,13 @@ internal sealed class Item : ParseElementCollection, IItem, IElement
 
     void IElement.PostParse(IElement parentElement)
     {
-        if (_maxRepeat != _minRepeat && _startArc != null && _startArc == _endArc && _endArc.IsEpsilonTransition && !_endArc.IsPropertylessTransition)
+        if (_maxRepeat != _minRepeat && _startArc != null && _startArc == _endArc && _endArc is { IsEpsilonTransition: true, IsPropertylessTransition: false })
         {
             XmlParser.ThrowSrgsException(SRID.InvalidTagInAnEmptyItem);
         }
         if (_startArc == null || _maxRepeat == 0)
         {
-            if (_maxRepeat == 0 && _startArc != null && _startArc.End != null)
+            if (_maxRepeat == 0 && _startArc is { End: not null })
             {
                 State end = _startArc.End;
                 _startArc.End = null;

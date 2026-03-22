@@ -307,7 +307,7 @@ public class ToolBoxTab : ToolBoxItem
             {
                 _itemSpacing = value;
 
-                if (null != _parent && !_parent.IsLoading)
+                if (_parent is { IsLoading: false })
                 {
                     UpdateItemRects(true, true, true);
                 }
@@ -434,7 +434,7 @@ public class ToolBoxTab : ToolBoxItem
             if (value != _onlyOneItemPerRow)
             {
                 _onlyOneItemPerRow = value;
-                if (null != _parent && !_parent.IsLoading)
+                if (_parent is { IsLoading: false })
                 {
                     UpdateItemRects(true, true, true);
                 }
@@ -485,7 +485,7 @@ public class ToolBoxTab : ToolBoxItem
                     _toolItems = null;
                 }
 
-                if (null != _parent && !_parent.IsLoading)
+                if (_parent is { IsLoading: false })
                 {
                     UpdateItemRects(true, true, true);
                 }
@@ -796,7 +796,7 @@ public class ToolBoxTab : ToolBoxItem
 
         // Now , it is not checked if object to drag drop is null or not...
 
-        if (null != item && item.Enabled && item.MouseDown && item.CanStartDrag(e.X, e.Y) /*&& null != item.Object*/)
+        if (item is { Enabled: true, MouseDown: true } && item.CanStartDrag(e.X, e.Y) /*&& null != item.Object*/)
         {
             item.IsDragging = true;
             effect = _parent.DoDragDropItem(item, DragDropEffects.All);
@@ -1229,7 +1229,7 @@ public class ToolBoxTab : ToolBoxItem
                 // Thanks to Neal Stublen for the suggestions to make the
                 // items paint "more" like the VS.NET ToolBox control.
 
-                if (item.MouseHover && !item.MouseDown)
+                if (item is { MouseHover: true, MouseDown: false })
                 {
                     if (null == bgBrushes[1])
                     {
@@ -1757,8 +1757,7 @@ public class ToolBoxTab : ToolBoxItem
         ToolBoxItem item = null;
 
         if (_itemArea.Contains(x, y) &&
-            null != _toolItems &&
-            0 < _toolItems.Count &&
+            _toolItems is { Count: > 0 } &&
             _visibleTopIndex <= _toolItems.Count &&
             _visibleBottomIndex <= _toolItems.Count)
         {
@@ -1887,7 +1886,7 @@ public class ToolBoxTab : ToolBoxItem
         bool bCanScroll = true;
 
 
-        if (null != _toolItems && 0 < _toolItems.Count)
+        if (_toolItems is { Count: > 0 })
         {
             if (_toolItems[0].Top - this.ItemSpacingEx >= _itemArea.Top &&
                 _toolItems[_toolItems.Count - 1].Bottom + this.ItemSpacingEx <= _itemArea.Bottom)

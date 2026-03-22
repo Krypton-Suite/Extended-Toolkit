@@ -113,6 +113,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color BorderColour
     {
         get => _borderColour;
@@ -125,6 +126,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TextEnabledForeColour
     {
         get => _textEnabledForeColour;
@@ -137,6 +139,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TextDisabledForeColour
     {
         get => _textDisabledForeColour;
@@ -149,6 +152,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color EnabledBackColour
     {
         get => _enabledBackColour;
@@ -161,6 +165,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DisabledBackColour
     {
         get => _disabledBackColour;
@@ -173,6 +178,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color DisabledControlColour
     {
         get => _disabledControlColour;
@@ -185,6 +191,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color KnobColour
     {
         get => _knobColour;
@@ -197,6 +204,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color PenColour
     {
         get => _penColour;
@@ -209,6 +217,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color GradientStartColour
     {
         get => _gradientStartColour;
@@ -221,6 +230,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color GradientEndColour
     {
         get => _gradientEndColour;
@@ -233,6 +243,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public LinearGradientMode GradientMode
     {
         get => _mode;
@@ -245,6 +256,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string OnText
     {
         get => _onText;
@@ -257,6 +269,7 @@ public class KryptonToggleSwitchVersion2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string OffText
     {
         get => _offText;

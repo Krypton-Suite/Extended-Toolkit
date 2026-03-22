@@ -579,7 +579,7 @@ public partial class FormCustomFilter : KryptonForm
         {
             if (sender == _valControl1)
             {
-                if (_valControl2 != null && _valControl2.Visible)
+                if (_valControl2 is { Visible: true })
                 {
                     _valControl2.Focus();
                 }

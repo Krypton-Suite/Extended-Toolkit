@@ -66,7 +66,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
     public override void RenderBorder(Graphics g, Rectangle borderRectangle)
     {
-        Color borderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour.ToGrayScale() : BorderColour;
+        Color borderColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour.ToGrayScale() : BorderColour;
 
         g.SetClip(borderRectangle);
 
@@ -95,7 +95,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                 leftColour = LeftSideColourHovered;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 leftColour = leftColour.ToGrayScale();
             }
@@ -136,7 +136,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -158,7 +158,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -187,7 +187,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
                     Color textForeColour = ToggleSwitch.OnForeColour;
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         textForeColour = textForeColour.ToGrayScale();
                     }
@@ -220,7 +220,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                 rightColour = RightSideColourHovered;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 rightColour = rightColour.ToGrayScale();
             }
@@ -261,7 +261,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -283,7 +283,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -312,7 +312,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
                     Color textForeColour = ToggleSwitch.OffForeColour;
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         textForeColour = textForeColour.ToGrayScale();
                     }
@@ -339,7 +339,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
             buttonColour = ButtonColourHovered;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonColour = buttonColour.ToGrayScale();
         }

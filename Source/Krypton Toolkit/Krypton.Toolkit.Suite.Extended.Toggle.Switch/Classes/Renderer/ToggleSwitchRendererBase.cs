@@ -101,7 +101,7 @@ public abstract class ToggleSwitchRendererBase
 
     public void FillBackground(Graphics g, Rectangle controlRectangle)
     {
-        Color backColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? ToggleSwitch.BackColor.ToGrayScale() : ToggleSwitch.BackColor;
+        Color backColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? ToggleSwitch.BackColor.ToGrayScale() : ToggleSwitch.BackColor;
 
         using (Brush backBrush = new SolidBrush(backColour))
         {

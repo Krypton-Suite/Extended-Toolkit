@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -70,7 +70,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
     /// <returns></returns>
     public override object Clone()
     {
-        KryptonDataGridViewTextAndImageColumn cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
+        KryptonDataGridViewTextAndImageColumn cloned = (KryptonDataGridViewTextAndImageColumn)base.Clone();
         cloned._imageValue = _imageValue;
         cloned._imageSize = _imageSize;
         // Move the button specs over to the new clone
@@ -148,7 +148,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
                     int count = rows.Count;
                     for (int i = 0; i < count; i++)
                     {
-                        DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
+                        DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                         if (cell != null)
                         {
                             cell.MaxInputLength = value;

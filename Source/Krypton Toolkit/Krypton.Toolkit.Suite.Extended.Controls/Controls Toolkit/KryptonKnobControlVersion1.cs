@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -158,7 +158,7 @@ public class KryptonKnobControlVersion1 : UserControl
     #region " Public Properties "
     // Shows Small Scale marking.
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("Shows Small Scale marking")]
+    [Description("Shows Small Scale marking"), DefaultValue(false)]
     public bool ShowSmallScale
     {
         get => _ShowSmallScale;
@@ -173,7 +173,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // Shows Large Scale marking
     [Browsable(true), Category("Appearance-Extended")]
-    [Description(" Shows Large Scale marking")]
+    [Description(" Shows Large Scale marking"), DefaultValue(true)]
     public bool ShowLargeScale
     {
         get => _ShowLargeScale;
@@ -187,7 +187,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // Size of the Large Scale Marker
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("Size of the large Scale Marker")]
+    [Description("Size of the large Scale Marker"), DefaultValue(6)]
     public int SizeLargeScaleMarker
     {
         get => _SizeLargeScaleMarker;
@@ -200,7 +200,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // Size of the Small Scale Marker
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("Size of the small Scale Marker")]
+    [Description("Size of the small Scale Marker"), DefaultValue(3)]
     public int SizeSmallScaleMarker
     {
         get => _SizeSmallScaleMarker;
@@ -214,7 +214,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // Minimum Value for knob Control
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("Minimum Value for knob Control")]
+    [Description("Minimum Value for knob Control"), DefaultValue(0)]
     public int Minimum
     {
         get => _Minimum;
@@ -228,7 +228,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // Maximum value for knob control
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("Maximum value for knob control")]
+    [Description("Maximum value for knob control"), DefaultValue(100)]
     public int Maximum
     {
         get => _Maximum;
@@ -242,7 +242,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // value set for large change
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("value set for large change")]
+    [Description("value set for large change"), DefaultValue(20)]
     public int LargeChange
     {
         get => _LargeChange;
@@ -256,7 +256,7 @@ public class KryptonKnobControlVersion1 : UserControl
 
     // value set for small change.
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("value set for small change")]
+    [Description("value set for small change"), DefaultValue(5)]
     public int SmallChange
     {
         get => _SmallChange;
@@ -268,7 +268,7 @@ public class KryptonKnobControlVersion1 : UserControl
     }
     // Current Value of knob control
     [Browsable(true), Category("Appearance-Extended")]
-    [Description("Current Value of knob control")]
+    [Description("Current Value of knob control"), DefaultValue(0)]
     public int Value
     {
         get => _Value;
@@ -350,10 +350,13 @@ public class KryptonKnobControlVersion1 : UserControl
     [Description("Set mouse down Colour of the back of knob control")]
     public Color MouseDownKnobColour { get => _mouseDownColour; set { _mouseDownColour = value; Invalidate(); } }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color KnobIndicatorColourBegin { get => _indicatorColourBegin; set { _indicatorColourBegin = value; Invalidate(); } }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color KnobIndicatorColourEnd { get => _indicatorColourEnd; set { _indicatorColourEnd = value; Invalidate(); } }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color KnobIndicatorBorderColour { get => _insetCircleColour; set { _insetCircleColour = value; Invalidate(); } }
     #endregion
 

@@ -42,7 +42,7 @@ public class Utility
 
         Version currentOSVersion = Environment.OSVersion.Version;
 
-        if (currentOSVersion.Major >= 6 && currentOSVersion.Minor >= 1)
+        if (currentOSVersion is { Major: >= 6, Minor: >= 1 })
         {
             result = true;
         }

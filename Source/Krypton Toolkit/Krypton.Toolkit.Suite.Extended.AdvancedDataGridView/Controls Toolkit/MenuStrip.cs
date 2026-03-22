@@ -1,4 +1,4 @@
-﻿#region Original License
+#region Original License
 /*
  *
  * Microsoft Public License (Ms-PL)
@@ -712,6 +712,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Set the max checklist nodes
     /// </summary>
+    [DefaultValue(DefaultMaxChecklistNodes)]
     public int MaxChecklistNodes
     {
         get => _maxChecklistNodes;
@@ -736,36 +737,43 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Get or Set the Filter Sort enabled
     /// </summary>
+    [DefaultValue(false)]
     public bool IsSortEnabled { get; set; }
 
     /// <summary>
     /// Get or Set the Filter enabled
     /// </summary>
+    [DefaultValue(false)]
     public bool IsFilterEnabled { get; set; }
 
     /// <summary>
     /// Get or Set the Filter Checklist enabled
     /// </summary>
+    [DefaultValue(false)]
     public bool IsFilterChecklistEnabled { get; set; }
 
     /// <summary>
     /// Get or Set the Filter Custom enabled
     /// </summary>
+    [DefaultValue(false)]
     public bool IsFilterCustomEnabled { get; set; }
 
     /// <summary>
     /// Get or Set the Filter DateAndTime enabled
     /// </summary>
+    [DefaultValue(false)]
     public bool IsFilterDateAndTimeEnabled { get; set; }
 
     /// <summary>
     /// Get or Set the NOT IN logic for Filter
     /// </summary>
+    [DefaultValue(false)]
     public bool IsFilterNotinLogicEnabled { get; set; }
 
     /// <summary>
     /// Set the text filter search nodes behaviour
     /// </summary>
+    [DefaultValue(DefaultCheckTextFilterRemoveNodesOnSearch)]
     public bool DoesTextFilterRemoveNodesOnSearch
     {
         get => _checkTextFilterRemoveNodesOnSearch;
@@ -775,6 +783,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Number of nodes to enable the TextChanged delay on text filter
     /// </summary>
+    [DefaultValue(DefaultTextFilterTextChangedDelayNodes)]
     public int TextFilterTextChangedDelayNodes
     {
         get => _textFilterTextChangedDelayNodes;
@@ -784,6 +793,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Delay milliseconds for TextChanged delay on text filter
     /// </summary>
+    [DefaultValue(DefaultTextFilterTextChangedDelayMs)]
     public int TextFilterTextChangedDelayMs
     {
         get => _textFilterTextChangedDelayMs;
@@ -1024,12 +1034,13 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Get the Sorting String
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string? SortString
     {
         get => !String.IsNullOrEmpty(_sortString) ? _sortString : "";
         private set
         {
-            _cancelSortMenuItem.Enabled = value != null && value.Length > 0;
+            _cancelSortMenuItem.Enabled = value is { Length: > 0 };
             _sortString = value;
         }
     }
@@ -1053,12 +1064,13 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Get the Filter string
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string? FilterString
     {
         get => !String.IsNullOrEmpty(_filterString) ? _filterString : "";
         private set
         {
-            _cancelFilterMenuItem.Enabled = value != null && value.Length > 0;
+            _cancelFilterMenuItem.Enabled = value is { Length: > 0 };
             _filterString = value;
         }
     }
@@ -1184,7 +1196,7 @@ internal partial class MenuStrip : ContextMenuStrip
         TreeNodeItemSelector? selectAllNode = GetSelectAllNode();
         _customFilterLastFiltersListMenuItem.Checked = false;
 
-        if (selectAllNode != null && selectAllNode.Checked && String.IsNullOrEmpty(_checkTextFilter.Text))
+        if (selectAllNode is { Checked: true } && String.IsNullOrEmpty(_checkTextFilter.Text))
         {
             CancelFilterMenuItem_Click(null, EventArgs.Empty);
         }
@@ -1197,7 +1209,7 @@ internal partial class MenuStrip : ContextMenuStrip
             if (_loadedNodes.Length > 1)
             {
                 selectAllNode = GetSelectEmptyNode();
-                if (selectAllNode != null && selectAllNode.Checked)
+                if (selectAllNode is { Checked: true })
                 {
                     FilterString = "[{0}] IS NULL";
                 }
@@ -1662,7 +1674,7 @@ internal partial class MenuStrip : ContextMenuStrip
         foreach (TreeNodeItemSelector? node in nodes)
         {
             node!.Checked = isChecked;
-            if (node.Nodes != null && node.Nodes.Count > 0)
+            if (node.Nodes is { Count: > 0 })
             {
                 foreach (TreeNodeItemSelector subnode in node.Nodes)
                 {
@@ -1797,7 +1809,7 @@ internal partial class MenuStrip : ContextMenuStrip
     private void CheckList_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
     {
         TreeViewHitTestInfo hitTestInfo = _checkList.HitTest(e.X, e.Y);
-        if (hitTestInfo != null && hitTestInfo.Location == TreeViewHitTestLocations.StateImage)
+        if (hitTestInfo is { Location: TreeViewHitTestLocations.StateImage })
         {
             //check the node check status
             NodeCheckChange(e.Node as TreeNodeItemSelector);

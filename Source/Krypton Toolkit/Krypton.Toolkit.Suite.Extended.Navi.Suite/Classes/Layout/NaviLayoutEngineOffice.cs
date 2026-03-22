@@ -306,7 +306,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
         CalculateButtonLayout();
         LayoutSplitter();
         LayoutBands(); // First, because of the options menu
-        LayoutButtons(layoutEventArgs != null && layoutEventArgs.AffectedProperty == "OptionsMenu");
+        LayoutButtons(layoutEventArgs is { AffectedProperty: "OptionsMenu" });
         LayoutAdditionalControls();
 
         return true;
@@ -601,7 +601,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
             {
                 menuitem.Image = band.SmallImage;
             }
-            else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+            else if (band is { SmallImageIndex: >= 0, SmallImages: not null }
                      && band.SmallImageIndex < band.SmallImages.Images.Count)
             {
                 menuitem.Image = band.SmallImages.Images[band.SmallImageIndex];
@@ -723,7 +723,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
         }
         else
         {
-            if (collapsedBand != null && collapsedBand.Visible)
+            if (collapsedBand is { Visible: true })
             {
                 collapsedBand.Visible = false;
             }
@@ -744,8 +744,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     {
         if (e != null)
         {
-            if (e.Button == MouseButtons.Left
-                && e.Clicks == 1
+            if (e is { Button: MouseButtons.Left, Clicks: 1 }
                 && MouseInSplitter(e.X, e.Y))
             {
                 splitterDragging = true;
@@ -934,7 +933,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
             {
                 menuItem.Image = band.SmallImage;
             }
-            else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+            else if (band is { SmallImageIndex: >= 0, SmallImages: not null }
                      && band.SmallImageIndex < band.SmallImages.Images.Count)
             {
                 menuItem.Image = band.SmallImages.Images[band.SmallImageIndex];
