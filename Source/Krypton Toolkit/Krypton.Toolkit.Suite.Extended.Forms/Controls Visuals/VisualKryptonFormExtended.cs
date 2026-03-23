@@ -1235,7 +1235,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         var ret = base.WindowChromeLeftMouseDown(windowPoint);
 
         // Has pressing down made a view active and indicated it also wants to capture mouse?
-        if (ViewManager.ActiveView != null && ViewManager.MouseCaptured)
+        if (ViewManager is { ActiveView: not null, MouseCaptured: true })
         {
             StartCapture(ViewManager.ActiveView);
             ret = true;

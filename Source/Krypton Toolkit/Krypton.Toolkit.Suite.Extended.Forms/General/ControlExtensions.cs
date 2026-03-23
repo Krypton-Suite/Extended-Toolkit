@@ -129,7 +129,7 @@ public static class ControlExtensions
                 throw new ArgumentException("Invalid property to animate. The given properties have to match a property of the control.");
             }
 
-            PropertyInfo?[] subprops = info.PropertyType.GetProperties().Where(m => m.CanRead && m.CanWrite).ToArray();
+            PropertyInfo?[] subprops = info.PropertyType.GetProperties().Where(m => m is { CanRead: true, CanWrite: true }).ToArray();
 
             if (subprops.Length > 0)
             {

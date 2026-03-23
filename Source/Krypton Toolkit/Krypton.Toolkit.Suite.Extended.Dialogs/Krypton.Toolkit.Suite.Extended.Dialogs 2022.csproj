@@ -30,6 +30,8 @@
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<!-- System.Speech 11.0 preview targets net10.0+; suppress TFM support warning for net8/net9 -->
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -74,13 +76,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.2.47-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.3.60-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.1.19-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.2.58-beta" />
 					</ItemGroup>
 				</When>
 
@@ -111,7 +113,6 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
 		<PackageReference Include="System.Speech" Version="11.0.0-preview.1.26104.118" />
 		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.14" />
 	</ItemGroup>

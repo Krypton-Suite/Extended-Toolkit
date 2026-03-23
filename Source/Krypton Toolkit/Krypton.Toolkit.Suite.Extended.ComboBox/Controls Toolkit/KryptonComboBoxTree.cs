@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -52,7 +52,7 @@ public sealed class KryptonComboBoxTree : Control
     [Browsable(true), Description("Gets the TreeView Nodes collection"), Category("TreeView"), DesignerSerializationVisibility(DesignerSerializationVisibility.Content), Editor(typeof(TreeNodeCollection), typeof(TreeNodeCollection))]
     public TreeNodeCollection Nodes => _tvTreeView.Nodes;
 
-    [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
+    [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public TreeNode? SelectedNode
     {
         set
@@ -65,13 +65,13 @@ public sealed class KryptonComboBoxTree : Control
         get => _tvTreeView.SelectedNode;
     }
 
-    [Browsable(false)]
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public KryptonComboBox ComboBox { get => _combobox; set => _combobox = value; }
 
-    [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
+    [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ImageList? Imagelist { get => _tvTreeView.ImageList; set => _tvTreeView.ImageList = value; }
 
-    [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance")]
+    [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance"), DefaultValue("|")]
     public string BranchSeparator
     {
         get => _branchSeparator;
@@ -84,7 +84,7 @@ public sealed class KryptonComboBoxTree : Control
             }
         }
     }
-    [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Behavior")]
+    [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Behavior"), DefaultValue(false)]
     public bool AbsoluteChildrenSelectableOnly { get => _absoluteChildrenSelectableOnly; set => _absoluteChildrenSelectableOnly = value; }
     #endregion
 
@@ -199,7 +199,7 @@ public sealed class KryptonComboBoxTree : Control
     }
 
     #region Events
-    private void SizingGripMouseMove(object sender, MouseEventArgs e)
+    private void SizingGripMouseMove(object? sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
@@ -226,7 +226,7 @@ public sealed class KryptonComboBoxTree : Control
         }
     }
 
-    private void SizingGripMouseDown(object sender, MouseEventArgs e)
+    private void SizingGripMouseDown(object? sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
@@ -237,7 +237,7 @@ public sealed class KryptonComboBoxTree : Control
         }
     }
 
-    private void TreeViewLostFocus(object sender, EventArgs e)
+    private void TreeViewLostFocus(object? sender, EventArgs e)
     {
         if (!IsDisposed && Created)
         {
@@ -285,7 +285,7 @@ public sealed class KryptonComboBoxTree : Control
 
     }
 
-    private void ComboBoxTree_Layout(object sender, LayoutEventArgs e)
+    private void ComboBoxTree_Layout(object? sender, LayoutEventArgs e)
     {
         //Height = combobox.Height + 10;
         _pnlBack.Size = new Size(Width, Height - 2);

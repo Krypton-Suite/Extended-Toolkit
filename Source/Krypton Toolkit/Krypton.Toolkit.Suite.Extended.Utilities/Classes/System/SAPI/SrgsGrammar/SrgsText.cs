@@ -57,7 +57,7 @@ public class SrgsText : SrgsElement, IElementText, IElement
 
     internal override void WriteSrgs(XmlWriter writer)
     {
-        if (_text != null && _text.Length > 0)
+        if (_text is { Length: > 0 })
         {
             writer.WriteString(_text);
         }

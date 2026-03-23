@@ -89,7 +89,7 @@ public static class DrawingMethods
         RectangleF backRect = new RectangleF(0, 1.5f, rect.Width, rect.Height - 2);
 
         // Cannot paint a zero sized area
-        if (backRect.Width > 0 && backRect.Height > 0)
+        if (backRect is { Width: > 0, Height: > 0 })
         {
             using (LinearGradientBrush backBrush = new LinearGradientBrush(backRect,
                        LightColor,

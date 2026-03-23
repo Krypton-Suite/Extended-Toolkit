@@ -107,7 +107,7 @@ public class KryptonTreeGridView : KryptonDataGridView
         base.OnKeyDown(e);
         if (!e.Handled)
         {
-            if (e.KeyCode == Keys.F2 && CurrentCellAddress.X > -1 && CurrentCellAddress.Y > -1)
+            if (e.KeyCode == Keys.F2 && CurrentCellAddress is { X: > -1, Y: > -1 })
             {
                 if (!CurrentCell.Displayed)
                 {
@@ -170,6 +170,7 @@ public class KryptonTreeGridView : KryptonDataGridView
     [Browsable(true), Category(@"DataSource-Usage")]
     [RefreshProperties(RefreshProperties.Repaint)]
     [AttributeProvider(typeof(IListSource))]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new DataTable DataSource
     {
         get => _dataSource;
@@ -449,9 +450,11 @@ public class KryptonTreeGridView : KryptonDataGridView
 
     [Browsable(true), Category("Appearance-Extended")]
     [RefreshProperties(RefreshProperties.Repaint)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ImageList ImageList { get; set; } //TODO: should we invalidate cell styles when setting the image list?
 
     [Browsable(true), Category("Appearance-Extended")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new int RowCount
     {
         get => GridNodes.Count;
@@ -840,7 +843,7 @@ public class KryptonTreeGridView : KryptonDataGridView
             
             // If this node is expanded, recursively site its children
             // After recursive insertion, update insertIndex to account for all inserted descendants
-            if (childNode.IsExpanded && childNode.Nodes.Count > 0)
+            if (childNode is { IsExpanded: true, Nodes.Count: > 0 })
             {
                 int beforeInsert = insertIndex - 1; // The current childNode's index
                 SiteNodes(childNode.Nodes, childNode);
@@ -898,7 +901,7 @@ public class KryptonTreeGridView : KryptonDataGridView
         // Remove rows in reverse order using Remove() which is safer than RemoveAt()
         foreach (KryptonTreeGridNodeRow? row in rowsToRemove)
         {
-            if (row.IsSited && row.RowIndex >= 0)
+            if (row is { IsSited: true, RowIndex: >= 0 })
             {
                 try
                 {

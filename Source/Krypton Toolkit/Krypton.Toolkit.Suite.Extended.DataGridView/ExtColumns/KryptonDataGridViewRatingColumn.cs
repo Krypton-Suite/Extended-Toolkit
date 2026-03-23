@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -68,11 +68,11 @@ public class RatingCell : DataGridViewImageCell
     /// <param name="formattedValueTypeConverter"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+    protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
     {
         if (value == null)
         {
-            return null; //For example it is also the case for group row...
+            return null; //For example, it is also the case for group row...
         }
         else
         {
@@ -106,7 +106,7 @@ public class RatingCell : DataGridViewImageCell
         Image cellImage = (Image)formattedValue;
         if (!ReadOnly)
         {
-            int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
+            int starNumber = GetStarFromMouse(cellBounds, DataGridView?.PointToClient(Control.MousePosition) ?? Point.Empty);
 
             if (starNumber != -1)
             {
@@ -126,7 +126,7 @@ public class RatingCell : DataGridViewImageCell
         base.OnContentClick(e);
         if (!ReadOnly)
         {
-            int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
+            int starNumber = GetStarFromMouse(DataGridView?.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false) ?? Rectangle.Empty, DataGridView?.PointToClient(Control.MousePosition) ?? Point.Empty);
 
             if (starNumber != -1)
             {
@@ -144,7 +144,7 @@ public class RatingCell : DataGridViewImageCell
     protected override void OnMouseLeave(int rowIndex)
     {
         base.OnMouseLeave(rowIndex);
-        DataGridView.InvalidateCell(this);
+        DataGridView?.InvalidateCell(this);
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public class RatingCell : DataGridViewImageCell
     protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
     {
         base.OnMouseMove(e);
-        DataGridView.InvalidateCell(this);
+        DataGridView?.InvalidateCell(this);
     }
     #endregion
 
@@ -203,13 +203,13 @@ public class RatingCell : DataGridViewImageCell
         // load normal stars 
         for (int i = 0; i <= 10; i++)
         {
-            starImages[i] = (Image)resources.GetObject($"star{i}");
+            starImages[i] = (Image?)resources.GetObject($"star{i}") ?? throw new InvalidOperationException($"Resource 'star{i}' not found.");
         }
 
         // load hot normal stars 
         for (int i = 0; i <= 10; i++)
         {
-            starHotImages[i] = (Image)resources.GetObject($"starhot{i}");
+            starHotImages[i] = (Image?)resources.GetObject($"starhot{i}") ?? throw new InvalidOperationException($"Resource 'starhot{i}' not found.");
         }
     }
     #endregion

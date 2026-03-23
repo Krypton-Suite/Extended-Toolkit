@@ -1528,7 +1528,7 @@ public abstract class VisualForm : Form, IKryptonDebug
         Rectangle windowBounds = RealWindowRectangle;
 
         // We can only draw a window that has some size
-        if (windowBounds.Width > 0 && windowBounds.Height > 0)
+        if (windowBounds is { Width: > 0, Height: > 0 })
         {
             // Get the device context for this window
             IntPtr hDC = PlatformInvoke.GetWindowDC(Handle);
@@ -1547,7 +1547,7 @@ public abstract class VisualForm : Form, IKryptonDebug
                     var minimized = CommonHelper.IsFormMinimized(this);
 
                     // After excluding the client area, is there anything left to draw?
-                    if (minimized || (clipClientRect.Width > 0 && clipClientRect.Height > 0))
+                    if (minimized || clipClientRect is { Width: > 0, Height: > 0 })
                     {
                         // If not minimized we need to clip the client area
                         if (!minimized)

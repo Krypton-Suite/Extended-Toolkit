@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -51,5 +51,6 @@ public class KryptonTreeGridColumn : KryptonDataGridViewTextBoxColumn
         return c;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Image? DefaultNodeImage { get; set; }
 }

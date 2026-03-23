@@ -50,7 +50,7 @@ internal abstract class ParseElementCollection : ParseElement
 
     internal void AddSemanticInterpretationTag(CfgGrammar.CfgProperty propertyInfo)
     {
-        if (_endArc != null && _endArc.RuleRef != null)
+        if (_endArc is { RuleRef: not null })
         {
             Arc arc = _backend.EpsilonTransition(1f);
             _backend.AddSemanticInterpretationTag(arc, propertyInfo);
@@ -81,11 +81,11 @@ internal abstract class ParseElementCollection : ParseElement
     {
         if (arc.IsEpsilonTransition)
         {
-            if (position == Position.Before && arc.End != null && arc.End.InArcs.CountIsOne && Graph.MoveSemanticTagRight(arc))
+            if (position == Position.Before && arc.End is { InArcs.CountIsOne: true } && Graph.MoveSemanticTagRight(arc))
             {
                 return arc;
             }
-            if (position == Position.After && arc.Start != null && arc.Start.OutArcs.CountIsOne && Graph.MoveSemanticTagLeft(arc))
+            if (position == Position.After && arc.Start is { OutArcs.CountIsOne: true } && Graph.MoveSemanticTagLeft(arc))
             {
                 return arc;
             }

@@ -65,7 +65,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
 
     public override void RenderBorder(Graphics g, Rectangle borderRectangle)
     {
-        Color borderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour.ToGrayScale() : BorderColour;
+        Color borderColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour.ToGrayScale() : BorderColour;
 
         g.SetClip(borderRectangle);
 
@@ -79,7 +79,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
     {
         Color leftColour = LeftSideColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             leftColour = leftColour.ToGrayScale();
         }
@@ -106,7 +106,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
     {
         Color rightColour = RightSideColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             rightColour = rightColour.ToGrayScale();
         }
@@ -162,7 +162,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
         Color buttonColour = ToggleSwitch.Checked ? OnButtonColour : OffButtonColour;
         Color buttonBorderColour = ToggleSwitch.Checked ? OnButtonBorderColour : OffButtonBorderColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonColour = buttonColour.ToGrayScale();
             buttonBorderColour = buttonBorderColour.ToGrayScale();
@@ -210,7 +210,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -232,7 +232,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -247,7 +247,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
                 Font buttonFont = ToggleSwitch.Checked ? ToggleSwitch.OnFont : ToggleSwitch.OffFont;
                 Color buttonForeColour = ToggleSwitch.Checked ? ToggleSwitch.OnForeColour : ToggleSwitch.OffForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     buttonForeColour = buttonForeColour.ToGrayScale();
                 }

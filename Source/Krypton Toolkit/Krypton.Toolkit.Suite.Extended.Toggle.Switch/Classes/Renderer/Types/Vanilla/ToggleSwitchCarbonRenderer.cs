@@ -127,7 +127,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
         {
             g.SetClip(outerBorderPath);
 
-            Color outerBorderColor = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
+            Color outerBorderColor = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
 
             using (Brush outerBorderBrush = new SolidBrush(outerBorderColor))
             {
@@ -144,8 +144,8 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
         {
             g.SetClip(innerBorderPath);
 
-            Color borderColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
-            Color borderColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
+            Color borderColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
+            Color borderColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
 
             using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
             {
@@ -171,8 +171,8 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
         int gradientRectWidth = leftRectangle.Width + buttonWidth / 2;
         Rectangle gradientRectangle = new Rectangle(leftRectangle.X, leftRectangle.Y, gradientRectWidth, leftRectangle.Height);
 
-        Color leftSideBackColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
-        Color leftSideBackColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
+        Color leftSideBackColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
+        Color leftSideBackColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
 
         if (_innerControlPath != null)
         {
@@ -252,7 +252,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -274,7 +274,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -303,7 +303,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                 Color textForeColor = ToggleSwitch.OnForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColor = textForeColor.ToGrayScale();
                 }
@@ -330,8 +330,8 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
         int gradientRectWidth = rightRectangle.Width + buttonWidth / 2;
         Rectangle gradientRectangle = new Rectangle(rightRectangle.X - buttonWidth / 2, rightRectangle.Y, gradientRectWidth, rightRectangle.Height);
 
-        Color rightSideBackColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
-        Color rightSideBackColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
+        Color rightSideBackColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
+        Color rightSideBackColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
 
         if (_innerControlPath != null)
         {
@@ -411,7 +411,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -433,7 +433,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -462,7 +462,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                 Color textForeColor = ToggleSwitch.OffForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColor = textForeColor.ToGrayScale();
                 }
@@ -504,7 +504,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
                 buttonSurfaceColour2 = ButtonHoverSurfaceColour2;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 buttonSurfaceColour1 = buttonSurfaceColour1.ToGrayScale();
                 buttonSurfaceColour2 = buttonSurfaceColour2.ToGrayScale();
@@ -530,7 +530,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
                 buttonBorderColour2 = ButtonHoverBorderColour2;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 buttonBorderColour1 = buttonBorderColour1.ToGrayScale();
                 buttonBorderColour2 = buttonBorderColour2.ToGrayScale();
@@ -579,7 +579,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -601,7 +601,7 @@ public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable,
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }

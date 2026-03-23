@@ -137,7 +137,7 @@ internal class Arc : IComparer<Arc>, IComparable<Arc>
         get => _ruleRef;
         set
         {
-            if ((_start != null && !_start.OutArcs.IsEmpty) || (_end != null && !_end.InArcs.IsEmpty))
+            if (_start is { OutArcs.IsEmpty: false } || _end is { InArcs.IsEmpty: false })
             {
                 throw new InvalidOperationException();
             }

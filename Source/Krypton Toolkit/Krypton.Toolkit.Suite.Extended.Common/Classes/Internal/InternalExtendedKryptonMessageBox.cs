@@ -1576,7 +1576,7 @@ internal class InternalExtendedKryptonMessageBox : KryptonForm
         else
         {
             // Pressing Ctrl+C should copy message text into the clipboard
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
+            if (e is { Modifiers: Keys.Control, KeyCode: Keys.C })
             {
                 StringBuilder sb = new StringBuilder();
 

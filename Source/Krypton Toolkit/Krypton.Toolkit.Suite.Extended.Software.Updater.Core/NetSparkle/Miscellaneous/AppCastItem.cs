@@ -215,7 +215,7 @@ public class AppCastItem : IComparable<AppCastItem>
         }
         bool isCritical = false;
         string critical = enclosureElement?.Attribute(XMLAppCast.SparkleNamespace + CRITICAL_ATTRIBUTE)?.Value ?? string.Empty;
-        if (critical != null && critical == "true" || critical == "1")
+        if (critical is "true" || critical == "1")
         {
             isCritical = true;
         }

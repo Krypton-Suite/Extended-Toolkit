@@ -1122,7 +1122,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
                     _footerRichTextBox.StateCommon.Content.Font = _messageBoxTypeface;
                 }
                 // Set RichTextBox height if specified
-                if (richTextBoxHeight.HasValue && richTextBoxHeight.Value > 0)
+                if (richTextBoxHeight is > 0)
                 {
                     _footerRichTextBox.Height = richTextBoxHeight.Value;
                 }

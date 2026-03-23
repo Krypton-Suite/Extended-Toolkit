@@ -519,7 +519,7 @@ public class RecognizedPhrase
             }
             else
             {
-                if (!semanticValue2._valueFieldSet && semanticValue2.Count == 0)
+                if (semanticValue2 is { _valueFieldSet: false, Count: 0 })
                 {
                     StringBuilder stringBuilder = new StringBuilder();
                     for (int i = 0; i < ruleNode._count; i++)
@@ -769,7 +769,7 @@ public class RecognizedPhrase
         newValue = null;
         bool result = false;
         Grammar grammar = ruleRef._grammar;
-        if (grammar != null && grammar._scripts != null)
+        if (grammar is { _scripts: not null })
         {
             try
             {
@@ -891,7 +891,7 @@ public class RecognizedPhrase
     private static object TryExecuteOnRecognition(Grammar grammar, RecognitionResult result, string rootRule)
     {
         object result2 = result.Semantics.Value;
-        if (grammar != null && grammar._scripts != null)
+        if (grammar is { _scripts: not null })
         {
             ScriptRef[] scripts = grammar._scripts;
             foreach (ScriptRef scriptRef in scripts)

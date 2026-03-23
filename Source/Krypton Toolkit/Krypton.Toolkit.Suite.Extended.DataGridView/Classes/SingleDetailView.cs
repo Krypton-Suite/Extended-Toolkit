@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -42,14 +42,14 @@ public class SingleDetailView : KryptonDataGridView, IDetailView<KryptonDataGrid
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DataGridViewCell DetailsCurrentCell
     {
-        get => CurrentCell;
+        get => CurrentCell!;
         set => CurrentCell = value;
     }
 
     /// <inheritdoc />
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public DataGridViewRow DetailsCurrentRow => CurrentRow;
+    public DataGridViewRow DetailsCurrentRow => CurrentRow!;
 
     /// <inheritdoc />
     [Browsable(false)]

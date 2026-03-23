@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -70,7 +70,7 @@ public class Token : IComparable<Token>
     /// </summary>
     /// <param name="other"></param>
     /// <returns></returns>
-    public int CompareTo(Token other) => Text.CompareTo(other.Text);
+    public int CompareTo(Token? other) => other is null ? 1 : Text.CompareTo(other.Text);
 
     /// <summary>
     /// Overrides ToString
@@ -83,7 +83,7 @@ public class Token : IComparable<Token>
     /// </summary>
     /// <param name="obj">The object to compare</param>
     /// <returns>true if equal, false otherwise.</returns>
-    public override bool Equals(object obj) => Text.Equals(obj.ToString());
+    public override bool Equals(object? obj) => obj is not null && Text.Equals(obj.ToString());
 
     /// <summary>
     /// Overrides GetHashCode
@@ -149,7 +149,7 @@ public class TokenCell : KryptonDataGridViewTextBoxCell
         int nextPosition = cellBounds.X + (int)(1 * factorX);
         if (KryptonManager.CurrentGlobalPalette != null)
         {
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
             Token tok = (Token)Value;
             if (tok != null)
@@ -184,7 +184,7 @@ public class TokenCell : KryptonDataGridViewTextBoxCell
         Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
         if (KryptonManager.CurrentGlobalPalette != null)
         {
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {
@@ -268,7 +268,7 @@ public class TokenListCell : KryptonDataGridViewTextBoxCell
         int nextPosition = cellBounds.X + (int)(1 * factorX);
         if (KryptonManager.CurrentGlobalPalette != null)
         {
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
             foreach (Token tok in (List<Token>)Value)
             {
@@ -302,7 +302,7 @@ public class TokenListCell : KryptonDataGridViewTextBoxCell
         Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
         if (KryptonManager.CurrentGlobalPalette != null)
         {
-            Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
+            Font? f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {

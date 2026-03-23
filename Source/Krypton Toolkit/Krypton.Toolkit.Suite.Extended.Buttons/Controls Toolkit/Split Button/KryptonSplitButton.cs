@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -47,6 +47,7 @@ public class KryptonSplitButton : KryptonButton
     #endregion
 
     #region Properties
+    [DefaultValue(true)]
     public bool ShowSplitOption
     {
         get => _showSplitOption;
@@ -70,6 +71,7 @@ public class KryptonSplitButton : KryptonButton
     /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
     /// <value>
     ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+    [DefaultValue(false)]
     public bool UseUACElevation
     {
         get => _useUACElevation;
@@ -92,6 +94,7 @@ public class KryptonSplitButton : KryptonButton
         }
     }
 
+    [DefaultValue("")]
     public string ProcessPath { get => _processPath; set => _processPath = value; }
     #endregion
 

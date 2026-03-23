@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -39,17 +39,22 @@ public class KryptonValidationBox : KryptonTextBox
     #endregion
 
     #region Properties
+    [DefaultValue(false)]
     public bool ValidateEntry { get => _validateEntry; set => _validateEntry = value; }
 
+    [DefaultValue(false)]
     public bool UseAccessibilityColours { get => _useAccessibilityColours; set => _useAccessibilityColours = value; }
 
+    [DefaultValue(false)]
     public bool ModifyBackgroundColour { get => _modifyBackgroundColour; set => _modifyBackgroundColour = value; }
 
+    [DefaultValue(false)]
     public bool UseIntermediateColour { get => _useIntermediateColour; set => _useIntermediateColour = value; }
 
-    [DefaultValue("Color.FromArgb(255, 128, 0)"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Description("")]
     public Color IntermediateColour { get => _intermediateColour; set => _intermediateColour = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string ValidValue { get => _validValue; private set => _validValue = value; }
     #endregion
 

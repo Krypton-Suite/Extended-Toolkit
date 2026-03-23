@@ -150,7 +150,7 @@ public class CalendarProfessionalRenderer : CalendarSystemRenderer
                 GlossyRect(e.Graphics, e.Day.HeaderBounds, HeaderA, HeaderB, HeaderC, HeaderD);
             }
 
-            if (e.Calendar != null && e.Calendar.DaysMode == CalendarDaysMode.Short)
+            if (e.Calendar is { DaysMode: CalendarDaysMode.Short })
             {
                 using (Pen p = new Pen(ColourTable.DayBorder))
                 {
@@ -177,7 +177,7 @@ public class CalendarProfessionalRenderer : CalendarSystemRenderer
             }
         }
 
-        if (e.Item != null && e.Item.Selected && !e.Item.IsDragging)
+        if (e.Item is { Selected: true, IsDragging: false })
         {
             bool horizontal = false;
             bool vertical = false;
@@ -208,22 +208,16 @@ public class CalendarProfessionalRenderer : CalendarSystemRenderer
 
             if ((horizontal || vertical) && Calendar.AllowItemResize)
             {
-                if (!e.Item.IsOpenStart && e.IsFirst)
+                if (!e.Item.IsOpenStart && e is { IsFirst: true, Graphics: not null })
                 {
-                    if (e.Graphics != null)
-                    {
-                        e.Graphics.FillRectangle(Brushes.White, r1);
-                        e.Graphics.DrawRectangle(Pens.Black, r1);
-                    }
+                    e.Graphics.FillRectangle(Brushes.White, r1);
+                    e.Graphics.DrawRectangle(Pens.Black, r1);
                 }
 
-                if (!e.Item.IsOpenEnd && e.IsLast)
+                if (!e.Item.IsOpenEnd && e is { IsLast: true, Graphics: not null })
                 {
-                    if (e.Graphics != null)
-                    {
-                        e.Graphics.FillRectangle(Brushes.White, r2);
-                        e.Graphics.DrawRectangle(Pens.Black, r2);
-                    }
+                    e.Graphics.FillRectangle(Brushes.White, r2);
+                    e.Graphics.DrawRectangle(Pens.Black, r2);
                 }
             }
         }

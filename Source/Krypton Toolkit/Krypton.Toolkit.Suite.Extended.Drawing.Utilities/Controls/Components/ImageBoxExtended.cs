@@ -2309,7 +2309,7 @@ public class ImageBoxExtended : VirtualScrollableControl
 
             rect = this.FitRectangle(new Rectangle((int)this.SelectionRegion.X, (int)this.SelectionRegion.Y, (int)this.SelectionRegion.Width, (int)this.SelectionRegion.Height));
 
-            if (rect.Width > 0 && rect.Height > 0)
+            if (rect is { Width: > 0, Height: > 0 })
             {
                 result = new Bitmap(rect.Width, rect.Height);
 
@@ -4042,7 +4042,7 @@ public class ImageBoxExtended : VirtualScrollableControl
         switch (this.SelectionMode)
         {
             case ImageBoxSelectionMode.Zoom:
-                if (this.SelectionRegion.Width > SelectionDeadZone && this.SelectionRegion.Height > SelectionDeadZone)
+                if (this.SelectionRegion is { Width: > SelectionDeadZone, Height: > SelectionDeadZone })
                 {
                     this.ZoomToRegion(this.SelectionRegion);
                     this.SelectNone();

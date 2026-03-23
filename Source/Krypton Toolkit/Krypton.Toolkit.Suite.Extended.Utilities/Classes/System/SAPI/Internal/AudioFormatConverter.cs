@@ -159,7 +159,7 @@ internal static class AudioFormatConverter
     {
         WaveFormatEx waveFormatEx = new WaveFormatEx();
         byte[] array = null;
-        if (eFormat >= StreamFormat.PCM_8kHz8BitMono && eFormat <= StreamFormat.PCM_48kHz16BitStereo)
+        if (eFormat is >= StreamFormat.PCM_8kHz8BitMono and <= StreamFormat.PCM_48kHz16BitStereo)
         {
             uint num = (uint)(eFormat - 4);
             bool flag = (num & 1) != 0;
@@ -231,7 +231,7 @@ internal static class AudioFormatConverter
                     break;
                 }
                 default:
-                    if (eFormat >= StreamFormat.CCITT_uLaw_8kHzMono && eFormat <= StreamFormat.CCITT_uLaw_44kHzStereo)
+                    if (eFormat is >= StreamFormat.CCITT_uLaw_8kHzMono and <= StreamFormat.CCITT_uLaw_44kHzStereo)
                     {
                         uint num3 = (uint)(eFormat - 49);
                         uint num4 = num3 / 2u;
@@ -249,7 +249,7 @@ internal static class AudioFormatConverter
                         waveFormatEx.wBitsPerSample = 8;
                         waveFormatEx.nAvgBytesPerSec = waveFormatEx.nSamplesPerSec * waveFormatEx.nBlockAlign;
                     }
-                    else if (eFormat >= StreamFormat.ADPCM_8kHzMono && eFormat <= StreamFormat.ADPCM_44kHzStereo)
+                    else if (eFormat is >= StreamFormat.ADPCM_8kHzMono and <= StreamFormat.ADPCM_44kHzStereo)
                     {
                         uint[] array4 =
                         [
@@ -400,7 +400,7 @@ internal static class AudioFormatConverter
                         waveFormatEx.cbSize = 32;
                         array = (byte[])array10[num6].Clone();
                     }
-                    else if (eFormat >= StreamFormat.GSM610_8kHzMono && eFormat <= StreamFormat.GSM610_44kHzMono)
+                    else if (eFormat is >= StreamFormat.GSM610_8kHzMono and <= StreamFormat.GSM610_44kHzMono)
                     {
                         uint[] array11 =
                         [

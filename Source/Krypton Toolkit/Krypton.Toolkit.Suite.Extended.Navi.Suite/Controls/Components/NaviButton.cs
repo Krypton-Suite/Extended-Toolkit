@@ -266,11 +266,11 @@ public partial class NaviButton : NaviControl
             {
                 imageSmall = smallImage;
             }
-            else if (band != null && band.SmallImage != null)
+            else if (band is { SmallImage: not null })
             {
                 imageSmall = band.SmallImage;
             }
-            else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+            else if (band is { SmallImageIndex: >= 0, SmallImages: not null }
                      && band.SmallImageIndex < band.SmallImages.Images.Count)
             {
                 imageSmall = band.SmallImages.Images[band.SmallImageIndex];
@@ -292,12 +292,12 @@ public partial class NaviButton : NaviControl
             {
                 imageLarge = largeImage;
             }
-            else if (band != null && band.LargeImage != null)
+            else if (band is { LargeImage: not null })
             {
                 imageLarge = band.LargeImage;
             }
-            else if (band != null && band.LargeImageIndex >= 0
-                                  && band.LargeImageIndex < band.LargeImages.Images.Count)
+            else if (band is { LargeImageIndex: >= 0 }
+                     && band.LargeImageIndex < band.LargeImages.Images.Count)
             {
                 imageLarge = band.LargeImages.Images[band.LargeImageIndex];
             }

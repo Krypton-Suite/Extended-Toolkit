@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Forms;
 
 public partial class VisualSlideForm : KryptonForm
 {
@@ -26,11 +26,13 @@ public partial class VisualSlideForm : KryptonForm
 
     public bool IsExpanded => _expand;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public SlideDirection SlideDirection
     {
         set => _slideDirection = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public float SlideStep
     {
         set => _step = value;

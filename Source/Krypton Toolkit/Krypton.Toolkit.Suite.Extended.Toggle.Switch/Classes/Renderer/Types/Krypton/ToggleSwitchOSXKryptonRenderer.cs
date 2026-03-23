@@ -111,7 +111,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
         {
             g.SetClip(outerBorderPath);
 
-            Color outerBorderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
+            Color outerBorderColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
 
             using (Brush outerBorderBrush = new SolidBrush(outerBorderColour))
             {
@@ -128,8 +128,8 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
         {
             g.SetClip(innerBorderPath);
 
-            Color borderColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
-            Color borderColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
+            Color borderColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
+            Color borderColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
 
             using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
             {
@@ -146,8 +146,8 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
         g.SetClip(_innerControlPath);
 
-        Color backColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BackColour1.ToGrayScale() : BackColour1;
-        Color backColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BackColour2.ToGrayScale() : BackColour2;
+        Color backColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BackColour1.ToGrayScale() : BackColour1;
+        Color backColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BackColour2.ToGrayScale() : BackColour2;
 
         using (Brush backgroundBrush = new LinearGradientBrush(borderRectangle, backColour1, backColour2, LinearGradientMode.Vertical))
         {
@@ -224,7 +224,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -246,7 +246,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -275,7 +275,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                 Color textForeColour = ToggleSwitch.OnForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColour = textForeColour.ToGrayScale();
                 }
@@ -357,7 +357,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -379,7 +379,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -408,7 +408,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                 Color textForeColour = ToggleSwitch.OffForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColour = textForeColour.ToGrayScale();
                 }
@@ -450,7 +450,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
                 buttonSurfaceColour2 = ButtonHoverSurfaceColour2;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 buttonSurfaceColour1 = buttonSurfaceColour1.ToGrayScale();
                 buttonSurfaceColour2 = buttonSurfaceColour2.ToGrayScale();
@@ -476,7 +476,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
                 buttonBorderColour2 = ButtonHoverBorderColour2;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 buttonBorderColour1 = buttonBorderColour1.ToGrayScale();
                 buttonBorderColour2 = buttonBorderColour2.ToGrayScale();
@@ -525,7 +525,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -547,7 +547,7 @@ public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposa
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }

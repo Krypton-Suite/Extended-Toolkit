@@ -1152,7 +1152,7 @@ internal class RecognizerBase : IRecognizerInternal, IDisposable, ISpGrammarReso
             case SAPIErrorCodes.REGDB_E_CLASSNOTREG:
             {
                 OperatingSystem oSVersion = Environment.OSVersion;
-                if (IntPtr.Size == 8 && oSVersion.Platform == PlatformID.Win32NT && oSVersion.Version.Major == 5)
+                if (IntPtr.Size == 8 && oSVersion is { Platform: PlatformID.Win32NT, Version.Major: 5 })
                 {
                     return new NotSupportedException(SR.Get(SRID.RecognitionNotSupportedOn64bit));
                 }
@@ -1835,7 +1835,7 @@ internal class RecognizerBase : IRecognizerInternal, IDisposable, ISpGrammarReso
         {
             enabled = _enabled;
         }
-        if (recognitionResult.Grammar != null && recognitionResult.Grammar.Enabled && enabled)
+        if (recognitionResult.Grammar is { Enabled: true } && enabled)
         {
             FireSpeechHypothesizedEvent(recognitionResult);
         }
@@ -1858,7 +1858,7 @@ internal class RecognizerBase : IRecognizerInternal, IDisposable, ISpGrammarReso
                 enabled = _enabled;
             }
             FireAudioStateChangedEvent(_audioState);
-            if (((recognitionResult.Grammar != null && recognitionResult.Grammar.Enabled) || (speechEvent.EventId == SPEVENTENUM.SPEI_FALSE_RECOGNITION && recognitionResult.GrammarId == 0)) && enabled)
+            if ((recognitionResult.Grammar is { Enabled: true } || (speechEvent.EventId == SPEVENTENUM.SPEI_FALSE_RECOGNITION && recognitionResult.GrammarId == 0)) && enabled)
             {
                 if (speechEvent.EventId == SPEVENTENUM.SPEI_RECOGNITION)
                 {

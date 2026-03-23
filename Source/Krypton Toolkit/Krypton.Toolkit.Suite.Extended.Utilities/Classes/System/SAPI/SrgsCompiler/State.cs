@@ -217,7 +217,7 @@ internal sealed class State : IComparable<State>
             foreach (Arc outArc in _outArcs)
             {
                 bool fReachedEndState2 = false;
-                if (outArc.RuleRef != null && outArc.RuleRef._firstState != null)
+                if (outArc.RuleRef is { _firstState: not null })
                 {
                     State firstState = outArc.RuleRef._firstState;
                     if ((firstState._recurseFlag & RecurFlag.RF_IN_LEFT_RECUR_CHECK) != 0 || (firstState._recurseFlag & RecurFlag.RF_CHECKED_LEFT_RECURSION) == 0)
@@ -229,7 +229,7 @@ internal sealed class State : IComparable<State>
                         fReachedEndState2 = outArc.RuleRef._fIsEpsilonRule;
                     }
                 }
-                if (fReachedEndState2 || (outArc.RuleRef == null && outArc.WordId == 0 && outArc.WordId == 0))
+                if (fReachedEndState2 || (outArc.RuleRef == null && outArc.WordId is 0 and 0))
                 {
                     if (outArc.End != null)
                     {
@@ -261,8 +261,8 @@ internal sealed class State : IComparable<State>
         {
             return num - num2;
         }
-        Arc arc = state1._outArcs != null && !state1._outArcs.IsEmpty ? state1._outArcs.First : null;
-        Arc arc2 = state2._outArcs != null && !state2._outArcs.IsEmpty ? state2._outArcs.First : null;
+        Arc arc = state1._outArcs is { IsEmpty: false } ? state1._outArcs.First : null;
+        Arc arc2 = state2._outArcs is { IsEmpty: false } ? state2._outArcs.First : null;
         int num3 = (arc != null ? (arc.RuleRef != null ? 16777216 : 0) + arc.WordId : state1._iSerialize) - (arc2 != null ? (arc2.RuleRef != null ? 16777216 : 0) + arc2.WordId : state2._iSerialize);
         return num3 != 0 ? num3 : state1._iSerialize - state2._iSerialize;
     }

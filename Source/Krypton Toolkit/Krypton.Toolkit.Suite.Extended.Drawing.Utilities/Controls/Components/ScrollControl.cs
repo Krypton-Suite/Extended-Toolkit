@@ -196,7 +196,7 @@ public partial class ScrollControl : Control
             y = this.VerticalScroll.Value;
 
             // TODO: Find if we are hovering over a horizontal scrollbar and scroll that instead of the default vertical.
-            if (this.VerticalScroll.Visible && this.VerticalScroll.Enabled)
+            if (this.VerticalScroll is { Visible: true, Enabled: true })
             {
                 if (ModifierKeys == Keys.Control)
                 {
@@ -209,7 +209,7 @@ public partial class ScrollControl : Control
 
                 y += e.Delta > 0 ? -delta : delta;
             }
-            else if (this.HorizontalScroll.Visible && this.HorizontalScroll.Enabled)
+            else if (this.HorizontalScroll is { Visible: true, Enabled: true })
             {
                 if (ModifierKeys == Keys.Control)
                 {

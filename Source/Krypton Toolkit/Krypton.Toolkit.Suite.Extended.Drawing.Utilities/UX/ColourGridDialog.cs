@@ -227,12 +227,9 @@ public class ColourGridDialog : CommonExtendedKryptonForm
 
                 serializer = Cyotek.Windows.Forms.PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(fd.FilterIndex - 1);
 
-                if (serializer != null)
+                if (serializer is { CanWrite: false })
                 {
-                    if (!serializer.CanWrite)
-                    {
-                        throw new InvalidOperationException("Serializer does not support writing palettes.");
-                    }
+                    throw new InvalidOperationException("Serializer does not support writing palettes.");
                 }
 
                 try

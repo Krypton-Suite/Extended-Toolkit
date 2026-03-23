@@ -101,7 +101,7 @@ public class SrgsSubset : SrgsElement, ISubset, IElement
             }
             writer.WriteAttributeString("sapi", "match", "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions", value);
         }
-        if (_text != null && _text.Length > 0)
+        if (_text is { Length: > 0 })
         {
             writer.WriteString(_text);
         }

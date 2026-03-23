@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
@@ -18,7 +18,7 @@
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		
 		<!-- Suppress NuGet pack validation warning NU1012 (TFMs missing platform version) -->
-		<NoWarn>$(NoWarn);NU1012</NoWarn>
+		<NoWarn>$(NoWarn);NU1012;NU1701;NU5118</NoWarn>
 		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 		<WarningsNotAsErrors>NU1012</WarningsNotAsErrors>
@@ -85,13 +85,13 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.2.47-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.3.60-alpha" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.25.12.353-beta" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.2.58-beta" />
 			</ItemGroup>
 		</When>
 
@@ -223,7 +223,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		
 		<!-- Suppress NuGet pack validation warning NU1012 (TFMs missing platform version) -->
-		<NoWarn>$(NoWarn);NU1012</NoWarn>
+		<NoWarn>$(NoWarn);NU1012;NU1701;NU5118</NoWarn>
 		<_SuppressTfmSupportBuildWarnings>true</_SuppressTfmSupportBuildWarnings>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		
@@ -251,10 +251,6 @@
 		<Message Text="Including %(TfmSpecificPackageFile.Identity) in package" Importance="low" />
 	</Target>
 	
-	<!-- Exclude the Ultimate Lite project's own output from the package -->
-	<PropertyGroup>
-		<IncludeBuildOutput>false</IncludeBuildOutput>
-	</PropertyGroup>
 
 	<!-- Extended Toolkit Package Dependencies -->
 	<!-- These are added dynamically during pack operations to satisfy NuGet dependency resolution -->

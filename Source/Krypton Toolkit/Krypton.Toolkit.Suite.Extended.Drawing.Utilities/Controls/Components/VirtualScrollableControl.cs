@@ -464,7 +464,7 @@ public class VirtualScrollableControl : ScrollControl
 
         clientRectangle = this.ClientRectangle;
 
-        if (clientRectangle.Width > 1 && clientRectangle.Height > 1)
+        if (clientRectangle is { Width: > 1, Height: > 1 })
         {
             Size scrollSize;
             Size pageSize;

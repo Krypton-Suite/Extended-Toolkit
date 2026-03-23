@@ -1051,10 +1051,10 @@ public partial class KryptonOutlookGridGroupBox : UserControl
 
         _menuSortAscending.Visible = col != null;
         _menuSortDescending.Visible = col != null;
-        _menuSortAscending.Checked = col != null && col.SortDirection == SortOrder.Ascending;
-        _menuSortDescending.Checked = col != null && col.SortDirection == SortOrder.Descending;
+        _menuSortAscending.Checked = col is { SortDirection: SortOrder.Ascending };
+        _menuSortDescending.Checked = col is { SortDirection: SortOrder.Descending };
         _menuSortBySummary.Visible = col != null;
-        _menuSortBySummary.Checked = col != null && col.SortBySummaryCount;
+        _menuSortBySummary.Checked = col is { SortBySummaryCount: true };
         _menuExpand.Visible = col != null;
         _menuCollapse.Visible = col != null;
         _menuGroupInterval.Visible = col != null && col.GroupingType == typeof(OutlookGridDateTimeGroup).Name;
