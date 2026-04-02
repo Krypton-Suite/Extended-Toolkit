@@ -85,7 +85,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.3.60-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.4.92-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -245,7 +245,7 @@
 			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
 			
 			<BuildOutputInPackage Include="@(_NonFrameworkAssemblies)" />
-			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(TargetFramework)/" />
+			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(_PackageLibTfm)/" />
 		</ItemGroup>
 		
 		<Message Text="Including %(TfmSpecificPackageFile.Identity) in package" Importance="low" />

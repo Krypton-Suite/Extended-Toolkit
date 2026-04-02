@@ -73,7 +73,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.3.60-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.4.92-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -114,7 +114,7 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-		<PackageReference Include="WindowsAPICodePack" Version="8.0.14" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.15.1" />
 		<!--<PackageReference Include="NSec.Cryptography" Version="23.5.0-preview.1" />-->
 	</ItemGroup>
 
