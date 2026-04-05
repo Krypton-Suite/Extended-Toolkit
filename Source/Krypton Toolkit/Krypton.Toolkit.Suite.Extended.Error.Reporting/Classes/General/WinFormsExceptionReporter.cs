@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -56,7 +56,7 @@ public class ExceptionReporter : ExceptionReporterBase
     public bool Show(params Exception[] exceptions)
     {
         // silently ignore the mistake of passing null
-        if (exceptions == null || exceptions.Length == 0 || exceptions is [null, ..])
+        if (exceptions == null || exceptions.Length == 0 || exceptions[0] == null)
         {
             return false;
         }
