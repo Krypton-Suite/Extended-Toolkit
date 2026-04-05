@@ -5,6 +5,10 @@
 	-->
 	
 	<PropertyGroup>
+		<!-- NuGet NU1012: lib/ TFMs with -windows must include platform version (e.g. net8.0-windows7.0). -->
+		<_PackageLibTfm>$(TargetFramework)</_PackageLibTfm>
+		<_PackageLibTfm Condition="$([System.String]::Copy('$(TargetFramework)').EndsWith('-windows'))">$(TargetFramework)$(TargetPlatformVersion)</_PackageLibTfm>
+		
 		<!-- Include all referenced assemblies in NuGet packages -->
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		
@@ -27,6 +31,24 @@
 		<WarningsAsErrors />
 		<WarningsNotAsErrors>NU1012;NU5128</WarningsNotAsErrors>
 	</PropertyGroup>
+
+	<!--
+		NU1012 (pack): paths must use a Windows platform version, e.g. lib/net8.0-windows7.0/ not lib/net8.0-windows/.
+		We keep TargetFramework as net8.0-windows for restore/compatibility but rewrite pack inputs immediately before GenerateNuspec.
+	-->
+	<Target Name="NormalizeWindowsTfmPackageLibPaths" BeforeTargets="GenerateNuspec" Condition="'$(IsPackable)' == 'true'">
+		<ItemGroup>
+			<_PackageFiles>
+				<PackagePath>$([System.String]::Copy('%(PackagePath)').Replace('lib/net8.0-windows/', 'lib/net8.0-windows7.0/').Replace('lib/net9.0-windows/', 'lib/net9.0-windows7.0/').Replace('lib/net10.0-windows/', 'lib/net10.0-windows7.0/').Replace('lib/net11.0-windows/', 'lib/net11.0-windows7.0/').Replace('lib/net6.0-windows/', 'lib/net6.0-windows7.0/').Replace('lib/net7.0-windows/', 'lib/net7.0-windows7.0/').Replace('build/net8.0-windows/', 'build/net8.0-windows7.0/').Replace('build/net9.0-windows/', 'build/net9.0-windows7.0/').Replace('build/net10.0-windows/', 'build/net10.0-windows7.0/').Replace('build/net11.0-windows/', 'build/net11.0-windows7.0/').Replace('build/net6.0-windows/', 'build/net6.0-windows7.0/').Replace('build/net7.0-windows/', 'build/net7.0-windows7.0/'))</PackagePath>
+			</_PackageFiles>
+			<_BuildOutputInPackage>
+				<TargetFramework Condition="$([System.String]::Copy('%(TargetFramework)').EndsWith('-windows'))">%(TargetFramework)7.0</TargetFramework>
+			</_BuildOutputInPackage>
+			<_TargetPathsToSymbols>
+				<TargetFramework Condition="$([System.String]::Copy('%(TargetFramework)').EndsWith('-windows'))">%(TargetFramework)7.0</TargetFramework>
+			</_TargetPathsToSymbols>
+		</ItemGroup>
+	</Target>
 
 	<!-- 
 		Smart dependency inclusion for all Extended Toolkit projects.
@@ -109,7 +131,7 @@
 			<!-- Include only non-framework assemblies in the lib folder -->
 			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies);@(_NuGetReferences);@(_ProjectReferenceOutputs)" />
 			<_AssemblyReferences Include="@(_NonFrameworkAssemblies)" Condition="'%(Extension)' == '.dll' Or '%(Extension)' == '.exe'" />
-			<TfmSpecificPackageFile Include="@(_AssemblyReferences)" PackagePath="lib/$(TargetFramework)/" />
+			<TfmSpecificPackageFile Include="@(_AssemblyReferences)" PackagePath="lib/$(_PackageLibTfm)/" />
 		</ItemGroup>
 		
 		<Message Text="Including in package: %(_NonFrameworkAssemblies.Identity)" Importance="low" />
