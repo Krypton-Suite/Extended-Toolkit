@@ -71,13 +71,18 @@ namespace Examples
             this.kryptonBorderedLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel();
             this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
             this.kryptonPasswordTextBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonPasswordTextBox();
+            this.kryptonDropZone1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonDropZone();
+            this.kryptonLabelDropFilesResult = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDropZone1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonLabelDropFilesResult);
+            this.kryptonPanel1.Controls.Add(this.kryptonDropZone1);
             this.kryptonPanel1.Controls.Add(this.kryptonPasswordTextBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonValidationBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonStarRatingControl1);
@@ -236,6 +241,26 @@ namespace Examples
             this.kryptonPasswordTextBox1.Size = new System.Drawing.Size(264, 23);
             this.kryptonPasswordTextBox1.TabIndex = 10;
             // 
+            // kryptonDropZone1
+            // 
+            this.kryptonDropZone1.Location = new System.Drawing.Point(881, 13);
+            this.kryptonDropZone1.Name = "kryptonDropZone1";
+            this.kryptonDropZone1.OpenFileDialogOnClick = true;
+            this.kryptonDropZone1.PromptText = "Drop files here (or click to browse)";
+            this.kryptonDropZone1.QuotaMaximum = 5;
+            this.kryptonDropZone1.ShowQuotaProgress = true;
+            this.kryptonDropZone1.Size = new System.Drawing.Size(232, 120);
+            this.kryptonDropZone1.TabIndex = 11;
+            this.kryptonDropZone1.FilesDropped += new System.EventHandler<Krypton.Toolkit.Suite.Extended.Controls.DropZoneFilesDroppedEventArgs>(this.kryptonDropZone1_FilesDropped);
+            // 
+            // kryptonLabelDropFilesResult
+            // 
+            this.kryptonLabelDropFilesResult.Location = new System.Drawing.Point(881, 139);
+            this.kryptonLabelDropFilesResult.Name = "kryptonLabelDropFilesResult";
+            this.kryptonLabelDropFilesResult.Size = new System.Drawing.Size(232, 140);
+            this.kryptonLabelDropFilesResult.TabIndex = 12;
+            this.kryptonLabelDropFilesResult.Values.Text = "Dropped paths appear here.";
+            // 
             // ExtendedControlExamples
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +269,7 @@ namespace Examples
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "ExtendedControlExamples";
             this.Text = "ExtendedControlExamples";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDropZone1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -266,5 +292,7 @@ namespace Examples
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl kryptonStarRatingControl1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonValidationBox kryptonValidationBox1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonPasswordTextBox kryptonPasswordTextBox1;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonDropZone kryptonDropZone1;
+        private KryptonLabel kryptonLabelDropFilesResult;
     }
 }

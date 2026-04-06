@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -25,31 +25,16 @@
  */
 #endregion
 
-global using System;
-global using System.Collections;
-global using System.Collections.Generic;
-global using System.ComponentModel;
-global using System.Data;
-global using System.Diagnostics;
-global using System.Diagnostics.CodeAnalysis;
-global using System.Drawing;
-global using System.Drawing.Drawing2D;
-global using System.Drawing.Printing;
-global using System.Drawing.Text;
-global using System.Globalization;
-global using System.IO;
-global using System.Reflection;
-global using System.Runtime.InteropServices;
-global using System.Security;
-global using System.Security.Permissions;
-global using System.Text;
-global using System.Timers;
-global using System.Windows.Forms;
-global using System.Windows.Forms.Design;
-global using System.Windows.Forms.Design.Behavior;
+namespace Krypton.Toolkit.Suite.Extended.Controls;
 
-global using Krypton.Toolkit;
-global using Krypton.Toolkit.Suite.Extended.Controls.Properties;
-global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
+/// <summary>Provides data for the <see cref="KryptonDropZone.FilesDropped"/> event.</summary>
+public class DropZoneFilesDroppedEventArgs : EventArgs
+{
+    /// <summary>Gets the file or directory paths accepted by the drop zone.</summary>
+    public IReadOnlyList<string> FilePaths { get; }
 
-global using Microsoft.WindowsAPICodePack.Dialogs;
+    /// <summary>Initializes a new instance of the <see cref="DropZoneFilesDroppedEventArgs"/> class.</summary>
+    /// <param name="filePaths">The paths.</param>
+    public DropZoneFilesDroppedEventArgs(IReadOnlyList<string> filePaths) =>
+        FilePaths = filePaths ?? Array.Empty<string>();
+}
