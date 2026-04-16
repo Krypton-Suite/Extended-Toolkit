@@ -469,6 +469,36 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// <returns>String value.</returns>
     public string GetLongText() => KryptonCommand?.ExtraText ?? Values.GetLongText();
 
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Size GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Gets the content image.
     /// </summary>
@@ -483,40 +513,6 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// <returns>Colour value.</returns>
     public Color GetImageTransparentColor(PaletteState state) =>
         KryptonCommand?.ImageTransparentColor ?? Values.GetImageTransparentColor(state);
-
-    /// <summary>
-    /// Gets the overlay image.
-    /// </summary>
-    /// <param name="state">The state for which the overlay image is needed.</param>
-    /// <returns>Image value.</returns>
-    public Image? GetOverlayImage(PaletteState state) => null;
-
-    public Color GetOverlayImageTransparentColor(PaletteState state)
-    {
-        throw new NotImplementedException();
-    }
-
-    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Gets the overlay image scale mode.
-    /// </summary>
-    /// <param name="state">The state for which the overlay image scale mode is needed.</param>
-    /// <returns>Scale mode value.</returns>
-    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state) => OverlayImageScaleMode.None;
-
-    public float GetOverlayImageScaleFactor(PaletteState state)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Size GetOverlayImageFixedSize(PaletteState state)
-    {
-        throw new NotImplementedException();
-    }
 
     #endregion
 

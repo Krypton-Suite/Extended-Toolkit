@@ -68,17 +68,9 @@ public class RatingCell : DataGridViewImageCell
     /// <param name="formattedValueTypeConverter"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
-    {
-        if (value == null)
-        {
-            return null; //For example, it is also the case for group row...
-        }
-        else
-        {
-            return starImages[(int)value];
-        }
-    }
+    protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context) =>
+        value == null ? null : //For example, it is also the case for group row...
+            _starImages[(int)value];
 
     /// <summary>
     /// Overrides DefaultNewRowValue
@@ -110,7 +102,7 @@ public class RatingCell : DataGridViewImageCell
 
             if (starNumber != -1)
             {
-                cellImage = starHotImages[starNumber];
+                cellImage = _starHotImages[starNumber];
             }
         }
         // suppress painting of selection 
@@ -160,9 +152,9 @@ public class RatingCell : DataGridViewImageCell
 
     #region Private Implementation
 
-    static Image[] starImages;
-    static Image[] starHotImages;
-    const int Imagewidth = 58;
+    private static readonly Image[] _starImages;
+    private static readonly Image[] _starHotImages;
+    private const int Imagewidth = 58;
 
     private int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
     {
@@ -176,7 +168,7 @@ public class RatingCell : DataGridViewImageCell
             }
             else
             {
-                int oo = (int)Math.Round((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth * 10f, MidpointRounding.AwayFromZero);
+                int oo = (int)Math.Round((mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth * 10f, MidpointRounding.AwayFromZero);
                 if (oo is > 10 or < 0)
                 {
                     System.Diagnostics.Debugger.Break();
@@ -196,20 +188,20 @@ public class RatingCell : DataGridViewImageCell
 
     static RatingCell()
     {
-        starImages = new Image[11];
-        starHotImages = new Image[11];
+        _starImages = new Image[11];
+        _starHotImages = new Image[11];
         var resources = new ComponentResourceManager(typeof(KryptonDataGridViewRatingColumn));
 
         // load normal stars 
         for (int i = 0; i <= 10; i++)
         {
-            starImages[i] = (Image?)resources.GetObject($"star{i}") ?? throw new InvalidOperationException($"Resource 'star{i}' not found.");
+            _starImages[i] = (Image?)resources.GetObject($"star{i}") ?? throw new InvalidOperationException($"Resource 'star{i}' not found.");
         }
 
         // load hot normal stars 
         for (int i = 0; i <= 10; i++)
         {
-            starHotImages[i] = (Image?)resources.GetObject($"starhot{i}") ?? throw new InvalidOperationException($"Resource 'starhot{i}' not found.");
+            _starHotImages[i] = (Image?)resources.GetObject($"starhot{i}") ?? throw new InvalidOperationException($"Resource 'starhot{i}' not found.");
         }
     }
     #endregion

@@ -82,6 +82,7 @@ namespace Examples
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
+            this.kbtnGanttChartExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnRadialMenu = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -89,6 +90,7 @@ namespace Examples
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnGanttChartExample);
             this.kryptonPanel1.Controls.Add(this.kbtnRadialMenu);
             this.kryptonPanel1.Controls.Add(this.kbtnControls);
             this.kryptonPanel1.Controls.Add(this.kbtnCheckBoxComboBoxExample);
@@ -358,6 +360,16 @@ namespace Examples
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
+            // kbtnGanttChartExample
+            // 
+            this.kbtnGanttChartExample.Location = new System.Drawing.Point(127, 182);
+            this.kbtnGanttChartExample.Name = "kbtnGanttChartExample";
+            this.kbtnGanttChartExample.Size = new System.Drawing.Size(168, 22);
+            this.kbtnGanttChartExample.TabIndex = 26;
+            this.kbtnGanttChartExample.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            this.kbtnGanttChartExample.Values.Text = "Gantt chart";
+            this.kbtnGanttChartExample.Click += new System.EventHandler(this.kbtnGanttChartExample_Click);
+            // 
             // kbtnRadialMenu
             // 
             this.kbtnRadialMenu.Location = new System.Drawing.Point(10, 182);
@@ -411,5 +423,6 @@ namespace Examples
         private KryptonButton kbtnCheckBoxComboBoxExample;
         private KryptonButton kbtnControls;
         private KryptonButton kbtnRadialMenu;
+        private KryptonButton kbtnGanttChartExample;
     }
 }

@@ -280,8 +280,8 @@ Configuration: Debug";
                 @"This is a standard message box without a footer.",
                 @"Standard Message",
                 ExtendedMessageBoxButtons.OK,
-                ExtendedKryptonMessageBoxIcon.Information
-            );
+                ExtendedKryptonMessageBoxIcon.Information,
+                helpFilePath: @"");
         }
 
         #endregion

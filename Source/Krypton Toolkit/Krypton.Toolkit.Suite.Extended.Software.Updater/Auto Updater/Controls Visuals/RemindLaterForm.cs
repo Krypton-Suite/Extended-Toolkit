@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿using Krypton.Toolkit;
+
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class RemindLaterForm : KryptonForm
     {
@@ -31,7 +33,7 @@
 
             krbYes.Text = AutoUpdaterLanguageManager.LaterWindowStrings.YesText;
 
-            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+            kbtnOk.Text = KryptonGlobalToolkitStrings.GeneralToolkitStrings.OK;
 
             kcmbRemindLater.Items.Add(AutoUpdaterLanguageManager.TimingStrings.ThirtyMinutes);
 

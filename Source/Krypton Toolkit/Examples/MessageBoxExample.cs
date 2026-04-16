@@ -81,10 +81,6 @@ namespace Examples
 
         private KryptonMessageBoxButtons _button = KryptonMessageBoxButtons.OK;
 
-        private MessageBoxOptions _options = 0;
-
-        private ContentAlignment _messageTextAlignment = ContentAlignment.MiddleLeft;
-
         private Image _customImage;
 
         #endregion
@@ -207,9 +203,9 @@ namespace Examples
 
         private void kbtnShow_Click(object sender, EventArgs e)
         {
-            //KryptonMessageBoxExtended.Show(this, _message, _caption, _button, _icon, _defaultButton, _options);
+            //KryptonMessageBoxExtended.Show(this, _message, _caption, _button, _icon, _defaultButton, 0);
 
-            //DialogResult result = KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, _options);
+            //DialogResult result = KryptonMessageBoxExtended.Show(_message, _caption, _button, _icon, _defaultButton, 0);
 
             //if (result == DialogResult.OK)
             //{

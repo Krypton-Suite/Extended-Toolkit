@@ -26,7 +26,7 @@
  */
 #endregion
 
-using KryptonExceptionDialog = Krypton.Utilities.KryptonExceptionDialog;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Common;
 
@@ -83,7 +83,7 @@ public static class UACSecurity
         }
         catch (Win32Exception ex)
         {
-            KryptonExceptionDialog.Show(ex, null, null);
+            KryptonExceptionHandler.CaptureException(ex);
             return; //If cancelled, do nothing
         }
 

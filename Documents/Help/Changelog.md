@@ -6,6 +6,7 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Implemented [#494](https://github.com/Krypton-Suite/Extended-Toolkit/issues/494), Gantt Chart Control
 * Implemented [#544](https://github.com/Krypton-Suite/Extended-Toolkit/issues/544), Implement a `DropZone` component
 * Resolved [#351](https://github.com/Krypton-Suite/Extended-Toolkit/issues/351), Closing a floating toolbar window causes the toolbar to disappear - Closing the floating toolbar or menustrip window (e.g. via the close button) now returns the control to its original host instead of making it disappear. Updated `FloatableToolStrip` and `FloatableMenuStrip` to re-parent the control back to the host in the FormClosing handler, consistent with double-clicking the title bar.
 * Implemented [#57](https://github.com/Krypton-Suite/Extended-Toolkit/issues/57), `Alert.ShowMessage` optional header/title

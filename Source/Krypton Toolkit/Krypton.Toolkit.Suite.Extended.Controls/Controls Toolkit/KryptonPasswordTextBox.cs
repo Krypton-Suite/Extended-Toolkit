@@ -241,7 +241,7 @@ public class KryptonPasswordTextBox : KryptonTextBox
             {
                 System.Diagnostics.Debug.WriteLine($"Ignoring {GetType().FullName}#PasswordCharDelay property setting {value} at:");
 #if DEBUG
-                    Utilities.DebugWithIndentation(() => Utilities.DebugStackTrace());
+                    System.Diagnostics.Debug.WriteLine(Environment.StackTrace);
 #endif
                 return;
             }

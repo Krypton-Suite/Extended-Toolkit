@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
+            this.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
             this.ClientSize = new System.Drawing.Size(413, 111);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

@@ -41,6 +41,7 @@
     <Project Path="Krypton.Toolkit.Suite.Extended.File.Copier/Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Floating.Toolbars/Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Forms/Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.GanttChart/Krypton.Toolkit.Suite.Extended.GanttChart.csproj" Id="5418be02-ad21-4285-93c0-85f77ecd0351" />
     <Project Path="Krypton.Toolkit.Suite.Extended.InputBox/Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.IO/Krypton.Toolkit.Suite.Extended.IO 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Memory.Box/Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj" />
