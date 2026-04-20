@@ -867,7 +867,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
 
                     // Note Can we remove this?
                     //#if DEBUG
-                    //                        internalColumns.DebugOutput();
+                    //                        _internalColumns.DebugOutput();
                     //#endif
 
                     //Refresh the groupBox if the column is grouped
@@ -1640,7 +1640,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             }
         }
 #if DEBUG
-            internalColumns.DebugOutput();
+            _internalColumns.DebugOutput();
 #endif
     }
 
@@ -1661,7 +1661,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         col.SortDirection = sort;
         col.DataGridViewColumn.HeaderCell.SortGlyphDirection = sort;
 #if DEBUG
-            internalColumns.DebugOutput();
+            _internalColumns.DebugOutput();
 #endif
     }
 
@@ -1679,7 +1679,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             col.DataGridViewColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
         }
 #if DEBUG
-            internalColumns.DebugOutput();
+            _internalColumns.DebugOutput();
 #endif
     }
 
@@ -2263,7 +2263,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             }
         }
 #if DEBUG
-            internalColumns.DebugOutput();
+            _internalColumns.DebugOutput();
 #endif
     }
 

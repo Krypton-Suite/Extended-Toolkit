@@ -31,3 +31,4 @@
 
 global using Krypton.Toolkit;
 global using Krypton.Toolkit.Suite.Extended.Forms;
+global using Krypton.Toolkit.Suite.Extended.GanttChart;

@@ -109,6 +109,7 @@
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.File.Explorer\Krypton.Toolkit.Suite.Extended.File.Explorer 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.GanttChart\Krypton.Toolkit.Suite.Extended.GanttChart.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />

@@ -26,7 +26,7 @@
  */
 #endregion
 
-using KryptonExceptionDialog = Krypton.Utilities.KryptonExceptionDialog;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings;
 
@@ -357,7 +357,7 @@ public class CustomColourSettingsManager
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
 
@@ -400,7 +400,7 @@ public class CustomColourSettingsManager
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
     #endregion

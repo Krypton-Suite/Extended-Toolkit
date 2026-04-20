@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿using Krypton.Toolkit;
+
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class SharpUpdateAcceptForm : KryptonForm
     {
@@ -42,9 +44,9 @@
                 string.Format(updateInfo.Tag == JobType.UPDATE ? $"{SharpUpdateLanguageManager.GeneralStrings.Update}: {Path.GetFileName(_applicationInfo.ApplicationPath)}\n{SharpUpdateLanguageManager.GeneralStrings.NewVersion}: {_updateInfo.Version}" : $"{SharpUpdateLanguageManager.GeneralStrings.New}: {Path.GetFileName(_applicationInfo.ApplicationPath)}\n{SharpUpdateLanguageManager.GeneralStrings.Version}: {_updateInfo.Version}") :
                 $"{SharpUpdateLanguageManager.AcceptFormStrings.Remove}: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
 
-            kbtnNo.Text = KryptonLanguageManager.GeneralToolkitStrings.No;
+            kbtnNo.Text = KryptonGlobalToolkitStrings.GeneralToolkitStrings.No;
 
-            kbtnYes.Text = KryptonLanguageManager.GeneralToolkitStrings.Yes;
+            kbtnYes.Text = KryptonGlobalToolkitStrings.GeneralToolkitStrings.Yes;
         }
 
         private void kbtnYes_Click(object sender, EventArgs e)

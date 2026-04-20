@@ -772,13 +772,23 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         Color.Empty;
 
     /// <summary>
-    /// Gets the overlay image used for showing on the title bar.
+    /// Gets the short text used as the main caption title.
     /// </summary>
-    /// <param name="state">Form state.</param>
-    /// <returns>Overlay Image.</returns>
-    public Image? GetOverlayImage(PaletteState state) =>
-        // We don't use overlay images on the form title bar
-        null;
+    /// <returns>Title string.</returns>
+    public string GetShortText() =>
+        // Return the existing form text property.
+        Text;
+
+    /// <summary>
+    /// Gets the long text used as the secondary caption title.
+    /// </summary>
+    /// <returns>Title string.</returns>
+    public string GetLongText() => _textExtra;
+
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
 
     public Color GetOverlayImageTransparentColor(PaletteState state)
     {
@@ -800,33 +810,10 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         throw new NotImplementedException();
     }
 
-    Size IContentValues.GetOverlayImageFixedSize(PaletteState state)
+    public Size GetOverlayImageFixedSize(PaletteState state)
     {
         throw new NotImplementedException();
     }
-
-    /// <summary>
-    /// Gets the fixed size for the overlay image.
-    /// </summary>
-    /// <param name="state">Form state.</param>
-    /// <returns>Fixed size for overlay image.</returns>
-    public Size? GetOverlayImageFixedSize(PaletteState state) =>
-        // We don't use overlay images on the form title bar
-        null;
-
-    /// <summary>
-    /// Gets the short text used as the main caption title.
-    /// </summary>
-    /// <returns>Title string.</returns>
-    public string GetShortText() =>
-        // Return the existing form text property.
-        Text;
-
-    /// <summary>
-    /// Gets the long text used as the secondary caption title.
-    /// </summary>
-    /// <returns>Title string.</returns>
-    public string GetLongText() => _textExtra;
 
     #endregion
 
