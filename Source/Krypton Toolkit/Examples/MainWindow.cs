@@ -195,5 +195,12 @@ namespace Examples
 
             radialMenu.Show();
         }
+
+        private void kbtnGanttChartExample_Click(object sender, EventArgs e)
+        {
+            var ganttChartExample = new GanttChartExample();
+
+            ganttChartExample.Show();
+        }
     }
 }

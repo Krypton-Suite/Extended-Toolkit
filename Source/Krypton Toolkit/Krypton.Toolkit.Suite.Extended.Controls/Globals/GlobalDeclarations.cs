@@ -48,6 +48,7 @@ global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
 global using System.Windows.Forms.Design.Behavior;
 
+global using Krypton.Toolkit;
 global using Krypton.Toolkit.Suite.Extended.Controls.Properties;
 global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 

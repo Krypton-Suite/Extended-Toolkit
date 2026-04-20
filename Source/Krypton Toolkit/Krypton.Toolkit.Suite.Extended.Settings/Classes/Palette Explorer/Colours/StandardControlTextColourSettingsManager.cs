@@ -26,7 +26,7 @@
  */
 #endregion
 
-using KryptonExceptionDialog = Krypton.Utilities.KryptonExceptionDialog;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings;
 
@@ -287,7 +287,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
 
@@ -331,7 +331,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
     #endregion

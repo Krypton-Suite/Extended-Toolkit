@@ -201,16 +201,6 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon ZipExtractor {
-            get {
-                object obj = ResourceManager.GetObject("ZipExtractor", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] ZipExtractor1 {

@@ -203,4 +203,19 @@
 		<Optimize>True</Optimize>
 	</PropertyGroup>
 
+	<!-- Resources.resx links ..\Resources\ZipExtractor.exe; ensure it exists before CoreResGen -->
+	<Target Name="PrepareZipExtractorResources" BeforeTargets="CoreResGen">
+		<PropertyGroup>
+			<_ZipExtractorTfm Condition="$(TargetFramework.StartsWith('net4'))">net481</_ZipExtractorTfm>
+			<_ZipExtractorTfm Condition="!$(TargetFramework.StartsWith('net4'))">net8.0-windows</_ZipExtractorTfm>
+			<_ZipExtractorCsproj>$(MSBuildThisFileDirectory)..\ZipExtractor\ZipExtractor.csproj</_ZipExtractorCsproj>
+			<_ZipExtractorExe>$(MSBuildThisFileDirectory)..\..\..\Bin\$(Configuration)\ZipExtractor\$(_ZipExtractorTfm)\ZipExtractor.exe</_ZipExtractorExe>
+			<_ResourcesDir>$(MSBuildThisFileDirectory)Resources</_ResourcesDir>
+		</PropertyGroup>
+		<MSBuild Projects="$(_ZipExtractorCsproj)" Targets="Build" Properties="Configuration=$(Configuration);TargetFramework=$(_ZipExtractorTfm)" />
+		<MakeDir Directories="$(_ResourcesDir)" />
+		<Copy SourceFiles="$(_ZipExtractorExe)" DestinationFiles="$(_ResourcesDir)\ZipExtractor.exe" SkipUnchangedFiles="true" Condition="Exists('$(_ZipExtractorExe)')" />
+		<Error Text="ZipExtractor payload missing. Expected: $(_ZipExtractorExe)" Condition="!Exists('$(_ZipExtractorExe)')" />
+	</Target>
+
 </Project>

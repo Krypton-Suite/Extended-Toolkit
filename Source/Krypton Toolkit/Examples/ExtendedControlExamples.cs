@@ -44,5 +44,12 @@ namespace Examples
         {
             kryptonProgressBarExtended1.Value = kkcv2Test.Value;
         }
+
+        private void kryptonDropZone1_FilesDropped(object sender, Krypton.Toolkit.Suite.Extended.Controls.DropZoneFilesDroppedEventArgs e)
+        {
+            kryptonLabelDropFilesResult.Values.Text = e.FilePaths.Count == 0
+                ? "Dropped paths appear here."
+                : string.Join(Environment.NewLine, e.FilePaths);
+        }
     }
 }

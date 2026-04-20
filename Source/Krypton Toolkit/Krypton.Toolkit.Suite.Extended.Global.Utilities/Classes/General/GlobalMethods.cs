@@ -26,7 +26,7 @@
  */
 #endregion
 
-using KryptonExceptionDialog = Krypton.Utilities.KryptonExceptionDialog;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
@@ -249,7 +249,7 @@ public class GlobalMethods
         }
         catch (Exception e)
         {
-            KryptonExceptionDialog.Show(e, null, null);
+            KryptonExceptionHandler.CaptureException(e);
 
             return string.Empty;
         }
@@ -451,7 +451,7 @@ public static class GlobalMethodsStatic
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
 
             SetIsTargetPlatformSupported(false);
         }
@@ -531,7 +531,7 @@ public static class GlobalMethodsStatic
             }
             catch (Win32Exception wexc)
             {
-                KryptonExceptionDialog.Show(wexc, null, null);
+                KryptonExceptionHandler.CaptureException(wexc);
 
                 DebugUtilities.NotImplemented(wexc.ToString());
             }
@@ -571,7 +571,7 @@ public static class GlobalMethodsStatic
         }
         catch (Exception e)
         {
-            KryptonExceptionDialog.Show(e, null, null);
+            KryptonExceptionHandler.CaptureException(e);
 
             return string.Empty;
         }

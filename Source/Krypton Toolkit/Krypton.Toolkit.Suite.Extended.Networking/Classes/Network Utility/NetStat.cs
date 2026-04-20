@@ -25,7 +25,7 @@
  */
 #endregion
 
-using KryptonExceptionDialog = Krypton.Utilities.KryptonExceptionDialog;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Networking;
 
@@ -121,7 +121,7 @@ internal class NetStat
                 {
                     host = info.RemoteEndPoint.Address.ToString();
 
-                    KryptonExceptionDialog.Show(ex, null, null);
+                    KryptonExceptionHandler.CaptureException(ex);
                 }
             }
             else

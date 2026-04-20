@@ -243,12 +243,12 @@ public class KryptonDeveloperDebugConsole : KryptonForm
                 break;
             case FileDialogType.WindowsAPICodePack:
 
-                CommonSaveFileDialog csfd = new();
-
-                csfd.Filters.Add(new("Exception Captures", "txt"));
-
-                csfd.DefaultFileName = $"Exception Capture - {DateTime.Now}";
-
+                CommonSaveFileDialog csfd = new CommonSaveFileDialog()
+                {
+                    Filters = { new CommonFileDialogFilter("Exception Captures", "txt") },
+                    DefaultFileName = $"Exception Capture - {DateTime.Now}"
+                };
+                
                 if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     if (csfd.FileName != null)
