@@ -437,6 +437,22 @@ public partial class PlatformInvoke
     }
 #pragma warning restore CA1069 // Enums values should not be duplicated
 
+    /// <summary>
+    /// Win32 SCROLLINFO. Declared here so P/Invoke signatures do not reference <c>Krypton.Toolkit.WIN32ScrollBars</c>,
+    /// which is compiled into both <c>Krypton.Toolkit</c> and <c>Krypton.Navigator.Utilities</c> (linked source), causing CS0433.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Win32ScrollInfo
+    {
+        public int cbSize;
+        public int fMask;
+        public int nMin;
+        public int nMax;
+        public int nPage;
+        public int nPos;
+        public int nTrackPos;
+    }
+
     public enum SBM_
     {
         ENABLE_ARROWS = 0x00E4, /*not in win3.1 */
@@ -2963,11 +2979,11 @@ No 	                    No 	                    Show text only
 
     [DllImport(Win32Libraries.User32, SetLastError = true)]
     [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-    public static extern bool GetScrollInfo(IntPtr hWnd, SB_ nBar, ref WIN32ScrollBars.ScrollInfo lpScrollInfo);
+    public static extern bool GetScrollInfo(IntPtr hWnd, SB_ nBar, ref Win32ScrollInfo lpScrollInfo);
 
     [DllImport(Win32Libraries.User32, SetLastError = true)]
     [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-    public static extern int SetScrollInfo(IntPtr hwnd, SB_ nBar, ref WIN32ScrollBars.ScrollInfo lpcScrollInfo, bool redraw);
+    public static extern int SetScrollInfo(IntPtr hwnd, SB_ nBar, ref Win32ScrollInfo lpcScrollInfo, bool redraw);
 
     [DllImport(Win32Libraries.User32)]
     [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
