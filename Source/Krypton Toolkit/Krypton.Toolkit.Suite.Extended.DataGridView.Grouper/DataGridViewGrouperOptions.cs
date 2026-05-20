@@ -1,9 +1,8 @@
 #region MIT License
-
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2026 Krypton Suite
+ * Copyright (c) 2026 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +21,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
-
 #endregion
 
-// Global using directives
+using System.Drawing;
 
-global using System;
-global using System.Drawing;
-global using System.Media;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Grid.Grouper;
 
-global using Krypton.Toolkit.Suite.Extended.ToastNotification.Properties;
-global using Krypton.Utilities;
+/// <summary>
+/// Visual and behavioural options for grouped grid rows.
+/// </summary>
+public sealed class DataGridViewGrouperOptions
+{
+    /// <summary>When grouping is applied, new group nodes expand or collapse initially.</summary>
+    public bool StartCollapsed { get; set; }
+
+    /// <summary>Include counts in grouped header captions such as Region: North (4).</summary>
+    public bool IncludeChildCountInHeader { get; set; } = true;
+
+    /// <summary>If true and the source is omitted for a caption cell, repeats the grouped value in bound columns.</summary>
+    public bool PromotePrimaryGroupValueIntoFirstColumn { get; set; } = true;
+
+    /// <summary>Pixel height applied to synthesized group rows (data rows leave grid default).</summary>
+    public int GroupRowHeight { get; set; } = 28;
+
+    /// <summary>Font delta for group captions (applied as style adjustment over inherited font).</summary>
+    public FontStyle GroupHeaderFontStyle { get; set; } = FontStyle.Bold;
+}

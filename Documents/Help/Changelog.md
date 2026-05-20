@@ -6,12 +6,13 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Implemented [#590](https://github.com/Krypton-Suite/Extended-Toolkit/issues/590), `DataGridView` Grouper panel
 * Implemented [#494](https://github.com/Krypton-Suite/Extended-Toolkit/issues/494), Gantt Chart Control
 * Implemented [#544](https://github.com/Krypton-Suite/Extended-Toolkit/issues/544), Implement a `DropZone` component
 * Resolved [#351](https://github.com/Krypton-Suite/Extended-Toolkit/issues/351), Closing a floating toolbar window causes the toolbar to disappear - Closing the floating toolbar or menustrip window (e.g. via the close button) now returns the control to its original host instead of making it disappear. Updated `FloatableToolStrip` and `FloatableMenuStrip` to re-parent the control back to the host in the FormClosing handler, consistent with double-clicking the title bar.
 * Implemented [#57](https://github.com/Krypton-Suite/Extended-Toolkit/issues/57), `Alert.ShowMessage` optional header/title
   - **New API** - `Alert.ShowMessage(string message, string? headerText = null)` shows a message with an optional header or title
-  - When `headerText` is provided, the alert displays the header in bold with the message below; when omitted, only the message is shown (same behaviour as existing typed methods)
+  - When `headerText` is provided, the alert displays the header in bold with the message below; when omitted, only the message is shown (same behavior as existing typed methods)
 * Resolved [#56](https://github.com/Krypton-Suite/Extended-Toolkit/issues/56), Alert.ShowMessage should be within the bounds of the parent application
   - **Positioning Fix** - Alerts now appear within the parent application bounds instead of the primary screen bottom-right (fixes unnoticed alerts on 4K monitors or RDP sessions when the app is in a small window)
   - **Optional Owner Parameter** - All `Alert` methods now accept an optional `IWin32Window? owner` parameter for explicit parent binding

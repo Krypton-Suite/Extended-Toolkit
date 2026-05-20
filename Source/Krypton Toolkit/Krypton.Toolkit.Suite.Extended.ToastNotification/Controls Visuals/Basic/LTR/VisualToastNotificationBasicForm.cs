@@ -132,47 +132,47 @@ internal partial class VisualToastNotificationBasicForm : KryptonForm
     {
         switch (_toastNotificationData.NotificationIcon)
         {
-            case KryptonToastNotificationIcon.None:
+            case KryptonToastIcon.None:
                 SetIcon(null);
                 break;
-            case KryptonToastNotificationIcon.Hand:
+            case KryptonToastIcon.Hand:
                 SetIcon(Resources.Toast_Notification_Hand_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.SystemHand:
+            case KryptonToastIcon.SystemHand:
 #if NET8_0_OR_GREATER
                 //SetIcon(GraphicsExtensions.ScaleImage());
 #else
                     SetIcon(GraphicsExtensions.ScaleImage(SystemIcons.Hand.ToBitmap(), 128, 128));
 #endif
                 break;
-            case KryptonToastNotificationIcon.Question:
+            case KryptonToastIcon.Question:
                 SetIcon(Resources.Toast_Notification_Question_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.SystemQuestion:
+            case KryptonToastIcon.SystemQuestion:
                 break;
-            case KryptonToastNotificationIcon.Exclamation:
+            case KryptonToastIcon.Exclamation:
                 SetIcon(Resources.Toast_Notification_Warning_128_x_115);
                 break;
-            case KryptonToastNotificationIcon.SystemExclamation:
+            case KryptonToastIcon.SystemExclamation:
                 break;
-            case KryptonToastNotificationIcon.Asterisk:
+            case KryptonToastIcon.Asterisk:
                 SetIcon(Resources.Toast_Notification_Asterisk_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.SystemAsterisk:
+            case KryptonToastIcon.SystemAsterisk:
                 break;
-            case KryptonToastNotificationIcon.Stop:
+            case KryptonToastIcon.Stop:
                 SetIcon(Resources.Toast_Notification_Stop_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.Error:
+            case KryptonToastIcon.Error:
                 SetIcon(Resources.Toast_Notification_Critical_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.Warning:
+            case KryptonToastIcon.Warning:
                 SetIcon(Resources.Toast_Notification_Warning_128_x_115);
                 break;
-            case KryptonToastNotificationIcon.Information:
+            case KryptonToastIcon.Information:
                 SetIcon(Resources.Toast_Notification_Information_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.Shield:
+            case KryptonToastIcon.Shield:
                 if (OSUtilities.IsAtLeastWindowsEleven)
                 {
                     SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_11_128_x_128);
@@ -186,16 +186,16 @@ internal partial class VisualToastNotificationBasicForm : KryptonForm
                     SetIcon(Resources.Toast_Notification_UAC_Shield_Windows_7_and_8_128_x_128);
                 }
                 break;
-            case KryptonToastNotificationIcon.WindowsLogo:
+            case KryptonToastIcon.WindowsLogo:
                 break;
-            case KryptonToastNotificationIcon.Application:
+            case KryptonToastIcon.Application:
                 break;
-            case KryptonToastNotificationIcon.SystemApplication:
+            case KryptonToastIcon.SystemApplication:
                 break;
-            case KryptonToastNotificationIcon.Ok:
+            case KryptonToastIcon.Ok:
                 SetIcon(Resources.Toast_Notification_Ok_128_x_128);
                 break;
-            case KryptonToastNotificationIcon.Custom:
+            case KryptonToastIcon.Custom:
                 SetIcon(_toastNotificationData.CustomImage != null
                     ? new Bitmap(_toastNotificationData.CustomImage)
                     : null);
