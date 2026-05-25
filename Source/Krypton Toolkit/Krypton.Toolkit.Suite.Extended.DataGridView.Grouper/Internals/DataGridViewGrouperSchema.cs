@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2026 Krypton Suite
+ * Copyright (c) 2026 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,22 +21,15 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.Diagnostics;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.Media;
-global using System.Reflection;
-global using System.Runtime.InteropServices;
-global using System.Text;
-global using System.Threading;
-global using System.Windows.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Grid.Grouper;
 
-global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
-global using Krypton.Toolkit.Suite.Extended.Shared;
-global using Krypton.Utilities;
+internal static class DataGridViewGrouperSchema
+{
+    public const string IsGroup = "__KG_IsGroup";
+    public const string GroupLevel = "__KG_GroupLevel";
+    public const string GroupPath = "__KG_GroupPath";
+    public const string SummaryText = "__KG_SummaryText";
+}
