@@ -31,9 +31,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core;
 public class AssemblyVersion
 {
     #region Variables
-    private string _errorMessage;
-    private AssemblyInformation _assemblyInformation;
-    private List<AssemblyInformation> _referencesList;
+    private string _errorMessage = string.Empty;
+    private AssemblyInformation? _assemblyInformation;
+    private List<AssemblyInformation>? _referencesList;
     #endregion
 
     #region Properties
@@ -43,13 +43,13 @@ public class AssemblyVersion
         set => _errorMessage = value;
     }
 
-    public AssemblyInformation CurrentAssemblyInformation
+    public AssemblyInformation? CurrentAssemblyInformation
     {
         get => _assemblyInformation;
         set => _assemblyInformation = value;
     }
 
-    public List<AssemblyInformation> ReferenceAssembly
+    public List<AssemblyInformation>? ReferenceAssembly
     {
         get => _referencesList;
         set => _referencesList = value;
@@ -85,9 +85,9 @@ public class AssemblyVersion
                 {
                     information = new();
 
-                    information.Name = assemblyNameList[i].Name;
+                    information.Name = assemblyNameList[i].Name ?? string.Empty;
 
-                    information.Version = assemblyNameList[i].Version.ToString();
+                    information.Version = assemblyNameList[i].Version?.ToString() ?? string.Empty;
 
                     information.FullName = assemblyNameList[i].ToString();
 
@@ -112,7 +112,7 @@ public class AssemblyVersion
     /// <returns></returns>
     public bool GetVersion(string fileName)
     {
-        Assembly assembly = null;
+        Assembly? assembly = null;
 
         try
         {
@@ -129,9 +129,9 @@ public class AssemblyVersion
         {
             AssemblyInformation information = new();
 
-            information.Name = assembly.GetName().Name;
+            information.Name = assembly.GetName().Name ?? string.Empty;
 
-            information.Version = assembly.GetName().Version.ToString();
+            information.Version = assembly.GetName().Version?.ToString() ?? string.Empty;
 
             information.FullName = assembly.GetName().ToString();
         }
@@ -158,9 +158,9 @@ public class AssemblyVersion
         {
             AssemblyInformation information = new();
 
-            information.Name = assembly.GetName().Name;
+            information.Name = assembly.GetName().Name ?? string.Empty;
 
-            information.Version = assembly.GetName().Version.ToString();
+            information.Version = assembly.GetName().Version?.ToString() ?? string.Empty;
 
             information.FullName = assembly.GetName().ToString();
         }

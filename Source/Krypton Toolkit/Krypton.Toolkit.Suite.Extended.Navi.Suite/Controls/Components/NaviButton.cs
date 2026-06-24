@@ -35,9 +35,9 @@ public partial class NaviButton : NaviControl
 {
     #region Fields
 
-    private EventHandler activated;
-    private Image largeImage;
-    private Image smallImage;
+    private EventHandler? activated;
+    private Image? largeImage;
+    private Image? smallImage;
     private bool small;
     private bool collapsed;
     private bool active;
@@ -45,7 +45,7 @@ public partial class NaviButton : NaviControl
 
     protected ControlState state;
     protected InputState inputState;
-    protected NaviBand band;
+    protected NaviBand? band;
 
     #endregion
 
@@ -83,7 +83,7 @@ public partial class NaviButton : NaviControl
         Category("Appearance"),
         Description("The image displayed when the button is not displayed as a small button"),
     ]
-    public Image LargeImage
+    public Image? LargeImage
     {
         get => largeImage;
         set
@@ -101,7 +101,7 @@ public partial class NaviButton : NaviControl
         Localizable(true),
         Category("The image displayed when the button is displayed as a small button"),
     ]
-    public Image SmallImage
+    public Image? SmallImage
     {
         get => smallImage;
         set
@@ -131,7 +131,7 @@ public partial class NaviButton : NaviControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public NaviBand Band
+    public NaviBand? Band
     {
         get => band;
         internal set => band = value;
@@ -239,7 +239,7 @@ public partial class NaviButton : NaviControl
     /// <param name="e">Additional event info</param>
     protected virtual void OnActivated(EventArgs e)
     {
-        EventHandler handler = activated;
+        EventHandler? handler = activated;
         if (handler != null)
         {
             handler(this, e);
@@ -257,11 +257,11 @@ public partial class NaviButton : NaviControl
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        Renderer.DrawButtonBg(e.Graphics, ClientRectangle, state, inputState);
+        Renderer?.DrawButtonBg(e.Graphics, ClientRectangle, state, inputState);
 
         if (small)
         {
-            Image imageSmall = null;
+            Image? imageSmall = null;
             if (smallImage != null)
             {
                 imageSmall = smallImage;
@@ -280,14 +280,14 @@ public partial class NaviButton : NaviControl
             {
                 Point location = new Point((int)(Width / 2 - imageSmall.Width / 2),
                     (int)(Height / 2 - imageSmall.Height / 2));
-                Renderer.DrawImage(e.Graphics, location, imageSmall);
+                Renderer?.DrawImage(e.Graphics, location, imageSmall);
             }
         }
         else
         {
             Rectangle bounds = ClientRectangle;
 
-            Image imageLarge = null;
+            Image? imageLarge = null;
             if (largeImage != null)
             {
                 imageLarge = largeImage;
@@ -296,7 +296,7 @@ public partial class NaviButton : NaviControl
             {
                 imageLarge = band.LargeImage;
             }
-            else if (band is { LargeImageIndex: >= 0 }
+            else if (band is { LargeImageIndex: >= 0, LargeImages: not null }
                      && band.LargeImageIndex < band.LargeImages.Images.Count)
             {
                 imageLarge = band.LargeImages.Images[band.LargeImageIndex];
@@ -321,7 +321,7 @@ public partial class NaviButton : NaviControl
                     location = new Point(margin, (int)(Height / 2 - imageLarge.Height / 2));
                 }
 
-                Renderer.DrawImage(e.Graphics, location, imageLarge);
+                Renderer?.DrawImage(e.Graphics, location, imageLarge);
 
                 // Calculate bounds for text
                 if (RightToLeft == RightToLeft.No)
@@ -332,7 +332,7 @@ public partial class NaviButton : NaviControl
             }
             bounds.X += 10;
             bounds.Width -= 10;
-            if (!collapsed)
+            if (!collapsed && Renderer != null)
             {
                 Renderer.DrawText(e.Graphics, bounds, Font, Renderer.ColourTable.Text, Text,
                     RightToLeft == RightToLeft.Yes);

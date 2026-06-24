@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -25,6 +25,8 @@
  */
 #endregion
 
+#nullable disable
+
 namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
 
 [Serializable]
@@ -34,7 +36,7 @@ public class ToolBoxTab : ToolBoxItem
 
     private Rectangle _itemArea;                  // The rectangle where toolbox items are drawn
     private Delegate[] _delegates;                 // Event registration delegates
-    private ToolBoxItemCollection _toolItems = null; // Array of toolbox items.
+    private ToolBoxItemCollection _toolItems = null!; // Array of toolbox items.
 
     private int _hotItemIndex = -1;   // The item under mouse, set in mouse move event.
     private int _selItemIndex = -1;   // Selected Item's index
@@ -55,7 +57,7 @@ public class ToolBoxTab : ToolBoxItem
     private bool _onlyOneItemPerRow = false;
 
     [NonSerialized]
-    private Control _control = null;
+    private Control _control = null!;
 
     #endregion //Private Attributes
 
@@ -63,15 +65,15 @@ public class ToolBoxTab : ToolBoxItem
     //Palette State
     private KryptonManager _manager = new KryptonManager();
 
-    private PaletteBackInheritRedirect _paletteBack;
+    private PaletteBackInheritRedirect _paletteBack = null!;
 
-    private PaletteBorderInheritRedirect _paletteBorder;
+    private PaletteBorderInheritRedirect _paletteBorder = null!;
 
-    private PaletteContentInheritRedirect _paletteContent;
+    private PaletteContentInheritRedirect _paletteContent = null!;
 
-    private PaletteBase _palette;
+    private PaletteBase _palette = null!;
 
-    private PaletteRedirect _paletteRedirect;
+    private PaletteRedirect _paletteRedirect = null!;
     #endregion
 
     #region Properties
@@ -84,19 +86,19 @@ public class ToolBoxTab : ToolBoxItem
         {
             if (value != _viewMode)
             {
-                if (null != _parent && this == _parent.SelectedTab)
+                if (_parent is not null && this == _parent.SelectedTab)
                 {
                     InvalidateEx(true);
                 }
 
                 _viewMode = value;
 
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     UpdateItemRects(true, true, true, true);
                 }
 
-                if (null != _parent && this == _parent.SelectedTab)
+                if (_parent is not null && this == _parent.SelectedTab)
                 {
                     if (-1 != _selItemIndex)
                     {
@@ -106,7 +108,7 @@ public class ToolBoxTab : ToolBoxItem
                     UpdateScrollButtons();
                 }
 
-                if (null != _parent && this == _parent.SelectedTab)
+                if (_parent is not null && this == _parent.SelectedTab)
                 {
                     _parent.Invalidate(_parent.UpScroll.Rectangle);
                     _parent.Invalidate(_parent.DownScroll.Rectangle);
@@ -144,7 +146,7 @@ public class ToolBoxTab : ToolBoxItem
             {
                 _itemBgColour = value;
 
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     _parent.Invalidate(_itemArea);
                 }
@@ -162,7 +164,7 @@ public class ToolBoxTab : ToolBoxItem
             {
                 _itemNormColour = value;
 
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     _parent.Invalidate(_itemArea);
                 }
@@ -180,7 +182,7 @@ public class ToolBoxTab : ToolBoxItem
             {
                 _itemBorderColour = value;
 
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     _parent.Invalidate(_itemArea);
                 }
@@ -197,7 +199,7 @@ public class ToolBoxTab : ToolBoxItem
             if (value != _itemSelColour)
             {
                 _itemSelColour = value;
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     _parent.Invalidate(_itemArea);
                 }
@@ -214,7 +216,7 @@ public class ToolBoxTab : ToolBoxItem
             if (value != _itemHoverColour)
             {
                 _itemHoverColour = value;
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     _parent.Invalidate(_itemArea);
                 }
@@ -237,7 +239,7 @@ public class ToolBoxTab : ToolBoxItem
             {
                 item = null;
             }
-            return item;
+            return item!;
         }
     }
 
@@ -264,7 +266,7 @@ public class ToolBoxTab : ToolBoxItem
             {
             }
 
-            return item;
+            return item!;
         }
     }
 
@@ -274,7 +276,7 @@ public class ToolBoxTab : ToolBoxItem
         get
         {
             int count = 0;
-            if (null != _toolItems)
+            if (_toolItems is not null)
             {
                 count = _toolItems.Count;
             }
@@ -290,7 +292,7 @@ public class ToolBoxTab : ToolBoxItem
         {
             _itemArea = value;
 
-            if (null != _control)
+            if (_control is not null)
             {
                 UpdateControlRect(true);
             }
@@ -359,7 +361,7 @@ public class ToolBoxTab : ToolBoxItem
                 {
                     UnRegisterEvents(false);
                 }
-                if (null != _parent)
+                if (_parent is not null)
                 {
                     _parent.Invalidate(_rectangle);
                     _parent.Invalidate(_itemArea);
@@ -378,9 +380,9 @@ public class ToolBoxTab : ToolBoxItem
             {
                 _selected = value;
 
-                if (null != _parent && _parent.SelectedTab != this)
+                if (_parent is not null && _parent.SelectedTab != this)
                 {
-                    _parent.OnTabSelectionChanged(this, null);
+                    _parent.OnTabSelectionChanged(this, null!);
                 }
 
                 Invalidate();
@@ -395,7 +397,7 @@ public class ToolBoxTab : ToolBoxItem
         get => this[_selItemIndex];
         set
         {
-            if (null != _toolItems)
+            if (_toolItems is not null)
             {
                 SelectedItemIndex = _toolItems.IndexOf(value);
             }
@@ -408,7 +410,7 @@ public class ToolBoxTab : ToolBoxItem
         get => _selItemIndex;
         set
         {
-            if (null != _toolItems && value != _selItemIndex && -1 != value && value < _toolItems.Count)
+            if (_toolItems is not null && value != _selItemIndex && -1 != value && value < _toolItems.Count)
             {
                 _oldSelItemIndex = _selItemIndex;
 
@@ -455,7 +457,7 @@ public class ToolBoxTab : ToolBoxItem
                 oldCtrl = _control;
                 _control = value;
 
-                if (null != _control)
+                if (_control is not null)
                 {
                     if (DockStyle.None != _control.Dock)
                     {
@@ -465,9 +467,9 @@ public class ToolBoxTab : ToolBoxItem
                     _control.TabStop = true;
                 }
 
-                if (null != _parent && _selected)
+                if (_parent is not null && _selected)
                 {
-                    if (null != _control)
+                    if (_control is not null)
                     {
                         _parent.Controls.Add(_control);
                     }
@@ -480,9 +482,9 @@ public class ToolBoxTab : ToolBoxItem
                     }
                 }
 
-                if (null != _control)
+                if (_control is not null)
                 {
-                    _toolItems = null;
+                    _toolItems = null!;
                 }
 
                 if (_parent is { IsLoading: false })
@@ -493,9 +495,9 @@ public class ToolBoxTab : ToolBoxItem
         }
     }
 
-    public override bool CanMoveUp => null != _parent ? _parent.CanMoveTabUp(this) : false;
+    public override bool CanMoveUp => _parent is not null ? _parent.CanMoveTabUp(this) : false;
 
-    public override bool CanMoveDown => null != _parent ? _parent.CanMoveTabDown(this) : false;
+    public override bool CanMoveDown => _parent is not null ? _parent.CanMoveTabDown(this) : false;
 
     #endregion //Properties
 
@@ -605,7 +607,7 @@ public class ToolBoxTab : ToolBoxItem
             _parent.OnTabMouseDown(this, e);
 
         }
-        else if (!_mouseDown && null != _toolItems)
+        else if (!_mouseDown && _toolItems is not null)
         {
             if (-1 == _hotItemIndex)
             {
@@ -676,7 +678,7 @@ public class ToolBoxTab : ToolBoxItem
                 if (MouseButtons.Left == e.Button && bHit)
                 {
                     // Selection changed event.
-                    _parent.OnTabSelectionChanged(this, null);
+                    _parent.OnTabSelectionChanged(this, null!);
                 }
                 // Unlock the mousemove.
                 //_parent.UnLockMouseMove();
@@ -796,7 +798,7 @@ public class ToolBoxTab : ToolBoxItem
 
         // Now , it is not checked if object to drag drop is null or not...
 
-        if (item is { Enabled: true, MouseDown: true } && item.CanStartDrag(e.X, e.Y) /*&& null != item.Object*/)
+        if (item is { Enabled: true, MouseDown: true } && item.CanStartDrag(e.X, e.Y) /*&& item.Object is not null*/)
         {
             item.IsDragging = true;
             effect = _parent.DoDragDropItem(item, DragDropEffects.All);
@@ -971,7 +973,7 @@ public class ToolBoxTab : ToolBoxItem
             imgList = _parent.SmallImageList;
 
             // Draw image
-            if (null != imgList && -1 != SmallImageIndex && SmallImageIndex < imgList.Images.Count)
+            if (imgList is not null && -1 != SmallImageIndex && SmallImageIndex < imgList.Images.Count)
             {
 
                 r.X += 2;
@@ -1168,7 +1170,7 @@ public class ToolBoxTab : ToolBoxItem
         ImageList imgList = null;
         int imageIndex = -1;
 
-        if (!(0 >= _itemArea.Height) && null != _toolItems)
+        if (!(0 >= _itemArea.Height) && _toolItems is not null)
         {
             bgBrushes = new Brush[3];
             txBrushes = new Brush[3];
@@ -1185,7 +1187,7 @@ public class ToolBoxTab : ToolBoxItem
                     break;
             }
 
-            if (null != imgList)
+            if (imgList is not null)
             {
                 rImage.Size = imgList.ImageSize;
             }
@@ -1282,7 +1284,7 @@ public class ToolBoxTab : ToolBoxItem
                 }
 
                 // Draw image
-                if (null != imgList && -1 != imageIndex && imageIndex < imgList.Images.Count)
+                if (imgList is not null && -1 != imageIndex && imageIndex < imgList.Images.Count)
                 {
                     rect.X += 2;
                     rect.Width -= 2;
@@ -1476,7 +1478,7 @@ public class ToolBoxTab : ToolBoxItem
         {
             DoPainting(e);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             DebugUtilities.NotImplemented(e.ToString());
         }
@@ -1535,7 +1537,7 @@ public class ToolBoxTab : ToolBoxItem
     public bool Contains(ToolBoxItem item)
     {
         bool bContains = false;
-        if (null != _toolItems)
+        if (_toolItems is not null)
         {
             bContains = _toolItems.Contains(item);
         }
@@ -1546,7 +1548,7 @@ public class ToolBoxTab : ToolBoxItem
     {
         int index = -1;
 
-        if (null != _toolItems)
+        if (_toolItems is not null)
         {
             index = _toolItems.IndexOf(item);
         }
@@ -1782,7 +1784,7 @@ public class ToolBoxTab : ToolBoxItem
 
         if (null == _control)
         {
-            if (null == _toolItems)
+            if (_toolItems is null)
             {
                 _toolItems = new ToolBoxItemCollection();
             }
@@ -1795,17 +1797,17 @@ public class ToolBoxTab : ToolBoxItem
 
     public int AddItem(string caption)
     {
-        return AddItem(caption, -1, true, null);
+        return AddItem(caption, -1, true, null!);
     }
 
     public int AddItem(string caption, int smallImageIndex)
     {
-        return AddItem(caption, smallImageIndex, true, null);
+        return AddItem(caption, smallImageIndex, true, null!);
     }
 
     public int AddItem(string caption, int smallImageIndex, int largeImageIndex)
     {
-        return AddItem(caption, smallImageIndex, largeImageIndex, true, null);
+        return AddItem(caption, smallImageIndex, largeImageIndex, true, null!);
     }
 
     public int AddItem(string caption, int smallImageIndex, bool allowDrag, object obj)
@@ -1833,7 +1835,7 @@ public class ToolBoxTab : ToolBoxItem
 
         if (null == _control && _parent.EndRenameItem())
         {
-            if (null == _toolItems)
+            if (_toolItems is null)
             {
                 _toolItems = new ToolBoxItemCollection();
             }
@@ -1924,7 +1926,7 @@ public class ToolBoxTab : ToolBoxItem
         bool bScrolled = false;
         try
         {
-            if (null != _toolItems)
+            if (_toolItems is not null)
             {
                 scrollOffset = _toolItems[0].Height + this.ItemSpacingEx;
             }
@@ -1959,7 +1961,7 @@ public class ToolBoxTab : ToolBoxItem
         bool bScrolled = false;
         int index = -1;
 
-        if (null != _toolItems)
+        if (_toolItems is not null)
         {
             index = _toolItems.IndexOf(item);
         }
@@ -2138,7 +2140,7 @@ public class ToolBoxTab : ToolBoxItem
         Point itemLoc = Point.Empty;
         bool bOk = true;
 
-        if (null != _toolItems)
+        if (_toolItems is not null)
         {
             if (0 == index)
             {
@@ -2190,7 +2192,7 @@ public class ToolBoxTab : ToolBoxItem
         int iLoop = 0;
         int maxWidth = 0;
 
-        if (null != _toolItems && null == _control)
+        if (_toolItems is not null && null == _control)
         {
             bUpdates = new bool[2];
             bUpdates[0] = false;
@@ -2233,7 +2235,7 @@ public class ToolBoxTab : ToolBoxItem
             }
         }
 
-        if (null != _control)
+        if (_control is not null)
         {
             UpdateControlRect(false);
         }
@@ -2245,7 +2247,7 @@ public class ToolBoxTab : ToolBoxItem
     {
         Rectangle ctrlRect;
 
-        if (null != _control)
+        if (_control is not null)
         {
             ctrlRect = _itemArea;
             ctrlRect.Y += this.ItemSpacingEx;
@@ -2641,7 +2643,7 @@ public class ToolBoxTab : ToolBoxItem
         bUpdates[0] = false;
         bUpdates[1] = false;
 
-        if (null != _toolItems && null == _control)
+        if (_toolItems is not null && null == _control)
         {
             _visibleTopIndex = 0;
             _visibleBottomIndex = _toolItems.Count - 1;
@@ -2694,7 +2696,7 @@ public class ToolBoxTab : ToolBoxItem
         bUpdates[0] = false;
         bUpdates[1] = false;
 
-        if (null != _toolItems)
+        if (_toolItems is not null)
         {
             _visibleTopIndex = 0;
             _visibleBottomIndex = _toolItems.Count - 1;

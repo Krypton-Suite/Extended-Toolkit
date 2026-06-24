@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -163,7 +163,7 @@ public struct HSLColourStructure
 
     #region Methods
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         bool result;
 

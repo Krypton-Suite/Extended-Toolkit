@@ -11,9 +11,6 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,228 +24,107 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons;
 
-internal class KryptonUACButtonActionList : DesignerActionList
+internal sealed class KryptonUACButtonActionList : DesignerActionList
 {
-    #region Instance Fields
-    private readonly KryptonUACButtonVersion2 _uacButton;
-    private readonly IComponentChangeService _service;
-    #endregion
+    private readonly KryptonUACButtonDesigner _designer;
 
-    #region Identity
-    /// <summary>
-    /// Initialize a new instance of the KryptonButtonActionList class.
-    /// </summary>
-    /// <param name="owner">Designer that owns this action list instance.</param>
-    public KryptonUACButtonActionList(KryptonUACButtonDesigner owner)
-        : base(owner.Component)
+    public KryptonUACButtonActionList(KryptonUACButtonDesigner designer)
+        : base(designer.Component)
     {
-        // Remember the button instance
-        _uacButton = owner.Component as KryptonUACButtonVersion2;
-
-        // Cache service used to notify when a property has changed
-        _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+        _designer = designer;
     }
-    #endregion
 
-    #region Public
     public bool UseAsUACElevatedButton
     {
-        get => _uacButton.UseAsUACElevatedButton;
-
-        set
-        {
-            if (_uacButton.UseAsUACElevatedButton != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.UseAsUACElevatedButton, value);
-
-                _uacButton.UseAsUACElevatedButton = value;
-            }
-        }
+        get => Button.UseAsUACElevatedButton;
+        set => SetProperty(nameof(KryptonUACButtonVersion2.UseAsUACElevatedButton), value);
     }
 
-    /// <summary>
-    /// Gets and sets the button style.
-    /// </summary>
     public ButtonStyle ButtonStyle
     {
-        get => _uacButton.ButtonStyle;
-
-        set
-        {
-            if (_uacButton.ButtonStyle != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.ButtonStyle, value);
-                _uacButton.ButtonStyle = value;
-            }
-        }
+        get => Button.ButtonStyle;
+        set => SetProperty(nameof(KryptonUACButtonVersion2.ButtonStyle), value);
     }
 
-    /// <summary>Gets or sets the context menu strip.</summary>
-    /// <value>The context menu strip.</value>
-    public ContextMenuStrip ContextMenuStrip
+    public ContextMenuStrip? ContextMenuStrip
     {
-        get => _uacButton.ContextMenuStrip;
-
-        set
-        {
-            if (_uacButton.ContextMenuStrip != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.ContextMenuStrip, value);
-
-                _uacButton.ContextMenuStrip = value;
-            }
-        }
+        get => Button.ContextMenuStrip;
+        set => SetProperty(nameof(KryptonUACButtonVersion2.ContextMenuStrip), value);
     }
 
-    /// <summary>
-    /// Gets and sets the visual orientation.
-    /// </summary>
     public VisualOrientation Orientation
     {
-        get => _uacButton.Orientation;
-
-        set
-        {
-            if (_uacButton.Orientation != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.Orientation, value);
-                _uacButton.Orientation = value;
-            }
-        }
+        get => Button.Orientation;
+        set => SetProperty(nameof(KryptonUACButtonVersion2.Orientation), value);
     }
 
-    /// <summary>
-    /// Gets and sets the button text.
-    /// </summary>
     public string Text
     {
-        get => _uacButton.Values.Text;
-
-        set
-        {
-            if (_uacButton.Values.Text != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.Values.Text, value);
-                _uacButton.Values.Text = value;
-            }
-        }
+        get => Button.Values.Text;
+        set => SetProperty(nameof(ButtonValues.Text), value);
     }
 
-    /// <summary>
-    /// Gets and sets the extra button text.
-    /// </summary>
     public string ExtraText
     {
-        get => _uacButton.Values.ExtraText;
-
-        set
-        {
-            if (_uacButton.Values.ExtraText != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.Values.ExtraText, value);
-                _uacButton.Values.ExtraText = value;
-            }
-        }
+        get => Button.Values.ExtraText;
+        set => SetProperty(nameof(ButtonValues.ExtraText), value);
     }
 
-    /// <summary>
-    /// Gets and sets the button image.
-    /// </summary>
-    public Image Image
+    public Image? Image
     {
-        get => _uacButton.Values.Image;
-
-        set
-        {
-            if (_uacButton.Values.Image != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.Values.Image, value);
-                _uacButton.Values.Image = value;
-            }
-        }
+        get => Button.Values.Image;
+        set => SetProperty(nameof(ButtonValues.Image), value);
     }
 
-    /// <summary>
-    /// Gets and sets the palette mode.
-    /// </summary>
     public PaletteMode PaletteMode
     {
-        get => _uacButton.PaletteMode;
-
-        set
-        {
-            if (_uacButton.PaletteMode != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.PaletteMode, value);
-                _uacButton.PaletteMode = value;
-            }
-        }
+        get => Button.PaletteMode;
+        set => SetProperty(nameof(KryptonUACButtonVersion2.PaletteMode), value);
     }
 
-    /// <summary>Gets or sets the font.</summary>
-    /// <value>The font.</value>
-    public Font ShortTextFont
+    public Font? ShortTextFont
     {
-        get => _uacButton.StateCommon.Content.ShortText.Font;
-
-        set
-        {
-            if (_uacButton.StateCommon.Content.ShortText.Font != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.StateCommon.Content.ShortText.Font, value);
-
-                _uacButton.StateCommon.Content.ShortText.Font = value;
-            }
-        }
+        get => Button.StateCommon.Content.ShortText.Font;
+        set => SetProperty(@"StateCommon.Content.ShortText.Font", value);
     }
 
-    /// <summary>Gets or sets the font.</summary>
-    /// <value>The font.</value>
-    public Font LongTextFont
+    public Font? LongTextFont
     {
-        get => _uacButton.StateCommon.Content.LongText.Font;
-
-        set
-        {
-            if (_uacButton.StateCommon.Content.LongText.Font != value)
-            {
-                _service.OnComponentChanged(_uacButton, null, _uacButton.StateCommon.Content.LongText.Font, value);
-
-                _uacButton.StateCommon.Content.LongText.Font = value;
-            }
-        }
+        get => Button.StateCommon.Content.LongText.Font;
+        set => SetProperty(@"StateCommon.Content.LongText.Font", value);
     }
-    #endregion
 
-    #region Public Override
-    /// <summary>
-    /// Returns the collection of DesignerActionItem objects contained in the list.
-    /// </summary>
-    /// <returns>A DesignerActionItem array that contains the items in this list.</returns>
     public override DesignerActionItemCollection GetSortedActionItems()
     {
-        // Create a new collection for holding the single item we want to create
-        DesignerActionItemCollection actions = new();
-
-        // This can be null when deleting a control instance at design time
-        if (_uacButton != null)
-        {
-            // Add the list of button specific actions
-            actions.Add(new DesignerActionHeaderItem("Appearance"));
-            actions.Add(new DesignerActionPropertyItem("ButtonStyle", "Style", "Appearance", "Button style"));
-            actions.Add(new DesignerActionPropertyItem("ContextMenuStrip", "Context Menu Strip", "Appearance", "The context menu strip for the control."));
-            actions.Add(new DesignerActionPropertyItem("Orientation", "Orientation", "Appearance", "Button orientation"));
-            actions.Add(new DesignerActionPropertyItem("ShortTextFont", "Short Text Font", "Appearance", "The short text font."));
-            actions.Add(new DesignerActionPropertyItem("LongTextFont", "Long Text Font", "Appearance", "The long text font."));
-            actions.Add(new DesignerActionHeaderItem("Values"));
-            actions.Add(new DesignerActionPropertyItem("Text", "Text", "Values", "Button text"));
-            actions.Add(new DesignerActionPropertyItem("ExtraText", "ExtraText", "Values", "Button extra text"));
-            actions.Add(new DesignerActionPropertyItem("Image", "Image", "Values", "Button image"));
-            actions.Add(new DesignerActionHeaderItem("Visuals"));
-            actions.Add(new DesignerActionPropertyItem("PaletteMode", "Palette", "Visuals", "Palette applied to drawing"));
-        }
-
-        return actions;
+        return
+        [
+            new DesignerActionHeaderItem(@"Appearance"),
+            new DesignerActionPropertyItem(nameof(ButtonStyle), @"Style", @"Appearance", @"Button style"),
+            new DesignerActionPropertyItem(nameof(ContextMenuStrip), @"Context Menu Strip", @"Appearance", @"The context menu strip for the control."),
+            new DesignerActionPropertyItem(nameof(Orientation), @"Orientation", @"Appearance", @"Button orientation"),
+            new DesignerActionPropertyItem(nameof(ShortTextFont), @"Short Text Font", @"Appearance", @"The short text font."),
+            new DesignerActionPropertyItem(nameof(LongTextFont), @"Long Text Font", @"Appearance", @"The long text font."),
+            new DesignerActionHeaderItem(@"Values"),
+            new DesignerActionPropertyItem(nameof(Text), @"Text", @"Values", @"Button text"),
+            new DesignerActionPropertyItem(nameof(ExtraText), @"ExtraText", @"Values", @"Button extra text"),
+            new DesignerActionPropertyItem(nameof(Image), @"Image", @"Values", @"Button image"),
+            new DesignerActionHeaderItem(@"Visuals"),
+            new DesignerActionPropertyItem(nameof(PaletteMode), @"Palette", @"Visuals", @"Palette applied to drawing"),
+            new DesignerActionHeaderItem(@"UAC Elevation"),
+            new DesignerActionPropertyItem(nameof(UseAsUACElevatedButton), @"Use as an UAC Elevated Button", @"UAC Elevation", @"Use this button to elevate a process."),
+        ];
     }
-    #endregion
+
+    private KryptonUACButtonVersion2 Button => (KryptonUACButtonVersion2)_designer.Component;
+
+    private void SetProperty<T>(string propertyName, T value)
+    {
+        IComponentChangeService? service = GetService(typeof(IComponentChangeService)) as IComponentChangeService;
+        PropertyDescriptor? property = TypeDescriptor.GetProperties(Button)[propertyName];
+        if (property != null && !Equals(property.GetValue(Button), value))
+        {
+            service?.OnComponentChanged(Button, null, property.GetValue(Button), value);
+            property.SetValue(Button, value);
+        }
+    }
 }

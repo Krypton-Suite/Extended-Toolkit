@@ -54,7 +54,9 @@ public class MRUSaveFileMenuItem : ToolStripMenuItem
 
     private MRUMenuItem _parentMruMenuItem;
 
+#pragma warning disable CS0169
     private readonly MostRecentlyUsedFileManager? _recentlyUsedFileManager;
+#pragma warning restore CS0169
 
     #endregion
 

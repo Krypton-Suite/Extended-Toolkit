@@ -124,7 +124,7 @@ public class KryptonSplashDialog : CommonExtendedKryptonForm
     #region Properties
     public bool ShowProgressBar { get; set; } = false;
 
-    public string ApplicationName { get; set; } = null;
+    public string? ApplicationName { get; set; }
 
     public int LoadingBarMaximum { get; set; } = 100;
 
@@ -132,7 +132,7 @@ public class KryptonSplashDialog : CommonExtendedKryptonForm
 
     public int LoadingBarIncrement { get; set; } = 1;
 
-    public Image ApplicationIcon { get; set; } = null;
+    public Image? ApplicationIcon { get; set; }
     #endregion
 
     #region Constructors
@@ -162,11 +162,11 @@ public class KryptonSplashDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Methods
-    private void UpdateUI(bool showProgressBar, string applicationName, Image applicationIcon)
+    private void UpdateUI(bool showProgressBar, string? applicationName, Image? applicationIcon)
     {
         pbLoading.Visible = showProgressBar;
 
-        kwlApplicationName.Text = applicationName;
+        kwlApplicationName.Text = applicationName ?? string.Empty;
 
         pbAppIcon.Image = applicationIcon;
     }
@@ -185,19 +185,19 @@ public class KryptonSplashDialog : CommonExtendedKryptonForm
     }
     #endregion
 
-    private void klblClose_MouseEnter(object sender, EventArgs e)
+    private void klblClose_MouseEnter(object? sender, EventArgs e)
     {
         klblClose.StateCommon.ShortText.Color1 = Color.Red;
 
         klblClose.StateCommon.ShortText.Color2 = Color.Red;
     }
 
-    private void klblClose_MouseLeave(object sender, EventArgs e)
+    private void klblClose_MouseLeave(object? sender, EventArgs e)
     {
         klblClose.StateCommon.ShortText.Color1 = Color.Empty;
 
         klblClose.StateCommon.ShortText.Color2 = Color.Empty;
     }
 
-    private void klblClose_Click(object sender, EventArgs e) => Application.Exit();
+    private void klblClose_Click(object? sender, EventArgs e) => Application.Exit();
 }

@@ -63,7 +63,7 @@ public class Token : IComparable<Token>
     /// </summary>
     /// <param name="other"></param>
     /// <returns></returns>
-    public int CompareTo(Token other) => string.Compare(Text, other.Text, StringComparison.Ordinal);
+    public int CompareTo(Token? other) => string.Compare(Text, other?.Text, StringComparison.Ordinal);
 
     /// <summary>
     /// Overrides ToString

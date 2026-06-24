@@ -231,16 +231,16 @@ public class GlobalMethods
     {
         try
         {
-            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+            RegistryKey? registryKey = Registry.LocalMachine.OpenSubKey(path);
 
             if (registryKey == null)
             {
                 return string.Empty;
             }
 
-            return (string)registryKey.GetValue(key);
+            return registryKey.GetValue(key) as string ?? string.Empty;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return string.Empty;
         }

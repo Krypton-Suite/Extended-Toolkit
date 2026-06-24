@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -48,7 +48,7 @@ public class ColourWheelControl : Control, IColourEditor
 
     #region Fields
 
-    private Brush _brush;
+    private Brush? _brush;
 
     private PointF _centerPoint;
 
@@ -68,7 +68,7 @@ public class ColourWheelControl : Control, IColourEditor
 
     private float _radius;
 
-    private Image _selectionGlyph;
+    private Image? _selectionGlyph;
 
     private int _selectionSize;
 
@@ -169,11 +169,13 @@ public class ColourWheelControl : Control, IColourEditor
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Font matches Control base on all TFMs.
     public override Font Font
     {
         get => base.Font;
         set => base.Font = value;
     }
+#pragma warning restore CS8765
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -267,11 +269,13 @@ public class ColourWheelControl : Control, IColourEditor
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Text matches Control base on all TFMs.
     public override string Text
     {
         get => base.Text;
         set => base.Text = value;
     }
+#pragma warning restore CS8765
 
     /// <summary>
     ///   Gets a value indicating whether painting of the control is allowed.
@@ -303,7 +307,7 @@ public class ColourWheelControl : Control, IColourEditor
     }
 
     [Obsolete("Do not use. This property will be removed in a future update.")]
-    protected Image SelectionGlyph
+    protected Image? SelectionGlyph
     {
         get => _selectionGlyph;
         set => _selectionGlyph = value;
@@ -382,9 +386,9 @@ public class ColourWheelControl : Control, IColourEditor
     /// <summary>
     /// Creates the gradient brush used to paint the wheel.
     /// </summary>
-    protected virtual Brush CreateGradientBrush()
+    protected virtual Brush? CreateGradientBrush()
     {
-        Brush result;
+        Brush? result;
 
         if (_points.Length != 0 && _points.Length == _colours.Length)
         {
@@ -552,7 +556,7 @@ public class ColourWheelControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (!_lockUpdates)
         {
@@ -561,7 +565,7 @@ public class ColourWheelControl : Control, IColourEditor
 
         this.Refresh();
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -572,11 +576,11 @@ public class ColourWheelControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourStepChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.RefreshWheel();
 
-        handler = (EventHandler)this.Events[_eventColourStepChanged];
+        handler = (EventHandler?)this.Events[_eventColourStepChanged];
 
         handler?.Invoke(this, e);
     }
@@ -598,7 +602,7 @@ public class ColourWheelControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnHSLColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (!_lockUpdates)
         {
@@ -607,7 +611,7 @@ public class ColourWheelControl : Control, IColourEditor
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventHslColourChanged];
+        handler = (EventHandler?)this.Events[_eventHslColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -678,9 +682,9 @@ public class ColourWheelControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnLargeChangeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventLargeChangeChanged];
+        handler = (EventHandler?)this.Events[_eventLargeChangeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -756,19 +760,15 @@ public class ColourWheelControl : Control, IColourEditor
     /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
     /// </summary>
     /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
+#pragma warning restore CS8765
 
         if (this.AllowPainting)
         {
-            Control parent;
-
-            this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
-
-            // if the parent is using a transparent color, it's likely to be something like a TabPage in a tab control
-            // so we'll draw the parent background instead, to avoid having an ugly solid color
-            parent = this.Parent;
+            Control? parent = this.Parent;
             if (this.BackgroundImage == null && parent != null && (this.BackColor == parent.BackColor || parent.BackColor.A != 255))
             {
                 ButtonRenderer.DrawParentBackground(e.Graphics, this.DisplayRectangle, this);
@@ -811,13 +811,13 @@ public class ColourWheelControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnSelectionSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.DisposeOfSelectionGlyph();
 
         this.RefreshWheel();
 
-        handler = (EventHandler)this.Events[_eventSelectionSizeChanged];
+        handler = (EventHandler?)this.Events[_eventSelectionSizeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -828,9 +828,9 @@ public class ColourWheelControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnSmallChangeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventSmallChangeChanged];
+        handler = (EventHandler?)this.Events[_eventSmallChangeChanged];
 
         handler?.Invoke(this, e);
     }

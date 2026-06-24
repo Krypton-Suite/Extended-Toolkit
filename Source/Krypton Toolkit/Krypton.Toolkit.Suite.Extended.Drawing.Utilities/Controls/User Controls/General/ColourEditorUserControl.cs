@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -365,7 +365,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         this.knudRed.StateCommon.Content.Color1 = System.Drawing.Color.White;
         this.knudRed.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
         this.knudRed.TabIndex = 26;
-        this.knudRed.Typeface = null;
+        this.knudRed.Typeface = null!;
         this.knudRed.UseAccessibleUI = false;
         // 
         // pnlGreen
@@ -406,7 +406,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         this.knudGreen.StateCommon.Content.Color1 = System.Drawing.Color.White;
         this.knudGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
         this.knudGreen.TabIndex = 27;
-        this.knudGreen.Typeface = null;
+        this.knudGreen.Typeface = null!;
         this.knudGreen.UseAccessibleUI = false;
         // 
         // pnlBlue
@@ -447,7 +447,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         this.knudBlue.StateCommon.Content.Color1 = System.Drawing.Color.White;
         this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
         this.knudBlue.TabIndex = 28;
-        this.knudBlue.Typeface = null;
+        this.knudBlue.Typeface = null!;
         this.knudBlue.UseAccessibleUI = false;
         // 
         // pnlHexadecimal
@@ -796,11 +796,11 @@ public class ColourEditorUserControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateFields(false);
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -811,11 +811,11 @@ public class ColourEditorUserControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnOrientationChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         //ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventOrientationChanged];
+        handler = (EventHandler?)this.Events[_eventOrientationChanged];
 
         handler?.Invoke(this, e);
     }
@@ -826,13 +826,13 @@ public class ColourEditorUserControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowAlphaChannelChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetControlStates();
 
         //ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventShowAlphaChannelChanged];
+        handler = (EventHandler?)this.Events[_eventShowAlphaChannelChanged];
 
         handler?.Invoke(this, e);
     }
@@ -843,13 +843,13 @@ public class ColourEditorUserControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowColourSpaceLabelsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetControlStates();
 
         //ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventShowColourSpaceLabelsChanged];
+        handler = (EventHandler?)this.Events[_eventShowColourSpaceLabelsChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1105,6 +1105,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         base.OnResize(e);
     }
 
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         SetColouredLabels(ShowLabelsInColour);
@@ -1116,6 +1117,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         ShowAlphaUI(ShowAlphaChannel);
 
         base.OnPaint(e);
+#pragma warning restore CS8765
     }
     #endregion
 
@@ -1146,9 +1148,9 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         }
 #endif
 
-    private string AddSpaces(string text)
+    private string? AddSpaces(string text)
     {
-        string result;
+        string? result;
 
         //http://stackoverflow.com/a/272929/148962
 
@@ -1188,19 +1190,23 @@ public class ColourEditorUserControl : UserControl, IColourEditor
     #endregion
 
     #region Event Handlers
-    private void kcmbHex_DrawItem(object sender, DrawItemEventArgs e)
+    private void kcmbHex_DrawItem(object? sender, DrawItemEventArgs e)
     {
         // TODO: Really, this should be another control - ColourComboBox or ColourListBox etc.
 
         if (e.Index != -1)
         {
             Rectangle colourBox;
-            string name;
+            string? name;
             Color colour;
 
             e.DrawBackground();
 
-            name = (string)kcmbHex.Items[e.Index];
+            name = kcmbHex.Items[e.Index] as string;
+            if (name is null)
+            {
+                return;
+            }
             colour = Color.FromName(name);
             colourBox = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
 
@@ -1219,7 +1225,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         }
     }
 
-    private void kcmbHex_DropDown(object sender, EventArgs e)
+    private void kcmbHex_DropDown(object? sender, EventArgs e)
     {
 #if !NETCOREAPP
             if (kcmbHex.Items.Count == 0)
@@ -1229,7 +1235,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
 #endif
     }
 
-    private void kcmbHex_KeyDown(object sender, KeyEventArgs e)
+    private void kcmbHex_KeyDown(object? sender, KeyEventArgs e)
     {
         switch (e.KeyCode)
         {
@@ -1247,12 +1253,12 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         }
     }
 
-    private void kcmbHex_SelectedIndexChanged(object sender, EventArgs e)
+    private void kcmbHex_SelectedIndexChanged(object? sender, EventArgs e)
     {
-        if (kcmbHex.SelectedIndex != -1)
+        if (kcmbHex.SelectedIndex != -1 && kcmbHex.SelectedItem is string colourName)
         {
             this.LockUpdates = true;
-            this.Colour = Color.FromName((string)kcmbHex.SelectedItem);
+            this.Colour = Color.FromName(colourName);
             this.LockUpdates = false;
         }
     }
@@ -1293,7 +1299,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void ValueChangedHandler(object sender, EventArgs e)
+    private void ValueChangedHandler(object? sender, EventArgs e)
     {
         if (!this.LockUpdates)
         {
@@ -1509,7 +1515,7 @@ public class ColourEditorUserControl : UserControl, IColourEditor
         }
     }
 
-    private void ColourEditorUserControl_Load(object sender, EventArgs e)
+    private void ColourEditorUserControl_Load(object? sender, EventArgs e)
     {
 
     }

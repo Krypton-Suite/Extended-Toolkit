@@ -859,11 +859,16 @@ public class AllMergedColourSettingsManager
     {
         AllMergedColourSettingsManager manager = new();
 
+        if (string.IsNullOrEmpty(colourConfigurationFilePath))
+        {
+            return;
+        }
+
         try
         {
             if (!File.Exists(colourConfigurationFilePath))
             {
-                File.Create(colourConfigurationFilePath);
+                File.Create(colourConfigurationFilePath).Dispose();
             }
 
             StreamWriter writer = new(colourConfigurationFilePath);
@@ -948,11 +953,16 @@ public class AllMergedColourSettingsManager
     {
         AllMergedColourSettingsManager manager = new();
 
+        if (string.IsNullOrEmpty(colourConfigurationFilePath))
+        {
+            return;
+        }
+
         try
         {
             if (!File.Exists(colourConfigurationFilePath))
             {
-                File.Create(colourConfigurationFilePath);
+                File.Create(colourConfigurationFilePath).Dispose();
             }
 
             StreamWriter writer = new(colourConfigurationFilePath);

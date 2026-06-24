@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -400,11 +400,11 @@ public class ScreenColourPickerDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Custom Events
-    public delegate void SelectedColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+    public delegate void SelectedColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
     public event SelectedColourChangedEventHandler SelectedColourChanged;
 
-    protected virtual void OnSelectedColourChanged(object sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
+    protected virtual void OnSelectedColourChanged(object? sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
     #endregion
 
     #region Values
@@ -435,7 +435,7 @@ public class ScreenColourPickerDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Event Handler
-    private void cem_ColourChanged(object sender, EventArgs e)
+    private void cem_ColourChanged(object? sender, EventArgs e)
     {
         UpdateColourValues(cem.Color);
 
@@ -444,37 +444,37 @@ public class ScreenColourPickerDialog : CommonExtendedKryptonForm
         OnSelectedColourChanged(sender, args);
     }
 
-    private void knudRed_ValueChanged(object sender, EventArgs e)
+    private void knudRed_ValueChanged(object? sender, EventArgs e)
     {
 
     }
 
-    private void knudGreen_ValueChanged(object sender, EventArgs e)
+    private void knudGreen_ValueChanged(object? sender, EventArgs e)
     {
 
     }
 
-    private void kkcRed_ValueChanged(object sender, Common.KnobValueChangedEventArgs e)
+    private void kkcRed_ValueChanged(object? sender, Common.KnobValueChangedEventArgs e)
     {
 
     }
 
-    private void kkcGreen_ValueChanged(object sender, Common.KnobValueChangedEventArgs e)
+    private void kkcGreen_ValueChanged(object? sender, Common.KnobValueChangedEventArgs e)
     {
 
     }
 
-    private void kkcBlue_ValueChanged(object sender, Common.KnobValueChangedEventArgs e)
+    private void kkcBlue_ValueChanged(object? sender, Common.KnobValueChangedEventArgs e)
     {
 
     }
 
-    private void knudBlue_ValueChanged(object sender, EventArgs e)
+    private void knudBlue_ValueChanged(object? sender, EventArgs e)
     {
 
     }
 
-    private void ktxtHexValue_TextChanged(object sender, EventArgs e)
+    private void ktxtHexValue_TextChanged(object? sender, EventArgs e)
     {
         if (ktxtHexValue.Text.Length is 3 or <= 6)
         {

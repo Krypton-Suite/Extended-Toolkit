@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -57,7 +57,7 @@ internal class SysInfoResultMapper : ISysInfoResultMapper
             {
                 sb.AppendLine($"-{nodeValueParent}");
 
-                foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult?.Nodes))
+                foreach (var nodeValue in result.ChildResults.SelectMany(childResult => childResult?.Nodes ?? []))
                 {
                     sb.AppendLine($"--{nodeValue}");        // the max no. of levels is 2, ie '--' is as deep as we go
                 }

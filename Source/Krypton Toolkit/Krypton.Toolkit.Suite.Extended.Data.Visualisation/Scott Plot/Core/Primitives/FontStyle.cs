@@ -87,4 +87,6 @@ public class FontStyle
         SKFontStyle skfs = new(weight, width, slant);
         return SKTypeface.FromFamilyName(font, skfs);
     }
+
+    public SKFont CreateFont() => new(Typeface, Size) { Embolden = Bold };
 }

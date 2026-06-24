@@ -45,7 +45,7 @@ public class Helpers
 
         var stackFrame = stackTrace.GetFrame(1);
 
-        return stackFrame.GetMethod().Name;
+        return stackFrame?.GetMethod()?.Name ?? string.Empty;
     }
     #endregion
 }

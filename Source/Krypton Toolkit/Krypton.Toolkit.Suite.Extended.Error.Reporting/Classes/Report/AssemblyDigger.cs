@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -51,16 +51,28 @@ internal class AssemblyDigger : IAssemblyDigger
     /// Returns all referenced assemblies in a customized array used in <see cref="ReportModel"/>
     /// Memoized
     /// </summary>
-    public IEnumerable<AssemblyRef> GetAssemblyRefs() =>
-        _assemblyRefs ??= from a in _assembly?.GetReferencedAssemblies()
-                .Concat(new List<AssemblyName>
-                {
-                    _assembly.GetName() // ensure we add the root assembly
-                })
-            orderby a.Name.ToLower()
+    public IEnumerable<AssemblyRef> GetAssemblyRefs()
+    {
+        if (_assemblyRefs != null)
+        {
+            return _assemblyRefs;
+        }
+
+        if (_assembly == null)
+        {
+            _assemblyRefs = [];
+            return _assemblyRefs;
+        }
+
+        _assemblyRefs = from a in _assembly.GetReferencedAssemblies()
+                .Concat([_assembly.GetName()])
+            orderby (a.Name ?? string.Empty).ToLower()
             select new AssemblyRef
             {
-                Name = a.Name,
-                Version = a.Version.ToString()
+                Name = a.Name ?? string.Empty,
+                Version = a.Version?.ToString() ?? string.Empty
             };
+
+        return _assemblyRefs;
+    }
 }

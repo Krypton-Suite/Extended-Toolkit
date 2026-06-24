@@ -245,7 +245,7 @@ public class GlobalMethods
                 return string.Empty;
             }
 
-            return (string)registryKey.GetValue(key);
+            return registryKey.GetValue(key) as string ?? string.Empty;
         }
         catch (Exception e)
         {
@@ -567,7 +567,7 @@ public static class GlobalMethodsStatic
                 return string.Empty;
             }
 
-            return (string)registryKey.GetValue(key);
+            return registryKey.GetValue(key) as string ?? string.Empty;
         }
         catch (Exception e)
         {

@@ -39,7 +39,7 @@ internal static class IconExtractor
     /// <param name="size">The size.</param>
     /// <returns>The icon.</returns>
     /// <exception cref="System.PlatformNotSupportedException"></exception>
-    public static Icon LoadIcon(IconType type, Size size)
+    public static Icon? LoadIcon(IconType type, Size size)
     {
         IntPtr hIcon = NativeMethods.LoadImage(IntPtr.Zero, $"#{(int) type}", 1, size.Width, size.Height, 0);
         return hIcon == IntPtr.Zero ? null : Icon.FromHandle(hIcon);

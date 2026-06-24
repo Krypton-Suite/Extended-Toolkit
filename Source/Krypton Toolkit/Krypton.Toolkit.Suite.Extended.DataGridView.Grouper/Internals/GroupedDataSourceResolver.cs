@@ -49,7 +49,7 @@ internal static class GroupedDataSourceResolver
                 resolved = GroupedResolvedSource.ForDataRows(CopyLiveRows(table), table);
                 return true;
 
-            case DataView view:
+            case DataView view when view.Table is not null:
                 resolved = GroupedResolvedSource.ForDataRows(CopyLiveRows(view), view.Table);
                 return true;
 

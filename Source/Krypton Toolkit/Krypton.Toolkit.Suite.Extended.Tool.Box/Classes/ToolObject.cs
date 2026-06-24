@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -32,7 +32,7 @@ public class ToolObject
 {
     #region Protected Attributes
     protected Rectangle _rectangle;
-    protected string _toolTip = null;
+    protected string _toolTip = "";
     protected bool _forceCaptionToolTip = false;
     protected bool _captionChecked = false;
 
@@ -141,7 +141,7 @@ public class ToolObject
     [Category("General")]
     public virtual string Caption
     {
-        get => null;
+        get => string.Empty;
         set {; }
     }
 

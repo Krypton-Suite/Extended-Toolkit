@@ -333,11 +333,7 @@ public static class ColourUtilities
 
         foreach (PropertyInfo propertyInfo in systemColourProperties)
         {
-            object colourObject = propertyInfo.GetValue(null, null);
-
-            Color systemColour = (Color)colourObject;
-
-            if (!allSystemColours.Contains(systemColour))
+            if (propertyInfo.GetValue(null, null) is Color systemColour && !allSystemColours.Contains(systemColour))
             {
                 systemColourSelection.Items.Add(systemColour.Name);
 

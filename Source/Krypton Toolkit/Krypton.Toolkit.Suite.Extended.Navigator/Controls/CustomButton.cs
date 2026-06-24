@@ -357,7 +357,7 @@ public class CustomButton : Button
 
     #region Custom Painting
 
-    private Point _locPoint;
+    private Point _locPoint = Point.Empty;
     protected override void OnPaint(PaintEventArgs pevent)
     {
         Graphics g = pevent.Graphics;
@@ -556,7 +556,7 @@ public class CustomButton : Button
         }
     }
 
-    private void animateButtonHighlightedTimer_Tick(object sender, EventArgs e)
+    private void animateButtonHighlightedTimer_Tick(object? sender, EventArgs e)
     {
         /*
         if (increasingAlpha)
@@ -614,7 +614,7 @@ public class CustomButton : Button
         }
     }
 
-    private void animateResumeNormalTimer_Tick(object sender, EventArgs e)
+    private void animateResumeNormalTimer_Tick(object? sender, EventArgs e)
     {
         /*
          bool modified = false;

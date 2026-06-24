@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -28,6 +28,8 @@
 using ExtendedMessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons;
 
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+#pragma warning disable CS0618 // PaletteSerializer retained for backward compatibility.
 
 [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
 public class KryptonColourPickerDialog : CommonExtendedKryptonForm
@@ -251,11 +253,11 @@ public class KryptonColourPickerDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Custom Events
-    public delegate void SelectedColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+    public delegate void SelectedColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
     public event SelectedColourChangedEventHandler SelectedColourChanged;
 
-    protected virtual void OnSelectedColourChanged(object sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
+    protected virtual void OnSelectedColourChanged(object? sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
     #endregion
 
     #region Constructors
@@ -276,7 +278,7 @@ public class KryptonColourPickerDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Event Handlers
-    private void kbtnLoadPalette_Click(object sender, EventArgs e)
+    private void kbtnLoadPalette_Click(object? sender, EventArgs e)
     {
         using (FileDialog fd = new OpenFileDialog { Filter = Cyotek.Windows.Forms.PaletteSerializer.DefaultOpenFilter, DefaultExt = "pal", Title = "Open a custom palette file:" })
         {
@@ -333,7 +335,7 @@ public class KryptonColourPickerDialog : CommonExtendedKryptonForm
         }
     }
 
-    private void kbtnSavePalette_Click(object sender, EventArgs e)
+    private void kbtnSavePalette_Click(object? sender, EventArgs e)
     {
         using (FileDialog fd = new SaveFileDialog { Filter = Cyotek.Windows.Forms.PaletteSerializer.DefaultSaveFilter, DefaultExt = "pal", Title = "Save custom palette as:" })
         {
@@ -352,7 +354,7 @@ public class KryptonColourPickerDialog : CommonExtendedKryptonForm
                 {
                     using (FileStream fs = File.OpenWrite(fd.FileName))
                     {
-                        serializer.Serialize(fs, cgColour.Colors);
+                        serializer?.Serialize(fs, cgColour.Colors!);
                     }
                 }
                 catch (Exception exc)
@@ -370,30 +372,30 @@ public class KryptonColourPickerDialog : CommonExtendedKryptonForm
         }
     }
 
-    private void kdbtnOk_Click(object sender, EventArgs e)
+    private void kdbtnOk_Click(object? sender, EventArgs e)
     {
         DialogResult = DialogResult.OK;
     }
 
-    private void kdbtnCancel_Click(object sender, EventArgs e)
+    private void kdbtnCancel_Click(object? sender, EventArgs e)
     {
         DialogResult = DialogResult.Cancel;
     }
 
-    private void cem_ColourChanged(object sender, EventArgs e)
+    private void cem_ColourChanged(object? sender, EventArgs e)
     {
         Colour = cem.Colour;
 
         ViewColour(Colour);
     }
 
-    private void cem_ColorChanged(object sender, EventArgs e) => SetColour(cem.Colour);
+    private void cem_ColorChanged(object? sender, EventArgs e) => SetColour(cem.Colour);
 
-    private void cgColour_ColorChanged(object sender, EventArgs e) => cem.Colour = cgColour.Color;
+    private void cgColour_ColorChanged(object? sender, EventArgs e) => cem.Colour = cgColour.Color;
 
-    private void cgColour_EditingColor(object sender, EditColorCancelEventArgs e) => cem.Colour = e.Color;
+    private void cgColour_EditingColor(object? sender, EditColorCancelEventArgs e) => cem.Colour = e.Color;
 
-    private void cwColour_ColourChanged(object sender, EventArgs e) => cem.Colour = cwColour.Colour;
+    private void cwColour_ColourChanged(object? sender, EventArgs e) => cem.Colour = cwColour.Colour;
     #endregion
 
     #region Setters/Getters
@@ -410,3 +412,5 @@ public class KryptonColourPickerDialog : CommonExtendedKryptonForm
     private void ViewColour(Color colour) => cpbColour.BackColor = colour;
     #endregion
 }
+
+#pragma warning restore CS0618

@@ -45,4 +45,5 @@ global using System.Windows.Forms.Design;
 global using System.Windows.Forms.Layout;
 global using System.Xml.Serialization;
 
+global using Krypton.Toolkit;
 global using Krypton.Toolkit.Suite.Extended.Navi.Suite.Resources;

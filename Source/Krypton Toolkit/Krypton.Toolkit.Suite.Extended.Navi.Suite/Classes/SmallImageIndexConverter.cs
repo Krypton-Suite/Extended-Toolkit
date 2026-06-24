@@ -29,13 +29,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 
 public class SmallImageIndexConverter : ImageIndexConverter
 {
-    public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+    public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object value)
     {
         if (value is string)
         {
             int result = -1;
-            string text = value.ToString();
-            if (!text.Equals("(none)") && !string.IsNullOrEmpty(text))
+            string? text = value.ToString();
+            if (text != null && !text.Equals("(none)") && !string.IsNullOrEmpty(text))
             {
                 int.TryParse(text, out result);
             }
@@ -47,7 +47,7 @@ public class SmallImageIndexConverter : ImageIndexConverter
         }
     }
 
-    public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+    public override object? ConvertTo(ITypeDescriptorContext? context, CultureInfo? culture, object? value, Type destinationType)
     {
         if (value is Int32)
         {
@@ -67,17 +67,22 @@ public class SmallImageIndexConverter : ImageIndexConverter
         }
     }
 
-    public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+    public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext? context)
     {
-        ImageList imageList = null;
+        ImageList? imageList = null;
+
+        if (context?.Instance == null)
+        {
+            return new StandardValuesCollection(new int[1] { -1 });
+        }
 
         PropertyDescriptorCollection PropertyCollection
             = TypeDescriptor.GetProperties(context.Instance);
 
-        PropertyDescriptor property;
+        PropertyDescriptor? property;
         if ((property = PropertyCollection.Find("SmallImages", false)) != null)
         {
-            imageList = (ImageList)property.GetValue(context.Instance);
+            imageList = property.GetValue(context.Instance) as ImageList;
         }
 
         if (imageList != null)
@@ -95,9 +100,9 @@ public class SmallImageIndexConverter : ImageIndexConverter
         return new StandardValuesCollection(new int[1] { -1 });
     }
 
-    public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+    public override bool GetStandardValuesSupported(ITypeDescriptorContext? context)
     {
-        if (context.Instance != null)
+        if (context?.Instance != null)
         {
             return true;
         }

@@ -61,7 +61,7 @@ public partial class PlatformInvoke
 
     public delegate IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
-    public static object PtrToStructure(IntPtr lparam, Type cls) => Marshal.PtrToStructure(lparam, cls);
+    public static object? PtrToStructure(IntPtr lparam, Type cls) => Marshal.PtrToStructure(lparam, cls);
     public static void StructureToPtr(object cls, IntPtr lparam, bool deleteOld = false) => Marshal.StructureToPtr(cls, lparam, deleteOld);
 
     #region Constants

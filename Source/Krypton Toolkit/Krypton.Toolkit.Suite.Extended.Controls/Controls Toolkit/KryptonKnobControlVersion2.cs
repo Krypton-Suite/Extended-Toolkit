@@ -44,7 +44,6 @@ public class KryptonKnobControlVersion2 : UserControl
     #endregion
 
     #region Designer Code
-    private Container components = null;
     #endregion
 
     #region Variables
@@ -99,7 +98,7 @@ public class KryptonKnobControlVersion2 : UserControl
     // Invoke the ValueChanged event; called  when value     
     // is changed                                            
     //-------------------------------------------------------
-    protected virtual void OnValueChanged(object sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
+    protected virtual void OnValueChanged(object? sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
     #endregion
 
     #region Properties
@@ -107,6 +106,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Font of graduations
     /// </summary>
     [Description("Font of graduations")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public Font ScaleTypeface
     {
@@ -124,6 +124,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Autosize or not for font of graduations
     /// </summary>
     [Description("Autosize Font of graduations")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     [DefaultValue(true)]
     public bool ScaleTypefaceAutoSize
@@ -143,6 +144,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// </summary>
     /// <value>The start angle to display graduations.</value>
     [Description("Set the start angle to display graduations (min 90)")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     [DefaultValue(135)]
     public float StartAngle
@@ -165,6 +167,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// </summary>
     /// <value>The end angle to display graduations.</value>
     [Description("Set the end angle to display graduations (max 450)")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     [DefaultValue(405)]
     public float EndAngle
@@ -187,6 +190,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Style of pointer: circle or line
     /// </summary>
     [Description("Set the style of the knob pointer: a circle or a line")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public KnobPointerStyles PointerStyle
     {
@@ -206,6 +210,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// <value>The mouse wheel bar partitions.</value>
     /// <exception cref="T:System.ArgumentOutOfRangeException">exception thrown when value isn't greather than zero</exception>
     [Description("Set to how many parts is bar divided when using mouse wheel")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     [DefaultValue(10)]
     public int MouseWheelBarPartitions
@@ -229,6 +234,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// </summary>
     /// 
     [Description("Draw graduation strings inside or outside the knob circle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     [DefaultValue(false)]
     public bool DrawDivInside
@@ -247,6 +253,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Color of graduations
     /// </summary>
     [Description("Colour of graduations")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public Color ScaleColour
     {
@@ -263,6 +270,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Color of graduations
     /// </summary>
     [Description("Colour of knob")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public Color KnobBackColour
     {
@@ -282,6 +290,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// How many divisions of maximum?
     /// </summary>
     [Description("Set the number of intervals between minimum and maximum")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int ScaleDivisions
     {
@@ -301,6 +310,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// How many subdivisions for each division
     /// </summary>
     [Description("Set the number of subdivisions between main divisions of graduation.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int ScaleSubDivisions
     {
@@ -320,6 +330,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Shows Small Scale marking.
     /// </summary>
     [Description("Show or hide subdivisions of graduations")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public bool ShowSmallScale
     {
@@ -348,6 +359,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Shows Large Scale marking
     /// </summary>
     [Description("Show or hide graduations")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public bool ShowLargeScale
     {
@@ -366,6 +378,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Minimum Value for knob Control
     /// </summary>
     [Description("set the minimum value for the knob control")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int Minimum
     {
@@ -382,6 +395,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Maximum value for knob control
     /// </summary>
     [Description("set the maximum value for the knob control")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int Maximum
     {
@@ -409,6 +423,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// value set for large change
     /// </summary>
     [Description("set the value for the large changes")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int LargeChange
     {
@@ -425,6 +440,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// value set for small change.
     /// </summary>
     [Description("set the minimum value for the small changes")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int SmallChange
     {
@@ -441,6 +457,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Current Value of knob control
     /// </summary>
     [Description("set the current value of the knob control")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public int Value
     {
@@ -465,6 +482,7 @@ public class KryptonKnobControlVersion2 : UserControl
     /// Color of the button
     /// </summary>
     [Description("set the color of the pointer")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("KryptonKnobControlEnhanced")]
     public Color PointerColour
     {
@@ -702,14 +720,6 @@ public class KryptonKnobControlVersion2 : UserControl
 
     protected override void Dispose(bool disposing)
     {
-        if (disposing)
-        {
-            if (components != null)
-            {
-                components.Dispose();
-            }
-        }
-
         base.Dispose(disposing);
     }
     #endregion
@@ -1275,7 +1285,7 @@ public class KryptonKnobControlVersion2 : UserControl
     #endregion
 
     #region Event Handlers
-    private void KryptonKnobControlEnhanced_Resize(object sender, EventArgs e)
+    private void KryptonKnobControlEnhanced_Resize(object? sender, EventArgs e)
     {
         // Control remains square
         Height = Width;
@@ -1285,7 +1295,7 @@ public class KryptonKnobControlVersion2 : UserControl
         Invalidate();
     }
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -1306,7 +1316,7 @@ public class KryptonKnobControlVersion2 : UserControl
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }

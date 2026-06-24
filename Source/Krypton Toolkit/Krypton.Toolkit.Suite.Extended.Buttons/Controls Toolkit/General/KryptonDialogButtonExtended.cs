@@ -369,7 +369,7 @@ public class KryptonDialogButtonExtended : KryptonButton
 
     /// <summary>Raises the <see cref="E:Paint" /> event.</summary>
     /// <param name="e">The <see cref="PaintEventArgs" /> instance containing the event data.</param>
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         if (_useAcceptDenyColours)
         {

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -178,7 +178,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.ksbtnPalettes.ContextMenuStrip = this.cmsPaletteUtilities;
         this.ksbtnPalettes.Location = new System.Drawing.Point(12, 13);
         this.ksbtnPalettes.Name = "ksbtnPalettes";
-        this.ksbtnPalettes.ProcessPath = null;
+        this.ksbtnPalettes.ProcessPath = null!;
         this.ksbtnPalettes.ShowSplitOption = true;
         this.ksbtnPalettes.Size = new System.Drawing.Size(158, 25);
         this.ksbtnPalettes.TabIndex = 5;
@@ -577,7 +577,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.kavnumBase.Name = "kavnumBase";
         this.kavnumBase.Size = new System.Drawing.Size(210, 22);
         this.kavnumBase.TabIndex = 5;
-        this.kavnumBase.Typeface = null;
+        this.kavnumBase.Typeface = null!;
         this.kavnumBase.ValueChanged += new System.EventHandler(this.kavnumBase_ValueChanged);
         // 
         // krvnumBase
@@ -599,7 +599,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.krvnumBase.ToolTipValues.Description = "The red value";
         this.krvnumBase.ToolTipValues.EnableToolTips = true;
         this.krvnumBase.ToolTipValues.Heading = "Red Value";
-        this.krvnumBase.Typeface = null;
+        this.krvnumBase.Typeface = null!;
         this.krvnumBase.UseAccessibleUI = false;
         this.krvnumBase.ValueChanged += new System.EventHandler(this.krvnumBase_ValueChanged);
         // 
@@ -622,7 +622,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.kgvnumBase.ToolTipValues.Description = "The green value";
         this.kgvnumBase.ToolTipValues.EnableToolTips = true;
         this.kgvnumBase.ToolTipValues.Heading = "Green Value";
-        this.kgvnumBase.Typeface = null;
+        this.kgvnumBase.Typeface = null!;
         this.kgvnumBase.UseAccessibleUI = false;
         this.kgvnumBase.ValueChanged += new System.EventHandler(this.kgvnumBase_ValueChanged);
         // 
@@ -645,7 +645,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.kbvnumBase.ToolTipValues.Description = "The blue value";
         this.kbvnumBase.ToolTipValues.EnableToolTips = true;
         this.kbvnumBase.ToolTipValues.Heading = "Blue Value";
-        this.kbvnumBase.Typeface = null;
+        this.kbvnumBase.Typeface = null!;
         this.kbvnumBase.UseAccessibleUI = false;
         this.kbvnumBase.ValueChanged += new System.EventHandler(this.kbvnumBase_ValueChanged);
         // 
@@ -797,7 +797,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.kavnumContrast.Name = "kavnumContrast";
         this.kavnumContrast.Size = new System.Drawing.Size(210, 22);
         this.kavnumContrast.TabIndex = 4;
-        this.kavnumContrast.Typeface = null;
+        this.kavnumContrast.Typeface = null!;
         this.kavnumContrast.ValueChanged += new System.EventHandler(this.kavnumContrast_ValueChanged);
         // 
         // krvnumContrast
@@ -819,7 +819,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.krvnumContrast.ToolTipValues.Description = "The red value";
         this.krvnumContrast.ToolTipValues.EnableToolTips = true;
         this.krvnumContrast.ToolTipValues.Heading = "Red Value";
-        this.krvnumContrast.Typeface = null;
+        this.krvnumContrast.Typeface = null!;
         this.krvnumContrast.UseAccessibleUI = false;
         this.krvnumContrast.ValueChanged += new System.EventHandler(this.krvnumContrast_ValueChanged);
         // 
@@ -842,7 +842,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.kgvnumContrast.ToolTipValues.Description = "The green value";
         this.kgvnumContrast.ToolTipValues.EnableToolTips = true;
         this.kgvnumContrast.ToolTipValues.Heading = "Green Value";
-        this.kgvnumContrast.Typeface = null;
+        this.kgvnumContrast.Typeface = null!;
         this.kgvnumContrast.UseAccessibleUI = false;
         this.kgvnumContrast.ValueChanged += new System.EventHandler(this.kgvnumContrast_ValueChanged);
         // 
@@ -865,7 +865,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         this.kbvnumContrast.ToolTipValues.Description = "The blue value";
         this.kbvnumContrast.ToolTipValues.EnableToolTips = true;
         this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
-        this.kbvnumContrast.Typeface = null;
+        this.kbvnumContrast.Typeface = null!;
         this.kbvnumContrast.UseAccessibleUI = false;
         this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
         // 
@@ -990,7 +990,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Event Handlers
-    private void cbBaseColour_BackColorChanged(object sender, EventArgs e)
+    private void cbBaseColour_BackColorChanged(object? sender, EventArgs e)
     {
         kavnumContrast.Value = cbContrastColour.BackColor.A;
 
@@ -1003,7 +1003,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         chtxtBase.Color = cbBaseColour.BackColor;
     }
 
-    private void cbContrastColour_BackColorChanged(object sender, EventArgs e)
+    private void cbContrastColour_BackColorChanged(object? sender, EventArgs e)
     {
         kavnumBase.Value = cbBaseColour.BackColor.A;
 
@@ -1016,99 +1016,99 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         chtxtContrast.Color = cbContrastColour.BackColor;
     }
 
-    private void useBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
+    private void useBaseColourToolStripMenuItem_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void useContrastColourToolStripMenuItem_Click(object sender, EventArgs e)
+    private void useContrastColourToolStripMenuItem_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void kavnumBase_ValueChanged(object sender, EventArgs e)
-    {
-        byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
-
-        UpdateBaseColour(alpha, red, green, blue);
-    }
-
-    private void krvnumBase_ValueChanged(object sender, EventArgs e)
+    private void kavnumBase_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
         UpdateBaseColour(alpha, red, green, blue);
     }
 
-    private void kgvnumBase_ValueChanged(object sender, EventArgs e)
+    private void krvnumBase_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
         UpdateBaseColour(alpha, red, green, blue);
     }
 
-    private void kbvnumBase_ValueChanged(object sender, EventArgs e)
+    private void kgvnumBase_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
         UpdateBaseColour(alpha, red, green, blue);
     }
 
-    private void kavnumContrast_ValueChanged(object sender, EventArgs e)
+    private void kbvnumBase_ValueChanged(object? sender, EventArgs e)
+    {
+        byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
+
+        UpdateBaseColour(alpha, red, green, blue);
+    }
+
+    private void kavnumContrast_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
         UpdateContrastColour(alpha, red, green, blue);
     }
 
-    private void krvnumContrast_ValueChanged(object sender, EventArgs e)
+    private void krvnumContrast_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
         UpdateContrastColour(alpha, red, green, blue);
     }
 
-    private void kgvnumContrast_ValueChanged(object sender, EventArgs e)
+    private void kgvnumContrast_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
         UpdateContrastColour(alpha, red, green, blue);
     }
 
-    private void kbvnumContrast_ValueChanged(object sender, EventArgs e)
+    private void kbvnumContrast_ValueChanged(object? sender, EventArgs e)
     {
         byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
         UpdateContrastColour(alpha, red, green, blue);
     }
 
-    private void makeThisTheContrastColourToolStripMenuItem_Click(object sender, EventArgs e) => cbContrastColour.BackColor = cbBaseColour.BackColor;
+    private void makeThisTheContrastColourToolStripMenuItem_Click(object? sender, EventArgs e) => cbContrastColour.BackColor = cbBaseColour.BackColor;
 
-    private void aRGBToolStripMenuItem_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToARGB(cbBaseColour.BackColor));
+    private void aRGBToolStripMenuItem_Click(object? sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToARGB(cbBaseColour.BackColor));
 
-    private void rGBToolStripMenuItem_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToRGB(cbBaseColour.BackColor));
+    private void rGBToolStripMenuItem_Click(object? sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToRGB(cbBaseColour.BackColor));
 
-    private void hexadecimalToolStripMenuItem_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToHexadecimal(cbBaseColour.BackColor));
+    private void hexadecimalToolStripMenuItem_Click(object? sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToHexadecimal(cbBaseColour.BackColor));
 
-    private void makeThisTheBaseColourToolStripMenuItem_Click(object sender, EventArgs e) => cbBaseColour.BackColor = cbContrastColour.BackColor;
+    private void makeThisTheBaseColourToolStripMenuItem_Click(object? sender, EventArgs e) => cbBaseColour.BackColor = cbContrastColour.BackColor;
 
-    private void aRGBToolStripMenuItem1_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToARGB(cbContrastColour.BackColor));
+    private void aRGBToolStripMenuItem1_Click(object? sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToARGB(cbContrastColour.BackColor));
 
-    private void rGBToolStripMenuItem1_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToRGB(cbContrastColour.BackColor));
+    private void rGBToolStripMenuItem1_Click(object? sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToRGB(cbContrastColour.BackColor));
 
-    private void hexadecimalToolStripMenuItem1_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToHexadecimal(cbContrastColour.BackColor));
+    private void hexadecimalToolStripMenuItem1_Click(object? sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToHexadecimal(cbContrastColour.BackColor));
 
-    private void kbtnOk_Click(object sender, EventArgs e)
+    private void kbtnOk_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void UpdateUI_Tick(object sender, EventArgs e)
+    private void UpdateUI_Tick(object? sender, EventArgs e)
     {
         cbBaseColour.BackColor = Color.FromArgb(Convert.ToInt32(kavnumBase.Value), Convert.ToInt32(krvnumBase.Value), Convert.ToInt32(kgvnumBase.Value), Convert.ToInt32(kbvnumBase.Value));
 
@@ -1118,7 +1118,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
         }
     }
 
-    private void chtxtBase_TextChanged(object sender, EventArgs e)
+    private void chtxtBase_TextChanged(object? sender, EventArgs e)
     {
         if (chtxtBase.Text.Length is 3 or 6)
         {

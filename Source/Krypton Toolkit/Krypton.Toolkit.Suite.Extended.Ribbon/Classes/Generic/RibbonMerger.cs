@@ -58,7 +58,7 @@ public class RibbonMerger
     /// <param name="tagValue">The value for the tag.</param>
     /// <param name="maxValue">The maximum value for the items.</param>
     /// <returns>The sorting index.</returns>
-    private int GetSortIndexFromTag(object tagValue, int maxValue)
+    private int GetSortIndexFromTag(object? tagValue, int maxValue)
     {
         if (maxValue < 0)
         {
@@ -143,7 +143,7 @@ public class RibbonMerger
         {
             if (!_mergedItems.Contains(grp))
             {
-                KryptonRibbonGroup existingGroup = sourceGroups.FirstOrDefault(item => string.Equals(item.TextLine1, grp.TextLine1, StringComparison.CurrentCulture)
+                KryptonRibbonGroup? existingGroup = sourceGroups.FirstOrDefault(item => string.Equals(item.TextLine1, grp.TextLine1, StringComparison.CurrentCulture)
                     && string.Equals(item.TextLine2, grp.TextLine2, StringComparison.CurrentCulture));
 
                 if (existingGroup is not null)
@@ -171,7 +171,7 @@ public class RibbonMerger
 
         foreach (KryptonRibbonGroup sourceGroup in groups)
         {
-            KryptonRibbonGroup existingGroup = targetGroups.FirstOrDefault(item => string.Equals(item.TextLine1, sourceGroup.TextLine1, StringComparison.CurrentCulture)
+            KryptonRibbonGroup? existingGroup = targetGroups.FirstOrDefault(item => string.Equals(item.TextLine1, sourceGroup.TextLine1, StringComparison.CurrentCulture)
                 && string.Equals(item.TextLine2, sourceGroup.TextLine2, StringComparison.CurrentCulture));
 
             if (existingGroup is null && !targetGroups.Contains(sourceGroup))
@@ -188,7 +188,10 @@ public class RibbonMerger
             }
 
             // We'll need to merge the group items.
-            MergeGroupItems(sourceGroup.Items, existingGroup.Items);
+            if (existingGroup is not null)
+            {
+                MergeGroupItems(sourceGroup.Items, existingGroup.Items);
+            }
         }
     }
 
@@ -203,7 +206,7 @@ public class RibbonMerger
 
         foreach (KryptonRibbonTab tab in sourceTabs)
         {
-            KryptonRibbonTab existingTab = targetRibbon.RibbonTabs.FirstOrDefault(item => string.Equals(item.Text, tab.Text, StringComparison.CurrentCulture));
+            KryptonRibbonTab? existingTab = targetRibbon.RibbonTabs.FirstOrDefault(item => string.Equals(item.Text, tab.Text, StringComparison.CurrentCulture));
 
             // The tab doesn't exist, so just add it
             if (existingTab is null && !targetRibbon.RibbonTabs.Contains(tab))
@@ -221,7 +224,10 @@ public class RibbonMerger
             }
 
             // We'll need to merge the groups.
-            MergeGroups(tab.Groups, existingTab.Groups);
+            if (existingTab is not null)
+            {
+                MergeGroups(tab.Groups, existingTab.Groups);
+            }
         }
     }
 
@@ -241,7 +247,7 @@ public class RibbonMerger
                 continue;
             }
 
-            KryptonRibbonContext existing = sourceRibbon.RibbonContexts.FirstOrDefault(item => string.Equals(item.ContextTitle, context.ContextTitle, StringComparison.CurrentCulture));
+            KryptonRibbonContext? existing = sourceRibbon.RibbonContexts.FirstOrDefault(item => string.Equals(item.ContextTitle, context.ContextTitle, StringComparison.CurrentCulture));
 
             // The tab doesn't exist, so just add it
             if (existing is not null || sourceRibbon.RibbonContexts.Contains(context))
@@ -266,7 +272,7 @@ public class RibbonMerger
 
         foreach (KryptonRibbonContext context in contexts)
         {
-            KryptonRibbonContext existing = targetRibbon.RibbonContexts.FirstOrDefault(item => string.Equals(item.ContextTitle, context.ContextTitle, StringComparison.CurrentCulture));
+            KryptonRibbonContext? existing = targetRibbon.RibbonContexts.FirstOrDefault(item => string.Equals(item.ContextTitle, context.ContextTitle, StringComparison.CurrentCulture));
 
             // The tab doesn't exist, so just add it
             if (existing is not null || targetRibbon.RibbonContexts.Contains(context))
@@ -299,7 +305,7 @@ public class RibbonMerger
         {
             if (!_mergedItems.Contains(tab))
             {
-                KryptonRibbonTab existingTab = sourceRibbon.RibbonTabs.FirstOrDefault(item => string.Equals(item.Text, tab.Text, StringComparison.CurrentCulture));
+                KryptonRibbonTab? existingTab = sourceRibbon.RibbonTabs.FirstOrDefault(item => string.Equals(item.Text, tab.Text, StringComparison.CurrentCulture));
 
                 if (existingTab is not null)
                 {
@@ -325,8 +331,8 @@ public class RibbonMerger
             return;
         }
 
-        string selectedContext = TargetRibbon.SelectedContext;
-        KryptonRibbonTab selectedTab = TargetRibbon.SelectedTab;
+        string? selectedContext = TargetRibbon.SelectedContext;
+        KryptonRibbonTab? selectedTab = TargetRibbon.SelectedTab;
 
         MergeTabs(ribbon, TargetRibbon);
         MergeContexts(ribbon, TargetRibbon);
@@ -353,7 +359,7 @@ public class RibbonMerger
             return;
         }
 
-        KryptonRibbonTab selected = TargetRibbon.SelectedTab;
+        KryptonRibbonTab? selected = TargetRibbon.SelectedTab;
 
         UnmergeContexts(ribbon, TargetRibbon);
         UnmergeTabs(ribbon, TargetRibbon);
@@ -363,7 +369,7 @@ public class RibbonMerger
         ribbon.CheckPerformLayout();
 
         // Restore the seleted tab.
-        if (TargetRibbon.RibbonTabs.Contains(selected))
+        if (selected is not null && TargetRibbon.RibbonTabs.Contains(selected))
         {
             TargetRibbon.SelectedTab = selected;
         }
@@ -378,7 +384,7 @@ public class RibbonMerger
     /// </summary>
     public void FixGroupWidths()
     {
-        using var g = Drawing.Graphics.FromHwnd(TargetRibbon.Parent.Handle);
+        using var g = Drawing.Graphics.FromHwnd(TargetRibbon.Parent!.Handle);
         double dpi = g.DpiY / 96.0;
 
         foreach (KryptonRibbonTab tab in TargetRibbon.RibbonTabs)

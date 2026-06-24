@@ -78,4 +78,4 @@ public class AnimationEventArgs : EventArgs
 
 }
 
-public delegate void AnimationEventHandler(object sender, AnimationEventArgs e);
+public delegate void AnimationEventHandler(object? sender, AnimationEventArgs e);

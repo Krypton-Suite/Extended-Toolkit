@@ -38,7 +38,7 @@ public class KryptonAdvancedWizardPageCollection : IList
 
     public KryptonAdvancedWizardPageCollection(int initialCount) => _items = new ArrayList(initialCount);
 
-    bool IList.Contains(object wizardPage) => _items.Contains(wizardPage);
+    bool IList.Contains(object? wizardPage) => _items.Contains(wizardPage);
 
     public bool Contains(KryptonAdvancedWizardPage? page) => _items.Contains(page);
 
@@ -62,17 +62,16 @@ public class KryptonAdvancedWizardPageCollection : IList
 
     public KryptonAdvancedWizardPage this[int index]
     {
-        get => (KryptonAdvancedWizardPage)_items[index];
+        get => (KryptonAdvancedWizardPage)_items[index]!;
         set => _items[index] = value;
     }
 
-    object IList.this[int index]
+    object? IList.this[int index]
     {
         get => this[index];
         set
         {
-            var page = value as KryptonAdvancedWizardPage;
-            if (page != null)
+            if (value is KryptonAdvancedWizardPage page)
             {
                 this[index] = page;
             }
@@ -108,37 +107,36 @@ public class KryptonAdvancedWizardPageCollection : IList
 
     internal ArrayList Items => _items;
 
-    int IList.IndexOf(object @object) => _items.IndexOf(@object);
+    int IList.IndexOf(object? @object) => _items.IndexOf(@object);
 
-    int IList.Add(object @object)
+    int IList.Add(object? @object)
     {
-        var o = @object as KryptonAdvancedWizardPage;
-        if (o == null)
+        if (@object is not KryptonAdvancedWizardPage page)
         {
             return -1;
         }
 
-        return Add(o);
+        return Add(page);
     }
 
-    void IList.Insert(int index, object @object)
+    void IList.Insert(int index, object? @object)
     {
-        if (!(@object is KryptonAdvancedWizardPage))
+        if (@object is not KryptonAdvancedWizardPage page)
         {
             throw new ArgumentException("This collection can only contain WizardPage objects.", nameof(@object));
         }
 
-        _items.Insert(index, @object);
+        _items.Insert(index, page);
     }
 
-    void IList.Remove(object @object)
+    void IList.Remove(object? @object)
     {
-        if (!(@object is KryptonAdvancedWizardPage))
+        if (@object is not KryptonAdvancedWizardPage page)
         {
             return;
         }
 
-        _items.Remove(@object);
+        _items.Remove(page);
     }
 
     private readonly ArrayList _items;

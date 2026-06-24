@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls;
 /// Provides data for a cancelable value-change event.
 /// </summary>
 /// <typeparam name="T">The type of value being changed.</typeparam>
-public class CancelChangeEventArgs<T> : CancelEventArgs
+public class CancelChangeEventArgs<T> : CancelEventArgs where T : notnull
 {
     public static bool operator ==(CancelChangeEventArgs<T> left,
         CancelChangeEventArgs<T> right)

@@ -178,7 +178,9 @@ public class Grammar
                     _recognizer = null;
                     if (_appDomain != null)
                     {
+#if NETFRAMEWORK
                         AppDomain.Unload(_appDomain);
+#endif
                         _appDomain = null;
                     }
                     break;
@@ -746,6 +748,7 @@ public class Grammar
 
     private void CreateSandbox(MemoryStream stream)
     {
+#if NETFRAMEWORK
         stream.Position = 0L;
         byte[] assemblyContent;
         byte[] assemblyDebugSymbols;
@@ -754,10 +757,13 @@ public class Grammar
         {
             Assembly executingAssembly = Assembly.GetExecutingAssembly();
             _appDomain = AppDomain.CreateDomain("sandbox");
-            _proxy = (AppDomainGrammarProxy)_appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy");
+            _proxy = (AppDomainGrammarProxy)_appDomain.CreateInstanceFromAndUnwrap(executingAssembly.Location, "System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy");
             _proxy.Init(_ruleName, assemblyContent, assemblyDebugSymbols);
             _scripts = scripts;
         }
+#else
+        throw new PlatformNotSupportedException("Dynamic grammar sandboxing requires .NET Framework.");
+#endif
     }
 
     private Stream LoadCfgFromResource(bool stgInit)

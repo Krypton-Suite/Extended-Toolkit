@@ -76,7 +76,7 @@ public static class UACSecurity
 
         try
         {
-            Process p = Process.Start(startInfo);
+            _ = Process.Start(startInfo);
         }
         catch (Win32Exception ex)
         {

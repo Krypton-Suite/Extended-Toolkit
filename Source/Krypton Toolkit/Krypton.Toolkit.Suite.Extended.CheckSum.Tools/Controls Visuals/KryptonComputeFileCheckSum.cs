@@ -6,7 +6,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 
     private readonly bool _useAPICodePackFeatures;
 
-    private string _fileName;
+    private string _fileName = string.Empty;
 
     #endregion
 
@@ -29,7 +29,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 
     #region Implementation
 
-    private void KryptonComputeFileCheckSum_Load(object sender, EventArgs e)
+    private void KryptonComputeFileCheckSum_Load(object? sender, EventArgs e)
     {
 #if NETCOREAPP3_0_OR_GREATER
             foreach (string hash in Enum.GetNames(typeof(SafeNETCoreAndNewerSupportedHashAlgorithims)))
@@ -52,7 +52,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 #endif
     }
 
-    private void kchkToggleCasing_CheckedChanged(object sender, EventArgs e)
+    private void kchkToggleCasing_CheckedChanged(object? sender, EventArgs e)
     {
         string tempHashString = kwlHashOutput.Text;
 
@@ -70,7 +70,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void bsaBrowse_Click(object sender, EventArgs e)
+    private void bsaBrowse_Click(object? sender, EventArgs e)
     {
         if (_useAPICodePackFeatures)
         {
@@ -138,7 +138,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void kbtnSaveToFile_Click(object sender, EventArgs e) => SaveHashFile();
+    private void kbtnSaveToFile_Click(object? sender, EventArgs e) => SaveHashFile();
 
     private void SaveHashFile()
     {
@@ -152,13 +152,16 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 
             saveFileDialog.Filters.Add(new CommonFileDialogFilter("Text Files", "*.txt"));
 
-            if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok
+                && !string.IsNullOrEmpty(saveFileDialog.FileName))
             {
-                if (!File.Exists(Path.GetFullPath(saveFileDialog.FileName)))
-                {
-                    File.Create(Path.GetFullPath(saveFileDialog.FileName));
+                string savedFilePath = Path.GetFullPath(saveFileDialog.FileName);
 
-                    StreamWriter writer = new(Path.GetFullPath(saveFileDialog.FileName));
+                if (!File.Exists(savedFilePath))
+                {
+                    File.Create(savedFilePath);
+
+                    StreamWriter writer = new(savedFilePath);
 
                     if (!string.IsNullOrEmpty(kwlHashOutput.Text))
                     {
@@ -173,7 +176,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
                 }
                 else
                 {
-                    StreamWriter writer = new(Path.GetFullPath(saveFileDialog.FileName));
+                    StreamWriter writer = new(savedFilePath);
 
                     if (!string.IsNullOrEmpty(kwlHashOutput.Text))
                     {
@@ -300,7 +303,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
     }
 #endif
 
-    private void kbtnCalculate_Click(object sender, EventArgs e)
+    private void kbtnCalculate_Click(object? sender, EventArgs e)
     {
         try
         {
@@ -312,7 +315,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         if (bgwMD5.IsBusy || bgwSHA1.IsBusy || bgwSHA256.IsBusy || bgwSHA384.IsBusy || bgwSHA512.IsBusy || bgwRIPEMD160.IsBusy)
         {
@@ -356,9 +359,12 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 
     #endregion
 
-    private void bgwMD5_DoWork(object sender, DoWorkEventArgs e)
+    private void bgwMD5_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string? filePath = e.Argument?.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -366,9 +372,7 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 
         long size, totalBytesRead = 0;
 
-        if (filePath != null)
-        {
-            using (Stream file = File.OpenRead(filePath))
+        using (Stream file = File.OpenRead(filePath))
             {
                 size = file.Length;
 
@@ -389,15 +393,17 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 
                     hasher.TransformFinalBlock(buffer, 0, 0);
 
-                    e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
-                }
+                e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
             }
         }
     }
 
-    private void bgwSHA1_DoWork(object sender, DoWorkEventArgs e)
+    private void bgwSHA1_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -431,9 +437,12 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void bgwSHA256_DoWork(object sender, DoWorkEventArgs e)
+    private void bgwSHA256_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -467,9 +476,12 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void bgwSHA384_DoWork(object sender, DoWorkEventArgs e)
+    private void bgwSHA384_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -503,9 +515,12 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void bgwSHA512_DoWork(object sender, DoWorkEventArgs e)
+    private void bgwSHA512_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -539,10 +554,13 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         }
     }
 
-    private void bgwRIPEMD160_DoWork(object sender, DoWorkEventArgs e)
+    private void bgwRIPEMD160_DoWork(object? sender, DoWorkEventArgs e)
     {
 #if !NETCOREAPP3_0_OR_GREATER
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -577,13 +595,13 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
 #endif
     }
 
-    private void Calculation_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    private void Calculation_ProgressChanged(object? sender, ProgressChangedEventArgs e)
     {
         if (_useAPICodePackFeatures && TaskbarManager.IsPlatformSupported)
         {
             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
 
-            TaskbarManager.Instance.SetProgressValue(e.ProgressPercentage, null);
+            TaskbarManager.Instance.SetProgressValue(e.ProgressPercentage, 100);
         }
 
         kpbtsiCalculationProgress.Visible = true;
@@ -595,25 +613,25 @@ public partial class KryptonComputeFileCheckSum : KryptonForm
         UpdateStatus(CheckSumStatus.Computing);
     }
 
-    private void Calculation_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void Calculation_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
         if (_useAPICodePackFeatures && TaskbarManager.IsPlatformSupported)
         {
             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
 
-            TaskbarManager.Instance.SetProgressValue(0, null);
+            TaskbarManager.Instance.SetProgressValue(0, 100);
         }
 
         kpbtsiCalculationProgress.Visible = false;
 
         kpbtsiCalculationProgress.Value = 0;
 
-        kwlHashOutput.Text = $@"{e.Result}";
+        kwlHashOutput.Text = e.Result?.ToString() ?? string.Empty;
 
         kbtnSaveToFile.Enabled = true;
 
         UpdateStatus(CheckSumStatus.Ready);
     }
 
-    private void bsaReset_Click(object sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
+    private void bsaReset_Click(object? sender, EventArgs e) => ktxtFilePath.Text = string.Empty;
 }

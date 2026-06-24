@@ -151,7 +151,7 @@ public partial class KryptonRunDialog : KryptonForm
     /// <summary>Gets the application icon.</summary>
     /// <param name="path">The file path.</param>
     /// <returns>The application icon.</returns>
-    private Image GetApplicationIcon(string path) => Icon.ExtractAssociatedIcon(path).ToBitmap();
+    private Image? GetApplicationIcon(string path) => Icon.ExtractAssociatedIcon(path)?.ToBitmap();
 
     /// <summary>Enables the run button.</summary>
     /// <param name="value">if set to <c>true</c> [value].</param>

@@ -201,7 +201,7 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
         else if (showInnerException)
         {
-            ktxtException.Text = exception.InnerException.ToString();
+            ktxtException.Text = exception.InnerException?.ToString() ?? string.Empty;
         }
 
         if (showFullDetails)
@@ -249,7 +249,7 @@ public class KryptonExceptionCaptureDialog : KryptonForm
     }
     #endregion
 
-    private void kbtnExportException_Click(object sender, EventArgs e)
+    private void kbtnExportException_Click(object? sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(ktxtException.Text))
         {
@@ -285,12 +285,12 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         Close();
     }
 
-    private void kchkDarkMode_CheckedChanged(object sender, EventArgs e)
+    private void kchkDarkMode_CheckedChanged(object? sender, EventArgs e)
     {
         ToggleDarkMode(kchkDarkMode.Checked);
     }

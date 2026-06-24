@@ -63,6 +63,20 @@ namespace Examples
             circularProgressBar.Show();
         }
 
+        private void kbtnCardExample_Click(object sender, EventArgs e)
+        {
+            var cardExample = new CardExample();
+
+            cardExample.Show();
+        }
+
+        private void kbtnBottomSheetExample_Click(object sender, EventArgs e)
+        {
+            var bottomSheetExample = new BottomSheetExample();
+
+            bottomSheetExample.Show();
+        }
+
         private void kbtnCheckSum_Click(object sender, EventArgs e)
         {
             var checkSum = new CheckSumExample();

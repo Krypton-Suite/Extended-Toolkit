@@ -185,9 +185,20 @@ public class Animator3D : IAnimator
                 var pathsZ = new List<AnimationPath>();
                 foreach (var p in value)
                 {
-                    pathsX.Add(p.HorizontalPath);
-                    pathsY.Add(p.VerticalPath);
-                    pathsZ.Add(p.DepthPath);
+                    if (p.HorizontalPath is { } horizontalPath)
+                    {
+                        pathsX.Add(horizontalPath);
+                    }
+
+                    if (p.VerticalPath is { } verticalPath)
+                    {
+                        pathsY.Add(verticalPath);
+                    }
+
+                    if (p.DepthPath is { } depthPath)
+                    {
+                        pathsZ.Add(depthPath);
+                    }
                 }
 
                 HorizontalAnimator.Paths = pathsX.ToArray();

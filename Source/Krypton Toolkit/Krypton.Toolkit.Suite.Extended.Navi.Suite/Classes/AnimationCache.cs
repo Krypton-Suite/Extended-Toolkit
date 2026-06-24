@@ -31,11 +31,11 @@ public class AnimationCache
 {
     // Fields
 
-    Image[] cache;
+    Image[]? cache;
     System.Windows.Forms.Timer animationTimer;
-    Control control;
+    Control? control;
     Dictionary<string, int> animatables = new Dictionary<string, int>();
-    AnimationEventHandler paintFrame;
+    AnimationEventHandler? paintFrame;
 
     int frameRate = 24;
     int length = 10;
@@ -57,7 +57,7 @@ public class AnimationCache
     /// <summary>
     /// Gets the animation cache. Can be used to draw the control from the OnPaint event
     /// </summary>
-    public Image[] Cache
+    public Image[]? Cache
     {
         get => cache;
         set => cache = value;
@@ -110,8 +110,8 @@ public class AnimationCache
     /// </summary>      
     protected virtual void OnPaintFrame()
     {
-        AnimationEventHandler handler = paintFrame;
-        if (handler != null)
+        AnimationEventHandler? handler = paintFrame;
+        if (handler != null && cache != null)
         {
             using (Graphics graphics = Graphics.FromImage(cache[currentFrame]))
             {
@@ -166,7 +166,10 @@ public class AnimationCache
     /// <param name="g">The graphics surface to draw on</param>
     public void DrawFrame(Graphics g)
     {
-        g.DrawImageUnscaled(cache[currentFrame], new Point(0, 0));
+        if (cache != null)
+        {
+            g.DrawImageUnscaled(cache[currentFrame], new Point(0, 0));
+        }
     }
 
     /// <summary>
@@ -205,10 +208,10 @@ public class AnimationCache
 
     #region Event Handling
 
-    private void AnimationTick(object sender, EventArgs e)
+    private void AnimationTick(object? sender, EventArgs e)
     {
         Animate();
-        this.control.Invalidate();
+        control?.Invalidate();
     }
 
     /// <summary>

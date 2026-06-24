@@ -48,7 +48,7 @@ public class KryptonSplitButton : KryptonButton
 
     #region Properties
     [DefaultValue(true)]
-    public bool ShowSplitOption
+    public new bool ShowSplitOption
     {
         get => _showSplitOption;
 
@@ -83,11 +83,11 @@ public class KryptonSplitButton : KryptonButton
 
                 if (_useUACElevation)
                 {
-                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)!.ToBitmap();
                 }
                 else
                 {
-                    Values.Image = null;
+                    Values.Image = null!;
                 }
             }
         }
@@ -103,15 +103,15 @@ public class KryptonSplitButton : KryptonButton
     /// <summary></summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-    public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+    public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
     /// <summary>The execute process as administrator</summary>
-    public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+    public event ExecuteProcessAsAdministratorEventHandler? ExecuteProcessAsAdministrator;
 
     /// <summary>Executes the process as an administrator.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-    protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+    protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
     #endregion
 
     #region Constructor
@@ -196,7 +196,9 @@ public class KryptonSplitButton : KryptonButton
         }
     }
 
+#pragma warning disable CS8765
     protected override void OnPaint(PaintEventArgs e)
+#pragma warning restore CS8765
     {
         base.OnPaint(e);
 
@@ -287,7 +289,7 @@ public class KryptonSplitButton : KryptonButton
 
         if (KryptonContextMenu != null)
         {
-            KryptonContextMenu.Show(FindForm().PointToScreen(Location) + new Size(0, Height));
+            KryptonContextMenu.Show(FindForm()!.PointToScreen(Location) + new Size(0, Height));
 
             KryptonContextMenu.Closed += KryptonContextMenu_Closed;
         }
@@ -301,7 +303,7 @@ public class KryptonSplitButton : KryptonButton
     #endregion
 
     #region Event Handlers
-    private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+    private void KryptonContextMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
     {
         KryptonContextMenu? kcm = sender as KryptonContextMenu;
         if (kcm != null)
@@ -315,7 +317,7 @@ public class KryptonSplitButton : KryptonButton
         //} 
     }
 
-    private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+    private void ContextMenuStrip_Closing(object? sender, ToolStripDropDownClosingEventArgs e)
     {
         ContextMenuStrip? cms = sender as ContextMenuStrip;
         if (cms != null)

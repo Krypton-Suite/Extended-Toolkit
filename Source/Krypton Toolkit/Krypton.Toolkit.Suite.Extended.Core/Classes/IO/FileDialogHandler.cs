@@ -44,14 +44,6 @@ public class FileDialogHandler
 
     private KryptonOpenFileDialog _kryptonOpenFileDialog;
 
-    private KryptonSaveFileDialog _kryptonSaveFileDialog;
-
-    private FolderBrowserDialog _folderBrowserDialog;
-
-    private OpenFileDialog _openFileDialog;
-
-    private SaveFileDialog _saveFileDialog;
-
     #endregion
 
     #region Constructor

@@ -227,7 +227,7 @@ public partial class ColourSettingsViewer : KryptonForm
         InitializeComponent();
     }
 
-    private void kbtnAllColoursAsHex_Click(object sender, EventArgs e)
+    private void kbtnAllColoursAsHex_Click(object? sender, EventArgs e)
     {
         try
         {
@@ -239,13 +239,13 @@ public partial class ColourSettingsViewer : KryptonForm
         }
     }
 
-    private void kbtnAllColoursAsRGB_Click(object sender, EventArgs e)
+    private void kbtnAllColoursAsRGB_Click(object? sender, EventArgs e)
     {
         try
         {
             KryptonPaletteDebugManagement.PropagateRGBColourValues(klblRGBValues, kchkAutomaticallyUpdateValues.Checked);
         }
-        catch (Exception exc)
+        catch (Exception)
         {
 
             throw;

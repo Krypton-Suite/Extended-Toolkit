@@ -29,7 +29,7 @@ using VisualStyleRender = System.Windows.Forms.VisualStyles;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls;
 
-[ToolboxItem(false), CLSCompliant(true)]
+[ToolboxItem(false)]
 public partial class PopUp : ToolStripDropDown
 {
     #region Instance Fields
@@ -160,18 +160,18 @@ public partial class PopUp : ToolStripDropDown
             
         Items.Add(_host);
 
-        content.Disposed += delegate (object sender, EventArgs e)
+        content.Disposed += delegate (object? sender, EventArgs e)
         {
             content = null;
             Dispose(true);
         };
   
-        content.RegionChanged += delegate (object sender, EventArgs e)
+        content.RegionChanged += delegate (object? sender, EventArgs e)
         {
             UpdateRegion();
         };
             
-        content.Paint += delegate (object sender, PaintEventArgs e)
+        content.Paint += delegate (object? sender, PaintEventArgs e)
         {
             PaintSizeGrip(e);
         };
@@ -413,7 +413,7 @@ public partial class PopUp : ToolStripDropDown
 
     private bool OnGetMinMaxInfo(ref Message m)
     {
-        NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO));
+        NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO))!;
         minmax.MaximumTrackSize = this.MaximumSize;
         minmax.MinimumTrackSize = this.MinimumSize;
         Marshal.StructureToPtr(minmax, m.LParam, false);
@@ -508,7 +508,7 @@ public partial class PopUp : ToolStripDropDown
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components;
 
     /// <summary>
     /// Clean up any resources being used.

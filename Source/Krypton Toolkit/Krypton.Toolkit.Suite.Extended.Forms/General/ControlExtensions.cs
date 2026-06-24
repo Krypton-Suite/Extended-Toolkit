@@ -164,7 +164,7 @@ public static class ControlExtensions
 
                 foreach (var item in SubList!)
                 {
-                    item.Execute(cp, easing, frame, frames);
+                    item.Execute(cp!, easing, frame, frames);
                 }
 
                 Info?.SetValue(c, cp, null);

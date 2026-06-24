@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -365,7 +365,7 @@ public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidVal
 
     #region Krypton
     //Kripton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -385,7 +385,7 @@ public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidVal
     }
 
     //Kripton Palette Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
 
     }
@@ -393,7 +393,7 @@ public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidVal
     /// <summary>Initialises the colours.</summary>
     private void InitialiseColours()
     {
-        BorderColour = _palette.ColorTable.MenuBorder;
+        BorderColour = _palette!.ColorTable.MenuBorder;
         BackColour = _palette.ColorTable.MenuStripGradientBegin;
         LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
         RightSideColour = _palette.ColorTable.MenuStripGradientEnd;

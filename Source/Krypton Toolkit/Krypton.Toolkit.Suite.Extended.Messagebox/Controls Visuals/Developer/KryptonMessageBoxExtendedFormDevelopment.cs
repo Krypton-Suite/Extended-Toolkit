@@ -25,6 +25,10 @@
  */
 #endregion
 
+#pragma warning disable CS0169 // Field is never used
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
+#pragma warning disable CS0414 // Field is assigned but its value is never used
+
 using Resources = Krypton.Toolkit.Suite.Extended.Messagebox.Properties.Resources;
 
 using Timer = System.Windows.Forms.Timer;
@@ -1010,11 +1014,11 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
     {
         try
         {
-            Control control = FromHandle(_showOwner!.Handle);
+            Control? control = FromHandle(_showOwner!.Handle);
 
-            MethodInfo? mInfoMethod = control.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
+            MethodInfo? mInfoMethod = control?.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
                 Type.DefaultBinder, [typeof(HelpEventArgs)], null);
-            if (mInfoMethod != null)
+            if (mInfoMethod != null && control != null)
             {
                 mInfoMethod.Invoke(control, [new HelpEventArgs(MousePosition)]);
             }
@@ -1024,6 +1028,11 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
                 {
                     return;
                 }
+            }
+
+            if (control == null)
+            {
+                return;
             }
 
             if (!string.IsNullOrWhiteSpace(_helpInfo!.Keyword))
@@ -1059,7 +1068,7 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
         using (Graphics g = CreateGraphics())
         {
             // Find size of the label, with a max of 2/3 screen width
-            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen!;
             SizeF scaledMonitorSize = screen.Bounds.Size;
             scaledMonitorSize.Width *= 2 / 3.0f;
             scaledMonitorSize.Height *= 0.95f;
@@ -1161,7 +1170,7 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
         return new Size(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
     }
 
-    private void AnyKeyDown(object sender, KeyEventArgs e)
+    private void AnyKeyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if (ControlBox
@@ -1210,13 +1219,17 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
         Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
     }
 
-    private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
     {
         try
         {
             if (_openInExplorer)
             {
-                OpenInExplorer(e.Link.LinkData.ToString());
+                string? path = e.Link?.LinkData?.ToString();
+                if (!string.IsNullOrEmpty(path))
+                {
+                    OpenInExplorer(path);
+                }
             }
             else
             {
@@ -1300,7 +1313,7 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
 
         if (_showOwner != null)
         {
-            _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, AppDomain.GetCurrentThreadId());
+            _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, PlatformInvoke.GetCurrentThreadId());
         }
     }
 
@@ -1311,7 +1324,7 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
             return PlatformEvents.CallNextHookEx(_hHook, nCode, wParam, lParam);
         }
 
-        CWPRETSTRUCT msg = (CWPRETSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT));
+        CWPRETSTRUCT msg = Marshal.PtrToStructure<CWPRETSTRUCT>(lParam);
         IntPtr hook = _hHook;
 
         if (msg.message == (int)CbtHookAction.HCBT_ACTIVATE)
@@ -1395,7 +1408,7 @@ public partial class KryptonMessageBoxExtendedFormDevelopment : KryptonForm
         return messageBoxExtendedForm.kcbOptionalCheckBox.CheckState;
     }
 
-    private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
+    private void OptionalCheckBox_CheckedChanged(object? sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
 
     private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 

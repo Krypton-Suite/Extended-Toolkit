@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -140,12 +140,12 @@ public class LightnessColourSliderControl : ColourSliderControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.CreateScale();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }

@@ -32,6 +32,6 @@ public class PathHelper
 {
     public static String GetFullPathWithoutExtension(String path)
     {
-        return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(path));
+        return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path) ?? string.Empty, System.IO.Path.GetFileNameWithoutExtension(path));
     }
 }

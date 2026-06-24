@@ -31,7 +31,7 @@ public class KryptonNavigatorEditor : KryptonNavigator
 {
     #region Properties
 
-    public KryptonRichTextBox KryptonRichTextBox => GeKryptonRichTextBox(SelectedPage);
+    public KryptonRichTextBox? KryptonRichTextBox => GeKryptonRichTextBox(SelectedPage);
 
     public string? SelectedText => SelectedPage?.Controls[0].Text;
 
@@ -81,7 +81,7 @@ public class KryptonNavigatorEditor : KryptonNavigator
     {
         base.OnControlAdded(e);
 
-        e.Control.Controls.Add(CreateKryptonRichTextBox());
+        e.Control?.Controls.Add(CreateKryptonRichTextBox());
     }
 
     protected override void OnTextChanged(EventArgs e)

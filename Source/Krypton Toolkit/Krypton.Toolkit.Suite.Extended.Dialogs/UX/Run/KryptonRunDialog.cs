@@ -24,7 +24,7 @@ public partial class KryptonRunDialog : KryptonFormExtended
         AdjustStartPosition(startPosition);
     }
 
-    private void KryptonRunDialog_Load(object sender, EventArgs e)
+    private void KryptonRunDialog_Load(object? sender, EventArgs e)
     {
 
     }
@@ -54,17 +54,17 @@ public partial class KryptonRunDialog : KryptonFormExtended
 
         kcmdOpenInExplorer.Text = Properties.Resources.OpenInExplorerCommandText;
 
-        kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(64, 64));
+        kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe")!.ToBitmap(), new(64, 64));
 
-        kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new(16, 16));
+        kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe")!.ToBitmap(), new(16, 16));
     }
 
-    private void bsBrowse_Click(object sender, EventArgs e)
+    private void bsBrowse_Click(object? sender, EventArgs e)
     {
         kcmbFilePath.Text = Browse();
     }
 
-    private void kcmbFilePath_TextChanged(object sender, EventArgs e)
+    private void kcmbFilePath_TextChanged(object? sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(kcmbFilePath.Text))
         {
@@ -72,11 +72,7 @@ public partial class KryptonRunDialog : KryptonFormExtended
 
             ksbRun.Enabled = true;
 
-            pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new(32, 32));
-
-            FileVersionInfo? info = null;
-
-            //info
+            pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text)!.ToBitmap(), new(32, 32));
 
             FileInfo fi = new(kcmbFilePath.Text);
 
@@ -97,7 +93,7 @@ public partial class KryptonRunDialog : KryptonFormExtended
         switch (startPosition)
         {
             case RunDialogStartPosition.BottomLeft:
-                Location = new(0, Screen.PrimaryScreen.WorkingArea.Bottom - Height);
+                Location = new(0, Screen.PrimaryScreen!.WorkingArea.Bottom - Height);
                 break;
             case RunDialogStartPosition.BottomRight:
                 break;
@@ -110,11 +106,11 @@ public partial class KryptonRunDialog : KryptonFormExtended
         }
     }
 
-    private void pbxProcessIcon_MouseEnter(object sender, EventArgs e)
+    private void pbxProcessIcon_MouseEnter(object? sender, EventArgs e)
     {
     }
 
-    private void kbtnSettings_Click(object sender, EventArgs e)
+    private void kbtnSettings_Click(object? sender, EventArgs e)
     {
         KryptonRunDialogOptions runDialogOptions = new();
 
@@ -136,7 +132,7 @@ public partial class KryptonRunDialog : KryptonFormExtended
 
             if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                result = Path.GetFullPath(cofd.FileName);
+                result = Path.GetFullPath(cofd.FileName ?? string.Empty);
             }
         }
         catch (Exception e)

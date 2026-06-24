@@ -108,7 +108,7 @@ public class NaviBandCollection : IList
     /// <returns>The item if found</returns>
     public NaviBand this[int index]
     {
-        get => (NaviBand)_innerList[index];
+        get => (NaviBand)_innerList[index]!;
         set
         {
             if (!(value is NaviBand))
@@ -134,7 +134,7 @@ public class NaviBandCollection : IList
     {
         for (int i = Count - 1; i >= 0; i--)
         {
-            Remove((NaviBand)_innerList[i]);
+            Remove((NaviBand)_innerList[i]!);
         }
     }
 
@@ -151,7 +151,7 @@ public class NaviBandCollection : IList
 
     #region IList Members
 
-    int IList.Add(object value)
+    int IList.Add(object? value)
     {
         if (!(value is NaviBand))
         {
@@ -166,7 +166,7 @@ public class NaviBandCollection : IList
         Clear();
     }
 
-    bool IList.Contains(object value)
+    bool IList.Contains(object? value)
     {
         if (!(value is NaviBand))
         {
@@ -176,7 +176,7 @@ public class NaviBandCollection : IList
         return ((IList)_innerList).Contains(value);
     }
 
-    int IList.IndexOf(object value)
+    int IList.IndexOf(object? value)
     {
         if (!(value is NaviBand))
         {
@@ -186,7 +186,7 @@ public class NaviBandCollection : IList
         return ((IList)_innerList).IndexOf((NaviBand)value);
     }
 
-    void IList.Insert(int index, object value)
+    void IList.Insert(int index, object? value)
     {
         if (!(value is NaviBand))
         {
@@ -200,7 +200,7 @@ public class NaviBandCollection : IList
 
     bool IList.IsReadOnly => false;
 
-    void IList.Remove(object value)
+    void IList.Remove(object? value)
     {
         if (!(value is NaviBand))
         {
@@ -220,7 +220,7 @@ public class NaviBandCollection : IList
         Remove((NaviBand)this[index]);
     }
 
-    Object IList.this[int index]
+    object? IList.this[int index]
     {
         get => ((IList)_innerList)[index];
         set

@@ -45,7 +45,7 @@ internal class FadeManager
 
     private VisualForm _currentVirtualWindow;
 
-    private VisualForm _nextVirtualWindow;
+    private VisualForm? _nextVirtualWindow;
 
     #endregion
 

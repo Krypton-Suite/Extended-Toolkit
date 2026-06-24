@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Ribbon;
 /// </summary>
 /// <typeparam name="TFirst"></typeparam>
 /// <typeparam name="TSecond"></typeparam>
-internal class BiDictionary<TFirst, TSecond>
+internal class BiDictionary<TFirst, TSecond> where TFirst : notnull where TSecond : notnull
 {
     private static readonly IList<TFirst> _emptyFirstList = Array.Empty<TFirst>();
     private static readonly IList<TSecond> _emptySecondList = Array.Empty<TSecond>();
@@ -51,13 +51,13 @@ internal class BiDictionary<TFirst, TSecond>
     public TSecond GetByFirst(TFirst first)
     {
         _firstToSecond.TryGetValue(first, out var second);
-        return second;
+        return second!;
     }
 
     public TFirst GetBySecond(TSecond second)
     {
         _secondToFirst.TryGetValue(second, out var first);
-        return first;
+        return first!;
     }
 
     public ICollection<TFirst> GetAllFirsts() => _firstToSecond.Keys;

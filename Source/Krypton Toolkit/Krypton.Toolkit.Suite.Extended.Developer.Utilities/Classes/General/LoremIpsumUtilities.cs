@@ -40,7 +40,8 @@ public static class LoremIpsumGenerator
         if (typeof(TEnum).IsEnum)
         {
             var v = System.Enum.GetValues(typeof(TEnum));
-            return (TEnum)v.GetValue(RandomHelper.Instance.Next(v.Length));
+            object? selected = v.GetValue(RandomHelper.Instance.Next(v.Length));
+            return (TEnum)selected!;
         }
         else
         {

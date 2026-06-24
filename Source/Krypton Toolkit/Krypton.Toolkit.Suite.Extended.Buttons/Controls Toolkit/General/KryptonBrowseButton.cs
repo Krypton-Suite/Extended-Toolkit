@@ -41,7 +41,7 @@ public class KryptonBrowseButton : KryptonButton
 
     private BrowseButtonAction _browseButtonAction;
 
-    private IEnumerable<string> _fileNames;
+    private IEnumerable<string?> _fileNames;
 
     private FileDialogType _fileDialogType;
 
@@ -91,7 +91,7 @@ public class KryptonBrowseButton : KryptonButton
 
     /// <summary>Gets or sets the dialog filter.</summary>
     /// <value>The dialog filter.</value>
-    public string[] DialogFilter { get => _dialogFilter; set => _dialogFilter = value; }
+    public string[]? DialogFilter { get => _dialogFilter; set => _dialogFilter = value; }
 
     /// <summary>Gets or sets the browse button action.</summary>
     /// <value>The browse button action.</value>
@@ -99,7 +99,7 @@ public class KryptonBrowseButton : KryptonButton
 
     /// <summary>Gets or sets the file names.</summary>
     /// <value>The file names.</value>
-    public IEnumerable<string> FileNames { get => _fileNames; set => _fileNames = value; }
+    public IEnumerable<string?> FileNames { get => _fileNames; set => _fileNames = value; }
 
     public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
@@ -277,7 +277,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             ofd.Title = _dialogTitle;
 
-                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(ofd.FileName))
                             {
                                 _filePath = Path.GetFullPath(ofd.FileName);
 
@@ -290,7 +290,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             ofd.Title = _dialogTitle;
 
-                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(ofd.FileName))
                             {
                                 _filePath = Path.GetFullPath(ofd.FileName);
 
@@ -307,7 +307,7 @@ public class KryptonBrowseButton : KryptonButton
 
                         cofd.IsFolderPicker = true;
 
-                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(cofd.FileName))
                         {
                             _filePath = Path.GetFullPath(cofd.FileName);
                         }
@@ -321,7 +321,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             csfd.Filters.Add(new CommonFileDialogFilter(_rawDisplayName, _extensionList));
 
-                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                             {
                                 _filePath = Path.GetFullPath(csfd.FileName);
                             }
@@ -332,7 +332,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             csfd.Title = _dialogTitle;
 
-                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                             {
                                 _filePath = Path.GetFullPath(csfd.FileName);
                             }
@@ -350,7 +350,12 @@ public class KryptonBrowseButton : KryptonButton
     }
 
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public override string Text { get; set; }
+    [AllowNull]
+    public override string Text
+    {
+        get => base.Text;
+        set => base.Text = value;
+    }
 
     #endregion
 }

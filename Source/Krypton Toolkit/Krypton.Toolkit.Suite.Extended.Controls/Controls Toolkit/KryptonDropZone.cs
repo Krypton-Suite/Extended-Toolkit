@@ -275,7 +275,7 @@ public class KryptonDropZone : KryptonPanel
     }
 
     /// <summary>
-    /// Filter for the browse dialog (same format as <see cref="OpenFileDialog.Filter"/>). Empty uses "All files|*.*".
+    /// Filter for the browse dialog (same format as OpenFileDialog.Filter). Empty uses "All files|*.*".
     /// </summary>
     [Category("Behavior")]
     [DefaultValue("")]
@@ -421,7 +421,7 @@ public class KryptonDropZone : KryptonPanel
         Invalidate();
         UpdateVisualFeedbackTimer();
 
-        if (!AllowDrop || !drgevent.Data.GetDataPresent(DataFormats.FileDrop))
+        if (!AllowDrop || drgevent.Data?.GetDataPresent(DataFormats.FileDrop) != true)
         {
             base.OnDragDrop(drgevent);
             return;
@@ -483,7 +483,7 @@ public class KryptonDropZone : KryptonPanel
 
     private void UpdateDragEffect(DragEventArgs drgevent)
     {
-        if (!drgevent.Data.GetDataPresent(DataFormats.FileDrop))
+        if (drgevent.Data?.GetDataPresent(DataFormats.FileDrop) != true)
         {
             SetDragOver(false);
             drgevent.Effect = DragDropEffects.None;

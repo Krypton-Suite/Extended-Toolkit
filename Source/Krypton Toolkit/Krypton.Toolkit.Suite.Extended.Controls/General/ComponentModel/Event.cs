@@ -121,8 +121,8 @@ public static class Event
         System.Diagnostics.Debug.Assert(!ReferenceEquals(constructEventArgsAndCallEventRaisingMethod,
             null));
 
-        return ReferenceEquals(@event, null) ?
-            default(TEventArgs) :
-            constructEventArgsAndCallEventRaisingMethod?.Invoke();
+        return ReferenceEquals(@event, null)
+            ? default!
+            : constructEventArgsAndCallEventRaisingMethod();
     }
 }

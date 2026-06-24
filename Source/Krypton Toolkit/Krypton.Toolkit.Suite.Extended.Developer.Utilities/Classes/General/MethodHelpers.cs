@@ -37,6 +37,6 @@ public class MethodHelpers
 
         var stackFrame = stackTrace.GetFrame(1);
 
-        return stackFrame.GetMethod().ToString();
+        return stackFrame?.GetMethod()?.ToString() ?? string.Empty;
     }
 }

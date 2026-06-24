@@ -28,13 +28,13 @@
 namespace Krypton.Toolkit.Suite.Extended.Controls;
 
 /// <summary>
-/// Maintains an additional "Selected" & "Count" value for each item in a List.
+/// Maintains an additional "Selected" and "Count" value for each item in a List.
 /// Useful in the CheckBoxComboBox. It holds a reference to the List[Index] Item and 
 /// whether it is selected or not.
 /// It also caters for a Count, if needed.
 /// </summary>
-/// <typeparam name="TSelectionWrapper"></typeparam>
-public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
+/// <typeparam name="T">The type of values in the source list.</typeparam>
+public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>> where T : notnull
 {
     #region Identity
 
@@ -54,7 +54,7 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
         _showCounts = showCounts;
         if (_source is IBindingList)
         {
-            ((IBindingList)_source).ListChanged += new ListChangedEventHandler(ListSelectionWrapper_ListChanged);
+            ((IBindingList)_source).ListChanged += ListSelectionWrapper_ListChanged;
         }
 
         Populate();
@@ -91,7 +91,7 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
     /// <summary>
     /// Used to indicate NOT to use ToString(), but read this property instead as a display value.
     /// </summary>
-    private string _displayNameProperty = null;
+    private string? _displayNameProperty;
 
     #endregion
 
@@ -102,7 +102,7 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
     /// This property will be read instead. 
     /// This is specifically useful on DataTable implementations, where PropertyDescriptors are used to read the values.
     /// </summary>
-    public string DisplayNameProperty
+    public string? DisplayNameProperty
     {
         get => _displayNameProperty;
         set => _displayNameProperty = value;
@@ -119,8 +119,8 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
                 if (item.Selected)
                 {
                     text += string.IsNullOrEmpty(text)
-                        ? $"\"{(object)item.Name}\""
-                        : $" & \"{(object)item.Name}\"";
+                        ? $"\"{item.Name ?? string.Empty}\""
+                        : $" & \"{item.Name ?? string.Empty}\"";
                 }
 
             return text;
@@ -158,7 +158,7 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
     private ObjectSelectionWrapper<T> CreateSelectionWrapper(IEnumerator @object)
     {
         Type[] types = [typeof(T), GetType()];
-        ConstructorInfo ci = typeof(ObjectSelectionWrapper<T>).GetConstructor(types);
+        ConstructorInfo? ci = typeof(ObjectSelectionWrapper<T>).GetConstructor(types);
         if (ci == null)
         {
             throw new Exception(
@@ -166,11 +166,11 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
         }
 
         object[] parameters = [@object.Current, this];
-        object result = ci.Invoke(parameters);
-        return (ObjectSelectionWrapper<T>)result;
+        object? result = ci.Invoke(parameters);
+        return (ObjectSelectionWrapper<T>)result!;
     }
 
-    public ObjectSelectionWrapper<T> FindObjectWithItem(T @object)
+    public ObjectSelectionWrapper<T>? FindObjectWithItem(T @object)
     {
         return Find(new Predicate<ObjectSelectionWrapper<T>>(
             target => target.Item.Equals(@object)));
@@ -240,15 +240,31 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>>
         }
     }
 
-    private void ListSelectionWrapper_ListChanged(object sender, ListChangedEventArgs e)
+    private void ListSelectionWrapper_ListChanged(object? sender, ListChangedEventArgs e)
     {
+        if (_source is not IBindingList bindingList)
+        {
+            return;
+        }
+
         switch (e.ListChangedType)
         {
             case ListChangedType.ItemAdded:
-                Add(CreateSelectionWrapper((IEnumerator)((IBindingList)_source)[e.NewIndex]));
+            {
+                IEnumerator addedEnumerator = bindingList.GetEnumerator();
+                for (int i = 0; i <= e.NewIndex && addedEnumerator.MoveNext(); i++)
+                {
+                }
+
+                Add(CreateSelectionWrapper(addedEnumerator));
                 break;
+            }
             case ListChangedType.ItemDeleted:
-                Remove(FindObjectWithItem((T)((IBindingList)_source)[e.OldIndex]));
+                ObjectSelectionWrapper<T>? removed = FindObjectWithItem((T)bindingList[e.OldIndex]!);
+                if (removed is not null)
+                {
+                    Remove(removed);
+                }
                 break;
             case ListChangedType.Reset:
                 Populate();

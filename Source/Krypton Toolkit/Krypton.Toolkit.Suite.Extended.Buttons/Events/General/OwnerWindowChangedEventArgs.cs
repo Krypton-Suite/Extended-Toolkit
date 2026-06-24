@@ -32,7 +32,7 @@ public class OwnerWindowChangedEventArgs : EventArgs
     #region Variables
     private KryptonButton _button;
 
-    private KryptonForm _window;
+    private KryptonForm? _window;
     #endregion
 
     #region Properties
@@ -42,14 +42,14 @@ public class OwnerWindowChangedEventArgs : EventArgs
 
     /// <summary>Gets or sets the parent window.</summary>
     /// <value>The parent window.</value>
-    public KryptonForm ParentWindow { get => _window; set => _window = value; }
+    public KryptonForm? ParentWindow { get => _window; set => _window = value; }
     #endregion
 
     #region Constructor
     /// <summary>Initializes a new instance of the <see cref="OwnerWindowChangedEventArgs" /> class.</summary>
     /// <param name="buttonControl">The button control.</param>
     /// <param name="parentWindow">The parent window.</param>
-    public OwnerWindowChangedEventArgs(KryptonButton buttonControl, KryptonForm parentWindow)
+    public OwnerWindowChangedEventArgs(KryptonButton buttonControl, KryptonForm? parentWindow)
     {
         ButtonControl = buttonControl;
 
@@ -60,10 +60,22 @@ public class OwnerWindowChangedEventArgs : EventArgs
     #region Methods
     /// <summary>Associates the accept button.</summary>
     /// <param name="button">The button.</param>
-    public void AssociateAcceptButton(KryptonButton button) => ParentWindow.AcceptButton = button;
+    public void AssociateAcceptButton(KryptonButton button)
+    {
+        if (ParentWindow != null)
+        {
+            ParentWindow.AcceptButton = button;
+        }
+    }
 
     /// <summary>Associates the cancel button.</summary>
     /// <param name="button">The button.</param>
-    public void AssociateCancelButton(KryptonButton button) => ParentWindow.CancelButton = button;
+    public void AssociateCancelButton(KryptonButton button)
+    {
+        if (ParentWindow != null)
+        {
+            ParentWindow.CancelButton = button;
+        }
+    }
     #endregion
 }

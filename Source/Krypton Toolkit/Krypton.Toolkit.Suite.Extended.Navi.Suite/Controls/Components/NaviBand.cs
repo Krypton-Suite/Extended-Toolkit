@@ -44,7 +44,7 @@ public partial class NaviBand : NaviControl
     #region Fields
 
     private NaviButton button;
-    private NaviBar ownerBar;
+    private NaviBar? ownerBar;
     private Image largeImage;
     private Image smallImage;
     private NaviBandClientArea clientArea;
@@ -200,7 +200,7 @@ public partial class NaviBand : NaviControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public ImageList LargeImages => ownerBar.LargeImages;
+    public ImageList? LargeImages => ownerBar?.LargeImages;
 
     /// <summary>
     /// Gets the list of small images
@@ -209,7 +209,7 @@ public partial class NaviBand : NaviControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public ImageList SmallImages => ownerBar.SmallImages;
+    public ImageList? SmallImages => ownerBar?.SmallImages;
 
     /// <summary>
     /// Gets the button which is associated with this band
@@ -246,7 +246,7 @@ public partial class NaviBand : NaviControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public override NaviRenderer Renderer
+    public override NaviRenderer? Renderer
     {
         get => base.Renderer;
         set { base.Renderer = value; clientArea.Renderer = value; Invalidate(); }
@@ -259,7 +259,7 @@ public partial class NaviBand : NaviControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public NaviBar OwnerBar
+    public NaviBar? OwnerBar
     {
         get => ownerBar;
         internal set => ownerBar = value;
@@ -308,7 +308,7 @@ public partial class NaviBand : NaviControl
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        Renderer.DrawNaviBandBg(e.Graphics, ClientRectangle);
+        Renderer?.DrawNaviBandBg(e.Graphics, ClientRectangle);
     }
 
     /// <summary>

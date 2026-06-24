@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -312,7 +312,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
 
     public event EventHandler? ValueChanged;
 
-    protected void OnValueChanged(object sender, EventArgs e)
+    protected void OnValueChanged(object? sender, EventArgs e)
     {
         ValueChanged?.Invoke(this, e);
     }

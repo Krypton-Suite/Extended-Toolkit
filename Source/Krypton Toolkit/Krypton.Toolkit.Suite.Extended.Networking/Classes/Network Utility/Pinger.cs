@@ -92,7 +92,7 @@ internal class Pinger
     #endregion
 
     #region Event Handlers
-    void btnPing_Click(object sender, EventArgs e)
+    void btnPing_Click(object? sender, EventArgs e)
     {
         _pingView.Controls.Clear();
         string host = _txtPingHost.Text;
@@ -104,10 +104,12 @@ internal class Pinger
         }
     }
 
-    void _worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    void _worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
-        ListView statView = (ListView)_updateControl.Controls[0];
-        List<PingDetails> details = (List<PingDetails>)e.Result;
+        if (e.Result is not List<PingDetails> details)
+        {
+            return;
+        }
 
         foreach (PingDetails detail in details)
         {
@@ -119,9 +121,12 @@ internal class Pinger
         }
     }
 
-    void _worker_DoWork(object sender, DoWorkEventArgs e)
+    void _worker_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string host = (string)e.Argument;
+        if (e.Argument is not string host)
+        {
+            return;
+        }
 
         Ping pingSender = new Ping();
         PingOptions options = new PingOptions();
@@ -141,13 +146,13 @@ internal class Pinger
             {
                 PingReply? reply = pingSender.Send(host, timeout, buffer, options);
 
-                if (reply.Status == IPStatus.Success)
+                if (reply is { Status: IPStatus.Success })
                 {
                     PingDetails details = new PingDetails();
                     details.Address = reply.Address.ToString();
                     details.Length = reply.Buffer.Length.ToString();
                     details.Time = reply.RoundtripTime.ToString();
-                    details.TTL = reply.Options.Ttl.ToString();
+                    details.TTL = reply.Options?.Ttl.ToString() ?? string.Empty;
 
                     list.Add(details);
                 }

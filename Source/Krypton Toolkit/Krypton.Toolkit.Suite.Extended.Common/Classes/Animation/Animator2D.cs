@@ -169,8 +169,15 @@ public class Animator2D : IAnimator
                 var pathsV = new List<AnimationPath>();
                 foreach (var p in value)
                 {
-                    pathsH.Add(p.HorizontalPath);
-                    pathsV.Add(p.VerticalPath);
+                    if (p.HorizontalPath is { } horizontalPath)
+                    {
+                        pathsH.Add(horizontalPath);
+                    }
+
+                    if (p.VerticalPath is { } verticalPath)
+                    {
+                        pathsV.Add(verticalPath);
+                    }
                 }
                 HorizontalAnimator.Paths = pathsH.ToArray();
                 VerticalAnimator.Paths = pathsV.ToArray();

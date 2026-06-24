@@ -50,7 +50,7 @@ internal class BlurManager
         _parentForm = kryptonForm;
         _blurValues = blurValues;
 
-        _parentForm.Closing += KryptonFormOnClosing;
+        _parentForm.FormClosing += KryptonFormOnClosing;
         _detectIsActiveTimer = new Timer { Enabled = false, Interval = 200 };
         _detectIsActiveTimer.Tick += DetectIsTopMost;
 
@@ -80,7 +80,7 @@ internal class BlurManager
 
     #endregion Identity
 
-    private void KryptonFormOnClosing(object sender, /*Cancel*/EventArgs e) => RemoveBlur();
+    private void KryptonFormOnClosing(object? sender, /*Cancel*/EventArgs e) => RemoveBlur();
 
     private void RemoveBlur()
     {
@@ -152,7 +152,7 @@ internal class BlurManager
         }
     }
 
-    private void BlurValuesOnOpacityChanged(object sender, EventArgs e)
+    private void BlurValuesOnOpacityChanged(object? sender, EventArgs e)
     {
         if (_visualBlur != null)
         {
@@ -161,7 +161,7 @@ internal class BlurManager
         }
     }
 
-    private void BlurValues_EnableBlurChanged(object sender, EventArgs e)
+    private void BlurValues_EnableBlurChanged(object? sender, EventArgs e)
     {
         if (!_blurValues.BlurWhenFocusLost)
         {
@@ -169,7 +169,7 @@ internal class BlurManager
         }
     }
 
-    private void DetectIsTopMost(object sender, EventArgs e)
+    private void DetectIsTopMost(object? sender, EventArgs e)
     {
         if (_visualBlur != null
             && IsOverlapped()

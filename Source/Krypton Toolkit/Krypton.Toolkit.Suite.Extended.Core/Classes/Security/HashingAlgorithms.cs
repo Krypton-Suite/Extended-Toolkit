@@ -31,17 +31,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core;
 public class HashingAlgorithms
 {
     #region Variables
-    BackgroundWorker _md5Worker, _sha1Worker, _sha256Worker, _sha384Worker, _sha512Worker, _ripemd160Worker;
+    BackgroundWorker _md5Worker = null!, _sha1Worker = null!, _sha256Worker = null!, _sha384Worker = null!, _sha512Worker = null!, _ripemd160Worker = null!;
 
-    string _md5, _sha1, _sha256, _sha384, _sha512, _ripemd160;
+    string _md5 = null!, _sha1 = null!, _sha256 = null!, _sha384 = null!, _sha512 = null!, _ripemd160 = null!;
 
-    ProgressBar _hashingProgress;
+    ProgressBar _hashingProgress = null!;
 
-    ToolStripProgressBar _toolStripHashingProgress;
+    ToolStripProgressBar _toolStripHashingProgress = null!;
 
-    ToolStripLabel _toolStripProgressValueLabel;
+    ToolStripLabel _toolStripProgressValueLabel = null!;
 
-    KryptonLabel _kryptonProgressValueLabel;
+    KryptonLabel _kryptonProgressValueLabel = null!;
     #endregion
 
     #region Properties
@@ -108,7 +108,7 @@ public class HashingAlgorithms
     #endregion
 
     #region Event Handlers
-    private static void MD5Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private static void MD5Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
         HashingAlgorithms algorithims = new();
 
@@ -120,11 +120,11 @@ public class HashingAlgorithms
 
         algorithims.ProgressValueLabel.Text = string.Empty;
 
-        algorithims.MD5Output = e.Result.ToString();
+        algorithims.MD5Output = e.Result?.ToString() ?? string.Empty;
 
     }
 
-    private static void MD5Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    private static void MD5Worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
     {
         HashingAlgorithms algorithims = new();
 
@@ -137,9 +137,13 @@ public class HashingAlgorithms
         algorithims.ProgressValueLabel.Text = $"{e.ProgressPercentage.ToString()}%";
     }
 
-    private static void MD5Worker_DoWork(object sender, DoWorkEventArgs e)
+    private static void MD5Worker_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        string? filePath = e.Argument as string;
+        if (string.IsNullOrEmpty(filePath))
+        {
+            return;
+        }
 
         byte[] buffer;
 

@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 public partial class NaviBandClientArea : NaviControl
 {
     // Fields
-    private Bitmap backgroundCanvas;
+    private Bitmap? backgroundCanvas;
 
     /// <summary>
     /// Initializes a new instance of the NaviBandClientArea
@@ -56,7 +56,7 @@ public partial class NaviBandClientArea : NaviControl
     /// Gets a bitmap containing the background of the ClientArea, 
     /// </summary>
     /// <remarks>This bitmap is used for faking opacity of the NaviGroup</remarks>
-    public Bitmap BackgroundCanvas => backgroundCanvas;
+    public Bitmap? BackgroundCanvas => backgroundCanvas;
 
     #endregion
 
@@ -98,7 +98,7 @@ public partial class NaviBandClientArea : NaviControl
     /// </summary>
     public void PaintCanvas()
     {
-        using (Graphics bitGraphics = Graphics.FromImage(backgroundCanvas))
+        using (Graphics bitGraphics = Graphics.FromImage(backgroundCanvas!))
         {
             if (Renderer != null)
             {
@@ -133,7 +133,7 @@ public partial class NaviBandClientArea : NaviControl
             InitializeCanvas();
         }
 
-        e.Graphics.DrawImageUnscaled(backgroundCanvas, new Point(0, 0));
+        e.Graphics.DrawImageUnscaled(backgroundCanvas!, new Point(0, 0));
     }
 
     protected override void OnResize(System.EventArgs e)

@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core;
 internal partial class KryptonUACElevatedButton : KryptonButton
 {
     #region Variables
-    private Assembly _processToElevate;
+    private Assembly? _processToElevate;
 
     private bool _elevateApplicationOnClick = true, _showUACShield = true;
 
@@ -59,7 +59,7 @@ internal partial class KryptonUACElevatedButton : KryptonButton
     /// <summary>Gets or sets the process to elevate.</summary>
     /// <value>The process to elevate.</value>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] 
-    public Assembly ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
+    public Assembly? ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
 
     /// <summary>
     /// Elevates the current running application to administrator level when button is clicked.
@@ -92,10 +92,12 @@ internal partial class KryptonUACElevatedButton : KryptonButton
     /// <summary></summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-    public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+    public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
 
     /// <summary>The execute process as administrator</summary>
+    #pragma warning disable CS0649 // Event is raised by consumers
     public ExecuteProcessAsAdministratorEventHandler? ExecuteProcessAsAdministrator;
+    #pragma warning restore CS0649
     #endregion
 
     #region Constructor
@@ -167,16 +169,16 @@ internal partial class KryptonUACElevatedButton : KryptonButton
 
     /// <summary>Raises the Paint event.</summary>
     /// <param name="e">A PaintEventArgs that contains the event data.</param>
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
-        base.OnPaint(e);
+        base.OnPaint(e!);
     }
     #endregion
 
     /// <summary>Called when [execute process as administrator].</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-    protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
+    protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e)
     {
         if (ExecuteProcessAsAdministrator != null)
         {

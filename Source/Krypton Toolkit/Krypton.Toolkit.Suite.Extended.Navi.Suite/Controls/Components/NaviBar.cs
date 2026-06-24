@@ -51,19 +51,19 @@ public class NaviBar : NaviControl, IObservable
     private int popupMinWidth = 50;
     private int visibleLargeButtons;
     private NaviBandCollection bands;
-    private NaviBand activeBand;
-    private NaviBarSettings settings;
-    private NaviLayoutEngine naviLayoutEngine;
+    private NaviBand? activeBand;
+    private NaviBarSettings? settings;
+    private NaviLayoutEngine? naviLayoutEngine;
     private NaviLayoutStyle layoutStyle;
     private NaviLayoutFactory layoutFactory;
-    private NaviBandEventHandler activeBandChanging;
-    private EventHandler collapsedBandClick;
-    private EventHandler collapsedChanged;
-    private EventHandler activeBandChanged;
-    private EventHandler layoutChanged;
-    private ControlEventHandler bandAdded;
-    private ImageList smallImages;
-    private ImageList largeImages;
+    private NaviBandEventHandler? activeBandChanging;
+    private EventHandler? collapsedBandClick;
+    private EventHandler? collapsedChanged;
+    private EventHandler? activeBandChanged;
+    private EventHandler? layoutChanged;
+    private ControlEventHandler? bandAdded;
+    private ImageList? smallImages;
+    private ImageList? largeImages;
 
     #region Constructor
 
@@ -113,7 +113,7 @@ public class NaviBar : NaviControl, IObservable
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
     ]
-    public NaviLayoutEngine NaviLayoutEngine
+    public NaviLayoutEngine? NaviLayoutEngine
     {
         get => naviLayoutEngine;
         internal set
@@ -129,7 +129,10 @@ public class NaviBar : NaviControl, IObservable
             }
 
             naviLayoutEngine = value;
-            observers.Add(naviLayoutEngine);
+            if (value != null)
+            {
+                observers.Add(value);
+            }
         }
     }
 
@@ -144,7 +147,7 @@ public class NaviBar : NaviControl, IObservable
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
     ]
-    public NaviControlCollection InternalControls => Controls as NaviControlCollection;
+    public NaviControlCollection InternalControls => (NaviControlCollection)Controls;
 
     /// <summary>
     /// Infrastructure. Requests the LayoutEngine to reinitialize the bands. 
@@ -274,14 +277,14 @@ public class NaviBar : NaviControl, IObservable
     }
     //TODO
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-    public virtual ImageList SmallImages
+    public virtual ImageList? SmallImages
     {
         get => smallImages;
         set => smallImages = value;
     }
     //TODO
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-    public virtual ImageList LargeImages
+    public virtual ImageList? LargeImages
     {
         get => largeImages;
         set => largeImages = value;
@@ -470,7 +473,7 @@ public class NaviBar : NaviControl, IObservable
         Description("The active band")
     ]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public NaviBand ActiveBand
+    public NaviBand? ActiveBand
     {
         get => activeBand;
         set => SetActiveBand(value);
@@ -586,7 +589,7 @@ public class NaviBar : NaviControl, IObservable
     /// Changes the currently active band to a given band
     /// </summary>
     /// <param name="newBand">The band to activate</param>
-    public void SetActiveBand(NaviBand newBand)
+    public void SetActiveBand(NaviBand? newBand)
     {
         NaviBandEventArgs e = new NaviBandEventArgs(newBand);
         OnActiveBandChanging(e);
@@ -638,7 +641,7 @@ public class NaviBar : NaviControl, IObservable
         foreach (NaviBand band in bands)
         {
             // try to find the setting
-            NaviBandSetting setting = null;
+            NaviBandSetting? setting = null;
             foreach (NaviBandSetting tmpSetting in settings.BandSettings)
             {
                 if (tmpSetting.Name.ToLower() == band.Text.ToLower())
@@ -688,7 +691,7 @@ public class NaviBar : NaviControl, IObservable
     /// <param name="e">Additional event info</param>
     internal void OnActiveBandChanging(NaviBandEventArgs e)
     {
-        NaviBandEventHandler handler = activeBandChanging;
+        NaviBandEventHandler? handler = activeBandChanging;
         if (handler != null)
         {
             handler(this, e);
@@ -701,7 +704,7 @@ public class NaviBar : NaviControl, IObservable
     /// <param name="e">Additional event info</param>
     internal void OnActiveBandChanged(EventArgs e)
     {
-        EventHandler handler = activeBandChanged;
+        EventHandler? handler = activeBandChanged;
         if (handler != null)
         {
             handler(this, e);
@@ -714,7 +717,7 @@ public class NaviBar : NaviControl, IObservable
     /// <param name="e">Additional event info</param>
     internal void OnBandAdded(ControlEventArgs e)
     {
-        ControlEventHandler handler = bandAdded;
+        ControlEventHandler? handler = bandAdded;
         if (handler != null)
         {
             handler(this, e);
@@ -728,7 +731,7 @@ public class NaviBar : NaviControl, IObservable
     /// <param name="e">Additional event info</param>
     internal void OnCollapsedBandClick(EventArgs e)
     {
-        EventHandler handler = collapsedBandClick;
+        EventHandler? handler = collapsedBandClick;
         if (handler != null)
         {
             handler(this, e);
@@ -741,7 +744,7 @@ public class NaviBar : NaviControl, IObservable
     /// <param name="e">Additional event info</param>
     internal void OnCollapsedChanged(EventArgs e)
     {
-        EventHandler handler = collapsedChanged;
+        EventHandler? handler = collapsedChanged;
         if (handler != null)
         {
             handler(this, e);
@@ -773,7 +776,7 @@ public class NaviBar : NaviControl, IObservable
             layoutFactory.ReinitializeLayout();
             layoutEngineDirty = false;
         }
-        naviLayoutEngine.Layout(this, e);
+        naviLayoutEngine?.Layout(this, e);
     }
 
     #endregion
@@ -905,16 +908,14 @@ public class NaviBar : NaviControl, IObservable
         /// Overloaded. Adds a new control to the collection
         /// </summary>
         /// <param name="value">The control to add</param>
-        public override void Add(System.Windows.Forms.Control value)
+        public override void Add(Control? value)
         {
             Owner.SuspendLayout();
 
             base.Add(value);
 
-            if (value is NaviBand)
+            if (value is NaviBand newBand)
             {
-                NaviBand newBand = value as NaviBand;
-
                 if (!ownerBar.bands.Contains(newBand))
                 {
                     ownerBar.Bands.AddInternal(newBand);
@@ -931,14 +932,14 @@ public class NaviBar : NaviControl, IObservable
         /// Overloaded. Removes a control from the collection
         /// </summary>
         /// <param name="value">The control to remove</param>
-        public override void Remove(Control value)
+        public override void Remove(Control? value)
         {
             Owner.SuspendLayout();
             base.Remove(value);
 
-            if (value is NaviBand)
+            if (value is NaviBand band)
             {
-                ownerBar.Bands.RemoveInternal(value as NaviBand);
+                ownerBar.Bands.RemoveInternal(band);
                 ownerBar.BandInitRequired = true;
             }
 

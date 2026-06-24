@@ -26,12 +26,27 @@ internal class OutlookGridGroupCountComparer : IComparer<IOutlookGridGroup>
 
     #region IComparer Members
 
-    public int Compare(IOutlookGridGroup x, IOutlookGridGroup y)
+    public int Compare(IOutlookGridGroup? x, IOutlookGridGroup? y)
     {
+        if (x == null && y == null)
+        {
+            return 0;
+        }
+
+        if (x == null)
+        {
+            return -1;
+        }
+
+        if (y == null)
+        {
+            return 1;
+        }
+
         int compareResult = 0;
         try
         {
-            int orderModifier = x.Column.SortDirection == SortOrder.Ascending ? 1 : -1;
+            int orderModifier = x.Column!.SortDirection == SortOrder.Ascending ? 1 : -1;
 
             int c1 = x.ItemCount;
             int c2 = y.ItemCount;

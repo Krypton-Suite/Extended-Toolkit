@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -74,7 +74,7 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     #endregion
 
     #region Properties
-    public new KryptonToastNotificationPopup PopUp { get; set; }
+    public KryptonToastNotificationPopup PopUp { get; set; }
 
     /// <summary>
     /// Gets the rectangle of the content text.
@@ -136,7 +136,7 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     /// <summary>The form is shown/hidden.</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void PopupNotifierForm_VisibleChanged(object sender, EventArgs e)
+    private void PopupNotifierForm_VisibleChanged(object? sender, EventArgs e)
     {
         if (Visible)
         {
@@ -153,7 +153,7 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void PopupNotifierForm_MouseMove(object sender, MouseEventArgs e)
+    private void PopupNotifierForm_MouseMove(object? sender, MouseEventArgs e)
     {
         if (PopUp.ShowCloseButton)
         {
@@ -172,7 +172,7 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void PopupNotifierForm_MouseUp(object sender, MouseEventArgs e)
+    private void PopupNotifierForm_MouseUp(object? sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
@@ -201,7 +201,7 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void OptionsMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+    private void OptionsMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
     {
         PopUp.OptionsMenu.Closed -= new ToolStripDropDownClosedEventHandler(OptionsMenu_Closed);
 
@@ -216,7 +216,7 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void PopupNotifierForm_Paint(object sender, PaintEventArgs e)
+    private void PopupNotifierForm_Paint(object? sender, PaintEventArgs e)
     {
         if (!_gdiInitialized)
         {

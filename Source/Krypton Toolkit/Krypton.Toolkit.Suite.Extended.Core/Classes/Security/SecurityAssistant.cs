@@ -58,6 +58,6 @@ public class SecurityAssistant
         }
     }
 
-    public StringCollection ReturnSupportedHashAlgorithimCollection() => _supportedHashAlgorithimCollection;
+    public StringCollection ReturnSupportedHashAlgorithimCollection() => _supportedHashAlgorithimCollection!;
     #endregion
 }

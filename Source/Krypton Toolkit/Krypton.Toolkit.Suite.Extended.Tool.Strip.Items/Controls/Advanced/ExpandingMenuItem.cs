@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -142,9 +142,9 @@ public class ExpandingMenuItem : ToolStripMenuItem
     #endregion
 
     #region Event Handlers
-    private void ExpandItem_Click(object sender, EventArgs e) => ExpandItems();
+    private void ExpandItem_Click(object? sender, EventArgs e) => ExpandItems();
 
-    private void Timer_Tick(object sender, EventArgs e) => ExpandItems();
+    private void Timer_Tick(object? sender, EventArgs e) => ExpandItems();
     #endregion
 
     #region Overrides
@@ -169,9 +169,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
 
                 itemCount += 1;
 
-                ExpandingMenuItem expandingMenuItem = item as ExpandingMenuItem;
-
-                if (expandingMenuItem is object & !expandingMenuItem.IsStandardItem)
+                if (item is ExpandingMenuItem expandingMenuItem && !expandingMenuItem.IsStandardItem)
                 {
                     hasExpandable = true;
 
@@ -213,8 +211,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
         DropDown.SuspendLayout();
         foreach (ToolStripItem item in DropDownItems)
         {
-            ExpandingMenuItem menuItem = item as ExpandingMenuItem;
-            if (menuItem is object)
+            if (item is ExpandingMenuItem menuItem)
             {
                 if (menuItem.Visible == false & !menuItem.AlwaysHidden)
                 {
@@ -222,8 +219,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
                 }
             }
 
-            ToolStripSeparator separator = item as ToolStripSeparator;
-            if (separator is object)
+            if (item is ToolStripSeparator separator)
             {
                 separator.Visible = true;
             }
@@ -249,8 +245,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
                     return false;
                 }
                 // If its not an ExpandingMenuItem, we didn't hide it
-                ExpandingMenuItem menuItem = item as ExpandingMenuItem;
-                if (menuItem is object && !menuItem.AlwaysHidden)
+                if (item is ExpandingMenuItem menuItem && !menuItem.AlwaysHidden)
                 {
                     menuItem.Visible = true;
                 }
@@ -262,12 +257,11 @@ public class ExpandingMenuItem : ToolStripMenuItem
 
     private void RemoveAdjacentSeparators()
     {
-        ToolStripSeparator lastSeparator = null;
+        ToolStripSeparator? lastSeparator = null;
         bool lastVisibleIsSeparator = false;
         foreach (ToolStripItem item in DropDownItems)
         {
-            ToolStripSeparator separator = item as ToolStripSeparator;
-            if (separator is object)
+            if (item is ToolStripSeparator separator)
             {
                 if (lastVisibleIsSeparator)
                 {

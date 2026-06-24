@@ -32,6 +32,7 @@ public class KryptonColourButtonToolStripMenuItem : ToolStripControlHostFixed
 {
     #region Instance Fields
 
+#pragma warning disable CS0169, CS0649, CS0067
     private Color _selectedColor;
 
     private Color _emptyBorderColor;
@@ -60,6 +61,7 @@ public class KryptonColourButtonToolStripMenuItem : ToolStripControlHostFixed
     [Category(@"Action")]
     [Description(@"Occurs when user selects the more colors option.")]
     public event CancelEventHandler MoreColors;
+#pragma warning restore CS0169, CS0649, CS0067
 
     #endregion
 

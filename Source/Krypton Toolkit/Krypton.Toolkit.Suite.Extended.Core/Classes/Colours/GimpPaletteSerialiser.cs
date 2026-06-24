@@ -71,7 +71,7 @@ public class GimpPaletteSerialiser : PaletteSerialiser
             {
                 string? header;
 
-                header = reader.ReadLine();
+                header = reader.ReadLine() ?? string.Empty;
 
                 result = header == "GIMP Palette";
             }
@@ -109,7 +109,7 @@ public class GimpPaletteSerialiser : PaletteSerialiser
             readingPalette = false;
 
             // check signature
-            header = reader.ReadLine();
+            header = reader.ReadLine() ?? string.Empty;
 
             if (header != "GIMP Palette")
             {
@@ -121,13 +121,13 @@ public class GimpPaletteSerialiser : PaletteSerialiser
 
             while (!reader.EndOfStream)
             {
-                string data;
+                string? data;
 
                 data = reader.ReadLine();
 
                 if (!string.IsNullOrEmpty(data))
                 {
-                    if (data[0] == '#')
+                    if (data![0] == '#')
                     {
                         // comment
                         readingPalette = true;
@@ -142,7 +142,6 @@ public class GimpPaletteSerialiser : PaletteSerialiser
                         int g;
                         int b;
                         string[] parts;
-                        string name;
 
                         // TODO: Optimize this a touch. Microoptimization? Maybe.
 
@@ -150,7 +149,7 @@ public class GimpPaletteSerialiser : PaletteSerialiser
                             ' ',
                             '\t'
                         ], StringSplitOptions.RemoveEmptyEntries) : [];
-                        name = parts.Length > 3 ? string.Join(" ", parts, 3, parts.Length - 3) : null;
+                        string? name = parts.Length > 3 ? string.Join(" ", parts, 3, parts.Length - 3) : null;
 
                         if (!int.TryParse(parts[0], out r) || !int.TryParse(parts[1], out g) || !int.TryParse(parts[2], out b))
                         {

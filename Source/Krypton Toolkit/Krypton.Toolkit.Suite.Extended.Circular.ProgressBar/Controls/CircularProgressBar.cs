@@ -109,17 +109,13 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// </returns>
     [EditorBrowsable(EditorBrowsableState.Always)]
     [Browsable(true)]
-    public override Font? Font
+#pragma warning disable CS8765 // Nullability of overridden Font matches Control base on all TFMs.
+    public override Font Font
     {
         get => base.Font;
-        set
-        {
-            if (value != null)
-            {
-                base.Font = value;
-            }
-        }
+        set => base.Font = value;
     }
+#pragma warning restore CS8765
 
     /// <summary>
     /// </summary>
@@ -203,22 +199,23 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     public string SuperscriptText { get; set; }
 
     /// <summary>
-    ///     Gets or sets the text in the <see cref="CircularProgressBar" />.
-    /// </summary>
-    [EditorBrowsable(EditorBrowsableState.Always)]
-    [Browsable(true)]
-    public override string Text
-    {
-        get => base.Text;
-        set => base.Text = value;
-    }
-
-    /// <summary>
     /// </summary>
     [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding TextMargin { get; set; }
 
-    [Category("Appearance"), DefaultValue(false), Description("Use three colors to depict the current values.")]
+    /// <summary>
+    ///     Gets or sets the text in the <see cref="CircularProgressBar" />.
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Always)]
+    [Browsable(true)]
+#pragma warning disable CS8765 // Nullability of overridden Text matches Control base on all TFMs.
+    public override string Text
+    {
+        get => base.Text;
+        set => base.Text = value!;
+    }
+#pragma warning restore CS8765
+
     public bool UseColorTrio { get => _useColorTrio; set => _useColorTrio = value; }
 
     [Category("Appearance"), DefaultValue(typeof(Color), "Color.Red")]
@@ -250,9 +247,9 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
         DoubleBuffered = true;
 
-        Font = new Font(Font.FontFamily, 72, FontStyle.Bold);
+        Font = new Font((Font ?? SystemFonts.DefaultFont).FontFamily, 72, FontStyle.Bold);
 
-        SecondaryFont = new Font(Font.FontFamily, (float)(Font.Size * .5), FontStyle.Regular);
+        SecondaryFont = new Font((Font ?? SystemFonts.DefaultFont).FontFamily, (float)((Font ?? SystemFonts.DefaultFont).Size * .5), FontStyle.Regular);
 
         OuterMargin = -25;
 
@@ -421,14 +418,14 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="invalidateEventArgs"></param>
-    protected virtual void ParentOnInvalidated(object sender, InvalidateEventArgs invalidateEventArgs) => RecreateBackgroundBrush();
+    protected virtual void ParentOnInvalidated(object? sender, InvalidateEventArgs invalidateEventArgs) => RecreateBackgroundBrush();
 
     /// <summary>
     ///     Occurs when the parent resized.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="eventArgs"></param>
-    protected virtual void ParentOnResize(object sender, EventArgs eventArgs) => RecreateBackgroundBrush();
+    protected virtual void ParentOnResize(object? sender, EventArgs eventArgs) => RecreateBackgroundBrush();
 
     /// <summary>
     ///     Update or create the brush used for drawing the background
@@ -553,7 +550,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
                         Alignment = StringAlignment.Center,
                         LineAlignment = StringAlignment.Near
                     };
-                var textSize = g.MeasureString(Text, Font);
+                var textSize = g.MeasureString(Text, Font ?? SystemFonts.DefaultFont);
                 var textPoint = new PointF(
                     point.X + (size.Width - textSize.Width) / 2,
                     point.Y + (size.Height - textSize.Height) / 2);
@@ -615,7 +612,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
                 g.DrawString(
                     Text,
-                    Font,
+                    Font ?? SystemFonts.DefaultFont,
                     new SolidBrush(ForeColor),
                     new RectangleF(textPoint, textSize),
                     stringFormat);
@@ -740,7 +737,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
         SubscriptColor = _palette.ColorTable.StatusStripText;
     }
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -756,6 +753,6 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e) => Invalidate();
     #endregion
 }

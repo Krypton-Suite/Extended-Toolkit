@@ -32,25 +32,25 @@ public class KryptonTabControlAlternative : TabControl
 {
 
     #region "Static properties"
-    private static Control g_ViewLayoutContextControl;
-    private static StringFormat g_StringFormat;
-    private static Font g_TabFontBold;
-    private static Font g_TabFontRegular;
+    private static Control g_ViewLayoutContextControl = null!;
+    private static StringFormat g_StringFormat = null!;
+    private static Font g_TabFontBold = null!;
+    private static Font g_TabFontRegular = null!;
     #endregion
 
-    private PaletteBase m_Palette;
-    private IRenderer m_Renderer;
-    private ViewLayoutContext m_ViewLayoutContext;
+    private PaletteBase m_Palette = null!;
+    private IRenderer m_Renderer = null!;
+    private ViewLayoutContext m_ViewLayoutContext = null!;
     private PaletteMode m_PaletteMode;
-    private PaletteRedirect m_PaletteRedirect;
-    private PaletteBackInheritRedirect m_PaletteTabControlBackground;
-    private PaletteBorderInheritRedirect m_PaletteTabPageBorder;
-    private PaletteBackInheritRedirect m_PaletteTabButtonBackground;
-    private PaletteBorderInheritRedirect m_PaletteTabButtonBorder;
-    private IDisposable m_MementoTabButtonBackground;
+    private PaletteRedirect m_PaletteRedirect = null!;
+    private PaletteBackInheritRedirect m_PaletteTabControlBackground = null!;
+    private PaletteBorderInheritRedirect m_PaletteTabPageBorder = null!;
+    private PaletteBackInheritRedirect m_PaletteTabButtonBackground = null!;
+    private PaletteBorderInheritRedirect m_PaletteTabButtonBorder = null!;
+    private IDisposable? m_MementoTabButtonBackground;
     private Boolean m_TransparentBackground = true;
-    private SolidBrush m_TabBrush;
-    private Font m_TabFont;
+    private SolidBrush m_TabBrush = null!;
+    private Font m_TabFont = null!;
 
     static KryptonTabControlAlternative()
     {
@@ -75,7 +75,7 @@ public class KryptonTabControlAlternative : TabControl
         KryptonManager.GlobalPaletteChanged -= KryptonManager_GlobalPaletteChanged;
     }
 
-    private void KryptonManager_GlobalPaletteChanged(object sender, EventArgs e)
+    private void KryptonManager_GlobalPaletteChanged(object? sender, EventArgs e)
     {
         RefreshPalette();
     }
@@ -94,7 +94,8 @@ public class KryptonTabControlAlternative : TabControl
         m_Renderer = m_Palette.GetRenderer();
 
         m_ViewLayoutContext = new ViewLayoutContext(g_ViewLayoutContextControl, m_Renderer);
-        g_TabFontBold = new Font(m_Palette.GetContentShortTextFont(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Normal), FontStyle.Bold);
+        Font paletteFont = m_Palette.GetContentShortTextFont(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Normal) ?? SystemFonts.DefaultFont;
+        g_TabFontBold = new Font(paletteFont, FontStyle.Bold);
         g_TabFontRegular = new Font(g_TabFontBold, FontStyle.Regular);
 
         m_PaletteRedirect = new PaletteRedirect(m_Palette);
@@ -263,7 +264,7 @@ public class KryptonTabControlAlternative : TabControl
 
         if (ImageList != null)
         {
-            Image tabImage = null;
+            Image? tabImage = null;
 
             if (TabPages[index].ImageIndex != -1)
             {
@@ -310,8 +311,8 @@ public class KryptonTabControlAlternative : TabControl
 
 public class KryptonTabControlDesigner : ParentControlDesigner
 {
-    private IDesignerHost m_DesignerHost;
-    private ISelectionService m_SelectionService;
+    private IDesignerHost? m_DesignerHost;
+    private ISelectionService? m_SelectionService;
 
     public KryptonTabControlDesigner()
         : base()
@@ -360,31 +361,11 @@ public class KryptonTabControlDesigner : ParentControlDesigner
 
     }
 
-    private IDesignerHost DesignerHost
-    {
-        get
-        {
-            if (m_DesignerHost == null)
-            {
-                m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
-            }
+    private IDesignerHost DesignerHost =>
+        m_DesignerHost ??= (IDesignerHost)GetService(typeof(IDesignerHost))!;
 
-            return m_DesignerHost;
-        }
-    }
-
-    private ISelectionService SelectionService
-    {
-        get
-        {
-            if (m_SelectionService == null)
-            {
-                m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
-            }
-
-            return m_SelectionService;
-        }
-    }
+    private ISelectionService SelectionService =>
+        m_SelectionService ??= (ISelectionService)GetService(typeof(ISelectionService))!;
 
     private KryptonTabControl KryptonTabControl => (KryptonTabControl)this.Component;
 
@@ -467,8 +448,8 @@ public class KryptonTabControlDesignList : DesignerActionList
      * http://msdn.microsoft.com/en-us/magazine/cc163758.aspx
      */
 
-    private IDesignerHost m_DesignerHost;
-    private ISelectionService m_SelectionService;
+    private IDesignerHost? m_DesignerHost;
+    private ISelectionService? m_SelectionService;
 
     public KryptonTabControlDesignList(IComponent component)
         : base(component)
@@ -554,35 +535,15 @@ public class KryptonTabControlDesignList : DesignerActionList
 
     private void SetProperty(string propertyName, object value)
     {
-        PropertyDescriptor property = TypeDescriptor.GetProperties(this.KryptonTabControl)[propertyName];
-        property.SetValue(this.KryptonTabControl, value);
+        PropertyDescriptor? property = TypeDescriptor.GetProperties(KryptonTabControl)[propertyName];
+        property?.SetValue(KryptonTabControl, value);
     }
 
-    private IDesignerHost DesignerHost
-    {
-        get
-        {
-            if (m_DesignerHost == null)
-            {
-                m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
-            }
+    private IDesignerHost DesignerHost =>
+        m_DesignerHost ??= (IDesignerHost)GetService(typeof(IDesignerHost))!;
 
-            return m_DesignerHost;
-        }
-    }
+    private ISelectionService SelectionService =>
+        m_SelectionService ??= (ISelectionService)GetService(typeof(ISelectionService))!;
 
-    private ISelectionService SelectionService
-    {
-        get
-        {
-            if (m_SelectionService == null)
-            {
-                m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
-            }
-
-            return m_SelectionService;
-        }
-    }
-
-    private KryptonTabControlAlternative KryptonTabControl => (KryptonTabControlAlternative)this.Component;
+    private KryptonTabControlAlternative KryptonTabControl => (KryptonTabControlAlternative)Component!;
 }

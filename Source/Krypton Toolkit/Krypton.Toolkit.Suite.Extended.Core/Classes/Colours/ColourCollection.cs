@@ -41,7 +41,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
 
     private readonly object _lock = new();
 
-    private IDictionary<int, int> _indexedLookup;
+    private IDictionary<int, int>? _indexedLookup;
 
     #endregion
 
@@ -133,19 +133,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerialiser"/> is available for the file specified by <c>fileName</c>.</exception>
     public static ColourCollection LoadPalette(string fileName)
     {
-        IPaletteSerialiser serialiser;
-
-        if (string.IsNullOrEmpty(fileName))
-        {
-            throw new ArgumentNullException(nameof(fileName));
-        }
-
-        if (!File.Exists(fileName))
-        {
-            throw new FileNotFoundException($"Cannot find file '{fileName}'", fileName);
-        }
-
-        serialiser = PaletteSerialiser.GetSerialiser(fileName);
+        IPaletteSerialiser? serialiser = PaletteSerialiser.GetSerialiser(fileName);
         if (serialiser == null)
         {
             throw new ArgumentException($"Cannot find a palette serialiser for '{fileName}'", nameof(fileName));
@@ -391,7 +379,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="fileName">Name of the file to load.</param>
     /// <exception cref="System.ArgumentNullException">Thrown if the <c>fileName</c> argument is not specified.</exception>
     /// <exception cref="System.IO.FileNotFoundException">Thrown if the file specified by <c>fileName</c> cannot be found.</exception>
-    /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
+    /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerialiser"/> is available for the file specified by <c>fileName</c>.</exception>
     public void Load(string fileName)
     {
         ColourCollection palette;
@@ -407,7 +395,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// </summary>
     /// <param name="fileName">Name of the file to save.</param>
     /// <exception cref="System.ArgumentNullException">Thrown if the <c>fileName</c> argument is not specified.</exception>
-    /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerializer"/> is available for the file specified by <c>fileName</c>.</exception>
+    /// <exception cref="System.ArgumentException">Thrown if no <see cref="IPaletteSerialiser"/> is available for the file specified by <c>fileName</c>.</exception>
     public void Save<T>(string fileName) where T : IPaletteSerialiser, new()
     {
         IPaletteSerialiser serializer;
@@ -476,7 +464,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCollectionChanged(ColourCollectionEventArgs e)
     {
-        EventHandler<ColourCollectionEventArgs> handler;
+        EventHandler<ColourCollectionEventArgs>? handler;
 
         handler = this.CollectionChanged;
 
@@ -492,7 +480,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="e">The <see cref="ColourCollectionEventArgs" /> instance containing the event data.</param>
     protected virtual void OnItemInserted(ColourCollectionEventArgs e)
     {
-        EventHandler<ColourCollectionEventArgs> handler;
+        EventHandler<ColourCollectionEventArgs>? handler;
 
         handler = this.ItemInserted;
 
@@ -508,7 +496,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="e">The <see cref="ColourCollectionEventArgs" /> instance containing the event data.</param>
     protected virtual void OnItemRemoved(ColourCollectionEventArgs e)
     {
-        EventHandler<ColourCollectionEventArgs> handler;
+        EventHandler<ColourCollectionEventArgs>? handler;
 
         handler = this.ItemRemoved;
 
@@ -524,7 +512,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="e">The <see cref="ColourCollectionEventArgs" /> instance containing the event data.</param>
     protected virtual void OnItemReplaced(ColourCollectionEventArgs e)
     {
-        EventHandler<ColourCollectionEventArgs> handler;
+        EventHandler<ColourCollectionEventArgs>? handler;
 
         handler = this.ItemReplaced;
 
@@ -540,7 +528,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnItemsCleared(ColourCollectionEventArgs e)
     {
-        EventHandler<ColourCollectionEventArgs> handler;
+        EventHandler<ColourCollectionEventArgs>? handler;
 
         handler = this.ItemsCleared;
 
@@ -693,7 +681,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <c>false</c>.</returns>
     public static bool operator ==(ColourCollection? left, ColourCollection? right)
     {
-        return ReferenceEquals(left, right) || !((object)left == null || (object)right == null) && left.Equals(right);
+        return ReferenceEquals(left, right) || (left is not null && right is not null && left.Equals(right));
     }
 
     /// <summary>
@@ -702,7 +690,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// <param name="left">A <see cref="ColourCollection"/> to compare.</param>
     /// <param name="right">A <see cref="ColourCollection"/> to compare.</param>
     /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> differ; otherwise, <c>false</c>.</returns>
-    public static bool operator !=(ColourCollection left, ColourCollection right)
+    public static bool operator !=(ColourCollection? left, ColourCollection? right)
     {
         return !(left == right);
     }
@@ -712,7 +700,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// </summary>
     /// <param name="obj">The <see cref="T:System.Object" /> to test.</param>
     /// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="ColourCollection"/> and has the same values as this <see cref="ColourCollection"/>.</returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return obj is ColourCollection && this.Equals((ColourCollection)obj);
     }
@@ -724,7 +712,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
     /// </returns>
     /// <param name="other">An object to compare with this object.</param>
-    public bool Equals(ColourCollection other)
+    public bool Equals(ColourCollection? other)
     {
         bool result;
 
@@ -737,7 +725,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
                 Color expected;
                 Color actual;
 
-                expected = other[i];
+                expected = other![i];
                 actual = this[i];
 
                 if (expected.ToArgb() != actual.ToArgb())

@@ -321,7 +321,7 @@ public partial class InternalTreeColumnView : UserControl
 
     internal string SelectedImageKey { get; set; } = string.Empty;
 
-    internal VirtualTreeRowNode SelectedNode
+    internal VirtualTreeRowNode? SelectedNode
     {
         get => _selectedNodeSet.FirstOrDefault();
         set
@@ -360,8 +360,13 @@ public partial class InternalTreeColumnView : UserControl
 
     internal bool Sorted { get; set; }
 
-    internal void AddSelected(VirtualTreeRowNode selected)
+    internal void AddSelected(VirtualTreeRowNode? selected)
     {
+        if (selected is null)
+        {
+            return;
+        }
+
         selected.RowNodeState |= RowNodeState.Selected;
         _selectedNodeSet.Add(selected);
     }
@@ -500,7 +505,7 @@ public partial class InternalTreeColumnView : UserControl
     }
 
 
-    internal VirtualTreeRowNode GetRowNodeAt(int x, int y)
+    internal VirtualTreeRowNode? GetRowNodeAt(int x, int y)
     {
         var hdrHeight = 0;
         if (_kryptonVirtualTreeColumnView.Header.Visible)
@@ -1190,7 +1195,7 @@ public partial class InternalTreeColumnView : UserControl
             // Do we draw any plus/minus images in indent bounds?
             if (ShowPlusMinus && rowNode.Children.Count > 0)
             {
-                Image drawImage =
+                Image? drawImage =
                     _kryptonVirtualTreeColumnView._redirectImages.GetTreeViewImage(rowNode.RowNodeState.HasFlag(RowNodeState.Expanded));
                 if (drawImage != null)
                 {
@@ -1205,7 +1210,7 @@ public partial class InternalTreeColumnView : UserControl
         // Do we draw an image for the node?
         if (ImageList != null)
         {
-            Image drawImage = null;
+            Image? drawImage = null;
             var imageCount = ImageList.Images.Count;
 
             try

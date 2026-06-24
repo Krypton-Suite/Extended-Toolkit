@@ -314,3 +314,4 @@ OpenCover/
 *.ini
 *.bak
 Source/Krypton Toolkit/Temp.txt
+build-common-warnings.txt

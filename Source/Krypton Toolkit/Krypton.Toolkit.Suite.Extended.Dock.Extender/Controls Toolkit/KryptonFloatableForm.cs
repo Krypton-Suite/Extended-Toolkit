@@ -130,13 +130,13 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
         base.OnMove(e);
     }
 
-    protected override void OnClosing(CancelEventArgs e)
+    protected override void OnFormClosing(FormClosingEventArgs e)
     {
         e.Cancel = true;
 
         Hide();
 
-        base.OnClosing(e);
+        base.OnFormClosing(e);
     }
 
     #endregion

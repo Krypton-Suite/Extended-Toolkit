@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -137,12 +137,12 @@ public class ColourGridUserControl : UserControl
     }
     #endregion
 
-    private void kbtnOpenPalette_Click(object sender, EventArgs e)
+    private void kbtnOpenPalette_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void kbtnSavePalette_Click(object sender, EventArgs e)
+    private void kbtnSavePalette_Click(object? sender, EventArgs e)
     {
 
     }

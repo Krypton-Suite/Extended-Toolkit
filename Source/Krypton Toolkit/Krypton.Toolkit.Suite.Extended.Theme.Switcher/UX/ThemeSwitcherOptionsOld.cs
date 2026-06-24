@@ -34,7 +34,7 @@ public class ThemeSwitcherOptionsOld : KryptonForm
     private KryptonButton kbtnApply;
     private KryptonButton kbtnCancel;
     private KryptonPanel klblCustomPalettePath;
-    private KryptonComboBox kcmbPaletteMode;
+    private KryptonComboBox kcmbPaletteMode = null!;
     private KryptonLabel kryptonLabel1;
     private KryptonGroupBox kryptonGroupBox1;
     private KryptonCheckBox kchkReset;
@@ -296,9 +296,9 @@ public class ThemeSwitcherOptionsOld : KryptonForm
 
     private ThemeManager _themeManager = new();
 
-    private KryptonManager _manager = null;
+    private KryptonManager _manager = null!;
 
-    private KryptonCustomPaletteBase _palette = null;
+    private KryptonCustomPaletteBase _palette = null!;
     #endregion
 
     #region Properties
@@ -324,7 +324,7 @@ public class ThemeSwitcherOptionsOld : KryptonForm
     #endregion
 
     #region Event Handlers
-    private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e)
+    private void kcmbPaletteMode_SelectedIndexChanged(object? sender, EventArgs e)
     {
         _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
@@ -333,7 +333,7 @@ public class ThemeSwitcherOptionsOld : KryptonForm
         EnableResetButton(true);
     }
 
-    private void kbtnImport_Click(object sender, EventArgs e)
+    private void kbtnImport_Click(object? sender, EventArgs e)
     {
         KryptonPalette.Import();
 
@@ -352,7 +352,7 @@ public class ThemeSwitcherOptionsOld : KryptonForm
         EnableLocateButton(true);
     }
 
-    private void kchkImport_CheckedChanged(object sender, EventArgs e)
+    private void kchkImport_CheckedChanged(object? sender, EventArgs e)
     {
         _settingsManager.SetShowImportButton(kchkImport.Checked);
 
@@ -361,7 +361,7 @@ public class ThemeSwitcherOptionsOld : KryptonForm
         EnableResetButton(true);
     }
 
-    private void kchkReset_CheckedChanged(object sender, EventArgs e)
+    private void kchkReset_CheckedChanged(object? sender, EventArgs e)
     {
         _settingsManager.SetShowResetButton(kchkReset.Checked);
 
@@ -370,21 +370,21 @@ public class ThemeSwitcherOptionsOld : KryptonForm
         EnableResetButton(true);
     }
 
-    private void kbtnReset_Click(object sender, EventArgs e)
+    private void kbtnReset_Click(object? sender, EventArgs e)
     {
         _settingsManager.ResetSettings(_settingsManager.GetAskMe());
 
         EnableResetButton(false);
     }
 
-    private void kbtnApply_Click(object sender, EventArgs e)
+    private void kbtnApply_Click(object? sender, EventArgs e)
     {
         _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
         EnableApplyButton(false);
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         if (kbtnReset.Enabled)
         {
@@ -417,9 +417,9 @@ public class ThemeSwitcherOptionsOld : KryptonForm
     private void LocateTheme(string palettePath) => Process.Start("explorer.exe", palettePath);
     #endregion 
 
-    private void kbtnLocate_Click(object sender, EventArgs e) => LocateTheme(KryptonPalette.CustomisedKryptonPaletteFilePath);
+    private void kbtnLocate_Click(object? sender, EventArgs e) => LocateTheme(KryptonPalette.CustomisedKryptonPaletteFilePath);
 
-    private void ThemeSwitcherOptions_Load(object sender, EventArgs e)
+    private void ThemeSwitcherOptions_Load(object? sender, EventArgs e)
     {
         ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbPaletteMode);
 
@@ -436,14 +436,14 @@ public class ThemeSwitcherOptionsOld : KryptonForm
         EnableResetButton(false);
     }
 
-    private void kbtnSubmit_Click(object sender, EventArgs e)
+    private void kbtnSubmit_Click(object? sender, EventArgs e)
     {
         UploadThemeBrowser uploadTheme = new UploadThemeBrowser();
 
         uploadTheme.Show();
     }
 
-    private void kbtnDownload_Click(object sender, EventArgs e)
+    private void kbtnDownload_Click(object? sender, EventArgs e)
     {
         DownloadThemePackage downloadThemePackage = new DownloadThemePackage();
 

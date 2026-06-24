@@ -35,7 +35,7 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components = null;
 
     /// <summary>
     /// Clean up any resources being used.
@@ -249,11 +249,11 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
     private KryptonWrapLabel _messageText;
     private KryptonPanel _panelButtons;
     private KryptonBorderEdge _borderEdge;
-    private MessageButton _button4;
-    private MessageButton _button3;
-    private MessageButton _button1;
-    private MessageButton _button2;
-    private PictureBox _messageIcon;
+    private MessageButton _button4 = null!;
+    private MessageButton _button3 = null!;
+    private MessageButton _button1 = null!;
+    private MessageButton _button2 = null!;
+    private PictureBox _messageIcon = null!;
 
     #endregion
 
@@ -269,8 +269,8 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
     private readonly KryptonMessageBoxDefaultButton _defaultButton;
     private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
     // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
-    private readonly IWin32Window _showOwner;
-    private readonly HelpInfo _helpInfo;
+    private readonly IWin32Window? _showOwner;
+    private readonly HelpInfo? _helpInfo;
 
     #endregion
 
@@ -296,15 +296,15 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
 
     private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
-    private readonly Image _customkryptonMessageBoxIcon;
+    private readonly Image? _customkryptonMessageBoxIcon;
 
-    private readonly string _buttonOneCustomText;
+    private readonly string? _buttonOneCustomText;
 
-    private readonly string _buttonTwoCustomText;
+    private readonly string? _buttonTwoCustomText;
 
-    private readonly string _buttonThreeCustomText;
+    private readonly string? _buttonThreeCustomText;
 
-    private readonly string _buttonFourCustomText;
+    private readonly string? _buttonFourCustomText;
     #endregion
 
     #region Identity
@@ -316,21 +316,21 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
     }
 
 
-    internal CoreKryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
+    internal CoreKryptonMessageBoxExtendedForm(IWin32Window? showOwner, string text, string caption,
         ExtendedMessageBoxButtons buttons,
         ExtendedKryptonMessageBoxIcon kryptonMessageBoxIcon,
         KryptonMessageBoxDefaultButton defaultButton,
         MessageBoxOptions options,
-        HelpInfo helpInfo, bool? showCtrlCopy,
-        Font messageBoxTypeface,
-        Image customkryptonMessageBoxIcon, bool? showHelpButton,
-        Color? messageTextColour, Color[] buttonTextColours,
+        HelpInfo? helpInfo, bool? showCtrlCopy,
+        Font? messageBoxTypeface,
+        Image? customkryptonMessageBoxIcon, bool? showHelpButton,
+        Color? messageTextColour, Color[]? buttonTextColours,
         DialogResult? buttonOneCustomDialogResult,
         DialogResult? buttonTwoCustomDialogResult,
         DialogResult? buttonThreeCustomDialogResult,
         DialogResult? buttonFourDialogResult,
-        string buttonOneCustomText, string buttonTwoCustomText,
-        string buttonThreeCustomText, string buttonFourCustomText)
+        string? buttonOneCustomText, string? buttonTwoCustomText,
+        string? buttonThreeCustomText, string? buttonFourCustomText)
     {
         // Store incoming values
         _text = text;
@@ -347,7 +347,7 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
         _customkryptonMessageBoxIcon = customkryptonMessageBoxIcon;
         _showHelpButton = showHelpButton ?? false;
         _messageTextColour = messageTextColour ?? Color.Empty;
-        _buttonTextColours = buttonTextColours;
+        _buttonTextColours = buttonTextColours ?? [Color.Empty, Color.Empty, Color.Empty, Color.Empty];
         _buttonOneCustomDialogResult = buttonOneCustomDialogResult ?? DialogResult.Yes;
         _buttonTwoCustomDialogResult = buttonTwoCustomDialogResult ?? DialogResult.No;
         _buttonThreeCustomDialogResult = buttonThreeCustomDialogResult ?? DialogResult.Cancel;
@@ -663,14 +663,28 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
     {
         try
         {
-            Control control = FromHandle(_showOwner.Handle);
+            if (_showOwner?.Handle is not IntPtr ownerHandle || ownerHandle == IntPtr.Zero)
+            {
+                return;
+            }
 
-            MethodInfo mInfoMethod = control.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
+            Control? control = FromHandle(ownerHandle);
+            if (control is null)
+            {
+                return;
+            }
+
+            MethodInfo? mInfoMethod = control.GetType().GetMethod(@"OnHelpRequested", BindingFlags.Instance | BindingFlags.NonPublic,
                 Type.DefaultBinder, [typeof(HelpEventArgs)], null);
             if (mInfoMethod != null)
             {
                 mInfoMethod.Invoke(control, [new HelpEventArgs(MousePosition)]);
             }
+            if (_helpInfo is null)
+            {
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(_helpInfo.HelpFilePath))
             {
                 return;
@@ -692,7 +706,7 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
 
     }
 
-    private void UpdateSizing(IWin32Window showOwner)
+    private void UpdateSizing(IWin32Window? showOwner)
     {
         Size messageSizing = UpdateMessageSizing(showOwner);
         Size buttonsSizing = UpdateButtonsSizing();
@@ -702,14 +716,14 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
             messageSizing.Height + buttonsSizing.Height);
     }
 
-    private Size UpdateMessageSizing(IWin32Window showOwner)
+    private Size UpdateMessageSizing(IWin32Window? showOwner)
     {
         // Update size of the message label but with a maximum width
         Size textSize;
         using (Graphics g = CreateGraphics())
         {
             // Find size of the label, with a max of 2/3 screen width
-            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen!;
             SizeF scaledMonitorSize = screen.Bounds.Size;
             scaledMonitorSize.Width *= 2 / 3.0f;
             scaledMonitorSize.Height *= 0.95f;
@@ -810,7 +824,7 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
         return new(maxButtonSize.Width * numButtons + GAP * (numButtons + 1), maxButtonSize.Height + GAP * 2);
     }
 
-    private void AnyKeyDown(object sender, KeyEventArgs e)
+    private void AnyKeyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if (ControlBox

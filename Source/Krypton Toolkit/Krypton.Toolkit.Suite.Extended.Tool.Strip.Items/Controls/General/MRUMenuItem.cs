@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -32,9 +32,11 @@ public class MRUMenuItem : ToolStripMenuItem
 {
     #region Variables
 
-    private Control _outputControl;
+#pragma warning disable CS0169, CS0649
+    private Control? _outputControl;
 
     private string? _applicationName;
+#pragma warning restore CS0169, CS0649
     private string _defaultText = @"Mo&st Recently Used...";
 
     private readonly MostRecentlyUsedFileManager? _recentlyUsedFileManager;
@@ -59,7 +61,7 @@ public class MRUMenuItem : ToolStripMenuItem
 
     #region Implementation
 
-    private void MyOwnRecentFileGotClicked_Handler(object sender, EventArgs e)
+    private void MyOwnRecentFileGotClicked_Handler(object? sender, EventArgs e)
     {
         var fileName = (sender as ToolStripItem)?.Text;
 
@@ -78,7 +80,7 @@ public class MRUMenuItem : ToolStripMenuItem
         OpenFile(fileName, _outputControl);
     }
 
-    private void MyOwnRecentFilesGotCleared_Handler(object sender, EventArgs e)
+    private void MyOwnRecentFilesGotCleared_Handler(object? sender, EventArgs e)
     {
 
     }

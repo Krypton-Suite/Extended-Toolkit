@@ -44,8 +44,8 @@ public class KryptonInputBoxExtendedManager : Component
     private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
     private InputBoxButtons _buttons;
     private InputBoxButtonFocus _focusedButton;
-    private Image _customImage;
-    private IWin32Window _owner;
+    private Image? _customImage;
+    private IWin32Window? _owner;
     private GlobalTypefaceSettingsManager _typefaceSettings = new();
 
     #endregion
@@ -86,7 +86,7 @@ public class KryptonInputBoxExtendedManager : Component
     public InputBoxWrappedMessageTextAlignment WrappedMessageTextAlignment { get => _textWrappedMessageTextAlignment; set => _textWrappedMessageTextAlignment = value; }
 
     [DefaultValue(null)]
-    public Image CustomImage { get => _customImage; set => _customImage = value; }
+    public Image? CustomImage { get => _customImage; set => _customImage = value; }
 
     [DefaultValue(null)]
     public string Caption { get => _caption; set => _caption = value; }
@@ -101,7 +101,7 @@ public class KryptonInputBoxExtendedManager : Component
     public string Prompt { get => _prompt; set => _prompt = value; }
 
     [DefaultValue(null)]
-    public IWin32Window Owner { get => _owner; set => _owner = value; }
+    public IWin32Window? Owner { get => _owner; set => _owner = value; }
 
     #endregion
 
@@ -220,7 +220,7 @@ public class KryptonInputBoxExtendedManager : Component
             _promptTypeface, _iconType, _inputType, _textAlignment, _textWrappedMessageTextAlignment, _buttons,
             _focusedButton, _customImage, _initialDateTime);
 
-    public string ShowInputBox(IWin32Window owner, string prompt, string caption,
+    public string ShowInputBox(IWin32Window? owner, string prompt, string caption,
         string defaultResponse, string cueText,
         Color cueColour, Font cueTypeface, Font buttonTypeface, 
         Font promptTypeface, InputBoxIconType iconType,
@@ -252,7 +252,7 @@ public class KryptonInputBoxExtendedManager : Component
     /// <param name="customImage">The custom image.</param>
     /// <param name="initialDateTime">The initial date time.</param>
     /// <returns>The users input string.</returns>
-    public static string Show(IWin32Window owner, string prompt, string caption,
+    public static string Show(IWin32Window? owner, string prompt, string caption,
         string defaultResponse, string cueText,
         Color cueColour, Font cueTypeface, Font buttonTypeface, 
         Font promptTypeface, InputBoxIconType iconType,

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -232,7 +232,9 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
     public new Padding Padding { get => base.Padding; set => base.Padding = value; }
 
     [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
-    public override string Text { get => Values.Text; set => Values.Text = value; }
+#pragma warning disable CS8765 // Nullability of overridden Text matches Control base on all TFMs.
+    public override string Text { get => Values.Text; set => Values.Text = value ?? string.Empty; }
+#pragma warning restore CS8765
 
     private bool ShouldSerializeText()
     {
@@ -935,7 +937,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
     protected override void OnClick(EventArgs e)
     {
         // Find the form this color button is on
-        Form owner = FindForm();
+        Form? owner = FindForm();
 
         // If we find a valid owner
         if (owner != null)
@@ -1023,7 +1025,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         if (KryptonCommand != null)
         {
             Enabled = KryptonCommand.Enabled;
-            Values.Image = KryptonCommand.ImageSmall;
+            Values.Image = KryptonCommand.ImageSmall ?? Values.Image;
         }
 
         // Redraw to update the text/extratext/image properties
@@ -1035,15 +1037,21 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-    protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+    protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         switch (e.PropertyName)
         {
             case "Enabled":
-                Enabled = KryptonCommand.Enabled;
+                if (KryptonCommand is not null)
+                {
+                    Enabled = KryptonCommand.Enabled;
+                }
                 break;
             case "ImageSmall":
-                Values.Image = KryptonCommand.ImageSmall;
+                if (KryptonCommand is not null)
+                {
+                    Values.Image = KryptonCommand.ImageSmall ?? Values.Image;
+                }
                 PerformNeedPaint(true);
                 break;
             case "Text":
@@ -1079,9 +1087,9 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
     #endregion
 
     #region Implementation
-    private void OnButtonTextChanged(object sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
+    private void OnButtonTextChanged(object? sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
 
-    private void OnButtonClick(object sender, MouseEventArgs e)
+    private void OnButtonClick(object? sender, MouseEventArgs e)
     {
         bool showingContextMenu = false;
 
@@ -1173,7 +1181,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
                 DecideOnVisible(_separatorMoreColours, _itemsMoreColours);
 
                 // Monitor relevant events inside the context menu
-                HookContextMenuEvents(_kryptonContextMenu.Items, true);
+                HookContextMenuEvents(_kryptonContextMenu!.Items, true);
 
                 // Show relative to the screen rectangle
                 cpma.KryptonContextMenu.Closed += OnKryptonContextMenuClosed;
@@ -1214,19 +1222,21 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         }
     }
 
-    private void OnContextMenuClosed(object sender, EventArgs e) => ContextMenuClosed();
+    private void OnContextMenuClosed(object? sender, EventArgs e) => ContextMenuClosed();
 
-    private void OnKryptonContextMenuClosed(object sender, EventArgs e)
+    private void OnKryptonContextMenuClosed(object? sender, EventArgs e)
     {
-        KryptonContextMenu kcm = (KryptonContextMenu)sender;
-        kcm.Closed -= OnKryptonContextMenuClosed;
-        ContextMenuClosed();
+        if (sender is KryptonContextMenu kcm)
+        {
+            kcm.Closed -= OnKryptonContextMenuClosed;
+            ContextMenuClosed();
 
-        // Unhook from item events
-        HookContextMenuEvents(_kryptonContextMenu.Items, false);
+            // Unhook from item events
+            HookContextMenuEvents(_kryptonContextMenu!.Items, false);
+        }
     }
 
-    void OnButtonSelect(object sender, MouseEventArgs e)
+    void OnButtonSelect(object? sender, MouseEventArgs e)
     {
         // Take the focus if allowed
         if (CanFocus)
@@ -1265,7 +1275,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         if (AutoRecentColours)
         {
             // We do not add to recent colors if it is inside another color columns 
-            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
+            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu!.Items)
             {
                 // Only interested in the non-recent colors color columns
                 if (item != _coloursRecent && item is KryptonContextMenuColorColumns colors)
@@ -1288,7 +1298,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
             }
 
             // If this color valid and so possible to become a recent color
-            if (color != null && !color.Equals(Color.Empty))
+            if (!color.Equals(Color.Empty))
             {
                 bool found = false;
                 foreach (Color recentColor in _recentColours)
@@ -1367,7 +1377,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         if (target.Visible)
         {
             // Check all items before the target
-            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
+            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu!.Items)
             {
                 // Finish when we reach the target
                 if (item == target)
@@ -1391,13 +1401,13 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         visible.Visible = previous;
     }
 
-    private void OnColumnsTrackingColor(object sender, ColorEventArgs e) => OnTrackingColour(new ColorEventArgs(e.Color));
+    private void OnColumnsTrackingColor(object? sender, ColorEventArgs e) => OnTrackingColour(new ColorEventArgs(e.Color));
 
-    private void OnColumnsSelectedColourChanged(object sender, ColorEventArgs e) => SelectedColour = e.Color;
+    private void OnColumnsSelectedColourChanged(object? sender, ColorEventArgs e) => SelectedColour = e.Color;
 
-    private void OnClickNoColour(object sender, EventArgs e) => SelectedColour = Color.Empty;
+    private void OnClickNoColour(object? sender, EventArgs e) => SelectedColour = Color.Empty;
 
-    private void OnClickMoreColours(object sender, EventArgs e)
+    private void OnClickMoreColours(object? sender, EventArgs e)
     {
         // Give user a chance to cancel showing the standard more colors dialog
         CancelEventArgs cea = new CancelEventArgs();

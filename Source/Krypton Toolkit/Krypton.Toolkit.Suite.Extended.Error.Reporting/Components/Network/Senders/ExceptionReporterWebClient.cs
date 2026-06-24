@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
+ * THE above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -25,24 +25,109 @@
  */
 #endregion
 
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
 
 /// <summary>
-/// override of WebClient - this is the only way to set a timeout
+/// HTTP client for exception report uploads with a configurable timeout.
 /// </summary>
-internal class ExceptionReporterWebClient : WebClient
+internal sealed class ExceptionReporterWebClient : IDisposable
 {
-    private readonly int _timeout;
+    private readonly HttpClient _httpClient;
+    private readonly SynchronizationContext? _syncContext;
 
-    public ExceptionReporterWebClient(int timeout)
+    public ExceptionReporterWebClient(int timeoutSeconds)
     {
-        _timeout = timeout;
+        _httpClient = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(timeoutSeconds)
+        };
+        Headers = new WebHeaderCollection();
+        _syncContext = SynchronizationContext.Current;
     }
 
-    protected override WebRequest GetWebRequest(Uri address)
+    public WebHeaderCollection Headers { get; }
+
+    public Encoding Encoding { get; set; } = Encoding.UTF8;
+
+    public event UploadStringCompletedEventHandler? UploadStringCompleted;
+
+    public void UploadStringAsync(Uri address, string data)
     {
-        var wr = base.GetWebRequest(address);
-        wr.Timeout = _timeout * 1000;
-        return wr;
+        _ = UploadStringInternalAsync(address, data);
+    }
+
+    public void Dispose() => _httpClient.Dispose();
+
+    private async Task UploadStringInternalAsync(Uri address, string data)
+    {
+        Exception? error = null;
+
+        try
+        {
+            using StringContent content = new(data, Encoding);
+            using HttpRequestMessage request = new(HttpMethod.Post, address)
+            {
+                Content = content
+            };
+
+            foreach (string? key in Headers.AllKeys)
+            {
+                if (string.IsNullOrEmpty(key))
+                {
+                    continue;
+                }
+
+                string? value = Headers[key];
+                if (value == null)
+                {
+                    continue;
+                }
+
+                if (key.Equals("Content-Type", StringComparison.OrdinalIgnoreCase))
+                {
+                    content.Headers.ContentType = MediaTypeHeaderValue.Parse(value);
+                }
+                else if (key.Equals("Authorization", StringComparison.OrdinalIgnoreCase))
+                {
+                    request.Headers.Authorization = AuthenticationHeaderValue.Parse(value);
+                }
+                else
+                {
+                    request.Headers.TryAddWithoutValidation(key, value);
+                }
+            }
+
+            using HttpResponseMessage response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+        }
+        catch (Exception ex)
+        {
+            error = ex;
+        }
+
+        if (UploadStringCompleted == null)
+        {
+            return;
+        }
+
+        UploadStringCompletedEventArgs args = (UploadStringCompletedEventArgs)Activator.CreateInstance(
+            typeof(UploadStringCompletedEventArgs),
+            BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public,
+            null,
+            [null, error, false, null],
+            null)!;
+        if (_syncContext != null)
+        {
+            _syncContext.Post(_ => UploadStringCompleted.Invoke(this, args), null);
+        }
+        else
+        {
+            UploadStringCompleted.Invoke(this, args);
+        }
     }
 }

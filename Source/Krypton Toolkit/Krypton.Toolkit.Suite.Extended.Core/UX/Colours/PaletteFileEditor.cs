@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -36,7 +36,9 @@ public partial class PaletteFileEditor : KryptonForm
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    #pragma warning disable CS0414 // Designer field
+    private System.ComponentModel.IContainer components = null!;
+    #pragma warning restore CS0414
 
     #region Windows Form Designer generated code
 
@@ -188,7 +190,7 @@ public partial class PaletteFileEditor : KryptonForm
     private Krypton.Toolkit.KryptonButton kbtnSaveFile;
     private Krypton.Toolkit.KryptonButton kbtnOpenFile;
     private KryptonButton kbtnClose;
-    private KryptonRichTextBox krtbFile;
+    private KryptonRichTextBox krtbFile = null!;
     private KryptonBorderEdge kryptonBorderEdge1;
 
     //private AutocompleteMenuNS.AutocompleteMenu acmPalette;
@@ -221,7 +223,7 @@ public partial class PaletteFileEditor : KryptonForm
         }
     }
 
-    private void kbtnGenerateNewFile_Click(object sender, EventArgs e)
+    private void kbtnGenerateNewFile_Click(object? sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(krtbFile.Text))
         {
@@ -248,7 +250,7 @@ public partial class PaletteFileEditor : KryptonForm
         }
     }
 
-    private void PaletteFileEditor_Load(object sender, EventArgs e)
+    private void PaletteFileEditor_Load(object? sender, EventArgs e)
     {
 
     }

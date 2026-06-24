@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -49,10 +49,11 @@ public class ColourHexadecimalTextBox : KryptonTextBox
         // ReSharper restore VirtualMemberCallInConstructor
     }
 
-    protected override void OnPaint(PaintEventArgs? e)
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
+    protected override void OnPaint(PaintEventArgs e)
     {
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        if (Color != Color.Empty || Color != Color.Transparent || Color != null)
+        if (Color != Color.Empty && Color != Color.Transparent)
         {
             Text = ColorTranslator.ToHtml(Color);
         }
@@ -63,6 +64,7 @@ public class ColourHexadecimalTextBox : KryptonTextBox
         }
 
         base.OnPaint(e);
+#pragma warning restore CS8765
     }
 
     protected override void OnValidating(CancelEventArgs e)

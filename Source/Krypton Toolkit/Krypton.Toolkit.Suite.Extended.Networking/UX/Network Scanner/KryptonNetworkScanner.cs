@@ -129,10 +129,10 @@ public partial class KryptonNetworkScanner : KryptonForm
             IPHostEntry hostInfo = Dns.GetHostEntry(strMachineName);
             return hostInfo.AddressList[0];
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             InternalKryptonMessageBoxExtended.Show($"Unable to connect with the system: {strMachineName}");
-            throw ex;
+            throw;
         }
     }//getIPByName()
     #endregion

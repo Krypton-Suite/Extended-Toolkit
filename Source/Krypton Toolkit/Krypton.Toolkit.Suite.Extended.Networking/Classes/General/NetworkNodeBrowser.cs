@@ -63,10 +63,6 @@ public sealed class NetworkNodeBrowser
 {
     #region Dll Imports
 
-    //declare the Netapi32 : NetServerEnum method import
-    [DllImport("Netapi32", CharSet = CharSet.Auto, SetLastError = true),
-     SuppressUnmanagedCodeSecurity]
-
     /// <summary>
     /// Netapi32.dll : The NetServerEnum function lists all servers
     /// of the specified type that are visible in a domain. For example, an 
@@ -76,6 +72,8 @@ public sealed class NetworkNodeBrowser
     /// of 0x00000003  combines the bit masks for SV_TYPE_WORKSTATION 
     /// (0x00000001) and SV_TYPE_SERVER (0x00000002)
     /// </summary>
+    [DllImport("Netapi32", CharSet = CharSet.Auto, SetLastError = true),
+     SuppressUnmanagedCodeSecurity]
     public static extern int NetServerEnum(
         string? serverName, // must be null
         int dwLevel,
@@ -88,16 +86,14 @@ public sealed class NetworkNodeBrowser
         out int dwResumeHandle
     );
 
-    //declare the Netapi32 : NetApiBufferFree method import
-    [DllImport("Netapi32", SetLastError = true),
-     SuppressUnmanagedCodeSecurity]
-
     /// <summary>
     /// Netapi32.dll : The NetApiBufferFree function frees 
     /// the memory that the NetApiBufferAllocate function allocates. 
     /// Call NetApiBufferFree to free the memory that other network 
     /// management functions return.
     /// </summary>
+    [DllImport("Netapi32", SetLastError = true),
+     SuppressUnmanagedCodeSecurity]
     public static extern int NetApiBufferFree(
         IntPtr pBuf);
 
@@ -168,8 +164,7 @@ public sealed class NetworkNodeBrowser
                     //Needs to Marshal data from an unmanaged block of memory to a 
                     //managed object, again using STRUCTURE to ensure the correct data
                     //is marshalled 
-                    _SERVER_INFO_100 svrInfo = (_SERVER_INFO_100)
-                        Marshal.PtrToStructure(tmpBuffer, typeof(_SERVER_INFO_100));
+                    _SERVER_INFO_100 svrInfo = Marshal.PtrToStructure<_SERVER_INFO_100>(tmpBuffer);
 
                     //add the PC names to the ArrayList
                     networkComputers.Add(svrInfo.sv100_name);

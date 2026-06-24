@@ -1,4 +1,4 @@
-﻿using Application = System.Windows.Forms.Application;
+using Application = System.Windows.Forms.Application;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -25,12 +25,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         /// Holds the program-to-update's info
         /// </summary>
-        private SharpUpdateLocalAppInfo[] _localApplicationInfos;
+        private SharpUpdateLocalAppInfo[]? _localApplicationInfos;
 
         /// <summary>
         /// Holds all the jobs defined in update xml
         /// </summary>
-        private SharpUpdateXml[] _jobsFromXml;
+        private SharpUpdateXml[]? _jobsFromXml;
 
         /// <summary>
         /// Total number of jobs
@@ -76,8 +76,10 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             // Set up backgroundworker
             _bgWorker = new BackgroundWorker();
+#pragma warning disable CS8622 // Nullability mismatch with WinForms event handlers
             _bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
             _bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BgWorker_RunWorkerCompleted);
+#pragma warning restore CS8622
         }
 
         /// <summary>
@@ -93,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         /// Checks for/parses update.xml on server
         /// </summary>
-        private void BgWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
             // Check for update on server
             if (!SharpUpdateXml.ExistsOnServer(_updateXmlLocation))
@@ -105,12 +107,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         /// <summary>
         /// After the background worker is done, prompt to update if there is one
         /// </summary>
-        private void BgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BgWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             // If there is a file on the server
             if (!e.Cancelled)
             {
-                _jobsFromXml = (SharpUpdateXml[])e.Result;
+                _jobsFromXml = (SharpUpdateXml[]?)e.Result;
 
                 // Check if the update is not null and is a newer version than the current application
                 if (_jobsFromXml != null)
@@ -154,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                         showMsgBox = false;
 
                         // Ask to accept the update
-                        if (new SharpUpdateAcceptForm(_localApplicationInfos[i], _jobsFromXml[i], count, validJobs.Count).ShowDialog(_localApplicationInfos[0].Context) == DialogResult.Yes)
+                        if (new SharpUpdateAcceptForm(_localApplicationInfos[i], _jobsFromXml[i], count, validJobs.Count).ShowDialog(_localApplicationInfos[0].Context ?? _parentForm) == DialogResult.Yes)
                         {
                             _acceptJobs++;
                             DownloadUpdate(_jobsFromXml[i], _localApplicationInfos[i]); // Do the update
@@ -195,14 +197,17 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 return;
             }
 
-            SharpUpdateDownloadForm form = new SharpUpdateDownloadForm(update.Uri, update.MD5, applicationInfo.ApplicationIcon);
-            DialogResult result = form.ShowDialog(applicationInfo.Context);
+            SharpUpdateDownloadForm form = new SharpUpdateDownloadForm(update.Uri!, update.MD5!, applicationInfo.ApplicationIcon);
+            DialogResult result = form.ShowDialog(applicationInfo.Context ?? _parentForm);
 
             if (result == DialogResult.OK)
             {
-                string currentPath = (update.Tag == JobType.UPDATE) ? applicationInfo.ApplicationAssembly.Location : "";
-                string newPath = (update.Tag == JobType.UPDATE) ? Path.GetFullPath(Path.GetDirectoryName(currentPath).ToString() + update.FilePath) : Path.GetFullPath(applicationInfo.ApplicationPath);
-                Directory.CreateDirectory(Path.GetDirectoryName(newPath));
+                string currentPath = (update.Tag == JobType.UPDATE) ? applicationInfo.ApplicationAssembly!.Location : string.Empty;
+                string? directoryName = Path.GetDirectoryName(currentPath);
+                string newPath = (update.Tag == JobType.UPDATE)
+                    ? Path.GetFullPath((directoryName ?? string.Empty) + update.FilePath)
+                    : Path.GetFullPath(applicationInfo.ApplicationPath);
+                Directory.CreateDirectory(Path.GetDirectoryName(newPath)!);
 
                 _tempFilePaths.Add(form.TempFilePath);
                 _currentPaths.Add(currentPath);

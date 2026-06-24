@@ -45,6 +45,7 @@
       <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs 2022.csproj" xmlns="" />
       <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" xmlns="" />
       <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" xmlns="" />
+      <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.BottomSheet\Krypton.Toolkit.Suite.Extended.BottomSheet.csproj" xmlns="" />
       <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" xmlns="" />
       <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting 2022.csproj" xmlns="" />
       <DocumentationSource sourceFile="..\..\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" xmlns="" />

@@ -25,6 +25,10 @@
  */
 #endregion
 
+#pragma warning disable CS0169 // Field is never used
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
+#pragma warning disable CS0414 // Field is assigned but its value is never used
+
 using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
 
 using Timer = System.Windows.Forms.Timer;
@@ -367,7 +371,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
                 break;
             case ExtendedKryptonMessageBoxIcon.None:
                 // Windows XP and before will Beep, Vista and above do not!
-                if (GlobalStaticValues.OS_MAJOR_VERSION < 6)
+                if (GlobalStaticVariables.OS_MAJOR_VERSION < 6)
                 {
                     SystemSounds.Beep.Play();
                 }
@@ -786,14 +790,14 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
         // Button1 is always visible
         Size button1Size = _button1.GetPreferredSize(Size.Empty);
-        Size maxButtonSize = new(button1Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING, button1Size.Height);
+        Size maxButtonSize = new(button1Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING, button1Size.Height);
 
         // If Button2 is visible
         if (_button2.Enabled)
         {
             numButtons++;
             Size button2Size = _button2.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
         }
 
@@ -802,7 +806,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         {
             numButtons++;
             Size button3Size = _button3.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
         }
         // If Button4 is visible
@@ -810,49 +814,49 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         {
             numButtons++;
             Size button4Size = _button4.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button4Size.Height);
         }
 
         // Start positioning buttons 10 pixels from right edge
-        var right = _panelButtons.Right - GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+        var right = _panelButtons.Right - GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
 
         // If Button4 is visible
         if (_button4.Enabled)
         {
-            _button4.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            _button4.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
             _button4.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // If Button3 is visible
         if (_button3.Enabled)
         {
-            _button3.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            _button3.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
             _button3.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // If Button2 is visible
         if (_button2.Enabled)
         {
-            _button2.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            _button2.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
             _button2.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // Button1 is always visible
-        _button1.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+        _button1.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
         _button1.Size = maxButtonSize;
 
         // Size the panel for the buttons
-        _panelButtons.Size = new Size(maxButtonSize.Width * numButtons + GlobalStaticValues.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticValues.GLOBAL_BUTTON_PADDING * 2);
+        _panelButtons.Size = new Size(maxButtonSize.Width * numButtons + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * 2);
 
         // Button area is the number of buttons with GLOBAL_BUTTON_PADDINGs between them and 10 pixels around all edges
-        return new Size(maxButtonSize.Width * numButtons + GlobalStaticValues.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticValues.GLOBAL_BUTTON_PADDING * 2);
+        return new Size(maxButtonSize.Width * numButtons + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * 2);
     }
 
-    private void AnyKeyDown(object sender, KeyEventArgs e)
+    private void AnyKeyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if (ControlBox
@@ -901,13 +905,17 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
     }
 
-    private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
     {
         try
         {
             if (_openInExplorer)
             {
-                OpenInExplorer(e!.Link.LinkData.ToString());
+                string? path = e.Link?.LinkData?.ToString();
+                if (!string.IsNullOrEmpty(path))
+                {
+                    OpenInExplorer(path);
+                }
             }
             else
             {
@@ -990,7 +998,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
         if (_showOwner != null)
         {
-            _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, AppDomain.GetCurrentThreadId());
+            _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, PlatformInvoke.GetCurrentThreadId());
         }
     }
 
@@ -1001,7 +1009,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
             return PlatformEvents.CallNextHookEx(_hHook, nCode, wParam, lParam);
         }
 
-        CWPRETSTRUCT msg = (CWPRETSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT));
+        CWPRETSTRUCT msg = Marshal.PtrToStructure<CWPRETSTRUCT>(lParam);
         IntPtr hook = _hHook;
 
         if (msg.message == (int)CbtHookAction.HCBT_ACTIVATE)
@@ -1209,7 +1217,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
     /// <summary>
     /// Handles the footer toggle button click event to expand or collapse the footer.
     /// </summary>
-    private void FooterToggleButton_Click(object sender, EventArgs e)
+    private void FooterToggleButton_Click(object? sender, EventArgs e)
     {
         bool currentExpanded = _footerWrapLabel.Visible || _footerCheckBox.Visible || _footerRichTextBox.Visible;
         UpdateFooterExpandedState(!currentExpanded, _footerContentType);
@@ -1229,7 +1237,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         return messageBoxExtendedForm.kcbOptionalCheckBox.CheckState;
     }
 
-    private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
+    private void OptionalCheckBox_CheckedChanged(object? sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
 
     private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 

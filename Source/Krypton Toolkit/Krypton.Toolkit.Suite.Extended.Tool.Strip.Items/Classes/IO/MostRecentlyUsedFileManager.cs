@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -43,7 +43,9 @@ public class MostRecentlyUsedFileManager
     private string _filePath;
     private readonly MRUMenuItem? _parentMenuItem;
 
+#pragma warning disable CS0169
     private readonly ToolStripMenuItemUACSheld _clearListItem;
+#pragma warning restore CS0169
 
     private UtilityMethods _utilityMethods = new UtilityMethods();
 
@@ -53,9 +55,9 @@ public class MostRecentlyUsedFileManager
 
     #region Events
 
-    private Action<object, EventArgs>? OnRecentFileClick;
+    private Action<object?, EventArgs>? OnRecentFileClick;
 
-    private Action<object, EventArgs>? OnClearRecentFilesClick;
+    private Action<object?, EventArgs>? OnClearRecentFilesClick;
 
     #endregion
 
@@ -78,7 +80,7 @@ public class MostRecentlyUsedFileManager
     /// <param name="onClearRecentFilesClick">The on clear recent files click.</param>
     /// <param name="useConfirmClearListDialogue">if set to <c>true</c> [use confirm clear list dialogue].</param>
     /// <exception cref="System.ArgumentException">Bad argument.</exception>
-    public MostRecentlyUsedFileManager(MRUMenuItem? parentMenuItem, string? applicationName, Action<object, EventArgs>? onRecentFileClick, Action<object, EventArgs>? onClearRecentFilesClick = null, bool useConfirmClearListDialogue = false)
+    public MostRecentlyUsedFileManager(MRUMenuItem? parentMenuItem, string? applicationName, Action<object?, EventArgs>? onRecentFileClick, Action<object?, EventArgs>? onClearRecentFilesClick = null, bool useConfirmClearListDialogue = false)
     {
         if (parentMenuItem == null || onRecentFileClick == null || applicationName == null || applicationName.Length == 0 || applicationName.Contains("\\"))
         {
@@ -109,7 +111,7 @@ public class MostRecentlyUsedFileManager
     /// </summary>
     /// <param name="obj">The object.</param>
     /// <param name="evt">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void OnClearRecentFiles_Click(object obj, EventArgs evt)
+    private void OnClearRecentFiles_Click(object? obj, EventArgs evt)
     {
         try
         {

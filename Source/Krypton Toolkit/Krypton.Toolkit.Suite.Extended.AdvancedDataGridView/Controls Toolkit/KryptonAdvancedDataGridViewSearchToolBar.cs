@@ -438,7 +438,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void button_search_Click(object sender, EventArgs e)
+    void button_search_Click(object? sender, EventArgs e)
     {
         if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && Search != null)
         {
@@ -449,7 +449,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
 
                 if (cols.Length == comboBox_columns.Items.Count - 1)
                 {
-                    if (cols[comboBox_columns.SelectedIndex - 1]!.HeaderText == comboBox_columns.SelectedItem.ToString())
+                    if (cols[comboBox_columns.SelectedIndex - 1]!.HeaderText == comboBox_columns.SelectedItem?.ToString())
                     {
                         c = cols[comboBox_columns.SelectedIndex - 1];
                     }
@@ -487,7 +487,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void textBox_search_TextChanged(object sender, EventArgs e)
+    void textBox_search_TextChanged(object? sender, EventArgs e)
     {
         button_search.Enabled = textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText;
     }
@@ -498,7 +498,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void textBox_search_Enter(object sender, EventArgs e)
+    void textBox_search_Enter(object? sender, EventArgs e)
     {
         if (textBox_search.Text == textBox_search.ToolTipText && textBox_search.ForeColor == Color.LightGray)
         {
@@ -517,7 +517,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void textBox_search_Leave(object sender, EventArgs e)
+    void textBox_search_Leave(object? sender, EventArgs e)
     {
         if (textBox_search.Text.Trim() == "")
         {
@@ -532,7 +532,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void textBox_search_KeyDown(object sender, KeyEventArgs e)
+    void textBox_search_KeyDown(object? sender, KeyEventArgs e)
     {
         if (textBox_search.TextLength > 0 && textBox_search.Text != textBox_search.ToolTipText && e.KeyData == Keys.Enter)
         {
@@ -582,7 +582,7 @@ public partial class KryptonAdvancedDataGridViewSearchToolBar : ToolStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void ResizeMe(object sender, EventArgs e)
+    private void ResizeMe(object? sender, EventArgs e)
     {
         SuspendLayout();
         int w1 = 150;

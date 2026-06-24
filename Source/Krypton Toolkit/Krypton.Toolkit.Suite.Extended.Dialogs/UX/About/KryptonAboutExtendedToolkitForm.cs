@@ -46,27 +46,27 @@ internal partial class KryptonAboutExtendedToolkitForm : KryptonForm
 
     #region Implementation
 
-    private void klwlblDemos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Extended-Toolkit-Demos/releases");
+    private void klwlblDemos_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Extended-Toolkit-Demos/releases");
 
-    private void klwlblDocumentation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Help-Files/releases");
+    private void klwlblDocumentation_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Help-Files/releases");
 
-    private void klwlblRepositories_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/orgs/Krypton-Suite/repositories");
+    private void klwlblRepositories_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/orgs/Krypton-Suite/repositories");
 
-    private void klwlblDiscord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://discord.gg/CRjF6fY");
+    private void klwlblDiscord_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://discord.gg/CRjF6fY");
 
-    private void klwlblGeneralInformation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Extended-Toolkit");
+    private void klwlblGeneralInformation_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e) => GlobalToolkitUtilities.LaunchProcess(@"https://github.com/Krypton-Suite/Extended-Toolkit");
 
-    private void tsbtnToolkitGeneralInformation_Click(object sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.GeneralInformation);
+    private void tsbtnToolkitGeneralInformation_Click(object? sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.GeneralInformation);
 
-    private void tsbtnDiscord_Click(object sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.Discord);
+    private void tsbtnDiscord_Click(object? sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.Discord);
 
-    private void tsbtnDeveloperInformation_Click(object sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.DeveloperInformation);
+    private void tsbtnDeveloperInformation_Click(object? sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.DeveloperInformation);
 
-    private void tsbtnVersions_Click(object sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.Versions);
+    private void tsbtnVersions_Click(object? sender, EventArgs e) => SwitchToolkitInformationPage(AboutToolkitPage.Versions);
 
-    private void kbtnSystemInformation_Click(object sender, EventArgs e) => LaunchSystemInformation();
+    private void kbtnSystemInformation_Click(object? sender, EventArgs e) => LaunchSystemInformation();
 
-    private void kbtnOk_Click(object sender, EventArgs e) => Hide();
+    private void kbtnOk_Click(object? sender, EventArgs e) => Hide();
 
     private void Startup()
     {
@@ -142,7 +142,7 @@ internal partial class KryptonAboutExtendedToolkitForm : KryptonForm
 
         if (!value)
         {
-            klblBuiltOn.Text = null;
+            klblBuiltOn.Text = string.Empty;
         }
     }
 
@@ -243,7 +243,7 @@ internal partial class KryptonAboutExtendedToolkitForm : KryptonForm
         }
         else
         {
-            klblCurrentTheme.Text = null;
+            klblCurrentTheme.Text = string.Empty;
 
             ktcmbCurrentTheme.Visible = false;
 
@@ -342,7 +342,7 @@ internal partial class KryptonAboutExtendedToolkitForm : KryptonForm
             //FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(file);
 
             // Fill data grid view
-            kdgvVersions.Rows.Add(assembly.Name, assembly.Version.ToString());
+            kdgvVersions.Rows.Add(assembly.Name, assembly.Version?.ToString() ?? string.Empty);
         }
     }
 

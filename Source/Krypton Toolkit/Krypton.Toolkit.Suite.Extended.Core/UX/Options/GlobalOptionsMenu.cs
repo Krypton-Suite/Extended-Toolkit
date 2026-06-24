@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -437,7 +437,7 @@ public partial class GlobalOptionsMenu : KryptonForm
         this.kcbBaseColour.Name = "kcbBaseColour";
         this.kcbBaseColour.Size = new(179, 25);
         this.kcbBaseColour.TabIndex = 61;
-        this.kcbBaseColour.Values.Image = (System.Drawing.Image)resources.GetObject("kcbBaseColour.Values.Image");
+        this.kcbBaseColour.Values.Image = (Image)resources.GetObject("kcbBaseColour.Values.Image")!;
         this.kcbBaseColour.Values.RoundedCorners = 8;
         this.kcbBaseColour.Values.Text = "&Choose a Base Colour";
         // 
@@ -795,7 +795,7 @@ public partial class GlobalOptionsMenu : KryptonForm
         // 
         // bsaReset
         // 
-        this.bsaReset.Image = (System.Drawing.Image)resources.GetObject("bsaReset.Image");
+        this.bsaReset.Image = (Image)resources.GetObject("bsaReset.Image")!;
         this.bsaReset.UniqueName = "e5d4e65c1b2f460a80f02567f0a10106";
         // 
         // bsaBrowse
@@ -862,7 +862,7 @@ public partial class GlobalOptionsMenu : KryptonForm
         // 
         // buttonSpecAny1
         // 
-        this.buttonSpecAny1.Image = (System.Drawing.Image)resources.GetObject("buttonSpecAny1.Image");
+        this.buttonSpecAny1.Image = (Image)resources.GetObject("buttonSpecAny1.Image")!;
         this.buttonSpecAny1.UniqueName = "1f0247d059a64ff792fa7879355b8bf1";
         // 
         // buttonSpecAny2
@@ -1052,7 +1052,7 @@ public partial class GlobalOptionsMenu : KryptonForm
         InitializeComponent();
     }
 
-    private void GlobalOptionsMenu_Load(object sender, EventArgs e)
+    private void GlobalOptionsMenu_Load(object? sender, EventArgs e)
     {
         InitialiseWindow();
     }

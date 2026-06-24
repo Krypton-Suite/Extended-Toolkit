@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -156,9 +156,9 @@ public class ImageBoxExtended : VirtualScrollableControl
 
     private ImageBoxGridScale _gridScale;
 
-    private Bitmap _gridTile;
+    private Bitmap? _gridTile;
 
-    private Image _image;
+    private Image? _image;
 
     private Color _imageBorderColor;
 
@@ -202,7 +202,7 @@ public class ImageBoxExtended : VirtualScrollableControl
 
     private Padding _textPadding;
 
-    private Brush _texture;
+    private Brush? _texture;
 
     private int _updateCount;
 
@@ -939,7 +939,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public override Image BackgroundImage
+    public override Image? BackgroundImage
     {
         get => base.BackgroundImage;
         set => base.BackgroundImage = value;
@@ -1108,7 +1108,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <value>The image.</value>
     [Category("Appearance")]
     [DefaultValue(null)]
-    public virtual Image Image
+    public virtual Image? Image
     {
         get => _image;
         set
@@ -1116,9 +1116,9 @@ public class ImageBoxExtended : VirtualScrollableControl
             if (_image != value)
             {
                 // disable animations
-                if (this.IsAnimating)
+                if (this.IsAnimating && _image is not null)
                 {
-                    ImageAnimator.StopAnimate(this.Image, this.OnFrameChangedHandler);
+                    ImageAnimator.StopAnimate(_image, this.OnFrameChangedHandler);
                 }
 
                 _image = value;
@@ -2297,9 +2297,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </summary>
     /// <returns>An image containing the selection contents if a selection if present, otherwise null</returns>
     /// <remarks>The caller is responsible for disposing of the returned image</remarks>
-    public Image GetSelectedImage()
+    public Image? GetSelectedImage()
     {
-        Image result;
+        Image? result;
 
         result = null;
 
@@ -2309,7 +2309,7 @@ public class ImageBoxExtended : VirtualScrollableControl
 
             rect = this.FitRectangle(new Rectangle((int)this.SelectionRegion.X, (int)this.SelectionRegion.Y, (int)this.SelectionRegion.Width, (int)this.SelectionRegion.Height));
 
-            if (rect is { Width: > 0, Height: > 0 })
+            if (rect is { Width: > 0, Height: > 0 } && this.Image is not null)
             {
                 result = new Bitmap(rect.Width, rect.Height);
 
@@ -2799,7 +2799,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     {
         if (disposing)
         {
-            if (this.IsAnimating)
+            if (this.IsAnimating && this.Image is not null)
             {
                 ImageAnimator.StopAnimate(this.Image, this.OnFrameChangedHandler);
             }
@@ -2918,6 +2918,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="g">The g.</param>
     protected virtual void DrawImage(Graphics g)
     {
+        if (this.Image is null)
+        {
+            return;
+        }
+
         InterpolationMode currentInterpolationMode;
         PixelOffsetMode currentPixelOffsetMode;
 
@@ -3366,9 +3371,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnAllowClickZoomChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventAllowClickZoomChanged];
+        handler = (EventHandler?)this.Events[_eventAllowClickZoomChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3381,11 +3386,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnAllowDoubleClickChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetStyle(ControlStyles.StandardDoubleClick, this.AllowDoubleClick);
 
-        handler = (EventHandler)this.Events[_eventAllowDoubleClickChanged];
+        handler = (EventHandler?)this.Events[_eventAllowDoubleClickChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3396,7 +3401,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnAllowUnfocusedMouseWheelChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AllowUnfocusedMouseWheel)
         {
@@ -3406,7 +3411,7 @@ public class ImageBoxExtended : VirtualScrollableControl
             ImageBoxExtendedMouseWheelMessageFilter.Active = true;
         }
 
-        handler = (EventHandler)this.Events[_eventAllowUnfocusedMouseWheelChanged];
+        handler = (EventHandler?)this.Events[_eventAllowUnfocusedMouseWheelChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3419,9 +3424,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnAllowZoomChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventAllowZoomChanged];
+        handler = (EventHandler?)this.Events[_eventAllowZoomChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3434,11 +3439,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnAutoCenterChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventAutoCenterChanged];
+        handler = (EventHandler?)this.Events[_eventAutoCenterChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3451,9 +3456,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnAutoPanChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventAutoPanChanged];
+        handler = (EventHandler?)this.Events[_eventAutoPanChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3508,11 +3513,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnDropShadowSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventDropShadowSizeChanged];
+        handler = (EventHandler?)this.Events[_eventDropShadowSizeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3547,11 +3552,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnGridCellSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.InitializeGridTile();
 
-        handler = (EventHandler)this.Events[_eventGridCellSizeChanged];
+        handler = (EventHandler?)this.Events[_eventGridCellSizeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3564,11 +3569,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnGridColorAlternateChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.InitializeGridTile();
 
-        handler = (EventHandler)this.Events[_eventGridColorAlternateChanged];
+        handler = (EventHandler?)this.Events[_eventGridColorAlternateChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3581,11 +3586,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnGridColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.InitializeGridTile();
 
-        handler = (EventHandler)this.Events[_eventGridColorChanged];
+        handler = (EventHandler?)this.Events[_eventGridColorChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3598,12 +3603,12 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnGridDisplayModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.InitializeGridTile();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventGridDisplayModeChanged];
+        handler = (EventHandler?)this.Events[_eventGridDisplayModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3616,11 +3621,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnGridScaleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.InitializeGridTile();
 
-        handler = (EventHandler)this.Events[_eventGridScaleChanged];
+        handler = (EventHandler?)this.Events[_eventGridScaleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3633,11 +3638,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnImageBorderColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventImageBorderColorChanged];
+        handler = (EventHandler?)this.Events[_eventImageBorderColorChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3650,11 +3655,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnImageBorderStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventImageBorderStyleChanged];
+        handler = (EventHandler?)this.Events[_eventImageBorderStyleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3667,7 +3672,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnImageChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.IsAnimating = false;
 
@@ -3689,7 +3694,7 @@ public class ImageBoxExtended : VirtualScrollableControl
 
         this.AdjustLayout();
 
-        handler = (EventHandler)this.Events[_eventImageChanged];
+        handler = (EventHandler?)this.Events[_eventImageChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3702,11 +3707,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnInterpolationModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventInterpolationModeChanged];
+        handler = (EventHandler?)this.Events[_eventInterpolationModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3719,9 +3724,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnInvertMouseChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventInvertMouseChanged];
+        handler = (EventHandler?)this.Events[_eventInvertMouseChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3752,9 +3757,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnLimitSelectionToImageChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventLimitSelectionToImageChanged];
+        handler = (EventHandler?)this.Events[_eventLimitSelectionToImageChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3873,6 +3878,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">
     ///   A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.
     /// </param>
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         if (this.AllowPainting)
@@ -3913,6 +3919,7 @@ public class ImageBoxExtended : VirtualScrollableControl
             }
 
             base.OnPaint(e);
+#pragma warning restore CS8765
         }
     }
 
@@ -3924,9 +3931,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnPanEnd(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventPanEnd];
+        handler = (EventHandler?)this.Events[_eventPanEnd];
 
         handler?.Invoke(this, e);
     }
@@ -3939,9 +3946,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnPanStart(CancelEventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventPanStart];
+        handler = (EventHandler?)this.Events[_eventPanStart];
 
         handler?.Invoke(this, e);
     }
@@ -3966,11 +3973,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnPixelGridColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventPixelGridColorChanged];
+        handler = (EventHandler?)this.Events[_eventPixelGridColorChanged];
 
         handler?.Invoke(this, e);
     }
@@ -3981,9 +3988,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnPixelGridThresholdChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventPixelGridThresholdChanged];
+        handler = (EventHandler?)this.Events[_eventPixelGridThresholdChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4007,11 +4014,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnScaleTextChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventScaleTextChanged];
+        handler = (EventHandler?)this.Events[_eventScaleTextChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4037,7 +4044,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnSelected(EventArgs e)
     {
-        EventHandler<EventArgs> handler;
+        EventHandler<EventArgs>? handler;
 
         switch (this.SelectionMode)
         {
@@ -4050,7 +4057,7 @@ public class ImageBoxExtended : VirtualScrollableControl
                 break;
         }
 
-        handler = (EventHandler<EventArgs>)this.Events[_eventSelected];
+        handler = (EventHandler<EventArgs>?)this.Events[_eventSelected];
 
         handler?.Invoke(this, e);
     }
@@ -4063,9 +4070,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnSelecting(ImageBoxExtendedCancelEventArgs e)
     {
-        EventHandler<ImageBoxExtendedCancelEventArgs> handler;
+        EventHandler<ImageBoxExtendedCancelEventArgs>? handler;
 
-        handler = (EventHandler<ImageBoxExtendedCancelEventArgs>)this.Events[_eventSelecting];
+        handler = (EventHandler<ImageBoxExtendedCancelEventArgs>?)this.Events[_eventSelecting];
 
         handler?.Invoke(this, e);
     }
@@ -4078,9 +4085,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnSelectionColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventSelectionColorChanged];
+        handler = (EventHandler?)this.Events[_eventSelectionColorChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4093,9 +4100,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnSelectionModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventSelectionModeChanged];
+        handler = (EventHandler?)this.Events[_eventSelectionModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4108,11 +4115,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnSelectionRegionChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventSelectionRegionChanged];
+        handler = (EventHandler?)this.Events[_eventSelectionRegionChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4125,9 +4132,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnShortcutsEnabledChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventShortcutsEnabledChanged];
+        handler = (EventHandler?)this.Events[_eventShortcutsEnabledChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4140,11 +4147,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnShowPixelGridChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventShowPixelGridChanged];
+        handler = (EventHandler?)this.Events[_eventShowPixelGridChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4155,11 +4162,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnSizeModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AdjustLayout();
 
-        handler = (EventHandler)this.Events[_eventSizeModeChanged];
+        handler = (EventHandler?)this.Events[_eventSizeModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4172,11 +4179,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnSizeToFitChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AdjustLayout();
 
-        handler = (EventHandler)this.Events[_eventSizeToFitChanged];
+        handler = (EventHandler?)this.Events[_eventSizeToFitChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4187,11 +4194,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnTextAlignChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventTextAlignChanged];
+        handler = (EventHandler?)this.Events[_eventTextAlignChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4202,11 +4209,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnTextBackColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventTextBackColorChanged];
+        handler = (EventHandler?)this.Events[_eventTextBackColorChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4228,11 +4235,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnTextDisplayModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventTextDisplayModeChanged];
+        handler = (EventHandler?)this.Events[_eventTextDisplayModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4243,9 +4250,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnTextPaddingChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventTextPaddingChanged];
+        handler = (EventHandler?)this.Events[_eventTextPaddingChanged];
 
         this.Invalidate();
 
@@ -4260,9 +4267,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnVirtualDraw(PaintEventArgs e)
     {
-        PaintEventHandler handler;
+        PaintEventHandler? handler;
 
-        handler = (PaintEventHandler)this.Events[_eventVirtualDraw];
+        handler = (PaintEventHandler?)this.Events[_eventVirtualDraw];
 
         handler?.Invoke(this, e);
     }
@@ -4275,11 +4282,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnVirtualModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AdjustLayout();
 
-        handler = (EventHandler)this.Events[_eventVirtualModeChanged];
+        handler = (EventHandler?)this.Events[_eventVirtualModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4292,11 +4299,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnVirtualSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AdjustLayout();
 
-        handler = (EventHandler)this.Events[_eventVirtualSizeChanged];
+        handler = (EventHandler?)this.Events[_eventVirtualSizeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4309,11 +4316,11 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnZoomChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AdjustLayout();
 
-        handler = (EventHandler)this.Events[_eventZoomChanged];
+        handler = (EventHandler?)this.Events[_eventZoomChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4324,9 +4331,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnZoomed(ImageBoxExtendedZoomEventArgs e)
     {
-        EventHandler<ImageBoxExtendedZoomEventArgs> handler;
+        EventHandler<ImageBoxExtendedZoomEventArgs>? handler;
 
-        handler = (EventHandler<ImageBoxExtendedZoomEventArgs>)this.Events[_eventZoomed];
+        handler = (EventHandler<ImageBoxExtendedZoomEventArgs>?)this.Events[_eventZoomed];
 
         handler?.Invoke(this, e);
     }
@@ -4339,9 +4346,9 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </param>
     protected virtual void OnZoomLevelsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventZoomLevelsChanged];
+        handler = (EventHandler?)this.Events[_eventZoomLevelsChanged];
 
         handler?.Invoke(this, e);
     }
@@ -4681,7 +4688,7 @@ public class ImageBoxExtended : VirtualScrollableControl
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void OnFrameChangedHandler(object sender, EventArgs eventArgs)
+    private void OnFrameChangedHandler(object? sender, EventArgs eventArgs)
     {
         this.Invalidate();
     }

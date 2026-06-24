@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -33,7 +33,7 @@ public class ToggleSwitchCarbonKryptonRenderer : ToggleSwitchRendererBase, IDisp
 {
     #region Constructor
 
-    private GraphicsPath _innerControlPath = null;
+    private GraphicsPath _innerControlPath = null!;
 
     public ToggleSwitchCarbonKryptonRenderer()
     {

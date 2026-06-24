@@ -155,8 +155,10 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Software Update";
+#pragma warning disable CS8622 // Nullability mismatch with WinForms event handlers
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DownloadUpdateDialog_FormClosing);
             this.Load += new System.EventHandler(this.DownloadUpdateDialog_Load);
+#pragma warning restore CS8622
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);

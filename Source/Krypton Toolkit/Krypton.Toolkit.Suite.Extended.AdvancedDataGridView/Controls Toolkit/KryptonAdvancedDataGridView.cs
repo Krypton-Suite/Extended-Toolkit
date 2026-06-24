@@ -1365,7 +1365,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cell_FilterPopup(object sender, ColumnHeaderCellEventArgs e)
+    private void Cell_FilterPopup(object? sender, ColumnHeaderCellEventArgs e)
     {
         if (Columns.Contains(e.Column))
         {
@@ -1398,7 +1398,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cell_FilterChanged(object sender, ColumnHeaderCellEventArgs e)
+    private void Cell_FilterChanged(object? sender, ColumnHeaderCellEventArgs e)
     {
         if (Columns.Contains(e.Column))
         {
@@ -1464,7 +1464,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cell_SortChanged(object sender, ColumnHeaderCellEventArgs e)
+    private void Cell_SortChanged(object? sender, ColumnHeaderCellEventArgs e)
     {
         if (Columns.Contains(e.Column))
         {

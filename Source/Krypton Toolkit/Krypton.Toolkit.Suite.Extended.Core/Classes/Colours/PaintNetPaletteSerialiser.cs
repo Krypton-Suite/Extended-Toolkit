@@ -109,7 +109,7 @@ public class PaintNetPaletteSerialiser : PaletteSerialiser
         {
             while (!reader.EndOfStream)
             {
-                string line;
+                string? line;
 
                 line = reader.ReadLine();
                 if (!string.IsNullOrEmpty(line) && !line.StartsWith(";") && line.Length == 8)

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -297,7 +297,7 @@ public class KryptonToastNotificationPopup : Component
         ContentHoverColour = SystemColors.HotTrack;
         GradientPower = 50;
         ContentFont = SystemFonts.DialogFont;
-        TitleFont = SystemFonts.CaptionFont;
+        TitleFont = SystemFonts.CaptionFont ?? SystemFonts.DialogFont;
         ShowGrip = true;
         Scroll = true;
         TitlePadding = new Padding(0);
@@ -345,19 +345,19 @@ public class KryptonToastNotificationPopup : Component
                 _frmPopup.Size = Size;
                 if (Scroll)
                 {
-                    _posStart = Screen.PrimaryScreen.WorkingArea.Bottom;
-                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom;
+                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
                 }
                 else
                 {
-                    _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
-                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
                 }
                 _opacityStart = 0;
                 _opacityStop = 1;
 
                 _frmPopup.Opacity = _opacityStart;
-                _frmPopup.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - _frmPopup.Size.Width - 1, _posStart);
+                _frmPopup.Location = new Point(Screen.PrimaryScreen!.WorkingArea.Right - _frmPopup.Size.Width - 1, _posStart);
                 ShowInactiveTopmost(_frmPopup);
                 _isAppearing = true;
 
@@ -376,12 +376,12 @@ public class KryptonToastNotificationPopup : Component
                     if (Scroll)
                     {
                         _posStart = _frmPopup.Top;
-                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
                     }
                     else
                     {
-                        _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
-                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
                     }
                     _opacityStart = _frmPopup.Opacity;
                     _opacityStop = 1;
@@ -419,7 +419,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_ContextMenuClosed(object sender, EventArgs e)
+    private void frmPopup_ContextMenuClosed(object? sender, EventArgs e)
     {
         DebugUtilities.WriteLine("Menu closed.");
         if (!_mouseIsOn)
@@ -437,7 +437,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_ContextMenuOpened(object sender, EventArgs e)
+    private void frmPopup_ContextMenuOpened(object? sender, EventArgs e)
     {
         DebugUtilities.WriteLine("Menu opened.");
         _tmrWait.Stop();
@@ -449,7 +449,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_LinkClick(object sender, EventArgs e)
+    private void frmPopup_LinkClick(object? sender, EventArgs e)
     {
         if (Click != null)
         {
@@ -463,7 +463,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_CloseClick(object sender, EventArgs e)
+    private void frmPopup_CloseClick(object? sender, EventArgs e)
     {
         Hide();
         if (Close != null)
@@ -477,7 +477,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_VisibleChanged(object sender, EventArgs e)
+    private void frmPopup_VisibleChanged(object? sender, EventArgs e)
     {
         if (_frmPopup.Visible)
         {
@@ -500,7 +500,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void tmAnimation_Tick(object sender, EventArgs e)
+    private void tmAnimation_Tick(object? sender, EventArgs e)
     {
         long elapsed = _sw.ElapsedMilliseconds;
 
@@ -535,13 +535,13 @@ public class KryptonToastNotificationPopup : Component
             {
                 if (Scroll)
                 {
-                    _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
-                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom;
+                    _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom;
                 }
                 else
                 {
-                    _posStart = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
-                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
                 }
                 _opacityStart = 1;
                 _opacityStop = 0;
@@ -574,7 +574,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void tmWait_Tick(object sender, EventArgs e)
+    private void tmWait_Tick(object? sender, EventArgs e)
     {
         DebugUtilities.WriteLine("Wait timer elapsed.");
         _tmrWait.Stop();
@@ -589,7 +589,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_MouseLeave(object sender, EventArgs e)
+    private void frmPopup_MouseLeave(object? sender, EventArgs e)
     {
         DebugUtilities.WriteLine("MouseLeave");
         if (_frmPopup.Visible && (OptionsMenu == null || !OptionsMenu.Visible))
@@ -606,7 +606,7 @@ public class KryptonToastNotificationPopup : Component
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmPopup_MouseEnter(object sender, EventArgs e)
+    private void frmPopup_MouseEnter(object? sender, EventArgs e)
     {
         DebugUtilities.WriteLine("MouseEnter");
         if (!_isAppearing)

@@ -254,7 +254,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
     private readonly MessageBoxDefaultButton _defaultButton;
     private AnchorStyles _optionalCheckBoxAnchor;
     private MessageBoxOptions _options;
-    private bool _fade, _showOptionalCheckBox, _showCopyButton, _hasTimedOut, _showToolTips;
+    private bool _fade, _showOptionalCheckBox, _showCopyButton, _showToolTips;
     private CheckState _optionalCheckBoxCheckState;
     private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
     private Double _fadeIn, _fadeOut;
@@ -264,7 +264,6 @@ internal class KryptonMessageBoxExtended : KryptonForm
     private KryptonWrapLabel _messageText;
     private KryptonPanel _panelMessageIcon;
     private readonly int _fadeSleepTimer;
-    private int _timeOut;
     private PictureBox _messageIcon;
     private KryptonPanel _panelButtons;
     private MessageButton _button1;

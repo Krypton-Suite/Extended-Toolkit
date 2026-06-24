@@ -49,8 +49,8 @@ public class NumericAutomatic : ITickGenerator
         string[] majorTickLabels = majorTickPositions.Select(x => LabelFormatter(x)).ToArray();
 
         // determine if the actual tick labels are larger than predicted (suggesting density is too high and overlapping may occur)
-        using SKPaint paint = new();
-        PixelSize measuredLabel = Drawing.MeasureLargestString(majorTickLabels, paint);
+        using SKFont font = new(SKTypeface.Default, 12);
+        PixelSize measuredLabel = Drawing.MeasureLargestString(majorTickLabels, font);
         PixelSize largestLabel = new(
             width: Math.Max(predictedTickSize.Width, measuredLabel.Width),
             height: Math.Max(predictedTickSize.Height, measuredLabel.Height));

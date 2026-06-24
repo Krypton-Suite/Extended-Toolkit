@@ -40,7 +40,7 @@ public class OutlookGridColumnCollection : List<OutlookGridColumn>
     /// </summary>
     /// <param name="columnName">The column name.</param>
     /// <returns>OutlookGridColumn</returns>
-    public OutlookGridColumn this[string columnName] => Find(c => c.DataGridViewColumn.Name.Equals(columnName));
+    public OutlookGridColumn? this[string columnName] => Find(c => c.DataGridViewColumn?.Name.Equals(columnName) == true);
 
     /// <summary>
     /// Add an OutlookGridColumn to the collection.
@@ -87,15 +87,15 @@ public class OutlookGridColumnCollection : List<OutlookGridColumn>
     /// Gets a list of columns which are sorted and not grouped.
     /// </summary>
     /// <returns>List of Column indexes and SortDirection ordered by SortIndex.</returns>
-    public List<Tuple<int, SortOrder, IComparer>> GetIndexAndSortGroupedColumns()
+    public List<Tuple<int, SortOrder, IComparer?>> GetIndexAndSortGroupedColumns()
     {
-        List<Tuple<int, SortOrder, IComparer>> res = [];
+        List<Tuple<int, SortOrder, IComparer?>> res = [];
         var tmp = this.OrderBy(x => x.GroupIndex);
         foreach (OutlookGridColumn col in tmp)
         {
             if (col is { IsGrouped: true, GroupIndex: > -1 })
             {
-                res.Add(Tuple.Create<int, SortOrder, IComparer>(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
+                res.Add(Tuple.Create<int, SortOrder, IComparer?>(col.DataGridViewColumn!.Index, col.SortDirection, col.RowsComparer));
             }
         }
         return res;
@@ -106,28 +106,28 @@ public class OutlookGridColumnCollection : List<OutlookGridColumn>
     /// </summary>
     /// <param name="index">The index</param>
     /// <returns>The OutlookGridColumn.</returns>
-    public OutlookGridColumn FindFromColumnIndex(int index) => this.FirstOrDefault(c => c.DataGridViewColumn.Index == index);
+    public OutlookGridColumn? FindFromColumnIndex(int index) => this.FirstOrDefault(c => c.DataGridViewColumn?.Index == index);
 
     /// <summary>
     /// Gets the column from its name
     /// </summary>
     /// <param name="name">The name of the column.</param>
     /// <returns>The associated OutlookGridColumn.</returns>
-    public OutlookGridColumn FindFromColumnName(string name) => this.FirstOrDefault(x => x.Name == name);
+    public OutlookGridColumn? FindFromColumnName(string name) => this.FirstOrDefault(x => x.Name == name);
 
     /// <summary>
     /// Gets a list of columns which are sorted and not grouped.
     /// </summary>
     /// <returns>List of Column indexes and SortDirection ordered by SortIndex.</returns>
-    public List<Tuple<int, SortOrder, IComparer>> GetIndexAndSortSortedOnlyColumns()
+    public List<Tuple<int, SortOrder, IComparer?>> GetIndexAndSortSortedOnlyColumns()
     {
-        var res = new List<Tuple<int, SortOrder, IComparer>>();
+        var res = new List<Tuple<int, SortOrder, IComparer?>>();
         var tmp = this.OrderBy(x => x.SortIndex);
         foreach (OutlookGridColumn col in tmp)
         {
             if (col is { IsGrouped: false, SortIndex: > -1 })
             {
-                res.Add(Tuple.Create(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
+                res.Add(Tuple.Create(col.DataGridViewColumn!.Index, col.SortDirection, col.RowsComparer));
             }
         }
         return res;

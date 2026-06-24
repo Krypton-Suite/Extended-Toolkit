@@ -25,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 public partial class KryptonOutlookGridGroupBox : UserControl
 {
     #region Design Code
-    private IContainer components = null;
+    private IContainer? components = null;
 
     private void InitializeComponent()
     {
@@ -48,14 +48,14 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     private string _dragColumnToGroupText;
 
     //Krypton
-    private PaletteBase _palette;
+    private PaletteBase? _palette;
     private PaletteRedirect _paletteRedirect;
     private PaletteBackInheritRedirect _paletteBack;
     private PaletteBorderInheritRedirect _paletteBorder;
     private PaletteContentInheritRedirect _paletteContent;
     private PaletteDataGridViewRedirect _paletteDataGridView;
     private PaletteDataGridViewAll _paletteDataGridViewAll;
-    private IDisposable _mementoBack;
+    private IDisposable? _mementoBack;
     private PaletteBorder _border;
 
     //Mouse
@@ -366,12 +366,9 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     {
         foreach (OutlookGridGroupBoxColumn c in _columnsList)
         {
-            if (c.Rect != null)
+            if (c.Rect.Contains(e.X, e.Y) && e.Button == MouseButtons.Left)
             {
-                if (c.Rect.Contains(e.X, e.Y) && e.Button == MouseButtons.Left)
-                {
-                    c.Pressed = true;
-                }
+                c.Pressed = true;
             }
         }
         Invalidate();
@@ -385,26 +382,23 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     protected override void OnMouseUp(MouseEventArgs e)
     {
         List<OutlookGridGroupBoxColumn> l = [];
-        OutlookGridGroupBoxColumn columnMovingInsideGroupBox = null;
+        OutlookGridGroupBoxColumn? columnMovingInsideGroupBox = null;
 
         foreach (OutlookGridGroupBoxColumn c in _columnsList)
         {
-            if (c.Rect != null)
+            if (c.IsMoving && !Bounds.Contains(e.Location))
             {
-                if (c.IsMoving && !Bounds.Contains(e.Location))
-                {
-                    l.Add(c);
-                }
-                //We move an existing colum inside the groupbox
-                else if (c.IsMoving && Bounds.Contains(e.Location))
-                {
-                    columnMovingInsideGroupBox = c;
-                }
-
-                //Stop moving and pressing
-                c.Pressed = false;
-                c.IsMoving = false;
+                l.Add(c);
             }
+            //We move an existing colum inside the groupbox
+            else if (c.IsMoving && Bounds.Contains(e.Location))
+            {
+                columnMovingInsideGroupBox = c;
+            }
+
+            //Stop moving and pressing
+            c.Pressed = false;
+            c.IsMoving = false;
         }
 
         //no more dragging
@@ -456,7 +450,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
             _indexselected = -1;
             for (int i = 0; i < _columnsList.Count; i++)
             {
-                if (_columnsList[i].Rect != null && _columnsList[i].Rect.Contains(e.X, e.Y))
+                if (_columnsList[i].Rect.Contains(e.X, e.Y))
                 {
                     _indexselected = i;
                 }
@@ -479,7 +473,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
             {
                 foreach (OutlookGridGroupBoxColumn c in _columnsList)
                 {
-                    if (c.Rect != null && c.Rect.Contains(e.X, e.Y))
+                    if (c.Rect.Contains(e.X, e.Y))
                     {
                         c.SortDirection = c.SortDirection == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
                         //Warn the Grid
@@ -502,18 +496,15 @@ public partial class KryptonOutlookGridGroupBox : UserControl
         _mouse = e.Location;
         foreach (OutlookGridGroupBoxColumn c in _columnsList)
         {
-            if (c.Rect != null)
-            {
-                //Update hovering
-                c.IsHovered = c.Rect.Contains(e.X, e.Y);
+            //Update hovering
+            c.IsHovered = c.Rect.Contains(e.X, e.Y);
 
-                //declare dragging
-                if (c.Rect.Contains(e.X, e.Y) && e.Button == MouseButtons.Left && !_isDragging)
-                {
-                    _isDragging = true;
-                    c.IsMoving = true;
-                    //Console.WriteLine(_mouse.ToString());
-                }
+            //declare dragging
+            if (c.Rect.Contains(e.X, e.Y) && e.Button == MouseButtons.Left && !_isDragging)
+            {
+                _isDragging = true;
+                c.IsMoving = true;
+                //Console.WriteLine(_mouse.ToString());
             }
         }
         Invalidate();
@@ -528,7 +519,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A PaletteLayoutEventArgs that contains the event data.</param>
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }
@@ -538,7 +529,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         // (5) Unhook events from old palette
         if (_palette != null)
@@ -697,7 +688,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnHideGroupBox(object sender, EventArgs e)
+    private void OnHideGroupBox(object? sender, EventArgs e)
     {
         Hide();
     }
@@ -707,7 +698,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnClearGrouping(object sender, EventArgs e)
+    private void OnClearGrouping(object? sender, EventArgs e)
     {
         OnClearGrouping(new EventArgs());
         _columnsList.Clear();
@@ -719,7 +710,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnFullCollapse(object sender, EventArgs e)
+    private void OnFullCollapse(object? sender, EventArgs e)
     {
         OnFullCollapse(new EventArgs());
     }
@@ -729,7 +720,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnFullExpand(object sender, EventArgs e)
+    private void OnFullExpand(object? sender, EventArgs e)
     {
         OnFullExpand(new EventArgs());
     }
@@ -739,7 +730,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A OutlookGridColumnEventArgs that contains the event data.</param>
-    private void OnGroupCollapse(object sender, EventArgs e)
+    private void OnGroupCollapse(object? sender, EventArgs e)
     {
         OnGroupCollapse(new OutlookGridColumnEventArgs(new OutlookGridColumn(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
     }
@@ -749,7 +740,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A OutlookGridColumnEventArgs that contains the event data.</param>
-    private void OnGroupExpand(object sender, EventArgs e)
+    private void OnGroupExpand(object? sender, EventArgs e)
     {
         OnGroupExpand(new OutlookGridColumnEventArgs(new OutlookGridColumn(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
     }
@@ -759,7 +750,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnSortAscending(object sender, EventArgs e)
+    private void OnSortAscending(object? sender, EventArgs e)
     {
         //Change the sortOrder in the list
         OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
@@ -775,7 +766,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnSortDescending(object sender, EventArgs e)
+    private void OnSortDescending(object? sender, EventArgs e)
     {
         //Change the sortOrder in the list
         OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
@@ -791,7 +782,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnUngroup(object sender, EventArgs e)
+    private void OnUngroup(object? sender, EventArgs e)
     {
         OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
         OnColumnGroupRemoved(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null)));
@@ -804,12 +795,12 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnGroupIntervalClick(object sender, EventArgs e)
+    private void OnGroupIntervalClick(object? sender, EventArgs e)
     {
-        KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
+        KryptonContextMenuItem item = (KryptonContextMenuItem)sender!;
         OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
         OutlookGridColumn colEvent = new(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
-        colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString()) };
+        colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag!.ToString()!) };
         col.GroupInterval = ((OutlookGridDateTimeGroup)colEvent.GroupingType).Interval.ToString();
         //Raise event
         OnGroupIntervalClick(new OutlookGridColumnEventArgs(colEvent));
@@ -820,9 +811,9 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A EventArgs that contains the event data.</param>
-    private void OnSortBySummaryCount(object sender, EventArgs e)
+    private void OnSortBySummaryCount(object? sender, EventArgs e)
     {
-        KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
+        KryptonContextMenuItem item = (KryptonContextMenuItem)sender!;
         OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
         OutlookGridColumn colEvent = new(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
         colEvent.GroupingType = new OutlookGridDefaultGroup(null) { SortBySummaryCount = item.Checked };
@@ -836,9 +827,13 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A DragEventArgs that contains the event data.</param>
-    private void KryptonOutlookGridGroupBox_DragDrop(object sender, DragEventArgs e)
+    private void KryptonOutlookGridGroupBox_DragDrop(object? sender, DragEventArgs e)
     {
-        string columnToMove = e.Data.GetData(typeof(string)) as string;
+        if (e.Data?.GetData(typeof(string)) is not string columnToMove)
+        {
+            return;
+        }
+
         string columnName;
         string columnText;
         SortOrder sortOrder;
@@ -892,7 +887,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A DragEventArgs that contains the event data.</param>
-    private void KryptonOutlookGridGroupBox_DragEnter(object sender, DragEventArgs e)
+    private void KryptonOutlookGridGroupBox_DragEnter(object? sender, DragEventArgs e)
     {
         e.Effect = DragDropEffects.Move;
     }
@@ -1002,7 +997,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
 
             //Group Interval
             KryptonContextMenuItems groupIntervalItems;
-            KryptonContextMenuItem it = null;
+            KryptonContextMenuItem? it = null;
             string[] names = Enum.GetNames(typeof(DateInterval));
             KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
             for (int i = 0; i < names.Length; i++)
@@ -1043,7 +1038,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
 
 
         // Update the individual menu options
-        OutlookGridGroupBoxColumn col = null;
+        OutlookGridGroupBoxColumn? col = null;
         if (_indexselected > -1)
         {
             col = _columnsList[_indexselected];
@@ -1062,7 +1057,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
         {
             foreach (KryptonContextMenuItem item in ((KryptonContextMenuItems)_menuGroupInterval.Items[0]).Items)
             {
-                item.Checked = item.Tag.ToString() == col.GroupInterval;
+                item.Checked = item.Tag?.ToString() == col!.GroupInterval;
             }
         }
         _menuUnGroup.Visible = col != null;
@@ -1091,19 +1086,28 @@ public partial class KryptonOutlookGridGroupBox : UserControl
     public void UpdateGroupingColumns(List<OutlookGridColumn>? list)
     {
         _columnsList.Clear();
+        if (list == null)
+        {
+            return;
+        }
+
         OutlookGridGroupBoxColumn colToAdd;
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i].IsGrouped)
+            OutlookGridColumn? gridColumn = list[i];
+            if (gridColumn?.IsGrouped != true || gridColumn.DataGridViewColumn == null || gridColumn.GroupingType == null)
             {
-                colToAdd = new OutlookGridGroupBoxColumn(list[i].DataGridViewColumn.Name, list[i].DataGridViewColumn.HeaderText, list[i].SortDirection, list[i].GroupingType.GetType().Name);
-                if (colToAdd.GroupingType == typeof(OutlookGridDateTimeGroup).Name)
-                {
-                    colToAdd.GroupInterval = ((OutlookGridDateTimeGroup)list[i].GroupingType).Interval.ToString();
-                }
-
-                _columnsList.Add(colToAdd);
+                continue;
             }
+
+            colToAdd = new OutlookGridGroupBoxColumn(gridColumn.DataGridViewColumn.Name, gridColumn.DataGridViewColumn.HeaderText, gridColumn.SortDirection, gridColumn.GroupingType.GetType().Name);
+            if (colToAdd.GroupingType == typeof(OutlookGridDateTimeGroup).Name
+                && gridColumn.GroupingType is OutlookGridDateTimeGroup dateTimeGroup)
+            {
+                colToAdd.GroupInterval = dateTimeGroup.Interval.ToString();
+            }
+
+            _columnsList.Add(colToAdd);
         }
         Invalidate();
     }
