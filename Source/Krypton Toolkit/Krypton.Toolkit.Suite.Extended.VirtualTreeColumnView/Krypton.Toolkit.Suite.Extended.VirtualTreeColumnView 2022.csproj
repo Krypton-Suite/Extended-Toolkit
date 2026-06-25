@@ -118,6 +118,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="..\Krypton.Toolkit.Suite.Extended.Common\Utilities\AllowNullAttribute.cs" Link="General\AllowNullAttribute.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<EditorConfigFiles Remove=".editorconfig" />
 	</ItemGroup>
 

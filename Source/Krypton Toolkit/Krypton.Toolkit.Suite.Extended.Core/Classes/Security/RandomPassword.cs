@@ -144,7 +144,14 @@ public class RandomPassword
         byte[] randomBytes = new byte[4];
 
         // Generate 4 random bytes.
+#if NETCOREAPP2_1_OR_GREATER
         System.Security.Cryptography.RandomNumberGenerator.Fill(randomBytes);
+#else
+        using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(randomBytes);
+        }
+#endif
 
         // Convert 4 bytes into a 32-bit integer value.
         int seed = BitConverter.ToInt32(randomBytes, 0);

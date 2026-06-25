@@ -117,7 +117,7 @@
 		<PackageReference Include="System.Management" Version="11.0.0-preview.5.26302.115" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'net481'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net472' Or '$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'net481'">
 		<Reference Include="System.Deployment" />
 		<Reference Include="System.Net.Http">
 		  <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2\System.Net.Http.dll</HintPath>

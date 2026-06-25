@@ -103,6 +103,10 @@
 	</Choose>
 
 	<ItemGroup>
+		<Compile Include="..\Krypton.Toolkit.Suite.Extended.Common\Utilities\AllowNullAttribute.cs" Link="General\AllowNullAttribute.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.15.2" />
 
 		<PackageReference Include="WindowsAPICodePackShellExtensions" Version="8.0.15.2" />
