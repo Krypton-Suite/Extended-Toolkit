@@ -25,14 +25,6 @@
  */
 #endregion
 
-global using System.Collections.Generic;
-global using System.Drawing;
-global using System.Drawing.Drawing2D;
-global using System.Windows.Forms;
-global using Xunit;
-
-using Krypton.Toolkit.Suite.Extended.BottomSheet;
-
 namespace Krypton.Toolkit.Suite.Extended.BottomSheet.Tests;
 
 public class BottomSheetRenderingTests
