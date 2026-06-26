@@ -72,16 +72,13 @@ public class NaviOffice10Renderer : NaviRenderer
         bool rightToLeft, InputState state)
     {
         // Gradient background
-        Color[] endColors = [ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2];
 
-        if (state == InputState.Clicked)
+        Color[] endColors = state switch
         {
-            endColors = [ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1];
-        }
-        else if (state == InputState.Hovered)
-        {
-            endColors = [ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1];
-        }
+            InputState.Clicked => [ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1],
+            InputState.Hovered => [ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1],
+            _ => [ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2]
+        };
 
         float[] ColorPositions = [0.0f, 1.0f];
         ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);

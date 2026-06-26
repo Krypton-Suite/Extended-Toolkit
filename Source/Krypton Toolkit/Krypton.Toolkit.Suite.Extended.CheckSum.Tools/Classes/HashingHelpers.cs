@@ -32,69 +32,36 @@ public class HashingHelpers
     #region Methods
 
 #if !NETCOREAPP3_1_OR_GREATER
-    public static SupportedHashAlgorithims ReturnHashType(string hashType)
-    {
-        if (hashType is @"MD-5" or @"md-5" or @"MD5" or @"md5")
+    public static SupportedHashAlgorithims ReturnHashType(string hashType) =>
+        hashType switch
         {
-            return SupportedHashAlgorithims.MD5;
-        }
-        else if (hashType is @"SHA-1" or @"sha-1" or @"SHA1" or @"sha1")
-        {
-            return SupportedHashAlgorithims.SHA1;
-        }
-        else if (hashType is @"SHA-256" or @"sha-256" or @"SHA256" or @"sha256")
-        {
-            return SupportedHashAlgorithims.SHA256;
-        }
-        else if (hashType is @"SHA-384" or @"sha-384" or @"SHA384" or @"sha384")
-        {
-            return SupportedHashAlgorithims.SHA384;
-        }
-        else if (hashType is @"SHA-512" or @"sha-512" or @"SHA512" or @"sha512")
-        {
-            return SupportedHashAlgorithims.SHA512;
-        }
-        else if (hashType is @"RIPEMD-160" or @"ripemd-160" or @"RIPEMD160" or @"ripemd160")
-        {
-            return SupportedHashAlgorithims.RIPEMD160;
-        }
-
-        return SupportedHashAlgorithims.MD5;
-    }
+            @"MD-5" or @"md-5" or @"MD5" or @"md5" => SupportedHashAlgorithims.MD5,
+            @"SHA-1" or @"sha-1" or @"SHA1" or @"sha1" => SupportedHashAlgorithims.SHA1,
+            @"SHA-256" or @"sha-256" or @"SHA256" or @"sha256" => SupportedHashAlgorithims.SHA256,
+            @"SHA-384" or @"sha-384" or @"SHA384" or @"sha384" => SupportedHashAlgorithims.SHA384,
+            @"SHA-512" or @"sha-512" or @"SHA512" or @"sha512" => SupportedHashAlgorithims.SHA512,
+            @"RIPEMD-160" or @"ripemd-160" or @"RIPEMD160" or @"ripemd160" => SupportedHashAlgorithims.RIPEMD160,
+            _ => SupportedHashAlgorithims.MD5
+        };
 #else
-        public static SafeNETCoreAndNewerSupportedHashAlgorithims ReturnHashType(string hashType)
-        {
-            if (hashType is @"MD-5" or @"md-5" or @"MD5" or @"md5")
+        public static SafeNETCoreAndNewerSupportedHashAlgorithims ReturnHashType(string hashType) =>
+            hashType switch
             {
-                return SafeNETCoreAndNewerSupportedHashAlgorithims.MD5;
-            }
-            else if (hashType is @"SHA-1" or @"sha-1" or @"SHA1" or @"sha1")
-            {
-                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA1;
-            }
-            else if (hashType is @"SHA-256" or @"sha-256" or @"SHA256" or @"sha256")
-            {
-                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA256;
-            }
-            else if (hashType is @"SHA-384" or @"sha-384" or @"SHA384" or @"sha384")
-            {
-                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA384;
-            }
-            else if (hashType is @"SHA-512" or @"sha-512" or @"SHA512" or @"sha512")
-            {
-                return SafeNETCoreAndNewerSupportedHashAlgorithims.SHA512;
-            }
-
-            return SafeNETCoreAndNewerSupportedHashAlgorithims.MD5;
-        }
+                @"MD-5" or @"md-5" or @"MD5" or @"md5" => SafeNETCoreAndNewerSupportedHashAlgorithims.MD5,
+                @"SHA-1" or @"sha-1" or @"SHA1" or @"sha1" => SafeNETCoreAndNewerSupportedHashAlgorithims.SHA1,
+                @"SHA-256" or @"sha-256" or @"SHA256" or @"sha256" =>
+                    SafeNETCoreAndNewerSupportedHashAlgorithims.SHA256,
+                @"SHA-384" or @"sha-384" or @"SHA384" or @"sha384" =>
+                    SafeNETCoreAndNewerSupportedHashAlgorithims.SHA384,
+                @"SHA-512" or @"sha-512" or @"SHA512" or @"sha512" =>
+                    SafeNETCoreAndNewerSupportedHashAlgorithims.SHA512,
+                _ => SafeNETCoreAndNewerSupportedHashAlgorithims.MD5
+            };
 #endif
 
     public static string BuildMD5HashString(byte[]? hashBytes)
     {
-        if (hashBytes is null)
-        {
-            throw new ArgumentNullException(nameof(hashBytes));
-        }
+        CheckHashBytesNull(hashBytes);
 
         // Set aside 32 bits in memory, for the total string length of the MD5 hash
         StringBuilder builder = new StringBuilder(32);
@@ -107,12 +74,17 @@ public class HashingHelpers
         return builder.ToString();
     }
 
-    public static string BuildSHA1HashString(byte[]? hashBytes)
+    private static void CheckHashBytesNull(byte[]? hashBytes)
     {
         if (hashBytes is null)
         {
             throw new ArgumentNullException(nameof(hashBytes));
         }
+    }
+
+    public static string BuildSHA1HashString(byte[]? hashBytes)
+    {
+        CheckHashBytesNull(hashBytes);
 
         // Set aside 40 bits in memory, for the total string length of the SHA-1 hash
         StringBuilder builder = new StringBuilder(40);
@@ -127,10 +99,7 @@ public class HashingHelpers
 
     public static string BuildSHA256HashString(byte[]? hashBytes)
     {
-        if (hashBytes is null)
-        {
-            throw new ArgumentNullException(nameof(hashBytes));
-        }
+        CheckHashBytesNull(hashBytes);
 
         // Set aside 64 bits in memory, for the total string length of the SHA-256 hash
         StringBuilder builder = new StringBuilder(64);
@@ -145,10 +114,7 @@ public class HashingHelpers
 
     public static string BuildSHA384HashString(byte[]? hashBytes)
     {
-        if (hashBytes is null)
-        {
-            throw new ArgumentNullException(nameof(hashBytes));
-        }
+        CheckHashBytesNull(hashBytes);
 
         // Set aside 96 bits in memory, for the total string length of the SHA-384 hash
         StringBuilder builder = new StringBuilder(96);
@@ -163,10 +129,7 @@ public class HashingHelpers
 
     public static string BuildSHA512HashString(byte[]? hashBytes)
     {
-        if (hashBytes is null)
-        {
-            throw new ArgumentNullException(nameof(hashBytes));
-        }
+        CheckHashBytesNull(hashBytes);
 
         // Set aside 128 bits in memory, for the total string length of the SHA-512 hash
         StringBuilder builder = new StringBuilder(128);
@@ -181,10 +144,7 @@ public class HashingHelpers
 
     public static string BuildRIPEMD160HashString(byte[]? hashBytes)
     {
-        if (hashBytes is null)
-        {
-            throw new ArgumentNullException(nameof(hashBytes));
-        }
+        CheckHashBytesNull(hashBytes);
 
         // Set aside 40 bits in memory, for the total string length of the RIPEMD-160 hash
         StringBuilder builder = new StringBuilder(40);

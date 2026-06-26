@@ -600,44 +600,19 @@ public partial class KryptonInputBoxExtendedForm : KryptonForm
     /// <returns>The input response string.</returns>
     private string GetInputResponse()
     {
-        string output = string.Empty;
-
-        if (_inputType == KryptonInputBoxResponseType.ComboBox)
+        string output = _inputType switch
         {
-            output = kcmbResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.DateTimePicker)
-        {
-            output = kdtpResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.MaskedTextBox)
-        {
-            output = kmtxtResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.None)
-        {
-            output = string.Empty;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.PasswordBox)
-        {
-            output = ktxtResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.RichTextBox)
-        {
-            output = krtbResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.TextBox)
-        {
-            output = ktxtResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.DomainUpDown)
-        {
-            output = kdudResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.NumericUpDown)
-        {
-            output = knudResponse.Text;
-        }
+            KryptonInputBoxResponseType.ComboBox => kcmbResponse.Text,
+            KryptonInputBoxResponseType.DateTimePicker => kdtpResponse.Text,
+            KryptonInputBoxResponseType.MaskedTextBox => kmtxtResponse.Text,
+            KryptonInputBoxResponseType.None => string.Empty,
+            KryptonInputBoxResponseType.PasswordBox => ktxtResponse.Text,
+            KryptonInputBoxResponseType.RichTextBox => krtbResponse.Text,
+            KryptonInputBoxResponseType.TextBox => ktxtResponse.Text,
+            KryptonInputBoxResponseType.DomainUpDown => kdudResponse.Text,
+            KryptonInputBoxResponseType.NumericUpDown => knudResponse.Text,
+            _ => string.Empty
+        };
 
         return output;
     }

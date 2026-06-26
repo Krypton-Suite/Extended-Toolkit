@@ -183,19 +183,12 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
     public override int CompareTo(object? obj)
     {
         int orderModifier = Column!.SortDirection == SortOrder.Ascending ? 1 : -1;
-        DateTime val;
-        if (obj is DateTime dt)
+        DateTime val = obj switch
         {
-            val = dt;
-        }
-        else if (obj is OutlookGridDateTimeGroup dateGroup)
-        {
-            val = dateGroup._valDateTime;
-        }
-        else
-        {
-            val = new DateTime();
-        }
+            DateTime dt => dt,
+            OutlookGridDateTimeGroup dateGroup => dateGroup._valDateTime,
+            _ => new DateTime()
+        };
 
         switch (Interval)
         {

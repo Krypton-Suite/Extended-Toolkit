@@ -112,19 +112,12 @@ public class NumericAutomatic : ITickGenerator
         double initialSpace = Math.Pow(radix, exponent);
         List<double> tickSpacings = [initialSpace, initialSpace, initialSpace];
 
-        double[] divBy;
-        if (radix == 10)
+        double[] divBy = radix switch
         {
-            divBy = [2, 2, 2.5]; // 10, 5, 2.5, 1
-        }
-        else if (radix == 16)
-        {
-            divBy = [2, 2, 2, 2]; // 16, 8, 4, 2, 1
-        }
-        else
-        {
-            throw new ArgumentException($"radix {radix} is not supported");
-        }
+            10 => [2, 2, 2.5],
+            16 => [2, 2, 2, 2],
+            _ => throw new ArgumentException($"radix {radix} is not supported")
+        };
 
         int divisions = 0;
         int tickCount = 0;

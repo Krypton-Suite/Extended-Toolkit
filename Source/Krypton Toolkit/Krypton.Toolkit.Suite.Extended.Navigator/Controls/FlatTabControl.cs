@@ -552,36 +552,18 @@ public class FlatTabControl : TabControl
 
             closeImage.MakeTransparent(Color.White);
 
-            if (Alignment == TabAlignment.Top)
+            m_closeRect = Alignment switch
             {
-                //if (bIsVisibleUpDown)
-                //{
-                //    m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 56, ClientRectangle.Y + 8, 14, 14);
-                //}
-                //else
-                //{
-                m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18, ClientRectangle.Y + 8, 14, 14);
-                //}
-            }
-            else if (Alignment == TabAlignment.Right)
-            {
-                m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 21, ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14);
-            }
-            else if (Alignment == TabAlignment.Left)
-            {
-                m_closeRect = new Rectangle(ClientRectangle.X + 8, ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14);
-            }
-            else if (Alignment == TabAlignment.Bottom)
-            {
-                //if (bIsVisibleUpDown)
-                //{
-                //    m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 56, ClientRectangle.Y + ClientRectangle.Height - 21, 14, 14);
-                //}
-                //else
-                //{
-                m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18, ClientRectangle.Y + ClientRectangle.Height - 21, 14, 14);
-                //}
-            }
+                TabAlignment.Top => new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18, ClientRectangle.Y + 8,
+                    14, 14),
+                TabAlignment.Right => new Rectangle(ClientRectangle.X + ClientRectangle.Width - 21,
+                    ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14),
+                TabAlignment.Left => new Rectangle(ClientRectangle.X + 8,
+                    ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14),
+                TabAlignment.Bottom => new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18,
+                    ClientRectangle.Y + ClientRectangle.Height - 21, 14, 14),
+                _ => m_closeRect
+            };
 
             //paint border and backcolor of the button
             Rectangle closeBorder = m_closeRect;
@@ -757,13 +739,12 @@ public class FlatTabControl : TabControl
 
         //bool bHotselected = false;
 
-        if (bSelected && !bHot)
-        { Status = DrawingMethods.TabHeaderStatus.Selected; }
-        else if (bSelected && bHot)
+        Status = bSelected switch
         {
-            Status = DrawingMethods.TabHeaderStatus.HotSelected;
-            //bHotselected = true;
-        }
+            true when !bHot => DrawingMethods.TabHeaderStatus.Selected,
+            true when bHot => DrawingMethods.TabHeaderStatus.HotSelected,
+            _ => Status
+        };
 
         //Selected tab has to be highter
         if (!_allowSelectedTabHigh)

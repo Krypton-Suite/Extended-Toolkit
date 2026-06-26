@@ -65,20 +65,13 @@ public class RibbonMerger
             return 0;
         }
 
-        if (tagValue is null)
+        return tagValue switch
         {
-            return maxValue;
-        }
-
-        if (tagValue is string)
-        {
-            if (int.TryParse(tagValue.ToString(), NumberStyles.Integer, CultureInfo.CurrentCulture, out int parsedValue))
-            {
-                return parsedValue.Max(0).Min(maxValue);
-            }
-        }
-
-        return (int)Convert.ChangeType(tagValue, typeof(int));
+            null => maxValue,
+            string when int.TryParse(tagValue.ToString(), NumberStyles.Integer, CultureInfo.CurrentCulture,
+                out int parsedValue) => parsedValue.Max(0).Min(maxValue),
+            _ => (int)Convert.ChangeType(tagValue, typeof(int))
+        };
     }
 
     /// <summary>

@@ -266,15 +266,15 @@ public partial class NaviButton : NaviControl
             {
                 imageSmall = smallImage;
             }
-            else if (band is { SmallImage: not null })
-            {
-                imageSmall = band.SmallImage;
-            }
-            else if (band is { SmallImageIndex: >= 0, SmallImages: not null }
-                     && band.SmallImageIndex < band.SmallImages.Images.Count)
-            {
-                imageSmall = band.SmallImages.Images[band.SmallImageIndex];
-            }
+            else
+                imageSmall = band switch
+                {
+                    { SmallImage: not null } => band.SmallImage,
+                    { SmallImageIndex: >= 0, SmallImages: not null } when band.SmallImageIndex <
+                                                                          band.SmallImages.Images.Count => band
+                        .SmallImages.Images[band.SmallImageIndex],
+                    _ => imageSmall
+                };
 
             if (imageSmall != null && showImage)
             {
@@ -292,15 +292,15 @@ public partial class NaviButton : NaviControl
             {
                 imageLarge = largeImage;
             }
-            else if (band is { LargeImage: not null })
-            {
-                imageLarge = band.LargeImage;
-            }
-            else if (band is { LargeImageIndex: >= 0, LargeImages: not null }
-                     && band.LargeImageIndex < band.LargeImages.Images.Count)
-            {
-                imageLarge = band.LargeImages.Images[band.LargeImageIndex];
-            }
+            else
+                imageLarge = band switch
+                {
+                    { LargeImage: not null } => band.LargeImage,
+                    { LargeImageIndex: >= 0, LargeImages: not null } when band.LargeImageIndex <
+                                                                          band.LargeImages.Images.Count => band
+                        .LargeImages.Images[band.LargeImageIndex],
+                    _ => imageLarge
+                };
 
             if (imageLarge != null && showImage)
             {

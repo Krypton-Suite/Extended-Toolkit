@@ -869,15 +869,12 @@ public class KryptonTabControl : TabControl
             status = DrawingMethods.TabHeaderStatus.Hot;
         }
 
-        if (bSelected && !bHot)
+        status = bSelected switch
         {
-            status = DrawingMethods.TabHeaderStatus.Selected;
-        }
-        else if (bSelected && bHot)
-        {
-            status = DrawingMethods.TabHeaderStatus.HotSelected;
-            //bHotselected = true;
-        }
+            true when !bHot => DrawingMethods.TabHeaderStatus.Selected,
+            true when bHot => DrawingMethods.TabHeaderStatus.HotSelected,
+            _ => status
+        };
 
         //Selected tab has to be highter?
         if (!_allowSelectedTabHigh)

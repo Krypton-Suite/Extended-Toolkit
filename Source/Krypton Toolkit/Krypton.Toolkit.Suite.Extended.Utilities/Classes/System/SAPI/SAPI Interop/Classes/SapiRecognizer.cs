@@ -241,14 +241,13 @@ internal class SapiRecognizer : IDisposable
             sAPIErrorCodes = (SAPIErrorCodes)sapiRecognizer.GetPropertyString(name, out ppCoMemValue);
             obj = ppCoMemValue;
         }
-        if (sAPIErrorCodes == SAPIErrorCodes.S_FALSE)
+
+        return sAPIErrorCodes switch
         {
-            throw new KeyNotFoundException(SR.Get(SRID.RecognizerSettingNotSupported));
-        }
-        if (sAPIErrorCodes < SAPIErrorCodes.S_OK)
-        {
-            throw RecognizerBase.ExceptionFromSapiCreateRecognizerError(new COMException(SR.Get(SRID.RecognizerSettingUpdateError), (int)sAPIErrorCodes));
-        }
-        return obj;
+            SAPIErrorCodes.S_FALSE => throw new KeyNotFoundException(SR.Get(SRID.RecognizerSettingNotSupported)),
+            < SAPIErrorCodes.S_OK => throw RecognizerBase.ExceptionFromSapiCreateRecognizerError(
+                new COMException(SR.Get(SRID.RecognizerSettingUpdateError), (int)sAPIErrorCodes)),
+            _ => obj
+        };
     }
 }

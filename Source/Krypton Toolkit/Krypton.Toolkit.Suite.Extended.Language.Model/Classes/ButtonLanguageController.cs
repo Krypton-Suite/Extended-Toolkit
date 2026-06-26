@@ -97,256 +97,102 @@ public class ButtonLanguageController
                     switch (language)
                     {
                         case SelectedLanguage.Czech:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = _buttonTextArray[4];
-                            }
+                                DialogButtonType.Abort => _buttonTextArray[4],
+                                DialogButtonType.Cancel => _buttonTextArray[3],
+                                DialogButtonType.Ignore => _buttonTextArray[5],
+                                DialogButtonType.No => _buttonTextArray[2],
+                                DialogButtonType.OK => _buttonTextArray[0],
+                                DialogButtonType.Retry => _buttonTextArray[6],
+                                DialogButtonType.Yes => _buttonTextArray[1],
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = _buttonTextArray[3];
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = _buttonTextArray[5];
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = _buttonTextArray[2];
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = _buttonTextArray[0];
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = _buttonTextArray[6];
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = _buttonTextArray[1];
-                            }
                             break;
                         case SelectedLanguage.English:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = @"A&bort";
-                            }
+                                DialogButtonType.Abort => @"A&bort",
+                                DialogButtonType.Cancel => @"&Cancel",
+                                DialogButtonType.Ignore => @"Ig&nore",
+                                DialogButtonType.No => @"&N&o",
+                                DialogButtonType.OK => @"&Ok",
+                                DialogButtonType.Retry => @"Re&try",
+                                DialogButtonType.Yes => @"Y&es",
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = @"&Cancel";
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = @"Ig&nore";
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = @"&N&o";
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = @"&Ok";
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = @"Re&try";
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = @"Y&es";
-                            }
                             break;
                         case SelectedLanguage.Français:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = _buttonTextArray[4];
-                            }
+                                DialogButtonType.Abort => _buttonTextArray[4],
+                                DialogButtonType.Cancel => _buttonTextArray[3],
+                                DialogButtonType.Ignore => _buttonTextArray[5],
+                                DialogButtonType.No => _buttonTextArray[2],
+                                DialogButtonType.OK => _buttonTextArray[0],
+                                DialogButtonType.Retry => _buttonTextArray[6],
+                                DialogButtonType.Yes => _buttonTextArray[1],
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = _buttonTextArray[3];
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = _buttonTextArray[5];
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = _buttonTextArray[2];
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = _buttonTextArray[0];
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = _buttonTextArray[6];
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = _buttonTextArray[1];
-                            }
                             break;
                         case SelectedLanguage.Deutsch:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = _buttonTextArray[4];
-                            }
+                                DialogButtonType.Abort => _buttonTextArray[4],
+                                DialogButtonType.Cancel => _buttonTextArray[3],
+                                DialogButtonType.Ignore => _buttonTextArray[5],
+                                DialogButtonType.No => _buttonTextArray[2],
+                                DialogButtonType.OK => _buttonTextArray[0],
+                                DialogButtonType.Retry => _buttonTextArray[6],
+                                DialogButtonType.Yes => _buttonTextArray[1],
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = _buttonTextArray[3];
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = _buttonTextArray[5];
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = _buttonTextArray[2];
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = _buttonTextArray[0];
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = _buttonTextArray[6];
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = _buttonTextArray[1];
-                            }
                             break;
                         case SelectedLanguage.Slovakian:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = _buttonTextArray[4];
-                            }
+                                DialogButtonType.Abort => _buttonTextArray[4],
+                                DialogButtonType.Cancel => _buttonTextArray[3],
+                                DialogButtonType.Ignore => _buttonTextArray[5],
+                                DialogButtonType.No => _buttonTextArray[2],
+                                DialogButtonType.OK => _buttonTextArray[0],
+                                DialogButtonType.Retry => _buttonTextArray[6],
+                                DialogButtonType.Yes => _buttonTextArray[1],
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = _buttonTextArray[3];
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = _buttonTextArray[5];
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = _buttonTextArray[2];
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = _buttonTextArray[0];
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = _buttonTextArray[6];
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = _buttonTextArray[1];
-                            }
                             break;
                         case SelectedLanguage.Español:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = _buttonTextArray[4];
-                            }
+                                DialogButtonType.Abort => _buttonTextArray[4],
+                                DialogButtonType.Cancel => _buttonTextArray[3],
+                                DialogButtonType.Ignore => _buttonTextArray[5],
+                                DialogButtonType.No => _buttonTextArray[2],
+                                DialogButtonType.OK => _buttonTextArray[0],
+                                DialogButtonType.Retry => _buttonTextArray[6],
+                                DialogButtonType.Yes => _buttonTextArray[1],
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = _buttonTextArray[3];
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = _buttonTextArray[5];
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = _buttonTextArray[2];
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = _buttonTextArray[0];
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = _buttonTextArray[6];
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = _buttonTextArray[1];
-                            }
                             break;
                         case SelectedLanguage.Custom:
-                            if (type == DialogButtonType.Abort)
+                            button.Text = type switch
                             {
-                                button.Text = _buttonTextArray[4];
-                            }
+                                DialogButtonType.Abort => _buttonTextArray[4],
+                                DialogButtonType.Cancel => _buttonTextArray[3],
+                                DialogButtonType.Ignore => _buttonTextArray[5],
+                                DialogButtonType.No => _buttonTextArray[2],
+                                DialogButtonType.OK => _buttonTextArray[0],
+                                DialogButtonType.Retry => _buttonTextArray[6],
+                                DialogButtonType.Yes => _buttonTextArray[1],
+                                _ => button.Text
+                            };
 
-                            if (type == DialogButtonType.Cancel)
-                            {
-                                button.Text = _buttonTextArray[3];
-                            }
-
-                            if (type == DialogButtonType.Ignore)
-                            {
-                                button.Text = _buttonTextArray[5];
-                            }
-
-                            if (type == DialogButtonType.No)
-                            {
-                                button.Text = _buttonTextArray[2];
-                            }
-
-                            if (type == DialogButtonType.OK)
-                            {
-                                button.Text = _buttonTextArray[0];
-                            }
-
-                            if (type == DialogButtonType.Retry)
-                            {
-                                button.Text = _buttonTextArray[6];
-                            }
-
-                            if (type == DialogButtonType.Yes)
-                            {
-                                button.Text = _buttonTextArray[1];
-                            }
                             break;
                     }
                 }

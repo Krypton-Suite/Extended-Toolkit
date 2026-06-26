@@ -158,42 +158,18 @@ public class OutlookGridDefaultGroup : IOutlookGridGroup
             }
             else if (!String.IsNullOrEmpty(_formatStyle))
             {
-                if (_val is string)
+                formattedValue = _val switch
                 {
-                    formattedValue = string.Format(_formatStyle, Value);
-                }
-                else if (_val is DateTime dtVal)
-                {
-                    formattedValue = dtVal.ToString(_formatStyle);
-                }
-                else if (_val is int intVal)
-                {
-                    formattedValue = intVal.ToString(_formatStyle);
-                }
-                else if (_val is float floatVal)
-                {
-                    formattedValue = floatVal.ToString(_formatStyle);
-                }
-                else if (_val is double doubleVal)
-                {
-                    formattedValue = doubleVal.ToString(_formatStyle);
-                }
-                else if (_val is decimal decimalVal)
-                {
-                    formattedValue = decimalVal.ToString(_formatStyle);
-                }
-                else if (_val is long longVal)
-                {
-                    formattedValue = longVal.ToString(_formatStyle);
-                }
-                else if (_val is TimeSpan timeSpanVal)
-                {
-                    formattedValue = timeSpanVal.ToString(_formatStyle);
-                }
-                else
-                {
-                    formattedValue = _val.ToString() ?? string.Empty;
-                }
+                    string => string.Format(_formatStyle, Value),
+                    DateTime dtVal => dtVal.ToString(_formatStyle),
+                    int intVal => intVal.ToString(_formatStyle),
+                    float floatVal => floatVal.ToString(_formatStyle),
+                    double doubleVal => doubleVal.ToString(_formatStyle),
+                    decimal decimalVal => decimalVal.ToString(_formatStyle),
+                    long longVal => longVal.ToString(_formatStyle),
+                    TimeSpan timeSpanVal => timeSpanVal.ToString(_formatStyle),
+                    _ => _val.ToString() ?? string.Empty
+                };
             }
             else
             {
@@ -352,51 +328,22 @@ public class OutlookGridDefaultGroup : IOutlookGridGroup
         }
         else
         {
-            if (_val is string)
+            compareResult = _val switch
             {
-                compareResult = string.Compare(_val.ToString(), o2?.ToString()) * orderModifier;
-            }
-            else if (_val is DateTime dt1 && o2 is DateTime dt2)
-            {
-                compareResult = dt1.CompareTo(dt2) * orderModifier;
-            }
-            else if (_val is int i1 && o2 is int i2)
-            {
-                compareResult = i1.CompareTo(i2) * orderModifier;
-            }
-            else if (_val is bool b1 && o2 is bool b2)
-            {
-                compareResult = (b1 == b2 ? 0 : b1 ? 1 : -1) * orderModifier;
-            }
-            else if (_val is float n1f && o2 is float n2f)
-            {
-                compareResult = (n1f > n2f ? 1 : n1f < n2f ? -1 : 0) * orderModifier;
-            }
-            else if (_val is double n1d && o2 is double n2d)
-            {
-                compareResult = (n1d > n2d ? 1 : n1d < n2d ? -1 : 0) * orderModifier;
-            }
-            else if (_val is decimal d1 && o2 is decimal d2)
-            {
-                compareResult = (d1 > d2 ? 1 : d1 < d2 ? -1 : 0) * orderModifier;
-            }
-            else if (_val is long n1l && o2 is long n2l)
-            {
-                compareResult = (n1l > n2l ? 1 : n1l < n2l ? -1 : 0) * orderModifier;
-            }
-            else if (_val is TimeSpan t1 && o2 is TimeSpan t2)
-            {
-                compareResult = (t1 > t2 ? 1 : t1 < t2 ? -1 : 0) * orderModifier;
-            }
-            else if (_val is TextAndImage ti1 && o2 is TextAndImage ti2)
-            {
-                compareResult = ti1.CompareTo(ti2) * orderModifier;
-            }
-            //TODO implement a value for Token Column ??
-            else if (_val is Token tok1 && o2 is Token tok2)
-            {
-                compareResult = tok1.CompareTo(tok2) * orderModifier;
-            }
+                string => string.Compare(_val.ToString(), o2?.ToString()) * orderModifier,
+                DateTime dt1 when o2 is DateTime dt2 => dt1.CompareTo(dt2) * orderModifier,
+                int i1 when o2 is int i2 => i1.CompareTo(i2) * orderModifier,
+                bool b1 when o2 is bool b2 => (b1 == b2 ? 0 : b1 ? 1 : -1) * orderModifier,
+                float n1f when o2 is float n2f => (n1f > n2f ? 1 : n1f < n2f ? -1 : 0) * orderModifier,
+                double n1d when o2 is double n2d => (n1d > n2d ? 1 : n1d < n2d ? -1 : 0) * orderModifier,
+                decimal d1 when o2 is decimal d2 => (d1 > d2 ? 1 : d1 < d2 ? -1 : 0) * orderModifier,
+                long n1l when o2 is long n2l => (n1l > n2l ? 1 : n1l < n2l ? -1 : 0) * orderModifier,
+                TimeSpan t1 when o2 is TimeSpan t2 => (t1 > t2 ? 1 : t1 < t2 ? -1 : 0) * orderModifier,
+                TextAndImage ti1 when o2 is TextAndImage ti2 => ti1.CompareTo(ti2) * orderModifier,
+                //TODO implement a value for Token Column ??
+                Token tok1 when o2 is Token tok2 => tok1.CompareTo(tok2) * orderModifier,
+                _ => compareResult
+            };
         }
         return compareResult;
     }

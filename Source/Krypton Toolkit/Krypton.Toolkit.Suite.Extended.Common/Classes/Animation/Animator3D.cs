@@ -243,28 +243,19 @@ public class Animator3D : IAnimator
     {
         get
         {
-            if (HorizontalAnimator.CurrentStatus == AnimatorStatus.Stopped
-                && VerticalAnimator.CurrentStatus == AnimatorStatus.Stopped
-                && DepthAnimator.CurrentStatus == AnimatorStatus.Stopped)
+            return HorizontalAnimator.CurrentStatus switch
             {
-                return AnimatorStatus.Stopped;
-            }
-
-            if (HorizontalAnimator.CurrentStatus == AnimatorStatus.Paused
-                && VerticalAnimator.CurrentStatus == AnimatorStatus.Paused
-                && DepthAnimator.CurrentStatus == AnimatorStatus.Paused)
-            {
-                return AnimatorStatus.Paused;
-            }
-
-            if (HorizontalAnimator.CurrentStatus == AnimatorStatus.OnHold
-                && VerticalAnimator.CurrentStatus == AnimatorStatus.OnHold
-                && DepthAnimator.CurrentStatus == AnimatorStatus.OnHold)
-            {
-                return AnimatorStatus.OnHold;
-            }
-
-            return AnimatorStatus.Playing;
+                AnimatorStatus.Stopped when VerticalAnimator.CurrentStatus == AnimatorStatus.Stopped &&
+                                            DepthAnimator.CurrentStatus == AnimatorStatus.Stopped => AnimatorStatus
+                    .Stopped,
+                AnimatorStatus.Paused when VerticalAnimator.CurrentStatus == AnimatorStatus.Paused &&
+                                           DepthAnimator.CurrentStatus == AnimatorStatus.Paused =>
+                    AnimatorStatus.Paused,
+                AnimatorStatus.OnHold when VerticalAnimator.CurrentStatus == AnimatorStatus.OnHold &&
+                                           DepthAnimator.CurrentStatus == AnimatorStatus.OnHold =>
+                    AnimatorStatus.OnHold,
+                _ => AnimatorStatus.Playing
+            };
         }
     }
 

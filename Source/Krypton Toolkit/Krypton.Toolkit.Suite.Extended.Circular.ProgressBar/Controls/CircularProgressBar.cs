@@ -662,18 +662,12 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
             if (_useColorTrio)
             {
-                if (Value <= 33)
+                ProgressColor = Value switch
                 {
-                    ProgressColor = _firstValueColor;
-                }
-                else if (Value <= 66)
-                {
-                    ProgressColor = _secondValueColor; // _palette.ColorTable.ButtonCheckedGradientBegin;
-                }
-                else
-                {
-                    ProgressColor = _thirdValueColor;
-                }
+                    <= 33 => _firstValueColor,
+                    <= 66 => _secondValueColor,
+                    _ => _thirdValueColor
+                };
             }
             else
             {

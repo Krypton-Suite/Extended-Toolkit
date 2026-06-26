@@ -400,15 +400,13 @@ public partial class PopUp : ToolStripDropDown
         {
             return false;
         }
-        if (m.Msg == NativeMethods.WM_NCHITTEST)
+
+        return m.Msg switch
         {
-            return OnNcHitTest(ref m, contentControl);
-        }
-        else if (m.Msg == NativeMethods.WM_GETMINMAXINFO)
-        {
-            return OnGetMinMaxInfo(ref m);
-        }
-        return false;
+            NativeMethods.WM_NCHITTEST => OnNcHitTest(ref m, contentControl),
+            NativeMethods.WM_GETMINMAXINFO => OnGetMinMaxInfo(ref m),
+            _ => false
+        };
     }
 
     private bool OnGetMinMaxInfo(ref Message m)

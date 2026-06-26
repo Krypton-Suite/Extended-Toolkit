@@ -85,50 +85,22 @@ internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
                         }
                         else
                         {
-                            if (o1 is string)
+                            compareResult = o1 switch
                             {
-                                compareResult = string.Compare(o1.ToString(), o2?.ToString()) * orderModifier;
-                            }
-                            else if (o1 is DateTime dt1 && o2 is DateTime dt2)
-                            {
-                                compareResult = dt1.CompareTo(dt2) * orderModifier;
-                            }
-                            else if (o1 is int i1 && o2 is int i2)
-                            {
-                                compareResult = i1.CompareTo(i2) * orderModifier;
-                            }
-                            else if (o1 is bool b1 && o2 is bool b2)
-                            {
-                                compareResult = (b1 == b2 ? 0 : b1 ? 1 : -1) * orderModifier;
-                            }
-                            else if (o1 is float n1f && o2 is float n2f)
-                            {
-                                compareResult = (n1f > n2f ? 1 : n1f < n2f ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is double n1d && o2 is double n2d)
-                            {
-                                compareResult = (n1d > n2d ? 1 : n1d < n2d ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is decimal d1 && o2 is decimal d2)
-                            {
-                                compareResult = (d1 > d2 ? 1 : d1 < d2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is long n1l && o2 is long n2l)
-                            {
-                                compareResult = (n1l > n2l ? 1 : n1l < n2l ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is TimeSpan t1 && o2 is TimeSpan t2)
-                            {
-                                compareResult = (t1 > t2 ? 1 : t1 < t2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is TextAndImage ti1 && o2 is TextAndImage ti2)
-                            {
-                                compareResult = ti1.CompareTo(ti2) * orderModifier;
-                            }
-                            else if (o1 is Token tok1 && o2 is Token tok2)
-                            {
-                                compareResult = tok1.CompareTo(tok2) * orderModifier;
-                            }
+                                string => string.Compare(o1.ToString(), o2?.ToString()) * orderModifier,
+                                DateTime dt1 when o2 is DateTime dt2 => dt1.CompareTo(dt2) * orderModifier,
+                                int i1 when o2 is int i2 => i1.CompareTo(i2) * orderModifier,
+                                bool b1 when o2 is bool b2 => (b1 == b2 ? 0 : b1 ? 1 : -1) * orderModifier,
+                                float n1f when o2 is float n2f => (n1f > n2f ? 1 : n1f < n2f ? -1 : 0) * orderModifier,
+                                double n1d when o2 is double n2d =>
+                                    (n1d > n2d ? 1 : n1d < n2d ? -1 : 0) * orderModifier,
+                                decimal d1 when o2 is decimal d2 => (d1 > d2 ? 1 : d1 < d2 ? -1 : 0) * orderModifier,
+                                long n1l when o2 is long n2l => (n1l > n2l ? 1 : n1l < n2l ? -1 : 0) * orderModifier,
+                                TimeSpan t1 when o2 is TimeSpan t2 => (t1 > t2 ? 1 : t1 < t2 ? -1 : 0) * orderModifier,
+                                TextAndImage ti1 when o2 is TextAndImage ti2 => ti1.CompareTo(ti2) * orderModifier,
+                                Token tok1 when o2 is Token tok2 => tok1.CompareTo(tok2) * orderModifier,
+                                _ => compareResult
+                            };
                         }
                     }
                 }

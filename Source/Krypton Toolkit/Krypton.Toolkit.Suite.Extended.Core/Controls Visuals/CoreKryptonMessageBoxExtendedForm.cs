@@ -460,36 +460,29 @@ internal partial class CoreKryptonMessageBoxExtendedForm : KryptonForm
                 SystemSounds.Hand.Play();
                 break;
             case ExtendedKryptonMessageBoxIcon.Shield:
-                if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                _messageIcon.Image = Environment.OSVersion.Version.Major switch
                 {
-                    _messageIcon.Image = MessageBoxImageResources.UAC_Shield_Windows_11;
-                }
-                // Windows 10
-                else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19045 /* RTM - 22H2 */)
-                {
-                    _messageIcon.Image = MessageBoxImageResources.UAC_Shield_Windows_10;
-                }
-                else
-                {
-                    _messageIcon.Image = MessageBoxImageResources.UAC_Shield_Windows_7;
-                }
+                    >= 10 when Environment.OSVersion.Version.Build >= 22000 => MessageBoxImageResources
+                        .UAC_Shield_Windows_11,
+                    // Windows 10
+                    /* RTM - 22H2 */
+                    10 when Environment.OSVersion.Version.Build <= 19045 => MessageBoxImageResources
+                        .UAC_Shield_Windows_10,
+                    _ => MessageBoxImageResources.UAC_Shield_Windows_7
+                };
                 break;
             case ExtendedKryptonMessageBoxIcon.WindowsLogo:
-                // Because Windows 11 displays a generic application icon,
-                // we need to rely on a image instead
-                if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                _messageIcon.Image = Environment.OSVersion.Version.Major switch
                 {
-                    _messageIcon.Image = MessageBoxImageResources.Windows11;
-                }
-                // Windows 10
-                else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19045 /* RTM - 22H2 */)
-                {
-                    _messageIcon.Image = MessageBoxImageResources.Windows_8_and_10_Logo;
-                }
-                else
-                {
-                    _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
-                }
+                    // Because Windows 11 displays a generic application icon,
+                    // we need to rely on a image instead
+                    >= 10 when Environment.OSVersion.Version.Build >= 22000 => MessageBoxImageResources.Windows11,
+                    // Windows 10
+                    /* RTM - 22H2 */
+                    10 when Environment.OSVersion.Version.Build <= 19045 => MessageBoxImageResources
+                        .Windows_8_and_10_Logo,
+                    _ => SystemIcons.WinLogo.ToBitmap()
+                };
                 break;
         }
 

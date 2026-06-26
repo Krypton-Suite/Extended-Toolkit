@@ -1897,14 +1897,13 @@ public class ToolBoxTab : ToolBoxItem
             }
             else
             {
-                if (ToolBoxScrollDirection.Up == scrollDir)
+                bCanScroll = scrollDir switch
                 {
-                    bCanScroll = _toolItems[0].Top + _itemArea.Top + this.ItemSpacingEx < _itemArea.Top;
-                }
-                else if (ToolBoxScrollDirection.Down == scrollDir)
-                {
-                    bCanScroll = _toolItems[_toolItems.Count - 1].Bottom + _itemArea.Top + this.ItemSpacingEx > _itemArea.Bottom;
-                }
+                    ToolBoxScrollDirection.Up => _toolItems[0].Top + _itemArea.Top + this.ItemSpacingEx < _itemArea.Top,
+                    ToolBoxScrollDirection.Down => _toolItems[_toolItems.Count - 1].Bottom + _itemArea.Top +
+                        this.ItemSpacingEx > _itemArea.Bottom,
+                    _ => bCanScroll
+                };
             }
         }
         else
@@ -2001,30 +2000,18 @@ public class ToolBoxTab : ToolBoxItem
             }
             while (bLoop)
             {
-                // Scroll in one direction only to prevent infinite
-                // looping. :)
-                if (ToolBoxScrollDirection.Up == dir)
+                bLoop = dir switch
                 {
-                    if (_toolItems[index].Top + _itemArea.Top < _itemArea.Top + this.ItemSpacingEx)
-                    {
-                        bLoop = ScrollItems(dir);
-                    }
-                    else
-                    {
-                        bLoop = false;
-                    }
-                }
-                else if (ToolBoxScrollDirection.Down == dir)
-                {
-                    if (_toolItems[index].Bottom + _itemArea.Top >= _itemArea.Bottom - 1)
-                    {
-                        bLoop = ScrollItems(dir);
-                    }
-                    else
-                    {
-                        bLoop = false;
-                    }
-                }
+                    // Scroll in one direction only to prevent infinite
+                    // looping. :)
+                    ToolBoxScrollDirection.Up when _toolItems[index].Top + _itemArea.Top <
+                                                   _itemArea.Top + this.ItemSpacingEx => ScrollItems(dir),
+                    ToolBoxScrollDirection.Up => false,
+                    ToolBoxScrollDirection.Down when _toolItems[index].Bottom + _itemArea.Top >= _itemArea.Bottom - 1 =>
+                        ScrollItems(dir),
+                    ToolBoxScrollDirection.Down => false,
+                    _ => bLoop
+                };
                 bScrolled |= bLoop;
             }
 

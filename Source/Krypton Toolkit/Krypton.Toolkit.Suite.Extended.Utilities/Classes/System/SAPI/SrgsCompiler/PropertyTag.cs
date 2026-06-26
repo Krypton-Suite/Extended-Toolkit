@@ -59,18 +59,14 @@ internal sealed class PropertyTag : ParseElement, IPropertyTag, IElement
             {
                 _propInfo._comType = VarEnum.VT_EMPTY;
             }
-            else if (value is int)
-            {
-                _propInfo._comType = VarEnum.VT_I4;
-            }
-            else if (value is double)
-            {
-                _propInfo._comType = VarEnum.VT_R8;
-            }
-            else if (value is bool)
-            {
-                _propInfo._comType = VarEnum.VT_BOOL;
-            }
+            else
+                _propInfo._comType = value switch
+                {
+                    int => VarEnum.VT_I4,
+                    double => VarEnum.VT_R8,
+                    bool => VarEnum.VT_BOOL,
+                    _ => _propInfo._comType
+                };
         }
     }
 

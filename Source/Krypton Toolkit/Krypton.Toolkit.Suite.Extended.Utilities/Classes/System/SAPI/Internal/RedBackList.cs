@@ -388,15 +388,12 @@ internal abstract class RedBackList : IEnumerable
             return null;
         }
         int num = CompareTo(key, node.Key);
-        if (num == 0)
+        return num switch
         {
-            return node;
-        }
-        if (num < 0)
-        {
-            return FindItem(node.Left, key);
-        }
-        return FindItem(node.Right, key);
+            0 => node,
+            < 0 => FindItem(node.Left, key),
+            _ => FindItem(node.Right, key)
+        };
     }
 
     private TreeNode FindRoot(TreeNode node)

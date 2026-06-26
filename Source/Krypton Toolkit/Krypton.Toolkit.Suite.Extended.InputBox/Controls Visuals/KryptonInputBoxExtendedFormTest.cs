@@ -514,36 +514,17 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     /// <returns>The input response string.</returns>
     private string GetInputResponse()
     {
-        string output = string.Empty;
-
-        if (_inputType == KryptonInputBoxResponseType.ComboBox)
+        string output = _inputType switch
         {
-            output = kcmbResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.DateTimePicker)
-        {
-            output = kdtpResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.MaskedTextBox)
-        {
-            output = kmtxResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.None)
-        {
-            output = string.Empty;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.PasswordBox)
-        {
-            output = ktxtResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.RichTextBox)
-        {
-            output = krtbResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.TextBox)
-        {
-            output = ktxtResponse.Text;
-        }
+            KryptonInputBoxResponseType.ComboBox => kcmbResponse.Text,
+            KryptonInputBoxResponseType.DateTimePicker => kdtpResponse.Text,
+            KryptonInputBoxResponseType.MaskedTextBox => kmtxResponse.Text,
+            KryptonInputBoxResponseType.None => string.Empty,
+            KryptonInputBoxResponseType.PasswordBox => ktxtResponse.Text,
+            KryptonInputBoxResponseType.RichTextBox => krtbResponse.Text,
+            KryptonInputBoxResponseType.TextBox => ktxtResponse.Text,
+            _ => string.Empty
+        };
 
         return output;
     }

@@ -224,14 +224,12 @@ public class CalendarSystemRenderer : CalendarRenderer
 
         using (SolidBrush b = new SolidBrush(ColourTable.TimeUnitBackground))
         {
-            if (e.Unit is { Selected: true })
+            b.Color = e.Unit switch
             {
-                b.Color = ColourTable.TimeUnitSelectedBackground;
-            }
-            else if (e.Unit is { Highlighted: true })
-            {
-                b.Color = ColourTable.TimeUnitHighlightedBackground;
-            }
+                { Selected: true } => ColourTable.TimeUnitSelectedBackground,
+                { Highlighted: true } => ColourTable.TimeUnitHighlightedBackground,
+                _ => b.Color
+            };
 
             if (e is { Unit: not null, Graphics: not null })
             {

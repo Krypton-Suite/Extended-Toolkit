@@ -849,32 +849,16 @@ public partial class ColourMixer : KryptonForm
 
     private int GetNumberFromNotation(char c)
     {
-        if (c == 'A')
+        return c switch
         {
-            return 10;
-        }
-        else if (c == 'B')
-        {
-            return 11;
-        }
-        else if (c == 'C')
-        {
-            return 12;
-        }
-        else if (c == 'D')
-        {
-            return 13;
-        }
-        else if (c == 'E')
-        {
-            return 14;
-        }
-        else if (c == 'F')
-        {
-            return 15;
-        }
-
-        return Convert.ToInt32(c.ToString());
+            'A' => 10,
+            'B' => 11,
+            'C' => 12,
+            'D' => 13,
+            'E' => 14,
+            'F' => 15,
+            _ => Convert.ToInt32(c.ToString())
+        };
     }
 
     private void kbtnGenerate_Click(object? sender, EventArgs e)

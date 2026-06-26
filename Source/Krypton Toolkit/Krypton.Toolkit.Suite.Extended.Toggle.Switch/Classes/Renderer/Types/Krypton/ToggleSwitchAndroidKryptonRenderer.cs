@@ -199,14 +199,15 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
                     Size canvasSize = adjustedButtonRect.Size;
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)adjustedButtonRect.X +
+                                                                    ((float)adjustedButtonRect.Width -
+                                                                     (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)adjustedButtonRect.X +
+                            (float)adjustedButtonRect.Width - (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
@@ -221,14 +222,15 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
                 }
                 else
                 {
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)adjustedButtonRect.X +
+                                                                    ((float)adjustedButtonRect.Width -
+                                                                     (float)imageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)adjustedButtonRect.X +
+                            (float)adjustedButtonRect.Width - (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
@@ -254,16 +256,14 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
 
                 SizeF textSize = g.MeasureString(buttonText, buttonFont);
 
-                float textXPos = adjustedButtonRect.X;
-
-                if (alignment == ToggleSwitchButtonAlignment.Center)
+                float textXPos = alignment switch
                 {
-                    textXPos = (float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)textSize.Width) / 2;
-                }
-                else if (alignment == ToggleSwitchButtonAlignment.Right)
-                {
-                    textXPos = (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)textSize.Width;
-                }
+                    ToggleSwitchButtonAlignment.Center => (float)adjustedButtonRect.X +
+                                                          ((float)adjustedButtonRect.Width - (float)textSize.Width) / 2,
+                    ToggleSwitchButtonAlignment.Right => (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width -
+                                                         (float)textSize.Width,
+                    _ => adjustedButtonRect.X
+                };
 
                 RectangleF textRectangle = new RectangleF(textXPos, (float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 

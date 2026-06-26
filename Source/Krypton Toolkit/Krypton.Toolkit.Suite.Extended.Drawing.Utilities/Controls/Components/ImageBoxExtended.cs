@@ -4772,14 +4772,12 @@ public class ImageBoxExtended : VirtualScrollableControl
 
         previousZoom = this.Zoom;
 
-        if (value < MinZoom)
+        value = value switch
         {
-            value = MinZoom;
-        }
-        else if (value > MaxZoom)
-        {
-            value = MaxZoom;
-        }
+            < MinZoom => MinZoom,
+            > MaxZoom => MaxZoom,
+            _ => value
+        };
 
         if (_zoom != value)
         {

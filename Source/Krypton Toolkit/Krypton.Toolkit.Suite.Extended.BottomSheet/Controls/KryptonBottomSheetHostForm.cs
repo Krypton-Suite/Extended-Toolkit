@@ -552,17 +552,12 @@ internal sealed class KryptonBottomSheetHostForm : KryptonForm
 
     private static Control? FindFocusedControl(IWin32Window owner)
     {
-        if (owner is ContainerControl container && container.ActiveControl != null)
+        return owner switch
         {
-            return container.ActiveControl;
-        }
-
-        if (owner is Control control)
-        {
-            return control;
-        }
-
-        return Form.ActiveForm;
+            ContainerControl container when container.ActiveControl != null => container.ActiveControl,
+            Control control => control,
+            _ => Form.ActiveForm
+        };
     }
 
     private static int Clamp(int value, int min, int max) =>

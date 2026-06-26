@@ -588,43 +588,22 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// </summary>
     private void RefreshImage()
     {
-        if (ActiveFilterType == MenuStrip.FilterType.Loaded)
+        _filterImage = ActiveFilterType switch
         {
-            _filterImage = Properties.Resources.ColumnHeader_SavedFilters;
-        }
-        else
-        {
-            if (ActiveFilterType == MenuStrip.FilterType.None)
+            MenuStrip.FilterType.Loaded => Properties.Resources.ColumnHeader_SavedFilters,
+            MenuStrip.FilterType.None => ActiveSortType switch
             {
-                if (ActiveSortType == MenuStrip.SortType.None)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_UnFiltered;
-                }
-                else if (ActiveSortType == MenuStrip.SortType.Asc)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_OrderedASC;
-                }
-                else
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_OrderedDESC;
-                }
-            }
-            else
+                MenuStrip.SortType.None => Properties.Resources.ColumnHeader_UnFiltered,
+                MenuStrip.SortType.Asc => Properties.Resources.ColumnHeader_OrderedASC,
+                _ => Properties.Resources.ColumnHeader_OrderedDESC
+            },
+            _ => ActiveSortType switch
             {
-                if (ActiveSortType == MenuStrip.SortType.None)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_Filtered;
-                }
-                else if (ActiveSortType == MenuStrip.SortType.Asc)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_FilteredAndOrderedASC;
-                }
-                else
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_FilteredAndOrderedDESC;
-                }
+                MenuStrip.SortType.None => Properties.Resources.ColumnHeader_Filtered,
+                MenuStrip.SortType.Asc => Properties.Resources.ColumnHeader_FilteredAndOrderedASC,
+                _ => Properties.Resources.ColumnHeader_FilteredAndOrderedDESC
             }
-        }
+        };
     }
 
     /// <summary>

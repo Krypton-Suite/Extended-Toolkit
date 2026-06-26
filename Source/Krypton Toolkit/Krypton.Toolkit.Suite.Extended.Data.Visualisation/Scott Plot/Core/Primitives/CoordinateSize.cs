@@ -19,17 +19,12 @@ public struct CoordinateSize : IEquatable<CoordinateSize>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is CoordinateSize other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            CoordinateSize other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(CoordinateSize a, CoordinateSize b)

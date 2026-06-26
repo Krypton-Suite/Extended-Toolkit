@@ -213,14 +213,15 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
                     Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OnSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width -
+                                                               (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                            (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
@@ -235,14 +236,15 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
                 }
                 else
                 {
-                    if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OnSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width - (float)imageSize.Width) /
+                                                              2),
+                        ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                            (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
@@ -260,16 +262,14 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
             {
                 SizeF textSize = g.MeasureString(ToggleSwitch.OnText, ToggleSwitch.OnFont);
 
-                float textXPos = fullRectangle.X;
-
-                if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                float textXPos = ToggleSwitch.OnSideAlignment switch
                 {
-                    textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                }
-                else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                {
-                    textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                }
+                    ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                    ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                    ToggleSwitchAlignment.Near => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                  (float)textSize.Width,
+                    _ => fullRectangle.X
+                };
 
                 RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
@@ -346,14 +346,15 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
                     Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OffSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width -
+                                                               (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                           (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
@@ -368,14 +369,15 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
                 }
                 else
                 {
-                    if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OffSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width - (float)imageSize.Width) /
+                                                              2),
+                        ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                           (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
@@ -393,16 +395,14 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
             {
                 SizeF textSize = g.MeasureString(ToggleSwitch.OffText, ToggleSwitch.OffFont);
 
-                float textXPos = fullRectangle.X;
-
-                if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                float textXPos = ToggleSwitch.OffSideAlignment switch
                 {
-                    textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                }
-                else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                {
-                    textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                }
+                    ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                    ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                    ToggleSwitchAlignment.Far => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                 (float)textSize.Width,
+                    _ => fullRectangle.X
+                };
 
                 RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
@@ -514,14 +514,15 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
                     Size canvasSize = buttonRectangle.Size;
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)buttonRectangle.X + ((float)buttonRectangle.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)buttonRectangle.X + (float)buttonRectangle.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)buttonRectangle.X +
+                                                                    ((float)buttonRectangle.Width -
+                                                                     (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)buttonRectangle.X +
+                            (float)buttonRectangle.Width - (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
@@ -536,14 +537,15 @@ public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IG
                 }
                 else
                 {
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)buttonRectangle.X + ((float)buttonRectangle.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)buttonRectangle.X + (float)buttonRectangle.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)buttonRectangle.X +
+                                                                    ((float)buttonRectangle.Width -
+                                                                     (float)imageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)buttonRectangle.X +
+                            (float)buttonRectangle.Width - (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
