@@ -155,14 +155,12 @@ public class NaviOffice3Renderer : NaviRenderer
     {
         using (SolidBrush b = new SolidBrush(ColourTable.BandCollapsedBgColor1))
         {
-            if (state == InputState.Hovered)
+            b.Color = state switch
             {
-                b.Color = ColourTable.BandCollapsedHoveredColor1;
-            }
-            else if (state == InputState.Clicked)
-            {
-                b.Color = ColourTable.BandCollapsedClickedColor1;
-            }
+                InputState.Hovered => ColourTable.BandCollapsedHoveredColor1,
+                InputState.Clicked => ColourTable.BandCollapsedClickedColor1,
+                _ => b.Color
+            };
 
             g.FillRectangle(b, bounds);
         }
@@ -268,24 +266,13 @@ public class NaviOffice3Renderer : NaviRenderer
         bool collapsed)
     {
         Color[] endColors = new Color[1];
-        Color[] smallColors = new Color[1];
 
-        if (inputState == InputState.Clicked)
+        Color[] smallColors = inputState switch
         {
-            smallColors =
-            [
-                ColourTable.CollapseButtonClickedColor1,
-                ColourTable.CollapseButtonClickedColor2
-            ];
-        }
-        else if (inputState == InputState.Hovered)
-        {
-            smallColors =
-            [
-                ColourTable.CollapseButtonHoveredColor1,
-                ColourTable.CollapseButtonHoveredColor2
-            ];
-        }
+            InputState.Clicked => [ColourTable.CollapseButtonClickedColor1, ColourTable.CollapseButtonClickedColor2],
+            InputState.Hovered => [ColourTable.CollapseButtonHoveredColor1, ColourTable.CollapseButtonHoveredColor2],
+            _ => new Color[1]
+        };
 
         endColors =
         [

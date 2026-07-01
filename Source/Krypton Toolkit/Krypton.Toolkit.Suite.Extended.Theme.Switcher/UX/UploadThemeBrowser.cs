@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -51,7 +51,7 @@ public class UploadThemeBrowser : KryptonForm
     }
     #endregion
 
-    private void UploadThemeBrowser_Load(object sender, EventArgs e)
+    private void UploadThemeBrowser_Load(object? sender, EventArgs e)
     {
         DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
 

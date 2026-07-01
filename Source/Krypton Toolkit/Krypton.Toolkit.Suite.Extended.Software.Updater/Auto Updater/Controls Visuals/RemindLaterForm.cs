@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -50,14 +50,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             kcmbRemindLater.Items.Add(AutoUpdaterLanguageManager.TimingStrings.TenDays);
         }
 
-        private void RemindLaterForm_Load(object sender, EventArgs e)
+        private void RemindLaterForm_Load(object? sender, EventArgs e)
         {
             kcmbRemindLater.SelectedIndex = 0;
 
             krbYes.Checked = true;
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
             if (krbYes.Checked)
             {
@@ -101,6 +101,6 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private void krbYes_CheckedChanged(object sender, EventArgs e) => kcmbRemindLater.Enabled = krbYes.Checked;
+        private void krbYes_CheckedChanged(object? sender, EventArgs e) => kcmbRemindLater.Enabled = krbYes.Checked;
     }
 }

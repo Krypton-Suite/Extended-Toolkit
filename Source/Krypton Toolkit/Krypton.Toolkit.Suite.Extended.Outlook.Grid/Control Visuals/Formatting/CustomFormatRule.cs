@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -68,6 +68,7 @@ public partial class CustomFormatRule : KryptonForm
         kbtnOk.Text = KryptonManager.Strings.GeneralStrings.OK;
 
         kcmbFillMode.SelectedIndex = 0;
+        _gradient = false;
 
         kcmbFormatStyle.SelectedIndex = -1;
 
@@ -110,7 +111,7 @@ public partial class CustomFormatRule : KryptonForm
         pbxPreview.Invalidate();
     }
 
-    private void CustomFormatRule_Load(object sender, EventArgs e)
+    private void CustomFormatRule_Load(object? sender, EventArgs e)
     {
         kcolbtnMinimumColour.SelectedColor = _minimumColour;
 
@@ -135,7 +136,7 @@ public partial class CustomFormatRule : KryptonForm
         kcmbFormatStyle.SelectedIndex = selected;
     }
 
-    private void pbxPreview_Paint(object sender, PaintEventArgs e)
+    private void pbxPreview_Paint(object? sender, PaintEventArgs e)
     {
         e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
         switch (_conditionalFormatType)
@@ -183,38 +184,41 @@ public partial class CustomFormatRule : KryptonForm
         }
     }
 
-    private void kbtnOk_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
+    private void kbtnOk_Click(object? sender, EventArgs e) => DialogResult = DialogResult.OK;
 
-    private void kbtnCancel_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+    private void kbtnCancel_Click(object? sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
-    private void kcolbtnMinimumColour_SelectedColorChanged(object sender, ColorEventArgs e)
+    private void kcolbtnMinimumColour_SelectedColorChanged(object? sender, ColorEventArgs e)
     {
         _minimumColour = e.Color;
 
         pbxPreview.Invalidate();
     }
 
-    private void kcolbtnIntermediateColour_SelectedColorChanged(object sender, ColorEventArgs e)
+    private void kcolbtnIntermediateColour_SelectedColorChanged(object? sender, ColorEventArgs e)
     {
         _intermediateColour = e.Color;
 
         pbxPreview.Invalidate();
     }
 
-    private void kcolbtnMaximumColour_SelectedColorChanged(object sender, ColorEventArgs e)
+    private void kcolbtnMaximumColour_SelectedColorChanged(object? sender, ColorEventArgs e)
     {
         _maximumColour = e.Color;
 
         pbxPreview.Invalidate();
     }
 
-    private void kcmbFormatStyle_SelectedIndexChanged(object sender, EventArgs e)
+    private void kcmbFormatStyle_SelectedIndexChanged(object? sender, EventArgs e)
     {
-        var tag = ((KryptonListItem)kcmbFormatStyle.Items[kcmbFormatStyle.SelectedIndex]).Tag;
-
-        if (tag != null)
+        if (kcmbFormatStyle.SelectedIndex < 0 || kcmbFormatStyle.Items[kcmbFormatStyle.SelectedIndex] is not KryptonListItem listItem)
         {
-            _conditionalFormatType = (EnumConditionalFormatType)Enum.Parse(typeof(EnumConditionalFormatType), tag.ToString());
+            return;
+        }
+
+        if (listItem.Tag != null)
+        {
+            _conditionalFormatType = (EnumConditionalFormatType)Enum.Parse(typeof(EnumConditionalFormatType), listItem.Tag.ToString()!);
         }
 
         UpdateFormatType(_conditionalFormatType);

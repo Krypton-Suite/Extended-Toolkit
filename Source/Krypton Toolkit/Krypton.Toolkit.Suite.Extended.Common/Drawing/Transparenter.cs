@@ -60,7 +60,7 @@ public class Transparenter
 
             if (behind == null)
             {
-                behind = new Bitmap(control.Parent.ClientSize.Width, control.Parent.ClientSize.Height);
+                behind = new Bitmap(parent.ClientSize.Width, parent.ClientSize.Height);
             }
 
             c.DrawToBitmap(behind, c.Bounds);

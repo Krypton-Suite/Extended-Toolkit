@@ -43,12 +43,14 @@ public class KryptonTabControl : TabControl
     /// </summary>
     /// 
     #region ... Declarations ...
-    private Container _components;
+    private Container? _components;
+#pragma warning disable CS0649 // Legacy scroller fields; populated when scroll buttons are hooked
     private SubClass? _scUpDown;
     private ImageList? _leftRightImages;
+#pragma warning restore CS0649
     private const int N_MARGIN = 5;
 
-    private Rectangle _mCloseRect;
+    private Rectangle _mCloseRect = new Rectangle();
     #endregion
 
     #region ... Properties ...
@@ -444,7 +446,7 @@ public class KryptonTabControl : TabControl
     #endregion
 
     #region ... Krypton ...
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         // Unhook events from old palette
         if (_palette != null)
@@ -467,7 +469,7 @@ public class KryptonTabControl : TabControl
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         // Palette indicates we might need to repaint, so lets do it
         Invalidate();
@@ -543,7 +545,7 @@ public class KryptonTabControl : TabControl
         //selected, if so, do not process the base event.
         try
         {
-            if (!e.TabPage.ClientRectangle.Contains(_mCloseRect))
+            if (e.TabPage == null || !e.TabPage.ClientRectangle.Contains(_mCloseRect))
             { base.OnSelecting(e); }
         }
         catch (Exception ex)
@@ -558,16 +560,14 @@ public class KryptonTabControl : TabControl
         base.OnMouseMove(e);
         try
         {
-            Graphics g;
             for (int i = 0; i < TabCount; i++)
             {
                 if (GetTabRect(i).Contains(e.X, e.Y) && TabPages[i].Tag != null)
                 {
                     if (HotTrack)
                     {
-                        //DrawTab(g, this.TabPages[i], i, true);
                         //Redraw only if the state has changed
-                        if ((bool)TabPages[i].Tag == false)
+                        if (TabPages[i].Tag is bool isHot && !isHot)
                         {
                             Invalidate();
                         }
@@ -577,9 +577,8 @@ public class KryptonTabControl : TabControl
                 }
                 else
                 {
-                    //DrawTab(g, this.TabPages[i], i, false);
                     //Redraw only if the state has changed
-                    if ((bool)TabPages[i].Tag)
+                    if (TabPages[i].Tag is bool isHot && isHot)
                     {
                         Invalidate();
                     }
@@ -633,13 +632,13 @@ public class KryptonTabControl : TabControl
 
         base.OnMouseClick(e);
     }
-    private void this_MouseClick(object sender, MouseEventArgs e)
+    private void this_MouseClick(object? sender, MouseEventArgs e)
     {
         Point mouse;
         try
         {
             mouse = e.Location;
-            if (sender.Equals(Parent))
+            if (sender != null && sender.Equals(Parent))
             {
                 mouse.Y = e.Location.Y - Location.Y;
                 mouse.X = e.Location.X - Location.X;
@@ -657,11 +656,11 @@ public class KryptonTabControl : TabControl
 
     }
 
-    private void this_ParentChanged(object sender, EventArgs e)
+    private void this_ParentChanged(object? sender, EventArgs e)
     {
         try
         {
-            Parent.MouseClick += this_MouseClick;
+            Parent?.MouseClick += this_MouseClick;
         }
         catch (Exception ex)
         {
@@ -687,7 +686,7 @@ public class KryptonTabControl : TabControl
 
     //bool FlagControl = false;
 
-    private void FlatTabControl_KeyDown(object sender, KeyEventArgs e)
+    private void FlatTabControl_KeyDown(object? sender, KeyEventArgs e)
     {
 
         if (e.KeyCode == Keys.Menu)
@@ -870,15 +869,12 @@ public class KryptonTabControl : TabControl
             status = DrawingMethods.TabHeaderStatus.Hot;
         }
 
-        if (bSelected && !bHot)
+        status = bSelected switch
         {
-            status = DrawingMethods.TabHeaderStatus.Selected;
-        }
-        else if (bSelected && bHot)
-        {
-            status = DrawingMethods.TabHeaderStatus.HotSelected;
-            //bHotselected = true;
-        }
+            true when !bHot => DrawingMethods.TabHeaderStatus.Selected,
+            true when bHot => DrawingMethods.TabHeaderStatus.HotSelected,
+            _ => status
+        };
 
         //Selected tab has to be highter?
         if (!_allowSelectedTabHigh)
@@ -1354,7 +1350,6 @@ public class KryptonTabControl : TabControl
     }
 
     //TabControl overrides dispose to clean up the component list.
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     protected override void Dispose(bool disposing)
     {
         if (disposing)
@@ -1434,7 +1429,6 @@ public class KryptonTabControl : TabControl
     }
 
 
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     protected override void WndProc(ref Message m)
     {
         if (m.Msg == WIN32.WM_PARENTNOTIFY)
@@ -1697,13 +1691,13 @@ public class KryptonTabControl : TabControl
         }
     }
 
-    private void ToolstripItemEvent(Object sender, EventArgs e)
+    private void ToolstripItemEvent(object? sender, EventArgs e)
     {
-        ToolStripMenuItem tsi = (ToolStripMenuItem)sender;
-        //tsi.Checked = true;
-        TabPage tp = (TabPage)tsi.Tag;
-        SelectedTab = tp;
-        Invalidate();
+        if (sender is ToolStripMenuItem tsi && tsi.Tag is TabPage tp)
+        {
+            SelectedTab = tp;
+            Invalidate();
+        }
     }
 
     protected override void OnSelectedIndexChanged(EventArgs e)
@@ -1716,7 +1710,7 @@ public class KryptonTabControl : TabControl
         base.OnControlRemoved(e);
     }
 
-    private void Scroller_ScrollLeft(Object sender, EventArgs e)
+    private void Scroller_ScrollLeft(object? sender, EventArgs e)
     {
         if (TabCount == 0)
         {
@@ -1730,7 +1724,7 @@ public class KryptonTabControl : TabControl
     }
 
 
-    private void Scroller_ScrollRight(Object sender, EventArgs e)
+    private void Scroller_ScrollRight(object? sender, EventArgs e)
     {
         if (TabCount == 0)
         {
@@ -1749,7 +1743,7 @@ public class KryptonTabControl : TabControl
     }
 
 
-    private void Scroller_TabClose(Object sender, EventArgs e)
+    private void Scroller_TabClose(object? sender, EventArgs e)
     {
         if (SelectedTab != null)
         {
@@ -1757,7 +1751,7 @@ public class KryptonTabControl : TabControl
         }
     }
 
-    private void Scroller_ContextMenuButton(Object sender, EventArgs e)
+    private void Scroller_ContextMenuButton(object? sender, EventArgs e)
     {
         _scroller.ContextMenuStrip1.DropShadowEnabled = true;
 
@@ -1846,7 +1840,9 @@ public class KryptonTabControl : TabControl
 
 
         //Required by the Windows Form Designer
-        private System.ComponentModel.IContainer components;
+#pragma warning disable CS0649 // Designer field; reserved for component container
+        private System.ComponentModel.IContainer? components;
+#pragma warning restore CS0649
 
 
         //NOTE: The following procedure is required by the Windows Form Designer
@@ -1934,7 +1930,7 @@ public class KryptonTabControl : TabControl
         public event EventHandler ScrollRight;
         public event EventHandler ContextualMenu;
 
-        private void TabScroller_Resize(Object sender, EventArgs e)
+        private void TabScroller_Resize(object? sender, EventArgs e)
         {
             //LeftScroller.Width = this.Width / 3;
             //RightScroller.Width = this.Width / 3;
@@ -1942,7 +1938,7 @@ public class KryptonTabControl : TabControl
         }
 
 
-        private void LeftScroller_Click(Object sender, EventArgs e)
+        private void LeftScroller_Click(object? sender, EventArgs e)
         {
             if (ScrollLeft != null)
             {
@@ -1951,7 +1947,7 @@ public class KryptonTabControl : TabControl
         }
 
 
-        private void RightScroller_Click(Object sender, EventArgs e)
+        private void RightScroller_Click(object? sender, EventArgs e)
         {
             if (ScrollRight != null)
             {
@@ -1960,7 +1956,7 @@ public class KryptonTabControl : TabControl
         }
 
 
-        private void CloseButton_Click(Object sender, EventArgs e)
+        private void CloseButton_Click(object? sender, EventArgs e)
         {
             if (TabClose != null)
             {
@@ -1968,7 +1964,7 @@ public class KryptonTabControl : TabControl
             }
         }
 
-        private void ContextMenuButton_Click(Object sender, EventArgs e)
+        private void ContextMenuButton_Click(object? sender, EventArgs e)
         {
             if (TabClose != null)
             {
@@ -1999,17 +1995,15 @@ public class KryptonTabControl : TabControl
             public int x, y, cx, cy, flags;
         }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg is WM_DESTROY or WM_NCDESTROY)
             {
                 ReleaseHandle();
             }
-            else if (m.Msg == WM_WINDOWPOSCHANGING)
+            else if (m.Msg == WM_WINDOWPOSCHANGING && m.GetLParam(typeof(Windowpos)) is Windowpos wp)
             {
                 //Move the updown control off the edge so it's not visible
-                Windowpos wp = (Windowpos)m.GetLParam(typeof(Windowpos));
                 wp.x += wp.cx;
                 Marshal.StructureToPtr(wp, m.LParam, true);
                 _bounds = new Rectangle(wp.x, wp.y, wp.cx, wp.cy);

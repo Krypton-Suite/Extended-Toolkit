@@ -33,7 +33,7 @@ public static class UACUtilityMethods
 {
     #region Methods
     /// <summary>
-    /// Elevates the application to use administrative privileges. To be used with <see cref="KryptonUACButtonVersion1"/> or <see cref="ToolStripMenuItemUACSheld"/> button click.
+    /// Elevates the application to use administrative privileges. To be used with <see cref="KryptonUACElevatedButton"/> button click.
     /// </summary>
     /// <param name="processName">The process name that you wish to elevate.</param>
     public static void ElevateProcessWithAdministrativeRights(string processName)

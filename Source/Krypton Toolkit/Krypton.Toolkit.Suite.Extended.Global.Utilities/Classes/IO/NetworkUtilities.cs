@@ -110,13 +110,15 @@ public class NetworkUtilities
     {
         try
         {
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(fileLocation.AbsoluteUri);
+            using HttpClient client = new();
+            using HttpRequestMessage request = new(HttpMethod.Head, fileLocation);
+#if NETFRAMEWORK
+            using HttpResponseMessage response = client.SendAsync(request).GetAwaiter().GetResult();
+#else
+            using HttpResponseMessage response = client.Send(request);
+#endif
 
-            HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-            webResponse.Close();
-
-            return webResponse.StatusCode == HttpStatusCode.OK;
+            return response.IsSuccessStatusCode;
         }
         catch (Exception ex)
         {

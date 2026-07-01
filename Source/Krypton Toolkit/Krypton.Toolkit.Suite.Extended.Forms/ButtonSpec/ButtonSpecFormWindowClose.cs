@@ -50,7 +50,7 @@ public class ButtonSpecFormWindowClose : ButtonSpecFormFixed
             if (_enabled != value)
             {
                 _enabled = value;
-                IntPtr hSystemMenu = PlatformInvoke.GetSystemMenu(KryptonForm.Handle, false);
+                IntPtr hSystemMenu = PlatformInvoke.GetSystemMenu(KryptonForm!.Handle, false);
                 if (hSystemMenu != IntPtr.Zero)
                 {
                     PlatformInvoke.EnableMenuItem(hSystemMenu, PlatformInvoke.SC_.CLOSE, _enabled ? PlatformInvoke.MF_.ENABLED : PlatformInvoke.MF_.DISABLED);
@@ -78,10 +78,10 @@ public class ButtonSpecFormWindowClose : ButtonSpecFormFixed
     /// </summary>
     /// <param name="palette">Palette to use for inheriting values.</param>
     /// <returns>Button visibility.</returns>
-    public override bool GetVisible(PaletteBase palette)
+    public override bool GetVisible(PaletteBase? palette)
     {
         // Have all buttons been turned off?
-        return KryptonForm is { ControlBox: true, CloseBox: true };
+        return KryptonForm! is { ControlBox: true, CloseBox: true };
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class ButtonSpecFormWindowClose : ButtonSpecFormFixed
     /// </summary>
     /// <param name="palette">Palette to use for inheriting values.</param>
     /// <returns>Button enabled state.</returns>
-    public override ButtonEnabled GetEnabled(PaletteBase palette) => KryptonForm.CloseBox && Enabled ? ButtonEnabled.True : ButtonEnabled.False;
+    public override ButtonEnabled GetEnabled(PaletteBase? palette) => KryptonForm!.CloseBox && Enabled ? ButtonEnabled.True : ButtonEnabled.False;
 
     /// <summary>
     /// Gets the button checked state.
@@ -113,19 +113,19 @@ public class ButtonSpecFormWindowClose : ButtonSpecFormFixed
         if (GetViewEnabled())
         {
             // If we do not provide an inert form
-            if (!KryptonForm.InertForm)
+            if (!KryptonForm!.InertForm)
             {
                 // Only if the mouse is still within the button bounds do we perform action
                 MouseEventArgs mea = (MouseEventArgs)e;
                 if (GetView().ClientRectangle.Contains(mea.Location))
                 {
-                    PropertyInfo pi = typeof(Form).GetProperty(@"CloseReason",
+                    PropertyInfo? pi = typeof(Form).GetProperty(@"CloseReason",
                         BindingFlags.Instance |
                         BindingFlags.SetProperty |
                         BindingFlags.NonPublic);
 
                     // Update form with the reason for the close
-                    pi.SetValue(KryptonForm, CloseReason.UserClosing, null);
+                    pi!.SetValue(KryptonForm!, CloseReason.UserClosing, null);
 
                     // Convert screen position to LPARAM format of WM_SYSCOMMAND message
                     Point screenPos = Control.MousePosition;
@@ -133,7 +133,7 @@ public class ButtonSpecFormWindowClose : ButtonSpecFormFixed
                                              PlatformInvoke.MAKEHIWORD(screenPos.Y));
 
                     // Request the form be closed down
-                    KryptonForm.SendSysCommand(PlatformInvoke.SC_.CLOSE, lParam);
+                    KryptonForm!.SendSysCommand(PlatformInvoke.SC_.CLOSE, lParam);
 
                     // Let base class fire any other attached events
                     base.OnClick(e);

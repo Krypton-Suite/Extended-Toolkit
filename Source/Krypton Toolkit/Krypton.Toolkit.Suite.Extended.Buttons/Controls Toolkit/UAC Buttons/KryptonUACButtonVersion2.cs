@@ -117,7 +117,8 @@ public class KryptonUACButtonVersion2 : KryptonButton
 
             if (shieldSize == UACShieldSize.Small)
             {
-                Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                Icon? shieldIcon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+                Values.Image = shieldIcon?.ToBitmap();
 
                 Invalidate();
             }
@@ -154,7 +155,7 @@ public class KryptonUACButtonVersion2 : KryptonButton
     #endregion
 
     #region Overrides
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         //if (_useAsUACElevatedButton)
         //{

@@ -42,7 +42,7 @@ public partial class NaviGroup : NaviControl, ISupportInitialize
     private Region headerRegion;
     private Rectangle headerRectangle;
     private Rectangle headerTextBounds;
-    private MouseEventHandler headerMouseClick;
+    private MouseEventHandler? headerMouseClick;
     private InputState viewState;
     private ContextMenuStrip m_contextMenuStrip;
     private ContextMenuStrip m_headerContextMenuStrip;
@@ -265,22 +265,29 @@ public partial class NaviGroup : NaviControl, ISupportInitialize
     {
         base.OnPaint(e);
 
-        if (Parent is NaviBandClientArea)
+        if (Parent is NaviBandClientArea clientArea)
         {
-            ((NaviBandClientArea)Parent).PaintCanvas();
-            e.Graphics.DrawImage(((NaviBandClientArea)Parent).BackgroundCanvas, 0, 0,
-                new Rectangle(Location, Size), GraphicsUnit.Pixel);
+            clientArea.PaintCanvas();
+            Bitmap? background = clientArea.BackgroundCanvas;
+            if (background != null)
+            {
+                e.Graphics.DrawImage(background, 0, 0,
+                    new Rectangle(Location, Size), GraphicsUnit.Pixel);
+            }
         }
         else
         {
-            Renderer.DrawNaviGroupBg(e.Graphics, ClientRectangle);
+            Renderer?.DrawNaviGroupBg(e.Graphics, ClientRectangle);
         }
 
-        Renderer.DrawNaviGroupHeader(e.Graphics, headerRectangle, viewState, expanded,
+        Renderer?.DrawNaviGroupHeader(e.Graphics, headerRectangle, viewState, expanded,
             RightToLeft == RightToLeft.Yes);
 
-        Renderer.DrawText(e.Graphics, Renderer.CalcGroupTextbounds(headerTextBounds), this.Font, Renderer.ColourTable.Text, caption,
-            RightToLeft == RightToLeft.Yes);
+        if (Renderer != null)
+        {
+            Renderer.DrawText(e.Graphics, Renderer.CalcGroupTextbounds(headerTextBounds), this.Font, Renderer.ColourTable.Text, caption,
+                RightToLeft == RightToLeft.Yes);
+        }
 
         if (DesignMode)
         {
@@ -290,7 +297,7 @@ public partial class NaviGroup : NaviControl, ISupportInitialize
             containerRect.Width -= 3;
             containerRect.Height -= headerHeight + 3;
 
-            Renderer.DrawHatchedPanel(e.Graphics, containerRect);
+            Renderer?.DrawHatchedPanel(e.Graphics, containerRect);
         }
     }
 
@@ -412,7 +419,7 @@ public partial class NaviGroup : NaviControl, ISupportInitialize
                 m_headerContextMenuStrip.Show(this, e.Location);
             }
         }
-        MouseEventHandler handler = headerMouseClick;
+        MouseEventHandler? handler = headerMouseClick;
         if (handler != null)
         {
             handler(this, e);

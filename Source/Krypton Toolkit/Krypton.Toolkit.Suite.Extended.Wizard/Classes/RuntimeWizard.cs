@@ -84,7 +84,7 @@ public class RuntimeWizardStrategy : WizardStrategy
         }
     }
 
-    public override void Back(ISelectionService selection)
+    public override void Back(ISelectionService? selection)
     {
         if (UserAllowsMoveToProceed(Direction.Backward, out var args))
         {
@@ -93,7 +93,7 @@ public class RuntimeWizardStrategy : WizardStrategy
         }
     }
 
-    public override void Next(ISelectionService selection)
+    public override void Next(ISelectionService? selection)
     {
         if (Finishing())
         {

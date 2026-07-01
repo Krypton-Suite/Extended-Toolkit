@@ -172,7 +172,7 @@ public class ViewDrawCommandLinkButton : ViewComposite
     /// <summary>
     /// Gets access to the currently selected palette.
     /// </summary>
-    public IPaletteTriple CurrentPalette { get; private set; }
+    public IPaletteTriple CurrentPalette { get; private set; } = null!;
 
     #endregion
 
@@ -180,7 +180,7 @@ public class ViewDrawCommandLinkButton : ViewComposite
     /// <summary>
     /// Gets and sets the source for button values.
     /// </summary>
-    public IContentValues ButtonValues
+    public IContentValues? ButtonValues
     {
         get => _drawContent.Values;
         set => _drawContent.Values = value;
@@ -449,7 +449,7 @@ public class ViewDrawCommandLinkButton : ViewComposite
         PaletteState buttonState = State;
 
         // If the actual control is not enabled, force to disabled state
-        if (!IsFixed && !context.Control.Enabled)
+        if (!IsFixed && context.Control is { Enabled: false })
         {
             buttonState = PaletteState.Disabled;
         }
@@ -519,13 +519,14 @@ public class ViewDrawCommandLinkButton : ViewComposite
                 default:
                     // Should never happen!
                     System.Diagnostics.Debug.Assert(false);
+                    CurrentPalette = _paletteNormal;
                     break;
             }
 
             // Update with the correct palettes
-            _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder);
+            _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder!);
 
-            _drawContent.SetPalette(CurrentPalette.PaletteContent);
+            _drawContent.SetPalette(CurrentPalette.PaletteContent!);
             //_drawImageContent.SetPalette(CurrentPalette.PaletteContent);
         }
     }

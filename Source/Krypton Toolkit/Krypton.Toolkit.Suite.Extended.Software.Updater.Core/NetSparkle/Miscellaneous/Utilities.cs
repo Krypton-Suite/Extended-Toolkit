@@ -58,7 +58,7 @@ public class Utilities
     /// <param name="fileToSignPath">Path to the file you want to sign</param>
     /// <param name="privateKeyFilePath">Path to the private key file</param>
     /// <returns>DSA signature as base64 string</returns>
-    public static string GetDSASignature(string fileToSignPath, string privateKeyFilePath)
+    public static string? GetDSASignature(string fileToSignPath, string privateKeyFilePath)
     {
         if (string.IsNullOrEmpty(fileToSignPath) || !File.Exists(fileToSignPath))
         {
@@ -74,13 +74,9 @@ public class Utilities
             DSACryptoServiceProvider cryptoProvider = new DSACryptoServiceProvider();
             cryptoProvider.FromXmlString(privateKey);
 
-            using (Stream inputStream = File.OpenRead(fileToSignPath))
-            {
-                byte[] hash = null;
-                hash = cryptoProvider.SignData(inputStream);
-                var dsaSignature = Convert.ToBase64String(hash);
-                return dsaSignature;
-            }
+            using Stream inputStream = File.OpenRead(fileToSignPath);
+            byte[] hash = cryptoProvider.SignData(inputStream);
+            return Convert.ToBase64String(hash);
         }
 
         return null;
@@ -134,7 +130,15 @@ public class Utilities
     /// <returns>the full running directory path including trailing slash for this application</returns>
     public static string GetFullBaseDirectory()
     {
-#if NETCORE
+#if NETFRAMEWORK
+        // https://stackoverflow.com/a/837501/3938401
+        try
+        {
+            return Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+        }
+        catch { }
+        return System.Reflection.Assembly.GetExecutingAssembly().Location;
+#else
             var fullBaseDirectory = Path.GetFullPath(AppContext.BaseDirectory);
 
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -146,14 +150,6 @@ public class Utilities
             }
 
             return fullBaseDirectory;
-#else
-        // https://stackoverflow.com/a/837501/3938401
-        try
-        {
-            return Path.GetDirectoryName(new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath);
-        }
-        catch { }
-        return System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
 #endif
     }
 

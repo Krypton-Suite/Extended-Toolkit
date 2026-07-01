@@ -77,7 +77,7 @@ public class OutlookBar : Control
     }
 
     public event ButtonClickedEventHandler? ButtonClicked;
-    public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
+    public delegate void ButtonClickedEventHandler(object? sender, EventArgs e);
 
     //Needed because this way the buttons can raise the ButtonClicked event...
     public void SetSelectionChanged(OutlookBarButton? button)
@@ -221,7 +221,8 @@ public class OutlookBar : Control
         }
     }
     [DisplayName("ButtonFont")]
-    public override Font? Font
+#pragma warning disable CS8765 // Base Font setter accepts null
+    public override Font Font
     {
         get => base.Font;
         set
@@ -230,6 +231,7 @@ public class OutlookBar : Control
             Invalidate();
         }
     }
+#pragma warning restore CS8765
     [Category("Appearance"), DisplayName("ButtonHovering1"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonColourHoveringTop
     {
@@ -319,7 +321,7 @@ public class OutlookBar : Control
 
 
 
-    private void OutlookBar_MouseClick(object sender, MouseEventArgs e)
+    private void OutlookBar_MouseClick(object? sender, MouseEventArgs e)
     {
         _RightClickedButton = null;
         OutlookBarButton? mButton = Buttons[e.X, e.Y];
@@ -350,12 +352,12 @@ public class OutlookBar : Control
             }
         }
     }
-    private void OutlookBar_MouseDown(object sender, MouseEventArgs e)
+    private void OutlookBar_MouseDown(object? sender, MouseEventArgs e)
     {
         IsResizing = GetGripRectangle().Contains(e.X, e.Y);
     }
 
-    private void OutlookBar_MouseLeave(object sender, EventArgs e)
+    private void OutlookBar_MouseLeave(object? sender, EventArgs e)
     {
         if (_RightClickedButton == null)
         {
@@ -365,7 +367,7 @@ public class OutlookBar : Control
         }
     }
 
-    private void OutlookBar_MouseMove(object sender, MouseEventArgs e)
+    private void OutlookBar_MouseMove(object? sender, MouseEventArgs e)
     {
         _HoveringButton = null;
         //string EmptyLineVar = null;
@@ -462,7 +464,7 @@ public class OutlookBar : Control
         }
     }
 
-    private void OutlookBar_MouseUp(object sender, MouseEventArgs e)
+    private void OutlookBar_MouseUp(object? sender, MouseEventArgs e)
     {
         IsResizing = false;
         _LeftClickedButton = null;
@@ -475,7 +477,7 @@ public class OutlookBar : Control
     private int _maxLargeButtonCount;
     private int _maxSmallButtonCount;
 
-    internal void OutlookBar_Paint(object sender, PaintEventArgs e)
+    internal void OutlookBar_Paint(object? sender, PaintEventArgs e)
     {
         //string EmptyLineVar = null;
         _maxLargeButtonCount = (int)Math.Round(Math.Floor((Height - GetBottomContainerRectangle().Height - GetGripRectangle().Height) / (double)GetButtonHeight()));
@@ -603,9 +605,9 @@ public class OutlookBar : Control
         //Text and icons...
         if (button.IsLarge & isLastLarge)
         {
-            graphics.DrawString(button.Text, GetButtonFont(), GetButtonTextBrush(button.Equals(SelectedButton)),
+            graphics.DrawString(button.Text, GetButtonFont() ?? Font, GetButtonTextBrush(button.Equals(SelectedButton)) ?? Brushes.Black,
                 10 + ImageDimension_Large + 8,
-                (float)button.Rectangle.Y + (GetButtonHeight() / 2 - GetButtonFont().Height / 2) + 2);
+                (float)button.Rectangle.Y + (GetButtonHeight() / 2 - (GetButtonFont() ?? Font).Height / 2) + 2);
         }
         Rectangle recIma = new Rectangle();
         switch (button.IsLarge)
@@ -762,11 +764,19 @@ public class OutlookBar : Control
     private void PaintGripRectangle(Graphics graphics)
     {
         //Paint the backcolor...
-        graphics.FillRectangle(GetGripBrush(), GetGripRectangle());
+        if (GetGripBrush() is Brush gripBrush)
+        {
+            graphics.FillRectangle(gripBrush, GetGripRectangle());
+        }
 
 
         //Draw the icon...
         Icon? oIcon = GetGripIcon();
+        if (oIcon == null)
+        {
+            return;
+        }
+
         Rectangle rectangleIcon = new Rectangle(Width / 2 - oIcon.Width / 2, GetGripRectangle().Height / 2 - oIcon.Height / 2 + 1, oIcon.Width, oIcon.Height);
 
         if (Renderer != Renderer.Krypton)
@@ -843,7 +853,12 @@ public class OutlookBar : Control
         }
 
         //Draw the icon...
-        Icon oIcon = GetDropDownIcon();
+        Icon? oIcon = GetDropDownIcon();
+        if (oIcon == null)
+        {
+            return;
+        }
+
         Rectangle rectangleIcon = new Rectangle(GetDropDownRectangle().X + (GetDropDownRectangle().Width / 2 - oIcon.Width / 2), GetDropDownRectangle().Y + (GetDropDownRectangle().Height / 2 - oIcon.Height / 2) + 1, oIcon.Width, oIcon.Height);
         if (Renderer != Renderer.Krypton)
         {
@@ -1390,12 +1405,9 @@ public class OutlookBar : Control
         int c = 0;
         foreach (OutlookBarButton oButton in Buttons)
         {
-            if (oButton.Visible)
+            if (oButton.Visible && oButton.Rectangle.IsEmpty)
             {
-                if (oButton.Rectangle == null)
-                {
-                    c += 1;
-                }
+                c += 1;
             }
         }
         if (c > 0)
@@ -1405,40 +1417,37 @@ public class OutlookBar : Control
 
         foreach (OutlookBarButton oButton in Buttons)
         {
-            if (oButton.Rectangle == null)
+            if (oButton.Rectangle.IsEmpty && oButton.Visible)
             {
-                if (oButton.Visible)
+                ToolStripMenuItem mnu = new ToolStripMenuItem();
                 {
-                    ToolStripMenuItem mnu = new ToolStripMenuItem();
+                    mnu.Text = oButton.Text;
+                    mnu.Image = oButton.Image.ToBitmap();
+                    mnu.Tag = oButton;
+                    mnu.CheckOnClick = true;
+                    if (SelectedButton != null)
                     {
-                        mnu.Text = oButton.Text;
-                        mnu.Image = oButton.Image.ToBitmap();
-                        mnu.Tag = oButton;
-                        mnu.CheckOnClick = true;
-                        if (SelectedButton != null)
+                        if (SelectedButton.Equals(oButton))
                         {
-                            if (SelectedButton.Equals(oButton))
-                            {
-                                mnu.Checked = true;
-                            }
+                            mnu.Checked = true;
                         }
                     }
-                    mnu.Click += MnuClicked;
-                    oContextMenuStrip.Items.Add(mnu);
                 }
+                mnu.Click += MnuClicked;
+                oContextMenuStrip.Items.Add(mnu);
             }
         }
         oContextMenuStrip.Show(this, new Point(Width, Height - GetButtonHeight() / 2));
     }
-    private void ShowMoreButtons(object sender, EventArgs e)
+    private void ShowMoreButtons(object? sender, EventArgs e)
     {
         Height += GetButtonHeight();
     }
-    private void ShowFewerButtons(object sender, EventArgs e)
+    private void ShowFewerButtons(object? sender, EventArgs e)
     {
         Height -= GetButtonHeight();
     }
-    private void NavigationPaneOptions(object sender, EventArgs e)
+    private void NavigationPaneOptions(object? sender, EventArgs e)
     {
         _RightClickedButton = null;
         _HoveringButton = null;
@@ -1447,15 +1456,23 @@ public class OutlookBar : Control
         frm.ShowDialog();
         Invalidate();
     }
-    private void ToggleVisible(object sender, EventArgs e)
+    private void ToggleVisible(object? sender, EventArgs e)
     {
-        OutlookBarButton oButton = (OutlookBarButton)((ToolStripMenuItem)sender).Tag;
+        if (sender is not ToolStripMenuItem menuItem || menuItem.Tag is not OutlookBarButton oButton)
+        {
+            return;
+        }
+
         oButton.Visible = !oButton.Visible;
         Invalidate();
     }
-    private void MnuClicked(object sender, EventArgs e)
+    private void MnuClicked(object? sender, EventArgs e)
     {
-        OutlookBarButton oButton = (OutlookBarButton)((ToolStripMenuItem)sender).Tag;
+        if (sender is not ToolStripMenuItem menuItem || menuItem.Tag is not OutlookBarButton oButton)
+        {
+            return;
+        }
+
         _SelectedButton = oButton;
         if (ButtonClicked != null)
         {
@@ -1507,7 +1524,7 @@ public class OutlookBar : Control
     }
 
     //Krypton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -1530,7 +1547,7 @@ public class OutlookBar : Control
     }
 
     //Kripton Palette Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }

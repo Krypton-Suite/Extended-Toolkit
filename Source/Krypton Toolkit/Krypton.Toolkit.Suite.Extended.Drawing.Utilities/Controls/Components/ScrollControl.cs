@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -184,7 +184,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected override void OnMouseWheel(MouseEventArgs e)
     {
-        MouseEventHandler handler;
+        MouseEventHandler? handler;
 
         if (this.WheelScrollsControl)
         {
@@ -601,7 +601,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnBorderStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         base.UpdateStyles();
 
@@ -621,7 +621,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnPageSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateScrollbars();
 
@@ -641,7 +641,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnScroll(ScrollEventArgs e)
     {
-        ScrollEventHandler handler;
+        ScrollEventHandler? handler;
 
         this.UpdateHorizontalScroll();
         this.UpdateVerticalScroll();
@@ -662,7 +662,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnScrollSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateScrollbars();
 
@@ -682,7 +682,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnStepSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.StepSizeChanged;
 

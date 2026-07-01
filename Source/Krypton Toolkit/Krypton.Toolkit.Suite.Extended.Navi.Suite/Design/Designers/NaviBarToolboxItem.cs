@@ -31,7 +31,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 /// Represents a NaviBar toolbox item
 /// </summary>
 [
-    PermissionSet(SecurityAction.Demand, Name = "FullTrust"),
     Serializable,
 ]
 public class NaviBarToolboxItem : ToolboxItem

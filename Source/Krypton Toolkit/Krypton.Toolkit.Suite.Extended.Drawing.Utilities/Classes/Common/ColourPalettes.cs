@@ -188,7 +188,7 @@ public static class ColourPalettes
             {
                 Color color;
 
-                color = (Color)property.GetValue(typeof(Color), null);
+                color = (Color)property.GetValue(typeof(Color), null)!;
                 if (!color.IsEmpty)
                 {
                     results.Add(color);

@@ -46,7 +46,7 @@ public class PopupCancelEventArgs : EventArgs
     /// <summary>
     /// Popup form.
     /// </summary>
-    private KryptonForm popup = null;
+    private KryptonForm popup;
 
     /// <summary>
     /// Constructs a new instance of this class.
@@ -86,4 +86,4 @@ public class PopupCancelEventArgs : EventArgs
 /// <summary>
 /// Represents the method which responds to a <see cref="PopupCancel"/> event.
 /// </summary>
-public delegate void PopupCancelEventHandler(object sender, PopupCancelEventArgs e);
+public delegate void PopupCancelEventHandler(object? sender, PopupCancelEventArgs e);

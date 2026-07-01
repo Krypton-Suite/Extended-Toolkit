@@ -36,14 +36,13 @@ public class ThemeSelectorOld : KryptonForm
     private KryptonButton kbtnCancel;
     private KryptonBorderEdge kryptonBorderEdge1;
     private KryptonPanel kryptonPanel2;
-    private KryptonComboBox kcmbPaletteMode;
+    private KryptonComboBox kcmbPaletteMode = null!;
     private KryptonButton kbtnResetTheme;
     private KryptonButton kbtnOptions;
     private KryptonLabel kryptonLabel1;
 
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new(typeof(ThemeSelectorOld));
         this.kryptonPanel1 = new();
         this.kbtnOptions = new();
         this.kbtnResetTheme = new();
@@ -176,7 +175,6 @@ public class ThemeSelectorOld : KryptonForm
         this.Controls.Add(this.kryptonPanel2);
         this.Controls.Add(this.kryptonPanel1);
         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-        this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Name = "ThemeSelector";
@@ -224,7 +222,7 @@ public class ThemeSelectorOld : KryptonForm
     #region Methods
     #endregion
 
-    private void kbtnApply_Click(object sender, EventArgs e)
+    private void kbtnApply_Click(object? sender, EventArgs e)
     {
         _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
@@ -233,9 +231,9 @@ public class ThemeSelectorOld : KryptonForm
         EnableResetButton(true);
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e) => Hide();
+    private void kbtnCancel_Click(object? sender, EventArgs e) => Hide();
 
-    private void kbtnLoadTheme_Click(object sender, EventArgs e)
+    private void kbtnLoadTheme_Click(object? sender, EventArgs e)
     {
         _palette.Import();
 
@@ -248,13 +246,13 @@ public class ThemeSelectorOld : KryptonForm
         kbtnResetTheme.Enabled = true;
     }
 
-    private void kcmbPaletteMode_TextChanged(object sender, EventArgs e) => kbtnApply.Enabled = string.IsNullOrWhiteSpace(kcmbPaletteMode.Text);
+    private void kcmbPaletteMode_TextChanged(object? sender, EventArgs e) => kbtnApply.Enabled = string.IsNullOrWhiteSpace(kcmbPaletteMode.Text);
 
-    private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e) => _settingsManager.SaveSettings(_settingsManager.GetAskMe());
+    private void ThemeSelector_FormClosing(object? sender, FormClosingEventArgs e) => _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
-    private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => EnableApplyButton(true);
+    private void kcmbPaletteMode_SelectedIndexChanged(object? sender, EventArgs e) => EnableApplyButton(true);
 
-    private void kbtnResetTheme_Click(object sender, EventArgs e)
+    private void kbtnResetTheme_Click(object? sender, EventArgs e)
     {
         _settingsManager.SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
@@ -271,14 +269,14 @@ public class ThemeSelectorOld : KryptonForm
         kbtnResetTheme.Enabled = false;
     }
 
-    private void kbtnOptions_Click(object sender, EventArgs e)
+    private void kbtnOptions_Click(object? sender, EventArgs e)
     {
         ThemeSwitcherOptions options = new(_manager, _palette);
 
         options.Show();
     }
 
-    private void ThemeSelector_Load(object sender, EventArgs e)
+    private void ThemeSelector_Load(object? sender, EventArgs e)
     {
         ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbPaletteMode);
 

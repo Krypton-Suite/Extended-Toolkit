@@ -30,19 +30,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 public class NaviBandEnumerator : IEnumerator<NaviBand>
 {
     private int curIndex;
-    private NaviBand current;
+    private NaviBand? current;
     private NaviBandCollection collection;
 
     public NaviBandEnumerator(NaviBandCollection collection)
     {
         this.collection = collection;
         curIndex = -1;
-        current = default(NaviBand);
+        current = null;
     }
 
     #region IEnumerator<NaviBand> Members
 
-    public NaviBand Current => current;
+    public NaviBand Current => current!;
 
     #endregion
 
@@ -54,7 +54,7 @@ public class NaviBandEnumerator : IEnumerator<NaviBand>
 
     #region IEnumerator Members
 
-    object System.Collections.IEnumerator.Current => current;
+    object? System.Collections.IEnumerator.Current => current;
 
     public bool MoveNext()
     {

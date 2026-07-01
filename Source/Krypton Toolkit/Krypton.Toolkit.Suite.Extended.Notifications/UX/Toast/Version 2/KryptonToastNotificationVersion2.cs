@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -77,7 +77,7 @@ public partial class KryptonToastNotificationVersion2 : KryptonForm
         {
             _cornerRadius = value;
 
-            StateCommon.Border.Rounding = value;
+            StateCommon!.Border.Rounding = value;
         }
     }
 
@@ -245,12 +245,12 @@ public partial class KryptonToastNotificationVersion2 : KryptonForm
     #endregion
 
     #region Event Handlers
-    private void ToastNotification_GotFocus(object sender, EventArgs e)
+    private void ToastNotification_GotFocus(object? sender, EventArgs e)
     {
         kbtnDismiss.Focus();
     }
 
-    private void ToastNotification_Resize(object sender, EventArgs e)
+    private void ToastNotification_Resize(object? sender, EventArgs e)
     {
         if (WindowState == FormWindowState.Minimized)
         {
@@ -258,9 +258,9 @@ public partial class KryptonToastNotificationVersion2 : KryptonForm
         }
     }
 
-    private void KryptonToastNotificationVersion2_Load(object sender, EventArgs e)
+    private void KryptonToastNotificationVersion2_Load(object? sender, EventArgs e)
     {
-        Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+        Location = new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5, Screen.PrimaryScreen!.WorkingArea.Height - Height - 5);
 
         FadeIn();
 
@@ -280,14 +280,14 @@ public partial class KryptonToastNotificationVersion2 : KryptonForm
                 kbtnAction.Values.Image = null;
                 break;
             case ActionButtonType.UACElevated:
-                kbtnAction.Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                kbtnAction.Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
                 break;
             default:
                 break;
         }
     }
 
-    private void kbtnAction_Click(object sender, EventArgs e)
+    private void kbtnAction_Click(object? sender, EventArgs e)
     {
         switch (_actionButtonType)
         {
@@ -317,7 +317,7 @@ public partial class KryptonToastNotificationVersion2 : KryptonForm
         }
     }
 
-    private void kbtnDismiss_Click(object sender, EventArgs e)
+    private void kbtnDismiss_Click(object? sender, EventArgs e)
     {
         FadeOutAndClose();
     }

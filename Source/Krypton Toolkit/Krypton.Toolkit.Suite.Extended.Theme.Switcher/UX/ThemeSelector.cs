@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -38,8 +38,7 @@ public class ThemeSelector : KryptonForm
     private KryptonButton kbtnCancel;
     private KryptonPanel kryptonPanel2;
     private KryptonLabel kryptonLabel1;
-    private IContainer components;
-    private KryptonThemeComboBox kcmbSelectedTheme;
+    private KryptonThemeComboBox kcmbSelectedTheme = null!;
     private KryptonBorderEdge kryptonBorderEdge1;
 
     private void InitializeComponent()
@@ -229,21 +228,21 @@ public class ThemeSelector : KryptonForm
     private void UpdateControlLocation(Control control, Point location) => control.Location = location;
     #endregion
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         DialogResult = DialogResult.Cancel;
 
         Close();
     }
 
-    private void kbtnOptions_Click(object sender, EventArgs e)
+    private void kbtnOptions_Click(object? sender, EventArgs e)
     {
         ThemeSwitcherOptions options = new ThemeSwitcherOptions(_manager, _palette);
 
         options.Show();
     }
 
-    private void kbtnResetTheme_Click(object sender, EventArgs e)
+    private void kbtnResetTheme_Click(object? sender, EventArgs e)
     {
         _settingsManager.SetSelectedTheme(PaletteMode.Microsoft365Blue);
 
@@ -260,7 +259,7 @@ public class ThemeSelector : KryptonForm
         EnableResetButton(false);
     }
 
-    private void kbtnLoadTheme_Click(object sender, EventArgs e)
+    private void kbtnLoadTheme_Click(object? sender, EventArgs e)
     {
         _palette.Import();
 
@@ -273,19 +272,19 @@ public class ThemeSelector : KryptonForm
         EnableResetButton(true);
     }
 
-    private void ThemeSelector_Load(object sender, EventArgs e)
+    private void ThemeSelector_Load(object? sender, EventArgs e)
     {
         ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbSelectedTheme);
 
         _themeManager.ApplyTheme(kcmbSelectedTheme.Text, _manager);
     }
 
-    private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e)
+    private void ThemeSelector_FormClosing(object? sender, FormClosingEventArgs e)
     {
         _settingsManager.SaveSettings(_settingsManager.GetAskMe());
     }
 
-    private void kcmbSelectedTheme_SelectedIndexChanged(object sender, EventArgs e)
+    private void kcmbSelectedTheme_SelectedIndexChanged(object? sender, EventArgs e)
     {
         EnableResetButton(true);
     }

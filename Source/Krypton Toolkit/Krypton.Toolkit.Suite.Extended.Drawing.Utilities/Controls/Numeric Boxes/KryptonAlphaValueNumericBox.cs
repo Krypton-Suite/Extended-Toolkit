@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -62,11 +62,13 @@ public class KryptonAlphaValueNumericBox : KryptonNumericUpDown
     #endregion
 
     #region Overrides
-    protected override void OnPaint(PaintEventArgs? e)
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
+    protected override void OnPaint(PaintEventArgs e)
     {
         AlterTypeface(_typeface);
 
         base.OnPaint(e);
+#pragma warning restore CS8765
     }
     #endregion
 }

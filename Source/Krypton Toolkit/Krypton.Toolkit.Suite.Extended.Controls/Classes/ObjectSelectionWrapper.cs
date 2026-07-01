@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls;
 /// Used together with the ListSelectionWrapper in order to wrap data sources for a CheckBoxComboBox.
 /// It helps to ensure you don't add an extra "Selected" property to a class that don't really need or want that information.
 /// </summary>
-public class ObjectSelectionWrapper<T> : INotifyPropertyChanged
+public class ObjectSelectionWrapper<T> : INotifyPropertyChanged where T : notnull
 {
     public ObjectSelectionWrapper(T item, ListSelectionWrapper<T> container)
         : base()
@@ -92,7 +92,7 @@ public class ObjectSelectionWrapper<T> : INotifyPropertyChanged
             string? name = null;
             if (string.IsNullOrEmpty(_container.DisplayNameProperty))
             {
-                name = Item.ToString();
+                name = Item?.ToString();
             }
             else if (Item is DataRow) // A specific implementation for DataRow
             {
@@ -104,18 +104,18 @@ public class ObjectSelectionWrapper<T> : INotifyPropertyChanged
                 foreach (PropertyDescriptor pd in pDs)
                     if (pd.Name.CompareTo(_container.DisplayNameProperty) == 0)
                     {
-                        name = (string)pd.GetValue(Item).ToString();
+                        name = pd.GetValue(Item)?.ToString();
                         break;
                     }
                 if (string.IsNullOrEmpty(name))
                 {
-                    PropertyInfo pi = Item.GetType().GetProperty(_container.DisplayNameProperty);
+                    PropertyInfo? pi = Item.GetType().GetProperty(_container.DisplayNameProperty);
                     if (pi == null)
                     {
                         throw new Exception($"Property {_container.DisplayNameProperty} cannot be found on {Item.GetType()}.");
                     }
 
-                    name = pi.GetValue(Item, null).ToString();
+                    name = pi.GetValue(Item, null)?.ToString();
                 }
             }
             return _container.ShowCounts ? $"{name} [{Count}]" : name;
@@ -147,7 +147,7 @@ public class ObjectSelectionWrapper<T> : INotifyPropertyChanged
 
     #region INotifyPropertyChanged
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
     {

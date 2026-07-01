@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class DownloadUpdateDialog : KryptonForm
     {
@@ -8,9 +8,9 @@
 
         private DateTime _startTime;
 
-        private string _tempFile;
+        private string _tempFile = null!;
 
-        private MyWebClient _webClient;
+        private MyWebClient? _webClient;
 
         #endregion
 
@@ -42,7 +42,7 @@
 
         #region Implementation
 
-        private void DownloadUpdateDialog_Load(object sender, EventArgs e)
+        private void DownloadUpdateDialog_Load(object? sender, EventArgs e)
         {
             var uri = new Uri(_updateInfo.DownloadURL);
 
@@ -68,7 +68,7 @@
             _webClient.DownloadFileAsync(uri, _tempFile);
         }
 
-        private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private void OnDownloadProgressChanged(object? sender, DownloadProgressChangedEventArgs e)
         {
             if (_startTime == default)
             {
@@ -90,7 +90,7 @@
             kpbDownloadProgress.Value = e.ProgressPercentage;
         }
 
-        private void WebClientOnDownloadFileCompleted(object sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
+        private void WebClientOnDownloadFileCompleted(object? sender, AsyncCompletedEventArgs asyncCompletedEventArgs)
         {
             if (asyncCompletedEventArgs.Cancelled)
             {
@@ -110,13 +110,13 @@
                 }
 
                 // Try to parse the content disposition header if it exists.
-                ContentDisposition contentDisposition = null;
-                if (!string.IsNullOrWhiteSpace(_webClient.ResponseHeaders?["Content-Disposition"]))
+                ContentDisposition? contentDisposition = null;
+                if (!string.IsNullOrWhiteSpace(_webClient!.ResponseHeaders?["Content-Disposition"]))
                 {
                     try
                     {
                         contentDisposition =
-                            new ContentDisposition(_webClient.ResponseHeaders["Content-Disposition"]);
+                            new ContentDisposition(_webClient.ResponseHeaders["Content-Disposition"]!);
                     }
                     catch (FormatException)
                     {
@@ -126,7 +126,7 @@
                 }
 
                 string fileName = string.IsNullOrEmpty(contentDisposition?.FileName)
-                    ? Path.GetFileName(_webClient.ResponseUri.LocalPath)
+                    ? Path.GetFileName(_webClient.ResponseUri!.LocalPath)
                     : contentDisposition.FileName;
 
                 if (string.IsNullOrWhiteSpace(fileName))
@@ -294,15 +294,9 @@
 
         private static void CompareChecksum(string fileName, CheckSum checksum)
         {
-            using var hashAlgorithm =
-                HashAlgorithm.Create(
-                    string.IsNullOrEmpty(checksum.HashingAlgorithm) ? "MD5" : checksum.HashingAlgorithm);
+            string algorithmName = string.IsNullOrEmpty(checksum.HashingAlgorithm) ? "MD5" : checksum.HashingAlgorithm;
+            using HashAlgorithm hashAlgorithm = CreateHashAlgorithm(algorithmName);
             using FileStream stream = File.OpenRead(fileName);
-
-            if (hashAlgorithm == null)
-            {
-                throw new Exception(AutoUpdaterLanguageManager.UpdaterStrings.HashAlgorithmNotSupportedMessage);
-            }
 
             byte[] hash = hashAlgorithm.ComputeHash(stream);
             string fileChecksum = BitConverter.ToString(hash).Replace("-", string.Empty).ToLowerInvariant();
@@ -315,7 +309,18 @@
             throw new Exception(AutoUpdaterLanguageManager.UpdaterStrings.FileIntegrityCheckFailedMessage);
         }
 
-        private void DownloadUpdateDialog_FormClosing(object sender, FormClosingEventArgs e)
+        private static HashAlgorithm CreateHashAlgorithm(string algorithmName) =>
+            algorithmName.ToUpperInvariant() switch
+            {
+                "MD5" => MD5.Create(),
+                "SHA1" => SHA1.Create(),
+                "SHA256" => SHA256.Create(),
+                "SHA384" => SHA384.Create(),
+                "SHA512" => SHA512.Create(),
+                _ => throw new Exception(AutoUpdaterLanguageManager.UpdaterStrings.HashAlgorithmNotSupportedMessage)
+            };
+
+        private void DownloadUpdateDialog_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.ForcedDownload)
             {

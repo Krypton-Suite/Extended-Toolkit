@@ -39,14 +39,14 @@ public partial class SparkleUpdater : IDisposable
     /// Only valid once the application is about to quit and the update is going to
     /// be launched.
     /// </summary>
-    protected Process _installerProcess;
+    protected Process? _installerProcess;
 
-    private ILogger _logWriter;
+    private ILogger _logWriter = null!;
     private readonly Task _taskWorker;
     private CancellationToken _cancelToken;
     private readonly CancellationTokenSource _cancelTokenSource;
     private readonly SynchronizationContext _syncContext;
-    private readonly string _appReferenceAssembly;
+    private readonly string? _appReferenceAssembly;
 
     private bool _doInitialCheck;
     private bool _forceInitialCheck;
@@ -54,18 +54,18 @@ public partial class SparkleUpdater : IDisposable
     private readonly EventWaitHandle _exitHandle;
     private readonly EventWaitHandle _loopingHandle;
     private TimeSpan _checkFrequency;
-    private string _tmpDownloadFilePath;
-    private string _downloadTempFileName;
+    private string _tmpDownloadFilePath = "";
+    private string? _downloadTempFileName;
     private AppCastItem? _itemBeingDownloaded;
     private bool _hasAttemptedFileRedownload;
-    private UpdateInfo _latestDownloadedUpdateInfo;
-    private IUIFactory _uiFactory;
+    private UpdateInfo? _latestDownloadedUpdateInfo;
+    private IUIFactory? _uiFactory;
     private bool _disposed;
-    private Configuration _configuration;
-    private string _restartExecutableName;
-    private string _restartExecutablePath;
+    private Configuration? _configuration;
+    private string? _restartExecutableName;
+    private string? _restartExecutablePath;
 
-    private IAppCastHandler _appCastHandler;
+    private IAppCastHandler? _appCastHandler;
 
     /// <summary>
     /// The progress window is shown on a separate thread.
@@ -74,7 +74,7 @@ public partial class SparkleUpdater : IDisposable
     /// It would be better if things ran using async/await, but this will
     /// suffice as a "fix" for now.
     /// </summary>
-    private Action _actionToRunOnProgressWindowShown;
+    private Action? _actionToRunOnProgressWindowShown;
 
     #endregion
 
@@ -95,7 +95,7 @@ public partial class SparkleUpdater : IDisposable
     /// <param name="appcastUrl">the URL of the app cast file</param>
     /// <param name="signatureVerifier">the object that will verify your app cast signatures.</param>
     /// <param name="referenceAssembly">the name of the assembly to use for comparison when checking update versions</param>
-    public SparkleUpdater(string appcastUrl, ISignatureVerifier signatureVerifier, string referenceAssembly)
+    public SparkleUpdater(string appcastUrl, ISignatureVerifier signatureVerifier, string? referenceAssembly)
         : this(appcastUrl, signatureVerifier, referenceAssembly, null)
     { }
 
@@ -106,33 +106,27 @@ public partial class SparkleUpdater : IDisposable
     /// <param name="signatureVerifier">the object that will verify your app cast signatures.</param>
     /// <param name="referenceAssembly">the name of the assembly to use for comparison when checking update versions</param>
     /// <param name="factory">a UI factory to use in place of the default UI</param>
-    public SparkleUpdater(string appcastUrl, ISignatureVerifier signatureVerifier, string referenceAssembly, IUIFactory factory)
+    public SparkleUpdater(string appcastUrl, ISignatureVerifier signatureVerifier, string? referenceAssembly, IUIFactory? factory)
     {
-        _latestDownloadedUpdateInfo = null;
         _hasAttemptedFileRedownload = false;
 
         UIFactory = factory;
         SignatureVerifier = signatureVerifier;
         // Syncronization Context
-        _syncContext = SynchronizationContext.Current;
-        if (_syncContext == null)
-        {
-            _syncContext = new SynchronizationContext();
-        }
+        _syncContext = SynchronizationContext.Current ?? new SynchronizationContext();
         // init UI
         UIFactory?.Init(this);
-        _appReferenceAssembly = null;
+        _appReferenceAssembly = referenceAssembly;
         // set the reference assembly
         if (referenceAssembly != null)
         {
-            _appReferenceAssembly = referenceAssembly;
             LogWriter.PrintMessage("Checking the following file for assembly information: " + _appReferenceAssembly);
         }
 
         // adjust the delegates
         _taskWorker = new Task(() =>
         {
-            OnWorkerDoWork(null, null);
+            OnWorkerDoWork(null!, null!);
         });
         _cancelTokenSource = new CancellationTokenSource();
         _cancelToken = _cancelTokenSource.Token;
@@ -182,7 +176,7 @@ public partial class SparkleUpdater : IDisposable
     public string TmpDownloadFilePath
     {
         get { return _tmpDownloadFilePath; }
-        set { _tmpDownloadFilePath = value?.Trim(); }
+        set { _tmpDownloadFilePath = value?.Trim() ?? ""; }
     }
 
     /// <summary>
@@ -193,13 +187,13 @@ public partial class SparkleUpdater : IDisposable
     /// <summary>
     /// Run the downloaded installer with these arguments
     /// </summary>
-    public string CustomInstallerArguments { get; set; }
+    public string? CustomInstallerArguments { get; set; }
 
     /// <summary>
     /// Function that is called asynchronously to clean up old installers that have been
     /// downloaded with SilentModeTypes.DownloadNoInstall or SilentModeTypes.DownloadAndInstall.
     /// </summary>
-    public Action ClearOldInstallers { get; set; }
+    public Action? ClearOldInstallers { get; set; }
 
     /// <summary>
     /// Whether or not the update loop is running
@@ -215,7 +209,7 @@ public partial class SparkleUpdater : IDisposable
     /// <summary>
     /// Factory for creating UI elements like progress window, etc.
     /// </summary>
-    public IUIFactory UIFactory
+    public IUIFactory? UIFactory
     {
         get { return _uiFactory; }
         set { _uiFactory = value; _uiFactory?.Init(this); }
@@ -225,19 +219,19 @@ public partial class SparkleUpdater : IDisposable
     /// The user interface that shows the release notes and
     /// asks the user to skip, remind me later, or update
     /// </summary>
-    private IUpdateAvailable UpdateAvailableWindow { get; set; }
+    private IUpdateAvailable? UpdateAvailableWindow { get; set; }
 
     /// <summary>
     /// The user interface that shows a download progress bar,
     /// and then asks to install and relaunch the application
     /// </summary>
-    private IDownloadProgress ProgressWindow { get; set; }
+    private IDownloadProgress? ProgressWindow { get; set; }
 
     /// <summary>
     /// The user interface that shows the 'Checking for Updates...'
     /// UIrm.
     /// </summary>
-    private ICheckingForUpdates CheckingForUpdatesWindow { get; set; }
+    private ICheckingForUpdates? CheckingForUpdatesWindow { get; set; }
 
     /// <summary>
     /// The configuration object for a given assembly that has information on when
@@ -262,7 +256,7 @@ public partial class SparkleUpdater : IDisposable
                 _configuration = new RegistryConfiguration(new AssemblyReflectionAccessor(_appReferenceAssembly));
 #endif
             }
-            return _configuration;
+            return _configuration!;
         }
         set { _configuration = value; }
     }
@@ -389,7 +383,7 @@ public partial class SparkleUpdater : IDisposable
     /// <summary>
     /// Returns the latest appcast items to the caller. Might be null.
     /// </summary>
-    public List<AppCastItem> LatestAppCastItems
+    public List<AppCastItem>? LatestAppCastItems
     {
         get
         {
@@ -422,13 +416,13 @@ public partial class SparkleUpdater : IDisposable
     /// <summary>
     /// The object responsable for downloading update files for your application
     /// </summary>
-    public IUpdateDownloader UpdateDownloader { get; set; }
+    public IUpdateDownloader? UpdateDownloader { get; set; }
 
     /// <summary>
     /// The object responsible for downloading app cast and app cast signature
     /// information for your application
     /// </summary>
-    public IAppCastDataDownloader AppCastDataDownloader { get; set; }
+    public IAppCastDataDownloader? AppCastDataDownloader { get; set; }
 
     /// <summary>
     /// The object responsible for parsing app cast information and checking to
@@ -614,7 +608,7 @@ public partial class SparkleUpdater : IDisposable
     /// <returns><see cref="UpdateInfo"/> with information on whether there is an update available or not.</returns>
     protected async Task<UpdateInfo> GetUpdateStatus(Configuration config, bool ignoreSkippedVersions = false)
     {
-        List<AppCastItem> updates = null;
+        List<AppCastItem>? updates = null;
         // report
         LogWriter.PrintMessage("Downloading and checking appcast");
 
@@ -681,11 +675,11 @@ public partial class SparkleUpdater : IDisposable
     /// </summary>
     /// <param name="updates">updates to show UI for</param>
     /// <param name="isUpdateAlreadyDownloaded">If true, make sure UI text shows that the user is about to install the file instead of download it.</param>
-    public void ShowUpdateNeededUI(List<AppCastItem> updates, bool isUpdateAlreadyDownloaded = false)
+    public void ShowUpdateNeededUI(List<AppCastItem>? updates, bool isUpdateAlreadyDownloaded = false)
     {
         if (updates != null)
         {
-            if (UseNotificationToast && (bool)UIFactory?.CanShowToastMessages(this))
+            if (UseNotificationToast && UIFactory?.CanShowToastMessages(this) == true)
             {
                 UIFactory?.ShowToast(this, updates, OnToastClick);
             }
@@ -710,8 +704,13 @@ public partial class SparkleUpdater : IDisposable
         ShowUpdateAvailableWindow(updates);
     }
 
-    private void ShowUpdateAvailableWindow(List<AppCastItem> updates, bool isUpdateAlreadyDownloaded = false)
+    private void ShowUpdateAvailableWindow(List<AppCastItem>? updates, bool isUpdateAlreadyDownloaded = false)
     {
+        if (updates is null)
+        {
+            return;
+        }
+
         if (UpdateAvailableWindow != null)
         {
             // close old window
@@ -736,7 +735,7 @@ public partial class SparkleUpdater : IDisposable
             try
             {
                 // define action
-                Action<object> showSparkleUI = (state) =>
+                Action<object?> showSparkleUI = (state) =>
                 {
                     UpdateAvailableWindow = UIFactory?.CreateUpdateAvailableWindow(this, updates, isUpdateAlreadyDownloaded);
 
@@ -781,7 +780,7 @@ public partial class SparkleUpdater : IDisposable
     /// <param name="item">The item that you want to generate a download path for</param>
     /// <returns>The download path for an app cast item if item is not null and has valid download link
     /// Otherwise returns null.</returns>
-    public async Task<string> GetDownloadPathForAppCastItem(AppCastItem? item)
+    public async Task<string?> GetDownloadPathForAppCastItem(AppCastItem? item)
     {
         if (item != null && item.DownloadLink != null)
         {
@@ -792,7 +791,7 @@ public partial class SparkleUpdater : IDisposable
             {
                 try
                 {
-                    filename = await UpdateDownloader.RetrieveDestinationFileNameAsync(item);
+                    filename = await UpdateDownloader.RetrieveDestinationFileNameAsync(item) ?? string.Empty;
                 }
                 catch (Exception)
                 {
@@ -836,6 +835,11 @@ public partial class SparkleUpdater : IDisposable
     /// <param name="item">the appcast item to download</param>
     public async Task InitAndBeginDownload(AppCastItem? item)
     {
+        if (item is null)
+        {
+            return;
+        }
+
         if (UpdateDownloader is { IsDownloading: true })
         {
             return; // file is already downloading, don't do anything!
@@ -847,16 +851,16 @@ public partial class SparkleUpdater : IDisposable
         // Make sure the file doesn't already exist on disk. If it's already downloaded and the
         // signature checks out, don't redownload the file!
         bool needsToDownload = true;
-        if (File.Exists(_downloadTempFileName))
+        if (_downloadTempFileName is not null && File.Exists(_downloadTempFileName))
         {
             ValidationResult result;
             try
             {
-                result = SignatureVerifier.VerifySignatureOfFile(item.DownloadSignature, _downloadTempFileName);
+                result = SignatureVerifier.VerifySignatureOfFile(item.DownloadSignature ?? string.Empty, _downloadTempFileName);
             }
             catch (Exception exc)
             {
-                LogWriter.PrintMessage("Error validating signature of file: {0}; {1}", exc.Message, exc.StackTrace);
+                LogWriter.PrintMessage("Error validating signature of file: {0}; {1}", exc.Message, exc.StackTrace ?? string.Empty);
                 result = ValidationResult.Invalid;
             }
             if (result == ValidationResult.Valid)
@@ -906,7 +910,7 @@ public partial class SparkleUpdater : IDisposable
                 CallFuncConsideringUIThreads(() => { DownloadedFileIsCorrupt?.Invoke(item, _downloadTempFileName); });
             }
         }
-        if (needsToDownload)
+        if (needsToDownload && UpdateDownloader is not null)
         {
             // remove any old event handlers so we don't fire 2x
             UpdateDownloader.DownloadProgressChanged -= OnDownloadProgressChanged;
@@ -916,8 +920,8 @@ public partial class SparkleUpdater : IDisposable
             _actionToRunOnProgressWindowShown = () =>
             {
                 Uri url = Utilities.GetAbsoluteURL(item.DownloadLink, AppCastUrl);
-                LogWriter.PrintMessage("Starting to download {0} to {1}", item.DownloadLink, _downloadTempFileName);
-                UpdateDownloader.StartFileDownload(url, _downloadTempFileName);
+                LogWriter.PrintMessage("Starting to download {0} to {1}", item.DownloadLink, _downloadTempFileName ?? string.Empty);
+                UpdateDownloader!.StartFileDownload(url, _downloadTempFileName!);
                 CallFuncConsideringUIThreads(() =>
                 {
                     DownloadStarted?.Invoke(item, _downloadTempFileName);
@@ -927,7 +931,7 @@ public partial class SparkleUpdater : IDisposable
         }
     }
 
-    private void OnDownloadProgressChanged(object sender, ItemDownloadProgressEventArgs args)
+    private void OnDownloadProgressChanged(object? sender, ItemDownloadProgressEventArgs args)
     {
         CallFuncConsideringUIThreads(() =>
         {
@@ -967,17 +971,17 @@ public partial class SparkleUpdater : IDisposable
         if (ProgressWindow != null)
         {
             ProgressWindow.DownloadProcessCompleted -= ProgressWindowCompleted;
-            UpdateDownloader.DownloadProgressChanged -= ProgressWindow.OnDownloadProgressChanged;
+            UpdateDownloader?.DownloadProgressChanged -= ProgressWindow.OnDownloadProgressChanged;
             ProgressWindow = null;
         }
-        Action<object> showSparkleDownloadUI = (state) => { };
+        Action<object?> showSparkleDownloadUI = (state) => { };
         if (ProgressWindow == null && UIFactory != null && !IsDownloadingSilently())
         {
             // create the form
             showSparkleDownloadUI = (state) =>
             {
                 ProgressWindow = UIFactory?.CreateProgressWindow(this, castItem);
-                if (ProgressWindow != null)
+                if (ProgressWindow != null && UpdateDownloader is not null)
                 {
                     ProgressWindow.DownloadProcessCompleted += ProgressWindowCompleted;
                     UpdateDownloader.DownloadProgressChanged += ProgressWindow.OnDownloadProgressChanged;
@@ -1001,7 +1005,7 @@ public partial class SparkleUpdater : IDisposable
             {
                 _syncContext.Post((state) =>
                 {
-                    showSparkleDownloadUI(null);
+                    showSparkleDownloadUI(null!);
                     _actionToRunOnProgressWindowShown?.Invoke();
                     _actionToRunOnProgressWindowShown = null;
                     ProgressWindow?.Show(ShowsUIOnMainThread);
@@ -1009,7 +1013,7 @@ public partial class SparkleUpdater : IDisposable
             }
             else
             {
-                showSparkleDownloadUI(null);
+                showSparkleDownloadUI(null!);
                 _actionToRunOnProgressWindowShown?.Invoke();
                 _actionToRunOnProgressWindowShown = null;
                 ProgressWindow?.Show(ShowsUIOnMainThread);
@@ -1026,7 +1030,7 @@ public partial class SparkleUpdater : IDisposable
         thread.Start();
     }
 
-    private async void ProgressWindowCompleted(object sender, DownloadInstallEventArgs args)
+    private async void ProgressWindowCompleted(object? sender, DownloadInstallEventArgs args)
     {
         if (args.ShouldInstall)
         {
@@ -1034,7 +1038,7 @@ public partial class SparkleUpdater : IDisposable
             if (await AskApplicationToSafelyCloseUp())
             {
                 ProgressWindow?.Close();
-                await RunDownloadedInstaller(_downloadTempFileName);
+                await RunDownloadedInstaller(_downloadTempFileName!);
             }
             else
             {
@@ -1053,14 +1057,14 @@ public partial class SparkleUpdater : IDisposable
     /// </summary>
     /// <param name="sender">the object that initiated this event call</param>
     /// <param name="e">information on if the download was successful.</param>
-    private void OnDownloadFinished(object sender, AsyncCompletedEventArgs e)
+    private void OnDownloadFinished(object? sender, AsyncCompletedEventArgs e)
     {
         bool shouldShowUIItems = !IsDownloadingSilently();
 
         if (e.Cancelled)
         {
             _hasAttemptedFileRedownload = false;
-            if (File.Exists(_downloadTempFileName))
+            if (_downloadTempFileName is not null && File.Exists(_downloadTempFileName))
             {
                 try
                 {
@@ -1094,7 +1098,7 @@ public partial class SparkleUpdater : IDisposable
         if (e.Error != null)
         {
             // Clean temp files on error too
-            if (File.Exists(_downloadTempFileName))
+            if (_downloadTempFileName is not null && File.Exists(_downloadTempFileName))
             {
                 try
                 {
@@ -1115,11 +1119,11 @@ public partial class SparkleUpdater : IDisposable
             LogWriter.PrintMessage("Error on download finished: {0}", e.Error.Message);
             CallFuncConsideringUIThreads(() =>
             {
-                if (shouldShowUIItems && ProgressWindow != null && !ProgressWindow.DisplayErrorMessage(e.Error.Message))
+                if (shouldShowUIItems && ProgressWindow != null && e.Error is not null && !ProgressWindow.DisplayErrorMessage(e.Error.Message))
                 {
                     UIFactory?.ShowDownloadErrorMessage(this, e.Error.Message, AppCastUrl);
                 }
-                DownloadHadError?.Invoke(_itemBeingDownloaded, _downloadTempFileName, e.Error);
+                DownloadHadError?.Invoke(_itemBeingDownloaded, _downloadTempFileName, e.Error!);
             });
             return;
         }
@@ -1127,12 +1131,12 @@ public partial class SparkleUpdater : IDisposable
         var validationRes = ValidationResult.Invalid;
         if (e is { Cancelled: false, Error: null })
         {
-            LogWriter.PrintMessage("Fully downloaded file exists at {0}", _downloadTempFileName);
+            LogWriter.PrintMessage("Fully downloaded file exists at {0}", _downloadTempFileName ?? string.Empty);
 
             LogWriter.PrintMessage("Performing signature check");
 
             // get the assembly
-            if (File.Exists(_downloadTempFileName))
+            if (_downloadTempFileName is not null && File.Exists(_downloadTempFileName))
             {
                 // check if the file was downloaded successfully
                 string absolutePath = Path.GetFullPath(_downloadTempFileName);
@@ -1149,11 +1153,11 @@ public partial class SparkleUpdater : IDisposable
                 // check the signature
                 try
                 {
-                    validationRes = SignatureVerifier.VerifySignatureOfFile(_itemBeingDownloaded?.DownloadSignature, _downloadTempFileName);
+                    validationRes = SignatureVerifier.VerifySignatureOfFile(_itemBeingDownloaded?.DownloadSignature ?? string.Empty, _downloadTempFileName);
                 }
                 catch (Exception exc)
                 {
-                    LogWriter.PrintMessage("Error validating signature of file: {0}; {1}", exc.Message, exc.StackTrace);
+                    LogWriter.PrintMessage("Error validating signature of file: {0}; {1}", exc.Message, exc.StackTrace ?? string.Empty);
                     validationRes = ValidationResult.Invalid;
                     CallFuncConsideringUIThreads(() =>
                     {
@@ -1171,7 +1175,7 @@ public partial class SparkleUpdater : IDisposable
         // signature of file isn't valid so exit with error
         if (isSignatureInvalid)
         {
-            LogWriter.PrintMessage("Invalid signature for downloaded file for app cast: {0}", _downloadTempFileName);
+            LogWriter.PrintMessage("Invalid signature for downloaded file for app cast: {0}", _downloadTempFileName ?? string.Empty);
             string errorMessage = "Downloaded file has invalid signature!";
             // Default to showing errors in the progress window. Only go to the UIFactory to show errors if necessary.
             CallFuncConsideringUIThreads(() =>
@@ -1214,20 +1218,25 @@ public partial class SparkleUpdater : IDisposable
     /// <param name="installPath">Install path to the executable. If not provided, will ask the server for the download path.</param>
     public async void InstallUpdate(AppCastItem? item, string? installPath = null)
     {
+        if (item is null)
+        {
+            return;
+        }
+
         ProgressWindow?.SetDownloadAndInstallButtonEnabled(false); // disable while we ask if we can close up the software
         if (await AskApplicationToSafelyCloseUp())
         {
             var path = installPath != null && File.Exists(installPath) ? installPath : await GetDownloadPathForAppCastItem(item);
-            if (File.Exists(path))
+            if (path is not null && File.Exists(path))
             {
                 ValidationResult result;
                 try
                 {
-                    result = SignatureVerifier.VerifySignatureOfFile(item.DownloadSignature, path);
+                    result = SignatureVerifier.VerifySignatureOfFile(item.DownloadSignature ?? string.Empty, path);
                 }
                 catch (Exception exc)
                 {
-                    LogWriter.PrintMessage("Error validating signature of file: {0}; {1}", exc.Message, exc.StackTrace);
+                    LogWriter.PrintMessage("Error validating signature of file: {0}; {1}", exc.Message, exc.StackTrace ?? string.Empty);
                     result = ValidationResult.Invalid;
                     DownloadedFileThrewWhileCheckingSignature?.Invoke(item, path);
                 }
@@ -1690,7 +1699,7 @@ public partial class SparkleUpdater : IDisposable
         return updateData; // in this case, we've already shown UI talking about the new version
     }
 
-    private void CheckingForUpdatesWindow_Closing(object sender, EventArgs e)
+    private void CheckingForUpdatesWindow_Closing(object? sender, EventArgs e)
     {
         if (CheckingForUpdatesWindow != null)
         {
@@ -1722,9 +1731,10 @@ public partial class SparkleUpdater : IDisposable
         Configuration config = Configuration;
 
         // check if update is required
-        _latestDownloadedUpdateInfo = await GetUpdateStatus(config, ignoreSkippedVersions);
-        List<AppCastItem> updates = _latestDownloadedUpdateInfo.Updates;
-        if (_latestDownloadedUpdateInfo.Status == UpdateStatus.UpdateAvailable)
+        UpdateInfo updateInfo = await GetUpdateStatus(config, ignoreSkippedVersions);
+        _latestDownloadedUpdateInfo = updateInfo;
+        List<AppCastItem>? updates = updateInfo.Updates;
+        if (updateInfo.Status == UpdateStatus.UpdateAvailable && updates is { Count: > 0 })
         {
             // there's an update available!
             LogWriter.PrintMessage("Update needed from version {0} to version {1}", config.InstalledVersion, updates[0].Version);
@@ -1775,8 +1785,8 @@ public partial class SparkleUpdater : IDisposable
                 ShowUpdateNeededUI(updates);
             }
         }
-        UpdateCheckFinished?.Invoke(this, _latestDownloadedUpdateInfo.Status);
-        return _latestDownloadedUpdateInfo;
+        UpdateCheckFinished?.Invoke(this, updateInfo.Status);
+        return updateInfo;
     }
 
     /// <summary>
@@ -1825,15 +1835,24 @@ public partial class SparkleUpdater : IDisposable
     {
         if (ShowsUIOnMainThread)
         {
-            await action?.Invoke();
+            if (action is not null)
+            {
+                await action();
+            }
         }
         else
         {
-            _syncContext.Post(async (state) => await action?.Invoke(), null);
+            _syncContext.Post(async (state) =>
+            {
+                if (action is not null)
+                {
+                    await action();
+                }
+            }, null);
         }
     }
 
-    private async void OnUpdateWindowUserResponded(object sender, UpdateResponseEventArgs args)
+    private async void OnUpdateWindowUserResponded(object? sender, UpdateResponseEventArgs args)
     {
         LogWriter.PrintMessage("Update window response: {0}", args.Result);
         var currentItem = args.UpdateItem;
@@ -1847,7 +1866,7 @@ public partial class SparkleUpdater : IDisposable
         if (result == UpdateAvailableResult.SkipUpdate)
         {
             // skip this version
-            Configuration.SetVersionToSkip(currentItem.Version);
+            Configuration.SetVersionToSkip(currentItem?.Version ?? "");
             CallFuncConsideringUIThreads(() => { UserRespondedToUpdate?.Invoke(this, new UpdateResponseEventArgs(result, currentItem)); });
         }
         else if (result == UpdateAvailableResult.InstallUpdate)
@@ -1889,7 +1908,7 @@ public partial class SparkleUpdater : IDisposable
     /// <summary>
     /// Loop that occasionally checks for updates for the running application
     /// </summary>
-    private async void OnWorkerDoWork(object sender, DoWorkEventArgs e)
+    private async void OnWorkerDoWork(object? sender, DoWorkEventArgs e)
     {
         // store the did run once feature
         bool goIntoLoop = true;
@@ -1953,7 +1972,9 @@ public partial class SparkleUpdater : IDisposable
                         isUpdateAvailable = _latestDownloadedUpdateInfo.Status == UpdateStatus.UpdateAvailable;
                         if (isUpdateAvailable)
                         {
-                            List<AppCastItem> updates = _latestDownloadedUpdateInfo.Updates;
+                            List<AppCastItem>? updates = _latestDownloadedUpdateInfo?.Updates;
+                            if (updates is { Count: > 0 })
+                            {
                             // show the update window
                             LogWriter.PrintMessage("Update needed from version {0} to version {1}", config.InstalledVersion, updates[0].Version);
 
@@ -1992,6 +2013,7 @@ public partial class SparkleUpdater : IDisposable
                                     UpdatesHaveBeenDownloaded(updates);
                                     break;
                                 }
+                            }
                             }
                         }
                     }
@@ -2081,7 +2103,7 @@ public partial class SparkleUpdater : IDisposable
     /// for downloading updates will be shown (if not downloading silently)
     /// or the download will be performed (if downloading silently).
     /// </summary>
-    private void OnWorkerProgressChanged(object sender, ProgressChangedEventArgs e)
+    private void OnWorkerProgressChanged(object? sender, ProgressChangedEventArgs e)
     {
         switch (e.ProgressPercentage)
         {
@@ -2089,7 +2111,7 @@ public partial class SparkleUpdater : IDisposable
                 UpdatesHaveBeenDownloaded(e.UserState as List<AppCastItem>);
                 break;
             case 0:
-                LogWriter.PrintMessage(e.UserState.ToString());
+                LogWriter.PrintMessage(e.UserState?.ToString() ?? string.Empty);
                 break;
         }
     }

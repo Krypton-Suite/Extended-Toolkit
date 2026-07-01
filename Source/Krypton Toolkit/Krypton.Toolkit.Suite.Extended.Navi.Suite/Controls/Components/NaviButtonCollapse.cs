@@ -76,7 +76,7 @@ public partial class NaviButtonCollapse : NaviButton
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        Renderer.DrawButtonCollapseBg(e.Graphics, ClientRectangle, inputState,
+        Renderer?.DrawButtonCollapseBg(e.Graphics, ClientRectangle, inputState,
             RightToLeft == RightToLeft.Yes, collapsed);
     }
 

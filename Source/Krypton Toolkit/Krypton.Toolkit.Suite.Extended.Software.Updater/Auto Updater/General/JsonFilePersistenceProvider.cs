@@ -18,7 +18,7 @@
 
         /// <summary>
         /// </summary>
-        private PersistedValues PersistedValues { get; set; }
+        private PersistedValues PersistedValues { get; set; } = null!;
 
         /// <inheritdoc />
         public Version? GetSkippedVersion()
@@ -81,7 +81,7 @@
                 using var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(FileName)));
                 var serializer =
                     new DataContractJsonSerializer(typeof(PersistedValues));
-                jsonFile = (PersistedValues)serializer.ReadObject(stream);
+                jsonFile = serializer.ReadObject(stream) as PersistedValues;
             }
 
             PersistedValues = jsonFile ?? new PersistedValues();

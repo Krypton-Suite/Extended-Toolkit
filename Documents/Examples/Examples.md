@@ -34,6 +34,12 @@
 ## Circular Progress Bar
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/CircularProgressBar.png)
 
+## Krypton Card
+
+Material-inspired `KryptonCard` control with header, title group, image, content, actions, and footer sections. Also includes `KryptonCardList`, `KryptonCardFlowPanel`, and `KryptonCardTablePanel` layout helpers.
+
+Launch the **Card** example from the Examples landing window to see elevated, outlined, clickable, and data-bound cards.
+
 ## Command Links
 
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/CommandLinks.png)

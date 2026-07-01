@@ -37,7 +37,7 @@ public partial class NaviSuiteControl : ContainerControl
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components = null;
 
     /// <summary> 
     /// Clean up any resources being used.
@@ -67,8 +67,8 @@ public partial class NaviSuiteControl : ContainerControl
     #endregion
 
     private NaviLayoutStyle layoutStyle = NaviLayoutStyle.Office2007Blue;
-    private EventHandler layoutStyleChanged;
-    private NaviRenderer renderer;
+    private EventHandler? layoutStyleChanged;
+    private NaviRenderer? renderer;
 
     protected readonly object threadLock = new object();
 
@@ -120,7 +120,7 @@ public partial class NaviSuiteControl : ContainerControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public virtual NaviRenderer Renderer
+    public virtual NaviRenderer? Renderer
     {
         get => renderer;
         set
@@ -183,7 +183,7 @@ public partial class NaviSuiteControl : ContainerControl
     /// <param name="e">Additional event info</param>
     protected virtual void OnLayoutStyleChanged(EventArgs e)
     {
-        EventHandler handler = layoutStyleChanged;
+        EventHandler? handler = layoutStyleChanged;
         if (handler != null)
         {
             handler(this, e);

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -27,6 +27,7 @@
  */
 #endregion
 
+#pragma warning disable CS0618
 // ReSharper disable NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
 // ReSharper disable ConvertToNullCoalescingCompoundAssignment
 using DebugUtilities = Krypton.Toolkit.Suite.Extended.Debug.Tools.DebugUtilities;
@@ -92,59 +93,59 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
         {
             if (_wizard.IndexOfCurrentPage() == _wizard.WizardPages.Count - 1)
             {
-                Verbs[1].Enabled = true;
-                Verbs[2].Enabled = false;
+                Verbs[1]!.Enabled = true;
+                Verbs[2]!.Enabled = false;
             }
             else
             {
                 if (_wizard.IndexOfCurrentPage() == 0)
                 {
-                    Verbs[1].Enabled = false;
-                    Verbs[2].Enabled = true;
+                    Verbs[1]!.Enabled = false;
+                    Verbs[2]!.Enabled = true;
                 }
                 else
                 {
-                    Verbs[1].Enabled = true;
-                    Verbs[2].Enabled = true;
+                    Verbs[1]!.Enabled = true;
+                    Verbs[2]!.Enabled = true;
                 }
             }
         }
         else
         {
-            Verbs[VERB_PREVIOUS].Enabled = false;
-            Verbs[VERB_NEXT].Enabled = false;
+            Verbs[VERB_PREVIOUS]!.Enabled = false;
+            Verbs[VERB_NEXT]!.Enabled = false;
         }
     }
 
-    private void OnVerbPrev(object sender, EventArgs e)
+    private void OnVerbPrev(object? sender, EventArgs e)
     {
         if (!_wizard.WizardHasNoPages() && _wizard.IndexOfCurrentPage() > 0)
         {
             _wizard.ClickBack();
-            Verbs[VERB_NEXT].Enabled = true;
+            Verbs[VERB_NEXT]!.Enabled = true;
             if (_wizard.OnFirstPage())
             {
-                Verbs[VERB_PREVIOUS].Enabled = false;
+                Verbs[VERB_PREVIOUS]!.Enabled = false;
             }
         }
     }
 
-    private void OnVerbNext(object sender, EventArgs e)
+    private void OnVerbNext(object? sender, EventArgs e)
     {
         if (((KryptonAdvancedWizard)Control).WizardPages.Count > 0)
         {
             _wizard.ClickNext();
-            Verbs[VERB_PREVIOUS].Enabled = true;
+            Verbs[VERB_PREVIOUS]!.Enabled = true;
             if (_wizard.OnLastPage())
             {
-                Verbs[VERB_NEXT].Enabled = false;
+                Verbs[VERB_NEXT]!.Enabled = false;
             }
         }
     }
 
-    private static void OnVerbAbout(object sender, EventArgs e) => KryptonMessageBox.Show(@"Originally written by Steve Bate", "About AdvancedWizard", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
+    private static void OnVerbAbout(object? sender, EventArgs e) => KryptonMessageBox.Show(@"Originally written by Steve Bate", "About AdvancedWizard", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
 
-    private void OnVerbNew(object sender, EventArgs e)
+    private void OnVerbNew(object? sender, EventArgs e)
     {
         try
         {
@@ -167,7 +168,7 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
     private void GetReferenceToISelectionService() => _selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
 
     private void SelectPageInPropertyGrid(KryptonAdvancedWizardPage? page) =>
-        _selectionService?.SetSelectedComponents(new object[] { page }, SelectionTypes.MouseDown);
+        _selectionService?.SetSelectedComponents(page is null ? Array.Empty<object?>() : new object?[] { page }, SelectionTypes.MouseDown);
 
     private void GetReferenceToIComponentChangeService()
     {
@@ -182,33 +183,47 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
 
     private void UpdateWizard(KryptonAdvancedWizardPage? page)
     {
+        if (page is null)
+        {
+            return;
+        }
+
         _wizard.SelectWizardPage(page);
         _wizard.SetButtonStates();
     }
 
     private static void DisplayPage(KryptonAdvancedWizardPage? page)
     {
+        if (page is null)
+        {
+            return;
+        }
+
         page.Dock = DockStyle.Fill;
         page.BringToFront();
     }
 
     private void AddPageToContainers(KryptonAdvancedWizardPage? page)
     {
+        if (page is null)
+        {
+            return;
+        }
+
         _wizard.WizardPages.Add(page);
         _wizard.Controls.Add(page);
     }
 
-    private void ChangeServiceComponentAdded(object sender, ComponentEventArgs e)
+    private void ChangeServiceComponentAdded(object? sender, ComponentEventArgs e)
     {
-        if (((IDesignerHost)sender).Loading)
+        if (sender is not IDesignerHost host || host.Loading)
         {
             return;
         }
-        if (!(e.Component is KryptonAdvancedWizardPage))
+        if (e.Component is not KryptonAdvancedWizardPage page)
         {
             return;
         }
-        var page = e.Component as KryptonAdvancedWizardPage;
         if (_wizard.WizardPages.Contains(page))
         {
             return;
@@ -220,14 +235,13 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
         UpdateWizard(page);
     }
 
-    private void ChangeServiceComponentRemoved(object sender, ComponentEventArgs e)
+    private void ChangeServiceComponentRemoved(object? sender, ComponentEventArgs e)
     {
-        if (((IDesignerHost)sender).Loading)
+        if (sender is not IDesignerHost host || host.Loading)
         {
             return;
         }
-        var advancedWizardPage = e.Component as KryptonAdvancedWizardPage;
-        if (advancedWizardPage == null)
+        if (e.Component is not KryptonAdvancedWizardPage advancedWizardPage)
         {
             return;
         }
@@ -240,7 +254,7 @@ internal class AdvancedWizardDesigner : ParentControlDesigner
     private IComponentChangeService? _changeService;
     private IDesignerHost? _designer;
     private ISelectionService? _selectionService;
-    private DesignerVerbCollection _verbs;
+    private DesignerVerbCollection? _verbs;
     private KryptonAdvancedWizard _wizard;
     private const int VERB_PREVIOUS = 1;
     private const int VERB_NEXT = 2;

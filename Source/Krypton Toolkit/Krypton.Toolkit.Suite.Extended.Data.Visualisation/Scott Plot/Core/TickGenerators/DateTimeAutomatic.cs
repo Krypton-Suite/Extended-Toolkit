@@ -141,13 +141,14 @@ public class DateTimeAutomatic : IDateTimeTickGenerator
         string dtFormat = unit.GetDateTimeFormatString();
 
         using SKPaint paint = new();
+        using SKFont font = new(SKTypeface.Default, 12);
         List<Tick> ticks = [];
 
         const int maxTickCount = 1000;
         for (DateTime dt = start; dt <= end; dt = unit.Next(dt, increment))
         {
             string tickLabel = dt.ToString(dtFormat);
-            PixelSize tickLabelSize = Drawing.MeasureString(tickLabel, paint);
+            PixelSize tickLabelSize = Drawing.MeasureString(tickLabel, font);
 
             bool tickLabelIsTooLarge = !tickLabelBounds.Contains(tickLabelSize);
             if (tickLabelIsTooLarge)

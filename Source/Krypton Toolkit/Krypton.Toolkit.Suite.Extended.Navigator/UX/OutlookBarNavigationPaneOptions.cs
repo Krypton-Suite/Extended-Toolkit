@@ -61,11 +61,16 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
 
     #region Event Handlers
 
-    private void kbtnMoveUp_Click(object sender, EventArgs e)
+    private void kbtnMoveUp_Click(object? sender, EventArgs e)
     {
+        if (clbItems.SelectedItem is not OutlookBarButton selectedButton)
+        {
+            return;
+        }
+
         int newIndex = clbItems.SelectedIndex - 1;
 
-        _items.Insert(newIndex, (OutlookBarButton)clbItems.SelectedItem);
+        _items.Insert(newIndex, selectedButton);
 
         _items.RemoveAt(newIndex + 2);
 
@@ -74,27 +79,30 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
         clbItems.SelectedIndex = newIndex;
     }
 
-    private void kbtnMoveDown_Click(object sender, EventArgs e)
+    private void kbtnMoveDown_Click(object? sender, EventArgs e)
     {
-        OutlookBarButton button = (OutlookBarButton)clbItems.SelectedItem;
+        if (clbItems.SelectedItem is not OutlookBarButton selectedButton)
+        {
+            return;
+        }
 
         int newIndex = clbItems.SelectedIndex + 2;
 
-        _items.Insert(newIndex, (OutlookBarButton)clbItems.SelectedItem);
+        _items.Insert(newIndex, selectedButton);
 
-        _items.Remove(button);
+        _items.Remove(selectedButton);
 
         FillList();
 
         clbItems.SelectedIndex = newIndex - 1;
     }
 
-    private void kbtnReset_Click(object sender, EventArgs e)
+    private void kbtnReset_Click(object? sender, EventArgs e)
     {
         kbtnCancel_Click(sender, e);
     }
 
-    private void kbtnOk_Click(object sender, EventArgs e)
+    private void kbtnOk_Click(object? sender, EventArgs e)
     {
         foreach (OutlookBarButton button in _items)
         {
@@ -103,13 +111,16 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
 
         for (int b = 0; b <= clbItems.CheckedItems.Count - 1; b++)
         {
-            ((OutlookBarButton)clbItems.CheckedItems[b]).Visible = true;
+            if (clbItems.CheckedItems[b] is OutlookBarButton button)
+            {
+                button.Visible = true;
+            }
         }
 
         Close();
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         _items.Clear();
 
@@ -119,7 +130,7 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
         }
     }
 
-    private void kclbItems_SelectedIndexChanged(object sender, EventArgs e)
+    private void kclbItems_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (clbItems.SelectedIndex == 0)
         {
@@ -147,7 +158,7 @@ public partial class OutlookBarNavigationPaneOptions : KryptonForm
         }
     }
 
-    private void OutlookBarNavigationPaneOptions_Load(object sender, EventArgs e)
+    private void OutlookBarNavigationPaneOptions_Load(object? sender, EventArgs e)
     {
 
     }

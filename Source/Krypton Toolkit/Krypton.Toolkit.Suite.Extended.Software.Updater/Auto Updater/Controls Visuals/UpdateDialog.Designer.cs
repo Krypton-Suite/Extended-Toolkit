@@ -222,9 +222,11 @@
             this.Name = "UpdateDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UpdateDialog";
+#pragma warning disable CS8622 // Nullability mismatch with WinForms event handlers
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateDialog_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UpdateDialog_FormClosed);
             this.Load += new System.EventHandler(this.UpdateDialog_Load);
+#pragma warning restore CS8622
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);

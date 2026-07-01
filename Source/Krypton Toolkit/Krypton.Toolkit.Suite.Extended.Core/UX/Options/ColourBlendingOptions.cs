@@ -48,7 +48,9 @@ public partial class ColourBlendingOptions : KryptonForm
     private Krypton.Navigator.KryptonPage kryptonPage1;
     private Krypton.Navigator.KryptonPage kryptonPage2;
     private Krypton.Navigator.KryptonPage kryptonPage3;
+#pragma warning disable CS0169 // Designer field
     private IContainer components;
+#pragma warning restore CS0169
     private KryptonLabel kryptonLabel1;
     private KryptonLabel kryptonLabel2;
     private KryptonLabel kryptonLabel3;
@@ -367,7 +369,7 @@ public partial class ColourBlendingOptions : KryptonForm
         this.kcbBaseColour.Name = "kcbBaseColour";
         this.kcbBaseColour.Size = new(179, 25);
         this.kcbBaseColour.TabIndex = 90;
-        this.kcbBaseColour.Values.Image = (System.Drawing.Image)resources.GetObject("kcbBaseColour.Values.Image");
+        this.kcbBaseColour.Values.Image = (Image)resources.GetObject("kcbBaseColour.Values.Image")!;
         this.kcbBaseColour.Values.RoundedCorners = 8;
         this.kcbBaseColour.Values.Text = "&Choose a Base Colour";
         // 
@@ -691,7 +693,7 @@ public partial class ColourBlendingOptions : KryptonForm
         // 
         // bsaReset
         // 
-        this.bsaReset.Image = (System.Drawing.Image)resources.GetObject("bsaReset.Image");
+        this.bsaReset.Image = (Image)resources.GetObject("bsaReset.Image")!;
         this.bsaReset.UniqueName = "e5d4e65c1b2f460a80f02567f0a10106";
         // 
         // bsaBrowse
@@ -765,72 +767,72 @@ public partial class ColourBlendingOptions : KryptonForm
     }
     #endregion
 
-    private void ColourBlendingOptions_Load(object sender, EventArgs e)
+    private void ColourBlendingOptions_Load(object? sender, EventArgs e)
     {
         InitialiseWindow();
     }
 
-    private void knumDarkColourIntensityValue_ValueChanged(object sender, EventArgs e)
+    private void knumDarkColourIntensityValue_ValueChanged(object? sender, EventArgs e)
     {
         UpdateFeedback(klblDarkColourIntensityValueOutput, knumDarkColourIntensityValue.Value);
     }
 
-    private void knumMiddleColourIntensityValue_ValueChanged(object sender, EventArgs e)
+    private void knumMiddleColourIntensityValue_ValueChanged(object? sender, EventArgs e)
     {
         ToggleButtons(true);
     }
 
-    private void knumLightColourIntensityValue_ValueChanged(object sender, EventArgs e)
+    private void knumLightColourIntensityValue_ValueChanged(object? sender, EventArgs e)
     {
         ToggleButtons(true);
     }
 
-    private void knumLightestColourIntensityValue_ValueChanged(object sender, EventArgs e)
+    private void knumLightestColourIntensityValue_ValueChanged(object? sender, EventArgs e)
     {
         ToggleButtons(true);
     }
 
-    private void kbtnDarkColourIntensityValueMinus_Click(object sender, EventArgs e)
+    private void kbtnDarkColourIntensityValueMinus_Click(object? sender, EventArgs e)
     {
         knumDarkColourIntensityValue.Increment = -1;
     }
 
-    private void kbtnMiddleColourIntensityValueMinus_Click(object sender, EventArgs e)
+    private void kbtnMiddleColourIntensityValueMinus_Click(object? sender, EventArgs e)
     {
         knumMiddleColourIntensityValue.Increment = -1;
     }
 
-    private void kbtnLightColourIntensityValueMinus_Click(object sender, EventArgs e)
+    private void kbtnLightColourIntensityValueMinus_Click(object? sender, EventArgs e)
     {
         knumLightColourIntensityValue.Increment = -1;
     }
 
-    private void kbtnLightestColourIntensityValueMinus_Click(object sender, EventArgs e)
+    private void kbtnLightestColourIntensityValueMinus_Click(object? sender, EventArgs e)
     {
         knumLightestColourIntensityValue.Increment = -1;
     }
 
-    private void kbnDarkestColourIntensityValuePlus_Click(object sender, EventArgs e)
+    private void kbnDarkestColourIntensityValuePlus_Click(object? sender, EventArgs e)
     {
         knumDarkColourIntensityValue.Increment = knumDarkColourIntensityValue.Value + 1;
     }
 
-    private void kbtnMiddleColourIntensityValuePlus_Click(object sender, EventArgs e)
+    private void kbtnMiddleColourIntensityValuePlus_Click(object? sender, EventArgs e)
     {
         knumMiddleColourIntensityValue.Increment = knumMiddleColourIntensityValue.Value + 1;
     }
 
-    private void kbtLightColourIntensityValuePlus_Click(object sender, EventArgs e)
+    private void kbtLightColourIntensityValuePlus_Click(object? sender, EventArgs e)
     {
         knumLightColourIntensityValue.Increment = knumLightColourIntensityValue.Value + 1;
     }
 
-    private void kbtnLightestColourIntensityValuePlus_Click(object sender, EventArgs e)
+    private void kbtnLightestColourIntensityValuePlus_Click(object? sender, EventArgs e)
     {
         knumLightestColourIntensityValue.Increment = knumLightestColourIntensityValue.Value + 1;
     }
 
-    private void kbtnResetValues_Click(object sender, EventArgs e)
+    private void kbtnResetValues_Click(object? sender, EventArgs e)
     {
         _colourBlendingSettingsManager.ResetColourBlendingValues(_globalBooleanSettingsManager.GetUsePromptFeedback());
 
@@ -842,7 +844,7 @@ public partial class ColourBlendingOptions : KryptonForm
         kmtxtFilePath.Text = $"{Environment.SpecialFolder.MyDocuments}\\Krypton Palettes";
     }
 
-    private void UpdateValues_Tick(object sender, EventArgs e)
+    private void UpdateValues_Tick(object? sender, EventArgs e)
     {
         ColourUtilities.GenerateColourShades(cbxDarkColourPreview, cbxMediumColourPreview, cbxLightColourPreview, cbxLightestColourPreview, Convert.ToSingle(knumDarkColourIntensityValue.Value), Convert.ToSingle(knumMiddleColourIntensityValue.Value), Convert.ToSingle(knumLightColourIntensityValue.Value), Convert.ToSingle(knumLightestColourIntensityValue.Value), kcbBaseColour.SelectedColor);
     }
@@ -891,13 +893,13 @@ public partial class ColourBlendingOptions : KryptonForm
     }
     #endregion
 
-    private void kbtnBrowse_Click(object sender, EventArgs e)
+    private void kbtnBrowse_Click(object? sender, EventArgs e)
     {
         CommonOpenFileDialog commonOpenFileDialog = new();
 
         commonOpenFileDialog.IsFolderPicker = true;
 
-        if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+        if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(commonOpenFileDialog.FileName))
         {
             kmtxtFilePath.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
         }
@@ -905,12 +907,12 @@ public partial class ColourBlendingOptions : KryptonForm
         ToggleButtons(true);
     }
 
-    private void kbtnRestore_Click(object sender, EventArgs e)
+    private void kbtnRestore_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void kmtxtFilePath_TextChanged(object sender, EventArgs e)
+    private void kmtxtFilePath_TextChanged(object? sender, EventArgs e)
     {
         kbtnResetValues.Enabled = true;
 

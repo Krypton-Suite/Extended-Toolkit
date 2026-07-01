@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -50,7 +50,7 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     private InputBoxWrappedMessageTextAlignment _textWrappedMessageTextAlignment;
     private InputBoxButtons _buttons;
     private InputBoxButtonFocus _focusedButton;
-    private Image _customImage;
+    private Image? _customImage;
     private Properties.Resources _resources = new();
     private GlobalTypefaceSettingsManager _typefaceSettings = new();
 
@@ -89,7 +89,7 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     public KryptonInputBoxExtendedFormTest(string prompt, string caption,
         string defaultResponse, string cueText,
         Color cueColour,
-        Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+        Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
         InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
         InputBoxTextAlignment textAlignment,
         InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment,
@@ -126,11 +126,11 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     /// <param name="customImage">The custom image.</param>
     /// <param name="initialDateTime">The initial date time.</param>
     private void SetupUI(string prompt, string caption, string defaultResponse, string cueText, Color cueColour,
-        Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+        Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
         InputBoxIconType iconType, KryptonInputBoxResponseType inputType,
         InputBoxTextAlignment textAlignment,
         InputBoxWrappedMessageTextAlignment textWrappedMessageTextAlignment, InputBoxButtons buttons,
-        InputBoxButtonFocus focusedButton, Image customImage, DateTime? initialDateTime = null)
+        InputBoxButtonFocus focusedButton, Image? customImage, DateTime? initialDateTime = null)
     {
         StoreValues(cueColour, prompt, caption, defaultResponse, cueText, cueTypeface, buttonTypeface, promptTypeface,
             iconType, inputType, textAlignment, textWrappedMessageTextAlignment,
@@ -187,12 +187,12 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     /// <param name="customImage">The custom image.</param>
     /// <param name="initialDateTime">The initial date time.</param>
     private void StoreValues(Color cueColour, string prompt, string caption, string defaultResponse, string cueText,
-        Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+        Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
         InputBoxIconType? iconType, KryptonInputBoxResponseType? inputType,
         InputBoxTextAlignment? textAlignment,
         InputBoxWrappedMessageTextAlignment? textWrappedMessageTextAlignment,
         InputBoxButtons? buttons, InputBoxButtonFocus? focusedButton,
-        Image customImage, DateTime? initialDateTime)
+        Image? customImage, DateTime? initialDateTime)
     {
         _cueColour = cueColour;
         _prompt = prompt;
@@ -208,7 +208,7 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
         _textWrappedMessageTextAlignment = textWrappedMessageTextAlignment ?? InputBoxWrappedMessageTextAlignment.MiddleLeft;
         _buttons = buttons ?? InputBoxButtons.Ok;
         _focusedButton = focusedButton ?? InputBoxButtonFocus.ButtonFour;
-        _customImage = customImage ?? null;
+        _customImage = customImage;
         _initialDateTime = initialDateTime ?? DateTime.Now;
     }
 
@@ -514,36 +514,17 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     /// <returns>The input response string.</returns>
     private string GetInputResponse()
     {
-        string output = string.Empty;
-
-        if (_inputType == KryptonInputBoxResponseType.ComboBox)
+        string output = _inputType switch
         {
-            output = kcmbResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.DateTimePicker)
-        {
-            output = kdtpResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.MaskedTextBox)
-        {
-            output = kmtxResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.None)
-        {
-            output = string.Empty;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.PasswordBox)
-        {
-            output = ktxtResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.RichTextBox)
-        {
-            output = krtbResponse.Text;
-        }
-        else if (_inputType == KryptonInputBoxResponseType.TextBox)
-        {
-            output = ktxtResponse.Text;
-        }
+            KryptonInputBoxResponseType.ComboBox => kcmbResponse.Text,
+            KryptonInputBoxResponseType.DateTimePicker => kdtpResponse.Text,
+            KryptonInputBoxResponseType.MaskedTextBox => kmtxResponse.Text,
+            KryptonInputBoxResponseType.None => string.Empty,
+            KryptonInputBoxResponseType.PasswordBox => ktxtResponse.Text,
+            KryptonInputBoxResponseType.RichTextBox => krtbResponse.Text,
+            KryptonInputBoxResponseType.TextBox => ktxtResponse.Text,
+            _ => string.Empty
+        };
 
         return output;
     }
@@ -683,9 +664,9 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
     /// <param name="customImage">The custom image.</param>
     /// <param name="initialDateTime">The initial date time.</param>
     /// <returns>The users input string.</returns>
-    internal static string InternalShow(IWin32Window owner, string prompt, string caption,
+    internal static string InternalShow(IWin32Window? owner, string prompt, string caption,
         string defaultResponse, string cueText, Color cueColour,
-        Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+        Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
         InputBoxIconType iconType,
         KryptonInputBoxResponseType inputType,
         InputBoxTextAlignment textAlignment,
@@ -694,7 +675,7 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
         InputBoxButtonFocus focusedButton = InputBoxButtonFocus.ButtonFour,
         Image? customImage = null, DateTime? initialDateTime = null)
     {
-        IWin32Window showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
+        IWin32Window? showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
 
         using KryptonInputBoxExtendedFormTest kibe = new(prompt, caption, defaultResponse, cueText, cueColour,
             cueTypeface, buttonTypeface, promptTypeface,
@@ -707,7 +688,7 @@ public partial class KryptonInputBoxExtendedFormTest : KryptonForm
         return kibe.ShowDialog(showOwner) == DialogResult.OK ? kibe.InputResponse : string.Empty;
     }
 
-    private void Response_KeyDown(object sender, KeyEventArgs e)
+    private void Response_KeyDown(object? sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter)
         {

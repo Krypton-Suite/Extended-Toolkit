@@ -226,30 +226,15 @@ public class HashingHelper
     /// <param name="hashLength">Length of the hash.</param>
     public static void UpdateHashType(KryptonComboBox box, int hashLength)
     {
-        if (hashLength == 32)
+        box.Text = hashLength switch
         {
-            box.Text = "MD5";
-        }
-        else if (hashLength == 40)
-        {
-            box.Text = "SHA-1";
-        }
-        else if (hashLength == 64)
-        {
-            box.Text = "SHA-256";
-        }
-        else if (hashLength == 96)
-        {
-            box.Text = "SHA-384";
-        }
-        else if (hashLength == 128)
-        {
-            box.Text = "SHA-512";
-        }
-        else
-        {
-            box.Text = "RIPEMD-160";
-        }
+            32 => "MD5",
+            40 => "SHA-1",
+            64 => "SHA-256",
+            96 => "SHA-384",
+            128 => "SHA-512",
+            _ => "RIPEMD-160"
+        };
     }
     #endregion
 }

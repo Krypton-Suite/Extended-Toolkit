@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -34,7 +34,7 @@ public partial class SystemInformationWindow : KryptonForm
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer components = null!;
 
     #region Windows Form Designer generated code
 
@@ -838,7 +838,7 @@ public partial class SystemInformationWindow : KryptonForm
     ];
     private KryptonPanel kryptonPanel2;
     private KryptonBorderEdge kryptonBorderEdge1;
-    private Control _targetControl = null;
+    private Control _targetControl = null!;
     #endregion
 
     #region Properties
@@ -854,12 +854,12 @@ public partial class SystemInformationWindow : KryptonForm
         InitializeComponent();
     }
 
-    private void kbtnClose_Click(object sender, EventArgs e)
+    private void kbtnClose_Click(object? sender, EventArgs e)
     {
         Hide();
     }
 
-    private void SystemInformationWindow_Load(object sender, EventArgs e)
+    private void SystemInformationWindow_Load(object? sender, EventArgs e)
     {
         foreach (string win32Class in stringWin32classes)
         {

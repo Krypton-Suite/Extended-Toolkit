@@ -329,7 +329,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
 
     }
 
-    private void OnScrollChanged(object sender, EventArgs e)
+    private void OnScrollChanged(object? sender, EventArgs e)
     {
         // Request a layout be performed immediately
         PerformNeedPaint(false);
@@ -367,6 +367,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     [Bindable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [System.Diagnostics.CodeAnalysis.AllowNull]
     public override string Text
     {
         get => base.Text;
@@ -393,6 +394,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     [Bindable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [System.Diagnostics.CodeAnalysis.AllowNull]
     public override Font Font
     {
         get => base.Font;
@@ -575,7 +577,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     /// Gets or sets the tree node that is currently selected in the tree view control.
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public VirtualTreeRowNode SelectedNode
+    public VirtualTreeRowNode? SelectedNode
     {
         get => _treeView.SelectedNode;
         set => _treeView.SelectedNode = value;
@@ -643,7 +645,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     [Category("Behavior")]
     [Description("The ImageList used by the control for custom states.")]
     [DefaultValue(null)]
-    public ImageList StateImageList
+    public ImageList? StateImageList
     {
         get => _treeView.StateImageList;
         set => _treeView.StateImageList = value;
@@ -851,7 +853,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     /// </summary>
     /// <param name="pt">The Point to evaluate and retrieve the node from. </param>
     /// <returns>The TreeNode at the specified point, in tree view (client) coordinates, or null if there is no node at that location.</returns>
-    public VirtualTreeRowNode GetNodeAt(Point pt) => GetNodeAt(pt.X, pt.Y);
+    public VirtualTreeRowNode? GetNodeAt(Point pt) => GetNodeAt(pt.X, pt.Y);
 
     /// <summary>
     /// Retrieves the tree node at the point with the specified client coord coordinates.
@@ -859,7 +861,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     /// <param name="x">The X position to evaluate and retrieve the node from.</param>
     /// <param name="y">The Y position to evaluate and retrieve the node from.</param>
     /// <returns>The TreeNode at the specified location, in tree view (client) coordinates, or null if there is no node at that location.</returns>
-    public VirtualTreeRowNode GetNodeAt(int x, int y) => _treeView.GetRowNodeAt(x, y);
+    public VirtualTreeRowNode? GetNodeAt(int x, int y) => _treeView.GetRowNodeAt(x, y);
 
     /// <summary>
     /// Retrieves the number of tree nodes, optionally including those in all subtrees, assigned to the tree view control.
@@ -1062,7 +1064,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     /// </summary>
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-    protected override void OnPaletteNeedPaint(object sender, NeedLayoutEventArgs e)
+    protected override void OnPaletteNeedPaint(object? sender, NeedLayoutEventArgs e)
     {
         UpdateItemHeight();
         base.OnPaletteChanged(e);
@@ -1145,9 +1147,9 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     /// Raises the Paint event.
     /// </summary>
     /// <param name="e">An PaintEventArgs that contains the event data.</param>
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
-        if (IsDisposed || Disposing || ViewManager == null)
+        if (e is null || IsDisposed || Disposing || ViewManager == null)
         {
             return;
         }
@@ -1200,7 +1202,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
     /// </summary>
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-    protected override void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+    protected override void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
     {
         if (IsHandleCreated && !e.NeedLayout)
         {
@@ -1309,7 +1311,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
         {
             // TODO: Get the correct palette settings to use (i.e. enabled -> disabled)
             _treeView.ViewDrawPanel.SetPalettes(_background.PaletteBack);
-            _drawDockerOuter.SetPalettes(_background.PaletteBack, _background.PaletteBorder);
+            _drawDockerOuter.SetPalettes(_background.PaletteBack, _background.PaletteBorder!);
             _drawDockerOuter.Enabled = Enabled;
 
             // Find the new state of the main view element
@@ -1354,7 +1356,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
         }
     }
 
-    private void UpdateContentFromNode(VirtualTreeRowNode node)
+    private void UpdateContentFromNode(VirtualTreeRowNode? node)
     {
         if (node != null)
         {
@@ -1425,7 +1427,7 @@ public class KryptonVirtualTreeColumnView : VisualSimpleBase
 
     #region Private
 
-    private void OnTreeClick(object sender, EventArgs e) => OnClick(e);
+    private void OnTreeClick(object? sender, EventArgs e) => OnClick(e);
 
     #endregion Private
 

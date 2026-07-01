@@ -42,6 +42,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     #endregion
 
     #region Instance Fields
+#pragma warning disable CS0169, CS0414, CS0649
     private bool _activated;
     private bool _windowActive;
     private bool _trackingMouse;
@@ -67,6 +68,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     private FadeManager _fadeManager;
 
     private readonly FadeController _fadeController;
+#pragma warning restore CS0169, CS0414, CS0649
     #endregion
 
     #region Events
@@ -966,7 +968,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">An EventArgs containing the event data.</param>
-    protected virtual void OnAllowFormChromeChanged(object sender, EventArgs e)
+    protected virtual void OnAllowFormChromeChanged(object? sender, EventArgs e)
     {
     }
 
@@ -1146,7 +1148,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     /// <param name="m">A Windows-based message.</param>
     protected virtual void OnWM_GETMINMAXINFO(ref Message m)
     {
-        PlatformInvoke.MINMAXINFO mmi = (PlatformInvoke.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(PlatformInvoke.MINMAXINFO));
+        PlatformInvoke.MINMAXINFO mmi = (PlatformInvoke.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(PlatformInvoke.MINMAXINFO))!;
 
         // Adjust the maximized size and position to fit the work area of the correct monitor
         const int MONITOR_DEFAULT_TO_NEAREST = 0x00000002;
@@ -1195,7 +1197,7 @@ public abstract class VisualForm : Form, IKryptonDebug
             Padding borders = FormBorderStyle == FormBorderStyle.None ? Padding.Empty : RealWindowBorders;
 
             // Extract the Win32 NCCALCSIZE_PARAMS structure from LPARAM
-            PlatformInvoke.NCCALCSIZE_PARAMS calcsize = (PlatformInvoke.NCCALCSIZE_PARAMS)m.GetLParam(typeof(PlatformInvoke.NCCALCSIZE_PARAMS));
+            PlatformInvoke.NCCALCSIZE_PARAMS calcsize = (PlatformInvoke.NCCALCSIZE_PARAMS)m.GetLParam(typeof(PlatformInvoke.NCCALCSIZE_PARAMS))!;
                 
             // Reduce provided RECT by the borders
             calcsize.rectProposed.left += borders.Left;

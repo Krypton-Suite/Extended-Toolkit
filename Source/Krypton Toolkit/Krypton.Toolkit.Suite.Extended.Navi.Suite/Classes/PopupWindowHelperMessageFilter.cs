@@ -44,11 +44,11 @@ public class PopupWindowHelperMessageFilter : IMessageFilter
     /// <summary>
     /// The popup form
     /// </summary>
-    private KryptonForm popup = null;
+    private KryptonForm? popup;
     /// <summary>
     /// The owning <see cref="PopupWindowHelper"/> object.
     /// </summary>
-    private PopupWindowHelper owner = null;
+    private PopupWindowHelper owner;
 
     /// <summary>
     /// Constructs a new instance of this class and sets the owning
@@ -64,7 +64,7 @@ public class PopupWindowHelperMessageFilter : IMessageFilter
     /// <summary>
     /// Gets/sets the popup form which is being displayed.
     /// </summary>
-    public KryptonForm Popup
+    public KryptonForm? Popup
     {
         get => this.popup;
         set => this.popup = value;
@@ -108,10 +108,10 @@ public class PopupWindowHelperMessageFilter : IMessageFilter
         // Get the cursor location
         Point cursorPos = Cursor.Position;
         // Check if it is within the popup form
-        if (!popup.Bounds.Contains(cursorPos))
+        if (!popup!.Bounds.Contains(cursorPos))
         {
             // If not, then call to see if it should be closed
-            OnCancelPopup(new PopupCancelEventArgs(popup, cursorPos));
+            OnCancelPopup(new PopupCancelEventArgs(popup!, cursorPos));
         }
     }
 

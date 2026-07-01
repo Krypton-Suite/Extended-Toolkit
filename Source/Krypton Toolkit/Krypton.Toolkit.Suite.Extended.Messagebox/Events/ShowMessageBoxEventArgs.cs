@@ -25,6 +25,8 @@
  */
 #endregion
 
+#pragma warning disable CS0169 // Field is never used
+
 namespace Krypton.Toolkit.Suite.Extended.Messagebox;
 
 /// <summary>

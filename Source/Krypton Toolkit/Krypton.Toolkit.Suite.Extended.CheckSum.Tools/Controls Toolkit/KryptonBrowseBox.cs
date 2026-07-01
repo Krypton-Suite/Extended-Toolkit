@@ -45,17 +45,17 @@ public class KryptonBrowseBox : KryptonTextBox
 
     private ButtonSpecAny _bsaReset;
 
-    private CommonFileDialogFilter _filter;
+    private CommonFileDialogFilter? _filter;
 
-    private CommonFileDialogFilterCollection _filterCollection;
+    private CommonFileDialogFilterCollection? _filterCollection;
 
-    private string _initialDirectory;
+    private string _initialDirectory = string.Empty;
 
-    private string _resetText;
+    private string? _resetText;
 
-    private string _resetTextToolTipHeading;
+    private string? _resetTextToolTipHeading;
 
-    private string _resetTextToolTipDescription;
+    private string? _resetTextToolTipDescription;
 
     private Image _smallResetImage;
 
@@ -92,12 +92,12 @@ public class KryptonBrowseBox : KryptonTextBox
     /// <summary>Gets or sets the file dialog filter. Please see <see cref="CommonFileDialogFilter"/> for more information.</summary>
     /// <value> The file dialog filter.</value>
     [DefaultValue(null), Description(@"Gets or sets the file dialog filter. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilter' for more information.")]
-    public CommonFileDialogFilter FileDialogFilter { get => _filter; set => _filter = value; }
+    public CommonFileDialogFilter? FileDialogFilter { get => _filter; set => _filter = value; }
 
     /// <summary>Gets or sets the file dialog filter collection. Please see <see cref="CommonFileDialogFilterCollection"/> for more information.</summary>
     /// <value>The file dialog filter collection.</value>
     [DefaultValue(null), Description(@"Gets or sets the file dialog filter collection. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilterCollection' for more information.")]
-    public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
+    public CommonFileDialogFilterCollection? FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
 
     /// <summary>Gets or sets the initial directory.</summary>
     /// <value>The initial directory.</value>
@@ -107,17 +107,17 @@ public class KryptonBrowseBox : KryptonTextBox
     /// <summary>Gets or sets the reset text.</summary>
     /// <value>The reset text.</value>
     [DefaultValue(@"&Reset"), Description(@"Gets or sets the reset text.")]
-    public string ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
+    public new string? ResetText { get => _resetText; set { _resetText = value; Invalidate(); } }
 
     /// <summary>Gets or sets the reset text tool tip heading.</summary>
     /// <value>The reset text tool tip heading.</value>
     [DefaultValue(@"Reset"), Description(@"Gets or sets the reset text tool tip heading.")]
-    public string ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
+    public string? ResetTextToolTipHeading { get => _resetTextToolTipHeading; set => _resetTextToolTipHeading = value; }
 
     /// <summary>Gets or sets the reset text tool tip description.</summary>
     /// <value>The reset text tool tip description.</value>
     [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
-    public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
+    public string? ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
 
     /// <summary>Gets or sets the small reset image.</summary>
     /// <value>The small reset image.</value>
@@ -156,17 +156,17 @@ public class KryptonBrowseBox : KryptonTextBox
 
         _bsaReset.ToolTipImage = _smallResetImage;
 
-        _bsaReset.ToolTipBody = _resetTextToolTipDescription;
+        _bsaReset.ToolTipBody = _resetTextToolTipDescription!;
 
-        _bsaReset.ToolTipTitle = _resetTextToolTipHeading;
+        _bsaReset.ToolTipTitle = _resetTextToolTipHeading!;
 
-        _bsaReset.Text = _resetText;
+        _bsaReset.Text = _resetText!;
 
         _bsaReset.Image = _smallResetImage;
 
         _bsaReset.KryptonCommand = _kcReset;
 
-        _kcReset.Text = _resetText;
+        _kcReset.Text = _resetText!;
 
         _bsaReset.Enabled = ButtonEnabled.False;
 
@@ -188,7 +188,7 @@ public class KryptonBrowseBox : KryptonTextBox
     /// <summary>Handles the Execute event of the Browse control.</summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void Browse_Execute(object sender, EventArgs e)
+    private void Browse_Execute(object? sender, EventArgs e)
     {
         if (_useSaveDialog)
         {
@@ -206,7 +206,8 @@ public class KryptonBrowseBox : KryptonTextBox
                 saveFileDialog.Filters.Add(_filter);
             }
 
-            if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok
+                && !string.IsNullOrEmpty(saveFileDialog.FileName))
             {
                 Text = Path.GetFullPath(saveFileDialog.FileName);
             }
@@ -227,7 +228,8 @@ public class KryptonBrowseBox : KryptonTextBox
                 dialog.Filters.Add(_filter);
             }
 
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok
+                && !string.IsNullOrEmpty(dialog.FileName))
             {
                 Text = Path.GetFullPath(dialog.FileName);
             }
@@ -237,7 +239,7 @@ public class KryptonBrowseBox : KryptonTextBox
     /// <summary>Handles the Execute event of the Reset control.</summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void Reset_Execute(object sender, EventArgs e)
+    private void Reset_Execute(object? sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(Text))
         {
@@ -253,7 +255,7 @@ public class KryptonBrowseBox : KryptonTextBox
 
     /// <summary>Raises the Paint event.</summary>
     /// <param name="e">A PaintEventArgs containing the event data.</param>
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         _bsaReset.Visible = _showResetButton;
 

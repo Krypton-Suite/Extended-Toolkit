@@ -31,10 +31,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications;
 public class KryptonToastNotificationManager : Component
 {
     #region Variables
+#pragma warning disable CS0169, CS0649 // Legacy designer/API fields; reserved for future use
     private ActionButtonType _actionButtonType;
+    private bool _fade;
+#pragma warning restore CS0169, CS0649
     private ActionType _actionType;
     private Color _borderColourOne, _borderColourTwo;
-    private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress, _showControlBox;
+    private bool _showActionButton, _showSubScript, _showTimeoutProgress, _showControlBox;
     private string _headerText, _contentText, _dismissButtonText, _processPath, _actionButtonText, _soundPath;
     private Stream _soundStream;
     private Image _customIconImage;

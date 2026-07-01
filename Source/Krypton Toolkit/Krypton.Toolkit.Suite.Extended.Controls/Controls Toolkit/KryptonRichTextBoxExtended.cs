@@ -219,7 +219,7 @@ public class KryptonRichTextBoxExtended : KryptonTextBox
 
         rECT.Right = checked((int)Math.Round((double)marginBounds.Right * 14.4));
 
-        IntPtr hdc = e.Graphics.GetHdc();
+        IntPtr hdc = e.Graphics!.GetHdc();
 
         fORMATRANGE.chrg = cHARRANGE;
 

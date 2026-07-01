@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -593,11 +593,11 @@ public class ColourEditorControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateFields(false);
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -637,11 +637,11 @@ public class ColourEditorControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnOrientationChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventOrientationChanged];
+        handler = (EventHandler?)this.Events[_eventOrientationChanged];
 
         handler?.Invoke(this, e);
     }
@@ -674,12 +674,12 @@ public class ColourEditorControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowAlphaChannelChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetControlStates();
         this.ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventShowAlphaChannelChanged];
+        handler = (EventHandler?)this.Events[_eventShowAlphaChannelChanged];
 
         handler?.Invoke(this, e);
     }
@@ -690,12 +690,12 @@ public class ColourEditorControl : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowColourSpaceLabelsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetControlStates();
         this.ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventShowColourSpaceLabelsChanged];
+        handler = (EventHandler?)this.Events[_eventShowColourSpaceLabelsChanged];
 
         handler?.Invoke(this, e);
     }
@@ -936,9 +936,9 @@ public class ColourEditorControl : UserControl, IColourEditor
         }
 #endif
 
-    private string AddSpaces(string text)
+    private string? AddSpaces(string text)
     {
-        string result;
+        string? result;
 
         //http://stackoverflow.com/a/272929/148962
 
@@ -977,19 +977,24 @@ public class ColourEditorControl : UserControl, IColourEditor
         }
 #endif
 
-    private void hexTextBox_DrawItem(object sender, DrawItemEventArgs e)
+    private void hexTextBox_DrawItem(object? sender, DrawItemEventArgs e)
     {
         // TODO: Really, this should be another control - ColorComboBox or ColorListBox etc.
 
         if (e.Index != -1)
         {
             Rectangle colorBox;
-            string name;
+            string? name;
             Color color;
 
             e.DrawBackground();
 
-            name = (string)hexTextBox.Items[e.Index];
+            name = hexTextBox.Items[e.Index] as string;
+            if (name is null)
+            {
+                return;
+            }
+
             color = Color.FromName(name);
             colorBox = new(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
 
@@ -1008,7 +1013,7 @@ public class ColourEditorControl : UserControl, IColourEditor
         }
     }
 
-    private void hexTextBox_DropDown(object sender, EventArgs e)
+    private void hexTextBox_DropDown(object? sender, EventArgs e)
     {
         if (hexTextBox.Items.Count == 0)
         {
@@ -1018,7 +1023,7 @@ public class ColourEditorControl : UserControl, IColourEditor
         }
     }
 
-    private void hexTextBox_KeyDown(object sender, KeyEventArgs e)
+    private void hexTextBox_KeyDown(object? sender, KeyEventArgs e)
     {
         switch (e.KeyCode)
         {
@@ -1036,13 +1041,16 @@ public class ColourEditorControl : UserControl, IColourEditor
         }
     }
 
-    private void hexTextBox_SelectedIndexChanged(object sender, EventArgs e)
+    private void hexTextBox_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (hexTextBox.SelectedIndex != -1)
         {
-            this.LockUpdates = true;
-            this.Colour = Color.FromName((string)hexTextBox.SelectedItem);
-            this.LockUpdates = false;
+            if (hexTextBox.SelectedItem is string selectedColourName)
+            {
+                this.LockUpdates = true;
+                this.Colour = Color.FromName(selectedColourName);
+                this.LockUpdates = false;
+            }
         }
     }
 
@@ -1080,7 +1088,7 @@ public class ColourEditorControl : UserControl, IColourEditor
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void ValueChangedHandler(object sender, EventArgs e)
+    private void ValueChangedHandler(object? sender, EventArgs e)
     {
         if (!this.LockUpdates)
         {

@@ -156,6 +156,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// Gets or sets the text associated with this control. 
     /// </summary>
     [Editor(@"System.ComponentModel.Design.MultilineStringEditor", typeof(UITypeEditor))]
+    [System.Diagnostics.CodeAnalysis.AllowNull]
     public override string Text
     {
         get => Values.Text;
@@ -754,7 +755,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-    protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+    protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         switch (e.PropertyName)
         {
@@ -778,9 +779,9 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     #endregion
 
     #region Implementation
-    private void OnButtonTextChanged(object sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
+    private void OnButtonTextChanged(object? sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
 
-    private void OnButtonClick(object sender, MouseEventArgs e)
+    private void OnButtonClick(object? sender, MouseEventArgs e)
     {
         // Raise the standard click event
         OnClick(EventArgs.Empty);
@@ -789,7 +790,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
         OnMouseClick(e);
     }
 
-    private void OnButtonSelect(object sender, MouseEventArgs e)
+    private void OnButtonSelect(object? sender, MouseEventArgs e)
     {
         // Take the focus if allowed
         if (CanFocus)

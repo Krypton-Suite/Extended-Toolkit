@@ -44,4 +44,5 @@ global using System.Web.Script.Serialization;
 global using System.Text.Json;
 #endif
 
+global using Krypton.Toolkit;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

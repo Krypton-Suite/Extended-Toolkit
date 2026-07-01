@@ -264,6 +264,11 @@ internal class KryptonMessageBoxManager : Component
     /// <param name="displayHelpButton"></param>
     /// <param name="messageBoxTypeface">The message box typeface.</param>
     /// <param name="customImageIcon">The custom image icon.</param>
+    /// <param name="applicationPath">The application path. To be used in conjunction with <see cref="ExtendedKryptonMessageBoxIcon.Application"/> type.</param>
+    /// <param name="linkDestination">The optional link label destination.</param>
+    /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
+    /// <param name="messageContainerType">Specifies a <see cref="ExtendedKryptonMessageBoxMessageContainerType"/> type.</param>
+    /// <param name="linkArea">Specifies the area within the <see cref="KryptonLinkWrapLabel"/> to be regarded as a link.</param>
     public KryptonMessageBoxManager(IWin32Window owner, string text, string caption,
         ExtendedMessageBoxButtons buttons,
         ExtendedKryptonMessageBoxIcon icon,
@@ -345,7 +350,7 @@ internal class KryptonMessageBoxManager : Component
         }
         else
         {
-            return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+            return KryptonMessageBoxExtended.Show(Owner!, Text, CaptionText,
                 MessageBoxButtons, MessageBoxIcon,
                 DefaultButton, Options,
                 HelpFilePath, HelpNavigator,
@@ -380,7 +385,7 @@ internal class KryptonMessageBoxManager : Component
         }
         else
         {
-            return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+            return KryptonMessageBoxExtended.Show(Owner!, Text, CaptionText,
                 MessageBoxButtons, MessageBoxIcon,
                 DefaultButton, Options,
                 HelpFilePath, HelpNavigator,

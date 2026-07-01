@@ -73,13 +73,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.5.132-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.2.58-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
 					</ItemGroup>
 				</When>
 
@@ -180,7 +180,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePack" Version="8.0.15.1" />
+		<PackageReference Include="WindowsAPICodePack" Version="8.0.15.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -196,6 +196,10 @@
 			<LastGenOutput>ToolkitSettingsResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
+
+
+
+
 
 	<!--Optimisation-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">

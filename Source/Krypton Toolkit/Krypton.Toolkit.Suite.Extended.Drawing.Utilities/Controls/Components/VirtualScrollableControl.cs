@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -384,7 +384,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.AutoScrollChanged;
 
@@ -402,7 +402,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollMarginChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.AutoScrollMarginChanged;
 
@@ -420,7 +420,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollMinSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AutoScrollPosition = this.AdjustPositionToSize(this.AutoScrollPosition);
         this.AdjustScrollbars();
@@ -441,7 +441,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollPositionChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.AutoScrollPositionChanged;
 

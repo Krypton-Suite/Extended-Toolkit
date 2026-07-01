@@ -61,7 +61,14 @@ public partial class KryptonNodeViewer : KryptonForm
         {
             NetworkNodeBrowser nb = new NetworkNodeBrowser();
 
-            foreach (string pc in nb.GetNetworkComputers())
+            ArrayList? computers = nb.GetNetworkComputers();
+
+            if (computers is null)
+            {
+                return;
+            }
+
+            foreach (string pc in computers)
             {
                 kcmbNodeList.Items.Add(pc);
             }

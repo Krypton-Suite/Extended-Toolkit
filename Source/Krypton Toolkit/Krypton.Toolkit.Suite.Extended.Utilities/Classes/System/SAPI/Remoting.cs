@@ -215,6 +215,7 @@ namespace System
 }
 
 
+#if NETFRAMEWORK
 namespace System.Runtime.InteropServices
 {
 
@@ -338,3 +339,4 @@ namespace System.Runtime.InteropServices
         public TypeLibTypeFlags Value => m_flags;
     }
 }
+#endif

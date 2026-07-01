@@ -39,17 +39,17 @@ public class MostRecentlyUsedFileManager
 
     private string _applicationName;
 
-    private string _clearListText;
+    private string _clearListText = "Clear List";
 
-    private string _subKeyName;
+    private string _subKeyName = string.Empty;
 
     #endregion
 
     #region Events
 
-    private Action<object, EventArgs> OnRecentFileClick;
+    private Action<object?, EventArgs> _recentFileClick = null!;
 
-    private Action<object, EventArgs> OnClearRecentFilesClick;
+    private Action<object?, EventArgs>? _clearRecentFilesClick;
 
     #endregion
 
@@ -68,7 +68,7 @@ public class MostRecentlyUsedFileManager
     /// <param name="onRecentFileClick">The on recent file click.</param>
     /// <param name="onClearRecentFilesClick">The on clear recent files click.</param>
     /// <exception cref="System.ArgumentException">Bad argument.</exception>
-    public MostRecentlyUsedFileManager(ToolStripMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs>? onClearRecentFilesClick = null)
+    public MostRecentlyUsedFileManager(ToolStripMenuItem parentMenuItem, string applicationName, Action<object?, EventArgs> onRecentFileClick, Action<object?, EventArgs>? onClearRecentFilesClick = null)
     {
         if (parentMenuItem == null || onRecentFileClick == null || applicationName == null || applicationName.Length == 0 || applicationName.Contains("\\"))
         {
@@ -79,9 +79,9 @@ public class MostRecentlyUsedFileManager
 
         _applicationName = applicationName;
 
-        OnClearRecentFilesClick = onClearRecentFilesClick;
+        _clearRecentFilesClick = onClearRecentFilesClick;
 
-        OnRecentFileClick = onRecentFileClick;
+        _recentFileClick = onRecentFileClick;
 
         _subKeyName = $"Software\\{applicationName}\\MostRecentlyUsed";
 
@@ -92,11 +92,11 @@ public class MostRecentlyUsedFileManager
 
     #region Implementation
 
-    private void OnClearRecentFiles_Click(object sender, EventArgs e)
+    private void OnClearRecentFiles_Click(object? sender, EventArgs e)
     {
         try
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(_subKeyName, true);
+            RegistryKey? key = Registry.CurrentUser.OpenSubKey(_subKeyName, true);
 
             if (key == null)
             {
@@ -121,15 +121,17 @@ public class MostRecentlyUsedFileManager
             DebugUtilities.NotImplemented(exc.ToString());
         }
 
-        if (OnClearRecentFilesClick != null)
+        if (_clearRecentFilesClick != null)
         {
-            OnClearRecentFilesClick(sender, e);
+            _clearRecentFilesClick(sender, e);
         }
     }
 
+    private void RecentFile_Click(object? sender, EventArgs e) => _recentFileClick(sender, e);
+
     private void RefreshRecentFilesMenu()
     {
-        RegistryKey key;
+        RegistryKey? key;
 
         string? value;
 
@@ -168,7 +170,7 @@ public class MostRecentlyUsedFileManager
 
             item = _parentMenuItem.DropDownItems.Add(value);
 
-            item.Click += new EventHandler(OnRecentFileClick);
+            item.Click += RecentFile_Click;
         }
 
         if (_parentMenuItem.DropDownItems.Count == 0)
@@ -193,11 +195,16 @@ public class MostRecentlyUsedFileManager
     {
         MostRecentlyUsedFileManager manager = new MostRecentlyUsedFileManager();
 
-        string value;
+        string? value;
 
         try
         {
             RegistryKey? key = Registry.CurrentUser.CreateSubKey(manager._subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
+
+            if (key is null)
+            {
+                return;
+            }
 
             for (int i = 0; true; i++)
             {
@@ -229,13 +236,18 @@ public class MostRecentlyUsedFileManager
 
     public void AddRecentFile(string fileNameWithFullPath)
     {
-        string value = null;
+        string? value = null;
 
         try
         {
             // Create or append a registry key
-            RegistryKey key =
+            RegistryKey? key =
                 Registry.CurrentUser.CreateSubKey(_subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
+
+            if (key is null)
+            {
+                return;
+            }
 
             for (int i = 0; true; i++)
             {

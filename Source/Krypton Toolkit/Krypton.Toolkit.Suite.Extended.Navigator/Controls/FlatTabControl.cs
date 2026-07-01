@@ -35,16 +35,18 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator;
 [ToolboxBitmap(typeof(TabControl)), ToolboxItem(false)] //,
 public class FlatTabControl : TabControl
 {
-    private IContainer components;
+#pragma warning disable CS0649 // Designer field; reserved for component container
+    private IContainer? components;
+#pragma warning restore CS0649
 
     /// <summary> 
     /// Required designer variable.
     /// </summary>
     /// 
     #region ... Declarations ...
-    private SubClass scUpDown = null;
+    private SubClass? scUpDown = null;
     private bool bUpDown; // true when the button UpDown is required
-    private ImageList leftRightImages = null;
+    private ImageList? leftRightImages = null;
     private const int nMargin = 5;
 
     private Rectangle m_closeRect = new Rectangle();
@@ -326,7 +328,7 @@ public class FlatTabControl : TabControl
         //leftRightImages.ImageSize = new Size(16, 16); // default
 
         System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FlatTabControl));
-        Bitmap updownImage = (Bitmap)resources.GetObject("TabIcons.bmp");
+        Bitmap? updownImage = (Bitmap?)resources.GetObject("TabIcons.bmp");
 
         if (updownImage != null)
         {
@@ -358,7 +360,7 @@ public class FlatTabControl : TabControl
                 components.Dispose();
             }
 
-            leftRightImages.Dispose();
+            leftRightImages?.Dispose();
         }
         base.Dispose(disposing);
     }
@@ -369,7 +371,7 @@ public class FlatTabControl : TabControl
         //selected, if so, do not process the base event.
         try
         {
-            if (!e.TabPage.ClientRectangle.Contains(m_closeRect))
+            if (e.TabPage == null || !e.TabPage.ClientRectangle.Contains(m_closeRect))
             { base.OnSelecting(e); }
         }
         catch (Exception ex)
@@ -439,13 +441,13 @@ public class FlatTabControl : TabControl
 
         base.OnMouseClick(e);
     }
-    private void this_MouseClick(object sender, MouseEventArgs e)
+    private void this_MouseClick(object? sender, MouseEventArgs e)
     {
         Point mouse;
         try
         {
             mouse = e.Location;
-            if (sender.Equals(Parent))
+            if (sender != null && sender.Equals(Parent))
             {
                 mouse.Y = e.Location.Y - Location.Y;
                 mouse.X = e.Location.X - Location.X;
@@ -463,11 +465,11 @@ public class FlatTabControl : TabControl
 
     }
 
-    private void this_ParentChanged(object sender, EventArgs e)
+    private void this_ParentChanged(object? sender, EventArgs e)
     {
         try
         {
-            Parent.MouseClick += new MouseEventHandler(this_MouseClick);
+            Parent?.MouseClick += new MouseEventHandler(this_MouseClick);
         }
         catch (Exception ex)
         {
@@ -493,7 +495,7 @@ public class FlatTabControl : TabControl
 
     //bool FlagControl = false;
 
-    private void FlatTabControl_KeyDown(object sender, KeyEventArgs e)
+    private void FlatTabControl_KeyDown(object? sender, KeyEventArgs e)
     {
 
         if (e.KeyCode == Keys.Menu)
@@ -529,7 +531,7 @@ public class FlatTabControl : TabControl
         //bool bIsVisibleUpDown = false;
 
         // Check in UpDown Is visible
-        if (bUpDown)
+        if (bUpDown && scUpDown != null)
         {
             if (WIN32.IsWindowVisible(scUpDown.Handle))
             {
@@ -541,40 +543,27 @@ public class FlatTabControl : TabControl
         if (_allowCloseButton == true)
         {
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(FlatTabControl));
-            Bitmap closeImage = (Bitmap)resources.GetObject("CloseIcon.bmp");
+            Bitmap? closeImage = (Bitmap?)resources.GetObject("CloseIcon.bmp");
+
+            if (closeImage == null)
+            {
+                return;
+            }
 
             closeImage.MakeTransparent(Color.White);
 
-            if (Alignment == TabAlignment.Top)
+            m_closeRect = Alignment switch
             {
-                //if (bIsVisibleUpDown)
-                //{
-                //    m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 56, ClientRectangle.Y + 8, 14, 14);
-                //}
-                //else
-                //{
-                m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18, ClientRectangle.Y + 8, 14, 14);
-                //}
-            }
-            else if (Alignment == TabAlignment.Right)
-            {
-                m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 21, ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14);
-            }
-            else if (Alignment == TabAlignment.Left)
-            {
-                m_closeRect = new Rectangle(ClientRectangle.X + 8, ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14);
-            }
-            else if (Alignment == TabAlignment.Bottom)
-            {
-                //if (bIsVisibleUpDown)
-                //{
-                //    m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 56, ClientRectangle.Y + ClientRectangle.Height - 21, 14, 14);
-                //}
-                //else
-                //{
-                m_closeRect = new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18, ClientRectangle.Y + ClientRectangle.Height - 21, 14, 14);
-                //}
-            }
+                TabAlignment.Top => new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18, ClientRectangle.Y + 8,
+                    14, 14),
+                TabAlignment.Right => new Rectangle(ClientRectangle.X + ClientRectangle.Width - 21,
+                    ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14),
+                TabAlignment.Left => new Rectangle(ClientRectangle.X + 8,
+                    ClientRectangle.Y + ClientRectangle.Height - 18, 14, 14),
+                TabAlignment.Bottom => new Rectangle(ClientRectangle.X + ClientRectangle.Width - 18,
+                    ClientRectangle.Y + ClientRectangle.Height - 21, 14, 14),
+                _ => m_closeRect
+            };
 
             //paint border and backcolor of the button
             Rectangle closeBorder = m_closeRect;
@@ -637,7 +626,7 @@ public class FlatTabControl : TabControl
             nWidth -= 20;
         }
 
-        if (bUpDown)
+        if (bUpDown && scUpDown != null)
         {
             // exclude updown control for painting
             if (WIN32.IsWindowVisible(scUpDown.Handle))
@@ -750,13 +739,12 @@ public class FlatTabControl : TabControl
 
         //bool bHotselected = false;
 
-        if (bSelected && !bHot)
-        { Status = DrawingMethods.TabHeaderStatus.Selected; }
-        else if (bSelected && bHot)
+        Status = bSelected switch
         {
-            Status = DrawingMethods.TabHeaderStatus.HotSelected;
-            //bHotselected = true;
-        }
+            true when !bHot => DrawingMethods.TabHeaderStatus.Selected,
+            true when bHot => DrawingMethods.TabHeaderStatus.HotSelected,
+            _ => Status
+        };
 
         //Selected tab has to be highter
         if (!_allowSelectedTabHigh)
@@ -936,6 +924,11 @@ public class FlatTabControl : TabControl
 
     internal void DrawIcons(Graphics g)
     {
+        if (scUpDown == null)
+        {
+            return;
+        }
+
         if (leftRightImages == null || leftRightImages.Images.Count != 4)
         {
             return;
@@ -1028,20 +1021,20 @@ public class FlatTabControl : TabControl
         FindUpDown();
         Invalidate();
     }
-    private void FlatTabControl_VisibleChanged(object sender, EventArgs e)
+    private void FlatTabControl_VisibleChanged(object? sender, EventArgs e)
     {
         FindUpDown();
         //UpdateUpDown();
         bFirtsLoad = true;
     }
-    private void FlatTabControl_ControlAdded(object sender, ControlEventArgs e)
+    private void FlatTabControl_ControlAdded(object? sender, ControlEventArgs e)
     {
         FindUpDown();
         //UpdateUpDown();
         bFirtsLoad = true;
     }
 
-    private void FlatTabControl_ControlRemoved(object sender, ControlEventArgs e)
+    private void FlatTabControl_ControlRemoved(object? sender, ControlEventArgs e)
     {
         FindUpDown();
         //UpdateUpDown();
@@ -1054,7 +1047,7 @@ public class FlatTabControl : TabControl
         Update();
         Invalidate();	// we need to update border and background colors
     }
-    private void FlatTabControl_SelectedIndexChanged(object sender, EventArgs e)
+    private void FlatTabControl_SelectedIndexChanged(object? sender, EventArgs e)
     {
         UpdateUpDown();
         Update();
@@ -1084,11 +1077,11 @@ public class FlatTabControl : TabControl
             {
                 bFound = true;
                 // not updown or Handle = 0 or handle = null, recreate one
-                if (!bUpDown || scUpDown.Handle == IntPtr.Zero || scUpDown.Handle == null)
+                if (!bUpDown || scUpDown == null || scUpDown.Handle == IntPtr.Zero)
                 {
                     try
                     {
-                        if (scUpDown.Handle != null)
+                        if (scUpDown != null && scUpDown.Handle != IntPtr.Zero)
                         {
                             scUpDown.DestroyHandle();
                         }
@@ -1123,7 +1116,7 @@ public class FlatTabControl : TabControl
 
     private void UpdateUpDown()
     {
-        if (bUpDown)
+        if (bUpDown && scUpDown != null)
         {
             if (WIN32.IsWindowVisible(scUpDown.Handle))
             {
@@ -1171,6 +1164,11 @@ public class FlatTabControl : TabControl
         {
             case WIN32.WM_PAINT:
             {
+                if (scUpDown == null)
+                {
+                    break;
+                }
+
                 //------------------------
                 // redraw
                 IntPtr hDC = WIN32.GetWindowDC(scUpDown.Handle);

@@ -30,37 +30,37 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 public class KryptonVarifyFileCheckSumOld : KryptonForm
 {
     #region Design Code
-    private KryptonPanel kryptonPanel1;
-    private KryptonBorderEdge kryptonBorderEdge1;
-    private KryptonLabel kryptonLabel1;
-    private KryptonButton kbtnCancel;
-    private KryptonButton kbtnImportHash;
-    private KryptonGroupBox kryptonGroupBox2;
-    private KryptonGroupBox kryptonGroupBox1;
-    private KryptonWrapLabel kwlCalculatedCheckSum;
-    private KryptonButton kbtnCompute;
-    private KryptonComboBox kcmbAlgorithimType;
-    private KryptonLabel kryptonLabel2;
-    private KryptonButton kbtnValidate;
-    private KryptonTextBox ktxtVarifyCheckSum;
-    private KryptonContextMenuItems kryptonContextMenuItems1;
-    private KryptonContextMenuItems kryptonContextMenuItems2;
-    private ContextMenuStrip cmsCheckSumValidation;
-    private IContainer components;
-    private ToolStripMenuItem pasteCheckSumToolStripMenuItem;
-    private ToolStripSeparator toolStripMenuItem1;
-    private ToolStripMenuItem clearTextBoxToolStripMenuItem;
-    private StatusStrip ss;
-    private ToolStripStatusLabel tsslStatus;
-    private ToolStripProgressBar tspbHashProgress;
-    private BackgroundWorker bgRIPEMD160Hash;
-    private BackgroundWorker bgSHA512Hash;
-    private BackgroundWorker bgSHA384Hash;
-    private BackgroundWorker bgSHA256Hash;
-    private BackgroundWorker bgSHA1Hash;
-    private BackgroundWorker bgMD5Hash;
-    private CheckSum.Tools.KryptonBrowseBox kbbFilePath;
-    private KryptonPanel kryptonPanel2;
+    private KryptonPanel kryptonPanel1 = null!;
+    private KryptonBorderEdge kryptonBorderEdge1 = null!;
+    private KryptonLabel kryptonLabel1 = null!;
+    private KryptonButton kbtnCancel = null!;
+    private KryptonButton kbtnImportHash = null!;
+    private KryptonGroupBox kryptonGroupBox2 = null!;
+    private KryptonGroupBox kryptonGroupBox1 = null!;
+    private KryptonWrapLabel kwlCalculatedCheckSum = null!;
+    private KryptonButton kbtnCompute = null!;
+    private KryptonComboBox kcmbAlgorithimType = null!;
+    private KryptonLabel kryptonLabel2 = null!;
+    private KryptonButton kbtnValidate = null!;
+    private KryptonTextBox ktxtVarifyCheckSum = null!;
+    private KryptonContextMenuItems kryptonContextMenuItems1 = null!;
+    private KryptonContextMenuItems kryptonContextMenuItems2 = null!;
+    private ContextMenuStrip cmsCheckSumValidation = null!;
+    private IContainer components = null!;
+    private ToolStripMenuItem pasteCheckSumToolStripMenuItem = null!;
+    private ToolStripSeparator toolStripMenuItem1 = null!;
+    private ToolStripMenuItem clearTextBoxToolStripMenuItem = null!;
+    private StatusStrip ss = null!;
+    private ToolStripStatusLabel tsslStatus = null!;
+    private ToolStripProgressBar tspbHashProgress = null!;
+    private BackgroundWorker bgRIPEMD160Hash = null!;
+    private BackgroundWorker bgSHA512Hash = null!;
+    private BackgroundWorker bgSHA384Hash = null!;
+    private BackgroundWorker bgSHA256Hash = null!;
+    private BackgroundWorker bgSHA1Hash = null!;
+    private BackgroundWorker bgMD5Hash = null!;
+    private CheckSum.Tools.KryptonBrowseBox kbbFilePath = null!;
+    private KryptonPanel kryptonPanel2 = null!;
 
     private void InitializeComponent()
     {
@@ -384,7 +384,7 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         this.kbbFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
         this.kbbFilePath.CueHint.CueHintText = "Type a file path here...";
         this.kbbFilePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
-        this.kbbFilePath.LargeResetImage = (System.Drawing.Image)resources.GetObject("kbbFilePath.LargeResetImage");
+        this.kbbFilePath.LargeResetImage = (System.Drawing.Image)(resources.GetObject("kbbFilePath.LargeResetImage") ?? Properties.Resources.Reset_32_x_32);
         this.kbbFilePath.Location = new System.Drawing.Point(83, 13);
         this.kbbFilePath.Name = "kbbFilePath";
         this.kbbFilePath.ResetText = null;
@@ -392,7 +392,7 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         this.kbbFilePath.ResetTextToolTipHeading = null;
         this.kbbFilePath.ShowResetButton = true;
         this.kbbFilePath.Size = new System.Drawing.Size(614, 24);
-        this.kbbFilePath.SmallResetImage = (System.Drawing.Image)resources.GetObject("kbbFilePath.SmallResetImage");
+        this.kbbFilePath.SmallResetImage = (System.Drawing.Image)(resources.GetObject("kbbFilePath.SmallResetImage") ?? Properties.Resources.Reset_16_x_16);
         this.kbbFilePath.TabIndex = 12;
         // 
         // KryptonVarifyFileCheckSum
@@ -455,9 +455,12 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
     #endregion
 
     #region Hashing Work
-    private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
+    private void bgMD5Hash_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -493,9 +496,12 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         UpdateStatus($"Computing hash for: {FileNameWithoutExtension}");
     }
 
-    private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
+    private void bgSHA1Hash_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -529,9 +535,12 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
+    private void bgSHA256Hash_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -565,9 +574,12 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
+    private void bgSHA384Hash_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -601,9 +613,12 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
+    private void bgSHA512Hash_DoWork(object? sender, DoWorkEventArgs e)
     {
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -637,10 +652,13 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
+    private void bgRIPEMD160Hash_DoWork(object? sender, DoWorkEventArgs e)
     {
 #if !NETCOREAPP3_0_OR_GREATER
-        string filePath = e.Argument.ToString();
+        if (e.Argument is not string filePath)
+        {
+            return;
+        }
 
         byte[] buffer;
 
@@ -675,16 +693,16 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
 #endif
     }
 
-    private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+    private void ProgressChanged(object? sender, ProgressChangedEventArgs e)
     {
         kwlCalculatedCheckSum.Text = "Please wait...";
 
         tspbHashProgress.Value = e.ProgressPercentage;
     }
 
-    private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
-        kwlCalculatedCheckSum.Text = e.Result.ToString();
+        kwlCalculatedCheckSum.Text = e.Result?.ToString() ?? string.Empty;
 
         tspbHashProgress.Value = 0;
 
@@ -696,7 +714,7 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
 
     private string UpdateStatus(string status) => tsslStatus.Text = status;
 
-    private void kbtnValidate_Click(object sender, EventArgs e)
+    private void kbtnValidate_Click(object? sender, EventArgs e)
     {
         if (HelperMethods.IsValid(kwlCalculatedCheckSum.Text, ktxtVarifyCheckSum.Text.ToUpper()))
         {
@@ -716,7 +734,7 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void ktxtVarifyCheckSum_TextChanged(object sender, EventArgs e)
+    private void ktxtVarifyCheckSum_TextChanged(object? sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text))
         {
@@ -730,7 +748,7 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         clearTextBoxToolStripMenuItem.Enabled = !string.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
     }
 
-    private void kbtnCompute_Click(object sender, EventArgs e)
+    private void kbtnCompute_Click(object? sender, EventArgs e)
     {
         try
         {
@@ -748,14 +766,14 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+    private void kcmbAlgorithimType_SelectedIndexChanged(object? sender, EventArgs e) => kbtnCompute.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
 
-    private void kbtnImportHash_Click(object sender, EventArgs e)
+    private void kbtnImportHash_Click(object? sender, EventArgs e)
     {
         try
         {
@@ -783,7 +801,7 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void clearTextBoxToolStripMenuItem_Click(object sender, EventArgs e)
+    private void clearTextBoxToolStripMenuItem_Click(object? sender, EventArgs e)
     {
         DialogResult result = KryptonMessageBox.Show("Do you want to clear the textbox of its contents?", "Clear Hash Box", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
@@ -830,5 +848,5 @@ public class KryptonVarifyFileCheckSumOld : KryptonForm
         }
     }
 
-    private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e) => kbtnCompute.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+    private void kcmbAlgorithimType_TextChanged(object? sender, EventArgs e) => kbtnCompute.Enabled = string.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
 }

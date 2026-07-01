@@ -31,47 +31,47 @@ namespace Krypton.Toolkit.Suite.Extended.Core;
 public class InternalBasicPaletteCreator : KryptonForm
 {
     #region Design Code
-    private KryptonPanel kryptonPanel1;
-    private KryptonButton kbtnDebugConsole;
-    private KryptonButton kbtnOptions;
-    private KryptonButton kbtnImportColours;
-    private KryptonButton kbtnExportColours;
-    private KryptonButton kbtnGenerateColours;
-    private KryptonButton kryptonButton1;
-    private KryptonPanel kryptonPanel2;
-    private CircularPictureBox cpbxLightestColour;
-    private CircularPictureBox cpbxLightColour;
-    private CircularPictureBox cpbxMediumColour;
-    private CircularPictureBox cpbxDarkestColour;
-    private CircularPictureBox cpbxBaseColour;
-    private KryptonLabel kryptonLabel16;
-    private KryptonLabel kryptonLabel15;
-    private KryptonLabel kryptonLabel14;
-    private KryptonLabel kryptonLabel13;
-    private KryptonLabel kryptonLabel12;
-    private KryptonLabel kryptonLabel4;
-    private KryptonLabel kryptonLabel3;
-    private KryptonLabel kryptonLabel2;
-    private KryptonLabel kryptonLabel1;
-    private KryptonTrackBar ktbBlueValue;
-    private KryptonTrackBar ktbGreenValue;
-    private KryptonTrackBar ktbRedValue;
-    private KryptonTrackBar ktbAlphaValue;
-    private KryptonNumericUpDown knudBlueValue;
-    private KryptonNumericUpDown knudGreenValue;
-    private KryptonNumericUpDown knudRedValue;
-    private KryptonNumericUpDown knudAlphaValue;
-    private KryptonButton kbtnGenerateGreen;
-    private KryptonButton kbtnGenerateBlue;
-    private KryptonButton kbtnGenerateRed;
-    private KryptonTextBox ktxtHexadecimalValue;
-    private KryptonLabel kryptonLabel5;
-    private KryptonButton kbtnGenerateRandomColour;
-    private KryptonColorButton kcbtnChooseBaseColour;
-    private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-    private KryptonBorderEdge kryptonBorderEdge1;
-    private KryptonTableLayoutPanel kryptonTableLayoutPanel1;
-    private System.Windows.Forms.StatusStrip statusStrip1;
+    private KryptonPanel kryptonPanel1 = null!;
+    private KryptonButton kbtnDebugConsole = null!;
+    private KryptonButton kbtnOptions = null!;
+    private KryptonButton kbtnImportColours = null!;
+    private KryptonButton kbtnExportColours = null!;
+    private KryptonButton kbtnGenerateColours = null!;
+    private KryptonButton kryptonButton1 = null!;
+    private KryptonPanel kryptonPanel2 = null!;
+    private CircularPictureBox cpbxLightestColour = null!;
+    private CircularPictureBox cpbxLightColour = null!;
+    private CircularPictureBox cpbxMediumColour = null!;
+    private CircularPictureBox cpbxDarkestColour = null!;
+    private CircularPictureBox cpbxBaseColour = null!;
+    private KryptonLabel kryptonLabel16 = null!;
+    private KryptonLabel kryptonLabel15 = null!;
+    private KryptonLabel kryptonLabel14 = null!;
+    private KryptonLabel kryptonLabel13 = null!;
+    private KryptonLabel kryptonLabel12 = null!;
+    private KryptonLabel kryptonLabel4 = null!;
+    private KryptonLabel kryptonLabel3 = null!;
+    private KryptonLabel kryptonLabel2 = null!;
+    private KryptonLabel kryptonLabel1 = null!;
+    private KryptonTrackBar ktbBlueValue = null!;
+    private KryptonTrackBar ktbGreenValue = null!;
+    private KryptonTrackBar ktbRedValue = null!;
+    private KryptonTrackBar ktbAlphaValue = null!;
+    private KryptonNumericUpDown knudBlueValue = null!;
+    private KryptonNumericUpDown knudGreenValue = null!;
+    private KryptonNumericUpDown knudRedValue = null!;
+    private KryptonNumericUpDown knudAlphaValue = null!;
+    private KryptonButton kbtnGenerateGreen = null!;
+    private KryptonButton kbtnGenerateBlue = null!;
+    private KryptonButton kbtnGenerateRed = null!;
+    private KryptonTextBox ktxtHexadecimalValue = null!;
+    private KryptonLabel kryptonLabel5 = null!;
+    private KryptonButton kbtnGenerateRandomColour = null!;
+    private KryptonColorButton kcbtnChooseBaseColour = null!;
+    private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1 = null!;
+    private KryptonBorderEdge kryptonBorderEdge1 = null!;
+    private KryptonTableLayoutPanel kryptonTableLayoutPanel1 = null!;
+    private System.Windows.Forms.StatusStrip statusStrip1 = null!;
 
     private void InitializeComponent()
     {
@@ -280,7 +280,7 @@ public class InternalBasicPaletteCreator : KryptonForm
         this.kcbtnChooseBaseColour.Name = "kcbtnChooseBaseColour";
         this.kcbtnChooseBaseColour.Size = new(197, 25);
         this.kcbtnChooseBaseColour.TabIndex = 103;
-        this.kcbtnChooseBaseColour.Values.Image = (System.Drawing.Image)resources.GetObject("kcbtnChooseBaseColour.Values.Image");
+        this.kcbtnChooseBaseColour.Values.Image = resources.GetObject("kcbtnChooseBaseColour.Values.Image") as System.Drawing.Image;
         this.kcbtnChooseBaseColour.Values.RoundedCorners = 8;
         this.kcbtnChooseBaseColour.Values.Text = "Ch&oose a Base Colour";
         // 
@@ -579,7 +579,7 @@ public class InternalBasicPaletteCreator : KryptonForm
         // 
         // kryptonTableLayoutPanel1
         // 
-        this.kryptonTableLayoutPanel1.BackgroundImage = (System.Drawing.Image)resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage");
+        this.kryptonTableLayoutPanel1.BackgroundImage = resources.GetObject("kryptonTableLayoutPanel1.BackgroundImage") as System.Drawing.Image;
         this.kryptonTableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
         this.kryptonTableLayoutPanel1.ColumnCount = 1;
         this.kryptonTableLayoutPanel1.ColumnStyles.Add(new(System.Windows.Forms.SizeType.Percent, 100F));
@@ -657,7 +657,7 @@ public class InternalBasicPaletteCreator : KryptonForm
 
     private AllMergedPaletteColourSettingsManager _colourSettingsManager = new();
 
-    private Color _baseColour, _colourDark, _colourNormal, _colourLight, _colourLightness;
+    private Color _baseColour;
 
     private bool _paletteColourSelector;
     #endregion
@@ -757,7 +757,7 @@ public class InternalBasicPaletteCreator : KryptonForm
     }
     #endregion
 
-    private void InternalBasicPaletteCreator_Load(object sender, EventArgs e)
+    private void InternalBasicPaletteCreator_Load(object? sender, EventArgs e)
     {
 
     }

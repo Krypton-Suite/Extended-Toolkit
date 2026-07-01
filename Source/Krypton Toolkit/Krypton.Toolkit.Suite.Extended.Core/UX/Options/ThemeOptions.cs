@@ -36,14 +36,12 @@ public partial class ThemeOptions : KryptonForm
     private PaletteThemeSettingsManager _paletteThemeSettingsManager = new();
     private PaletteMode _paletteMode;
     private System.Windows.Forms.Timer _paletteUpdateTimer;
-    private ArrayList _themeList;
-    private AutoCompleteStringCollection _themeCollection;
     #endregion
 
     #region Properties        
     /// <summary>Gets or sets the palette mode.</summary>
     /// <value>The palette mode.</value>
-    public PaletteMode PaletteMode
+    public new PaletteMode PaletteMode
     {
         get => _paletteMode;
         set => _paletteMode = value;
@@ -205,7 +203,7 @@ public partial class ThemeOptions : KryptonForm
         // 
         // bsaReset
         // 
-        this.bsaReset.Image = (System.Drawing.Image)resources.GetObject("bsaReset.Image");
+        this.bsaReset.Image = (Image)resources.GetObject("bsaReset.Image")!;
         this.bsaReset.UniqueName = "1f0247d059a64ff792fa7879355b8bf1";
         this.bsaReset.Click += new(this.bsaReset_Click);
         // 
@@ -278,7 +276,7 @@ public partial class ThemeOptions : KryptonForm
         _paletteUpdateTimer.Tick += PaletteUpdateTimer_Tick;
     }
 
-    private void PaletteUpdateTimer_Tick(object sender, EventArgs e)
+    private void PaletteUpdateTimer_Tick(object? sender, EventArgs e)
     {
         //if (GetPaletteMode() == PaletteMode.Custom)
         //{
@@ -328,12 +326,12 @@ public partial class ThemeOptions : KryptonForm
     /// <param name="e">
     ///   The <see cref="EventArgs" /> instance containing the event data.
     /// </param>
-    private void ThemeOptions_Load(object sender, EventArgs e)
+    private void ThemeOptions_Load(object? sender, EventArgs e)
     {
         SetPaletteMode(_paletteThemeSettingsManager.GetTheme());
     }
 
-    private void kbtnApply_Click(object sender, EventArgs e)
+    private void kbtnApply_Click(object? sender, EventArgs e)
     {
         //_paletteThemeSettingsManager.SetTheme(GetPaletteMode());
 
@@ -352,14 +350,14 @@ public partial class ThemeOptions : KryptonForm
         //EnableApplyButton(false);
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         DialogResult = DialogResult.Cancel;
 
         Hide();
     }
 
-    private void kbtnOk_Click(object sender, EventArgs e)
+    private void kbtnOk_Click(object? sender, EventArgs e)
     {
 
     }
@@ -372,13 +370,13 @@ public partial class ThemeOptions : KryptonForm
 
         commonOpenFileDialog.Title = "Open a custom palette file:";
 
-        if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+        if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(commonOpenFileDialog.FileName))
         {
             ktxtCustomPath.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
         }
     }
 
-    private void ktxtCustomPath_TextChanged(object sender, EventArgs e)
+    private void ktxtCustomPath_TextChanged(object? sender, EventArgs e)
     {
         System.Windows.Forms.Timer update = new();
 
@@ -398,7 +396,7 @@ public partial class ThemeOptions : KryptonForm
         }
     }
 
-    private void Update_Tick(object sender, EventArgs e)
+    private void Update_Tick(object? sender, EventArgs e)
     {
         if (ktxtCustomPath.Text != string.Empty)
         {
@@ -436,12 +434,12 @@ public partial class ThemeOptions : KryptonForm
     }
     #endregion
 
-    private void kbtnLoadTheme_Click(object sender, EventArgs e)
+    private void kbtnLoadTheme_Click(object? sender, EventArgs e)
     {
         _palette.Import();
     }
 
-    private void kbtnRestoreToDefaults_Click(object sender, EventArgs e)
+    private void kbtnRestoreToDefaults_Click(object? sender, EventArgs e)
     {
         _paletteThemeSettingsManager.ResetPaletteThemeSettings(true);
 
@@ -470,19 +468,19 @@ public partial class ThemeOptions : KryptonForm
     //}
     #endregion
 
-    private void bsaBrowse_Click(object sender, EventArgs e)
+    private void bsaBrowse_Click(object? sender, EventArgs e)
     {
         LoadPalette();
     }
 
-    private void bsaReset_Click(object sender, EventArgs e)
+    private void bsaReset_Click(object? sender, EventArgs e)
     {
         ktxtCustomPath.Text = string.Empty;
 
         bsaBrowse.Enabled = ButtonEnabled.False;
     }
 
-    private void ktcmbTheme_TextChanged(object sender, EventArgs e)
+    private void ktcmbTheme_TextChanged(object? sender, EventArgs e)
     {
         if (ktcmbTheme.Text == @"Custom")
         {

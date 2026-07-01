@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -214,7 +214,7 @@ internal partial class ExceptionDetailControl : UserControl
         //? klvExceptions.SelectedIndexChanged += ExceptionsSelectedIndexChanged;
     }
 
-    private void ExceptionsSelectedIndexChanged(object sender, EventArgs e)
+    private void ExceptionsSelectedIndexChanged(object? sender, EventArgs e)
     {
         var displayException = CapturedException;
         foreach (ListViewItem lvi in klvExceptions.Items)
@@ -224,7 +224,12 @@ internal partial class ExceptionDetailControl : UserControl
                 continue;
             }
 
-            for (var count = 0; count < int.Parse(lvi.Tag.ToString()); count++)
+            if (lvi.Tag is not string tagText || !int.TryParse(tagText, out var innerCount))
+            {
+                continue;
+            }
+
+            for (var count = 0; count < innerCount; count++)
             {
                 displayException = displayException?.InnerException;
             }

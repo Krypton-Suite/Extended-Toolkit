@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -58,17 +58,20 @@ public class ColourHexadecimalComboBox : KryptonComboBox
         SelectedIndexChanged += ColourHexadecimalComboBox_SelectedIndexChanged;
     }
 
-    private void ColourHexadecimalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    private void ColourHexadecimalComboBox_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (SelectedIndex != -1)
         {
-            this.LockUpdates = true;
-            this.Colour = Color.FromName((string)SelectedItem);
-            this.LockUpdates = false;
+            if (SelectedItem is string colourName)
+            {
+                this.LockUpdates = true;
+                this.Colour = Color.FromName(colourName);
+                this.LockUpdates = false;
+            }
         }
     }
 
-    private void ColourHexadecimalComboBox_KeyDown(object sender, KeyEventArgs e)
+    private void ColourHexadecimalComboBox_KeyDown(object? sender, KeyEventArgs e)
     {
         switch (e.KeyCode)
         {
@@ -86,7 +89,7 @@ public class ColourHexadecimalComboBox : KryptonComboBox
         }
     }
 
-    private void ColourHexadecimalComboBox_DropDown(object sender, EventArgs e)
+    private void ColourHexadecimalComboBox_DropDown(object? sender, EventArgs e)
     {
 #if !NETCOREAPP
         if (Items.Count == 0)
@@ -137,17 +140,21 @@ public class ColourHexadecimalComboBox : KryptonComboBox
     }
 #endif
 
-    private void ColourHexadecimalComboBox_DrawItem(object sender, DrawItemEventArgs e)
+    private void ColourHexadecimalComboBox_DrawItem(object? sender, DrawItemEventArgs e)
     {
         if (e.Index != -1)
         {
             Rectangle colourBox;
-            string name;
+            string? name;
             Color colour;
 
             e.DrawBackground();
 
-            name = (string)Items[e.Index];
+            name = (string?)Items[e.Index];
+            if (name is null)
+            {
+                return;
+            }
             colour = Color.FromName(name);
             colourBox = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
 
@@ -166,9 +173,9 @@ public class ColourHexadecimalComboBox : KryptonComboBox
         }
     }
 
-    private string AddSpaces(string name)
+    private string? AddSpaces(string name)
     {
-        string result;
+        string? result;
 
         //http://stackoverflow.com/a/272929/148962
 
@@ -197,10 +204,12 @@ public class ColourHexadecimalComboBox : KryptonComboBox
         return result;
     }
 
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         StateCommon.ComboBox.Content.Font = Typeface;
 
         base.OnPaint(e);
+#pragma warning restore CS8765
     }
 }

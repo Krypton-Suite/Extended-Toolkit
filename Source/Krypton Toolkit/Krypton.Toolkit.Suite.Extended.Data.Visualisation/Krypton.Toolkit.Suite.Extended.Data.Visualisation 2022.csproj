@@ -76,13 +76,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.5.132-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.2.58-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
 					</ItemGroup>
 				</When>
 
@@ -110,8 +110,8 @@
 	  <PackageReference Include="NETStandard.Library" Version="2.0.3" />
 	  <!--<PackageReference Include="OpenTK" Version="4.8.2" />
 	  <PackageReference Include="OpenTK.GLControl" Version="3.3.3" />-->
-	  <PackageReference Include="SkiaSharp" Version="3.119.2" />
-	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.119.2" />
+	  <PackageReference Include="SkiaSharp" Version="4.148.0" />
+	  <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.148.0" />
 	  <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
 	</ItemGroup>
 
@@ -123,23 +123,6 @@
 		<Reference Include="mscorlib">
 			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\mscorlib.dll</HintPath>
 		</Reference>
-		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>4.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>5.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>6.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-		<!--TODO: Need to specify version here-->
 	</ItemGroup>
 
 	<ItemGroup>
@@ -148,6 +131,10 @@
 			<Pack>true</Pack>
 		</None>
 	</ItemGroup>
+
+
+
+
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.xml</DocumentationFile>

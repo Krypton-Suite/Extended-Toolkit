@@ -33,7 +33,7 @@ public class KryptonPanelExtended : KryptonPanel
     #region Intsance Fields
     private int _cornerRadius;
 
-    private Pen _pen;
+    private Pen? _pen;
     #endregion
 
     #region Public
@@ -48,6 +48,8 @@ public class KryptonPanelExtended : KryptonPanel
         DoubleBuffered = true;
 
         CornerRadius = 0;
+
+        _pen = new Pen(ForeColor);
     }
     #endregion
 
@@ -91,6 +93,11 @@ public class KryptonPanelExtended : KryptonPanel
 
     private void DrawSingleBorder(Graphics graphics)
     {
+        if (_pen is null)
+        {
+            return;
+        }
+
         graphics.DrawArc(_pen, new Rectangle(0, 0, CornerRadius, CornerRadius), 180, 90);
 
         graphics.DrawArc(_pen, new Rectangle(Width - CornerRadius - 1, -1, CornerRadius, CornerRadius), 270, 90);

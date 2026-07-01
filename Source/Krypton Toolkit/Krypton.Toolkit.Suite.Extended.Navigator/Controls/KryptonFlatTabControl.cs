@@ -34,7 +34,7 @@ public partial class KryptonFlatTabControl : FlatTabControl
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components = null;
 
     /// <summary> 
     /// Clean up any resources being used.
@@ -107,7 +107,7 @@ public partial class KryptonFlatTabControl : FlatTabControl
 
     #region ... Krypton ...
     //Krypton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -130,7 +130,7 @@ public partial class KryptonFlatTabControl : FlatTabControl
     }
 
     //Krypton Palette Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }

@@ -68,7 +68,7 @@ public class KryptonFlowLayoutPanel : FlowLayoutPanel
     #endregion
 
     #region Event Handlers
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
 
         if (_palette != null)
@@ -91,7 +91,7 @@ public class KryptonFlowLayoutPanel : FlowLayoutPanel
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }

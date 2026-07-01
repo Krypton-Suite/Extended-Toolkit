@@ -30,5 +30,7 @@
 // Global using directives
 
 global using Krypton.Toolkit;
+global using Krypton.Toolkit.Suite.Extended.BottomSheet;
+global using Krypton.Toolkit.Suite.Extended.Card;
 global using Krypton.Toolkit.Suite.Extended.Forms;
 global using Krypton.Toolkit.Suite.Extended.GanttChart;

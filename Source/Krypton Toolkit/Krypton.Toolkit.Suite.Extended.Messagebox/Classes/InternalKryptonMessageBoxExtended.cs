@@ -710,7 +710,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                     AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                     bool showCopyButton = false, string copyButtonText = null, bool? fade = false,
-                                    int? fadeSleepTimer = 50, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE,
+                                    int? fadeSleepTimer = 50, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE,
                                     bool? showToolTips = null, bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -767,7 +767,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     AnchorStyles? optionalCheckBoxAnchor = null,
                                     Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                     string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                    float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -823,7 +823,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     AnchorStyles? optionalCheckBoxAnchor = null,
                                     Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                     string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                    float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -881,7 +881,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     AnchorStyles? optionalCheckBoxAnchor = null,
                                     Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                     string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                    float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -950,7 +950,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1020,7 +1020,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1092,7 +1092,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1165,7 +1165,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1237,7 +1237,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1312,7 +1312,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1387,7 +1387,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1464,7 +1464,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1540,7 +1540,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE,
                                     bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
@@ -1617,7 +1617,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1695,7 +1695,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1772,7 +1772,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1850,7 +1850,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -1929,7 +1929,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -2009,7 +2009,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -2089,7 +2089,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -2170,7 +2170,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                     string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                     string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                     DialogResult? buttonTwoCustomDialogResult = null,
-                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                    DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                     bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                     int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                     Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -2248,7 +2248,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                       string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                       string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                       DialogResult? buttonTwoCustomDialogResult = null,
-                                      DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                      DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
                                       bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                       int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
                                       Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
@@ -2330,7 +2330,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
                                              string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                              string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                              DialogResult? buttonTwoCustomDialogResult = null,
-                                             DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE,
+                                             DialogResult? buttonThreeCustomDialogResult = null, float? cornerRadius = GlobalStaticConstants.DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE,
                                              bool? showToolTips = null, bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                              int? blurRadius = 0, Color? contentMessageColour = null,
                                              Color? buttonOneTextColour = null, Color? buttonTwoTextColour = null,
@@ -2729,7 +2729,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
         return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
     }
 
-    private void button_keyDown(object sender, KeyEventArgs e)
+    private void button_keyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if ((e.KeyCode == Keys.Escape) && ControlBox)
@@ -2939,9 +2939,9 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
     #endregion
 
     #region Optional CheckBox
-    private void checkbox_CheckChanged(object sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
+    private void checkbox_CheckChanged(object? sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
 
-    private void checkBox_CheckStateChanged(object sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
+    private void checkBox_CheckStateChanged(object? sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
 
     /// <summary>Shows the optional CheckBox UI.</summary>
     /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
@@ -2969,7 +2969,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
         _optionalCheckBox.StateCommon.ShortText.Font = _messageboxTypeface;
     }
 
-    private void checkBox_TextChanged(object sender, EventArgs e)
+    private void checkBox_TextChanged(object? sender, EventArgs e)
     {
         if (_optionalCheckBox.Text.Length >= 15)
         {
@@ -3019,7 +3019,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
         _copyButton.Text = copyButtonText;
     }
 
-    private void copyButton_KeyDown(object sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
+    private void copyButton_KeyDown(object? sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
     #endregion
 
     #region Custom Button Text
@@ -3100,7 +3100,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
     #endregion
 
     #region Fade
-    private void InternalKryptonMessageBoxExtended_FormClosing(object sender, FormClosingEventArgs e)
+    private void InternalKryptonMessageBoxExtended_FormClosing(object? sender, FormClosingEventArgs e)
     {
         if (_fade)
         {
@@ -3115,7 +3115,7 @@ internal class InternalKryptonMessageBoxExtended : KryptonForm
         }
     }
 
-    private void InternalKryptonMessageBoxExtended_Load(object sender, EventArgs e)
+    private void InternalKryptonMessageBoxExtended_Load(object? sender, EventArgs e)
     {
         if (_fade)
         {

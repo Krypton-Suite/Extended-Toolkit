@@ -180,7 +180,7 @@ public class KryptonDataGridViewBinaryColumn : KryptonDataGridViewIconColumn
 
     #region Private
 
-    private KryptonDataGridViewBinaryCell? BinaryCellTemplate => (KryptonDataGridViewBinaryCell)CellTemplate;
+    private KryptonDataGridViewBinaryCell? BinaryCellTemplate => CellTemplate as KryptonDataGridViewBinaryCell;
 
     #endregion
 

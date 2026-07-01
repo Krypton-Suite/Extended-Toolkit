@@ -85,8 +85,8 @@ public partial class NaviOptionsForm : KryptonForm
             bool oldChecked = kclbBands.CheckedIndices.Contains(kclbBands.SelectedIndex - 1);
             bool oldChecked2 = kclbBands.CheckedIndices.Contains(kclbBands.SelectedIndex);
 
-            object oldItem = kclbBands.Items[kclbBands.SelectedIndex - 1];
-            kclbBands.Items[kclbBands.SelectedIndex - 1] = kclbBands.SelectedItem;
+            object? oldItem = kclbBands.Items[kclbBands.SelectedIndex - 1];
+            kclbBands.Items[kclbBands.SelectedIndex - 1] = kclbBands.SelectedItem!;
 
             kclbBands.SetItemChecked(kclbBands.SelectedIndex, oldChecked);
             kclbBands.SetItemChecked(kclbBands.SelectedIndex - 1, oldChecked2);
@@ -106,9 +106,9 @@ public partial class NaviOptionsForm : KryptonForm
             bool oldChecked2 = kclbBands.CheckedIndices.Contains(
                 kclbBands.SelectedIndex);
 
-            object oldItem = kclbBands.Items[kclbBands.SelectedIndex + 1];
+            object? oldItem = kclbBands.Items[kclbBands.SelectedIndex + 1];
             kclbBands.Items[kclbBands.SelectedIndex + 1] =
-                kclbBands.SelectedItem;
+                kclbBands.SelectedItem!;
 
             kclbBands.SetItemChecked(kclbBands.SelectedIndex,
                 oldChecked);

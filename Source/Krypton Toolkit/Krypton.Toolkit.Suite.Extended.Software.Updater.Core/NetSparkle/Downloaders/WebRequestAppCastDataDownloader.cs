@@ -117,7 +117,7 @@ public class WebRequestAppCastDataDownloader : IAppCastDataDownloader
     /// <returns>The client used for file downloads</returns>
     protected virtual HttpClient CreateHttpClient()
     {
-        return CreateHttpClient(null);
+        return CreateHttpClient(null!);
     }
 
     /// <summary>
@@ -153,59 +153,20 @@ public class WebRequestAppCastDataDownloader : IAppCastDataDownloader
     /// <returns>the response from the web server if creating the request
     /// succeeded; null otherwise. The response is not guaranteed to have
     /// succeeded!</returns>
-#if NETCORE
-        [Obsolete("GetWebContentResponse is deprecated, please use DownloadAndGetAppCastData instead. This method should never have been public. :)")]
-#endif
-    public WebResponse GetWebContentResponse(string url)
+    [Obsolete("GetWebContentResponse is deprecated, please use DownloadAndGetAppCastData instead. This method should never have been public. :)")]
+    public WebResponse? GetWebContentResponse(string url)
     {
-        WebRequest request = WebRequest.Create(url);
-        if (request != null)
+        if (Uri.TryCreate(url, UriKind.Absolute, out Uri? uri) && uri.IsFile)
         {
-            if (request is FileWebRequest)
-            {
-                var fileRequest = request as FileWebRequest;
-                if (fileRequest != null)
-                {
-                    return request.GetResponse();
-                }
-            }
-
-            if (request is HttpWebRequest)
-            {
-                HttpWebRequest httpRequest = request as HttpWebRequest;
-                httpRequest.UseDefaultCredentials = true;
-                httpRequest.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                if (TrustEverySSLConnection)
-                {
-                    httpRequest.ServerCertificateValidationCallback += AlwaysTrustRemoteCert;
-                }
-
-                // http://stackoverflow.com/a/10027534/3938401
-                if (!string.IsNullOrWhiteSpace(ExtraJsonData))
-                {
-                    httpRequest.ContentType = "application/json";
-                    httpRequest.Method = "POST";
-
-                    using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
-                    {
-                        streamWriter.Write(ExtraJsonData);
-                        streamWriter.Flush();
-                        streamWriter.Close();
-                    }
-                }
-
-                // request the cast and build the stream
-                if (TrustEverySSLConnection)
-                {
-                    httpRequest.ServerCertificateValidationCallback -= AlwaysTrustRemoteCert;
-                }
-                return httpRequest.GetResponse();
-            }
+#pragma warning disable SYSLIB0014
+            return WebRequest.Create(url)?.GetResponse();
+#pragma warning restore SYSLIB0014
         }
-        return null;
+
+        throw new NotSupportedException("Use DownloadAndGetAppCastData for HTTP app cast downloads.");
     }
 
-    private bool AlwaysTrustRemoteCert(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+    private bool AlwaysTrustRemoteCert(object? sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
     {
         return true;
     }
@@ -218,7 +179,7 @@ public class WebRequestAppCastDataDownloader : IAppCastDataDownloader
     /// <param name="chain">the chain</param>
     /// <param name="sslPolicyErrors">any SSL policy errors that have occurred</param>
     /// <returns><c>true</c> if the cert is valid; false otherwise</returns>
-    private bool ValidateRemoteCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+    private bool ValidateRemoteCertificate(object? sender, X509Certificate? certificate, X509Chain? chain, SslPolicyErrors sslPolicyErrors)
     {
         if (TrustEverySSLConnection)
         {

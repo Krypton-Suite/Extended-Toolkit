@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -41,7 +41,7 @@ public class ToolBoxTabCollection : CollectionBase
     #region Properties
     public ToolBoxTab this[int index]
     {
-        get => (ToolBoxTab)base.List[index];
+        get => (ToolBoxTab)base.List[index]!;
         set => base.List[index] = value;
     }
     #endregion //Properties

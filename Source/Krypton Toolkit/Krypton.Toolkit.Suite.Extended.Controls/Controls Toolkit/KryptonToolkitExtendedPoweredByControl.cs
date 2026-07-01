@@ -87,7 +87,7 @@ public partial class KryptonToolkitExtendedPoweredByControl : UserControl
         }
     }
 
-    private void klwlblDescription_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void klwlblDescription_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
     {
         try
         {

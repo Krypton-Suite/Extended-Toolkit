@@ -202,15 +202,14 @@ public class NetworkDrives
         {
             iHandle = poParentForm.Handle.ToInt32();
         }
-        //show dialog
-        if (piDialog == 1)
+
+        i = piDialog switch
         {
-            i = WNetConnectionDialog(iHandle, ResourcetypeDisk);
-        }
-        else if (piDialog == 2)
-        {
-            i = WNetDisconnectDialog(iHandle, ResourcetypeDisk);
-        }
+            //show dialog
+            1 => WNetConnectionDialog(iHandle, ResourcetypeDisk),
+            2 => WNetDisconnectDialog(iHandle, ResourcetypeDisk),
+            _ => i
+        };
         if (i > 0) { throw new Win32Exception(i); }
         //set focus on parent form
         poParentForm?.BringToFront();

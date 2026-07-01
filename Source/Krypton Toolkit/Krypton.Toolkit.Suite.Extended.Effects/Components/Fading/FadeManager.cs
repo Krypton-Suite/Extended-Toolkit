@@ -75,6 +75,6 @@ public class FadeManager : Component
     public void FadeOutAndClose() => FadeController.FadeOutAndClose(_windowToFade, _fadeSpeed);
 
     /// <summary>Fades the dialog.</summary>
-    public void FadeDialog() => FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
+    public void FadeDialog() => _ = FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
     #endregion
 }

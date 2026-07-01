@@ -188,10 +188,7 @@ public static class ColourPalettes
 
             foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
             {
-                Color color;
-
-                color = (Color)property.GetValue(typeof(Color), null);
-                if (!color.IsEmpty)
+                if (property.GetValue(typeof(Color), null) is Color color && !color.IsEmpty)
                 {
                     results.Add(color);
                 }

@@ -132,24 +132,19 @@ public static class DrawingMethods
         int nAlphaStart = (int)(185 + 5 * rect.Width / 24),
             nAlphaEnd = (int)(10 + 4 * rect.Width / 24);
 
-        if (nAlphaStart > 255)
+        nAlphaStart = nAlphaStart switch
         {
-            nAlphaStart = 255;
-        }
-        else if (nAlphaStart < 0)
-        {
-            nAlphaStart = 0;
-        }
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaStart
+        };
 
-        if (nAlphaEnd > 255)
+        nAlphaEnd = nAlphaEnd switch
         {
-            nAlphaEnd = 255;
-        }
-        else if (nAlphaEnd < 0)
-        {
-            nAlphaEnd = 0;
-        }
-
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaEnd
+        };
 
         Color ColourBacklight = BaseColour;
         Color ColourBacklightEnd = Color.FromArgb(50, 0, 0, 0);
@@ -197,24 +192,19 @@ public static class DrawingMethods
         int nAlphaStart = (int)(185 + 5 * rect.Height / 24),
             nAlphaEnd = (int)(10 + 4 * rect.Height / 24);
 
-        if (nAlphaStart > 255)
+        nAlphaStart = nAlphaStart switch
         {
-            nAlphaStart = 255;
-        }
-        else if (nAlphaStart < 0)
-        {
-            nAlphaStart = 0;
-        }
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaStart
+        };
 
-        if (nAlphaEnd > 255)
+        nAlphaEnd = nAlphaEnd switch
         {
-            nAlphaEnd = 255;
-        }
-        else if (nAlphaEnd < 0)
-        {
-            nAlphaEnd = 0;
-        }
-
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaEnd
+        };
 
         Color ColorBacklight = BaseColour;
         Color ColorBacklightEnd = Color.FromArgb(50, 0, 0, 0);

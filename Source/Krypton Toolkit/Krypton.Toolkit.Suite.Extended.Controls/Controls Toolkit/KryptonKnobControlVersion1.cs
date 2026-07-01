@@ -28,7 +28,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Controls;
 
 // Delegate type for hooking up ValueChanged notifications.
-public delegate void ValueChangedEventHandler(object sender, KnobValueChangedEventArgs e);
+public delegate void ValueChangedEventHandler(object? sender, KnobValueChangedEventArgs e);
 
 [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(System.Windows.Forms.Timer))]
 public class KryptonKnobControlVersion1 : UserControl
@@ -361,7 +361,7 @@ public class KryptonKnobControlVersion1 : UserControl
     #endregion
 
     #region " Events and sub management "
-    protected object OnValueChanged(object sender, KnobValueChangedEventArgs e)
+    protected object? OnValueChanged(object? sender, KnobValueChangedEventArgs e)
     {
         if (ValueChanged != null)
         {
@@ -559,7 +559,7 @@ public class KryptonKnobControlVersion1 : UserControl
         gOffScreen = System.Drawing.Graphics.FromImage(OffScreenImage);
     }
 
-    private void Knob_Resize(object sender, EventArgs e)
+    private void Knob_Resize(object? sender, EventArgs e)
     {
         setDimensions();
         Invalidate();
@@ -721,7 +721,7 @@ public class KryptonKnobControlVersion1 : UserControl
         base.Invalidate();
     }
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -741,6 +741,11 @@ public class KryptonKnobControlVersion1 : UserControl
 
     private void InitColours()
     {
+        if (_palette is null)
+        {
+            return;
+        }
+
         BorderStyle = BorderStyle.None;
         KnobColour = _palette.ColorTable.OverflowButtonGradientBegin;
         KnobBorderColour = _palette.ColorTable.ToolStripGradientBegin;

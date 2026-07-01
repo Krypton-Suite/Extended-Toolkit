@@ -27,6 +27,8 @@
 
 #endregion
 
+using KryptonToastIcon = Krypton.Toolkit.Utilities.KryptonToastIcon;
+
 namespace Examples
 {
     public partial class BasicToastNotificationTest : KryptonForm
@@ -46,7 +48,7 @@ namespace Examples
         private Font _contentFont;
         private Font _titleFont;
         private int _countDownSeconds;
-        private KryptonToastNotificationIcon _notificationIcon;
+        private KryptonToastIcon _notificationIcon;
         private string _notificationTitleText;
         private string _notificationContentText;
 
@@ -94,7 +96,7 @@ SOFTWARE.";
             _enableHyperLinks = true;
             _titleAlignment = PaletteRelativeAlign.Inherit;
             _countDownSeconds = 60;
-            _notificationIcon = KryptonToastNotificationIcon.Information;
+            _notificationIcon = KryptonToastIcon.Information;
             _notificationTitleText = ktxtNotificationTitle.Text;
             _notificationContentText = krtbNotificationMessage.Text;
             _borderColor1 = Color.Empty;
@@ -104,7 +106,7 @@ SOFTWARE.";
             kcbtnBorderColor1.SelectedColor = Color.Empty;
             kcbtnBorderColor2.SelectedColor = Color.Empty;
 
-            foreach (var value in Enum.GetValues(typeof(KryptonToastNotificationIcon)))
+            foreach (var value in Enum.GetValues(typeof(KryptonToastIcon)))
             {
                 kcmbNotificationIconType.Items.Add(value.ToString());
             }
@@ -260,7 +262,7 @@ SOFTWARE.";
 
         private void kcmbNotificationIconType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _notificationIcon = (KryptonToastNotificationIcon)Enum.Parse(typeof(KryptonToastNotificationIcon),
+            _notificationIcon = (KryptonToastIcon)Enum.Parse(typeof(KryptonToastIcon),
                 kcmbNotificationIconType.Text);
         }
     }

@@ -30,12 +30,12 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator;
 [Designer(typeof(KryptonTabPageDesigner), typeof(IDesigner)), ToolboxBitmap(typeof(TabPage))]
 public class KryptonTabPage : TabPage
 {
-    private PaletteBase m_Palette;
-    private IRenderer m_Renderer;
+    private PaletteBase m_Palette = null!;
+    private IRenderer m_Renderer = null!;
     private PaletteMode m_PaletteMode;
-    private PaletteRedirect m_PaletteRedirect;
-    private PaletteBackInheritRedirect m_PaletteTabPageBackground;
-    private IDisposable m_MementoTabPageBackground;
+    private PaletteRedirect m_PaletteRedirect = null!;
+    private PaletteBackInheritRedirect m_PaletteTabPageBackground = null!;
+    private IDisposable? m_MementoTabPageBackground;
 
     public KryptonTabPage()
     {
@@ -52,7 +52,7 @@ public class KryptonTabPage : TabPage
         KryptonManager.GlobalPaletteChanged -= KryptonManager_GlobalPaletteChanged;
     }
 
-    private void KryptonManager_GlobalPaletteChanged(object sender, EventArgs e)
+    private void KryptonManager_GlobalPaletteChanged(object? sender, EventArgs e)
     {
         RefreshPalette();
     }
@@ -117,8 +117,8 @@ public class KryptonTabPage : TabPage
 
 public class KryptonTabPageDesigner : ParentControlDesigner
 {
-    private IDesignerHost m_DesignerHost;
-    private ISelectionService m_SelectionService;
+    private IDesignerHost? m_DesignerHost;
+    private ISelectionService? m_SelectionService;
 
     public KryptonTabPageDesigner()
         : base()
@@ -142,39 +142,19 @@ public class KryptonTabPageDesigner : ParentControlDesigner
         base.InitializeNewComponent(defaultValues);
     }
 
-    private IDesignerHost DesignerHost
-    {
-        get
-        {
-            if (m_DesignerHost == null)
-            {
-                m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
-            }
+    private IDesignerHost DesignerHost =>
+        m_DesignerHost ??= (IDesignerHost)GetService(typeof(IDesignerHost))!;
 
-            return m_DesignerHost;
-        }
-    }
+    private ISelectionService SelectionService =>
+        m_SelectionService ??= (ISelectionService)GetService(typeof(ISelectionService))!;
 
-    private ISelectionService SelectionService
-    {
-        get
-        {
-            if (m_SelectionService == null)
-            {
-                m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
-            }
-
-            return m_SelectionService;
-        }
-    }
-
-    private KryptonTabPage KryptonTabPage => (KryptonTabPage)this.Component;
+    private KryptonTabPage KryptonTabPage => (KryptonTabPage)Component!;
 }
 
 public class KryptonTabPageDesignList : DesignerActionList
 {
-    private IDesignerHost m_DesignerHost;
-    private ISelectionService m_SelectionService;
+    private IDesignerHost? m_DesignerHost;
+    private ISelectionService? m_SelectionService;
 
     public KryptonTabPageDesignList(IComponent component)
         : base(component)
@@ -208,35 +188,15 @@ public class KryptonTabPageDesignList : DesignerActionList
 
     private void SetProperty(string propertyName, object value)
     {
-        PropertyDescriptor property = TypeDescriptor.GetProperties(this.KryptonTabPage)[propertyName];
-        property.SetValue(this.KryptonTabPage, value);
+        PropertyDescriptor? property = TypeDescriptor.GetProperties(KryptonTabPage)[propertyName];
+        property?.SetValue(KryptonTabPage, value);
     }
 
-    private IDesignerHost DesignerHost
-    {
-        get
-        {
-            if (m_DesignerHost == null)
-            {
-                m_DesignerHost = (IDesignerHost)GetService(typeof(IDesignerHost));
-            }
+    private IDesignerHost DesignerHost =>
+        m_DesignerHost ??= (IDesignerHost)GetService(typeof(IDesignerHost))!;
 
-            return m_DesignerHost;
-        }
-    }
+    private ISelectionService SelectionService =>
+        m_SelectionService ??= (ISelectionService)GetService(typeof(ISelectionService))!;
 
-    private ISelectionService SelectionService
-    {
-        get
-        {
-            if (m_SelectionService == null)
-            {
-                m_SelectionService = (ISelectionService)this.GetService(typeof(ISelectionService));
-            }
-
-            return m_SelectionService;
-        }
-    }
-
-    private KryptonTabPage KryptonTabPage => (KryptonTabPage)this.Component;
+    private KryptonTabPage KryptonTabPage => (KryptonTabPage)Component!;
 }

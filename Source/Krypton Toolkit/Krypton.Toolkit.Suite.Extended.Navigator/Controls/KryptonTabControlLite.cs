@@ -30,23 +30,22 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator;
 [ToolboxBitmap(typeof(TabControl))]
 public class KryptonTabControlLite : TabControl
 {
-    private static IRenderer Renderer;
-    private static PaletteBase Palette;
-    private static ViewLayoutContext ViewLayoutContext;
+    private static IRenderer Renderer = null!;
+    private static PaletteBase Palette = null!;
+    private static ViewLayoutContext ViewLayoutContext = null!;
     private static Control ViewLayoutContextControl = new Control();
-    private static PaletteBackInheritRedirect PaletteTabPageBackground;
-    private static PaletteBorderInheritRedirect PaletteTabPageBorder;
-    private static PaletteBackInheritRedirect PaletteTabButtonBackground;
-    private static PaletteBorderInheritRedirect PaletteTabButtonBorder;
-    private static IDisposable MementoTabPageBackground;
-    private static IDisposable MementoTabButtonBackground;
-    private static IDisposable MementoTabButtonBorder;
-    private static Font TabFontBold;
-    private static Font TabFontRegular;
-    private static SolidBrush TabBrush;
-    private static StringFormat SF;
+    private static PaletteBackInheritRedirect PaletteTabPageBackground = null!;
+    private static PaletteBorderInheritRedirect PaletteTabPageBorder = null!;
+    private static PaletteBackInheritRedirect PaletteTabButtonBackground = null!;
+    private static PaletteBorderInheritRedirect PaletteTabButtonBorder = null!;
+    private static IDisposable? MementoTabPageBackground;
+    private static IDisposable? MementoTabButtonBackground;
+    private static Font TabFontBold = null!;
+    private static Font TabFontRegular = null!;
+    private static SolidBrush TabBrush = null!;
+    private static StringFormat SF = null!;
     private bool _DrawTabPage;
-    private Font TabFont;
+    private Font TabFont = null!;
     public KryptonTabControlLite()
     {
         SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
@@ -59,7 +58,7 @@ public class KryptonTabControlLite : TabControl
         KryptonManager.GlobalPaletteChanged += KryptonManager_GlobalPaletteChanged;
     }
 
-    private void KryptonManager_GlobalPaletteChanged(object sender, EventArgs e)
+    private void KryptonManager_GlobalPaletteChanged(object? sender, EventArgs e)
     {
         RefreshPalette();
     }
@@ -81,7 +80,8 @@ public class KryptonTabControlLite : TabControl
         PaletteTabButtonBackground.Style = PaletteBackStyle.ButtonNavigatorStack;
         PaletteTabButtonBorder.Style = PaletteBorderStyle.ButtonNavigatorMini;
 
-        TabFontBold = new Font(Palette.GetContentShortTextFont(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Normal), FontStyle.Bold);
+        Font paletteFont = Palette.GetContentShortTextFont(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Normal) ?? SystemFonts.DefaultFont;
+        TabFontBold = new Font(paletteFont, FontStyle.Bold);
         TabFontRegular = new Font(TabFontBold, FontStyle.Regular);
         TabBrush = new SolidBrush(Palette.GetContentShortTextColor1(PaletteContentStyle.ButtonNavigatorStack, PaletteState.Normal));
         Invalidate();
@@ -222,7 +222,7 @@ public class KryptonTabControlLite : TabControl
         // Draw tab image (TODO: adjust rendering for other Appearance settings)
         if (ImageList != null)
         {
-            Image tabImage = null;
+            Image? tabImage = null;
 
             if (TabPages[index].ImageIndex != -1)
             {
@@ -267,7 +267,7 @@ public class KryptonTabControlLite : TabControl
 
     protected override void OnControlAdded(System.Windows.Forms.ControlEventArgs e)
     {
-        if (_DrawTabPage)
+        if (_DrawTabPage && e.Control != null)
         {
             e.Control.Paint += TabPage_Paint;
         }
@@ -277,7 +277,7 @@ public class KryptonTabControlLite : TabControl
 
     protected override void OnControlRemoved(System.Windows.Forms.ControlEventArgs e)
     {
-        if (_DrawTabPage)
+        if (_DrawTabPage && e.Control != null)
         {
             e.Control.Paint -= TabPage_Paint;
         }
@@ -285,15 +285,18 @@ public class KryptonTabControlLite : TabControl
         base.OnControlRemoved(e);
     }
 
-    private void TabPage_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+    private void TabPage_Paint(object? sender, System.Windows.Forms.PaintEventArgs e)
     {
-        TabPage TP = (TabPage)sender;
+        if (sender is not TabPage tp)
+        {
+            return;
+        }
 
-        using (RenderContext renderContext = new RenderContext(TP, e.Graphics, e.ClipRectangle, Renderer))
+        using (RenderContext renderContext = new RenderContext(tp, e.Graphics, e.ClipRectangle, Renderer))
         {
             using (GraphicsPath path = new GraphicsPath())
             {
-                Rectangle R = TP.DisplayRectangle;
+                Rectangle R = tp.DisplayRectangle;
                 path.AddRectangle(R);
                 MementoTabPageBackground = Renderer.RenderStandardBack.DrawBack(renderContext, R, path, PaletteTabPageBackground, VisualOrientation.Top, PaletteState.Normal, MementoTabPageBackground);
             }

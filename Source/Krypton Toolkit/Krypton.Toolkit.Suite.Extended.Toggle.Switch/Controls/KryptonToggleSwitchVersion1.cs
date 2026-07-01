@@ -75,29 +75,29 @@ public class KryptonToggleSwitchVersion1 : Control
     private bool _toggleOnButtonClick = true;
     private bool _toggleOnSideClick = true;
 
-    private MouseEventArgs _lastMouseEventArgs = null;
+    private MouseEventArgs? _lastMouseEventArgs;
 
     private bool _buttonScaleImage;
     private ToggleSwitchButtonAlignment _buttonAlignment = ToggleSwitchButtonAlignment.Center;
-    private Image _buttonImage = null;
+    private Image _buttonImage = null!;
 
     private string _offText = "";
     private Color _offForeColour = Color.Black;
     private Font _offFont;
-    private Image _offSideImage = null;
+    private Image _offSideImage = null!;
     private bool _offSideScaleImage;
     private ToggleSwitchAlignment _offSideAlignment = ToggleSwitchAlignment.Center;
-    private Image _offButtonImage = null;
+    private Image _offButtonImage = null!;
     private bool _offButtonScaleImage;
     private ToggleSwitchButtonAlignment _offButtonAlignment = ToggleSwitchButtonAlignment.Center;
 
     private string _onText = "";
     private Color _onForeColour = Color.Black;
     private Font _onFont;
-    private Image _onSideImage = null;
+    private Image _onSideImage = null!;
     private bool _onSideScaleImage;
     private ToggleSwitchAlignment _onSideAlignment = ToggleSwitchAlignment.Center;
-    private Image _onButtonImage = null;
+    private Image _onButtonImage = null!;
     private bool _onButtonScaleImage;
     private ToggleSwitchButtonAlignment _onButtonAlignment = ToggleSwitchButtonAlignment.Center;
 
@@ -162,7 +162,7 @@ public class KryptonToggleSwitchVersion1 : Control
         }
     }
 
-    private void AnimationTimer_Tick(object sender, EventArgs e)
+    private void AnimationTimer_Tick(object? sender, EventArgs e)
     {
         _animationTimer.Enabled = false;
 

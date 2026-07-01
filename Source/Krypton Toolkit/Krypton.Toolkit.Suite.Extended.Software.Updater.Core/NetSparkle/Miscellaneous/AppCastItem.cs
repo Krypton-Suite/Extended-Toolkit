@@ -318,9 +318,9 @@ public class AppCastItem : IComparable<AppCastItem>
     /// </summary>
     /// <param name="other">the other instance</param>
     /// <returns>-1, 0, 1 if this instance is less than, equal to, or greater than the <paramref name="other"/></returns>
-    public int CompareTo(AppCastItem other)
+    public int CompareTo(AppCastItem? other)
     {
-        if (!Version.Contains(".") || !other.Version.Contains("."))
+        if (other is null || !Version.Contains('.') || !other.Version.Contains('.'))
         {
             return 0;
         }
@@ -335,7 +335,7 @@ public class AppCastItem : IComparable<AppCastItem>
     /// </summary>
     /// <param name="obj">the instance to compare to</param>
     /// <returns></returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (!(obj is AppCastItem item))
         {

@@ -76,13 +76,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.5.132-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.2.58-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
 					</ItemGroup>
 				</When>
 
@@ -114,31 +114,14 @@
 		<PackageReference Include="Handlebars.Net" Version="2.1.6" />
 		<PackageReference Include="ProDotNetZip" Version="1.20.0" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
-		<PackageReference Include="System.Management" Version="11.0.0-preview.3.26207.106" />
+		<PackageReference Include="System.Management" Version="11.0.0-preview.5.26302.115" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net472' Or '$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'net481'">
 		<Reference Include="System.Deployment" />
-		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>4.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>5.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>6.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<Reference Include="System.Net.Http">
 		  <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2\System.Net.Http.dll</HintPath>
 		</Reference>
-		<!--TODO: Need to specify version here-->
 	</ItemGroup>
 
 	<ItemGroup>
@@ -162,6 +145,10 @@
 			<Pack>true</Pack>
 		</None>
 	</ItemGroup>
+
+
+
+
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.xml</DocumentationFile>

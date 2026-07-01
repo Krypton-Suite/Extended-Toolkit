@@ -114,14 +114,14 @@ internal class PcmConverter
     {
         short[]? data = null;
         short[] array = AudioFormatConverter.Convert(pvInSamples, _iInFormatType, AudioCodec.PCM16);
-        if (_inWavFormat.nChannels == 2 && _outWavFormat.nChannels == 1)
+        data = _inWavFormat.nChannels switch
         {
-            data = Resample(_inWavFormat, _outWavFormat, Stereo2Mono(array), _leftMemory);
-        }
-        else if (_inWavFormat.nChannels == 1 && _outWavFormat.nChannels == 2)
-        {
-            data = Mono2Stereo(Resample(_inWavFormat, _outWavFormat, array, _leftMemory));
-        }
+            2 when _outWavFormat.nChannels == 1 => Resample(_inWavFormat, _outWavFormat, Stereo2Mono(array),
+                _leftMemory),
+            1 when _outWavFormat.nChannels == 2 => Mono2Stereo(
+                Resample(_inWavFormat, _outWavFormat, array, _leftMemory)),
+            _ => data
+        };
         if (_inWavFormat.nChannels == 2 && _outWavFormat.nChannels == 2)
         {
             if (_inWavFormat.nSamplesPerSec != _outWavFormat.nSamplesPerSec)

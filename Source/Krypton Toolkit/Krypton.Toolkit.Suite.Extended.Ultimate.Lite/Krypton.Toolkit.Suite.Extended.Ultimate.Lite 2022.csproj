@@ -85,13 +85,13 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.5.132-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.2.58-beta" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
 			</ItemGroup>
 		</When>
 
@@ -139,6 +139,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Card\Krypton.Toolkit.Suite.Extended.Card.csproj" />
 
 		<!-- Data Visualization -->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2022.csproj" />

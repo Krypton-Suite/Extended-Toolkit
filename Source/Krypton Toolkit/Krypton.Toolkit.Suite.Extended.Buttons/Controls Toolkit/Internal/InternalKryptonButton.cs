@@ -90,21 +90,18 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
         _overridePressed = new(OverrideFocus, StatePressed, PaletteState.FocusOverride);
 
         // Create the view button instance
-        if (Redirector != null)
+        _drawButton = new(StateDisabled,
+            _overrideNormal,
+            _overrideTracking,
+            _overridePressed,
+            new PaletteMetricRedirect(Redirector),
+            this,
+            Orientation,
+            UseMnemonic)
         {
-            _drawButton = new(StateDisabled,
-                _overrideNormal,
-                _overrideTracking,
-                _overridePressed,
-                new PaletteMetricRedirect(Redirector),
-                this,
-                Orientation,
-                UseMnemonic)
-            {
-                // Only draw a focus rectangle when focus cues are needed in the top level form
-                TestForFocusCues = true
-            };
-        }
+            // Only draw a focus rectangle when focus cues are needed in the top level form
+            TestForFocusCues = true
+        };
 
         // Create a button controller to handle button style behaviour
         _buttonController = new(_drawButton, NeedPaintDelegate);
@@ -160,11 +157,12 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// Gets or sets the text associated with this control. 
     /// </summary>
     [Editor(@"System.ComponentModel.Design.MultilineStringEditor", typeof(UITypeEditor))]
+    [AllowNull]
     public override string Text
     {
         get => Values.Text;
 
-        set => Values.Text = value;
+        set => Values.Text = value ?? string.Empty;
     }
 
     private bool ShouldSerializeText() =>
@@ -343,7 +341,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     [Category(@"Behavior")]
     [Description(@"Command associated with the button.")]
     [DefaultValue(null)]
-    public virtual IKryptonCommand KryptonCommand
+    public virtual IKryptonCommand? KryptonCommand
     {
         get => _command;
 
@@ -465,13 +463,13 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// Gets the content short text.
     /// </summary>
     /// <returns>String value.</returns>
-    public string GetShortText() => KryptonCommand.Text ?? Values.GetShortText();
+    public string GetShortText() => KryptonCommand?.Text ?? Values.GetShortText();
 
     /// <summary>
     /// Gets the content long text.
     /// </summary>
     /// <returns>String value.</returns>
-    public string GetLongText() => KryptonCommand.ExtraText ?? Values.GetLongText();
+    public string GetLongText() => KryptonCommand?.ExtraText ?? Values.GetLongText();
 
     public Image? GetOverlayImage(PaletteState state)
     {
@@ -508,7 +506,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// </summary>
     /// <param name="state">The state for which the image is needed.</param>
     /// <returns>Image value.</returns>
-    public Image? GetImage(PaletteState state) => KryptonCommand.ImageSmall ?? Values.GetImage(state);
+    public Image? GetImage(PaletteState state) => KryptonCommand?.ImageSmall ?? Values.GetImage(state);
 
     /// <summary>
     /// Gets the image colour that should be transparent.
@@ -605,7 +603,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
         base.OnClick(e);
 
         // If we have an attached command then execute it
-        KryptonCommand.PerformExecute();
+        KryptonCommand?.PerformExecute();
 
         if (_useAsUACElevationButton)
         {
@@ -743,8 +741,13 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-    protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+    protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
+        if (KryptonCommand == null)
+        {
+            return;
+        }
+
         switch (e.PropertyName)
         {
             case @"Enabled":
@@ -767,9 +770,9 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     #endregion
 
     #region Implementation
-    private void OnButtonTextChanged(object sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
+    private void OnButtonTextChanged(object? sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
 
-    private void OnButtonClick(object sender, MouseEventArgs e)
+    private void OnButtonClick(object? sender, MouseEventArgs e)
     {
         // Raise the standard click event
         OnClick(EventArgs.Empty);
@@ -778,7 +781,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
         OnMouseClick(e);
     }
 
-    private void OnButtonSelect(object sender, MouseEventArgs e)
+    private void OnButtonSelect(object? sender, MouseEventArgs e)
     {
         // Take the focus if allowed
         if (CanFocus)
@@ -791,7 +794,8 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     {
         if (showUACShield)
         {
-            Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+            Icon? shieldIcon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+            Values.Image = shieldIcon?.ToBitmap();
 
             Invalidate();
         }

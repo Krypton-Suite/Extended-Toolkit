@@ -34,8 +34,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 public partial class NaviControl : ContainerControl
 {
     private NaviLayoutStyle layoutStyle = NaviLayoutStyle.Office2007Blue;
-    private EventHandler layoutStyleChanged;
-    private NaviRenderer renderer;
+    private EventHandler? layoutStyleChanged;
+    private NaviRenderer? renderer;
 
     protected readonly object threadLock = new object();
 
@@ -87,7 +87,7 @@ public partial class NaviControl : ContainerControl
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
     ]
-    public virtual NaviRenderer Renderer
+    public virtual NaviRenderer? Renderer
     {
         get => renderer;
         set
@@ -150,7 +150,7 @@ public partial class NaviControl : ContainerControl
     /// <param name="e">Additional event info</param>
     protected virtual void OnLayoutStyleChanged(EventArgs e)
     {
-        EventHandler handler = layoutStyleChanged;
+        EventHandler? handler = layoutStyleChanged;
         if (handler != null)
         {
             handler(this, e);

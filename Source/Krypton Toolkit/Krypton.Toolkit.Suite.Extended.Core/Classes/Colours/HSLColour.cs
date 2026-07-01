@@ -90,14 +90,12 @@ internal class HSLColour
     #region Methods
     private double CheckRange(double value)
     {
-        if (value < 0.0)
+        value = value switch
         {
-            value = 0.0;
-        }
-        else if (value > 1.0)
-        {
-            value = 1.0;
-        }
+            < 0.0 => 0.0,
+            > 1.0 => 1.0,
+            _ => value
+        };
 
         return value;
     }
@@ -154,22 +152,13 @@ internal class HSLColour
     private static double GetColourComponent(double temp1, double temp2, double temp3)
     {
         temp3 = MoveIntoRange(temp3);
-        if (temp3 < 1.0 / 6.0)
+        return temp3 switch
         {
-            return temp1 + (temp2 - temp1) * 6.0 * temp3;
-        }
-        else if (temp3 < 0.5)
-        {
-            return temp2;
-        }
-        else if (temp3 < 2.0 / 3.0)
-        {
-            return temp1 + (temp2 - temp1) * (2.0 / 3.0 - temp3) * 6.0;
-        }
-        else
-        {
-            return temp1;
-        }
+            < 1.0 / 6.0 => temp1 + (temp2 - temp1) * 6.0 * temp3,
+            < 0.5 => temp2,
+            < 2.0 / 3.0 => temp1 + (temp2 - temp1) * (2.0 / 3.0 - temp3) * 6.0,
+            _ => temp1
+        };
     }
 
     private static double MoveIntoRange(double temp3)

@@ -446,7 +446,7 @@ public class KryptonToggleSwitchVersion2 : Control
 
     #region Event Handler
     //creates slide animation
-    private void ticker_Tick(object sender, EventArgs e)
+    private void ticker_Tick(object? sender, EventArgs e)
     {
         float x = _circle.X;
 

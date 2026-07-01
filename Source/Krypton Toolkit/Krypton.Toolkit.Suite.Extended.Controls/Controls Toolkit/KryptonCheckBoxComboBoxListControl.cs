@@ -81,7 +81,7 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
     /// <param name="m"></param>
     protected override void WndProc(ref Message m)
     {
-        if (((Parent.Parent as PopUp)!).ProcessResizing(ref m))
+        if (Parent?.Parent is PopUp popup && popup.ProcessResizing(ref m))
         {
             return;
         }
@@ -124,7 +124,7 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
             KryptonCheckBoxComboBoxItem item = _items[index];
             if (!_checkBoxComboBox.Items.Contains(item.ComboBoxItem))
             {
-                _items.Remove(item);
+                _items.RemoveAt(index);
                 item.Dispose();
             }
         }
@@ -133,6 +133,8 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
 
         #region Recreate the list in the same order of the combo box items
 
+#pragma warning disable CS0618 // Obsolete list Add is intentional for event hookup.
+
         bool hasHiddenItem =
             _checkBoxComboBox is { DropDownStyle: ComboBoxStyle.DropDownList, DataSource: null }
             && !DesignMode;
@@ -140,8 +142,13 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
         KryptonCheckBoxComboBoxItemList newList = new KryptonCheckBoxComboBoxItemList(_checkBoxComboBox);
         for (int index0 = 0; index0 <= _checkBoxComboBox.Items.Count - 1; index0++)
         {
-            object @object = _checkBoxComboBox.Items[index0];
-            KryptonCheckBoxComboBoxItem item = null;
+            object? @object = _checkBoxComboBox.Items[index0];
+            if (@object is null)
+            {
+                continue;
+            }
+
+            KryptonCheckBoxComboBoxItem? item = null;
             // The hidden item could match any other item when only
             // one other item was selected.
             if (index0 == 0 && hasHiddenItem && _items.Count > 0)
@@ -175,6 +182,8 @@ public partial class KryptonCheckBoxComboBoxListControl : ScrollableControl
 
         _items.Clear();
         _items.AddRange(newList);
+
+#pragma warning restore CS0618
 
         #endregion
 

@@ -155,7 +155,7 @@ public class KryptonDeveloperDebugConsole : KryptonForm
 
     #region Instance Fields
 
-    private FileDialogType _fileDialogType;
+    private FileDialogType _fileDialogType = FileDialogType.Krypton;
 
     #endregion
 
@@ -204,16 +204,16 @@ public class KryptonDeveloperDebugConsole : KryptonForm
     }
     #endregion
 
-    private void krtbDebugBox_TextChanged(object sender, EventArgs e) => kbtnClose.Enabled = string.IsNullOrWhiteSpace(krtbDebugBox.Text);
+    private void krtbDebugBox_TextChanged(object? sender, EventArgs e) => kbtnClose.Enabled = string.IsNullOrWhiteSpace(krtbDebugBox.Text);
 
-    private void kbtnCopy_Click(object sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
+    private void kbtnCopy_Click(object? sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
 
-    private void kbtnClose_Click(object sender, EventArgs e)
+    private void kbtnClose_Click(object? sender, EventArgs e)
     {
         Close();
     }
 
-    private void kbtnSaveToFile_Click(object sender, EventArgs e)
+    private void kbtnSaveToFile_Click(object? sender, EventArgs e)
     {
         switch (_fileDialogType)
         {

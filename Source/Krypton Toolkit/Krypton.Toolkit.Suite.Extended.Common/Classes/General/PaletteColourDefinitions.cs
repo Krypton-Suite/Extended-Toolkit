@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common;
 public class PaletteColourDefinitions
 {
     #region Variables
-    private ArrayList _originalCustomPaletteColourDefinitionList, _newCustomPaletteColourDefinitionList;
+    private ArrayList _originalCustomPaletteColourDefinitionList;
 
     // TODO: Update arrays
     private readonly string[] _originalCustomPaletteColourDefinitions =

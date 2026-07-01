@@ -88,14 +88,14 @@ public class DesignTimeWizardStrategy : WizardStrategy
         }
     }
 
-    public override void Back(ISelectionService selection)
+    public override void Back(ISelectionService? selection)
     {
         _wizard.SelectPreviousPage();
         SetButtonStates();
         SelectPageInPropertyGrid(selection);
     }
 
-    public override void Next(ISelectionService selection)
+    public override void Next(ISelectionService? selection)
     {
         _wizard.SelectNextPage();
         SetButtonStates();
@@ -112,7 +112,7 @@ public class DesignTimeWizardStrategy : WizardStrategy
 
     public override void GoToPage(KryptonAdvancedWizardPage page) { /* stub - not required at design time */ }
 
-    private void SelectPageInPropertyGrid(ISelectionService selection) => selection.SetSelectedComponents(new object[] { _wizard.CurrentPage }, SelectionTypes.MouseDown);
+    private void SelectPageInPropertyGrid(ISelectionService? selection) => selection?.SetSelectedComponents(new object?[] { _wizard.CurrentPage }, SelectionTypes.MouseDown);
 
     private readonly KryptonAdvancedWizard _wizard;
 }

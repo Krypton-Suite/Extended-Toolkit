@@ -164,7 +164,7 @@ public static class ControlExtensions
 
                 foreach (var item in SubList!)
                 {
-                    item.Execute(cp, easing, frame, frames);
+                    item.Execute(cp!, easing, frame, frames);
                 }
 
                 Info?.SetValue(c, cp, null);
@@ -192,41 +192,14 @@ public static class ControlExtensions
             {
                 Start = Convert.ToDouble(value);
 
-                if (value is int)
+                SetValue = value switch
                 {
-                    SetValue = (c, v) =>
-                    {
-                        Info?.SetValue(c, Convert.ToInt32(v), null);
-                    };
-                }
-                else if (value is long)
-                {
-                    SetValue = (c, v) =>
-                    {
-                        Info?.SetValue(c, Convert.ToInt64(v), null);
-                    };
-                }
-                else if (value is float)
-                {
-                    SetValue = (c, v) =>
-                    {
-                        Info?.SetValue(c, Convert.ToSingle(v), null);
-                    };
-                }
-                else if (value is decimal)
-                {
-                    SetValue = (c, v) =>
-                    {
-                        Info?.SetValue(c, Convert.ToDecimal(v), null);
-                    };
-                }
-                else
-                {
-                    SetValue = (c, v) =>
-                    {
-                        Info?.SetValue(c, v, null);
-                    };
-                }
+                    int => (c, v) => { Info?.SetValue(c, Convert.ToInt32(v), null); },
+                    long => (c, v) => { Info?.SetValue(c, Convert.ToInt64(v), null); },
+                    float => (c, v) => { Info?.SetValue(c, Convert.ToSingle(v), null); },
+                    decimal => (c, v) => { Info?.SetValue(c, Convert.ToDecimal(v), null); },
+                    _ => (c, v) => { Info?.SetValue(c, v, null); }
+                };
             }
 
             return this;

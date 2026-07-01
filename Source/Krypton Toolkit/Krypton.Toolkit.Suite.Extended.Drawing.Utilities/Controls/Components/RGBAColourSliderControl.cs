@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -224,7 +224,7 @@ public class RGBAColourSliderControl : ColourSliderControl
         type = typeof(RGBAColourSliderControl);
 
         using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
-                   $"{type.Namespace}.Resources.cellbackground.png")))
+                   $"{type.Namespace}.Resources.cellbackground.png")!))
         {
             return new TextureBrush(background, WrapMode.Tile);
         }
@@ -249,12 +249,12 @@ public class RGBAColourSliderControl : ColourSliderControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnChannelChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.CreateScale();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventChannelChanged];
+        handler = (EventHandler?)this.Events[_eventChannelChanged];
 
         handler?.Invoke(this, e);
     }
@@ -265,12 +265,12 @@ public class RGBAColourSliderControl : ColourSliderControl
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.CreateScale();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }

@@ -49,10 +49,10 @@ public class ButtonSpecFormWindowMin : ButtonSpecFormFixed
     /// </summary>
     /// <param name="palette">Palette to use for inheriting values.</param>
     /// <returns>Button visibility.</returns>
-    public override bool GetVisible(PaletteBase palette)
+    public override bool GetVisible(PaletteBase? palette)
     {
         // The minimize button is never present on tool windows
-        switch (KryptonForm.FormBorderStyle)
+        switch (KryptonForm!.FormBorderStyle)
         {
             case FormBorderStyle.FixedToolWindow:
             case FormBorderStyle.SizableToolWindow:
@@ -60,13 +60,13 @@ public class ButtonSpecFormWindowMin : ButtonSpecFormFixed
         }
 
         // Have all buttons been turned off?
-        if (!KryptonForm.ControlBox)
+        if (!KryptonForm!.ControlBox)
         {
             return false;
         }
 
         // Has the minimize/maximize buttons been turned off?
-        return KryptonForm.MinimizeBox || KryptonForm.MaximizeBox;
+        return KryptonForm!.MinimizeBox || KryptonForm!.MaximizeBox;
     }
 
     /// <summary>
@@ -74,16 +74,16 @@ public class ButtonSpecFormWindowMin : ButtonSpecFormFixed
     /// </summary>
     /// <param name="palette">Palette to use for inheriting values.</param>
     /// <returns>Button enabled state.</returns>
-    public override ButtonEnabled GetEnabled(PaletteBase palette) =>
+    public override ButtonEnabled GetEnabled(PaletteBase? palette) =>
         // Has the minimize buttons been turned off?
-        !KryptonForm.MinimizeBox ? ButtonEnabled.False : ButtonEnabled.True;
+        !KryptonForm!.MinimizeBox ? ButtonEnabled.False : ButtonEnabled.True;
 
     /// <summary>
     /// Gets the button checked state.
     /// </summary>
     /// <param name="palette">Palette to use for inheriting values.</param>
     /// <returns>Button checked state.</returns>
-    public override ButtonCheckState GetChecked(PaletteBase palette) =>
+    public override ButtonCheckState GetChecked(PaletteBase? palette) =>
         // Close button is never shown as checked
         ButtonCheckState.NotCheckButton;
 
@@ -100,14 +100,14 @@ public class ButtonSpecFormWindowMin : ButtonSpecFormFixed
         if (GetViewEnabled())
         {
             // If we do not provide an inert form
-            if (!KryptonForm.InertForm)
+            if (!KryptonForm!.InertForm)
             {
                 // Only if the mouse is still within the button bounds do we perform action
                 MouseEventArgs mea = (MouseEventArgs)e;
                 if (GetView().ClientRectangle.Contains(mea.Location))
                 {
                     // Toggle between minimized and restored
-                    KryptonForm.SendSysCommand(KryptonForm.WindowState == FormWindowState.Minimized
+                    KryptonForm!.SendSysCommand(KryptonForm!.WindowState == FormWindowState.Minimized
                         ? PlatformInvoke.SC_.RESTORE
                         : PlatformInvoke.SC_.MINIMIZE);
 

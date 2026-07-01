@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -60,14 +60,14 @@ public class ImageBoxExtendedDesigner : ControlDesigner
                 _dockVerb = new DesignerVerb("Dock to parent control", this.DockVerbHandler)
                 {
                     Description = "Dock this control with its parent.",
-                    Enabled = this.ImageBoxControl.Dock == DockStyle.None
+                    Enabled = this.ImageBoxControl?.Dock == DockStyle.None
                 };
                 _verbs.Add(_dockVerb);
 
                 _undockVerb = new DesignerVerb("Undock from parent control", this.UndockVerbHandler)
                 {
                     Description = "Undock this control from its parent.",
-                    Enabled = this.ImageBoxControl.Dock != DockStyle.None
+                    Enabled = this.ImageBoxControl?.Dock != DockStyle.None
                 };
                 _verbs.Add(_undockVerb);
             }
@@ -126,7 +126,7 @@ public class ImageBoxExtendedDesigner : ControlDesigner
     /// Gets the TabList control currently being designed
     /// </summary>
     /// <value>The TabList control being designed.</value>
-    protected ImageBoxExtended ImageBoxControl => Component as ImageBoxExtended;
+    protected ImageBoxExtended? ImageBoxControl => Component as ImageBoxExtended;
 
     #endregion
 
@@ -137,7 +137,7 @@ public class ImageBoxExtendedDesigner : ControlDesigner
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void DockVerbHandler(object sender, EventArgs e)
+    private void DockVerbHandler(object? sender, EventArgs e)
     {
         this.SetDock(DockStyle.Fill);
     }
@@ -147,11 +147,11 @@ public class ImageBoxExtendedDesigner : ControlDesigner
     /// </summary>
     private void SetDock(DockStyle dock)
     {
-        ImageBoxExtended control;
-        IDesignerHost host;
+        ImageBoxExtended? control;
+        IDesignerHost? host;
 
         control = this.ImageBoxControl;
-        host = (IDesignerHost)this.GetService(typeof(IDesignerHost));
+        host = (IDesignerHost?)this.GetService(typeof(IDesignerHost));
 
         if (control != null && host != null)
         {
@@ -159,9 +159,14 @@ public class ImageBoxExtendedDesigner : ControlDesigner
             {
                 try
                 {
-                    MemberDescriptor dockProperty;
+                    MemberDescriptor? dockProperty;
 
                     dockProperty = TypeDescriptor.GetProperties(control)["Dock"];
+
+                    if (dockProperty is null)
+                    {
+                        return;
+                    }
 
                     // tell the designer we're about to start making changes
                     this.RaiseComponentChanging(dockProperty);
@@ -189,7 +194,7 @@ public class ImageBoxExtendedDesigner : ControlDesigner
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void UndockVerbHandler(object sender, EventArgs e)
+    private void UndockVerbHandler(object? sender, EventArgs e)
     {
         this.SetDock(DockStyle.None);
     }
@@ -203,15 +208,15 @@ public class ImageBoxExtendedDesigner : ControlDesigner
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ComponentChangedEventArgs" /> instance containing the event data.</param>
-    private void OnComponentChanged(object sender, ComponentChangedEventArgs e)
+    private void OnComponentChanged(object? sender, ComponentChangedEventArgs e)
     {
         if (_dockVerb != null)
         {
-            _dockVerb.Enabled = this.ImageBoxControl.Dock == DockStyle.None;
+            _dockVerb.Enabled = this.ImageBoxControl?.Dock == DockStyle.None;
         }
         if (_undockVerb != null)
         {
-            _undockVerb.Enabled = this.ImageBoxControl.Dock != DockStyle.None;
+            _undockVerb.Enabled = this.ImageBoxControl?.Dock != DockStyle.None;
         }
     }
 

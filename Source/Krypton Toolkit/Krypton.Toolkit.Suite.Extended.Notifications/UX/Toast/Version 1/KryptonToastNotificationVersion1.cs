@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -40,13 +40,13 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
 
     private int _time, _cornerRadius;
 
-    private Image _iconImage;
+    private Image? _iconImage;
 
     private IconType _iconType;
 
-    private Timer _timer;
+    private Timer? _timer;
 
-    private SoundPlayer _player;
+    private SoundPlayer? _player;
 
     private string? _actionButtonText, _dismissButtonText, _title, _text, _process;
     #endregion
@@ -71,17 +71,17 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         {
             _cornerRadius = value;
 
-            StateCommon.Border.Rounding = value;
+            StateCommon!.Border.Rounding = value;
         }
     }
 
-    public string ActionButtonText { get => _actionButtonText; set => _actionButtonText = value; }
+    public string ActionButtonText { get => _actionButtonText ?? string.Empty; set => _actionButtonText = value; }
 
-    public string DismissButtonText { get => _dismissButtonText; set => _dismissButtonText = value; }
+    public string DismissButtonText { get => _dismissButtonText ?? string.Empty; set => _dismissButtonText = value; }
 
     public string Title
     {
-        get => _title;
+        get => _title ?? string.Empty;
 
         set
         {
@@ -93,7 +93,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
 
     public string DisplayText
     {
-        get => _text;
+        get => _text ?? string.Empty;
 
         set
         {
@@ -103,7 +103,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
-    public string ProcessToStart { get => _process; set => _process = value; }
+    public string ProcessToStart { get => _process ?? string.Empty; set => _process = value; }
 
     public Color BorderColourOne
     {
@@ -168,6 +168,9 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
     /// <param name="actionButtonType">Type of the action button.</param>
     /// <param name="actionType">Type of the action.</param>
     /// <param name="showActionButton">The show action button.</param>
+    /// <param name="actionButtonText">The action button text.</param>
+    /// <param name="dismissButtonText">The dismiss button text.</param>
+    /// <param name="iconType">Type of the icon.</param>
     public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType)
     {
         InitializeComponent();
@@ -234,12 +237,12 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
     #endregion
 
     #region Event Handlers
-    private void ToastNotification_GotFocus(object sender, EventArgs e)
+    private void ToastNotification_GotFocus(object? sender, EventArgs e)
     {
         kbtnDismiss.Focus();
     }
 
-    private void ToastNotification_Resize(object sender, EventArgs e)
+    private void ToastNotification_Resize(object? sender, EventArgs e)
     {
         if (WindowState == FormWindowState.Minimized)
         {
@@ -247,9 +250,9 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
-    private void KryptonToastNotificationVersion1_Load(object sender, EventArgs e)
+    private void KryptonToastNotificationVersion1_Load(object? sender, EventArgs e)
     {
-        Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+        Location = new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5, Screen.PrimaryScreen!.WorkingArea.Height - Height - 5);
 
         FadeIn();
 
@@ -269,14 +272,14 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
                 kbtnAction.Values.Image = null;
                 break;
             case ActionButtonType.UACElevated:
-                kbtnAction.Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                kbtnAction.Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize)?.ToBitmap();
                 break;
             default:
                 break;
         }
     }
 
-    private void kbtnAction_Click(object sender, EventArgs e)
+    private void kbtnAction_Click(object? sender, EventArgs e)
     {
         switch (_actionButtonType)
         {
@@ -306,7 +309,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
-    private void kbtnDismiss_Click(object sender, EventArgs e)
+    private void kbtnDismiss_Click(object? sender, EventArgs e)
     {
         FadeOutAndClose();
     }
@@ -372,7 +375,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
 
         _borderColourOne = BorderColourOne;
 
-        StateCommon.Border.Color1 = _borderColourOne;
+        StateCommon!.Border.Color1 = _borderColourOne;
 
         _borderColourTwo = BorderColourTwo;
 
