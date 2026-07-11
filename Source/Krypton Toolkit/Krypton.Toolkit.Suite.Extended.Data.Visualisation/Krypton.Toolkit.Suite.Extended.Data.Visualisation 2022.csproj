@@ -31,7 +31,8 @@
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<!-- Suppress NU1701: packages (e.g. SkiaSharp.Views.WindowsForms) restored for net4x are used on net8+ -->
-		<NoWarn>$(NoWarn);NU1701</NoWarn>
+		<!-- Suppress CS0618: ScottPlot code currently targets older SkiaSharp APIs -->
+		<NoWarn>$(NoWarn);NU1701;CS0618</NoWarn>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -76,7 +77,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.190-alpha" />
 					</ItemGroup>
 				</When>
 

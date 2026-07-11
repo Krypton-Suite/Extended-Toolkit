@@ -72,7 +72,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.190-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -132,18 +132,6 @@
 	  <Generator>ResXFileCodeGenerator</Generator>
 	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	</EmbeddedResource>
-  </ItemGroup>
-
-<ItemGroup Condition="'$(TargetFramework)' == 'net481'">
-    <PackageReference Include="Krypton.Standard.Toolkit.Nightly">
-      <Version>110.26.6.175-alpha</Version>
-    </PackageReference>
-  </ItemGroup>
-
-<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-windows'">
-    <PackageReference Include="Krypton.Standard.Toolkit.Nightly">
-      <Version>110.26.6.175-alpha</Version>
-    </PackageReference>
   </ItemGroup>
 
 	<!--Optimisation-->

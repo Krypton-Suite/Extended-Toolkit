@@ -27,7 +27,6 @@
 
 #endregion
 using Krypton.Toolkit.Suite.Extended.TreeGridView;
-#pragma warning disable CS8602
 
 namespace Examples
 {
@@ -36,31 +35,49 @@ namespace Examples
         public TreeGridViewAdvancedExample()
         {
             InitializeComponent();
-
-            // load image strip
-            imageStrip.ImageSize = new Size(16, 16);
-            imageStrip.TransparentColor = Color.Magenta;
-            imageStrip.ImageSize = new Size(16, 16);
-            imageStrip.Images.AddStrip(Properties.Resources.newGroupPostIconStrip);
         }
 
-        private void TreeGridViewAdvancedExample_Shown(object sender, EventArgs e)
+        private void TreeGridViewAdvancedExample_Load(object sender, EventArgs e)
         {
-            KryptonTreeGridNodeRow? node1 = kryptonTreeGridView1.GridNodes.Add("Using DataView filter when binding to DataGridView", "You", @"10/19/2005 1:02 AM");
-            node1.ImageIndex = 0;
-            var node2 = node1.Nodes.Add("Re: Using DataView filter when binding to DataGridView", "Me", @"10/19/2005 1:04 AM");
-            node2.ImageIndex = 1;
-            var node = node2.Nodes.Add("Re: Using DataView filter when binding to DataGridView", "Another", @"10/19/2005 1:20 AM");
-            node.ImageIndex = 2;
-            node = node2.Nodes.Add("Re: Using DataView filter when binding to DataGridView", "you", @"10/19/2005 1:21 AM");
-            node.ImageIndex = 1;
-            node = node1.Nodes.Add("Re: Using DataView filter when binding to DataGridView", "you", @"10/19/2005 1:10 AM");
+            BuildIssue533SampleTree();
+            kryptonTreeGridView1.ExpandAll();
+        }
+
+        /// <summary>
+        /// Regression sample for https://github.com/Krypton-Suite/Extended-Toolkit/issues/533
+        /// </summary>
+        private void BuildIssue533SampleTree()
+        {
+            kryptonTreeGridView1.GridNodes.Clear();
+
+            var rootNode = kryptonTreeGridView1.GridNodes.Add("Root", "", "", "");
+            var childNode1 = rootNode.Nodes.Add("jane doe", "18", "2022-12-12", "engineer");
+            rootNode.Nodes.Add("joe doe", "18", "2022-12-12", "engineer");
+            childNode1.Nodes.Add("ch-joe doe", "18", "2022-12-12", "engineer");
+
+            for (int i = 0; i < 3; i++)
+            {
+                var childNodex = rootNode.Nodes.Add($"ch-joe doe {i}", "18", "2022-12-12", "engineer");
+                for (int j = 0; j < 3; j++)
+                {
+                    childNodex.Nodes.Add($"ccx - joe doe {i}", "18", "2022-12-12", "intern");
+                }
+            }
+        }
+
+        private void kbtnExpandAll_Click(object sender, EventArgs e)
+        {
+            kryptonTreeGridView1.ExpandAll();
+        }
+
+        private void kbtnCollapseAll_Click(object sender, EventArgs e)
+        {
+            kryptonTreeGridView1.CollapseAll();
         }
 
         private void kbtnDataSource_Click(object sender, EventArgs e)
         {
             TreeGridViewDataSourceExample treeGridViewDataSource = new();
-
             treeGridViewDataSource.Show();
         }
     }
