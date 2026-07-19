@@ -68,7 +68,8 @@ jobs:
         run: |
           dotnet --list-sdks
           dotnet --info
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -version || msbuild -version || Write-Output "msbuild not found"
+          $msbuild = Get-ChildItem "C:\Program Files\Microsoft Visual Studio\2022\*\MSBuild\Current\Bin\MSBuild.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($msbuild) { & $msbuild.FullName -version } else { msbuild -version 2>$null; if (-not $?) { Write-Output "msbuild not found (using dotnet build instead)" } }
 
       # Use the non-NuGet solution so projects use ProjectReference to Standard-Toolkit (no Krypton.Standard.Toolkit package on nuget.org)
       - name: Restore using dotnet
