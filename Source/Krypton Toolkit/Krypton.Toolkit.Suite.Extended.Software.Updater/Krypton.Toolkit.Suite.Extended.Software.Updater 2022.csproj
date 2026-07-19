@@ -76,7 +76,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.190-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.200-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -119,8 +119,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Drawing.Common" Version="11.0.0-preview.5.26302.115" />
-		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.45">
+		<PackageReference Include="System.Drawing.Common" Version="11.0.0-preview.6.26359.118" />
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.46">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
