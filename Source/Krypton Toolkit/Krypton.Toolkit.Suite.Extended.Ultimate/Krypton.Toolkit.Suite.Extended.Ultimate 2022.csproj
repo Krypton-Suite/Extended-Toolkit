@@ -80,27 +80,36 @@
 
 	<!-- Krypton Toolkit Dependencies -->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
-			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.200-alpha" />
-			</ItemGroup>
-		</When>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.200-alpha" />
+					</ItemGroup>
+				</When>
 
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
-			</ItemGroup>
-		</When>
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
+					</ItemGroup>
+				</When>
 
-		<When Condition="'$(Configuration)' == 'Release'">
-			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
-			</ItemGroup>
-		</When>
+				<When Condition="'$(Configuration)' == 'Release'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</When>
 
+				<Otherwise>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</Otherwise>
+			</Choose>
+		</When>
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
