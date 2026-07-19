@@ -50,9 +50,6 @@ public class KryptonTreeGridView : KryptonDataGridView
     private bool _showLines = true;
     private DataTable _dataSource;
 
-    internal VisualStyleRenderer? ROpen; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
-    internal VisualStyleRenderer? RClosed; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
-
     #region Constructor
     public KryptonTreeGridView()
     {
@@ -69,17 +66,6 @@ public class KryptonTreeGridView : KryptonDataGridView
         ShowLines = true;
         // Ensures that all rows are added unshared by listening to the CollectionChanged event.
         base.Rows.CollectionChanged += delegate { };
-        try
-        {
-            // TODO: This should be the one from the Theme - See KryptonTree
-            ROpen = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
-            RClosed = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
-        }
-        catch
-        {
-            // TODO: Empty - Why ?
-        }
-
     }
 
     protected override void Dispose(bool disposing)
@@ -821,10 +807,23 @@ public class KryptonTreeGridView : KryptonDataGridView
         // Since we're inserting sequentially, each insertion shifts subsequent indices by 1
         foreach (KryptonTreeGridNodeRow? childNode in nodes)
         {
-            Debug.Assert(childNode.RowIndex == -1, @"Row is already in the grid.");
-            
             childNode.Grid = this;
-            
+
+            if (childNode.IsSited)
+            {
+                if (childNode is { IsExpanded: true, Nodes.Count: > 0 })
+                {
+                    SiteNodes(childNode.Nodes, childNode);
+                    insertIndex = FindLastDescendantRowIndex(childNode) + 1;
+                }
+                else
+                {
+                    insertIndex = childNode.RowIndex + 1;
+                }
+
+                continue;
+            }
+
             // Insert at the calculated position
             if (insertIndex < base.Rows.Count)
             {
@@ -834,18 +833,17 @@ public class KryptonTreeGridView : KryptonDataGridView
             {
                 base.Rows.Add(childNode);
             }
-            
+
             // Mark as sited
             childNode.Sited();
-            
+
             // Increment index for next sibling insertion
             insertIndex++;
-            
+
             // If this node is expanded, recursively site its children
             // After recursive insertion, update insertIndex to account for all inserted descendants
             if (childNode is { IsExpanded: true, Nodes.Count: > 0 })
             {
-                int beforeInsert = insertIndex - 1; // The current childNode's index
                 SiteNodes(childNode.Nodes, childNode);
                 // After recursive insertion, find the last descendant row index
                 // The next sibling should be inserted after all descendants
@@ -924,25 +922,39 @@ public class KryptonTreeGridView : KryptonDataGridView
     /// <param name="rowsToRemove">List to add rows to</param>
     private void CollectDescendantRows(KryptonTreeGridNodeRow? node, List<KryptonTreeGridNodeRow> rowsToRemove)
     {
-        if (node == null || !node.IsSited)
+        if (node == null)
         {
             return;
         }
 
-        // Add all expanded children first (they need to be removed before their parent)
-        if (node.IsExpanded)
+        // Walk the logical tree structure regardless of IsExpanded (matches legacy UnSiteNode).
+        foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
         {
-            foreach (KryptonTreeGridNodeRow? childNode in node.Nodes)
-            {
-                CollectDescendantRows(childNode, rowsToRemove);
-            }
+            CollectDescendantRows(childNode, rowsToRemove);
         }
 
-        // Add this node to the removal list
-        if (node.RowIndex >= 0)
+        if (node is { IsSited: true, RowIndex: >= 0 })
         {
             rowsToRemove.Add(node);
         }
+    }
+
+    private static bool HasUnsitedDescendants(KryptonTreeGridNodeRow node)
+    {
+        foreach (KryptonTreeGridNodeRow? child in node.Nodes)
+        {
+            if (!child.IsSited)
+            {
+                return true;
+            }
+
+            if (child.IsExpanded && HasUnsitedDescendants(child))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected internal virtual bool ExpandNode(KryptonTreeGridNodeRow node)
@@ -974,11 +986,29 @@ public class KryptonTreeGridView : KryptonDataGridView
 
             return !exp.Cancel;
         }
-        else
+
+        if (node.HasChildren && HasUnsitedDescendants(node))
         {
-            // row is already expanded, so we didn't do anything.
-            return false;
+            var exp = new ExpandingEventArgs(node);
+            OnNodeExpanding(exp);
+
+            if (!exp.Cancel)
+            {
+                BeginUpdate();
+                _inExpandCollapse = true;
+                SiteNodes(node.Nodes, node);
+                var exped = new ExpandedEventArgs(node);
+                OnNodeExpanded(exped);
+                _inExpandCollapse = false;
+                EndUpdate();
+                InvalidateCell(node.Cells[0]);
+            }
+
+            return !exp.Cancel;
         }
+
+        // row is already expanded, so we didn't do anything.
+        return false;
     }
 
     protected override void OnMouseUp(MouseEventArgs e)
@@ -1000,9 +1030,17 @@ public class KryptonTreeGridView : KryptonDataGridView
     [Description("Expands all nodes")]
     public void ExpandAll()
     {
-        foreach (KryptonTreeGridNodeRow? node in GridNodes)
+        BeginUpdate();
+        try
         {
-            ExpandAllImp(node);
+            foreach (KryptonTreeGridNodeRow? node in GridNodes)
+            {
+                ExpandAllImp(node);
+            }
+        }
+        finally
+        {
+            EndUpdate();
         }
     }
 
@@ -1022,9 +1060,17 @@ public class KryptonTreeGridView : KryptonDataGridView
     [Description("Collapse all nodes")]
     public void CollapseAll()
     {
-        foreach (var node in GridNodes)
+        BeginUpdate();
+        try
         {
-            CollapseAllImp(node);
+            foreach (var node in GridNodes)
+            {
+                CollapseAllImp(node);
+            }
+        }
+        finally
+        {
+            EndUpdate();
         }
     }
 

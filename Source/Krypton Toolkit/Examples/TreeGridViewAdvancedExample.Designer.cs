@@ -56,16 +56,17 @@ namespace Examples
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeGridViewAdvancedExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnCollapseAll = new Krypton.Toolkit.KryptonButton();
+            this.kbtnExpandAll = new Krypton.Toolkit.KryptonButton();
             this.kbtnDataSource = new Krypton.Toolkit.KryptonButton();
             this.kryptonThemeComboBox1 = new Krypton.Toolkit.KryptonThemeComboBox();
             this.kryptonTreeGridView1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView();
-            this.Subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.From = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageStrip = new System.Windows.Forms.ImageList(this.components);
+            this.nameColumn = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn();
+            this.ageColumn = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.birthdateColumn = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.jobColumn = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonThemeComboBox1)).BeginInit();
@@ -74,6 +75,8 @@ namespace Examples
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnCollapseAll);
+            this.kryptonPanel1.Controls.Add(this.kbtnExpandAll);
             this.kryptonPanel1.Controls.Add(this.kbtnDataSource);
             this.kryptonPanel1.Controls.Add(this.kryptonThemeComboBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonTreeGridView1);
@@ -82,6 +85,24 @@ namespace Examples
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnCollapseAll
+            // 
+            this.kbtnCollapseAll.Location = new System.Drawing.Point(576, 109);
+            this.kbtnCollapseAll.Name = "kbtnCollapseAll";
+            this.kbtnCollapseAll.Size = new System.Drawing.Size(212, 31);
+            this.kbtnCollapseAll.TabIndex = 4;
+            this.kbtnCollapseAll.Values.Text = "Collapse All";
+            this.kbtnCollapseAll.Click += new System.EventHandler(this.kbtnCollapseAll_Click);
+            // 
+            // kbtnExpandAll
+            // 
+            this.kbtnExpandAll.Location = new System.Drawing.Point(576, 75);
+            this.kbtnExpandAll.Name = "kbtnExpandAll";
+            this.kbtnExpandAll.Size = new System.Drawing.Size(212, 31);
+            this.kbtnExpandAll.TabIndex = 3;
+            this.kbtnExpandAll.Values.Text = "Expand All";
+            this.kbtnExpandAll.Click += new System.EventHandler(this.kbtnExpandAll_Click);
             // 
             // kbtnDataSource
             // 
@@ -111,45 +132,49 @@ namespace Examples
             this.kryptonTreeGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonTreeGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.kryptonTreeGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.kryptonTreeGridView1.ColumnHeadersHeight = 36;
             this.kryptonTreeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Subject,
-            this.From,
-            this.Date});
+            this.nameColumn,
+            this.ageColumn,
+            this.birthdateColumn,
+            this.jobColumn});
             this.kryptonTreeGridView1.DataSource = null;
             this.kryptonTreeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.kryptonTreeGridView1.ImageList = null;
-            this.kryptonTreeGridView1.Location = new System.Drawing.Point(13, 13);
+            this.kryptonTreeGridView1.Location = new System.Drawing.Point(0, 0);
             this.kryptonTreeGridView1.Name = "kryptonTreeGridView1";
-            this.kryptonTreeGridView1.Size = new System.Drawing.Size(556, 425);
+            this.kryptonTreeGridView1.RowHeadersWidth = 51;
+            this.kryptonTreeGridView1.Size = new System.Drawing.Size(557, 450);
             this.kryptonTreeGridView1.TabIndex = 0;
             // 
-            // Subject
+            // nameColumn
             // 
-            this.Subject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Subject.HeaderText = "Subject";
-            this.Subject.Name = "Subject";
-            this.Subject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameColumn.HeaderText = "name";
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // From
+            // ageColumn
             // 
-            this.From.HeaderText = "From";
-            this.From.Name = "From";
-            this.From.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.From.Width = 45;
+            this.ageColumn.HeaderText = "age";
+            this.ageColumn.Name = "ageColumn";
+            this.ageColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ageColumn.Width = 45;
             // 
-            // Date
+            // birthdateColumn
             // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Date.Width = 41;
+            this.birthdateColumn.HeaderText = "birthdate";
+            this.birthdateColumn.Name = "birthdateColumn";
+            this.birthdateColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.birthdateColumn.Width = 90;
             // 
-            // imageStrip
+            // jobColumn
             // 
-            this.imageStrip.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageStrip.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageStrip.TransparentColor = System.Drawing.Color.Transparent;
+            this.jobColumn.HeaderText = "job";
+            this.jobColumn.Name = "jobColumn";
+            this.jobColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.jobColumn.Width = 90;
             // 
             // TreeGridViewAdvancedExample
             // 
@@ -159,10 +184,11 @@ namespace Examples
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TreeGridViewAdvancedExample";
-            this.Text = "TreeGridView Example";
-            this.Shown += new System.EventHandler(this.TreeGridViewAdvancedExample_Shown);
+            this.Text = "TreeGridView Advanced Example (Issue #533)";
+            this.Load += new System.EventHandler(this.TreeGridViewAdvancedExample_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonThemeComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonTreeGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -174,10 +200,12 @@ namespace Examples
         private KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView kryptonTreeGridView1;
         private KryptonButton kbtnDataSource;
+        private KryptonButton kbtnExpandAll;
+        private KryptonButton kbtnCollapseAll;
         private KryptonThemeComboBox kryptonThemeComboBox1;
-        private DataGridViewTextBoxColumn Subject;
-        private DataGridViewTextBoxColumn From;
-        private DataGridViewTextBoxColumn Date;
-        private ImageList imageStrip;
+        private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn nameColumn;
+        private KryptonDataGridViewTextBoxColumn ageColumn;
+        private KryptonDataGridViewTextBoxColumn birthdateColumn;
+        private KryptonDataGridViewTextBoxColumn jobColumn;
     }
 }

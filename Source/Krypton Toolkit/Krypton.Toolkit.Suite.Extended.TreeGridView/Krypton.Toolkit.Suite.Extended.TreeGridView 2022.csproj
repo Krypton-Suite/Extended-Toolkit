@@ -77,7 +77,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.6.180-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.7.200-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -113,6 +113,21 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Resources\TreeGridImageResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>TreeGridImageResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\TreeGridImageResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>TreeGridImageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 
 
