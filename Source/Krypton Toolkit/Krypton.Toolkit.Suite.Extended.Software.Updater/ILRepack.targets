@@ -1,0 +1,41 @@
+<Project>
+	<!--
+		Override the default ILRepack.Lib.MSBuild.Task target.
+		PresentationFramework is a shared-framework assembly on net8+ (not a discrete mergeable DLL),
+		so only ILRepack .NET Framework outputs.
+	-->
+	<Target Name="ILRepack"
+			AfterTargets="Build"
+			Condition="$(Configuration.Contains('Release')) and $(TargetFramework.StartsWith('net4')) and '$(IsCrossTargetingBuild)' != 'true'">
+		<PropertyGroup>
+			<_ILRepackKeyFile Condition="'$(_ILRepackKeyFile)' == ''">$(AssemblyOriginatorKeyFile)</_ILRepackKeyFile>
+			<_ILRepackKeyFile Condition="'$(_ILRepackKeyFile)' == ''">$(KeyFile)</_ILRepackKeyFile>
+		</PropertyGroup>
+
+		<ItemGroup>
+			<InputAssemblies Include="$(OutputPath)$(TargetName)$(TargetExt)" />
+			<InputAssemblies Include="$(OutputPath)*.dll" Exclude="$(OutputPath)$(TargetName)$(TargetExt)" />
+		</ItemGroup>
+
+		<ILRepack Parallel="true"
+				  DebugInfo="true"
+				  AllowDuplicateResources="false"
+				  InputAssemblies="@(InputAssemblies)"
+				  TargetKind="SameAsPrimaryAssembly"
+				  KeyFile="$(_ILRepackKeyFile)"
+				  OutputFile="$(OutputPath)$(TargetName)$(TargetExt)" />
+	</Target>
+
+	<Target Name="CleanReferenceCopyLocalPaths"
+			AfterTargets="ILRepack"
+			Condition="$(Configuration.Contains('Release')) and $(TargetFramework.StartsWith('net4')) and '$(ClearOutputDirectory)' != 'False' and '$(IsCrossTargetingBuild)' != 'true'">
+		<Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
+		<ItemGroup>
+			<Directories Include="$([System.IO.Directory]::GetDirectories('$(OutDir)%(DestinationSubDirectory)', '*', System.IO.SearchOption.AllDirectories))" />
+			<Directories>
+				<Files>$([System.IO.Directory]::GetFiles("%(Directories.Identity)", "*", System.IO.SearchOption.AllDirectories).get_Length())</Files>
+			</Directories>
+		</ItemGroup>
+		<RemoveDir Directories="@(Directories)" Condition="%(Files)=='0'" />
+	</Target>
+</Project>

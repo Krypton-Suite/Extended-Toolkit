@@ -96,9 +96,14 @@
 			</Choose>
 		</When>
 		<Otherwise>
+			<PropertyGroup>
+				<_StandardToolkitRoot>$(MSBuildThisFileDirectory)..\..\..\..\Standard-Toolkit\Source\Krypton Components\</_StandardToolkitRoot>
+				<_ToolkitUtilitiesCsproj>$(_StandardToolkitRoot)Krypton.Toolkit.Utilities\Krypton.Toolkit.Utilities.csproj</_ToolkitUtilitiesCsproj>
+			</PropertyGroup>
 			<ItemGroup>
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit.Utilities\Krypton.Toolkit.Utilities.csproj" />
+				<ProjectReference Include="$(_StandardToolkitRoot)Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<!-- V110/alpha: Krypton.Toolkit.Utilities (provides KryptonToastIcon). Not present on Standard-Toolkit master. -->
+				<ProjectReference Include="$(_ToolkitUtilitiesCsproj)" Condition="Exists('$(_ToolkitUtilitiesCsproj)')" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

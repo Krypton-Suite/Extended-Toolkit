@@ -26,9 +26,10 @@ jobs:
         with:
           fetch-depth: 0  # Full history for versioning
 
-      # Extended-Toolkit project refs expect Standard-Toolkit as sibling (..\Standard-Toolkit)
+      # Extended-Toolkit V110 project refs expect Standard-Toolkit alpha as sibling (..\Standard-Toolkit).
+      # master still uses Krypton.Utilities; alpha renamed it to Krypton.Toolkit.Utilities.
       - name: Checkout Standard-Toolkit
-        run: git clone --depth 1 https://github.com/Krypton-Suite/Standard-Toolkit.git ../Standard-Toolkit
+        run: git clone --depth 1 --branch alpha https://github.com/Krypton-Suite/Standard-Toolkit.git ../Standard-Toolkit
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v5

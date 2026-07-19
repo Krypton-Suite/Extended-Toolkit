@@ -34,5 +34,8 @@ global using System.Drawing;
 global using System.Media;
 global using System.Windows.Forms;
 
+global using Krypton.Toolkit;
 global using Krypton.Toolkit.Suite.Extended.ToastNotification.Properties;
+// KryptonToastIcon lives in Krypton.Toolkit.Utilities (Standard Toolkit V110 / alpha),
+// which is referenced via ProjectReference (local) or Krypton.Standard.Toolkit.* (NuGet).
 global using Krypton.Toolkit.Utilities;
