@@ -27,7 +27,7 @@ on:
 jobs:
   build-and-release:
     name: Build and Release Toolkit
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
     
     steps:
       - name: Checkout repository
@@ -70,11 +70,15 @@ jobs:
           "@ | Out-File -Encoding utf8 global.json
 
       - name: Print diagnostics
+        shell: pwsh
         run: |
           dotnet --list-sdks
           dotnet --info
-          $msbuild = Get-ChildItem "C:\Program Files\Microsoft Visual Studio\2022\*\MSBuild\Current\Bin\MSBuild.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
-          if ($msbuild) { & $msbuild.FullName -version } else { msbuild -version 2>$null; if (-not $?) { Write-Output "msbuild not found (using dotnet build instead)" } }
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            msbuild -version
+          } else {
+            Write-Output "msbuild not found (using dotnet build instead)"
+          }
 
       - name: Determine Configuration
         id: config
