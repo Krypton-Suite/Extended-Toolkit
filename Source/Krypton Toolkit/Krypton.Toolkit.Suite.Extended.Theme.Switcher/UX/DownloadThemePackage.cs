@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -24,6 +24,11 @@
  *
  */
 #endregion
+
+using System.Net.Http;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher;
 
@@ -163,11 +168,13 @@ public class DownloadThemePackage : KryptonForm
     #endregion
 
     #region Variables
-    private WebClient _client;
+    private HttpClient? _httpClient;
+
+    private CancellationTokenSource? _downloadCts;
 
     private Stopwatch _stopwatch = new Stopwatch();
 
-    private string _downloadLocation;
+    private string _downloadLocation = string.Empty;
     #endregion
 
     #region Constructors
@@ -180,31 +187,100 @@ public class DownloadThemePackage : KryptonForm
     #region Methods
     private void DownloadFile(string urlAddress, string location)
     {
-        using (_client = new WebClient())
+        Uri url = urlAddress.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+            ? new Uri(urlAddress)
+            : new Uri($"http://{urlAddress}");
+
+        _downloadLocation = location;
+        _downloadCts = new CancellationTokenSource();
+        _httpClient = new HttpClient();
+        _stopwatch.Start();
+
+        _ = DownloadFileAsync(url, location, _downloadCts.Token);
+    }
+
+    private async Task DownloadFileAsync(Uri url, string location, CancellationToken cancellationToken)
+    {
+        Exception? error = null;
+        var cancelled = false;
+
+        try
         {
-            _client.DownloadFileCompleted += DownloadCompleted;
+            using HttpResponseMessage response = await _httpClient!
+                .GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                .ConfigureAwait(true);
 
-            _client.DownloadProgressChanged += ProgressChanged;
+            response.EnsureSuccessStatusCode();
 
-            Uri url = urlAddress.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ? new Uri(urlAddress) : new Uri(
-                $"http://{urlAddress}");
+            long totalBytes = response.Content.Headers.ContentLength ?? -1;
+#if NETFRAMEWORK
+            using Stream contentStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
+            using FileStream fileStream = new(location, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+#else
+            await using Stream contentStream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(true);
+            await using FileStream fileStream = new(location, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+#endif
 
-            _stopwatch.Start();
+            byte[] buffer = new byte[32 * 1024];
+            long bytesReceived = 0;
+            int read;
 
-            try
+            while (true)
             {
-                _client.DownloadFileAsync(url, location);
+#if NETFRAMEWORK
+                read = await contentStream.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(true);
+                if (read <= 0)
+                {
+                    break;
+                }
 
-                _downloadLocation = location;
+                await fileStream.WriteAsync(buffer, 0, read, cancellationToken).ConfigureAwait(true);
+#else
+                read = await contentStream.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken).ConfigureAwait(true);
+                if (read <= 0)
+                {
+                    break;
+                }
+
+                await fileStream.WriteAsync(buffer.AsMemory(0, read), cancellationToken).ConfigureAwait(true);
+#endif
+                bytesReceived += read;
+                int progress = totalBytes > 0
+                    ? Convert.ToInt32(Math.Round(bytesReceived * 100.0 / totalBytes, 0))
+                    : 0;
+                ProgressChanged(this, CreateDownloadProgressChangedEventArgs(progress, bytesReceived, totalBytes));
             }
-            catch (Exception e)
-            {
-                DebugUtilities.NotImplemented(e.ToString());
-            }
+        }
+        catch (OperationCanceledException)
+        {
+            cancelled = true;
+        }
+        catch (Exception ex)
+        {
+            error = ex;
+        }
+        finally
+        {
+            _httpClient?.Dispose();
+            _httpClient = null;
+            _downloadCts?.Dispose();
+            _downloadCts = null;
+            DownloadCompleted(this, new AsyncCompletedEventArgs(error, cancelled, null));
         }
     }
 
-    private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+    private static DownloadProgressChangedEventArgs CreateDownloadProgressChangedEventArgs(
+        int progressPercentage,
+        long bytesReceived,
+        long totalBytesToReceive) =>
+        (DownloadProgressChangedEventArgs)Activator.CreateInstance(
+            typeof(DownloadProgressChangedEventArgs),
+            BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public,
+            null,
+            [progressPercentage, null, bytesReceived, totalBytesToReceive],
+            null)!;
+
+    private void ProgressChanged(object? sender, DownloadProgressChangedEventArgs e)
     {
         kwlSpeed.Text = $"{(e.BytesReceived / 1024d / _stopwatch.Elapsed.TotalSeconds).ToString("0.00")}kb/s";
 
@@ -215,7 +291,7 @@ public class DownloadThemePackage : KryptonForm
         kwlSize.Text = $"{(e.BytesReceived / 1024d / 1024d).ToString("0.00")} MB's / {(e.TotalBytesToReceive / 1024d / 1024d).ToString("0.00")} MB's";
     }
 
-    private void DownloadCompleted(object sender, AsyncCompletedEventArgs e)
+    private void DownloadCompleted(object? sender, AsyncCompletedEventArgs e)
     {
         _stopwatch.Reset();
 
@@ -231,7 +307,7 @@ public class DownloadThemePackage : KryptonForm
             {
                 try
                 {
-                    if (_downloadLocation is not (null and ""))
+                    if (!string.IsNullOrEmpty(_downloadLocation))
                     {
                         Process.Start(_downloadLocation);
                     }

@@ -348,6 +348,6 @@ public partial class ZipExtractorWindow : KryptonForm
     {
         bgwLoadWorker?.CancelAsync();
 
-        File.AppendAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"ZipExtractor.log"), _logBuilder.ToString());
+        File.AppendAllText(Path.Combine(AppContext.BaseDirectory, @"ZipExtractor.log"), _logBuilder.ToString());
     }
 }

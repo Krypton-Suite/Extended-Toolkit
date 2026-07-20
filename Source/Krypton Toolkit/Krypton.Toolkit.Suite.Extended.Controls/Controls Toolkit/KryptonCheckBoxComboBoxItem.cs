@@ -144,15 +144,15 @@ public class KryptonCheckBoxComboBoxItem : KryptonCheckBox
     /// time, which also means the summary text value
     /// of the combo is out of sync initially.
     /// </summary>
-    private void CheckBoxComboBoxItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    private void CheckBoxComboBoxItem_PropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == _checkBoxComboBox.ValueMember)
         {
             Checked =
-                (bool)_comboBoxItem
+                (bool)(_comboBoxItem
                     .GetType()
                     .GetProperty(_checkBoxComboBox.ValueMember)!
-                    .GetValue(_comboBoxItem, null);
+                    .GetValue(_comboBoxItem, null) ?? false);
         }
     }
 
@@ -166,7 +166,10 @@ public class KryptonCheckBoxComboBoxItem : KryptonCheckBox
         if (_checkBoxComboBox.DataSource != null)
         {
             PropertyInfo? pi = ComboBoxItem.GetType().GetProperty(_checkBoxComboBox.ValueMember);
-            pi.SetValue(ComboBoxItem, Checked, null);
+            if (pi is not null)
+            {
+                pi.SetValue(ComboBoxItem, Checked, null);
+            }
         }
 
         base.OnCheckedChanged(e);
@@ -175,9 +178,9 @@ public class KryptonCheckBoxComboBoxItem : KryptonCheckBox
         // Also see DisplayMemberSingleItem on the CheckBoxComboBox for more information.
         if (_checkBoxComboBox.DataSource != null)
         {
-            string oldDisplayMember = _checkBoxComboBox.DisplayMember;
-            _checkBoxComboBox.DisplayMember = null;
-            _checkBoxComboBox.DisplayMember = oldDisplayMember;
+            string? oldDisplayMember = _checkBoxComboBox.DisplayMember;
+            _checkBoxComboBox.DisplayMember = null!;
+            _checkBoxComboBox.DisplayMember = oldDisplayMember ?? string.Empty;
         }
     }
 

@@ -123,7 +123,7 @@ public class ViewDrawButtonExtended : ViewComposite
 
         // Create the drop down view
         _drawDropDown = new ViewLayoutCenter(1);
-        _drawDropDownButton = new ViewDrawDropDownButton(_paletteNormal.PaletteContent);
+        _drawDropDownButton = new ViewDrawDropDownButton(_paletteNormal.PaletteContent!);
         _drawDropDown.Add(_drawDropDownButton);
         _drawOuterSeparator = new ViewLayoutSeparator(1);
 

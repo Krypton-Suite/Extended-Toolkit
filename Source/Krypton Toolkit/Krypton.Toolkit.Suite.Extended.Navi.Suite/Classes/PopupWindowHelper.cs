@@ -41,20 +41,20 @@ public class PopupWindowHelper : NativeWindow
     /// <summary>
     /// Event Handler to detect when the popup window is closed
     /// </summary>
-    private EventHandler popClosedHandler = null;
+    private FormClosedEventHandler? popClosedHandler;
     /// <summary>
     /// Message filter to detect mouse clicks anywhere in the application
     /// whilst the popup window is being displayed.
     /// </summary>
-    private PopupWindowHelperMessageFilter filter = null;
+    private PopupWindowHelperMessageFilter filter;
     /// <summary>
     /// The popup form that is being shown.
     /// </summary>
-    private KryptonForm popup = null;
+    private KryptonForm? popup;
     /// <summary>
     /// The owner of the popup form that is being shown:
     /// </summary>
-    private KryptonForm owner = null;
+    private KryptonForm? owner;
     /// <summary>
     /// Whether the popup is showing or not.
     /// </summary>
@@ -110,8 +110,8 @@ public class PopupWindowHelper : NativeWindow
         owner.AddOwnedForm(popup);
         // Respond to the Closed event in case the popup
         // is closed by its own internal means
-        popClosedHandler = new EventHandler(popup_Closed);
-        popup.Closed += popClosedHandler;
+        popClosedHandler = popup_Closed;
+        popup.FormClosed += popClosedHandler;
 
         // Show the popup:
         this.popupShowing = true;
@@ -148,7 +148,7 @@ public class PopupWindowHelper : NativeWindow
     /// </summary>
     /// <param name="sender">Popup form that has been closed.</param>
     /// <param name="e">Not used.</param>
-    private void popup_Closed(object sender, EventArgs e)
+    private void popup_Closed(object? sender, FormClosedEventArgs e)
     {
         ClosePopup();
     }
@@ -203,17 +203,17 @@ public class PopupWindowHelper : NativeWindow
             if (!skipClose)
             {
                 // Raise event to owner
-                OnPopupClosed(new PopupClosedEventArgs(this.popup));
+                OnPopupClosed(new PopupClosedEventArgs(popup!));
             }
             skipClose = false;
 
             // Make sure the popup is closed and we've cleaned
             // up:
-            this.owner.RemoveOwnedForm(this.popup);
+            owner!.RemoveOwnedForm(popup!);
             this.popupShowing = false;
-            this.popup.Closed -= popClosedHandler;
+            popup!.FormClosed -= popClosedHandler;
             this.popClosedHandler = null;
-            this.popup.Close();
+            popup!.Close();
             // No longer need to filter for clicks outside the
             // popup.
             Application.RemoveMessageFilter(filter);
@@ -223,7 +223,7 @@ public class PopupWindowHelper : NativeWindow
             // or dialog, then Windows won't know how to bring
             // the original owner back to the foreground, so
             // force it here:
-            this.owner.Activate();
+            owner!.Activate();
 
             // Null out references for GC
             this.popup = null;
@@ -244,7 +244,7 @@ public class PopupWindowHelper : NativeWindow
         }
     }
 
-    private void popup_Cancel(object sender, PopupCancelEventArgs e)
+    private void popup_Cancel(object? sender, PopupCancelEventArgs e)
     {
         OnPopupCancel(e);
     }

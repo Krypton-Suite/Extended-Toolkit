@@ -273,9 +273,12 @@ public class TranslationMethods
             stringCollection.Add(item);
         }
 
-        foreach (string item2 in stringCollection)
+        foreach (string? item2 in stringCollection)
         {
-            itemList.Add(item2);
+            if (item2 is not null)
+            {
+                itemList.Add(item2);
+            }
         }
 
         tmp = itemList.ToArray();

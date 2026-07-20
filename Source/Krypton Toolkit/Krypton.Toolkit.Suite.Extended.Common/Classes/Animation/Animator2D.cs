@@ -169,8 +169,15 @@ public class Animator2D : IAnimator
                 var pathsV = new List<AnimationPath>();
                 foreach (var p in value)
                 {
-                    pathsH.Add(p.HorizontalPath);
-                    pathsV.Add(p.VerticalPath);
+                    if (p.HorizontalPath is { } horizontalPath)
+                    {
+                        pathsH.Add(horizontalPath);
+                    }
+
+                    if (p.VerticalPath is { } verticalPath)
+                    {
+                        pathsV.Add(verticalPath);
+                    }
                 }
                 HorizontalAnimator.Paths = pathsH.ToArray();
                 VerticalAnimator.Paths = pathsV.ToArray();
@@ -209,25 +216,16 @@ public class Animator2D : IAnimator
     {
         get
         {
-            if (HorizontalAnimator.CurrentStatus == AnimatorStatus.Stopped
-                && VerticalAnimator.CurrentStatus == AnimatorStatus.Stopped)
+            return HorizontalAnimator.CurrentStatus switch
             {
-                return AnimatorStatus.Stopped;
-            }
-
-            if (HorizontalAnimator.CurrentStatus == AnimatorStatus.Paused
-                && VerticalAnimator.CurrentStatus == AnimatorStatus.Paused)
-            {
-                return AnimatorStatus.Paused;
-            }
-
-            if (HorizontalAnimator.CurrentStatus == AnimatorStatus.OnHold
-                && VerticalAnimator.CurrentStatus == AnimatorStatus.OnHold)
-            {
-                return AnimatorStatus.OnHold;
-            }
-
-            return AnimatorStatus.Playing;
+                AnimatorStatus.Stopped when VerticalAnimator.CurrentStatus == AnimatorStatus.Stopped => AnimatorStatus
+                    .Stopped,
+                AnimatorStatus.Paused when VerticalAnimator.CurrentStatus == AnimatorStatus.Paused => AnimatorStatus
+                    .Paused,
+                AnimatorStatus.OnHold when VerticalAnimator.CurrentStatus == AnimatorStatus.OnHold => AnimatorStatus
+                    .OnHold,
+                _ => AnimatorStatus.Playing
+            };
         }
     }
 

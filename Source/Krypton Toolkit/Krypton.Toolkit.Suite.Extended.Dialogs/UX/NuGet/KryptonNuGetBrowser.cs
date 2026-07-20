@@ -35,7 +35,7 @@ public partial class KryptonNuGetBrowser : KryptonForm
         InitializeComponent();
     }
 
-    private void KryptonNuGetBrowser_Load(object sender, EventArgs e)
+    private void KryptonNuGetBrowser_Load(object? sender, EventArgs e)
     {
         ApplicationUtilities.UnderConstruction();
     }

@@ -118,7 +118,7 @@ internal sealed class ImageBoxExtendedMouseWheelMessageFilter : IMessageFilter
                 }
                 else
                 {
-                    ImageBoxExtended control;
+                    ImageBoxExtended? control;
 
                     control = Control.FromHandle(hControlUnderMouse) as ImageBoxExtended;
 

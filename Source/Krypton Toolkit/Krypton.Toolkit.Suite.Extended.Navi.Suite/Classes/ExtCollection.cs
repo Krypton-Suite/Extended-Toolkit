@@ -81,28 +81,28 @@ public class ExtCollection : CollectionBase
     /// <summary>
     /// Overriden. Raises the Removed event 
     /// </summary>      
-    protected override void OnRemoveComplete(int index, object value)
+    protected override void OnRemoveComplete(int index, object? value)
     {
         base.OnRemoveComplete(index, value);
         CollectionEventHandler? handler = m_itemRemoved;
         if (handler != null
             && _notify)
         {
-            handler(this, new ExtCollectionEventArgs(value));
+            handler(this, new ExtCollectionEventArgs(value!));
         }
     }
 
     /// <summary>
     /// Overriden. Raises the item added event 
     /// </summary>      
-    protected override void OnInsertComplete(int index, object value)
+    protected override void OnInsertComplete(int index, object? value)
     {
         base.OnInsertComplete(index, value);
         CollectionEventHandler? handler = m_itemAdded;
         if (handler != null
             && _notify)
         {
-            handler(this, new ExtCollectionEventArgs(value));
+            handler(this, new ExtCollectionEventArgs(value!));
         }
     }
 

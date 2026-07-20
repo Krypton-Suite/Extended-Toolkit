@@ -32,14 +32,24 @@ public class KryptonOKDialogButton : KryptonButton
 {
     private KryptonForm? _parent;
 
-    public KryptonForm? ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
+    public KryptonForm? ParentWindow
+    {
+        get => _parent;
+        set
+        {
+            _parent = value;
+            Invalidate();
+            OwnerWindowChangedEventArgs e = new(this, value);
+            OnParentWindowChanged(this, e);
+        }
+    }
 
     #region Custom Events
-    public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+    public delegate void ParentWindowChangedEventHandler(object? sender, OwnerWindowChangedEventArgs e);
 
-    public event ParentWindowChangedEventHandler ParentWindowChanged;
+    public event ParentWindowChangedEventHandler? ParentWindowChanged;
 
-    protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged.Invoke(sender, e);
+    protected virtual void OnParentWindowChanged(object? sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
     #endregion
 
     public KryptonOKDialogButton()
@@ -51,7 +61,7 @@ public class KryptonOKDialogButton : KryptonButton
         TextChanged += KryptonOKDialogButton_TextChanged;
     }
 
-    private void KryptonOKDialogButton_TextChanged(object sender, EventArgs e)
+    private void KryptonOKDialogButton_TextChanged(object? sender, EventArgs e)
     {
         if (Text == Name)
         {
@@ -59,7 +69,7 @@ public class KryptonOKDialogButton : KryptonButton
         }
     }
 
-    private void KryptonOKDialogButton_ParentChanged(object sender, EventArgs e)
+    private void KryptonOKDialogButton_ParentChanged(object? sender, EventArgs e)
     {
         Control? parent = Parent;
 
@@ -68,10 +78,8 @@ public class KryptonOKDialogButton : KryptonButton
             parent = parent.Parent;
         }
 
-        if (parent is KryptonForm)
+        if (parent is KryptonForm form)
         {
-            KryptonForm form = (KryptonForm)parent;
-
             form.AcceptButton = this;
         }
     }

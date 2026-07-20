@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -941,7 +941,7 @@ public class ColourEditor : UserControl, IColourEditor
 
     private Orientation _orientation;
 
-    private bool _showAlphaChannel, _showColourSpaceLabels, _showLabelsInColour, _showHSLUI, _showHexadecimalUI;
+    private bool _showAlphaChannel, _showColourSpaceLabels, _showLabelsInColour, _showHSLUI = false, _showHexadecimalUI = false;
     #endregion
 
     #region Events
@@ -978,11 +978,11 @@ public class ColourEditor : UserControl, IColourEditor
         remove => Events.RemoveHandler(_eventColourChanged, value);
     }
 
-    public delegate void ColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+    public delegate void ColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
     //public event ColourChangedEventHandler ColourChanged;
 
-    //protected virtual void OnColourChanged(object sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
+    //protected virtual void OnColourChanged(object? sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
     #endregion
 
     #region Properties
@@ -1180,7 +1180,7 @@ public class ColourEditor : UserControl, IColourEditor
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void ValueChangedHandler(object sender, EventArgs e)
+    private void ValueChangedHandler(object? sender, EventArgs e)
     {
         if (!this.LockUpdates)
         {
@@ -1464,11 +1464,11 @@ public class ColourEditor : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateFields(false);
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1479,11 +1479,11 @@ public class ColourEditor : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnOrientationChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         //ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventOrientationChanged];
+        handler = (EventHandler?)this.Events[_eventOrientationChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1494,13 +1494,13 @@ public class ColourEditor : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowAlphaChannelChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetControlStates();
 
         //ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventShowAlphaChannelChanged];
+        handler = (EventHandler?)this.Events[_eventShowAlphaChannelChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1511,13 +1511,13 @@ public class ColourEditor : UserControl, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowColourSpaceLabelsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetControlStates();
 
         //ResizeComponents();
 
-        handler = (EventHandler)this.Events[_eventShowColourSpaceLabelsChanged];
+        handler = (EventHandler?)this.Events[_eventShowColourSpaceLabelsChanged];
 
         handler?.Invoke(this, e);
     }

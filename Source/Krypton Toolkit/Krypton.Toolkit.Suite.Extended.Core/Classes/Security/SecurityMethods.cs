@@ -40,9 +40,6 @@ public class SecurityMethods
         const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder res = new();
 
-
-        RNGCryptoServiceProvider rnd = new();
-
         Random random = new();
 
         while (0 < length--)

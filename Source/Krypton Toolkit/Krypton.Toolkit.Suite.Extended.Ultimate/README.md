@@ -23,6 +23,7 @@ This package includes **every** Extended Toolkit component:
 - All buttons and toggle switches
 - ComboBox extensions
 - Circular progress bars
+- Cards and panels
 - Panels and containers
 
 ### Data Visualization

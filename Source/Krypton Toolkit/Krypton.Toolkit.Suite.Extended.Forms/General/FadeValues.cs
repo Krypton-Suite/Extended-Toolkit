@@ -38,13 +38,13 @@ public class FadeValues : Storage
 
     private int _fadeInterval;
 
-    private KryptonFormExtended _currentWindow;
+    private KryptonFormExtended? _currentWindow;
 
-    private KryptonFormExtended _nextWindow;
+    private KryptonFormExtended? _nextWindow;
 
-    private VisualForm _currentVirtualWindow;
+    private VisualForm? _currentVirtualWindow;
 
-    private VisualForm _nextVirtualWindow;
+    private VisualForm? _nextVirtualWindow;
 
     #endregion
 
@@ -100,10 +100,10 @@ public class FadeValues : Storage
     [Browsable(false)]
     public override bool IsDefault => UseFade == false &&
                                       FadeInterval.Equals(50) &&
-                                      CurrentWindow!.Equals(null) &&
-                                      NextWindow!.Equals(null) &&
-                                      CurrentVirtualWindow!.Equals(null) &&
-                                      NextVirtualWindow!.Equals(null);
+                                      CurrentWindow == null &&
+                                      NextWindow == null &&
+                                      CurrentVirtualWindow == null &&
+                                      NextVirtualWindow == null;
 
     #endregion
 }

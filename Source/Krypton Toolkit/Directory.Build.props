@@ -228,4 +228,13 @@
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
+
+	<!--
+		Centralized designer assembly references for WinForms projects.
+		Unversioned references avoid MSB3243 conflicts between pinned assembly versions.
+	-->
+	<ItemGroup Condition="'$(UseWindowsForms)' == 'true'">
+		<Reference Include="System.Design" Condition="$(TargetFramework.StartsWith('net4'))" />
+		<Reference Include="System.Drawing.Design" Condition="$(TargetFramework.StartsWith('net5')) Or $(TargetFramework.StartsWith('net6')) Or $(TargetFramework.StartsWith('net7'))" />
+	</ItemGroup>
 </Project>

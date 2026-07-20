@@ -115,13 +115,12 @@ public class Label
 
     private void ApplyTextPaint(SKPaint paint)
     {
-        paint.TextAlign = SKTextAlign.Left;
         paint.IsStroke = false;
-        paint.Typeface = Typeface;
-        paint.TextSize = FontSize;
         paint.Color = ForeColor.ToSkColor();
         paint.IsAntialias = AntiAlias;
     }
+
+    public SKFont CreateFont() => new(Typeface, FontSize) { Embolden = Bold };
 
     public void ApplyToPaint(SKPaint paint)
     {
@@ -148,12 +147,13 @@ public class Label
     public PixelSize Measure(SKPaint paint)
     {
         ApplyTextPaint(paint);
+        using SKFont font = CreateFont();
         SKRect textBounds = new();
-        // INFO: MeasureText(string str, ref SKRect rect) works as follow:
+        // INFO: MeasureText works as follow:
         // - returned value is the length of the text with leading and trailing white spaces
-        // - rect.Left contains the width of leading white spaces
-        // - rect.width contains the length of the text __without__ leading or trailing white spaces
-        var fullTextWidth = paint.MeasureText(Text, ref textBounds);
+        // - bounds.Left contains the width of leading white spaces
+        // - bounds.Width contains the length of the text __without__ leading or trailing white spaces
+        var fullTextWidth = font.MeasureText(Text, out textBounds);
         return new PixelSize(fullTextWidth, textBounds.Height);
     }
 
@@ -174,18 +174,21 @@ public class Label
         canvas.DrawRect(backgroundRect.ToSkRect(), paint);
         ApplyTextPaint(paint);
 
+        using SKFont font = CreateFont();
+        SKTextAlign textAlign = Alignment.ToSkTextAlign();
+
         if (Text.Contains('\n'))
         {
             // TODO: multiline support could be significantly improved
             string[] lines = Text.Split('\n');
             for (int i = 0; i < lines.Length; i++)
             {
-                canvas.DrawText(lines[i], textRect.Left, textRect.Bottom + i * paint.FontSpacing, paint);
+                canvas.DrawText(lines[i], textRect.Left, textRect.Bottom + i * font.Spacing, textAlign, font, paint);
             }
         }
         else
         {
-            canvas.DrawText(Text, textRect.Left, textRect.Bottom, paint);
+            canvas.DrawText(Text, textRect.Left, textRect.Bottom, textAlign, font, paint);
         }
 
         ApplyBorderPaint(paint);

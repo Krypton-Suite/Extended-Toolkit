@@ -260,25 +260,52 @@ public class KryptonTreeGridCell : KryptonDataGridViewTextBoxCell
 
         if (node.HasChildren || node.Grid.VirtualNodes)
         {
-            try
-            {
-                // Paint node glyphs
-                if (node.IsExpanded)
-                {
-                    node.Grid.ROpen.DrawBackground(graphics, new Rectangle(glyphRect.X, glyphRect.Y + glyphRect.Height / 2 - 4, 10, 10));
-                }
-                else
-                {
-                    node.Grid.RClosed.DrawBackground(graphics, new Rectangle(glyphRect.X, glyphRect.Y + glyphRect.Height / 2 - 4, 10, 10));
-                }
-            }
-            catch
-            {
-                // TODO: Empty - Why ?
-            }
+            DrawExpandCollapseGlyph(graphics, glyphRect, node.IsExpanded, cellStyle.ForeColor);
+        }
+    }
+
+    private static void DrawExpandCollapseGlyph(Graphics graphics, Rectangle glyphRect, bool isExpanded, Color foreColor)
+    {
+        Image? icon = GetExpandCollapseGlyph(isExpanded);
+        if (icon != null)
+        {
+            graphics.DrawImage(icon, glyphRect.X, glyphRect.Y + glyphRect.Height / 2 - 4, 11, 11);
+            return;
         }
 
+        DrawExpandCollapseGlyphFallback(graphics, glyphRect, isExpanded, foreColor);
+    }
 
+    private static Image? GetExpandCollapseGlyph(bool isExpanded)
+    {
+        bool useOffice2010 = KryptonManager.CurrentGlobalPalette != null &&
+                             (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 ||
+                              KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013);
+
+        if (isExpanded)
+        {
+            return useOffice2010 ? Resources.TreeGridImageResources.ExpandIcon2010 : Resources.TreeGridImageResources.CollapseIcon;
+        }
+
+        return useOffice2010 ? Resources.TreeGridImageResources.CollapseIcon2010 : Resources.TreeGridImageResources.ExpandIcon;
+    }
+
+    private static void DrawExpandCollapseGlyphFallback(Graphics graphics, Rectangle glyphRect, bool isExpanded, Color foreColor)
+    {
+        const int glyphSize = 9;
+        int y = glyphRect.Y + (glyphRect.Height - glyphSize) / 2;
+        var box = new Rectangle(glyphRect.X, y, glyphSize, glyphSize);
+
+        using var pen = new Pen(foreColor);
+        graphics.DrawRectangle(pen, box);
+
+        int midY = box.Y + box.Height / 2;
+        int midX = box.X + box.Width / 2;
+        graphics.DrawLine(pen, box.X + 2, midY, box.Right - 2, midY);
+        if (!isExpanded)
+        {
+            graphics.DrawLine(pen, midX, box.Y + 2, midX, box.Bottom - 2);
+        }
     }
     protected override void OnMouseUp(DataGridViewCellMouseEventArgs e)
     {
@@ -292,26 +319,32 @@ public class KryptonTreeGridCell : KryptonDataGridViewTextBoxCell
     }
     protected override void OnMouseDown(DataGridViewCellMouseEventArgs e)
     {
-        if (e.Location.X > InheritedStyle.Padding.Left)
+        if (DataGridView == null)
+        {
+            return;
+        }
+
+        Rectangle displayRect = DataGridView.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+        Rectangle glyphRect = new(displayRect.X + GlyphMargin, displayRect.Y, INDENT_WIDTH, displayRect.Height - 1);
+        int clickX = e.X + displayRect.X;
+
+        if (clickX > glyphRect.X + 11 || clickX < glyphRect.X)
         {
             base.OnMouseDown(e);
+            return;
         }
-        else
+
+        KryptonTreeGridNodeRow? node = OwningNode;
+        if (node != null)
         {
-            // Expand the node
-            //TODO: Calculate more precise location
-            KryptonTreeGridNodeRow? node = OwningNode;
-            if (node != null)
+            node.Grid.InExpandCollapseMouseCapture = true;
+            if (node.IsExpanded)
             {
-                node.Grid.InExpandCollapseMouseCapture = true;
-                if (node.IsExpanded)
-                {
-                    node.Collapse();
-                }
-                else
-                {
-                    node.Expand();
-                }
+                node.Collapse();
+            }
+            else
+            {
+                node.Expand();
             }
         }
     }

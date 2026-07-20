@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -190,13 +190,13 @@ public partial class KryptonAdvancedWizard
         newTabIndex = ev.NextPageIndex;
     }
 
-    internal void KbtnNextClick(object sender, EventArgs e) => _wizardStrategy.Next(_selectionService);
+    internal void KbtnNextClick(object? sender, EventArgs e) => _wizardStrategy.Next(_selectionService);
 
-    internal void KbtnBackClick(object sender, EventArgs e) => _wizardStrategy.Back(_selectionService);
+    internal void KbtnBackClick(object? sender, EventArgs e) => _wizardStrategy.Back(_selectionService);
 
-    internal void KbtnFinishClick(object sender, EventArgs e) => _wizardStrategy.Finish();
+    internal void KbtnFinishClick(object? sender, EventArgs e) => _wizardStrategy.Finish();
 
-    internal void KbtnCancelClick(object sender, EventArgs e) => _wizardStrategy.Cancel();
+    internal void KbtnCancelClick(object? sender, EventArgs e) => _wizardStrategy.Cancel();
 
-    internal void KbtnHelpClick(object sender, EventArgs e) => _wizardStrategy.Help();
+    internal void KbtnHelpClick(object? sender, EventArgs e) => _wizardStrategy.Help();
 }

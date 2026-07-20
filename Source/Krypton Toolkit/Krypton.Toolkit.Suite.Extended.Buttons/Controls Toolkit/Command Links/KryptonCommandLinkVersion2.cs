@@ -182,7 +182,7 @@ public class KryptonCommandLinkVersion2 : KryptonButton
         base.OnClick(e);
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         base.OnPaint(e);
     }

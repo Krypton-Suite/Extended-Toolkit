@@ -361,30 +361,30 @@
         }
 
         #endregion
-        private KryptonPanel kryptonPanel1;
-        private KryptonBorderEdge kryptonBorderEdge1;
-        private KryptonPanel kryptonPanel2;
-        private KryptonCheckBox kchkToggleCasing;
-        private KryptonButton kbtnCancel;
-        private KryptonButton kbtnSaveToFile;
-        private TableLayoutPanel tableLayoutPanel1;
-        private KryptonWrapLabel kryptonWrapLabel1;
-        private KryptonWrapLabel kryptonWrapLabel2;
-        private KryptonTextBox ktxtFilePath;
-        private KryptonComboBox kcmbHashType;
-        private KryptonButton kbtnCalculate;
-        private KryptonGroupBox kryptonGroupBox1;
-        private KryptonWrapLabel kwlHashOutput;
-        private ButtonSpecAny bsaBrowse;
-        private StatusStrip ss;
-        private ToolStripStatusLabel tslStatus;
-        private BackgroundWorker bgwMD5;
-        private BackgroundWorker bgwSHA1;
-        private BackgroundWorker bgwSHA256;
-        private BackgroundWorker bgwSHA384;
-        private BackgroundWorker bgwSHA512;
-        private BackgroundWorker bgwRIPEMD160;
-        private ButtonSpecAny bsaReset;
-        private KryptonProgressBarToolStripItem kpbtsiCalculationProgress;
+        private KryptonPanel kryptonPanel1 = null!;
+        private KryptonBorderEdge kryptonBorderEdge1 = null!;
+        private KryptonPanel kryptonPanel2 = null!;
+        private KryptonCheckBox kchkToggleCasing = null!;
+        private KryptonButton kbtnCancel = null!;
+        private KryptonButton kbtnSaveToFile = null!;
+        private TableLayoutPanel tableLayoutPanel1 = null!;
+        private KryptonWrapLabel kryptonWrapLabel1 = null!;
+        private KryptonWrapLabel kryptonWrapLabel2 = null!;
+        private KryptonTextBox ktxtFilePath = null!;
+        private KryptonComboBox kcmbHashType = null!;
+        private KryptonButton kbtnCalculate = null!;
+        private KryptonGroupBox kryptonGroupBox1 = null!;
+        private KryptonWrapLabel kwlHashOutput = null!;
+        private ButtonSpecAny bsaBrowse = null!;
+        private StatusStrip ss = null!;
+        private ToolStripStatusLabel tslStatus = null!;
+        private BackgroundWorker bgwMD5 = null!;
+        private BackgroundWorker bgwSHA1 = null!;
+        private BackgroundWorker bgwSHA256 = null!;
+        private BackgroundWorker bgwSHA384 = null!;
+        private BackgroundWorker bgwSHA512 = null!;
+        private BackgroundWorker bgwRIPEMD160 = null!;
+        private ButtonSpecAny bsaReset = null!;
+        private KryptonProgressBarToolStripItem kpbtsiCalculationProgress = null!;
     }
 }

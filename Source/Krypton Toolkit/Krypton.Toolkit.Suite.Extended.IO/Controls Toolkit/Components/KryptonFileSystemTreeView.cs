@@ -31,23 +31,19 @@ namespace Krypton.Toolkit.Suite.Extended.IO;
 public class KryptonFileSystemTreeView : KryptonTreeView
 {
     #region Variables
-    private bool _showFiles = true;
-
-    private DriveInfo[] _drives;
+    private DriveInfo[] _drives = [];
 
     private ImageList _imageList = new ImageList();
 
     private Hashtable _systemIcons = new Hashtable();
 
-    private Icon _folderIcon = null;
-
-    private static readonly int Folder = 0;
+    private Icon? _folderIcon;
     #endregion
 
     #region Property
     public DriveInfo[] Drives { get => _drives; set => _drives = value; }
 
-    public Icon FolderIcon { get => _folderIcon; set => _folderIcon = value; }
+    public Icon? FolderIcon { get => _folderIcon; set => _folderIcon = value; }
     #endregion
 
     #region Constructor
@@ -67,7 +63,12 @@ public class KryptonFileSystemTreeView : KryptonTreeView
 
             //Icon folderIcon = Icon.ExtractAssociatedIcon(@"C:\\Windows"), 
 
-            Icon applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            Icon? applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
+            if (applicationIcon is null)
+            {
+                return;
+            }
 
             if (File.Exists(localFolderIcon))
             {
@@ -88,7 +89,7 @@ public class KryptonFileSystemTreeView : KryptonTreeView
     #endregion
 
     #region Event Handlers
-    private void KryptonFileSystemTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+    private void KryptonFileSystemTreeView_BeforeExpand(object? sender, TreeViewCancelEventArgs e)
     {
         if (e.Node is KryptonTreeNode)
         {
@@ -98,7 +99,7 @@ public class KryptonFileSystemTreeView : KryptonTreeView
         //KryptonDirectoryNode
     }
 
-    private void KryptonFileSystemTreeView_MouseDown(object sender, MouseEventArgs e)
+    private void KryptonFileSystemTreeView_MouseDown(object? sender, MouseEventArgs e)
     {
         throw new System.NotImplementedException();
     }

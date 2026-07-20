@@ -141,8 +141,8 @@ public class ToolTipManager
     #region Instance Fields
     private readonly Timer _startTimer;
     private readonly Timer _stopTimer;
-    private ViewBase _startTarget;
-    private ViewBase _currentTarget;
+    private ViewBase? _startTarget;
+    private ViewBase? _currentTarget;
     private bool _showingToolTips;
     #endregion
 
@@ -204,7 +204,7 @@ public class ToolTipManager
     /// </summary>
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="c">Reference to the source control instance.</param>
-    public void MouseEnter(ViewBase targetElement, Control c)
+    public void MouseEnter(ViewBase? targetElement, Control c)
     {
         // Remember the current target
         _currentTarget = targetElement;
@@ -248,7 +248,7 @@ public class ToolTipManager
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="pt">Mouse position relative to control.</param>
-    public void MouseMove(ViewBase targetElement, Control c, Point pt)
+    public void MouseMove(ViewBase? targetElement, Control c, Point pt)
     {
     }
 
@@ -259,7 +259,7 @@ public class ToolTipManager
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="pt">Mouse position relative to control.</param>
     /// <param name="button">Mouse button pressed down.</param>
-    public void MouseDown(ViewBase targetElement,
+    public void MouseDown(ViewBase? targetElement,
         Control c,
         Point pt,
         MouseButtons button)
@@ -287,7 +287,7 @@ public class ToolTipManager
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="pt">Mouse position relative to control.</param>
     /// <param name="button">Mouse button released.</param>
-    public void MouseUp(ViewBase targetElement,
+    public void MouseUp(ViewBase? targetElement,
         Control c,
         Point pt,
         MouseButtons button)
@@ -300,7 +300,7 @@ public class ToolTipManager
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="c">Reference to the source control instance.</param>
     /// <param name="next">Reference to view that is next to have the mouse.</param>
-    public void MouseLeave(ViewBase targetElement, Control c, ViewBase next)
+    public void MouseLeave(ViewBase? targetElement, Control c, ViewBase? next)
     {
         // No longer have a current target
         _currentTarget = null;
@@ -323,7 +323,7 @@ public class ToolTipManager
     /// </summary>
     /// <param name="targetElement">Target element for the mouse message.</param>
     /// <param name="pt">Mouse position relative to control.</param>
-    public void DoubleClick(ViewBase targetElement, Point pt)
+    public void DoubleClick(ViewBase? targetElement, Point pt)
     {
     }
     #endregion
@@ -348,13 +348,13 @@ public class ToolTipManager
     #endregion
 
     #region Implementation
-    private void OnStartTimerTick(object sender, EventArgs e)
+    private void OnStartTimerTick(object? sender, EventArgs e)
     {
         // One tick timer, so always stop
         _startTimer.Stop();
 
         // Is the target the same as when the timer was kicked off?
-        if (_currentTarget == _startTarget)
+        if (_startTarget != null && _currentTarget == _startTarget)
         {
             // Enter showing tooltips mode
             _showingToolTips = true;
@@ -369,7 +369,7 @@ public class ToolTipManager
         }
     }
 
-    private void OnStopTimerTick(object sender, EventArgs e)
+    private void OnStopTimerTick(object? sender, EventArgs e)
     {
         // One tick timer, so always stop
         _stopTimer.Stop();

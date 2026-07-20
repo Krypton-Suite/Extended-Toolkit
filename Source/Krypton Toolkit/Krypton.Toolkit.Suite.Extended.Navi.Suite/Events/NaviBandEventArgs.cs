@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 
-public delegate void NaviBandEventHandler(object sender, NaviBandEventArgs e);
+public delegate void NaviBandEventHandler(object? sender, NaviBandEventArgs e);
 
 /// <summary>
 /// Contains additional event info
@@ -36,7 +36,7 @@ public class NaviBandEventArgs : EventArgs
 {
     #region Fields
 
-    private NaviBand _newActiveBand;
+    private NaviBand? _newActiveBand;
     private bool _cancel = false;
 
     #endregion
@@ -47,7 +47,7 @@ public class NaviBandEventArgs : EventArgs
     /// Initializes a new instance of the NaviBandEventArgs class
     /// </summary>
     /// <param name="newActiveBand">The new active band</param>
-    public NaviBandEventArgs(NaviBand newActiveBand)
+    public NaviBandEventArgs(NaviBand? newActiveBand)
         : base()
     {
         _newActiveBand = newActiveBand;
@@ -60,7 +60,7 @@ public class NaviBandEventArgs : EventArgs
     /// <summary>
     /// Gets or sets the new active band
     /// </summary>
-    public NaviBand NewActiveBand
+    public NaviBand? NewActiveBand
     {
         get => _newActiveBand;
         set => _newActiveBand = value;

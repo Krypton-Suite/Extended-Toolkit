@@ -57,7 +57,7 @@ public class OutlookBarButtonCollection : CollectionBase
         return this.List.IndexOf(item);
     }
 
-    public OutlookBarButton this[int index] => (OutlookBarButton)List[index];
+    public OutlookBarButton this[int index] => (OutlookBarButton)List[index]!;
 
     public OutlookBarButton? this[string text]
     {
@@ -80,19 +80,9 @@ public class OutlookBarButtonCollection : CollectionBase
         {
             foreach (OutlookBarButton b in List)
             {
-                if (!(b.Rectangle == null))
+                if (!b.Rectangle.IsEmpty && b.Rectangle.Contains(new Point(x, y)))
                 {
-                    if (b.Rectangle.Contains(new Point(x, y)))
-                    {
-                        return b;
-                    }
-                }
-                if (!(b.Rectangle == null))
-                {
-                    if (b.Rectangle.Contains(new Point(x, y)))
-                    {
-                        return b;
-                    }
+                    return b;
                 }
             }
             return null;
@@ -103,7 +93,7 @@ public class OutlookBarButtonCollection : CollectionBase
     {
         item.Owner = this._owner;
         int i = List.Add(item);
-        return (OutlookBarButton)List[i];
+        return (OutlookBarButton)List[i]!;
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:ValidateArgumentsOfPublicMethods")]
@@ -130,11 +120,11 @@ public class OutlookBarButtonCollection : CollectionBase
         return List.Contains(item);
     }
 
-    protected override void OnValidate(object value)
+    protected override void OnValidate(object? value)
     {
-        if (!typeof(OutlookBarButton).IsAssignableFrom(value.GetType()))
+        if (value is not OutlookBarButton)
         {
-            throw new ArgumentException(@"Value must be of type OutlookBarButton.", "value");
+            throw new ArgumentException(@"Value must be of type OutlookBarButton.", nameof(value));
         }
     }
 

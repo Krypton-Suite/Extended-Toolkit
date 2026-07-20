@@ -34,9 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
 /// </summary>
 public class WebClientFileDownloader : IUpdateDownloader, IDisposable
 {
-    private HttpClient _httpClient;
-    private ILogger _logger;
-    private CancellationTokenSource _cts;
+    private HttpClient _httpClient = null!;
+    private ILogger? _logger;
+    private CancellationTokenSource _cts = null!;
 
     /// <summary>
     /// Default constructor for the web client file downloader.
@@ -61,7 +61,7 @@ public class WebClientFileDownloader : IUpdateDownloader, IDisposable
     /// <summary>
     /// ILogger to log data from WebClientFileDownloader
     /// </summary>
-    public ILogger LogWriter
+    public ILogger? LogWriter
     {
         set { _logger = value; }
         get { return _logger; }
@@ -107,7 +107,7 @@ public class WebClientFileDownloader : IUpdateDownloader, IDisposable
     /// </summary>
     /// <param name="handler">HttpClientHandler for messages</param>
     /// <returns>The client used for file downloads</returns>
-    protected virtual HttpClient CreateHttpClient(HttpClientHandler handler)
+    protected virtual HttpClient CreateHttpClient(HttpClientHandler? handler)
     {
         if (handler != null)
         {
@@ -193,7 +193,7 @@ public class WebClientFileDownloader : IUpdateDownloader, IDisposable
         }
         catch (Exception e)
         {
-            LogWriter.PrintMessage("Error: {0}", e.Message);
+            _logger?.PrintMessage("Error: {0}", e.Message);
             IsDownloading = false;
             DownloadFileCompleted?.Invoke(this, new AsyncCompletedEventArgs(e, true, null));
         }
@@ -219,8 +219,13 @@ public class WebClientFileDownloader : IUpdateDownloader, IDisposable
     }
 
     /// <inheritdoc/>
-    public async Task<string> RetrieveDestinationFileNameAsync(AppCastItem? item)
+    public async Task<string?> RetrieveDestinationFileNameAsync(AppCastItem? item)
     {
+        if (item is null)
+        {
+            return null;
+        }
+
         var httpClient = CreateHttpClient();
         httpClient.Timeout = TimeSpan.FromSeconds(30);
         try
@@ -235,9 +240,9 @@ public class WebClientFileDownloader : IUpdateDownloader, IDisposable
                 if (response.IsSuccessStatusCode)
                 {
                     //var totalBytes = response.Content.Headers.ContentLength; // TODO: Use this value as well for a more accurate download %?
-                    string destFilename = response.RequestMessage?.RequestUri?.LocalPath;
+                    string? destFilename = response.RequestMessage?.RequestUri?.LocalPath;
 
-                    return Path.GetFileName(destFilename);
+                    return Path.GetFileName(destFilename ?? "");
                 }
                 return null;
             }

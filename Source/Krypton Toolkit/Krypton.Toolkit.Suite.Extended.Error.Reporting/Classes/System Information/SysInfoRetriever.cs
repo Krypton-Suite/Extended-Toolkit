@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -50,7 +50,8 @@ internal class SysInfoRetriever
         foreach (var o in _sysInfoSearcher.Get())
         {
             var managementObject = (ManagementObject)o;
-            _sysInfoResult.AddNode(managementObject.GetPropertyValue(_sysInfoQuery.DisplayField).ToString().Trim());
+            var displayValue = managementObject.GetPropertyValue(_sysInfoQuery.DisplayField);
+            _sysInfoResult.AddNode(Convert.ToString(displayValue)?.Trim() ?? string.Empty);
             _sysInfoResult.AddChildren(GetChildren(managementObject));
         }
         return _sysInfoResult;

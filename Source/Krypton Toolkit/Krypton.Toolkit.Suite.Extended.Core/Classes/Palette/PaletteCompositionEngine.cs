@@ -67,6 +67,8 @@ public class PaletteCompositionEngine
     /// <param name="focusedTextColourPreview">The focused text colour preview.</param>
     /// <param name="pressedTextColourPreview">The pressed text colour preview.</param>
     /// <param name="disabledControlColourPreview">The disabled colour preview.</param>
+    /// <param name="linkDisabledColourPreview">The link disabled colour preview.</param>
+    /// <param name="linkFocusedColour">The link focused colour.</param>
     /// <param name="linkNormalColourPreview">The link normal colour preview.</param>
     /// <param name="linkHoverColourPreview">The link hover colour preview.</param>
     /// <param name="linkVisitedColourPreview">The link visited colour preview.</param>
@@ -91,7 +93,7 @@ public class PaletteCompositionEngine
 
         try
         {
-            palette.BasePalette.BasePaletteType = paletteType;
+            palette.BasePalette!.BasePaletteType = paletteType;
 
             if (lightestColour == Color.Transparent)
             {
@@ -563,7 +565,8 @@ public class PaletteCompositionEngine
                 #endregion
 
                 #region Separator Styles
-                palette.SeparatorStyles.SeparatorCommon.StateCommon.Back.Color1 = baseColour;
+#pragma warning disable CS8602 // SeparatorStyles graph is populated by palette construction
+                palette.SeparatorStyles!.SeparatorCommon.StateCommon.Back.Color1 = baseColour;
 
                 palette.SeparatorStyles.SeparatorCommon.StateCommon.Back.Color2 = baseColour;
 
@@ -572,6 +575,7 @@ public class PaletteCompositionEngine
                 palette.SeparatorStyles.SeparatorCommon.StateCommon.Border.Color1 = baseColour;
 
                 palette.SeparatorStyles.SeparatorCommon.StateCommon.Border.DrawBorders = PaletteDrawBorders.All;
+#pragma warning restore CS8602
                 #endregion
 
                 #region Tool Menu Status
@@ -663,7 +667,10 @@ public class PaletteCompositionEngine
 
             palette.Export();
 
-            statusState.Text = $"Palette exported to: {palette.GetCustomisedKryptonPaletteFilePath()}";
+            if (statusState != null)
+            {
+                statusState.Text = $"Palette exported to: {palette.GetCustomisedKryptonPaletteFilePath()}";
+            }
         }
         catch (Exception exc)
         {
@@ -675,79 +682,79 @@ public class PaletteCompositionEngine
     {
         if (themeChoice.Text == "Professional System")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Professional;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Professional;
 
             SwitchPaletteType(BasePaletteType.Professional);
         }
         else if (themeChoice.Text == "Professional Office 2003")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Professional;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Professional;
 
             SwitchPaletteType(BasePaletteType.Professional);
         }
         else if (themeChoice.Text == "Office 2007 Blue")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2007;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2007;
 
             SwitchPaletteType(BasePaletteType.Office2007);
         }
         else if (themeChoice.Text == "Office 2007 Black")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2007;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2007;
 
             SwitchPaletteType(BasePaletteType.Office2007);
         }
         else if (themeChoice.Text == "Office 2007 Silver")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2007;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2007;
 
             SwitchPaletteType(BasePaletteType.Office2007);
         }
         else if (themeChoice.Text == "Office 2010 Blue")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2010;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2010;
 
             SwitchPaletteType(BasePaletteType.Office2010);
         }
         else if (themeChoice.Text == "Office 2010 Black")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2010;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2010;
 
             SwitchPaletteType(BasePaletteType.Office2010);
         }
         else if (themeChoice.Text == "Office 2010 Silver")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2010;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2010;
 
             SwitchPaletteType(BasePaletteType.Office2010);
         }
         else if (themeChoice.Text == "Office 2013 White")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Office2013;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Office2013;
 
             SwitchPaletteType(BasePaletteType.Office2013);
         }
         else if (themeChoice.Text == "Sparkle Blue")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Sparkle;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Sparkle;
 
             SwitchPaletteType(BasePaletteType.Sparkle);
         }
         else if (themeChoice.Text == "Sparkle Orange")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Sparkle;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Sparkle;
 
             SwitchPaletteType(BasePaletteType.Sparkle);
         }
         else if (themeChoice.Text == "Sparkle Purple")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Sparkle;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Sparkle;
 
             SwitchPaletteType(BasePaletteType.Sparkle);
         }
         else if (themeChoice.Text == "Custom")
         {
-            palette.BasePalette.BasePaletteType = BasePaletteType.Custom;
+            palette.BasePalette!.BasePaletteType = BasePaletteType.Custom;
 
             SwitchPaletteType(BasePaletteType.Custom);
         }

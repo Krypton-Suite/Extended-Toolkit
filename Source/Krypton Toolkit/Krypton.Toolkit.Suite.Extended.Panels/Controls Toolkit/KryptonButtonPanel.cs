@@ -77,7 +77,7 @@ public class KryptonButtonPanel : UserControl
 
     #region Instance Fields
 
-    private KryptonButton[] _buttons;
+    private KryptonButton[]? _buttons;
 
     private PaletteBackStyle _panelPaletteBackStyle;
 
@@ -88,7 +88,7 @@ public class KryptonButtonPanel : UserControl
     #region Properties
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public KryptonButton[] Buttons { get => _buttons; set => _buttons = value; }
+    public KryptonButton[]? Buttons { get => _buttons; set => _buttons = value; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PaletteBackStyle PanelPaletteBackStyle { get => _panelPaletteBackStyle; set { _panelPaletteBackStyle = value; Invalidate(); } }
@@ -104,7 +104,7 @@ public class KryptonButtonPanel : UserControl
     {
         InitializeComponent();
 
-        _buttons = null;
+        _buttons = null!;
 
         _panelPaletteBackStyle = PaletteBackStyle.PanelAlternate;
 

@@ -62,7 +62,7 @@ public class RandomPassword
     /// random. It will be no shorter than the minimum default and
     /// no longer than maximum default.
     /// </remarks>
-    public static string Generate()
+    public static string? Generate()
     {
         return Generate(DEFAULT_MIN_PASSWORD_LENGTH,
             DEFAULT_MAX_PASSWORD_LENGTH);
@@ -77,7 +77,7 @@ public class RandomPassword
     /// <returns>
     /// Randomly generated password.
     /// </returns>
-    public static string Generate(int length)
+    public static string? Generate(int length)
     {
         return Generate(length, length);
     }
@@ -99,7 +99,7 @@ public class RandomPassword
     /// random and it will fall with the range determined by the
     /// function parameters.
     /// </remarks>
-    public static string Generate(int minLength,
+    public static string? Generate(int minLength,
         int maxLength)
     {
         // Make sure that input parameters are valid.
@@ -144,10 +144,14 @@ public class RandomPassword
         byte[] randomBytes = new byte[4];
 
         // Generate 4 random bytes.
-#pragma warning disable SYSLIB00
-        RNGCryptoServiceProvider rng = new();
-#pragma warning restore SYSLIB00
-        rng.GetBytes(randomBytes);
+#if NETCOREAPP2_1_OR_GREATER
+        System.Security.Cryptography.RandomNumberGenerator.Fill(randomBytes);
+#else
+        using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(randomBytes);
+        }
+#endif
 
         // Convert 4 bytes into a 32-bit integer value.
         int seed = BitConverter.ToInt32(randomBytes, 0);

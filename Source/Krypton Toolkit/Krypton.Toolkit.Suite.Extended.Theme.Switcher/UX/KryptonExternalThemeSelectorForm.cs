@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -35,7 +35,7 @@ public partial class KryptonExternalThemeSelectorForm : KryptonForm
 
     private ExternalThemeViewerType _externalThemeViewerType;
 
-    private FileDialogType _fileDialogType;
+    private FileDialogType _fileDialogType = FileDialogType.Krypton;
 
     #endregion
 
@@ -111,19 +111,19 @@ public partial class KryptonExternalThemeSelectorForm : KryptonForm
         }
     }
 
-    private void KryptonExternalThemeSelectorForm_Load(object sender, EventArgs e)
+    private void KryptonExternalThemeSelectorForm_Load(object? sender, EventArgs e)
     {
 
     }
 
-    private void bsaReset_Click(object sender, EventArgs e)
+    private void bsaReset_Click(object? sender, EventArgs e)
     {
         ktxtThemeLocation.Text = string.Empty;
 
         bsaReset.Enabled = ButtonEnabled.False;
     }
 
-    private void bsaBrowse_Click(object sender, EventArgs e)
+    private void bsaBrowse_Click(object? sender, EventArgs e)
     {
         switch (_fileDialogType)
         {
@@ -182,9 +182,13 @@ public partial class KryptonExternalThemeSelectorForm : KryptonForm
 
                     if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
                     {
-                        ktxtThemeLocation.Text = Path.GetFullPath(commonOpenFileDialog.FileName);
+                        string? selectedPath = commonOpenFileDialog.FileName;
+                        if (!string.IsNullOrEmpty(selectedPath))
+                        {
+                            ktxtThemeLocation.Text = Path.GetFullPath(selectedPath);
 
-                        LoadThemesFromDirectory(Path.GetFullPath(commonOpenFileDialog.FileName));
+                            LoadThemesFromDirectory(Path.GetFullPath(selectedPath));
+                        }
                     }
                 }
                 break;
@@ -229,14 +233,23 @@ public partial class KryptonExternalThemeSelectorForm : KryptonForm
         }
     }
 
-    private void klbThemesList_SelectedIndexChanged(object sender, EventArgs e)
+    private void klbThemesList_SelectedIndexChanged(object? sender, EventArgs e)
     {
 
     }
 
-    private void klvThemesList_SelectedIndexChanged(object sender, EventArgs e)
+    private void klvThemesList_SelectedIndexChanged(object? sender, EventArgs e)
     {
-        kcpbCustom.Import(klvThemesList.SelectedItems.ToString(), kchkSilent.Checked);
+        string? filename = klvThemesList.SelectedItems.Count > 0
+            ? klvThemesList.SelectedItems[0].Text
+            : null;
+
+        if (string.IsNullOrEmpty(filename))
+        {
+            return;
+        }
+
+        kcpbCustom.Import(filename, kchkSilent.Checked);
 
         kmanCustom.GlobalPaletteMode = PaletteMode.Custom;
 

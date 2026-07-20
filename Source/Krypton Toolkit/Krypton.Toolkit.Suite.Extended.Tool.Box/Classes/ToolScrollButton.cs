@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -85,7 +85,7 @@ public class ToolScrollButton : ToolObject
     public void Paint(Graphics g, Rectangle clipRect, bool ctrlEnabled)
     {
         Rectangle rect = Rectangle.Empty;
-        Pen pen = null;
+        Pen? pen = null;
         int length = 0;
         Point p1;
         Point p2;

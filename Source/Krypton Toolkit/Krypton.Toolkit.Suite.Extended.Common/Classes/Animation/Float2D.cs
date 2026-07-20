@@ -91,7 +91,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public bool ToBoolean(IFormatProvider provider)
+    public bool ToBoolean(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -108,7 +108,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public byte ToByte(IFormatProvider provider)
+    public byte ToByte(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -125,7 +125,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public char ToChar(IFormatProvider provider)
+    public char ToChar(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -143,7 +143,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public DateTime ToDateTime(IFormatProvider provider)
+    public DateTime ToDateTime(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -161,7 +161,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public decimal ToDecimal(IFormatProvider provider)
+    public decimal ToDecimal(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -179,7 +179,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public double ToDouble(IFormatProvider provider)
+    public double ToDouble(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -197,7 +197,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public short ToInt16(IFormatProvider provider)
+    public short ToInt16(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -214,7 +214,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public int ToInt32(IFormatProvider provider)
+    public int ToInt32(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -232,7 +232,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public long ToInt64(IFormatProvider provider)
+    public long ToInt64(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -250,7 +250,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public sbyte ToSByte(IFormatProvider provider)
+    public sbyte ToSByte(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -268,7 +268,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public float ToSingle(IFormatProvider provider)
+    public float ToSingle(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -285,7 +285,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public ushort ToUInt16(IFormatProvider provider)
+    public ushort ToUInt16(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -303,7 +303,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public uint ToUInt32(IFormatProvider provider)
+    public uint ToUInt32(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -321,7 +321,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     culture-specific formatting information.
     /// </param>
     /// <exception cref="InvalidCastException">This method is not supported</exception>
-    public ulong ToUInt64(IFormatProvider provider)
+    public ulong ToUInt64(IFormatProvider? provider)
     {
         throw new InvalidCastException();
     }
@@ -337,7 +337,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     An <see cref="T:System.IFormatProvider" /> interface implementation that supplies
     ///     culture-specific formatting information.
     /// </param>
-    public string ToString(IFormatProvider provider)
+    public string ToString(IFormatProvider? provider)
     {
         return ToString();
     }
@@ -356,7 +356,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     An <see cref="T:System.IFormatProvider" /> interface implementation that supplies
     ///     culture-specific formatting information.
     /// </param>
-    public object ToType(Type conversionType, IFormatProvider provider)
+    public object ToType(Type conversionType, IFormatProvider? provider)
     {
         if (conversionType == typeof(Point))
         {
@@ -384,9 +384,9 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
     /// </returns>
     /// <param name="other">An object to compare with this object.</param>
-    public bool Equals(Float2D other)
+    public bool Equals(Float2D? other)
     {
-        return this == other;
+        return other is not null && this == other;
     }
 
     /// <summary>
@@ -446,7 +446,7 @@ public class Float2D : IConvertible, IEquatable<Float2D>, IEquatable<Point>, IEq
     ///     otherwise, false.
     /// </returns>
     /// <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:System.Object" />. </param>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (ReferenceEquals(null, obj))
         {

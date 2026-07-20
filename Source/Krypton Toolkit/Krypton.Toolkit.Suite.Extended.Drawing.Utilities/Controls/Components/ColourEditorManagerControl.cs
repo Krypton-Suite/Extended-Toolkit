@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -27,6 +27,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
 
+#pragma warning disable CS0618 // IColorEditor retained for backward compatibility.
+
 /// <summary>
 /// Represents a control that binds multiple editors together as a single composite unit.
 /// </summary>
@@ -53,21 +55,23 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
 
     private Color _colour;
 
-    private ColourEditor _colourEditor;
+    private ColourEditor? _colourEditor;
 
     //private ColourGrid _grid;
 
-    private ColorGrid _grid;
+    private ColorGrid? _grid;
 
     private HSLColour _hslColour;
 
-    private LightnessColourSliderControl _lightnessColourSlider;
+    private LightnessColourSliderControl? _lightnessColourSlider;
 
-    private ScreenColourPickerControl _screenColourPicker;
+    private ScreenColourPickerControl? _screenColourPicker;
 
-    private ColourWheelControl _wheel;
+    private ColourWheelControl? _wheel;
 
+#pragma warning disable CS0067 // ColorChanged required by IColorEditor.
     public event EventHandler ColorChanged;
+#pragma warning restore CS0067
 
     #endregion
 
@@ -116,7 +120,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// Gets or sets the linked <see cref="ColourEditor"/>.
     /// </summary>
     [Category("Behavior"), DefaultValue(typeof(ColourEditor), null)]
-    public virtual ColourEditor ColourEditor
+    public virtual ColourEditor? ColourEditor
     {
         get => _colourEditor;
         set
@@ -150,7 +154,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     //}
 
     [Category("Behavior"), DefaultValue(typeof(ColorGrid), null)]
-    public virtual ColorGrid ColourGrid
+    public virtual ColorGrid? ColourGrid
     {
         get => _grid;
 
@@ -170,7 +174,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// </summary>
     [Category("Behavior")]
     [DefaultValue(typeof(ColourWheelControl), null)]
-    public virtual ColourWheelControl ColourWheel
+    public virtual ColourWheelControl? ColourWheel
     {
         get => _wheel;
         set
@@ -210,7 +214,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// </summary>
     [Category("Behavior")]
     [DefaultValue(typeof(LightnessColourSliderControl), null)]
-    public virtual LightnessColourSliderControl LightnessColourSlider
+    public virtual LightnessColourSliderControl? LightnessColourSlider
     {
         get => _lightnessColourSlider;
         set
@@ -229,7 +233,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// </summary>
     [Category("Behavior")]
     [DefaultValue(typeof(ScreenColourPickerControl), null)]
-    public virtual ScreenColourPickerControl ScreenColourPicker
+    public virtual ScreenColourPickerControl? ScreenColourPicker
     {
         get => _screenColourPicker;
         set
@@ -270,13 +274,13 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Synchronize(this);
 
         Synchronise(this);
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -287,14 +291,14 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourEditorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.ColourEditor != null)
         {
             this.BindEvents(this.ColourEditor);
         }
 
-        handler = (EventHandler)this.Events[_eventColourEditorChanged];
+        handler = (EventHandler?)this.Events[_eventColourEditorChanged];
 
         handler?.Invoke(this, e);
     }
@@ -305,14 +309,14 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourGridChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.ColourGrid != null)
         {
             this.BindEvents(this.ColourGrid);
         }
 
-        handler = (EventHandler)this.Events[_eventColourGridChanged];
+        handler = (EventHandler?)this.Events[_eventColourGridChanged];
 
         handler?.Invoke(this, e);
     }
@@ -323,14 +327,14 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourWheelChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.ColourWheel != null)
         {
             this.BindEvents(this.ColourWheel);
         }
 
-        handler = (EventHandler)this.Events[_eventColourWheelChanged];
+        handler = (EventHandler?)this.Events[_eventColourWheelChanged];
 
         handler?.Invoke(this, e);
     }
@@ -341,14 +345,14 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnLightnessColourSliderChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.LightnessColourSlider != null)
         {
             this.BindEvents(this.LightnessColourSlider);
         }
 
-        handler = (EventHandler)this.Events[_eventLightnessColourSliderChanged];
+        handler = (EventHandler?)this.Events[_eventLightnessColourSliderChanged];
 
         handler?.Invoke(this, e);
     }
@@ -359,14 +363,14 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnScreenColourPickerChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.ScreenColourPicker != null)
         {
             this.BindEvents(this.ScreenColourPicker);
         }
 
-        handler = (EventHandler)this.Events[_eventScreenColourPickerChanged];
+        handler = (EventHandler?)this.Events[_eventScreenColourPickerChanged];
 
         handler?.Invoke(this, e);
     }
@@ -376,7 +380,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// </summary>
     /// <param name="control">The <see cref="IColourEditor"/> to update.</param>
     /// <param name="sender">The <see cref="IColourEditor"/> triggering the update.</param>
-    protected virtual void SetColour(IColourEditor control, IColourEditor sender)
+    protected virtual void SetColour(IColourEditor? control, IColourEditor sender)
     {
         if (control != null && control != sender)
         {
@@ -384,7 +388,7 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
         }
     }
 
-    protected virtual void SetColour(IColorEditor control, IColorEditor sender)
+    protected virtual void SetColour(IColorEditor? control, IColorEditor sender)
     {
         if (control != null && control != sender)
         {
@@ -438,24 +442,24 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void ColourChangedHandler(object sender, EventArgs e)
+    private void ColourChangedHandler(object? sender, EventArgs e)
     {
         if (!this.LockUpdates)
         {
-            IColourEditor source;
+        if (sender is not IColourEditor source)
+        {
+            return;
+        }
 
-            IColorEditor editor;
+        this.LockUpdates = true;
+        this.Colour = source.Colour;
+        this.LockUpdates = false;
+        this.Synchronize(source);
 
-            source = (IColourEditor)sender;
-
-            editor = (IColorEditor)sender;
-
-            this.LockUpdates = true;
-            this.Colour = source.Colour;
-            this.LockUpdates = false;
-            this.Synchronize(source);
-
+        if (sender is IColorEditor editor)
+        {
             Synchronise(editor);
+        }
         }
     }
 
@@ -510,3 +514,5 @@ public class ColourEditorManager : Component, IColourEditor, IColorEditor
 
     #endregion
 }
+
+#pragma warning restore CS0618

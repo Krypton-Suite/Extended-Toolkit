@@ -34,7 +34,7 @@ public partial class KryptonViewButtons : UserControl
     /// <summary> 
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components = null;
 
     /// <summary> 
     /// Clean up any resources being used.
@@ -197,6 +197,6 @@ public partial class KryptonViewButtons : UserControl
         this.BackColor = Color.Transparent;
 
         //Set Label Text
-        this.kcmdpercentage.Text = _percentageLabel;
+        kcmdpercentage!.Text = _percentageLabel;
     }
 }

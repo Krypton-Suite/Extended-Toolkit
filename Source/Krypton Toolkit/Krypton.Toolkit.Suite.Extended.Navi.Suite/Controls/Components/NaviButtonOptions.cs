@@ -35,7 +35,7 @@ public partial class NaviButtonOptions : NaviButton
     protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
     {
         base.OnPaint(e);
-        Renderer.DrawOptionsTriangle(e.Graphics, ClientRectangle);
+        Renderer?.DrawOptionsTriangle(e.Graphics, ClientRectangle);
     }
 
     #endregion

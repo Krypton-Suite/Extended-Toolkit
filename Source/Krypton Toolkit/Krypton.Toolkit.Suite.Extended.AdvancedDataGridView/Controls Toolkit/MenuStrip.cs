@@ -1806,7 +1806,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+    private void CheckList_NodeMouseClick(object? sender, TreeNodeMouseClickEventArgs e)
     {
         TreeViewHitTestInfo hitTestInfo = _checkList.HitTest(e.X, e.Y);
         if (hitTestInfo is { Location: TreeViewHitTestLocations.StateImage })
@@ -1823,7 +1823,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_KeyDown(object sender, KeyEventArgs e)
+    private void CheckList_KeyDown(object? sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Space)
         {
@@ -1839,7 +1839,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+    private void CheckList_NodeMouseDoubleClick(object? sender, TreeNodeMouseClickEventArgs e)
     {
         TreeNodeItemSelector? n = e.Node as TreeNodeItemSelector;
         //set the new node check status
@@ -1857,7 +1857,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_MouseEnter(object sender, EventArgs e)
+    private void CheckList_MouseEnter(object? sender, EventArgs e)
     {
         _checkList.Focus();
     }
@@ -1867,7 +1867,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_MouseLeave(object sender, EventArgs e)
+    private void CheckList_MouseLeave(object? sender, EventArgs e)
     {
         Focus();
     }
@@ -1877,7 +1877,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Button_ok_Click(object sender, EventArgs e)
+    private void Button_ok_Click(object? sender, EventArgs e)
     {
         _filterclick = true;
 
@@ -1890,7 +1890,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Button_cancel_Click(object sender, EventArgs e)
+    private void Button_cancel_Click(object? sender, EventArgs e)
     {
         _loadedNodes = DuplicateNodes(_startingNodes);
         Close();
@@ -1923,8 +1923,8 @@ internal partial class MenuStrip : ContextMenuStrip
             SetNodesCheckState(_loadedNodes, false);
         }
 
-        string filterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Tag.ToString();
-        string viewfilterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Text;
+        string filterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Tag?.ToString() ?? string.Empty;
+        string viewfilterstring = _customFilterLastFiltersListMenuItem.DropDownItems[filtersMenuItemIndex].Text ?? string.Empty;
 
         //do preset jobs
         if (filtersMenuItemIndex != 2)
@@ -1994,7 +1994,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CancelFilterMenuItem_MouseEnter(object sender, EventArgs e)
+    private void CancelFilterMenuItem_MouseEnter(object? sender, EventArgs e)
     {
         if (((sender as ToolStripMenuItem)!).Enabled)
         {
@@ -2007,7 +2007,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CustomFilterMenuItem_Click(object sender, EventArgs e)
+    private void CustomFilterMenuItem_Click(object? sender, EventArgs e)
     {
         //ignore image nodes
         if (DataType == typeof(Bitmap))
@@ -2031,7 +2031,7 @@ internal partial class MenuStrip : ContextMenuStrip
             {
                 if (_customFilterLastFiltersListMenuItem.DropDown.Items[i].Available)
                 {
-                    if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == viewFilterString && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == filterString)
+                    if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == viewFilterString && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag?.ToString() == filterString)
                     {
                         index = i;
                         break;
@@ -2069,7 +2069,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CustomFilterLastFiltersListMenuItem_MouseEnter(object sender, EventArgs e)
+    private void CustomFilterLastFiltersListMenuItem_MouseEnter(object? sender, EventArgs e)
     {
         if (((sender as ToolStripMenuItem)!).Enabled)
         {
@@ -2082,7 +2082,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CustomFilterLastFiltersListMenuItem_Paint(object sender, PaintEventArgs e)
+    private void CustomFilterLastFiltersListMenuItem_Paint(object? sender, PaintEventArgs e)
     {
         Rectangle rect = new Rectangle(_customFilterLastFiltersListMenuItem.Width - 12, 7, 10, 10);
         ControlPaint.DrawMenuGlyph(e.Graphics, rect, MenuGlyph.Arrow, Color.Black, Color.Transparent);
@@ -2093,7 +2093,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CustomFilterLastFilter1MenuItem_VisibleChanged(object sender, EventArgs e)
+    private void CustomFilterLastFilter1MenuItem_VisibleChanged(object? sender, EventArgs e)
     {
         _toolStripSeparator2MenuItem.Visible = !_customFilterLastFilter1MenuItem.Visible;
         ((sender as ToolStripMenuItem)!).VisibleChanged -= CustomFilterLastFilter1MenuItem_VisibleChanged;
@@ -2104,13 +2104,13 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CustomFilterLastFilterMenuItem_Click(object sender, EventArgs e)
+    private void CustomFilterLastFilterMenuItem_Click(object? sender, EventArgs e)
     {
         ToolStripMenuItem? menuitem = sender as ToolStripMenuItem;
 
         for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
         {
-            if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem?.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag.ToString() == menuitem.Tag.ToString())
+            if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem?.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag?.ToString() == menuitem?.Tag?.ToString())
             {
                 //set current filter preset as active
                 SetCustomFilter(i);
@@ -2124,7 +2124,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CustomFilterLastFilterMenuItem_TextChanged(object sender, EventArgs e)
+    private void CustomFilterLastFilterMenuItem_TextChanged(object? sender, EventArgs e)
     {
         ((sender as ToolStripMenuItem)!).Available = true;
         ((sender as ToolStripMenuItem)!).TextChanged -= CustomFilterLastFilterMenuItem_TextChanged;
@@ -2135,7 +2135,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckTextFilterTextChangedTimer_Tick(object sender, EventArgs e)
+    private void CheckTextFilterTextChangedTimer_Tick(object? sender, EventArgs e)
     {
         Timer timer = (sender as Timer)!;
         if (timer == null)
@@ -2143,7 +2143,7 @@ internal partial class MenuStrip : ContextMenuStrip
             return;
         }
 
-        CheckTextFilterHandleTextChanged(timer.Tag.ToString());
+        CheckTextFilterHandleTextChanged(timer.Tag?.ToString() ?? string.Empty);
 
         timer.Stop();
     }
@@ -2153,7 +2153,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckTextFilter_TextChanged(object sender, EventArgs e)
+    private void CheckTextFilter_TextChanged(object? sender, EventArgs e)
     {
         if (!_checkTextFilterChangedEnabled)
         {
@@ -2350,11 +2350,11 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CancelSortMenuItem_MouseEnter(object sender, EventArgs e)
+    private void CancelSortMenuItem_MouseEnter(object? sender, EventArgs e)
     {
-        if (((ToolStripMenuItem)sender).Enabled)
+        if (sender is ToolStripMenuItem menuItem && menuItem.Enabled)
         {
-            ((ToolStripMenuItem)sender).Select();
+            menuItem.Select();
         }
     }
 
@@ -2473,7 +2473,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void ResizeBoxControlHost_MouseDown(object sender, MouseEventArgs e)
+    private void ResizeBoxControlHost_MouseDown(object? sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
@@ -2486,7 +2486,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void ResizeBoxControlHost_MouseMove(object sender, MouseEventArgs e)
+    private void ResizeBoxControlHost_MouseMove(object? sender, MouseEventArgs e)
     {
         if (Visible)
         {
@@ -2528,7 +2528,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void ResizeBoxControlHost_MouseUp(object sender, MouseEventArgs e)
+    private void ResizeBoxControlHost_MouseUp(object? sender, MouseEventArgs e)
     {
         if (_resizeEndPoint.X != -1)
         {
@@ -2555,7 +2555,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void ResizeBoxControlHost_Paint(Object sender, PaintEventArgs e)
+    private void ResizeBoxControlHost_Paint(object? sender, PaintEventArgs e)
     {
         e.Graphics.DrawImage(Properties.Resources.MenuStrip_ResizeGrip, 0, 0);
     }

@@ -47,7 +47,7 @@ internal class ShadowManager
         _parentForm = kryptonForm;
         _shadowValues = shadowValues;
 
-        _parentForm.Closing += KryptonFormOnClosing;
+        _parentForm.FormClosing += KryptonFormOnClosing;
         _parentForm.Load += FormLoaded;
 
         shadowValues.EnableShadowsChanged += ShadowValues_EnableShadowsChanged;
@@ -64,7 +64,7 @@ internal class ShadowManager
         {
             case PlatformInvoke.WM_.WINDOWPOSCHANGED:
             {
-                PlatformInvoke.WINDOWPOS structure = (PlatformInvoke.WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(PlatformInvoke.WINDOWPOS));
+                PlatformInvoke.WINDOWPOS structure = (PlatformInvoke.WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(PlatformInvoke.WINDOWPOS))!;
                 var move = !structure.flags.HasFlag(PlatformInvoke.SWP_.NOSIZE | PlatformInvoke.SWP_.NOMOVE);
                 PositionShadowForms(move);
                 if (!move)
@@ -101,7 +101,7 @@ internal class ShadowManager
         && _shadowValues.EnableShadows
         && _parentForm.Visible;
 
-    private void KryptonFormOnClosing(object sender, /*Cancel*/EventArgs e)
+    private void KryptonFormOnClosing(object? sender, /*Cancel*/EventArgs e)
     {
         _allowDrawing = false;
         FlashWindowExListener.FlashEvent -= OnFlashWindowExListenerOnFlashEvent;
@@ -116,7 +116,7 @@ internal class ShadowManager
         }
     }
 
-    private void FormLoaded(object sender, EventArgs e)
+    private void FormLoaded(object? sender, EventArgs e)
     {
         _allowDrawing = LicenseManager.UsageMode != LicenseUsageMode.Designtime
                         && Process.GetCurrentProcess().ProcessName != @"devenv";
@@ -142,15 +142,15 @@ internal class ShadowManager
         }
     }
 
-    private void ShadowValues_ColourChanged(object sender, ColorEventArgs e) => ReCalcBrushes();
+    private void ShadowValues_ColourChanged(object? sender, ColorEventArgs e) => ReCalcBrushes();
 
-    private void ShadowValues_BlurDistanceChanged(object sender, EventArgs e) => ReCalcBrushes();
+    private void ShadowValues_BlurDistanceChanged(object? sender, EventArgs e) => ReCalcBrushes();
 
-    private void ShadowValues_OpacityChanged(object sender, EventArgs e) => ReCalcBrushes();
+    private void ShadowValues_OpacityChanged(object? sender, EventArgs e) => ReCalcBrushes();
 
-    private void ShadowValues_MarginsChanged(object sender, EventArgs e) => SetShadowFormsSizes();
+    private void ShadowValues_MarginsChanged(object? sender, EventArgs e) => SetShadowFormsSizes();
 
-    private void ShadowValues_EnableShadowsChanged(object sender, EventArgs e)
+    private void ShadowValues_EnableShadowsChanged(object? sender, EventArgs e)
     {
         if (!_allowDrawing)
         {

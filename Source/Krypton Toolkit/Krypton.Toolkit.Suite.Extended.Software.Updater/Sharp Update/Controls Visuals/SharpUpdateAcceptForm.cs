@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit;
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -49,21 +49,21 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             kbtnYes.Text = KryptonGlobalToolkitStrings.GeneralToolkitStrings.Yes;
         }
 
-        private void kbtnYes_Click(object sender, EventArgs e)
+        private void kbtnYes_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.Yes;
 
             Close();
         }
 
-        private void kbtnNo_Click(object sender, EventArgs e)
+        private void kbtnNo_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.No;
 
             Close();
         }
 
-        private void kbtnDetails_Click(object sender, EventArgs e)
+        private void kbtnDetails_Click(object? sender, EventArgs e)
         {
             if (_updateInfoForm == null)
             {

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -34,7 +34,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     /// <summary> 
     /// Required designer variable.
     /// </summary>
-    private IContainer components = null;
+    private IContainer? components = null;
 
 
     #region Component Designer generated code
@@ -121,13 +121,6 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         //Initialize Component
         InitializeComponent();
 
-        //(5) Create redirection object to the base palette
-        // add Palette Handler
-        if (_palette != null)
-        {
-            _palette.PalettePaint += OnPalettePaint;
-        }
-
         KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
         _palette = KryptonManager.CurrentGlobalPalette;
@@ -137,6 +130,11 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         m_paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
         m_paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
         m_paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+
+        if (_palette != null)
+        {
+            _palette.PalettePaint += OnPalettePaint;
+        }
 
         //Set Back Color
         BackColor = Color.Transparent;
@@ -152,15 +150,15 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     private Color m_sliderlinebottom = Color.FromArgb(222, 226, 236);
 
     //Krypton
-    private PaletteBase _palette;
-    private PaletteRedirect _paletteRedirect;
+    private PaletteBase? _palette;
+    private PaletteRedirect? _paletteRedirect;
 
-    private PaletteBackInheritRedirect m_paletteBack;
-    private PaletteBorderInheritRedirect m_paletteBorder;
-    private PaletteContentInheritRedirect m_paletteContent;
-    private IDisposable m_mementoContent;
-    private IDisposable m_mementoBack1;
-    private IDisposable m_mementoBack2;
+    private PaletteBackInheritRedirect? m_paletteBack;
+    private PaletteBorderInheritRedirect? m_paletteBorder;
+    private PaletteContentInheritRedirect? m_paletteContent;
+    private IDisposable? m_mementoContent;
+    private IDisposable? m_mementoBack1;
+    private IDisposable? m_mementoBack2;
 
     //Declares
     private int m_range = 100;
@@ -168,7 +166,9 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     private int m_step = 2;
     private bool m_highlight = false;
     private bool m_sliderhighlight = false;
+#pragma warning disable CS0414
     private bool glowing = false;
+#pragma warning restore CS0414
     private bool m_down = false;
     private int m_fireInterval = 200;
     private bool m_singleClick = false;
@@ -229,7 +229,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
             components?.Dispose();
 
 
-            if (_palette != null)
+            if (_palette != null && m_paletteContent != null && m_paletteBack != null && m_paletteBorder != null)
             {
                 _palette.PalettePaint -= OnPalettePaint;
                 _palette = null;
@@ -247,7 +247,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
 
         //Active Palette
         //If m_palette IsNot Nothing Then
-        if (_palette != null)
+        if (_palette != null && m_paletteContent != null && m_paletteBack != null && m_paletteBorder != null)
         {
 
             // We want the inner part of the control to act like a button, so 
@@ -314,7 +314,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         Rectangle SliderBounds = GetSliderBounds(GetSliderPosition());
 
         //Check Palette
-        if (_palette != null)
+        if (_palette != null && m_paletteContent != null && m_paletteBack != null && m_paletteBorder != null)
         {
 
             //Get the renderer associated with this palette
@@ -514,7 +514,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     #region "Events"
 
     //Key Mouse Events
-    private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
+    private void KryptonSliderButton_MouseDown(object? sender, MouseEventArgs e)
     {
         if (GetSliderBounds(GetSliderPosition()).Contains(e.Location))
         {
@@ -522,17 +522,17 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
             Invalidate();
         }
     }
-    private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
+    private void KryptonSliderButton_MouseEnter(object? sender, EventArgs e)
     {
         m_highlight = true;
         Invalidate();
     }
-    private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
+    private void KryptonSliderButton_MouseLeave(object? sender, EventArgs e)
     {
         m_highlight = false;
         Invalidate();
     }
-    private void KryptonSlider_MouseMove(object sender, MouseEventArgs e)
+    private void KryptonSlider_MouseMove(object? sender, MouseEventArgs e)
     {
 
         //Repaint Flag
@@ -586,7 +586,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
             Invalidate();
         }
     }
-    private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
+    private void KryptonSliderButton_MouseUp(object? sender, MouseEventArgs e)
     {
         m_down = false;
         if (!GetSliderBounds(GetSliderPosition()).Contains(e.Location))
@@ -608,15 +608,15 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     }
 
     //Krypton Paint Helpers
-    private void k_palette_BasePaletteChanged(object sender, EventArgs e)
+    private void k_palette_BasePaletteChanged(object? sender, EventArgs e)
     {
         Invalidate();
     }
-    private void k_palette_BaseRendererChanged(object sender, EventArgs e)
+    private void k_palette_BaseRendererChanged(object? sender, EventArgs e)
     {
         Invalidate();
     }
-    private void k_palette_PalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void k_palette_PalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }
@@ -709,10 +709,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     #region "IContentValues"
 
     //Implements IContentValues
-    public Image GetImage(PaletteState state)
-    {
-        return null;
-    }
+    public Image? GetImage(PaletteState state) => null;
     public Color GetImageTransparentColor(PaletteState state)
     {
         return Color.Empty;
@@ -803,13 +800,13 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
     #region "   Krypton Events   "
 
     //Krypton Palette Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }
 
     //Krypton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -817,7 +814,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         }
 
         _palette = KryptonManager.CurrentGlobalPalette;
-        _paletteRedirect.Target = _palette;
+        _paletteRedirect!.Target = _palette;
 
         if (_palette != null)
         {
@@ -835,6 +832,11 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
 
     private void InitColours()
     {
+        if (_palette is null)
+        {
+            return;
+        }
+
         //Colors
         m_sliderlinetop = _palette.ColorTable.GripDark;
         m_sliderlinebottom = _palette.ColorTable.GripLight;

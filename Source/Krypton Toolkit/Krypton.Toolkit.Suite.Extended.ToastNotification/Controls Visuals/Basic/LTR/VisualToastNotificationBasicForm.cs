@@ -37,10 +37,6 @@ internal partial class VisualToastNotificationBasicForm : KryptonForm
 
     private Timer _timer;
 
-    private SoundPlayer? _soundPlayer;
-
-    private PaletteBase _palette;
-
     private readonly KryptonBasicToastNotificationData _toastNotificationData;
 
     #endregion
@@ -62,12 +58,12 @@ internal partial class VisualToastNotificationBasicForm : KryptonForm
 
     #endregion
 
-    private void VisualToastNotificationBasicForm_LocationChanged(object sender, EventArgs e)
+    private void VisualToastNotificationBasicForm_LocationChanged(object? sender, EventArgs e)
     {
             
     }
 
-    private void VisualToastNotificationBasicForm_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+    private void VisualToastNotificationBasicForm_GotFocus(object? sender, EventArgs e) => kbtnDismiss.Focus();
 
     private void VisualToastNotificationBasicForm_Load(object sender, EventArgs e)
     {
@@ -80,8 +76,6 @@ internal partial class VisualToastNotificationBasicForm : KryptonForm
         ShowCloseButton();
 
         _timer?.Start();
-
-        _soundPlayer?.Play();
     }
 
     private void kbtnClose_Click(object sender, EventArgs e)
@@ -120,7 +114,7 @@ internal partial class VisualToastNotificationBasicForm : KryptonForm
             krtbNotificationContent.InputControlStyle = InputControlStyle.PanelClient;
 
             klblNotificationTitle.Font =
-                _toastNotificationData.NotificationTitleFont ?? _palette.Header1ShortFont;
+                _toastNotificationData.NotificationTitleFont ?? KryptonManager.CurrentGlobalPalette.Header1ShortFont;
         }
         else
         {

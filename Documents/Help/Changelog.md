@@ -6,6 +6,31 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Resolved [#533](https://github.com/Krypton-Suite/Extended-Toolkit/issues/533), TreeGridView: Plus/Minus Sign Not Displayed in TreeGrid and Collapse/Expand Behaviors Broken
+* New `Krypton.Toolkit.Suite.Extended.BottomSheet` module - Material-inspired bottom sheets for WinForms
+  - **Service API** - `KryptonBottomSheetManager` with `Open`, `OpenAsync`, `OpenNonModal`, and `DismissActive`; `KryptonBottomSheetRef` for `Dismiss()`, `AfterOpened`, `AfterDismissed`, and `AfterDismissedAsync()`
+  - **Configuration** - `KryptonBottomSheetConfig` with backdrop, height, focus, animation, and conflict options; global defaults via `KryptonBottomSheetDefaultOptions`
+  - **Display Modes** - Modal (`ShowDialog`) and non-modal (`Show`); `OpenAsync` is non-blocking and completes when the sheet is dismissed
+  - **Backdrop Styles** - `Dim`, `EnhancedDim`, `SoftGradient`, and `Blur` (captures and blurs the owner surface)
+  - **Animations** - Slide up on open and slide down on close with time-based easing; separate open/close durations; synchronized backdrop fade
+  - **Interaction** - Drag handle with distance and velocity dismiss; optional snap heights in pixels or viewport percentages; auto-height and fixed-height modes
+  - **Focus** - Focus trap, focus restore, `AutoFocus` modes, and CSS-style `AutoFocusSelector`
+  - **Conflict Handling** - `BottomSheetConflictMode.Throw`, `Replace` (animated close), and `Queue` (open after active sheet dismisses)
+  - **Modal UX** - `DisableOwnerWhileOpen` disables the owner form while a modal sheet is shown
+  - **Chrome Controls** - `KryptonBottomSheetHeader` (title + close) and `KryptonBottomSheetList` with `BottomSheetListItem` for action rows
+  - **Content Contracts** - `IKryptonBottomSheetContent` and `IKryptonBottomSheetContent<TData>` for typed data passed at open time
+  - **Designer Support** - `KryptonBottomSheetDesigner` with smart-tag actions; dedicated toolbox bitmap on `KryptonBottomSheet`
+  - **Examples & Tests** - Bottom Sheet example in the Examples app (modal, non-modal, and action list); `Krypton.Toolkit.Suite.Extended.BottomSheet.Tests` unit test project
+* New `Krypton.Toolkit.Suite.Extended.Card` module - Material-inspired card controls for WinForms
+  - **New `KryptonCard` Control** - Themed card container with optional header, title group, image, content, actions, and footer sections
+  - **Card Appearances** - `Elevated`, `Outlined`, and `Filled` styles with rounded corners, theme-aware elevation shadow, and optional selection accent
+  - **Section Model** - `KryptonCardHeader`, `KryptonCardTitleGroup`, `KryptonCardImage`, `KryptonCardContent`, `KryptonCardActions`, and `KryptonCardFooter` with automatic empty-section hiding
+  - **Interaction** - Clickable cards, hover elevation animation, ripple feedback, and accessibility support (`AccessibleCardName`, grouping role)
+  - **Expand/Collapse Animation** - Optional slide up/down body animation via `Expandable`, `Expanded`, `ExpandDirection`, and header-click toggling
+  - **Layout Helpers** - `KryptonCardFlowPanel`, `KryptonCardTablePanel`, and data-bound `KryptonCardList` with `CardItem` support
+  - **Designer Support** - `KryptonCardDesigner` with smart-tag actions for appearance, elevation, and clickability; dedicated toolbox bitmap
+  - **Examples & Packaging** - New Card example in the Examples app; module included in Ultimate and Ultimate.Lite packages
+  - **Tests** - `Krypton.Toolkit.Suite.Extended.Card.Tests` unit test project for rendering and card model behavior
 * Implemented [#590](https://github.com/Krypton-Suite/Extended-Toolkit/issues/590), `DataGridView` Grouper panel
 * Implemented [#494](https://github.com/Krypton-Suite/Extended-Toolkit/issues/494), Gantt Chart Control
 * Implemented [#544](https://github.com/Krypton-Suite/Extended-Toolkit/issues/544), Implement a `DropZone` component
@@ -23,10 +48,10 @@
   - **Batch Operations** - Replaced individual row insertions/removals with optimized batch operations
   - **Expected Performance** - Reduced expansion time from ~6 seconds to ~0.5 seconds for 250 children (approximately 12x faster)
   - **Implementation Details**:
-    - Added `SiteNodes()` method for batch inserting child nodes efficiently
-    - Added `UnSiteNodes()` method for batch removing child nodes and descendants
-    - Optimized insertion position calculation to avoid redundant calculations
-    - Improved removal order to prevent index shifting issues
+	- Added `SiteNodes()` method for batch inserting child nodes efficiently
+	- Added `UnSiteNodes()` method for batch removing child nodes and descendants
+	- Optimized insertion position calculation to avoid redundant calculations
+	- Improved removal order to prevent index shifting issues
 * Resolved [#25](https://github.com/Krypton-Suite/Extended-Toolkit/issues/25), Can't add outlook grid group box control - Fixed language-related error when adding `KryptonOutlookGridGroupBox` control in Visual Studio designer. Replaced deprecated `LanguageManager.Instance.GetString()` calls with `KryptonOutlookGridLanguageManager.GeneralStrings` for DateInterval enum localization, eliminating dependency on resource files that could fail with EN/GB language settings.
 * Resolved [#156](https://github.com/Krypton-Suite/Extended-Toolkit/issues/156), `KryptonOutlookGrid` Group Header graphic issue with scaling at 150%
 * Implemented [#511](https://github.com/Krypton-Suite/Extended-Toolkit/issues/511), `KryptonMessageBoxExtended` Expandable Footer Feature
@@ -34,9 +59,9 @@
   - **Collapsed/Expanded States** - Footer can start collapsed or expanded, with user toggle capability
   - **Toggle Button** - "Show details" / "Hide details" button allows users to expand/collapse the footer
   - **Multiple Content Types** - Footer supports three content types:
-    - **Text** (default) - Uses `KryptonWrapLabel` for simple text content
-    - **CheckBox** - Uses `KryptonCheckBox` for options like "Remember my choice"
-    - **RichTextBox** - Uses `KryptonRichTextBox` for formatted text with configurable height
+	- **Text** (default) - Uses `KryptonWrapLabel` for simple text content
+	- **CheckBox** - Uses `KryptonCheckBox` for options like "Remember my choice"
+	- **RichTextBox** - Uses `KryptonRichTextBox` for formatted text with configurable height
   - **Configurable Content** - Developers can specify footer text content, content type, initial expanded state, and RichTextBox height
   - **Automatic Sizing** - Form automatically adjusts size when footer is expanded/collapsed
   - **New API Overloads** - Added `Show` method overloads with `footerText`, `footerExpanded`, `footerContentType`, and `footerRichTextBoxHeight` parameters

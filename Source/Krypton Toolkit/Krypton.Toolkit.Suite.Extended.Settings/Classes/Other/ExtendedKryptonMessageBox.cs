@@ -298,10 +298,9 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     private MessageButton _button2;
     private MessageButton _button3;
     private KryptonBorderEdge _borderEdge;
-    private HelpInformation _helpInformation; // TODO: What is this used for ?
+    private HelpInformation? _helpInformation; // TODO: What is this used for ?
     private Font _messageboxTypeface;
     private int _timeOut, _timeOutTimerDelay;
-    private Timer _timer;
     private KryptonCheckBox _doNotShowAgainOption;
     private string _doNotShowAgainOptionText;
     private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption;
@@ -553,12 +552,12 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <param name="button1Text">Sets the text on button 1. (Can be null)</param>
     /// <param name="button2Text">Sets the text on button 2. (Can be null)</param>
     /// <param name="button3Text">Sets the text on button 3. (Can be null)</param>
-    private ExtendedKryptonMessageBox(IWin32Window showOwner, string text, string caption,
+    private ExtendedKryptonMessageBox(IWin32Window? showOwner, string text, string caption,
         MessageBoxButtons buttons, KryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
-        MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy, bool topMost,
-        Font messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
+        MessageBoxOptions options, HelpInformation? helpInformation, bool? showCtrlCopy, bool topMost,
+        Font? messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
         bool useTimeOutOption, int timeOut, int timeOutDelay, DialogResult defaultTimeOutResponse,
-        string button1Text, string button2Text, string button3Text)
+        string? button1Text, string? button2Text, string? button3Text)
     {
         #region Store Values
         _text = text;
@@ -649,6 +648,8 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     #endregion
 
     #region Public
+
+#pragma warning disable CS1573, CS1574 // Show overload XML documents omit optional topMost/messageboxTypeface params.
 
     /// <summary>
     /// Displays a message box with specified text.
@@ -1102,16 +1103,17 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     {
         return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, timeOut, timeOutDelay, defaultTimeOutResponse);
     }
+#pragma warning restore CS1573, CS1574
     #endregion
 
     #region Implementation
-    private static DialogResult InternalShow(IWin32Window owner,
+    private static DialogResult InternalShow(IWin32Window? owner,
         string text, string caption,
         MessageBoxButtons buttons,
         KryptonMessageBoxIcon icon,
         MessageBoxDefaultButton defaultButton,
         MessageBoxOptions options,
-        HelpInformation helpInformation, bool? showCtrlCopy, bool topMost, Font? messageboxTypeface = null,
+        HelpInformation? helpInformation, bool? showCtrlCopy, bool topMost, Font? messageboxTypeface = null,
         bool showDoNotShowAgainOption = false, string doNotShowAgainOptionText = "Do n&ot show again",
         bool useTimeOutOption = false, int timeOut = 60, int timeOutDelay = 250,
         DialogResult defaultTimeOutResponse = DialogResult.OK,
@@ -1136,7 +1138,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         }
 
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
-        IWin32Window showOwner = null;
+        IWin32Window? showOwner = null;
         if (helpInformation != null || (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
         {
             // If do not have an owner passed in then get the active window and use that instead
@@ -1377,7 +1379,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         }
     }
 
-    private void UpdateButtons(string button1Text, string button2Text, string button3Text)
+    private void UpdateButtons(string? button1Text, string? button2Text, string? button3Text)
     {
         switch (_buttons)
         {
@@ -1478,7 +1480,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _doNotShowAgainOption.StateCommon.ShortText.Font = MessageBoxTypeface;
 
         // Set up checked changed event
-        _doNotShowAgainOption.CheckedChanged += new(DoNotShowAgainOption_CheckedChanged);
+        _doNotShowAgainOption.CheckedChanged += DoNotShowAgainOption_CheckedChanged;
     }
 
     private void SetUpTimeOutDelayTimer(bool enabled, int ticksInMilliseconds, Timer timeOutTimer)
@@ -1493,10 +1495,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         timeOutTimer.Interval = ticksInMilliseconds;
 
         // Setup the Tick event for the 'timeOutTimer'
-        timeOutTimer.Tick += new(TimeOutTimer_Tick);
+        timeOutTimer.Tick += TimeOutTimer_Tick;
     }
 
-    private void UpdateSizing(IWin32Window showOwner)
+    private void UpdateSizing(IWin32Window? showOwner)
     {
         Size messageSizing = UpdateMessageSizing(showOwner);
         Size buttonsSizing = UpdateButtonsSizing();
@@ -1506,13 +1508,13 @@ internal class ExtendedKryptonMessageBox : KryptonForm
             messageSizing.Height + buttonsSizing.Height);
     }
 
-    private Size UpdateMessageSizing(IWin32Window showOwner)
+    private Size UpdateMessageSizing(IWin32Window? showOwner)
     {
         // Update size of the message label but with a maximum width
         using (Graphics g = CreateGraphics())
         {
             // Find size of the label, with a max of 2/3 screen width
-            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen ?? Screen.FromControl(this);
             SizeF scaledMonitorSize = screen.Bounds.Size;
             scaledMonitorSize.Width *= 2 / 3.0f;
             scaledMonitorSize.Height *= 0.95f;
@@ -1681,12 +1683,12 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     #endregion
 
     #region Events
-    private void DoNotShowAgainOption_CheckedChanged(object sender, EventArgs e)
+    private void DoNotShowAgainOption_CheckedChanged(object? sender, EventArgs e)
     {
         DoNotShowAgainOptionResult = _doNotShowAgainOption.Checked;
     }
 
-    private void TimeOutTimer_Tick(object sender, EventArgs e)
+    private void TimeOutTimer_Tick(object? sender, EventArgs e)
     {
         //? TODO: Update button text
         while (TimeOut > 0)
@@ -1702,7 +1704,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         }
     }
 
-    private void FooterToggleLink_Click(object sender, EventArgs e)
+    private void FooterToggleLink_Click(object? sender, EventArgs e)
     {
         // Toggle footer visibility
         _panelFooter.Visible = !_panelFooter.Visible;

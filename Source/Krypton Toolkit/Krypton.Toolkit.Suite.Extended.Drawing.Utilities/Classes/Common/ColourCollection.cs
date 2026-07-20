@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -707,7 +707,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// </summary>
     /// <param name="obj">The <see cref="T:System.Object" /> to test.</param>
     /// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="ColourCollection"/> and has the same values as this <see cref="ColourCollection"/>.</returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return obj is ColourCollection && this.Equals((ColourCollection)obj);
     }

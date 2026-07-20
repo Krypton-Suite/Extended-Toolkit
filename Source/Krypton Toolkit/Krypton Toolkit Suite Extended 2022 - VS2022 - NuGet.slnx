@@ -24,10 +24,14 @@
   </Folder>
   <Folder Name="/Main/">
     <Project Path="Krypton.Toolkit.Suite.Extended.AdvancedDataGridView/Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet/Krypton.Toolkit.Suite.Extended.BottomSheet.csproj" Id="4d1baadc-875b-471d-839d-51cb47926c03" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet.Tests/Krypton.Toolkit.Suite.Extended.BottomSheet.Tests.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Buttons/Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj">
       <BuildDependency Project="Krypton.Toolkit.Suite.Extended.Debug.Tools/Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
     </Project>
     <Project Path="Krypton.Toolkit.Suite.Extended.Calendar/Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Card.Tests/Krypton.Toolkit.Suite.Extended.Card.Tests.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Card/Krypton.Toolkit.Suite.Extended.Card.csproj" Id="c0f11ccf-1708-48ae-9bfd-41d34569ff47" />
     <Project Path="Krypton.Toolkit.Suite.Extended.CheckSum.Tools/Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Circular.ProgressBar/Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.ComboBox/Krypton.Toolkit.Suite.Extended.ComboBox 2022.csproj" />

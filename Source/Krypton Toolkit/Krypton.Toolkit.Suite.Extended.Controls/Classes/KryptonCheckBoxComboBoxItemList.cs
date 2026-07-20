@@ -56,7 +56,7 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
 
     public event EventHandler CheckBoxCheckedChanged;
 
-    protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+    protected void OnCheckBoxCheckedChanged(object? sender, EventArgs e)
     {
         EventHandler handler = CheckBoxCheckedChanged;
         if (handler != null)
@@ -65,7 +65,7 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
         }
     }
 
-    private void item_CheckedChanged(object sender, EventArgs e)
+    private void item_CheckedChanged(object? sender, EventArgs e)
     {
         OnCheckBoxCheckedChanged(sender, e);
     }
@@ -77,14 +77,14 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
     [Obsolete("Do not add items to this list directly. Use the ComboBox items instead.", false)]
     public new void Add(KryptonCheckBoxComboBoxItem item)
     {
-        item.CheckedChanged += new EventHandler(item_CheckedChanged);
+        item.CheckedChanged += item_CheckedChanged;
         base.Add(item);
     }
 
     public new void AddRange(IEnumerable<KryptonCheckBoxComboBoxItem> collection)
     {
         foreach (KryptonCheckBoxComboBoxItem item in collection)
-            item.CheckedChanged += new EventHandler(item_CheckedChanged);
+            item.CheckedChanged += item_CheckedChanged;
         base.AddRange(collection);
     }
 
@@ -131,10 +131,10 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
                     && item.DataBindings["Text"] != null
                    )
                 {
-                    PropertyInfo propertyInfo
+                    PropertyInfo? propertyInfo
                         = item.ComboBoxItem.GetType().GetProperty(
                             item.DataBindings["Text"].BindingMemberInfo.BindingMember);
-                    text = (string)propertyInfo.GetValue(item.ComboBoxItem, null);
+                    text = propertyInfo?.GetValue(item.ComboBoxItem, null)?.ToString() ?? string.Empty;
                 }
                 else
                 {

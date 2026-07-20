@@ -49,8 +49,8 @@ public class KryptonNavigatorButton : KryptonButton
         _paletteRedirect = new PaletteRedirect(_palette);
 
         AutoSize = false;
-        Values.ExtraText = null;
-        Values.Text = null;
+        Values.ExtraText = null!;
+        Values.Text = null!;
         Values.Image = null;
         Values.ImageStates.ImageCheckedNormal = null;
         Values.ImageStates.ImageCheckedPressed = null;
@@ -74,7 +74,7 @@ public class KryptonNavigatorButton : KryptonButton
         StateCommon.Content.ShortText.Font = new Font("Marlett", 11.00f, FontStyle.Regular, GraphicsUnit.Point, 2);
     }
     #region ...Krypton...
-    private new void GlobalPaletteChanged(object sender, EventArgs e)
+    private new void GlobalPaletteChanged(object? sender, EventArgs e)
     {
 
         if (_palette != null)
@@ -100,7 +100,7 @@ public class KryptonNavigatorButton : KryptonButton
 
         Invalidate();
     }
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }

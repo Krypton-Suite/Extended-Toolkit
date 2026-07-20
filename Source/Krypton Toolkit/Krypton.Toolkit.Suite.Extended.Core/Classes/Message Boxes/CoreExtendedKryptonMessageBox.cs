@@ -210,9 +210,21 @@ public static class CoreExtendedKryptonMessageBox
     /// <param name="helpFilePath">The help file path.</param>
     /// <param name="navigator">The navigator.</param>
     /// <param name="param">The parameter.</param>
+    /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
     /// <param name="showCtrlCopy">The show control copy.</param>
     /// <param name="messageBoxTypeface">The message box typeface.</param>
     /// <param name="customImageIcon">The custom image icon.</param>
+    /// <param name="showHelpButton">The show help button.</param>
+    /// <param name="messageTextColour">The message text colour.</param>
+    /// <param name="buttonTextColours">The button text colours.</param>
+    /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+    /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+    /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+    /// <param name="buttonFourDialogResult">The button four dialog result.</param>
+    /// <param name="buttonOneCustomText">The button one custom text.</param>
+    /// <param name="buttonTwoCustomText">The button two custom text.</param>
+    /// <param name="buttonThreeCustomText">The button three custom text.</param>
+    /// <param name="buttonFourCustomText">The button four custom text.</param>
     /// <returns>
     ///   <br />
     /// </returns>
@@ -263,25 +275,36 @@ public static class CoreExtendedKryptonMessageBox
     /// <param name="showCtrlCopy">The show control copy.</param>
     /// <param name="messageBoxTypeface">The message box typeface.</param>
     /// <param name="customImageIcon">The custom image icon.</param>
+    /// <param name="showHelpButton">The show help button.</param>
+    /// <param name="messageTextColour">The message text colour.</param>
+    /// <param name="buttonTextColours">The button text colours.</param>
+    /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+    /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+    /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+    /// <param name="buttonFourDialogResult">The button four dialog result.</param>
+    /// <param name="buttonOneCustomText">The button one custom text.</param>
+    /// <param name="buttonTwoCustomText">The button two custom text.</param>
+    /// <param name="buttonThreeCustomText">The button three custom text.</param>
+    /// <param name="buttonFourCustomText">The button four custom text.</param>
     /// <returns>
     ///   <br />
     /// </returns>
-    internal static DialogResult ShowCore(IWin32Window owner, string text, string caption,
+    internal static DialogResult ShowCore(IWin32Window? owner, string text, string caption,
         ExtendedMessageBoxButtons buttons,
         ExtendedKryptonMessageBoxIcon icon,
         KryptonMessageBoxDefaultButton defaultButton,
-        MessageBoxOptions options, HelpInfo helpInfo,
-        bool? showCtrlCopy, Font messageBoxTypeface,
-        Image customImageIcon, bool? showHelpButton,
-        Color? messageTextColour, Color[] buttonTextColours,
+        MessageBoxOptions options, HelpInfo? helpInfo,
+        bool? showCtrlCopy, Font? messageBoxTypeface,
+        Image? customImageIcon, bool? showHelpButton,
+        Color? messageTextColour, Color[]? buttonTextColours,
         DialogResult? buttonOneCustomDialogResult,
         DialogResult? buttonTwoCustomDialogResult,
         DialogResult? buttonThreeCustomDialogResult,
         DialogResult? buttonFourDialogResult,
-        string buttonOneCustomText, string buttonTwoCustomText,
-        string buttonThreeCustomText, string buttonFourCustomText)
+        string? buttonOneCustomText, string? buttonTwoCustomText,
+        string? buttonThreeCustomText, string? buttonFourCustomText)
     {
-        IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
+        IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
         using CoreKryptonMessageBoxExtendedForm kmbef = new(showOwner, text, caption, buttons,
             icon, defaultButton, options,
@@ -304,7 +327,7 @@ public static class CoreExtendedKryptonMessageBox
     #endregion
 
     #region WinForm Compatibility
-    private static IWin32Window ValidateOptions(IWin32Window owner, MessageBoxOptions options, HelpInfo helpInfo)
+    private static IWin32Window? ValidateOptions(IWin32Window? owner, MessageBoxOptions options, HelpInfo? helpInfo)
     {
         // Check if trying to show a message box from a non-interactive process, this is not possible
         if (!SystemInformation.UserInteractive &&
@@ -327,7 +350,7 @@ public static class CoreExtendedKryptonMessageBox
             throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
         }
 
-        IWin32Window showOwner = null;
+        IWin32Window? showOwner = null;
         if (helpInfo != null ||
             (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
         {

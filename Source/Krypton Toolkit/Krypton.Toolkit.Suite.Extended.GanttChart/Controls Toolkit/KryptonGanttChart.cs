@@ -27,6 +27,7 @@
 
 using Krypton.Toolkit;
 
+#pragma warning disable CS0618 // KryptonScrollBar retained until migrated to KryptonHScrollBar/KryptonVScrollBar.
 namespace Krypton.Toolkit.Suite.Extended.GanttChart;
 
 /// <summary>
@@ -956,3 +957,4 @@ public class KryptonGanttChart : UserControl
 
     #endregion
 }
+#pragma warning restore CS0618

@@ -263,6 +263,7 @@ public class CombineColourSettings
     /// <param name="customTextColourFive">The custom text colour five.</param>
     /// <param name="menuTextColour">The menu text colour.</param>
     /// <param name="statusTextColour">The status text colour.</param>
+    /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
     public CombineColourSettings(Color baseColour, Color darkColour, Color middleColour, Color lightColour, Color lightestColour, Color borderColourPreview, Color alternativeNormalTextColourPreview, Color normalTextColourPreview, Color disabledTextColourPreview, Color focusedTextColourPreview, Color pressedTextColourPreview, Color disabledColourPreview, Color linkNormalColourPreview, Color linkHoverColourPreview, Color linkVisitedColourPreview, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusTextColour, Color ribbonTabTextColour)
     {
         BaseColour = baseColour;
@@ -332,77 +333,63 @@ public class CombineColourSettings
 
         try
         {
-            // ReSharper disable ConditionIsAlwaysTrueOrFalse
-            if (BaseColour != null || DarkColour != null || MiddleColour != null || LightColour != null || LightestColour != null || BorderColourPreview != null || AlternativeNormalTextColourPreview != null || NormalTextColourPreview != null || DisabledTextColourPreview != null || FocusedTextColourPreview != null || PressedTextColourPreview != null || DisabledColourPreview != null || LinkNormalColourPreview != null || LinkHoverColourPreview != null || LinkVisitedColourPreview != null || CustomColourOne != null || CustomColourTwo != null || CustomColourThree != null || CustomColourFour != null || CustomColourFive != null || CustomTextColourOne != null || CustomTextColourTwo != null || CustomTextColourThree != null || CustomTextColourFour != null || CustomTextColourFive != null || MenuTextColour != null || StatusTextColour != null || RibbonTabTextColour != null)
-                // ReSharper restore ConditionIsAlwaysTrueOrFalse
-            {
-                _colourSettingsManager.SetBaseColour(BaseColour);
+            _colourSettingsManager.SetBaseColour(BaseColour);
 
-                _colourSettingsManager.SetDarkColour(DarkColour);
+            _colourSettingsManager.SetDarkColour(DarkColour);
 
-                _colourSettingsManager.SetMediumColour(MiddleColour);
+            _colourSettingsManager.SetMediumColour(MiddleColour);
 
-                _colourSettingsManager.SetLightColour(LightColour);
+            _colourSettingsManager.SetLightColour(LightColour);
 
-                _colourSettingsManager.SetLightestColour(LightestColour);
+            _colourSettingsManager.SetLightestColour(LightestColour);
 
-                _colourSettingsManager.SetBorderColour(BorderColourPreview);
+            _colourSettingsManager.SetBorderColour(BorderColourPreview);
 
-                _colourSettingsManager.SetAlternativeNormalTextColour(AlternativeNormalTextColourPreview);
+            _colourSettingsManager.SetAlternativeNormalTextColour(AlternativeNormalTextColourPreview);
 
-                _colourSettingsManager.SetNormalTextColour(NormalTextColourPreview);
+            _colourSettingsManager.SetNormalTextColour(NormalTextColourPreview);
 
-                _colourSettingsManager.SetDisabledTextColour(DisabledTextColourPreview);
+            _colourSettingsManager.SetDisabledTextColour(DisabledTextColourPreview);
 
-                _colourSettingsManager.SetFocusedTextColour(FocusedTextColourPreview);
+            _colourSettingsManager.SetFocusedTextColour(FocusedTextColourPreview);
 
-                _colourSettingsManager.SetPressedTextColour(PressedTextColourPreview);
+            _colourSettingsManager.SetPressedTextColour(PressedTextColourPreview);
 
-                _colourSettingsManager.SetDisabledControlColour(DisabledColourPreview);
+            _colourSettingsManager.SetDisabledControlColour(DisabledColourPreview);
 
-                _colourSettingsManager.SetLinkNormalColour(LinkNormalColourPreview);
+            _colourSettingsManager.SetLinkNormalColour(LinkNormalColourPreview);
 
-                _colourSettingsManager.SetLinkHoverColour(LinkHoverColourPreview);
+            _colourSettingsManager.SetLinkHoverColour(LinkHoverColourPreview);
 
-                _colourSettingsManager.SetLinkVisitedColour(LinkVisitedColourPreview);
+            _colourSettingsManager.SetLinkVisitedColour(LinkVisitedColourPreview);
 
-                _colourSettingsManager.SetCustomColourOne(CustomColourOne);
+            _colourSettingsManager.SetCustomColourOne(CustomColourOne);
 
-                _colourSettingsManager.SetCustomColourTwo(CustomColourTwo);
+            _colourSettingsManager.SetCustomColourTwo(CustomColourTwo);
 
-                _colourSettingsManager.SetCustomColourThree(CustomColourThree);
+            _colourSettingsManager.SetCustomColourThree(CustomColourThree);
 
-                _colourSettingsManager.SetCustomColourFour(CustomColourFour);
+            _colourSettingsManager.SetCustomColourFour(CustomColourFour);
 
-                _colourSettingsManager.SetCustomColourFive(CustomColourFive);
+            _colourSettingsManager.SetCustomColourFive(CustomColourFive);
 
-                _colourSettingsManager.SetCustomTextColourOne(CustomTextColourOne);
+            _colourSettingsManager.SetCustomTextColourOne(CustomTextColourOne);
 
-                _colourSettingsManager.SetCustomTextColourTwo(CustomTextColourTwo);
+            _colourSettingsManager.SetCustomTextColourTwo(CustomTextColourTwo);
 
-                _colourSettingsManager.SetCustomTextColourThree(CustomTextColourThree);
+            _colourSettingsManager.SetCustomTextColourThree(CustomTextColourThree);
 
-                _colourSettingsManager.SetCustomTextColourFour(CustomTextColourFour);
+            _colourSettingsManager.SetCustomTextColourFour(CustomTextColourFour);
 
-                _colourSettingsManager.SetCustomTextColourFive(CustomTextColourFive);
+            _colourSettingsManager.SetCustomTextColourFive(CustomTextColourFive);
 
-                _colourSettingsManager.SetMenuTextColour(MenuTextColour);
+            _colourSettingsManager.SetMenuTextColour(MenuTextColour);
 
-                _colourSettingsManager.SetStatusStripTextColour(StatusTextColour);
+            _colourSettingsManager.SetStatusStripTextColour(StatusTextColour);
 
-                _colourSettingsManager.SetRibbonTabTextColour(RibbonTabTextColour);
+            _colourSettingsManager.SetRibbonTabTextColour(RibbonTabTextColour);
 
-                _colourSettingsManager.SaveAllMergedColourSettings(useConfirmDialog);
-            }
-            else
-            {
-                DialogResult result = KryptonMessageBox.Show("One or more colours are not defined, use white & black?", "Non-Defined Colours", KryptonMessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    // Note: Complete code
-                }
-            }
+            _colourSettingsManager.SaveAllMergedColourSettings(useConfirmDialog);
         }
         catch (Exception exc)
         {

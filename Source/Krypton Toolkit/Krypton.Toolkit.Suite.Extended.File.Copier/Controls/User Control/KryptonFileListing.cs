@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -208,7 +208,7 @@ public class KryptonFileListing : UserControl
 
     private FileDialogType _fileDialogType;
 
-    private object _fileListItem;
+    private object? _fileListItem;
     #endregion
 
     #region Properties
@@ -228,13 +228,13 @@ public class KryptonFileListing : UserControl
 
     public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
-    public object FileItem { get => _fileListItem; private set => _fileListItem = value; }
+    public object? FileItem { get => _fileListItem; private set => _fileListItem = value; }
     #endregion
 
     #region Custom Events
-    public delegate void DirectoryPathChangedEventHandler(object sender, DirectoryPathChangedEventArgs e);
+    public delegate void DirectoryPathChangedEventHandler(object? sender, DirectoryPathChangedEventArgs e);
 
-    public delegate void FileGathererEventHandler(object sender, FileGathererEventArgs e);
+    public delegate void FileGathererEventHandler(object? sender, FileGathererEventArgs e);
 
     public event DirectoryPathChangedEventHandler DirectoryPathChanged;
 
@@ -243,12 +243,12 @@ public class KryptonFileListing : UserControl
     /// <summary>Called when [directory path changed].</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="DirectoryPathChangedEventArgs" /> instance containing the event data.</param>
-    protected virtual void OnDirectoryPathChanged(object sender, DirectoryPathChangedEventArgs e) => DirectoryPathChanged?.Invoke(sender, e);
+    protected virtual void OnDirectoryPathChanged(object? sender, DirectoryPathChangedEventArgs e) => DirectoryPathChanged?.Invoke(sender, e);
 
     /// <summary>Called when [gather files].</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="FileGathererEventArgs" /> instance containing the event data.</param>
-    protected virtual void OnGatherFiles(object sender, FileGathererEventArgs e) => GatherFiles?.Invoke(sender, e);
+    protected virtual void OnGatherFiles(object? sender, FileGathererEventArgs e) => GatherFiles?.Invoke(sender, e);
     #endregion
 
     #region Constructor
@@ -328,12 +328,12 @@ public class KryptonFileListing : UserControl
     }
     #endregion
 
-    private void ktxtDirectory_TextChanged(object sender, EventArgs e)
+    private void ktxtDirectory_TextChanged(object? sender, EventArgs e)
     {
 
     }
 
-    private void kbtnBrowse_Click(object sender, EventArgs e)
+    private void kbtnBrowse_Click(object? sender, EventArgs e)
     {
         try
         {
@@ -381,11 +381,11 @@ public class KryptonFileListing : UserControl
 
                     if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
                     {
-                        ktxtDirectory.Text = Path.GetFullPath(cofd.FileName);
+                        ktxtDirectory.Text = Path.GetFullPath(cofd.FileName ?? string.Empty);
 
                         PopulateListBox(FileListing, ktxtDirectory.Text);
 
-                        DirectoryPathChangedEventArgs directoryPathChanged = new(Path.GetFullPath(cofd.FileName));
+                        DirectoryPathChangedEventArgs directoryPathChanged = new(Path.GetFullPath(cofd.FileName ?? string.Empty));
 
                         OnDirectoryPathChanged(this, directoryPathChanged);
                     }
@@ -401,16 +401,22 @@ public class KryptonFileListing : UserControl
         }
     }
 
-    private void klbFileListing_SelectedIndexChanged(object sender, EventArgs e) => FileItem = klbFileListing.SelectedItem;
+    private void klbFileListing_SelectedIndexChanged(object? sender, EventArgs e) => FileItem = klbFileListing.SelectedItem;
 
-    private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e) => OpenInExplorer(klbFileListing.SelectedItem.ToString());
+    private void openInExplorerToolStripMenuItem_Click(object? sender, EventArgs e)
+    {
+        if (klbFileListing.SelectedItem?.ToString() is string path)
+        {
+            OpenInExplorer(path);
+        }
+    }
 
-    private void renameFileToolStripMenuItem_Click(object sender, EventArgs e)
+    private void renameFileToolStripMenuItem_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void deleteFileToolStripMenuItem_Click(object sender, EventArgs e)
+    private void deleteFileToolStripMenuItem_Click(object? sender, EventArgs e)
     {
 
     }

@@ -140,7 +140,7 @@ public class TimerExtended : ITimer
     /// Gets the object used to marshal events raised by the
     /// <see cref="TimerExtended"/>.
     /// </summary>
-    public ISynchronizeInvoke SynchronizingObject => native.SynchronizingObject;
+    public ISynchronizeInvoke? SynchronizingObject => native.SynchronizingObject;
 
     /// <summary>
     /// Disposes resources acquired by the <see cref="TimerExtended"/>.

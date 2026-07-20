@@ -46,7 +46,7 @@ public class CustomTabControl : TabControl
     private ImageList? _leftRightImages = null;
     private const int N_MARGIN = 5;
 
-    private Rectangle _mCloseRect;
+    private Rectangle _mCloseRect = new Rectangle();
 
     #endregion
 
@@ -446,7 +446,7 @@ public class CustomTabControl : TabControl
         //selected, if so, do not process the base event.
         try
         {
-            if (!e.TabPage.ClientRectangle.Contains(_mCloseRect))
+            if (e.TabPage == null || !e.TabPage.ClientRectangle.Contains(_mCloseRect))
             { base.OnSelecting(e); }
         }
         catch (Exception ex)
@@ -516,13 +516,13 @@ public class CustomTabControl : TabControl
 
         base.OnMouseClick(e);
     }
-    private void this_MouseClick(object sender, MouseEventArgs e)
+    private void this_MouseClick(object? sender, MouseEventArgs e)
     {
         Point mouse;
         try
         {
             mouse = e.Location;
-            if (sender.Equals(Parent))
+            if (sender != null && sender.Equals(Parent))
             {
                 mouse.Y = e.Location.Y - Location.Y;
                 mouse.X = e.Location.X - Location.X;
@@ -540,11 +540,11 @@ public class CustomTabControl : TabControl
 
     }
 
-    private void this_ParentChanged(object sender, EventArgs e)
+    private void this_ParentChanged(object? sender, EventArgs e)
     {
         try
         {
-            Parent.MouseClick += this_MouseClick;
+            Parent?.MouseClick += this_MouseClick;
         }
         catch (Exception ex)
         {
@@ -570,7 +570,7 @@ public class CustomTabControl : TabControl
 
     //bool FlagControl = false;
 
-    private void FlatTabControl_KeyDown(object sender, KeyEventArgs e)
+    private void FlatTabControl_KeyDown(object? sender, KeyEventArgs e)
     {
 
         if (e.KeyCode == Keys.Menu)
@@ -750,15 +750,12 @@ public class CustomTabControl : TabControl
 
         //bool bHotselected = false;
 
-        if (bSelected && !bHot)
+        status = bSelected switch
         {
-            status = DrawingMethods.TabHeaderStatus.Selected;
-        }
-        else if (bSelected && bHot)
-        {
-            status = DrawingMethods.TabHeaderStatus.HotSelected;
-            //bHotselected = true;
-        }
+            true when !bHot => DrawingMethods.TabHeaderStatus.Selected,
+            true when bHot => DrawingMethods.TabHeaderStatus.HotSelected,
+            _ => status
+        };
 
         //Selected tab has to be highter?
         if (!_allowSelectedTabHigh)
@@ -1230,7 +1227,6 @@ public class CustomTabControl : TabControl
     }
 
     //TabControl overrides dispose to clean up the component list.
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     protected override void Dispose(bool disposing)
     {
         if (disposing)
@@ -1283,7 +1279,6 @@ public class CustomTabControl : TabControl
     }
 
 
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     protected override void WndProc(ref Message m)
     {
         if (m.Msg == WIN32.WM_PARENTNOTIFY)
@@ -1541,13 +1536,13 @@ public class CustomTabControl : TabControl
         base.OnControlAdded(e);
     }
 
-    private void ToolstripItemEvent(object sender, EventArgs e)
+    private void ToolstripItemEvent(object? sender, EventArgs e)
     {
-        ToolStripMenuItem tsi = (ToolStripMenuItem)sender;
-        //tsi.Checked = true;
-        TabPage tp = (TabPage)tsi.Tag;
-        SelectedTab = tp;
-        Invalidate();
+        if (sender is ToolStripMenuItem tsi && tsi.Tag is TabPage tp)
+        {
+            SelectedTab = tp;
+            Invalidate();
+        }
     }
 
     protected override void OnSelectedIndexChanged(EventArgs e)
@@ -1560,7 +1555,7 @@ public class CustomTabControl : TabControl
         base.OnControlRemoved(e);
     }
 
-    private void Scroller_ScrollLeft(Object sender, EventArgs e)
+    private void Scroller_ScrollLeft(object? sender, EventArgs e)
     {
         if (TabCount == 0)
         {
@@ -1574,7 +1569,7 @@ public class CustomTabControl : TabControl
     }
 
 
-    private void Scroller_ScrollRight(Object sender, EventArgs e)
+    private void Scroller_ScrollRight(object? sender, EventArgs e)
     {
         if (TabCount == 0)
         {
@@ -1593,7 +1588,7 @@ public class CustomTabControl : TabControl
     }
 
 
-    private void Scroller_TabClose(Object sender, EventArgs e)
+    private void Scroller_TabClose(object? sender, EventArgs e)
     {
         if (SelectedTab != null)
         {
@@ -1601,7 +1596,7 @@ public class CustomTabControl : TabControl
         }
     }
 
-    private void Scroller_ContextMenuButton(Object sender, EventArgs e)
+    private void Scroller_ContextMenuButton(object? sender, EventArgs e)
     {
         _scroller.ContextMenuStrip1.DropShadowEnabled = true;
 
@@ -1778,7 +1773,7 @@ public class CustomTabControl : TabControl
         public event EventHandler? ScrollRight;
         public event EventHandler? ContextualMenu;
 
-        private void TabScroller_Resize(object sender, EventArgs e)
+        private void TabScroller_Resize(object? sender, EventArgs e)
         {
             //LeftScroller.Width = this.Width / 3;
             //RightScroller.Width = this.Width / 3;
@@ -1786,7 +1781,7 @@ public class CustomTabControl : TabControl
         }
 
 
-        private void LeftScroller_Click(object sender, EventArgs e)
+        private void LeftScroller_Click(object? sender, EventArgs e)
         {
             if (ScrollLeft != null)
             {
@@ -1795,7 +1790,7 @@ public class CustomTabControl : TabControl
         }
 
 
-        private void RightScroller_Click(object sender, EventArgs e)
+        private void RightScroller_Click(object? sender, EventArgs e)
         {
             if (ScrollRight != null)
             {
@@ -1804,7 +1799,7 @@ public class CustomTabControl : TabControl
         }
 
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object? sender, EventArgs e)
         {
             if (TabClose != null)
             {
@@ -1812,7 +1807,7 @@ public class CustomTabControl : TabControl
             }
         }
 
-        private void ContextMenuButton_Click(object sender, EventArgs e)
+        private void ContextMenuButton_Click(object? sender, EventArgs e)
         {
             if (TabClose != null && ContextualMenu != null)
             {
@@ -1843,17 +1838,15 @@ public class CustomTabControl : TabControl
             public int x, y, cx, cy, flags;
         }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg is WM_DESTROY or WM_NCDESTROY)
             {
                 ReleaseHandle();
             }
-            else if (m.Msg == WM_WINDOWPOSCHANGING)
+            else if (m.Msg == WM_WINDOWPOSCHANGING && m.GetLParam(typeof(Windowpos)) is Windowpos wp)
             {
                 //Move the updown control off the edge so it's not visible
-                Windowpos wp = (Windowpos)m.GetLParam(typeof(Windowpos));
                 wp.x += wp.cx;
                 Marshal.StructureToPtr(wp, m.LParam, true);
                 _bounds = new Rectangle(wp.x, wp.y, wp.cx, wp.cy);

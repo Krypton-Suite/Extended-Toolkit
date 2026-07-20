@@ -386,7 +386,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                     csfd.DefaultExtension = "ccf";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                     {
                         WriteARGBColoursToFile(csfd.FileName);
                     }
@@ -463,7 +463,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                     csfd.DefaultExtension = "ccf";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                     {
                         WriteRGBColoursToFile(csfd.FileName);
                     }

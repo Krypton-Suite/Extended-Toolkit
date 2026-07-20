@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -281,7 +281,7 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// Gets or sets the snapshot image.
     /// </summary>
     /// <value>The snapshot image.</value>
-    protected Bitmap SnapshotImage { get; set; }
+    protected Bitmap? SnapshotImage { get; set; }
 
     #endregion
 
@@ -364,9 +364,9 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -399,11 +399,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnGridColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventGridColourChanged];
+        handler = (EventHandler?)this.Events[_eventGridColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -414,11 +414,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnImageChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventImageChanged];
+        handler = (EventHandler?)this.Events[_eventImageChanged];
 
         handler?.Invoke(this, e);
     }
@@ -437,7 +437,7 @@ public class ScreenColourPickerControl : Control, IColourEditor
             {
                 // ReSharper disable AssignNullToNotNullAttribute
                 _eyedropperCursor = new Cursor(this.GetType().Assembly.GetManifestResourceStream(
-                    $"{this.GetType().Namespace}.Resources.eyedropper.cur"));
+                    $"{this.GetType().Namespace}.Resources.eyedropper.cur")!);
             }
             // ReSharper restore AssignNullToNotNullAttribute
 
@@ -481,9 +481,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
     /// </summary>
     /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
+#pragma warning restore CS8765
 
         this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc
 
@@ -516,11 +518,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowGridChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventShowGridChanged];
+        handler = (EventHandler?)this.Events[_eventShowGridChanged];
 
         handler?.Invoke(this, e);
     }
@@ -531,11 +533,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowTextWithSnapshotChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventShowTextWithSnapshotChanged];
+        handler = (EventHandler?)this.Events[_eventShowTextWithSnapshotChanged];
 
         handler?.Invoke(this, e);
     }
@@ -557,11 +559,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnZoomChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.CreateSnapshotImage();
 
-        handler = (EventHandler)this.Events[_eventZoomChanged];
+        handler = (EventHandler?)this.Events[_eventZoomChanged];
 
         handler?.Invoke(this, e);
     }
@@ -649,6 +651,11 @@ public class ScreenColourPickerControl : Control, IColourEditor
     /// </summary>
     protected virtual void UpdateSnapshot()
     {
+        if (this.SnapshotImage is null)
+        {
+            return;
+        }
+
         Point cursor;
 
         cursor = MousePosition;

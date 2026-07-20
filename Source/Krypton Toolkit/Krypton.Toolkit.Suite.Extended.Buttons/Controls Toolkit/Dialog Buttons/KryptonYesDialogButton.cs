@@ -30,16 +30,26 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons;
 [ToolboxBitmap(typeof(KryptonButton))]
 public class KryptonYesDialogButton : KryptonButton
 {
-    private KryptonForm _parent;
+    private KryptonForm? _parent;
 
-    public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
+    public KryptonForm? ParentWindow
+    {
+        get => _parent;
+        set
+        {
+            _parent = value;
+            Invalidate();
+            OwnerWindowChangedEventArgs e = new(this, value);
+            OnParentWindowChanged(this, e);
+        }
+    }
 
     #region Custom Events
-    public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+    public delegate void ParentWindowChangedEventHandler(object? sender, OwnerWindowChangedEventArgs e);
 
-    public event ParentWindowChangedEventHandler ParentWindowChanged;
+    public event ParentWindowChangedEventHandler? ParentWindowChanged;
 
-    protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+    protected virtual void OnParentWindowChanged(object? sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
     #endregion
 
     public KryptonYesDialogButton()
@@ -51,7 +61,7 @@ public class KryptonYesDialogButton : KryptonButton
         TextChanged += KryptonYesDialogButton_TextChanged;
     }
 
-    private void KryptonYesDialogButton_TextChanged(object sender, EventArgs e)
+    private void KryptonYesDialogButton_TextChanged(object? sender, EventArgs e)
     {
         if (Text == Name)
         {
@@ -59,7 +69,7 @@ public class KryptonYesDialogButton : KryptonButton
         }
     }
 
-    private void KryptonYesDialogButton_ParentChanged(object sender, EventArgs e)
+    private void KryptonYesDialogButton_ParentChanged(object? sender, EventArgs e)
     {
         Control? parent = Parent;
 
@@ -68,15 +78,13 @@ public class KryptonYesDialogButton : KryptonButton
             parent = parent.Parent;
         }
 
-        if (parent is KryptonForm)
+        if (parent is KryptonForm form)
         {
-            KryptonForm form = (KryptonForm)parent;
-
             form.AcceptButton = this;
         }
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         if (ParentWindow != null)
         {

@@ -224,7 +224,7 @@ internal class KryptonRibbonThemeManager
     {
         PaletteModeConverter modeConverter = new();
 
-        return modeConverter.ConvertToString(paletteMode);
+        return modeConverter.ConvertToString(paletteMode) ?? string.Empty;
     }
 
     /// <summary>

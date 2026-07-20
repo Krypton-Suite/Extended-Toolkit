@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -34,7 +34,7 @@ public partial class ContrastColourGenerator : KryptonForm
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer components = null!;
 
     #region Windows Form Designer generated code
 
@@ -546,7 +546,7 @@ public partial class ContrastColourGenerator : KryptonForm
     private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     private Krypton.Toolkit.KryptonPanel kryptonPanel2;
     private CircularPictureBox cpbContrastColour;
-    private CircularPictureBox cpbBaseColour;
+    private CircularPictureBox cpbBaseColour = null!;
     private Krypton.Toolkit.KryptonLabel kryptonLabel12;
     private Krypton.Toolkit.KryptonLabel kryptonLabel1;
     private Krypton.Toolkit.KryptonNumericUpDown knumContrastAlphaChannelValue;
@@ -602,17 +602,17 @@ public partial class ContrastColourGenerator : KryptonForm
     }
     #endregion
 
-    private void ContrastColourGenerator_Load(object sender, EventArgs e)
+    private void ContrastColourGenerator_Load(object? sender, EventArgs e)
     {
 
     }
 
-    private void kbtnGenerateComplementaryColour_Click(object sender, EventArgs e)
+    private void kbtnGenerateComplementaryColour_Click(object? sender, EventArgs e)
     {
         cpbContrastColour.BackColor = ColourExtensions.GetContrast(cpbBaseColour.BackColor, kchkKeepOpacityValues.Checked);
     }
 
-    private void tmrUpdateUI_Tick(object sender, EventArgs e)
+    private void tmrUpdateUI_Tick(object? sender, EventArgs e)
     {
         cpbBaseColour.BackColor = Color.FromArgb(Convert.ToInt32(knumBaseAlphaChannelValue.Value), Convert.ToInt32(knumBaseRedChannelValue.Value), Convert.ToInt32(knumBaseGreenChannelValue.Value), Convert.ToInt32(knumBaseBlueChannelValue.Value));
 
@@ -622,7 +622,7 @@ public partial class ContrastColourGenerator : KryptonForm
         }
     }
 
-    private void cpbContrastColour_BackColorChanged(object sender, EventArgs e)
+    private void cpbContrastColour_BackColorChanged(object? sender, EventArgs e)
     {
         knumContrastAlphaChannelValue.Value = cpbContrastColour.BackColor.A;
 
@@ -633,12 +633,12 @@ public partial class ContrastColourGenerator : KryptonForm
         knumContrastBlueChannelValue.Value = cpbContrastColour.BackColor.B;
     }
 
-    private void kbtnInvertColours_Click(object sender, EventArgs e)
+    private void kbtnInvertColours_Click(object? sender, EventArgs e)
     {
         cpbBaseColour.BackColor = cpbContrastColour.BackColor;
     }
 
-    private void cpbBaseColour_BackColorChanged(object sender, EventArgs e)
+    private void cpbBaseColour_BackColorChanged(object? sender, EventArgs e)
     {
         knumBaseAlphaChannelValue.Value = cpbBaseColour.BackColor.A;
 
@@ -649,27 +649,27 @@ public partial class ContrastColourGenerator : KryptonForm
         knumBaseBlueChannelValue.Value = cpbBaseColour.BackColor.B;
     }
 
-    private void kbtnGenerateBaseAlphaValue_Click(object sender, EventArgs e)
+    private void kbtnGenerateBaseAlphaValue_Click(object? sender, EventArgs e)
     {
         knumBaseAlphaChannelValue.Value = _rng.RandomlyGenerateAlphaNumberBetween(0, 255);
     }
 
-    private void kbtnGenerateRedValue_Click(object sender, EventArgs e)
+    private void kbtnGenerateRedValue_Click(object? sender, EventArgs e)
     {
         knumBaseRedChannelValue.Value = _rng.RandomlyGenerateARedNumberBetween(0, 255);
     }
 
-    private void kbtnGenerateGreenValue_Click(object sender, EventArgs e)
+    private void kbtnGenerateGreenValue_Click(object? sender, EventArgs e)
     {
         knumBaseGreenChannelValue.Value = _rng.RandomlyGenerateAGreenNumberBetween(0, 255);
     }
 
-    private void kbtnGenerateBlueValue_Click(object sender, EventArgs e)
+    private void kbtnGenerateBlueValue_Click(object? sender, EventArgs e)
     {
         knumBaseBlueChannelValue.Value = _rng.RandomlyGenerateABlueNumberBetween(0, 255);
     }
 
-    private void kbtnUtiliseBaseColour_Click(object sender, EventArgs e)
+    private void kbtnUtiliseBaseColour_Click(object? sender, EventArgs e)
     {
         PaletteColourCreator paletteColourCreator = new(cpbBaseColour.BackColor);
 

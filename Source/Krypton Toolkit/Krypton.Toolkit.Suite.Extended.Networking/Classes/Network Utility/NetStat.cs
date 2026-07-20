@@ -79,7 +79,10 @@ internal class NetStat
     {
         ListView statView = (ListView)_updatePanel.Controls[0];
 
-        List<ConnectionDetails> details = (List<ConnectionDetails>)e.Result;
+        if (e.Result is not List<ConnectionDetails> details)
+        {
+            return;
+        }
 
         foreach (ConnectionDetails info in details)
         {
@@ -99,7 +102,7 @@ internal class NetStat
         }
     }
 
-    private void Worker_DoWork(object sender, DoWorkEventArgs e)
+    private void Worker_DoWork(object? sender, DoWorkEventArgs e)
     {
         IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
         TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();

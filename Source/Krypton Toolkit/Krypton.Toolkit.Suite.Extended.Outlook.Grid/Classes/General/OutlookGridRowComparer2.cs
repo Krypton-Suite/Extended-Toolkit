@@ -20,13 +20,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 
 internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
 {
-    List<Tuple<int, SortOrder, IComparer>> _sortColumnIndexAndOrder;
+    List<Tuple<int, SortOrder, IComparer?>> _sortColumnIndexAndOrder;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="OutlookGridRowComparer2"/> class.
     /// </summary>
     /// <param name="sortList">The sort list, tuple (column index, sortorder, Icomparer)</param>
-    public OutlookGridRowComparer2(List<Tuple<int, SortOrder, IComparer>> sortList)
+    public OutlookGridRowComparer2(List<Tuple<int, SortOrder, IComparer?>> sortList)
     {
         _sortColumnIndexAndOrder = sortList;
     }
@@ -40,8 +40,23 @@ internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
     /// <param name="y">The y.</param>
     /// <returns></returns>
     /// <exception cref="System.Exception">OutlookGridRowComparer:  + this.ToString()</exception>
-    public int Compare(OutlookGridRow x, OutlookGridRow y)
+    public int Compare(OutlookGridRow? x, OutlookGridRow? y)
     {
+        if (x == null && y == null)
+        {
+            return 0;
+        }
+
+        if (x == null)
+        {
+            return -1;
+        }
+
+        if (y == null)
+        {
+            return 1;
+        }
+
         int compareResult = 0, orderModifier;
 
         try
@@ -56,7 +71,7 @@ internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
                     object o2 = y.Cells[_sortColumnIndexAndOrder[i].Item1].Value;
                     if (_sortColumnIndexAndOrder[i].Item3 != null)
                     {
-                        compareResult = _sortColumnIndexAndOrder[i].Item3.Compare(o1, o2) * orderModifier;
+                        compareResult = _sortColumnIndexAndOrder[i].Item3!.Compare(o1, o2) * orderModifier;
                     }
                     else
                     {
@@ -70,62 +85,22 @@ internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
                         }
                         else
                         {
-                            if (o1 is string)
+                            compareResult = o1 switch
                             {
-                                compareResult = string.Compare(o1.ToString(), o2.ToString()) * orderModifier;
-                            }
-                            else if (o1 is DateTime)
-                            {
-                                compareResult = ((DateTime)o1).CompareTo((DateTime)o2) * orderModifier;
-                            }
-                            else if (o1 is int)
-                            {
-                                compareResult = ((int)o1).CompareTo((int)o2) * orderModifier;
-                            }
-                            else if (o1 is bool)
-                            {
-                                bool b1 = (bool)o1;
-                                bool b2 = (bool)o2;
-                                compareResult = (b1 == b2 ? 0 : b1 == true ? 1 : -1) * orderModifier;
-                            }
-                            else if (o1 is float)
-                            {
-                                float n1 = (float)o1;
-                                float n2 = (float)o2;
-                                compareResult = (n1 > n2 ? 1 : n1 < n2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is double)
-                            {
-                                double n1 = (double)o1;
-                                double n2 = (double)o2;
-                                compareResult = (n1 > n2 ? 1 : n1 < n2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is decimal)
-                            {
-                                decimal d1 = (decimal)o1;
-                                decimal d2 = (decimal)o2;
-                                compareResult = (d1 > d2 ? 1 : d1 < d2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is long)
-                            {
-                                long n1 = (long)o1;
-                                long n2 = (long)o2;
-                                compareResult = (n1 > n2 ? 1 : n1 < n2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is TimeSpan)
-                            {
-                                TimeSpan t1 = (TimeSpan)o1;
-                                TimeSpan t2 = (TimeSpan)o2;
-                                compareResult = (t1 > t2 ? 1 : t1 < t2 ? -1 : 0) * orderModifier;
-                            }
-                            else if (o1 is TextAndImage)
-                            {
-                                compareResult = ((TextAndImage)o1).CompareTo((TextAndImage)o2) * orderModifier;
-                            }
-                            else if (o1 is Token)
-                            {
-                                compareResult = ((Token)o1).CompareTo((Token)o2) * orderModifier;
-                            }
+                                string => string.Compare(o1.ToString(), o2?.ToString()) * orderModifier,
+                                DateTime dt1 when o2 is DateTime dt2 => dt1.CompareTo(dt2) * orderModifier,
+                                int i1 when o2 is int i2 => i1.CompareTo(i2) * orderModifier,
+                                bool b1 when o2 is bool b2 => (b1 == b2 ? 0 : b1 ? 1 : -1) * orderModifier,
+                                float n1f when o2 is float n2f => (n1f > n2f ? 1 : n1f < n2f ? -1 : 0) * orderModifier,
+                                double n1d when o2 is double n2d =>
+                                    (n1d > n2d ? 1 : n1d < n2d ? -1 : 0) * orderModifier,
+                                decimal d1 when o2 is decimal d2 => (d1 > d2 ? 1 : d1 < d2 ? -1 : 0) * orderModifier,
+                                long n1l when o2 is long n2l => (n1l > n2l ? 1 : n1l < n2l ? -1 : 0) * orderModifier,
+                                TimeSpan t1 when o2 is TimeSpan t2 => (t1 > t2 ? 1 : t1 < t2 ? -1 : 0) * orderModifier,
+                                TextAndImage ti1 when o2 is TextAndImage ti2 => ti1.CompareTo(ti2) * orderModifier,
+                                Token tok1 when o2 is Token tok2 => tok1.CompareTo(tok2) * orderModifier,
+                                _ => compareResult
+                            };
                         }
                     }
                 }

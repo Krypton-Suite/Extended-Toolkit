@@ -5,7 +5,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer components = null!;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -350,26 +350,26 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #endregion
 
-        private KryptonPanel kryptonPanel1;
-        private TableLayoutPanel tableLayoutPanel1;
-        private KryptonPanel _panelButtons;
-        private KryptonBorderEdge _borderEdge;
-        private MessageButton _button4;
-        private MessageButton _button3;
-        private MessageButton _button1;
-        private MessageButton _button2;
-        private PictureBox _messageIcon;
-        private KryptonPanel _panelFooter;
-        private KryptonBorderEdge _footerBorderEdge;
-        private KryptonButton _footerToggleButton;
-        private KryptonWrapLabel _footerWrapLabel;
-        private KryptonCheckBox _footerCheckBox;
-        private KryptonRichTextBox _footerRichTextBox;
-        private TableLayoutPanel tableLayoutPanel2;
-        private KryptonCheckBox kcbOptionalCheckBox;
-        private KryptonPanel kpnlContent;
-        private KryptonLinkWrapLabel klwlblMessageText;
-        private KryptonRichTextBox krtbMessageText;
-        private KryptonTextBox kwlblMessageText;
+        private KryptonPanel kryptonPanel1 = null!;
+        private TableLayoutPanel tableLayoutPanel1 = null!;
+        private KryptonPanel _panelButtons = null!;
+        private KryptonBorderEdge _borderEdge = null!;
+        private MessageButton _button4 = null!;
+        private MessageButton _button3 = null!;
+        private MessageButton _button1 = null!;
+        private MessageButton _button2 = null!;
+        private PictureBox _messageIcon = null!;
+        private KryptonPanel _panelFooter = null!;
+        private KryptonBorderEdge _footerBorderEdge = null!;
+        private KryptonButton _footerToggleButton = null!;
+        private KryptonWrapLabel _footerWrapLabel = null!;
+        private KryptonCheckBox _footerCheckBox = null!;
+        private KryptonRichTextBox _footerRichTextBox = null!;
+        private TableLayoutPanel tableLayoutPanel2 = null!;
+        private KryptonCheckBox kcbOptionalCheckBox = null!;
+        private KryptonPanel kpnlContent = null!;
+        private KryptonLinkWrapLabel klwlblMessageText = null!;
+        private KryptonRichTextBox krtbMessageText = null!;
+        private KryptonTextBox kwlblMessageText = null!;
     }
 }

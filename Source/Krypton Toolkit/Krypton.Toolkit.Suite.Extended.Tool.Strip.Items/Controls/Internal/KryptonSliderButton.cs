@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -119,12 +119,12 @@ public partial class KryptonSliderButton : UserControl, IContentValues
     private PaletteBackInheritRedirect _mPaletteBack;
     private PaletteBorderInheritRedirect _mPaletteBorder;
     private PaletteContentInheritRedirect _mPaletteContent;
-    private IDisposable _mMementoContent;
-    private IDisposable _mMementoBack1;
-    private IDisposable _mMementoBack2;
+    private IDisposable? _mMementoContent;
+    private IDisposable? _mMementoBack1;
+    private IDisposable? _mMementoBack2;
 
-    private PaletteBase _palette;
-    private PaletteRedirect _paletteRedirect;
+    private PaletteBase? _palette;
+    private PaletteRedirect? _paletteRedirect;
 
     //Colors
     private Color _mInnerColor = Color.FromArgb(99, 106, 116);
@@ -428,7 +428,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
     }
 
     //Key Mouse Events
-    private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
+    private void KryptonSliderButton_MouseDown(object? sender, MouseEventArgs e)
     {
         _mDown = true;
         //Single click?
@@ -437,17 +437,17 @@ public partial class KryptonSliderButton : UserControl, IContentValues
 
         Invalidate();
     }
-    private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
+    private void KryptonSliderButton_MouseEnter(object? sender, EventArgs e)
     {
         _mHighlight = true;
         Invalidate();
     }
-    private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
+    private void KryptonSliderButton_MouseLeave(object? sender, EventArgs e)
     {
         _mHighlight = false;
         Invalidate();
     }
-    private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
+    private void KryptonSliderButton_MouseUp(object? sender, MouseEventArgs e)
     {
         _mDown = false;
 
@@ -461,10 +461,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
     }
 
     //Implements IContentValues
-    public Image GetImage(PaletteState state)
-    {
-        return null;
-    }
+    public Image? GetImage(PaletteState state) => null;
     public Color GetImageTransparentColor(PaletteState state)
     {
         return Color.Empty;
@@ -510,40 +507,40 @@ public partial class KryptonSliderButton : UserControl, IContentValues
     }
 
     //Krypton Palette
-    private void k_palette_BasePaletteChanged(object sender, EventArgs e)
+    private void k_palette_BasePaletteChanged(object? sender, EventArgs e)
     {
         Invalidate();
     }
-    private void k_palette_BaseRendererChanged(object sender, EventArgs e)
+    private void k_palette_BaseRendererChanged(object? sender, EventArgs e)
     {
         Invalidate();
     }
-    private void k_palette_PalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void k_palette_PalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }
 
     //Fire Machine Gun
-    private void FireTimer_Tick(object sender, EventArgs e)
+    private void FireTimer_Tick(object? sender, EventArgs e)
     {
         SliderButtonFire?.Invoke(this, new EventArgs());
     }
 
 
     //Krypton Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
         Invalidate();
     }
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
             _palette.PalettePaint -= OnPalettePaint;
         }
         _palette = KryptonManager.CurrentGlobalPalette;
-        _paletteRedirect.Target = _palette;
+        _paletteRedirect!.Target = _palette;
         if (_palette != null)
         {
             _palette.PalettePaint += OnPalettePaint;
@@ -555,6 +552,11 @@ public partial class KryptonSliderButton : UserControl, IContentValues
 
     private void InitColors()
     {
+        if (_palette is null)
+        {
+            return;
+        }
+
         //Colors
         _mInnerColor = _palette.ColorTable.GripDark;
 

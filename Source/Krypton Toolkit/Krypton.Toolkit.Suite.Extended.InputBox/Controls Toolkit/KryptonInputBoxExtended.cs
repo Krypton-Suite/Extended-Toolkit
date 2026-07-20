@@ -46,9 +46,9 @@ public class KryptonInputBoxExtended
     /// <param name="customImage">The custom image.</param>
     /// <param name="initialDateTime">The initial date and time.</param>
     /// <returns>The users input string.</returns>
-    internal static string InternalShow(IWin32Window owner, string prompt, string caption,
+    internal static string InternalShow(IWin32Window? owner, string prompt, string caption,
         string defaultResponse, string cueText, Color cueColour,
-        Font cueTypeface, Font buttonTypeface, Font promptTypeface,
+        Font? cueTypeface, Font? buttonTypeface, Font? promptTypeface,
         InputBoxIconType iconType,
         KryptonInputBoxResponseType inputType,
         InputBoxTextAlignment textAlignment,

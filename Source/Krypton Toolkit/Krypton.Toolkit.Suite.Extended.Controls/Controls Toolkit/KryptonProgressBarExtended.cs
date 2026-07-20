@@ -134,7 +134,9 @@ public class KryptonProgressBarExtended : ProgressBar
     /// </remarks>
     [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Font matches Control base on all TFMs.
     public override Font Font { get => base.Font; set => base.Font = value; }
+#pragma warning restore CS8765
 
     /// <summary>
     /// Gets or sets the color of the text displayed by <see cref="KryptonProgressBarExtendedVersion2" />.

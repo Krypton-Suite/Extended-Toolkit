@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -113,7 +113,7 @@ public class InternalBrowseBox : KryptonTextBox
     /// <summary>Gets or sets the file dialog filter. Please see <see cref="CommonFileDialogFilter"/> for more information.</summary>
     /// <value> The file dialog filter.</value>
     [DefaultValue(null), Description(@"Gets or sets the file dialog filter. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilter' for more information.")]
-    public CommonFileDialogFilter FileDialogFilter { get => _filter; set => _filter = value; }
+    public CommonFileDialogFilter? FileDialogFilter { get => _filter; set => _filter = value; }
 
     /// <summary>Gets or sets the file dialog filter collection. Please see <see cref="CommonFileDialogFilterCollection"/> for more information.</summary>
     /// <value>The file dialog filter collection.</value>
@@ -209,7 +209,7 @@ public class InternalBrowseBox : KryptonTextBox
     /// <summary>Handles the Execute event of the Browse control.</summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void Browse_Execute(object sender, EventArgs e)
+    private void Browse_Execute(object? sender, EventArgs e)
     {
         if (_useSaveDialog)
         {
@@ -258,7 +258,7 @@ public class InternalBrowseBox : KryptonTextBox
     /// <summary>Handles the Execute event of the Reset control.</summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void Reset_Execute(object sender, EventArgs e)
+    private void Reset_Execute(object? sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(Text))
         {

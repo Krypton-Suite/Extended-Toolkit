@@ -28,14 +28,14 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Core;
 
-// <summary>
+/// <summary>
 /// Base class used for implementation of actual controls.
 /// </summary>
 [ToolboxItem(false), DesignerCategory("code")]
 public abstract class VisualControlBaseExtended : Control, IKryptonDebug
 {
     #region Static Field
-    private static MethodInfo _miPTB;
+    private static MethodInfo? _miPTB;
     #endregion
 
     #region Instance Fields
@@ -45,13 +45,13 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     private bool _paintTransparent;
     private bool _evalTransparent;
     private bool _globalEvents;
-    private PaletteBase _localPalette;
-    private PaletteBase _palette;
+    private PaletteBase? _localPalette;
+    private PaletteBase? _palette;
     private PaletteMode _paletteMode;
     private readonly SimpleCall _refreshCall;
     private readonly SimpleCall _layoutCall;
-    private KryptonContextMenu _kryptonContextMenu;
-    protected VisualPopupToolTip _visualBasePopupToolTip;
+    private KryptonContextMenu? _kryptonContextMenu;
+    protected VisualPopupToolTip? _visualBasePopupToolTip;
     private ToolTipManager _toolTipManager;
     #endregion
 
@@ -61,14 +61,14 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// </summary>
     [Category("Property Changed")]
     [Description("Occurs when the value of the Palette property is changed.")]
-    public event EventHandler PaletteChanged;
+    public event EventHandler? PaletteChanged;
 
     /// <summary>
     /// Occurs when the Global palette changes.
     /// </summary>
     [Category("Property Changed")]
     [Description("Occurs when the value of the GlobalPalette property is changed.")]
-    public event EventHandler GlobalPaletteChanged;
+    public event EventHandler? GlobalPaletteChanged;
     #endregion
 
     #region Identity
@@ -199,7 +199,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Category("Behavior")]
     [Description("Consider using KryptonContextMenu within the behaviors section.\nThe Winforms shortcut menu to show when the user right-clicks the page.\nNote: The ContextMenu will be rendered.")]
     [DefaultValue(null)]
-    public override ContextMenuStrip ContextMenuStrip
+    public override ContextMenuStrip? ContextMenuStrip
     {
         [DebuggerStepThrough]
         get => base.ContextMenuStrip;
@@ -231,7 +231,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Category("Behavior")]
     [Description("The KryptonContextMenu to show when the user right-clicks the Control.")]
     [DefaultValue(null)]
-    public virtual KryptonContextMenu KryptonContextMenu
+    public virtual KryptonContextMenu? KryptonContextMenu
     {
         get => _kryptonContextMenu;
 
@@ -291,7 +291,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
                     _layoutDirty = false;
 
                     // Ask the view to perform a layout
-                    ViewManager.Layout(Renderer);
+                    ViewManager!.Layout(Renderer!);
 
                 } while (_layoutDirty && max-- > 0);
             }
@@ -357,7 +357,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Category("Visuals")]
     [Description("Custom palette applied to drawing.")]
     [DefaultValue(null)]
-    public PaletteBase Palette
+    public PaletteBase? Palette
     {
         [DebuggerStepThrough]
         get => _localPalette;
@@ -368,7 +368,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
             if (_localPalette != value)
             {
                 // Remember the starting palette
-                PaletteBase old = _localPalette;
+                PaletteBase? old = _localPalette;
 
                 // Use the provided palette value
                 SetPalette(value);
@@ -417,7 +417,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Advanced)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public IRenderer Renderer
+    public IRenderer? Renderer
     {
         [DebuggerStepThrough]
         get;
@@ -431,7 +431,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [EditorBrowsable(EditorBrowsableState.Advanced)]
     public ToolStripRenderer CreateToolStripRenderer()
     {
-        return Renderer.RenderToolStrip(GetResolvedPalette());
+        return Renderer!.RenderToolStrip(GetResolvedPalette()!);
     }
 
     /// <summary>
@@ -440,7 +440,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Browsable(false)]
     [Bindable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public override Image BackgroundImage
+    public override Image? BackgroundImage
     {
         get => base.BackgroundImage;
         set => base.BackgroundImage = value;
@@ -463,7 +463,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public ViewManager GetViewManager()
+    public ViewManager? GetViewManager()
     {
         return ViewManager;
     }
@@ -473,7 +473,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public PaletteBase GetResolvedPalette()
+    public PaletteBase? GetResolvedPalette()
     {
         return _palette;
     }
@@ -544,7 +544,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [EditorBrowsable(EditorBrowsableState.Never)]
     public void KryptonResetCounters()
     {
-        ViewManager.ResetCounters();
+        ViewManager?.ResetCounters();
     }
 
     /// <summary>
@@ -553,7 +553,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public int KryptonLayoutCounter => ViewManager.LayoutCounter;
+    public int KryptonLayoutCounter => ViewManager!.LayoutCounter;
 
     /// <summary>
     /// Gets the number of paint cycles performed since last reset.
@@ -561,14 +561,14 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public int KryptonPaintCounter => ViewManager.PaintCounter;
+    public int KryptonPaintCounter => ViewManager!.PaintCounter;
 
     /// <summary>
     /// Gets the view associated with the provided client location.
     /// </summary>
     /// <param name="pt">Point to lookup.</param>
     /// <returns>ViewBase associated with the point.</returns>
-    public ViewBase ViewFromPoint(Point pt)
+    public ViewBase? ViewFromPoint(Point pt)
     {
         return ViewManager?.Root?.ViewFromPoint(pt);
     }
@@ -579,7 +579,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// Gets and sets the ViewManager instance.
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public ViewManager ViewManager
+    public ViewManager? ViewManager
     {
         [DebuggerStepThrough]
         get;
@@ -618,7 +618,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
             if (ViewManager != null)
             {
                 // Ask the view to perform a layout
-                ViewManager.Layout(Renderer);
+                ViewManager!.Layout(Renderer!);
 
                 return true;
             }
@@ -684,7 +684,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// <returns>True to allow; otherwise false.</returns>
     protected bool CanProcessMnemonic()
     {
-        Control c = this;
+        Control? c = this;
 
         // Test each control in parent chain
         while (c != null)
@@ -713,7 +713,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     protected virtual bool EvalTransparentPaint()
     {
         // Do we have a manager to use for asking about painting?
-        return ViewManager != null && ViewManager.EvalTransparentPaint(Renderer);
+        return ViewManager != null && ViewManager.EvalTransparentPaint(Renderer!);
     }
 
     /// <summary>
@@ -724,7 +724,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// <summary>
     /// Gets the control reference that is the parent for transparent drawing.
     /// </summary>
-    protected virtual Control TransparentParent => Parent;
+    protected virtual Control? TransparentParent => Parent;
 
     /// <summary>
     /// Processes a notification from palette storage of a button spec change.
@@ -732,7 +732,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An EventArgs containing event data.</param>
     /// <exception cref="ArgumentNullException"></exception>
-    protected virtual void OnButtonSpecChanged(object sender, EventArgs e)
+    protected virtual void OnButtonSpecChanged(object? sender, EventArgs e)
     {
         System.Diagnostics.Debug.Assert(e != null);
 
@@ -766,7 +766,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// </summary>
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
-    protected virtual void OnPaletteNeedPaint(object sender, NeedLayoutEventArgs e)
+    protected virtual void OnPaletteNeedPaint(object? sender, NeedLayoutEventArgs e)
     {
         // Need to recalculate anything relying on the palette
         DirtyPaletteCounter++;
@@ -779,7 +779,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// <param name="sender">Source of notification.</param>
     /// <param name="e">An NeedLayoutEventArgs containing event data.</param>
     /// <exception cref="ArgumentNullException"></exception>
-    protected virtual void OnNeedPaint(object sender, NeedLayoutEventArgs e)
+    protected virtual void OnNeedPaint(object? sender, NeedLayoutEventArgs e)
     {
         System.Diagnostics.Debug.Assert(e != null);
 
@@ -892,7 +892,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
                     _layoutDirty = false;
 
                     // Ask the view to perform a layout
-                    ViewManager.Layout(Renderer);
+                    ViewManager!.Layout(Renderer!);
 
                 } while (_layoutDirty && max-- > 0);
             }
@@ -937,7 +937,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
                 PaintTransparentBackground(e);
 
                 // Ask the view to repaint the visual structure
-                ViewManager.Paint(Renderer, e);
+                ViewManager!.Paint(Renderer!, e);
 
                 // Request for a refresh has been serviced
                 _refresh = false;
@@ -1144,7 +1144,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">An EventArgs that contains the event data.</param>
-    protected virtual void OnGlobalPaletteChanged(object sender, EventArgs e)
+    protected virtual void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         // We only care if we are using the global palette
         if (PaletteMode == PaletteMode.Global)
@@ -1172,7 +1172,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">Event details.</param>
-    protected virtual void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+    protected virtual void OnUserPreferenceChanged(object? sender, UserPreferenceChangedEventArgs e)
     {
         // Need to recalculate anything relying on the palette
         DirtyPaletteCounter++;
@@ -1253,7 +1253,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
     #endregion
 
     #region Implementation
-    private void SetPalette(PaletteBase palette)
+    private void SetPalette(PaletteBase? palette)
     {
         if (palette != _palette)
         {
@@ -1270,7 +1270,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
             _palette = palette;
 
             // Get the renderer associated with the palette
-            Renderer = _palette.GetRenderer();
+            Renderer = _palette!.GetRenderer();
 
             // Hook to new palette events
             if (_palette != null)
@@ -1283,16 +1283,16 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
         }
     }
 
-    private void OnBaseChanged(object sender, EventArgs e)
+    private void OnBaseChanged(object? sender, EventArgs e)
     {
         // Change in base renderer or base palette require we fetch the latest renderer
-        Renderer = _palette.GetRenderer();
+        Renderer = _palette!.GetRenderer();
     }
 
     private void PaintTransparentBackground(PaintEventArgs e)
     {
         // Get the parent control for transparent drawing purposes
-        Control parent = TransparentParent;
+        Control? parent = TransparentParent;
 
         // Do we have a parent control and we need to paint background?
         if (parent != null && NeedTransparentPaint)
@@ -1308,7 +1308,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
                     null);
             }
 
-            _miPTB.Invoke(this, [e, ClientRectangle, null]);
+            _miPTB!.Invoke(this, [e, ClientRectangle, null]);
         }
         else
         {
@@ -1352,16 +1352,16 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
         BeginInvoke(_refreshCall);
     }
 
-    private void OnContextMenuStripOpening(object sender, CancelEventArgs e)
+    private void OnContextMenuStripOpening(object? sender, CancelEventArgs e)
     {
-        // Get the actual strip instance
-        ContextMenuStrip cms = base.ContextMenuStrip;
-
-        // Make sure it has the correct renderer
-        cms.Renderer = CreateToolStripRenderer();
+        if (base.ContextMenuStrip is ContextMenuStrip cms)
+        {
+            // Make sure it has the correct renderer
+            cms.Renderer = CreateToolStripRenderer();
+        }
     }
 
-    private void OnKryptonContextMenuDisposed(object sender, EventArgs e)
+    private void OnKryptonContextMenuDisposed(object? sender, EventArgs e)
     {
         // When the current krypton context menu is disposed, we should remove 
         // it to prevent it being used again, as that would just throw an exception 
@@ -1369,12 +1369,12 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
         KryptonContextMenu = null;
     }
 
-    private void OnContextMenuClosed(object sender, ToolStripDropDownClosedEventArgs e)
+    private void OnContextMenuClosed(object? sender, ToolStripDropDownClosedEventArgs e)
     {
         ContextMenuClosed();
     }
 
-    private void OnShowToolTip(object sender, ToolTipEventArgs e)
+    private void OnShowToolTip(object? sender, ToolTipEventArgs e)
     {
         if (!IsDisposed)
         {
@@ -1397,7 +1397,7 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
                 // ReSharper disable once UseObjectOrCollectionInitializer
                 _visualBasePopupToolTip = new(Redirector,
                     ToolTipValues,
-                    Renderer,
+                    Renderer!,
                     PaletteBackStyle.ControlToolTip,
                     PaletteBorderStyle.ControlToolTip,
                     CommonHelper.ContentStyleFromLabelStyle(ToolTipValues.ToolTipStyle));
@@ -1408,20 +1408,21 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
         }
     }
 
-    private void OnCancelToolTip(object sender, EventArgs e)
+    private void OnCancelToolTip(object? sender, EventArgs e)
     {
         // Remove any currently showing tooltip
         _visualBasePopupToolTip?.Dispose();
     }
 
-    private void OnVisualPopupToolTipDisposed(object sender, EventArgs e)
+    private void OnVisualPopupToolTipDisposed(object? sender, EventArgs e)
     {
-        // Unhook events from the specific instance that generated event
-        VisualPopupToolTip popupToolTip = (VisualPopupToolTip)sender;
-        popupToolTip.Disposed -= OnVisualPopupToolTipDisposed;
+        if (sender is VisualPopupToolTip popupToolTip)
+        {
+            popupToolTip.Disposed -= OnVisualPopupToolTipDisposed;
 
-        // Not showing a popup page any more
-        _visualBasePopupToolTip = null;
+            // Not showing a popup page any more
+            _visualBasePopupToolTip = null;
+        }
     }
 
     protected override void OnHandleCreated(EventArgs e)
@@ -1434,6 +1435,6 @@ public abstract class VisualControlBaseExtended : Control, IKryptonDebug
 
     #region Calls
     [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
-    public static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
+    public static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string? pszSubIdList);
     #endregion
 }

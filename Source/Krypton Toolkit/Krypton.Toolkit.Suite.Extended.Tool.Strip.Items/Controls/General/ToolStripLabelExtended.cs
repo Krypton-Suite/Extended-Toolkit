@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -32,14 +32,15 @@ public class ToolStripLabelExtended : ToolStripStatusLabel
 {
     #region Variables
 
+#pragma warning disable CS0169, CS0649
     #region Krypton
 
     private PaletteBase? _palette;
 
-    private IRenderer _renderer;
+    private IRenderer? _renderer;
 
     // This may not be needed, but oh well...
-    private KryptonCustomPaletteBase _kryptonPalette;
+    private KryptonCustomPaletteBase? _kryptonPalette;
     #endregion
 
     private bool _alert, _enableBlinking, _bkClr, _fadeText;
@@ -52,15 +53,16 @@ public class ToolStripLabelExtended : ToolStripStatusLabel
         _alertColour2,
         _alertTextColour;
 
-    private Font _textTypeface;
+    private Font? _textTypeface;
 
     private LinearGradientMode _linearGradientMode;
 
     private int _textGlowSpread, _flashInterval, _fadeInteval;
 
-    private int[] _targetColour, _fadeRGB;
+    private int[]? _targetColour, _fadeRGB;
 
-    private Timer _alertFlashTimer, _fadeAnimationTimer;
+    private Timer? _alertFlashTimer, _fadeAnimationTimer;
+#pragma warning restore CS0169, CS0649
 
     private long _blinkDuration;
 
@@ -439,7 +441,7 @@ public class ToolStripLabelExtended : ToolStripStatusLabel
     #endregion
 
     #region Events
-    private void FadeAnimationTimer_Tick(object sender, EventArgs e)
+    private void FadeAnimationTimer_Tick(object? sender, EventArgs e)
     {
         throw new NotImplementedException();
     }

@@ -101,10 +101,10 @@ internal static class GroupedTableComposer
         }
 
         string prop = groupPropertyNames[depth];
-        var buckets = new Dictionary<object?, List<object?>>(KeyEquality.Instance);
+        var buckets = new Dictionary<object, List<object?>>(KeyEquality.Instance);
         foreach (var row in slice)
         {
-            object? key = NormalizeKey(GetRawKey(row, prop));
+            object key = NormalizeKey(GetRawKey(row, prop));
             if (!buckets.TryGetValue(key, out var list))
             {
                 list = [];
@@ -151,10 +151,10 @@ internal static class GroupedTableComposer
         }
 
         string prop = groupPropertyNames[currentDepth + 1];
-        var buckets = new Dictionary<object?, List<object?>>(KeyEquality.Instance);
+        var buckets = new Dictionary<object, List<object?>>(KeyEquality.Instance);
         foreach (var row in rows)
         {
-            object? key = NormalizeKey(GetRawKey(row, prop));
+            object key = NormalizeKey(GetRawKey(row, prop));
             if (!buckets.TryGetValue(key, out var list))
             {
                 list = [];
@@ -304,7 +304,7 @@ internal static class GroupedTableComposer
         }
     }
 
-    private static object? NormalizeKey(object? v) => v is null or DBNull ? DBNull.Value : v;
+    private static object NormalizeKey(object? v) => v is null or DBNull ? DBNull.Value : v;
 
     private static string KeyFingerprint(object? key)
     {
@@ -323,13 +323,13 @@ internal static class GroupedTableComposer
         }
     }
 
-    private sealed class KeyEquality : IEqualityComparer<object?>
+    private sealed class KeyEquality : IEqualityComparer<object>
     {
         public static readonly KeyEquality Instance = new();
 
-        bool IEqualityComparer<object?>.Equals(object? x, object? y) => EqualsNormalized(NormalizeKey(x), NormalizeKey(y));
+        bool IEqualityComparer<object>.Equals(object? x, object? y) => EqualsNormalized(NormalizeKey(x), NormalizeKey(y));
 
-        public int GetHashCode(object? obj) => NormalizeKey(obj) switch
+        public int GetHashCode(object obj) => NormalizeKey(obj) switch
         {
             null or DBNull => 0,
             _ => obj!.GetHashCode()

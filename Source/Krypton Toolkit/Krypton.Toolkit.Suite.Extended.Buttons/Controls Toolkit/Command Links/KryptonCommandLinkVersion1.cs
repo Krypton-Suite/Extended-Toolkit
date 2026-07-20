@@ -49,10 +49,10 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     private readonly PaletteTripleOverride _overrideNormal;
     private readonly PaletteTripleOverride _overrideTracking;
     private readonly PaletteTripleOverride _overridePressed;
-    private IKryptonCommand _command;
+    private IKryptonCommand? _command;
     private bool _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevatedButton;
     private string _processToElevate;
-    private Image _originalImage;
+    private Image? _originalImage;
     private Size _uacShieldSize;
     #endregion
 
@@ -201,11 +201,12 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     [Localizable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [AllowNull]
     public override string Text
     {
         get => CommandLinkTextValues.Heading;
 
-        set => CommandLinkTextValues.Heading = value;
+        set => CommandLinkTextValues.Heading = value ?? string.Empty;
     }
 
     private bool ShouldSerializeText()
@@ -402,7 +403,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     [Category("Behavior")]
     [Description("Command associated with the button.")]
     [DefaultValue(null)]
-    public virtual IKryptonCommand KryptonCommand
+    public virtual IKryptonCommand? KryptonCommand
     {
         get => _command;
 
@@ -518,7 +519,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
         set => base.ImeMode = value;
     }
 
-    public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
+    public Image? OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
     /// <summary>Gets or sets a value indicating whether [use as uac elevated button].</summary>
     /// <value>
@@ -537,7 +538,14 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
 
             if (!_useAsUACElevatedButton)
             {
-                CommandLinkImageValue.Image = _originalImage;
+                if (_originalImage != null)
+                {
+                    CommandLinkImageValue.Image = _originalImage;
+                }
+                else
+                {
+                    CommandLinkImageValue.ResetImage();
+                }
 
                 OriginalImage = null;
             }
@@ -645,7 +653,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     protected override void OnClick(EventArgs e)
     {
         // Find the form this button is on
-        Form owner = FindForm();
+        Form? owner = FindForm();
 
         // If we find a valid owner
         if (owner != null)
@@ -711,7 +719,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
         _buttonController.RemoveFixed();
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         base.OnPaint(e);
     }
@@ -762,8 +770,13 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-    protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+    protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
+        if (KryptonCommand == null)
+        {
+            return;
+        }
+
         switch (e.PropertyName)
         {
             case "Enabled":
@@ -793,12 +806,12 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
         return 1.0f; // Example value, replace with actual logic
     }
 
-    private void OnButtonTextChanged(object sender, EventArgs e)
+    private void OnButtonTextChanged(object? sender, EventArgs e)
     {
         OnTextChanged(EventArgs.Empty);
     }
 
-    private void OnButtonClick(object sender, MouseEventArgs e)
+    private void OnButtonClick(object? sender, MouseEventArgs e)
     {
         // Raise the standard click event
         OnClick(EventArgs.Empty);
@@ -807,7 +820,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
         OnMouseClick(e);
     }
 
-    private void OnButtonSelect(object sender, MouseEventArgs e)
+    private void OnButtonSelect(object? sender, MouseEventArgs e)
     {
         // Take the focus if allowed
         if (CanFocus)

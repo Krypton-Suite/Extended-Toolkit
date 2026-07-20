@@ -69,7 +69,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
                 CreateFilters();
             }
 
-            return _defaultOpenFilter;
+            return _defaultOpenFilter!;
         }
     }
 
@@ -87,7 +87,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
                 CreateFilters();
             }
 
-            return _defaultSaveFileter;
+            return _defaultSaveFileter!;
         }
     }
 
@@ -224,7 +224,7 @@ public abstract class PaletteSerializer : IPaletteSerializer
         }
         catch (ReflectionTypeLoadException ex)
         {
-            return ex.Types.Where(x => x != null);
+            return ex.Types.Where(x => x != null).Cast<Type>();
         }
     }
 
@@ -241,7 +241,10 @@ public abstract class PaletteSerializer : IPaletteSerializer
         {
             try
             {
-                _serializerCache.Add((IPaletteSerializer)Activator.CreateInstance(type));
+                if (Activator.CreateInstance(type) is IPaletteSerializer serializer)
+                {
+                    _serializerCache.Add(serializer);
+                }
             }
             // ReSharper disable EmptyGeneralCatchClause
             catch

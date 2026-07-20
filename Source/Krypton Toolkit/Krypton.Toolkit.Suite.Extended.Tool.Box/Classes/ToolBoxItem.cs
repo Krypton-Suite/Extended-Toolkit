@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -44,13 +44,13 @@ public class ToolBoxItem : ToolObject
     protected bool _movable;
     protected bool _deletable;
     protected string _caption;
-    protected object _object;
+    protected object? _object;
 
     [NonSerialized]
-    protected ToolBoxItem _parentItem;
+    protected ToolBoxItem _parentItem = null!;
 
     [NonSerialized]
-    protected KryptonToolBox _parent;
+    protected KryptonToolBox _parent = null!;
 
     // Added by Neal Stublen
     [NonSerialized]
@@ -189,10 +189,10 @@ public class ToolBoxItem : ToolObject
     }
 
     [Category("General")]
-    public virtual bool CanMoveUp => null != _parentItem ? ((ToolBoxTab)_parentItem).CanMoveItemUp(this) : false;
+    public virtual bool CanMoveUp => _parentItem is not null ? ((ToolBoxTab)_parentItem).CanMoveItemUp(this) : false;
 
     [Category("General")]
-    public virtual bool CanMoveDown => null != _parentItem ? ((ToolBoxTab)_parentItem).CanMoveItemDown(this) : false;
+    public virtual bool CanMoveDown => _parentItem is not null ? ((ToolBoxTab)_parentItem).CanMoveItemDown(this) : false;
 
     [Category("General")]
     public virtual bool Deletable
@@ -202,7 +202,7 @@ public class ToolBoxItem : ToolObject
     }
 
     [Category("General")]
-    public virtual object Object
+    public virtual object? Object
     {
         get => _object;
         set => _object = value;
@@ -243,7 +243,7 @@ public class ToolBoxItem : ToolObject
 
     public ToolBoxItem()
     {
-        _parent = null;
+        _parent = null!;
         _smallImageIndex = -1;
         _largeImageIndex = -1;
         _caption = "";
@@ -277,7 +277,7 @@ public class ToolBoxItem : ToolObject
     public virtual bool HitTest(int x, int y)
     {
         bool bHit = false;
-        ToolBoxTab parentTab = _parentItem as ToolBoxTab;
+        ToolBoxTab? parentTab = _parentItem as ToolBoxTab;
         Rectangle rcTemp = Rectangle.Empty;
 
         bHit = false;
@@ -326,10 +326,10 @@ public class ToolBoxItem : ToolObject
     public virtual void Invalidate()
     {
 
-        ToolBoxTab parentTab = _parentItem as ToolBoxTab;
+        ToolBoxTab? parentTab = _parentItem as ToolBoxTab;
         Rectangle rcTemp = Rectangle.Empty;
 
-        if (null != _parent && !_rectangle.IsEmpty)
+        if (_parent is not null && !_rectangle.IsEmpty)
         {
             if (null != parentTab)
             {
@@ -355,7 +355,7 @@ public class ToolBoxItem : ToolObject
 
     public void CheckCaption(Graphics g, Font f, StringFormat s, Rectangle rect)
     {
-        StringFormat newS = null;
+        StringFormat? newS = null;
         SizeF area = SizeF.Empty; ;
         Size size;
 

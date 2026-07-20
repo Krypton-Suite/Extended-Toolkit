@@ -80,6 +80,8 @@ namespace Examples
             this.kbtnCheckSum = new Krypton.Toolkit.KryptonButton();
             this.kbtnCalendarItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCardExample = new Krypton.Toolkit.KryptonButton();
+            this.kbtnBottomSheetExample = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnGanttChartExample = new Krypton.Toolkit.KryptonButton();
@@ -113,6 +115,8 @@ namespace Examples
             this.kryptonPanel1.Controls.Add(this.kryptonButton4);
             this.kryptonPanel1.Controls.Add(this.kbtnCheckSum);
             this.kryptonPanel1.Controls.Add(this.kbtnCalendarItems);
+            this.kryptonPanel1.Controls.Add(this.kbtnBottomSheetExample);
+            this.kryptonPanel1.Controls.Add(this.kbtnCardExample);
             this.kryptonPanel1.Controls.Add(this.kbtnCircularProgressBarItem);
             this.kryptonPanel1.Controls.Add(this.ktnToolStripItems);
             this.kryptonPanel1.Controls.Add(this.kbtnButtonItems);
@@ -340,6 +344,26 @@ namespace Examples
             this.kbtnCircularProgressBarItem.Values.Text = "Circular ProgressBar";
             this.kbtnCircularProgressBarItem.Click += new System.EventHandler(this.kbtnCircularProgressBarItem_Click);
             // 
+            // kbtnCardExample
+            // 
+            this.kbtnCardExample.Location = new System.Drawing.Point(498, 10);
+            this.kbtnCardExample.Name = "kbtnCardExample";
+            this.kbtnCardExample.Size = new System.Drawing.Size(109, 22);
+            this.kbtnCardExample.TabIndex = 27;
+            this.kbtnCardExample.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            this.kbtnCardExample.Values.Text = "Card";
+            this.kbtnCardExample.Click += new System.EventHandler(this.kbtnCardExample_Click);
+            // 
+            // kbtnBottomSheetExample
+            // 
+            this.kbtnBottomSheetExample.Location = new System.Drawing.Point(358, 38);
+            this.kbtnBottomSheetExample.Name = "kbtnBottomSheetExample";
+            this.kbtnBottomSheetExample.Size = new System.Drawing.Size(109, 22);
+            this.kbtnBottomSheetExample.TabIndex = 28;
+            this.kbtnBottomSheetExample.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            this.kbtnBottomSheetExample.Values.Text = "Bottom Sheet";
+            this.kbtnBottomSheetExample.Click += new System.EventHandler(this.kbtnBottomSheetExample_Click);
+            // 
             // ktnToolStripItems
             // 
             this.ktnToolStripItems.Location = new System.Drawing.Point(492, 38);
@@ -402,6 +426,8 @@ namespace Examples
         private Krypton.Toolkit.KryptonButton kbtnButtonItems;
         private Krypton.Toolkit.KryptonButton kbtnCalendarItems;
         private Krypton.Toolkit.KryptonButton kbtnCircularProgressBarItem;
+        private Krypton.Toolkit.KryptonButton kbtnCardExample;
+        private Krypton.Toolkit.KryptonButton kbtnBottomSheetExample;
         private Krypton.Toolkit.KryptonButton kbtnCheckSum;
         private Krypton.Toolkit.KryptonButton kbtnExtendedControls;
         private Krypton.Toolkit.KryptonButton kryptonButton5;

@@ -27,11 +27,11 @@
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
 
 /// <summary>
-/// Provides a way to filter out AppCast item instances that do not apply to the current update process.  
+/// Provides a way to filter out AppCast item instances that do not apply to the current update process.
 /// Used to make it possible to revert from a "beta" version to a "stable" one - where the current runtime
-/// System.Version value of the <seealso cref="Configurations">Configurations</seealso> is by definition higher
+/// System.Version value of the Configuration is by definition higher
 /// than anything in the "stable" app cast list.
-/// 
+///
 /// To indicate to NetSparkle that you want to upgrade to a lower version number, return true
 /// in GetFilteredAppCastItems and filter out any AppCastItem elements from the provided list of items that are
 /// higher than the version you want to install.  When you return true, NetSparkle will force re-install
@@ -48,7 +48,7 @@ public interface IAppCastFilter
     /// </summary>
     /// <example>
     /// This code shows how to do no filtering at all, by returning false for the first parameter of the
-    /// FilterResult object.  
+    /// FilterResult object.
     /// <code>
     /// if (noFilteringRequired)
     /// {
@@ -66,9 +66,9 @@ public interface IAppCastFilter
     ///    }).ToList();
     ///
     ///    // note: returning true here will FORCE the installation of whatever is the latest version in itemsWithoutBeta
-    ///    return new FilterResult(true, itemsWithoutBeta); 
+    ///    return new FilterResult(true, itemsWithoutBeta);
     /// }
-    /// </code> 
+    /// </code>
     /// </example>
     /// <remarks>You must always return a list of filtered items - if null is returned then the whole method is treated as a no-op</remarks>
     /// <remarks>This methods being called on a background thread - do not access UI objects directly from within this method</remarks>

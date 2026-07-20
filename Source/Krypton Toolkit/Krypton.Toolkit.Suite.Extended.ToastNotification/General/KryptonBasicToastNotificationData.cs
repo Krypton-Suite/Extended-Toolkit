@@ -1,4 +1,5 @@
-﻿
+﻿using Krypton.Toolkit;
+
 namespace Krypton.Toolkit.Suite.Extended.ToastNotification;
 
 /// <summary>Contains the data and information required, to create a basic toast notification.</summary>
@@ -136,9 +137,9 @@ public struct KryptonBasicToastNotificationData
 
         CountDownTimerInterval = 1000;
 
-        BorderColor1 = GlobalStaticValues.EMPTY_COLOR;
+        BorderColor1 = GlobalStaticVariables.EMPTY_COLOR;
 
-        BorderColor2 = GlobalStaticValues.EMPTY_COLOR;
+        BorderColor2 = GlobalStaticVariables.EMPTY_COLOR;
 
         OptionalCheckBoxText = KryptonManager.Strings.CustomStrings.DoNotShowAgain;
 

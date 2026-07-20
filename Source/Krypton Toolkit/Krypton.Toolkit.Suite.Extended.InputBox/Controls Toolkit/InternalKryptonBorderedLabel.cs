@@ -45,9 +45,14 @@ public class InternalKryptonBorderedLabel : KryptonLabel
     #endregion
 
     #region Protected Overrides
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         base.OnPaint(e);
+
+        if (e == null)
+        {
+            return;
+        }
 
         ForeColor = KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.InputControlCustom1, PaletteState.Normal);
 

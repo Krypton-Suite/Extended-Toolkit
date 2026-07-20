@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -71,7 +71,7 @@ public class KryptonEnhancedToolStripProgressBar : ToolStripProgressBar
 
     #region Implementation
 
-    private void Control_HandleCreated(object sender, EventArgs e)
+    private void Control_HandleCreated(object? sender, EventArgs e)
     {
         //var s = new ProgressBarHandler((ProgressBar) Control, _useDisplayText, _displayTextColour);
     }

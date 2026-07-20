@@ -33,10 +33,10 @@ public class OutlookGridColumn : IEquatable<OutlookGridColumn>
     /// <param name="groupIndex">The column's position in grouping and at which level.</param>
     /// <param name="sortIndex">the column's position among sorted columns.</param>
     /// <param name="comparer">The comparer if needed.</param>
-    public OutlookGridColumn(DataGridViewColumn col, IOutlookGridGroup group, SortOrder sortDirection, int groupIndex, int sortIndex, IComparer? comparer)
+    public OutlookGridColumn(DataGridViewColumn? col, IOutlookGridGroup? group, SortOrder sortDirection, int groupIndex, int sortIndex, IComparer? comparer)
     {
         DataGridViewColumn = col;
-        Name = col.Name;
+        Name = col?.Name ?? string.Empty;
         GroupingType = group;
         SortDirection = sortDirection;
         GroupIndex = groupIndex;
@@ -54,7 +54,7 @@ public class OutlookGridColumn : IEquatable<OutlookGridColumn>
     /// <param name="groupIndex">The column's position in grouping and at which level.</param>
     /// <param name="sortIndex">the column's position among sorted columns.</param>
     /// <param name="comparer">The comparer if needed</param>
-    public OutlookGridColumn(string columnName, DataGridViewColumn col, IOutlookGridGroup group, SortOrder sortDirection, int groupIndex, int sortIndex, IComparer? comparer)
+    public OutlookGridColumn(string columnName, DataGridViewColumn? col, IOutlookGridGroup? group, SortOrder sortDirection, int groupIndex, int sortIndex, IComparer? comparer)
     {
         DataGridViewColumn = col;
         Name = columnName;
@@ -74,7 +74,7 @@ public class OutlookGridColumn : IEquatable<OutlookGridColumn>
     /// <param name="sortDirection">The sort direction.</param>
     /// <param name="groupIndex">The column's position in grouping and at which level.</param>
     /// <param name="sortIndex">the column's position among sorted columns.</param>
-    public OutlookGridColumn(string columnName, DataGridViewColumn col, IOutlookGridGroup group, SortOrder sortDirection, int groupIndex, int sortIndex)
+    public OutlookGridColumn(string columnName, DataGridViewColumn? col, IOutlookGridGroup? group, SortOrder sortDirection, int groupIndex, int sortIndex)
     {
         DataGridViewColumn = col;
         Name = columnName;
@@ -104,7 +104,7 @@ public class OutlookGridColumn : IEquatable<OutlookGridColumn>
     /// <summary>
     /// Gets or sets the associated DataGridViewColumn
     /// </summary>
-    public DataGridViewColumn DataGridViewColumn { get; set; }
+    public DataGridViewColumn? DataGridViewColumn { get; set; }
 
     /// <summary>
     /// Gets or sets the group
@@ -135,9 +135,11 @@ public class OutlookGridColumn : IEquatable<OutlookGridColumn>
     /// </summary>
     /// <param name="other">The OutlookGridColumn to compare with</param>
     /// <returns></returns>
-    public bool Equals(OutlookGridColumn other)
+    public bool Equals(OutlookGridColumn? other)
     {
-        return DataGridViewColumn.Name.Equals(other.DataGridViewColumn.Name);
+        return other?.DataGridViewColumn?.Name != null
+               && DataGridViewColumn?.Name != null
+               && DataGridViewColumn.Name.Equals(other.DataGridViewColumn.Name);
     }
 
     #endregion

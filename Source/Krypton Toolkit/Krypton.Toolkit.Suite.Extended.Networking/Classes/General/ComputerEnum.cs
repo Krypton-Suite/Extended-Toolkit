@@ -177,7 +177,7 @@ public class ComputerEnum : IEnumerable, IDisposable
         out int totalentries,   // total servers + workstations
         uint? servertype,        // server type filter
         [MarshalAs(UnmanagedType.LPWStr)]
-        string domain,          // domain to enumerate
+        string? domain,          // domain to enumerate
         IntPtr resume_handle);
 
     // Frees buffer created by NetServerEnum
@@ -206,7 +206,7 @@ public class ComputerEnum : IEnumerable, IDisposable
     /// </summary>
     /// <param name="serverType">Server type filter</param>
     /// <param name="domainName">The domain name to search for computers in</param>
-    public ComputerEnum(uint? serverType, string domainName)
+    public ComputerEnum(uint? serverType, string? domainName)
     {
         int entriesread;  // number of entries actually read
         int totalentries; // total visible servers and workstations
@@ -256,7 +256,7 @@ public class ComputerEnum : IEnumerable, IDisposable
                 for (int i = 0; i < entriesread; i++)
                 {
                     // fill our struct
-                    si = (SERVER_INFO_101)Marshal.PtrToStructure((IntPtr)tmp, svType);
+                    si = Marshal.PtrToStructure<SERVER_INFO_101>((IntPtr)tmp);
                     _computers[i] = new NetworkComputers(si);
 
                     // next struct

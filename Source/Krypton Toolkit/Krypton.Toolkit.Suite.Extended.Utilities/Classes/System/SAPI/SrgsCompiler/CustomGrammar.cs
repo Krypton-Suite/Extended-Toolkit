@@ -531,12 +531,13 @@ internal class CustomGrammar
 
     private void CheckValidAssembly(int iCfg, byte[] il)
     {
+#if NETFRAMEWORK
         Assembly executingAssembly = Assembly.GetExecutingAssembly();
         AppDomain appDomain = null;
         try
         {
             appDomain = AppDomain.CreateDomain("Loading Domain");
-            AppDomainCompilerProxy appDomainCompilerProxy = (AppDomainCompilerProxy)appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.Internal.SrgsCompiler.AppDomainCompilerProxy");
+            AppDomainCompilerProxy appDomainCompilerProxy = (AppDomainCompilerProxy)appDomain.CreateInstanceFromAndUnwrap(executingAssembly.Location, "System.Speech.Internal.SrgsCompiler.AppDomainCompilerProxy");
             int count = _scriptRefs.Count;
             string[] array = new string[count];
             string[] array2 = new string[count];
@@ -563,6 +564,9 @@ internal class CustomGrammar
                 appDomain = null;
             }
         }
+#else
+        throw new PlatformNotSupportedException("Dynamic grammar validation requires .NET Framework.");
+#endif
     }
 
     private static void AssociateConstructorsWithRules(AppDomainCompilerProxy proxy, string[] names, List<Rule> rules, int iCfg, string language)

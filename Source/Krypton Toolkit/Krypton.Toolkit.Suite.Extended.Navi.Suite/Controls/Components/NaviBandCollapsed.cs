@@ -99,7 +99,7 @@ public partial class NaviBandCollapsed : NaviControl
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        Renderer.DrawNaviBandCollapsedBg(e.Graphics, ClientRectangle, Text, headerFont,
+        Renderer?.DrawNaviBandCollapsedBg(e.Graphics, ClientRectangle, Text, headerFont,
             RightToLeft == RightToLeft.Yes, inputState);
     }
 

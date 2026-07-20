@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -417,11 +417,13 @@ public class ColourSliderControl : Control
     /// <returns>The <see cref="T:System.Drawing.Font" /> to apply to the text displayed by the control. The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultFont" /> property.</returns>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Font matches Control base on all TFMs.
     public override Font Font
     {
         get => base.Font;
         set => base.Font = value;
     }
+#pragma warning restore CS8765
 
     /// <summary>
     /// Gets or sets the foreground colour of the control.
@@ -627,11 +629,13 @@ public class ColourSliderControl : Control
     /// <returns>The text associated with this control.</returns>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Text matches Control base on all TFMs.
     public override string Text
     {
         get => base.Text;
         set => base.Text = value;
     }
+#pragma warning restore CS8765
 
     /// <summary>
     /// Gets or sets a numeric value that represents the current position of the selection numb on the colour slider control.
@@ -668,7 +672,7 @@ public class ColourSliderControl : Control
     /// Gets or sets the selection glyph.
     /// </summary>
     /// <value>The selection glyph.</value>
-    protected Image SelectionGlyph { get; set; }
+    protected Image? SelectionGlyph { get; set; }
 
     #endregion
 
@@ -865,9 +869,9 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnBarBoundsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventBarBoundsChanged];
+        handler = (EventHandler?)this.Events[_eventBarBoundsChanged];
 
         handler?.Invoke(this, e);
     }
@@ -878,11 +882,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnBarPaddingChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventBarPaddingChanged];
+        handler = (EventHandler?)this.Events[_eventBarPaddingChanged];
 
         handler?.Invoke(this, e);
     }
@@ -893,11 +897,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnBarStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventBarStyleChanged];
+        handler = (EventHandler?)this.Events[_eventBarStyleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -908,11 +912,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColour1Changed(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventColour1Changed];
+        handler = (EventHandler?)this.Events[_eventColour1Changed];
 
         handler?.Invoke(this, e);
     }
@@ -923,11 +927,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColour2Changed(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventColour2Changed];
+        handler = (EventHandler?)this.Events[_eventColour2Changed];
 
         handler?.Invoke(this, e);
     }
@@ -938,11 +942,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColour3Changed(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventColour3Changed];
+        handler = (EventHandler?)this.Events[_eventColour3Changed];
 
         handler?.Invoke(this, e);
     }
@@ -953,11 +957,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCustomColoursChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventCustomColoursChanged];
+        handler = (EventHandler?)this.Events[_eventCustomColoursChanged];
 
         handler?.Invoke(this, e);
     }
@@ -968,12 +972,12 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnDividerStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.DefineBar();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventDividerStyleChanged];
+        handler = (EventHandler?)this.Events[_eventDividerStyleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1053,9 +1057,9 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnLargeChangeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventLargeChangeChanged];
+        handler = (EventHandler?)this.Events[_eventLargeChangeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1077,11 +1081,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnMaximumChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventMaximumChanged];
+        handler = (EventHandler?)this.Events[_eventMaximumChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1092,9 +1096,9 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnMinimumChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventMinimumChanged];
+        handler = (EventHandler?)this.Events[_eventMinimumChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1163,11 +1167,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnNubColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventNubColourChanged];
+        handler = (EventHandler?)this.Events[_eventNubColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1178,12 +1182,12 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnNubSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.DefineBar();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventNubSizeChanged];
+        handler = (EventHandler?)this.Events[_eventNubSizeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1194,12 +1198,12 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnNubStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.DefineBar();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventNubStyleChanged];
+        handler = (EventHandler?)this.Events[_eventNubStyleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1210,12 +1214,12 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnOrientationChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.DefineBar();
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventOrientationChanged];
+        handler = (EventHandler?)this.Events[_eventOrientationChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1235,9 +1239,11 @@ public class ColourSliderControl : Control
     /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
     /// </summary>
     /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
+#pragma warning restore CS8765
 
         this.PaintBar(e);
         this.PaintAdornments(e);
@@ -1260,11 +1266,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowValueDividerChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Invalidate();
 
-        handler = (EventHandler)this.Events[_eventShowValueDividerChanged];
+        handler = (EventHandler?)this.Events[_eventShowValueDividerChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1275,9 +1281,9 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnSmallChangeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventSmallChangeChanged];
+        handler = (EventHandler?)this.Events[_eventSmallChangeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1288,11 +1294,11 @@ public class ColourSliderControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnValueChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Refresh();
 
-        handler = (EventHandler)this.Events[_eventValueChanged];
+        handler = (EventHandler?)this.Events[_eventValueChanged];
 
         handler?.Invoke(this, e);
     }

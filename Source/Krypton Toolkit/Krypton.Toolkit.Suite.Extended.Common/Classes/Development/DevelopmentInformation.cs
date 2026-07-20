@@ -33,7 +33,6 @@ public class DevelopmentInformation
     #region Variables
     private readonly Version? _internalVersion;
     private Version _assemblyVersion;
-    private FileInfo _fileInfo;
     #endregion
 
     #region Properties
@@ -103,25 +102,27 @@ public class DevelopmentInformation
 
         try
         {
+            string buildNumber = GetAssemblyVersion(assembly)?.Build.ToString() ?? "0";
+
             switch (state)
             {
                 case DevelopmentState.PreAlpha:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Pre-Alpha)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {buildNumber} - Pre-Alpha)";
                     break;
                 case DevelopmentState.Alpha:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Alpha)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {buildNumber} - Alpha)";
                     break;
                 case DevelopmentState.Beta:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Beta)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {buildNumber} - Beta)";
                     break;
                 case DevelopmentState.ReleaseToManufacturing:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - RTM)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {buildNumber} - RTM)";
                     break;
                 case DevelopmentState.Current:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - Current Build)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {buildNumber} - Current Build)";
                     break;
                 case DevelopmentState.EndOfLife:
-                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {GetAssemblyVersion(assembly).Build.ToString()} - End of Life)";
+                    target.TextExtra = $"({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month + 1)} {DateTime.Now.Year.ToString()} Update - Build: {buildNumber} - End of Life)";
                     break;
             }
         }
@@ -137,7 +138,7 @@ public class DevelopmentInformation
 
     public static Version GetFileVersion(FileVersionInfo? fileVersionInfo) => fileVersionInfo != null ? Version.Parse(fileVersionInfo.ProductVersion!) : new Version();
 
-    public static Version GetAssemblyVersion(Assembly executablePath) => executablePath.GetName().Version;
+    public static Version? GetAssemblyVersion(Assembly executablePath) => executablePath.GetName().Version;
 
     #endregion
 }

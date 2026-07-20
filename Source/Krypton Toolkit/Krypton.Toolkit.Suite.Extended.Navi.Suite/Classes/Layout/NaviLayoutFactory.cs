@@ -78,7 +78,7 @@ public class NaviLayoutFactory
                 break;
         }
 
-        ownerBar.NaviLayoutEngine.Initialize();
+        ownerBar.NaviLayoutEngine?.Initialize();
     }
 
     #endregion

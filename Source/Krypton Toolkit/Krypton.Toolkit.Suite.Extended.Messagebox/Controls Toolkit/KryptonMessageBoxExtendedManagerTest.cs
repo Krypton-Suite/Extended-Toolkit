@@ -231,6 +231,9 @@ public class KryptonMessageBoxManagerTest : Component
     /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
     /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
     /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+    /// <param name="showOptionalLinkLabel">if set to <c>true</c> [show optional link label].</param>
+    /// <param name="optionalLinkLabelText">The optional link label text.</param>
+    /// <param name="optionalLinkLabelDestination">The optional link label destination.</param>
     public KryptonMessageBoxManagerTest(IWin32Window owner, string text, string caption,
         ExtendedMessageBoxButtons buttons,
         ExtendedKryptonMessageBoxIcon icon,
@@ -323,7 +326,7 @@ public class KryptonMessageBoxManagerTest : Component
         }
         else
         {
-            return KryptonMessageBoxExtendedDeveloperTest.Show(Owner, Text, CaptionText,
+            return KryptonMessageBoxExtendedDeveloperTest.Show(Owner!, Text, CaptionText,
                 MessageBoxButtons, MessageBoxIcon,
                 DefaultButton, Options,
                 HelpFilePath, HelpNavigator,
@@ -371,7 +374,7 @@ public class KryptonMessageBoxManagerTest : Component
         }
         else
         {
-            return KryptonMessageBoxExtendedDeveloperTest.Show(Owner, Text, CaptionText,
+            return KryptonMessageBoxExtendedDeveloperTest.Show(Owner!, Text, CaptionText,
                 MessageBoxButtons, MessageBoxIcon,
                 DefaultButton, Options,
                 HelpFilePath, HelpNavigator,

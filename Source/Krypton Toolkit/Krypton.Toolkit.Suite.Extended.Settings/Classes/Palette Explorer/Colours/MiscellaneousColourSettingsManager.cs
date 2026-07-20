@@ -249,7 +249,7 @@ public class MiscellaneousColourSettingsManager
 
                     csfd.DefaultExtension = "ccf";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                     {
                         WriteARGBColoursToFile(csfd.FileName);
                     }
@@ -292,7 +292,7 @@ public class MiscellaneousColourSettingsManager
 
                     csfd.DefaultExtension = "ccf";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                     {
                         WriteRGBColoursToFile(csfd.FileName);
                     }

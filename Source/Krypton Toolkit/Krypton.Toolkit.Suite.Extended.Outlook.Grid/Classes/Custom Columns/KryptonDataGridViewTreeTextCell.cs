@@ -170,7 +170,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
         //}
 
         // Paint tree lines			
-        if (node != null && ((KryptonOutlookGrid)node.DataGridView).ShowLines)
+        if (node?.DataGridView is KryptonOutlookGrid outlookGrid && outlookGrid.ShowLines)
         {
             using (Pen linePen = new(SystemBrushes.ControlDark, 1.0f))
             {
@@ -279,7 +279,10 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
         OutlookGridRow? node = OwningNode;
         if (node != null)
         {
-            ((KryptonOutlookGrid)node.DataGridView).InExpandCollapseMouseCapture = false;
+            if (node?.DataGridView is KryptonOutlookGrid outlookGrid)
+            {
+                outlookGrid.InExpandCollapseMouseCapture = false;
+            }
         }
     }
     /// <summary>
@@ -288,6 +291,11 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
     /// <param name="e">The <see cref="DataGridViewCellMouseEventArgs"/> instance containing the event data.</param>
     protected override void OnMouseDown(DataGridViewCellMouseEventArgs e)
     {
+        if (DataGridView == null)
+        {
+            return;
+        }
+
         Rectangle dis = DataGridView.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
         Rectangle glyphRect = new(dis.X + GlyphMargin, dis.Y, INDENT_WIDTH, dis.Height - 1);
 
@@ -299,9 +307,9 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
             // Expand the node
             //TODO: Calculate more precise location
             OutlookGridRow? node = OwningNode;
-            if (node != null)
+            if (node?.DataGridView is KryptonOutlookGrid outlookGrid)
             {
-                ((KryptonOutlookGrid)node.DataGridView).InExpandCollapseMouseCapture = true;
+                outlookGrid.InExpandCollapseMouseCapture = true;
 
                 if (node.Collapsed)
                 {

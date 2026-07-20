@@ -59,7 +59,7 @@ public partial class KryptonAlertWindow : KryptonForm
     /// <param name="textColour">The text colour.</param>
     /// <param name="headerText">Define the header text.</param>
     /// <param name="owner">Optional parent window. When provided, the alert is positioned within the owner's bounds and owned by it.</param>
-    internal void DisplayAlert(string message, AlertType alertType, int interval, Image? image = null, Color backColour = default, Color textColour = default, string headerText = "", IWin32Window? owner = null)
+    internal void DisplayAlert(string message, AlertType alertType, int interval, Image? image = null, Color backColour = default, Color textColour = default, string? headerText = null, IWin32Window? owner = null)
     {
         Opacity = 0.0;
 
@@ -141,7 +141,7 @@ public partial class KryptonAlertWindow : KryptonForm
 
         _action = AlertAction.Start;
 
-        _tmrAlert.Interval = 1;
+        _tmrAlert!.Interval = 1;
 
         _tmrAlert.Start();
 
@@ -183,13 +183,13 @@ public partial class KryptonAlertWindow : KryptonForm
             return activeForm.Bounds;
         }
 
-        return Screen.PrimaryScreen.WorkingArea;
+        return Screen.PrimaryScreen!.WorkingArea;
     }
 
     private void ChangeColour(Color backColour, Color textColour)
     {
         // Form Colour
-        StateCommon.Border.Color1 = backColour;
+        StateCommon!.Border.Color1 = backColour;
 
         StateCommon.Border.Color2 = backColour;
 
@@ -214,12 +214,12 @@ public partial class KryptonAlertWindow : KryptonForm
     #endregion
 
     #region Event Handlers
-    private void Alert_Tick(object sender, EventArgs e)
+    private void Alert_Tick(object? sender, EventArgs e)
     {
         switch (_action)
         {
             case AlertAction.Start:
-                _tmrAlert.Interval = 1;
+                _tmrAlert!.Interval = 1;
 
                 Opacity += 1;
 
@@ -233,12 +233,12 @@ public partial class KryptonAlertWindow : KryptonForm
                 }
                 break;
             case AlertAction.Wait:
-                _tmrAlert.Interval = _interval;
+                _tmrAlert!.Interval = _interval;
 
                 _action = AlertAction.Close;
                 break;
             case AlertAction.Close:
-                _tmrAlert.Interval = 1;
+                _tmrAlert!.Interval = 1;
 
                 Opacity -= 1;
 
@@ -252,9 +252,9 @@ public partial class KryptonAlertWindow : KryptonForm
         }
     }
 
-    private void ptbClose_Click(object sender, EventArgs e)
+    private void ptbClose_Click(object? sender, EventArgs e)
     {
-        _tmrAlert.Interval = 1;
+        _tmrAlert!.Interval = 1;
 
         _action = AlertAction.Close;
     }

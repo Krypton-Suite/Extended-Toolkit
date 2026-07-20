@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core;
 public class ThemingLogic
 {
     #region Variables
-    private IThemeOptions _themeOptions;
+    private IThemeOptions _themeOptions = null!;
     private PaletteThemeSettingsManager _paletteThemeSettingsManager = new();
     #endregion
 
@@ -43,7 +43,7 @@ public class ThemingLogic
     #endregion
 
     #region Events
-    public void PaletteMode_Click(object sender, EventArgs e)
+    public void PaletteMode_Click(object? sender, EventArgs e)
     {
 
     }
@@ -186,7 +186,6 @@ public class ThemingLogic
                 break;
             case PaletteMode.Office2010Black:
                 _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2010Black;
-                break;
                 break;
             case PaletteMode.Office2013White:
                 _themeOptions.KryptonManager.GlobalPaletteMode = PaletteMode.Office2013White;

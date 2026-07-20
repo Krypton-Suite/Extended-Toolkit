@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -162,7 +162,7 @@ public struct HSLColour
 
     #region Methods
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         bool result;
 
@@ -230,22 +230,13 @@ public struct HSLColour
                 tc[color] -= 1;
             }
 
-            if (tc[color] < 1d / 6d)
+            colours[color] = tc[color] switch
             {
-                colours[color] = p + (q - p) * 6 * tc[color];
-            }
-            else if (tc[color] >= 1d / 6d && tc[color] < 1d / 2d)
-            {
-                colours[color] = q;
-            }
-            else if (tc[color] >= 1d / 2d && tc[color] < 2d / 3d)
-            {
-                colours[color] = p + (q - p) * 6 * (2d / 3d - tc[color]);
-            }
-            else
-            {
-                colours[color] = p;
-            }
+                < 1d / 6d => p + (q - p) * 6 * tc[color],
+                >= 1d / 6d and < 1d / 2d => q,
+                >= 1d / 2d and < 2d / 3d => p + (q - p) * 6 * (2d / 3d - tc[color]),
+                _ => p
+            };
 
             colours[color] *= 255;
         }

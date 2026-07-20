@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -121,7 +121,7 @@ public class ColourGridControl : Control
 
     private Size _spacing;
 
-    private ToolTip _toolTip;
+    private ToolTip? _toolTip;
 
     private int _updateCount;
 
@@ -531,11 +531,13 @@ public class ColourGridControl : Control
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Font matches Control base on all TFMs.
     public override Font Font
     {
         get => base.Font;
         set => base.Font = value;
     }
+#pragma warning restore CS8765
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -651,11 +653,13 @@ public class ColourGridControl : Control
 
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+#pragma warning disable CS8765 // Nullability of overridden Text matches Control base on all TFMs.
     public override string Text
     {
         get => base.Text;
         set => base.Text = value;
     }
+#pragma warning restore CS8765
 
     /// <summary>
     ///   Gets a value indicating whether painting of the control is allowed.
@@ -772,7 +776,7 @@ public class ColourGridControl : Control
         }
         else
         {
-            result = index > colourCount - 1 ? this.CustomColours[index - colourCount] : this.Colours[index];
+            result = index > colourCount - 1 ? this.CustomColours![index - colourCount] : this.Colours![index];
         }
 
         return result;
@@ -954,7 +958,7 @@ public class ColourGridControl : Control
         type = typeof(ColourGridControl);
 
         using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(
-                   $"{type.Namespace}.Resources.cellbackground.png")))
+                   $"{type.Namespace}.Resources.cellbackground.png")!))
         {
             return new TextureBrush(background, WrapMode.Tile);
         }
@@ -1122,7 +1126,7 @@ public class ColourGridControl : Control
             index = this.CustomColours.IndexOf(value);
             if (index != InvalidIndex)
             {
-                index += this.Colours.Count;
+                index += this.Colours!.Count;
             }
         }
 
@@ -1173,9 +1177,9 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnAutoAddColoursChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventAutoAddColoursChanged];
+        handler = (EventHandler?)this.Events[_eventAutoAddColoursChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1186,7 +1190,7 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnAutoFitChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AutoFit && this.AutoSize)
         {
@@ -1195,7 +1199,7 @@ public class ColourGridControl : Control
 
         this.RefreshColours();
 
-        handler = (EventHandler)this.Events[_eventAutoFitChanged];
+        handler = (EventHandler?)this.Events[_eventAutoFitChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1221,14 +1225,14 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCellBorderColourChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AllowPainting)
         {
             this.Invalidate();
         }
 
-        handler = (EventHandler)this.Events[_eventCellBorderColourChanged];
+        handler = (EventHandler?)this.Events[_eventCellBorderColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1239,14 +1243,14 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCellBorderStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AllowPainting)
         {
             this.Invalidate();
         }
 
-        handler = (EventHandler)this.Events[_eventCellBorderStyleChanged];
+        handler = (EventHandler?)this.Events[_eventCellBorderStyleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1257,9 +1261,9 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCellContextMenuStripChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventCellContextMenuStripChanged];
+        handler = (EventHandler?)this.Events[_eventCellContextMenuStripChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1270,7 +1274,7 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCellSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetScaledCellSize();
 
@@ -1285,7 +1289,7 @@ public class ColourGridControl : Control
             this.Invalidate();
         }
 
-        handler = (EventHandler)this.Events[_eventCellSizeChanged];
+        handler = (EventHandler?)this.Events[_eventCellSizeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1318,9 +1322,9 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColorChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventColourChanged];
+        handler = (EventHandler?)this.Events[_eventColourChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1331,7 +1335,7 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColourIndexChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AllowPainting)
         {
@@ -1339,7 +1343,7 @@ public class ColourGridControl : Control
             this.Invalidate(this.ColourIndex);
         }
 
-        handler = (EventHandler)this.Events[_eventColourIndexChanged];
+        handler = (EventHandler?)this.Events[_eventColourIndexChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1350,13 +1354,13 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColoursChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AddEventHandlers(this.Colours);
 
         this.RefreshColours();
 
-        handler = (EventHandler)this.Events[_eventColoursChanged];
+        handler = (EventHandler?)this.Events[_eventColoursChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1367,11 +1371,11 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnColumnsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.RefreshColours();
 
-        handler = (EventHandler)this.Events[_eventColumnsChanged];
+        handler = (EventHandler?)this.Events[_eventColumnsChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1382,12 +1386,12 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnCustomColoursChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AddEventHandlers(this.CustomColours);
         this.RefreshColours();
 
-        handler = (EventHandler)this.Events[_eventCustomColoursChanged];
+        handler = (EventHandler?)this.Events[_eventCustomColoursChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1398,9 +1402,9 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EditColourCancelEventArgs" /> instance containing the event data.</param>
     protected virtual void OnEditingColor(EditColourCancelEventArgs e)
     {
-        EventHandler<EditColourCancelEventArgs> handler;
+        EventHandler<EditColourCancelEventArgs>? handler;
 
-        handler = (EventHandler<EditColourCancelEventArgs>)this.Events[_eventEditingColour];
+        handler = (EventHandler<EditColourCancelEventArgs>?)this.Events[_eventEditingColour];
 
         handler?.Invoke(this, e);
     }
@@ -1411,9 +1415,9 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnEditModeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
-        handler = (EventHandler)this.Events[_eventEditModeChanged];
+        handler = (EventHandler?)this.Events[_eventEditModeChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1434,7 +1438,7 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnHotIndexChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.SetToolTip();
 
@@ -1444,7 +1448,7 @@ public class ColourGridControl : Control
             this.Invalidate(this.HotIndex);
         }
 
-        handler = (EventHandler)this.Events[_eventHotIndexChanged];
+        handler = (EventHandler?)this.Events[_eventHotIndexChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1607,9 +1611,11 @@ public class ColourGridControl : Control
         }
     }
 
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
+#pragma warning restore CS8765
 
         if (this.AllowPainting)
         {
@@ -1681,11 +1687,11 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnPaletteChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.Colours = this.GetPredefinedPalette();
 
-        handler = (EventHandler)this.Events[_eventPaletteChanged];
+        handler = (EventHandler?)this.Events[_eventPaletteChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1703,14 +1709,14 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnSelectedCellStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AllowPainting)
         {
             this.Invalidate();
         }
 
-        handler = (EventHandler)this.Events[_eventSelectedCellStyleChanged];
+        handler = (EventHandler?)this.Events[_eventSelectedCellStyleChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1721,11 +1727,11 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowCustomColoursChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.RefreshColours();
 
-        handler = (EventHandler)this.Events[_eventShowCustomColoursChanged];
+        handler = (EventHandler?)this.Events[_eventShowCustomColoursChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1736,7 +1742,7 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnShowToolTipsChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.ShowToolTips)
         {
@@ -1748,7 +1754,7 @@ public class ColourGridControl : Control
             _toolTip = null;
         }
 
-        handler = (EventHandler)this.Events[_eventShowToolTipsChanged];
+        handler = (EventHandler?)this.Events[_eventShowToolTipsChanged];
 
         handler?.Invoke(this, e);
     }
@@ -1759,7 +1765,7 @@ public class ColourGridControl : Control
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
     protected virtual void OnSpacingChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         if (this.AutoSize)
         {
@@ -1772,7 +1778,7 @@ public class ColourGridControl : Control
             this.Invalidate();
         }
 
-        handler = (EventHandler)this.Events[_eventSpacingChanged];
+        handler = (EventHandler?)this.Events[_eventSpacingChanged];
 
         handler?.Invoke(this, e);
     }
@@ -2000,18 +2006,19 @@ public class ColourGridControl : Control
         }
     }
 
-    private void ColoursCollectionChangedHandler(object sender, ColourCollectionEventArgs e)
+    private void ColoursCollectionChangedHandler(object? sender, ColourCollectionEventArgs e)
     {
         this.RefreshColours();
     }
 
-    private void ColoursCollectionItemReplacedHandler(object sender, ColourCollectionEventArgs e)
+    private void ColoursCollectionItemReplacedHandler(object? sender, ColourCollectionEventArgs e)
     {
-        ColourCollection collection;
-        int index;
+        if (sender is not ColourCollection collection)
+        {
+            return;
+        }
 
-        collection = (ColourCollection)sender;
-        index = _colourIndex;
+        int index = _colourIndex;
         if (index != InvalidIndex && ReferenceEquals(collection, this.CustomColours))
         {
             index -= this.Colours.Count;
@@ -2089,9 +2096,9 @@ public class ColourGridControl : Control
           name = null;
         }
 
-        _toolTip.SetToolTip(this, name);
+        _toolTip?.SetToolTip(this, name);
 #else
-            _toolTip.SetToolTip(this, this.HotIndex != InvalidIndex ? this.GetColour(this.HotIndex).Name : null);
+            _toolTip?.SetToolTip(this, this.HotIndex != InvalidIndex ? this.GetColour(this.HotIndex).Name : null);
 #endif
         }
     }

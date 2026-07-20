@@ -36,13 +36,14 @@ public abstract class YAxisBase : AxisBase, IAxis
     private float MeasureTicks()
     {
         using SKPaint paint = new();
+        using SKFont font = TickLabelStyle.CreateFont();
         TickLabelStyle.ApplyToPaint(paint);
 
         float largestTickWidth = 0;
 
         foreach (Tick tick in TickGenerator.Ticks)
         {
-            PixelSize tickLabelSize = Drawing.MeasureString(tick.Label, paint);
+            PixelSize tickLabelSize = Drawing.MeasureString(tick.Label, font);
             largestTickWidth = Math.Max(largestTickWidth, tickLabelSize.Width + 10);
         }
 
