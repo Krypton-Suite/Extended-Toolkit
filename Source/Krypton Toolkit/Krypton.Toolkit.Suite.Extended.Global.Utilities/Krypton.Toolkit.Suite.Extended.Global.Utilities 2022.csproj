@@ -111,6 +111,11 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net472' Or '$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'net481'">
+		<!-- System.Net.Http is not referenced by default for .NET Framework in SDK-style projects -->
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
