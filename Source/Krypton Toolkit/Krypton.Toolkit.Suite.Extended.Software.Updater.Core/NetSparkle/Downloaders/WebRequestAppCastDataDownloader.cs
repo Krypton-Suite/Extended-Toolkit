@@ -24,6 +24,8 @@
 
 #endregion
 
+using System.Net.Http;
+
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
 
 /// <summary>
