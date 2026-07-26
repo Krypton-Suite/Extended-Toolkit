@@ -6,6 +6,7 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Resolved GitHub build workflows
 * Resolved [#533](https://github.com/Krypton-Suite/Extended-Toolkit/issues/533), TreeGridView: Plus/Minus Sign Not Displayed in TreeGrid and Collapse/Expand Behaviors Broken
 * New `Krypton.Toolkit.Suite.Extended.BottomSheet` module - Material-inspired bottom sheets for WinForms
   - **Service API** - `KryptonBottomSheetManager` with `Open`, `OpenAsync`, `OpenNonModal`, and `DismissActive`; `KryptonBottomSheetRef` for `Dismiss()`, `AfterOpened`, `AfterDismissed`, and `AfterDismissedAsync()`
