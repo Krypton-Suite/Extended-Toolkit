@@ -48,31 +48,6 @@ jobs:
             9.0.x
             8.0.x
             6.0.x
-          # continue-on-error: true
-
-      # .NET 11 (Preview)
-      - name: Setup .NET 11 (Preview)
-        uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: 11.0.x
-          dotnet-quality: preview
-
-      - name: Force .NET 11 SDK via global.json  # global.json dynamically generated
-        run: |
-          $sdkVersion = (dotnet --list-sdks | Select-String "11.0").ToString().Split(" ")[0]
-          if (-not $sdkVersion) {
-            # Fallback to .NET 10 if .NET 11 is not available
-            $sdkVersion = (dotnet --list-sdks | Select-String "10.0").ToString().Split(" ")[0]
-          }
-          Write-Output "Using SDK $sdkVersion"
-          @"
-          {
-            "sdk": {
-              "version": "$sdkVersion",
-              "rollForward": "latestFeature"
-            }
-          }
-          "@ | Out-File -Encoding utf8 global.json
 
       - name: Print diagnostics
         shell: pwsh
