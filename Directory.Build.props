@@ -165,4 +165,16 @@
 	 <PropertyGroup>
 		 <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
 	 </PropertyGroup>
+
+	 <!--
+		 MSB3822/MSB3823: binary .resx (images/icons) require preserialized GenerateResource +
+		 System.Resources.Extensions (especially on .NET Framework TFMs with modern SDKs).
+	 -->
+	 <PropertyGroup>
+		 <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+	 </PropertyGroup>
+
+	 <ItemGroup>
+		 <PackageReference Include="System.Resources.Extensions" Version="9.0.10" />
+	 </ItemGroup>
 </Project>

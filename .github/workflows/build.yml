@@ -14,7 +14,7 @@ on:
 jobs:
   build:
     name: Build Toolkit
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
     
     strategy:
       matrix:
@@ -26,10 +26,12 @@ jobs:
         with:
           fetch-depth: 0  # Full history for versioning
 
-      # Extended-Toolkit project refs expect Standard-Toolkit as sibling (..\Standard-Toolkit)
+      # Extended-Toolkit V110 project refs expect Standard-Toolkit alpha as sibling (..\Standard-Toolkit).
+      # master still uses Krypton.Utilities; alpha renamed it to Krypton.Toolkit.Utilities.
       - name: Checkout Standard-Toolkit
-        run: git clone --depth 1 https://github.com/Krypton-Suite/Standard-Toolkit.git ../Standard-Toolkit
+        run: git clone --depth 1 --branch alpha https://github.com/Krypton-Suite/Standard-Toolkit.git ../Standard-Toolkit
 
+      # Stable SDKs only — do not request loose 11.0.x (resolves to preview and breaks mixed TFM builds).
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6
         with:
@@ -39,44 +41,45 @@ jobs:
             8.0.x
             6.0.x
 
-      # .NET 11 (Preview)
-      - name: Setup .NET 11 (Preview)
-        uses: actions/setup-dotnet@v6
-        with:
-          dotnet-version: 11.0.x
-          dotnet-quality: preview
-
-      # global.json dynamically generate (use latest SDK available)
-      - name: Force .NET 11 SDK via global.json
-        run: |
-          $sdkVersion = (dotnet --list-sdks | Select-String "11.0").ToString().Split(" ")[0]
-          if (-not $sdkVersion) {
-            # Fallback to .NET 10 if .NET 11 is not available
-            $sdkVersion = (dotnet --list-sdks | Select-String "10.0").ToString().Split(" ")[0]
-          }
-          Write-Output "Using SDK $sdkVersion"
-          @"
-          {
-            "sdk": {
-              "version": "$sdkVersion",
-              "rollForward": "latestFeature"
-            }
-          }
-          "@ | Out-File -Encoding utf8 global.json
+      # Put Visual Studio MSBuild on PATH (preferred for mixed .NET Framework + SDK-style solutions).
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
 
       - name: Print diagnostics
+        shell: pwsh
         run: |
           dotnet --list-sdks
           dotnet --info
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -version || msbuild -version || Write-Output "msbuild not found"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            msbuild -version
+          } else {
+            Write-Output "msbuild not found (using dotnet build instead)"
+          }
 
       # Use the non-NuGet solution so projects use ProjectReference to Standard-Toolkit (no Krypton.Standard.Toolkit package on nuget.org)
-      - name: Restore using dotnet
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
-
-      - name: Build solution using dotnet
+      - name: Restore solution (MSBuild if available)
+        shell: pwsh
         run: |
-          dotnet build "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" -c ${{ matrix.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
+          $sln = "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            Write-Output "Using msbuild to restore"
+            msbuild $sln -t:Restore
+          } else {
+            Write-Output "msbuild not found — falling back to dotnet restore"
+            dotnet restore $sln
+          }
+
+      - name: Build solution (MSBuild if available)
+        shell: pwsh
+        run: |
+          $sln = "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            Write-Output "Using msbuild to build solution"
+            msbuild $sln /m /p:Configuration=${{ matrix.configuration }} /p:Platform="Any CPU" /verbosity:minimal
+          } else {
+            Write-Output "msbuild not found — falling back to dotnet build"
+            dotnet build $sln -c ${{ matrix.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
+          }
 
       - name: Upload build artifacts
         if: matrix.configuration != 'Debug'
@@ -86,4 +89,3 @@ jobs:
           path: |
             Bin/${{ matrix.configuration }}/
           retention-days: 7
-

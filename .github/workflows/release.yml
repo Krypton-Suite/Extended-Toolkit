@@ -27,7 +27,7 @@ on:
 jobs:
   build-and-release:
     name: Build and Release Toolkit
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
     
     steps:
       - name: Checkout repository
@@ -35,6 +35,12 @@ jobs:
         with:
           fetch-depth: 0  # Full history for versioning
 
+      # Extended-Toolkit V110 project refs expect Standard-Toolkit alpha as sibling (..\Standard-Toolkit).
+      # master still uses Krypton.Utilities; alpha renamed it to Krypton.Toolkit.Utilities.
+      - name: Checkout Standard-Toolkit
+        run: git clone --depth 1 --branch alpha https://github.com/Krypton-Suite/Standard-Toolkit.git ../Standard-Toolkit
+
+      # Stable SDKs only — do not request loose 11.0.x (resolves to preview and breaks mixed TFM builds).
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6
         with:
@@ -43,37 +49,21 @@ jobs:
             9.0.x
             8.0.x
             6.0.x
-          # continue-on-error: true
 
-      # .NET 11 (Preview)
-      - name: Setup .NET 11 (Preview)
-        uses: actions/setup-dotnet@v6
-        with:
-          dotnet-version: 11.0.x
-          dotnet-quality: preview
-
-      - name: Force .NET 11 SDK via global.json  # global.json dynamically generated
-        run: |
-          $sdkVersion = (dotnet --list-sdks | Select-String "11.0").ToString().Split(" ")[0]
-          if (-not $sdkVersion) {
-            # Fallback to .NET 10 if .NET 11 is not available
-            $sdkVersion = (dotnet --list-sdks | Select-String "10.0").ToString().Split(" ")[0]
-          }
-          Write-Output "Using SDK $sdkVersion"
-          @"
-          {
-            "sdk": {
-              "version": "$sdkVersion",
-              "rollForward": "latestFeature"
-            }
-          }
-          "@ | Out-File -Encoding utf8 global.json
+      # Put Visual Studio MSBuild on PATH (preferred for mixed .NET Framework + SDK-style solutions).
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
 
       - name: Print diagnostics
+        shell: pwsh
         run: |
           dotnet --list-sdks
           dotnet --info
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -version || msbuild -version || Write-Output "msbuild not found"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            msbuild -version
+          } else {
+            Write-Output "msbuild not found (using dotnet build instead)"
+          }
 
       - name: Determine Configuration
         id: config
@@ -88,19 +78,55 @@ jobs:
           echo "configuration=$config" >> $env:GITHUB_OUTPUT
           echo "Building with configuration: $config"
 
-      - name: Restore using dotnet (Main Solution)
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
-
-      - name: Build Main Solution using dotnet
+      - name: Restore Main Solution (MSBuild if available)
+        shell: pwsh
         run: |
-          dotnet build "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" -c ${{ steps.config.outputs.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
+          $sln = "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            Write-Output "Using msbuild to restore"
+            msbuild $sln -t:Restore
+          } else {
+            Write-Output "msbuild not found — falling back to dotnet restore"
+            dotnet restore $sln
+          }
 
-      - name: Restore using dotnet (NuGet Solution)
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln"
-
-      - name: Build NuGet Solution using dotnet
+      - name: Build Main Solution (MSBuild if available)
+        shell: pwsh
         run: |
-          dotnet build "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln" -c ${{ steps.config.outputs.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
+          $sln = "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+          $config = "${{ steps.config.outputs.configuration }}"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            Write-Output "Using msbuild to build solution"
+            msbuild $sln /m /p:Configuration=$config /p:Platform="Any CPU" /verbosity:minimal
+          } else {
+            Write-Output "msbuild not found — falling back to dotnet build"
+            dotnet build $sln -c $config -p:Platform="Any CPU" -v minimal --no-restore
+          }
+
+      - name: Restore NuGet Solution (MSBuild if available)
+        shell: pwsh
+        run: |
+          $sln = "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            Write-Output "Using msbuild to restore"
+            msbuild $sln -t:Restore
+          } else {
+            Write-Output "msbuild not found — falling back to dotnet restore"
+            dotnet restore $sln
+          }
+
+      - name: Build NuGet Solution (MSBuild if available)
+        shell: pwsh
+        run: |
+          $sln = "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln"
+          $config = "${{ steps.config.outputs.configuration }}"
+          if (Get-Command msbuild -ErrorAction SilentlyContinue) {
+            Write-Output "Using msbuild to build solution"
+            msbuild $sln /m /p:Configuration=$config /p:Platform="Any CPU" /verbosity:minimal
+          } else {
+            Write-Output "msbuild not found — falling back to dotnet build"
+            dotnet build $sln -c $config -p:Platform="Any CPU" -v minimal --no-restore
+          }
 
       - name: Build and Pack Ultimate Packages
         shell: pwsh

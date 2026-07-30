@@ -6,6 +6,7 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Resolved GitHub build workflows
 * Resolved [#610](https://github.com/Krypton-Suite/Extended-Toolkit/issues/610), Error when Attempting to upgrade to Ultimate 105.26.7.201
   - **Ultimate packaging** - Ultimate and Ultimate.Lite no longer declare Extended module packages as NuGet dependencies; assemblies are bundled with `PrivateAssets="all"` on project references
   - **Native binaries** - Native libraries (e.g. `libSkiaSharp`) are excluded from `lib/` to avoid install failures on .NET Framework

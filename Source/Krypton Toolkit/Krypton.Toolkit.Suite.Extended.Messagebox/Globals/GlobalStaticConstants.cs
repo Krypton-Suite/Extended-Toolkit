@@ -1,5 +1,4 @@
 #region MIT License
-
 /*
  * MIT License
  *
@@ -24,18 +23,19 @@
  * SOFTWARE.
  *
  */
-
 #endregion
 
-// Global using directives
+namespace Krypton.Toolkit.Suite.Extended.Messagebox;
 
-global using System;
-global using System.Drawing;
-global using System.Media;
-global using System.Windows.Forms;
+/// <summary>
+/// Shared constant values used by the extended message box.
+/// Mirrors the Standard Toolkit V110 <c>GlobalStaticConstants</c> members consumed here.
+/// </summary>
+internal static class GlobalStaticConstants
+{
+    /// <summary>Padding used for button spacing in message boxes.</summary>
+    public const int GLOBAL_BUTTON_PADDING = 10;
 
-global using Krypton.Toolkit;
-global using Krypton.Toolkit.Suite.Extended.ToastNotification.Properties;
-// KryptonToastIcon lives in Krypton.Toolkit.Utilities (Standard Toolkit V110 / alpha),
-// which is referenced via ProjectReference (local) or Krypton.Standard.Toolkit.* (NuGet).
-global using Krypton.Toolkit.Utilities;
+    /// <summary>Default primary corner rounding value for controls.</summary>
+    public const float DEFAULT_PRIMARY_CORNER_ROUNDING_VALUE = -1f;
+}

@@ -1,5 +1,4 @@
 #region MIT License
-
 /*
  * MIT License
  *
@@ -24,18 +23,16 @@
  * SOFTWARE.
  *
  */
-
 #endregion
 
-// Global using directives
+namespace Krypton.Toolkit.Suite.Extended.Messagebox;
 
-global using System;
-global using System.Drawing;
-global using System.Media;
-global using System.Windows.Forms;
-
-global using Krypton.Toolkit;
-global using Krypton.Toolkit.Suite.Extended.ToastNotification.Properties;
-// KryptonToastIcon lives in Krypton.Toolkit.Utilities (Standard Toolkit V110 / alpha),
-// which is referenced via ProjectReference (local) or Krypton.Standard.Toolkit.* (NuGet).
-global using Krypton.Toolkit.Utilities;
+/// <summary>
+/// Shared static values used by the extended message box.
+/// Mirrors the Standard Toolkit V110 <c>GlobalStaticVariables</c> members consumed here.
+/// </summary>
+internal static class GlobalStaticVariables
+{
+    /// <summary>The major version of the operating system.</summary>
+    public static readonly int OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
+}
