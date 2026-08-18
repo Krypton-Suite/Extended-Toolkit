@@ -438,7 +438,7 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
             {
                 case ExtendedKryptonMessageBoxIcon.None:
                     // Windows XP and before will Beep, Vista and above do not!
-                    if (GlobalStaticVariables.OS_MAJOR_VERSION < 6)
+                    if (SharedStaticVariables.OS_MAJOR_VERSION < 6)
                     {
                         SystemSounds.Beep.Play();
                     }
@@ -510,7 +510,7 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
             {
                 case ExtendedKryptonMessageBoxIcon.None:
                     // Windows XP and before will Beep, Vista and above do not!
-                    if (GlobalStaticVariables.OS_MAJOR_VERSION < 6)
+                    if (SharedStaticVariables.OS_MAJOR_VERSION < 6)
                     {
                         SystemSounds.Beep.Play();
                     }
@@ -644,7 +644,7 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
                 break;
             case ExtendedKryptonMessageBoxIcon.None:
                 // Windows XP and before will Beep, Vista and above do not!
-                if (GlobalStaticVariables.OS_MAJOR_VERSION < 6)
+                if (SharedStaticVariables.OS_MAJOR_VERSION < 6)
                 {
                     SystemSounds.Beep.Play();
                 }
@@ -1239,14 +1239,14 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
 
         // Button1 is always visible
         Size button1Size = _button1.GetPreferredSize(Size.Empty);
-        Size maxButtonSize = new(button1Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING, button1Size.Height);
+        Size maxButtonSize = new(button1Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING, button1Size.Height);
 
         // If Button2 is visible
         if (_button2.Enabled)
         {
             numButtons++;
             Size button2Size = _button2.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
         }
 
@@ -1255,7 +1255,7 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
         {
             numButtons++;
             Size button3Size = _button3.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
         }
         // If Button4 is visible
@@ -1263,46 +1263,46 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
         {
             numButtons++;
             Size button4Size = _button4.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button4Size.Height);
         }
 
         // Start positioning buttons 10 pixels from right edge
-        var right = _panelButtons.Right - GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
+        var right = _panelButtons.Right - SharedStaticConstants.GLOBAL_BUTTON_PADDING;
 
         // If Button4 is visible
         if (_button4.Enabled)
         {
-            _button4.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+            _button4.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             _button4.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // If Button3 is visible
         if (_button3.Enabled)
         {
-            _button3.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+            _button3.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             _button3.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // If Button2 is visible
         if (_button2.Enabled)
         {
-            _button2.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+            _button2.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             _button2.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticConstants.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // Button1 is always visible
-        _button1.Location = new Point(right - maxButtonSize.Width, GlobalStaticConstants.GLOBAL_BUTTON_PADDING);
+        _button1.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
         _button1.Size = maxButtonSize;
 
         // Size the panel for the buttons
-        _panelButtons.Size = new Size(maxButtonSize.Width * numButtons + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * 2);
+        _panelButtons.Size = new Size(maxButtonSize.Width * numButtons + SharedStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + SharedStaticConstants.GLOBAL_BUTTON_PADDING * 2);
 
-        // Button area is the number of buttons with GlobalStaticConstants.GLOBAL_BUTTON_PADDINGs between them and 10 pixels around all edges
-        return new Size(maxButtonSize.Width * numButtons + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticConstants.GLOBAL_BUTTON_PADDING * 2);
+        // Button area is the number of buttons with SharedStaticConstants.GLOBAL_BUTTON_PADDINGs between them and 10 pixels around all edges
+        return new Size(maxButtonSize.Width * numButtons + SharedStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + SharedStaticConstants.GLOBAL_BUTTON_PADDING * 2);
     }
 
     private void AnyKeyDown(object? sender, KeyEventArgs e)
