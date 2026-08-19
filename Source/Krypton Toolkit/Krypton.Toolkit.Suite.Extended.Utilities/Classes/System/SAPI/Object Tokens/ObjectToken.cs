@@ -181,8 +181,7 @@ internal class ObjectToken : RegistryDataKey, ISpObjectToken, ISpDataKey
 
     public override bool Equals(object obj)
     {
-        ObjectToken objectToken = obj as ObjectToken;
-        if (objectToken != null)
+        if (obj is ObjectToken objectToken)
         {
             return string.Compare(base.Id, objectToken.Id, StringComparison.OrdinalIgnoreCase) == 0;
         }
@@ -284,8 +283,7 @@ internal class ObjectToken : RegistryDataKey, ISpObjectToken, ISpDataKey
         {
             Type typeFromCLSID = Type.GetTypeFromCLSID(new Guid(value));
             val = (T)Activator.CreateInstance(typeFromCLSID);
-            ISpObjectWithToken spObjectWithToken = val as ISpObjectWithToken;
-            if (spObjectWithToken == null)
+            if (val is not ISpObjectWithToken spObjectWithToken)
             {
                 return val;
             }

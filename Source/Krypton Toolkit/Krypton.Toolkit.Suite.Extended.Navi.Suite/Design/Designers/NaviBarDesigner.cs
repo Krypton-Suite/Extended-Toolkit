@@ -208,8 +208,7 @@ public class NaviBarDesigner : ParentControlDesigner
             return;
         }
 
-        NaviBand? band = host.CreateComponent(typeof(NaviBand)) as NaviBand;
-        if (band != null)
+        if (host.CreateComponent(typeof(NaviBand)) is NaviBand band)
         {
             designingControl.Controls.Add(band);
         }

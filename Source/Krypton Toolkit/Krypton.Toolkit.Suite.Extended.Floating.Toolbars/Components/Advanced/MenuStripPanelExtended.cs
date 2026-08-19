@@ -95,9 +95,7 @@ public class MenuStripPanelExtended : ToolStripPanel
     {
         base.OnControlAdded(e);
 
-        MenuStrip? menuStrip = e.Control as MenuStrip;
-
-        if (menuStrip != null)
+        if (e.Control is MenuStrip menuStrip)
         {
             if (Orientation == Orientation.Horizontal)
             {

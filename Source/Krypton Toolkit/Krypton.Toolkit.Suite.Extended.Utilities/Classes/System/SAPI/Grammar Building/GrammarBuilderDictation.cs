@@ -53,8 +53,7 @@ internal sealed class GrammarBuilderDictation : GrammarBuilderBase
 
     public override bool Equals(object? obj)
     {
-        GrammarBuilderDictation? grammarBuilderDictation = obj as GrammarBuilderDictation;
-        if (grammarBuilderDictation == null)
+        if (obj is not GrammarBuilderDictation grammarBuilderDictation)
         {
             return false;
         }

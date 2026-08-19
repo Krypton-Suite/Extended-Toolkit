@@ -125,8 +125,7 @@ public sealed class SemanticValue : IDictionary<string, SemanticValue>, ICollect
 
     public override bool Equals(object obj)
     {
-        SemanticValue semanticValue = obj as SemanticValue;
-        if (semanticValue == null || semanticValue.Count != Count || (semanticValue.Value == null && Value != null) || (semanticValue.Value != null && !semanticValue.Value.Equals(Value)))
+        if (obj is not SemanticValue semanticValue || semanticValue.Count != Count || (semanticValue.Value == null && Value != null) || (semanticValue.Value != null && !semanticValue.Value.Equals(Value)))
         {
             return false;
         }

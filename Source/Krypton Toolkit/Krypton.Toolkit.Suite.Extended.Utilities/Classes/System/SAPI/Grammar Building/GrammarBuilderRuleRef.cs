@@ -46,8 +46,7 @@ internal sealed class GrammarBuilderRuleRef : GrammarBuilderBase
 
     public override bool Equals(object obj)
     {
-        GrammarBuilderRuleRef grammarBuilderRuleRef = obj as GrammarBuilderRuleRef;
-        if (grammarBuilderRuleRef == null)
+        if (obj is not GrammarBuilderRuleRef grammarBuilderRuleRef)
         {
             return false;
         }

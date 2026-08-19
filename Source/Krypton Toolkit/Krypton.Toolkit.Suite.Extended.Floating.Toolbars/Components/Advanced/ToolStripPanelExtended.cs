@@ -83,9 +83,7 @@ public class ToolStripPanelExtended : ToolStripPanel
     {
         base.OnControlAdded(e);
 
-        ToolStrip? toolStrip = e.Control as ToolStrip;
-
-        if (toolStrip != null)
+        if (e.Control is ToolStrip toolStrip)
         {
             if (Orientation == Orientation.Horizontal)
             {

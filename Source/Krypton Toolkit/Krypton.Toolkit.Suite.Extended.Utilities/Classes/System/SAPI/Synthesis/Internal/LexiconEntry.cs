@@ -42,8 +42,7 @@ internal class LexiconEntry
 
     public override bool Equals(object obj)
     {
-        LexiconEntry lexiconEntry = obj as LexiconEntry;
-        if (lexiconEntry != null)
+        if (obj is LexiconEntry lexiconEntry)
         {
             return _uri.Equals(lexiconEntry._uri);
         }

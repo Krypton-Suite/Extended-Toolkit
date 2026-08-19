@@ -4,14 +4,19 @@ public abstract class FormsPlotBase : UserControl, IPlotControl
 {
     #region Public
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Plot Plot { get; internal set; }
-        
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public IPlotInteraction Interaction { get; set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public IPlotMenu Menu { get; set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public abstract GRContext? GrContext { get; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public float DisplayScale { get; set; }
 
     #endregion

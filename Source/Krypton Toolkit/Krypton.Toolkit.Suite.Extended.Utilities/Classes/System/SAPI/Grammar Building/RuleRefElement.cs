@@ -52,8 +52,7 @@ internal sealed class RuleRefElement : GrammarBuilderBase
 
     public override bool Equals(object obj)
     {
-        RuleRefElement ruleRefElement = obj as RuleRefElement;
-        if (ruleRefElement == null)
+        if (obj is not RuleRefElement ruleRefElement)
         {
             return false;
         }

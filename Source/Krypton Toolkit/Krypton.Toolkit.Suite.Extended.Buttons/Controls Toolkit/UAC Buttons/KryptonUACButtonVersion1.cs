@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons;
 /// Modified from the AeroSuite project.
 /// </summary>
 /// <remarks>
-/// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
+/// The shield is extracted from the system with LoadImage if possible. Otherwise, the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
 /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
 /// </remarks>
 [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"),
@@ -40,15 +40,17 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons;
 public class KryptonUACButtonVersion1 : KryptonButton
 {
     #region Variables
-    private Assembly _assemblyToElevate;
+    private Assembly? _assemblyToElevate;
 
-    private bool _elevateApplicationOnClick = true;
+    private readonly bool _elevateApplicationOnClick = true;
 
-    private string _processName = string.Empty, _extraArguments = string.Empty;
+    private string _processName = string.Empty;
 
-    private static bool? _isSystemAbleToLoadShield = null;
+    private readonly string _extraArguments = string.Empty;
 
-    private GlobalMethods _globalMethods = new();
+    private static bool? _isSystemAbleToLoadShield;
+
+    private GlobalMethods _globalMethods = new GlobalMethods();
     #endregion
 
     #region Constants
@@ -58,7 +60,8 @@ public class KryptonUACButtonVersion1 : KryptonButton
     #region Properties
     /// <summary>Gets or sets the process to elevate.</summary>
     /// <value>The process to elevate.</value>
-    public Assembly AssemblyToElevate { get => _assemblyToElevate; set => _assemblyToElevate = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public Assembly? AssemblyToElevate { get => _assemblyToElevate; set => _assemblyToElevate = value; }
 
     /// <summary>
     /// The application assembly.
@@ -66,6 +69,7 @@ public class KryptonUACButtonVersion1 : KryptonButton
     /// <remarks>
     /// Use 'Process.GetCurrentProcess().ProcessName;' as a start.
     /// </remarks>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     [Category("Code"), Description("The application assembly. Use 'Process.GetCurrentProcess().ProcessName;' as a start."), DefaultValue("")]
     public string ProcessName { get => _processName; set => _processName = value; }
     #endregion
@@ -82,11 +86,11 @@ public class KryptonUACButtonVersion1 : KryptonButton
     /// <summary>Executes the process as an administrator.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-    protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+    protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator(sender, e);
     #endregion
 
     #region Constructor
-    public KryptonUACButtonVersion1() : base()
+    public KryptonUACButtonVersion1()
     {
         Size = new((int)(this.Width * 1.5), this.Height + 1);
 
@@ -159,9 +163,5 @@ public class KryptonUACButtonVersion1 : KryptonButton
         base.OnClick(e);
     }
 
-    protected override void OnPaint(PaintEventArgs? e)
-    {
-        base.OnPaint(e);
-    }
     #endregion
 }

@@ -50,8 +50,7 @@ internal class TTSVoice
 
     public override bool Equals(object obj)
     {
-        TTSVoice tTSVoice = obj as TTSVoice;
-        if (tTSVoice != null)
+        if (obj is TTSVoice tTSVoice)
         {
             return _voiceId.Equals(tTSVoice.VoiceInfo);
         }

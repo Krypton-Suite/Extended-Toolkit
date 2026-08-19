@@ -935,10 +935,15 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         }
     }
 
-    private void OpenInExplorer(string path)
+    private void OpenInExplorer(string? path)
     {
         try
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
             Process.Start(@"explorer.exe", path);
         }
         catch (Exception e)

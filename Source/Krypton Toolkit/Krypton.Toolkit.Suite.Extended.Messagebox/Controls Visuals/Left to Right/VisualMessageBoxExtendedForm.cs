@@ -98,7 +98,7 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
 
     private readonly DialogResult _buttonFourDialogResult;
 
-    private readonly Font _messageBoxTypeface;
+    private readonly Font? _messageBoxTypeface;
 
     private readonly ExtendedMessageBoxButtons _buttons;
 
@@ -1384,10 +1384,15 @@ internal partial class VisualMessageBoxExtendedForm : KryptonForm
         }
     }
 
-    private void OpenInExplorer(string path)
+    private void OpenInExplorer(string? path)
     {
         try
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
             Process.Start(@"explorer.exe", path);
         }
         catch (Exception e)

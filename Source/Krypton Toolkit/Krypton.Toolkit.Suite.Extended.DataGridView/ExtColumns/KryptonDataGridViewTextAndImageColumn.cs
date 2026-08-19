@@ -77,8 +77,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
     /// <returns></returns>
     public override object Clone()
     {
-        KryptonDataGridViewTextAndImageColumn? cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
-        if (cloned != null)
+        if (base.Clone() is KryptonDataGridViewTextAndImageColumn cloned)
         {
             cloned.imageValue = imageValue;
             cloned.ImageSize = ImageSize;
@@ -162,8 +161,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
                     int count = rows.Count;
                     for (int i = 0; i < count; i++)
                     {
-                        DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
-                        if (cell != null)
+                        if (rows.SharedRow(i).Cells[Index] is DataGridViewTextBoxCell cell)
                         {
                             cell.MaxInputLength = value;
                         }
@@ -345,8 +343,7 @@ public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCel
     /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
     public override object Clone()
     {
-        KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-        if (c != null)
+        if (base.Clone() is KryptonDataGridViewTextAndImageCell c)
         {
             c._imageValue = _imageValue;
             c._imageSize = _imageSize;

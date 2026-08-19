@@ -238,11 +238,14 @@ public partial class HexadecimalToRGBConverter : KryptonForm
     #endregion
 
     #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool Modified
     {
         get => _modified;
         set => _modified = value;
     }
+    
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Color TargetColour
     {
         get => _targetColour;

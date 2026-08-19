@@ -76,9 +76,7 @@ public partial class KryptonAlertWindow : KryptonForm
         {
             var windowName = $"Alert {i}";
 
-            var window = Application.OpenForms[windowName] as KryptonAlertWindow;
-
-            if (window == null)
+            if (Application.OpenForms[windowName] is not KryptonAlertWindow window)
             {
                 Name = windowName;
 

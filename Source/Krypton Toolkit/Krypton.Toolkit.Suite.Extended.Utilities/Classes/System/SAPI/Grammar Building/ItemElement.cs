@@ -74,8 +74,7 @@ internal sealed class ItemElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        ItemElement itemElement = obj as ItemElement;
-        if (itemElement == null)
+        if (obj is not ItemElement itemElement)
         {
             return false;
         }

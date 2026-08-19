@@ -63,8 +63,7 @@ internal sealed class OneOfElement : BuilderElements
         IOneOf oneOf = elementFactory.CreateOneOf(parent, rule);
         foreach (GrammarBuilderBase item2 in base.Items)
         {
-            ItemElement itemElement = item2 as ItemElement;
-            if (itemElement == null)
+            if (item2 is not ItemElement itemElement)
             {
                 itemElement = new ItemElement(item2);
             }

@@ -53,8 +53,7 @@ internal sealed class TagElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        TagElement tagElement = obj as TagElement;
-        if (tagElement == null)
+        if (obj is not TagElement tagElement)
         {
             return false;
         }
@@ -79,8 +78,7 @@ internal sealed class TagElement : BuilderElements
 
     internal override IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds)
     {
-        IItem item = parent as IItem;
-        if (item != null)
+        if (parent is IItem item)
         {
             CreateChildrenElements(elementFactory, item, rule, ruleIds);
         }

@@ -451,6 +451,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public new ImeMode ImeMode
     {
         get => base.ImeMode;
