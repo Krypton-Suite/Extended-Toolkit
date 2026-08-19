@@ -215,8 +215,7 @@ namespace System
 }
 
 
-#if !NETFRAMEWORK
-namespace System.Runtime.InteropServices
+namespace Krypton.Toolkit.Suite.Extended.Utilities.Interop
 {
 
 
@@ -339,4 +338,3 @@ namespace System.Runtime.InteropServices
         public TypeLibTypeFlags Value => m_flags;
     }
 }
-#endif
