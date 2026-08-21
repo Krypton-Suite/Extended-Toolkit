@@ -50,62 +50,91 @@ public class KryptonInputBoxExtendedAlternateManager : Component
     #endregion
 
     #region Properties
+
+    [DefaultValue(false), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool ShowInTaskBar { get => _showInTaskBar; set => _showInTaskBar = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)] 
     public DialogResult ButtonOneResult { get => _buttonOneResult; set => _buttonOneResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonTwoResult { get => _buttonTwoResult; set => _buttonTwoResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonThreeResult { get => _buttonThreeResult; set => _buttonThreeResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Font MessageTypeface { get => _messageTypeface; set => _messageTypeface = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxWrappedMessageTextAlignment WrappedMessageTextAlignment { get => _wrappedMessageTextAlignment; set => _wrappedMessageTextAlignment = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Image Image { get => _image; set => _image = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxTextAlignment TextAlignment { get => _textAlignment; set => _textAlignment = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string[] ListItems { get => _listItems; set => _listItems = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string OkText { get => _okText; set => _okText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string CancelText { get => _cancelText; set => _cancelText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string NoText { get => _noText; set => _noText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string YesText { get => _yesText; set => _yesText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string Title { get => _title; set => _title = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string Message { get => _message; set => _message = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string HintText { get => _hintText; set => _hintText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Point IconLocation { get => _iconLocation; set => _iconLocation = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxIconType IconType { get => _icon; set => _icon = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxInputType IconInputType { get => _type; set => _type = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxLanguage InputBoxLanguage { get => _language; set => _language = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxButtons InputBoxButtons { get => _buttons; set => _buttons = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxNormalMessageTextAlignment NormalMessageTextAlignment { get => _normalMessageTextAlignment; set => _normalMessageTextAlignment = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxMessageDisplayType MessageDisplayType { get => _displayType; set => _displayType = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public InputBoxButtonFocus ButtonFocus { get => _buttonFocus; set => _buttonFocus = value; }
     #endregion
 

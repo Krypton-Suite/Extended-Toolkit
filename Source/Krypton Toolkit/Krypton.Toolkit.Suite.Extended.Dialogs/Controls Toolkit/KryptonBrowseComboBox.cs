@@ -103,6 +103,9 @@ public class KryptonBrowseComboBox : KryptonComboBox
     [DefaultValue(null), Description(@"Gets or sets the file dialog filter collection. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilterCollection' for more information.")]
     public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
 
+    [DefaultValue(FileDialogType.Krypton)]
+    [Description("Gets or sets the file dialog type to use.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
     /// <summary>Gets or sets the initial directory.</summary>

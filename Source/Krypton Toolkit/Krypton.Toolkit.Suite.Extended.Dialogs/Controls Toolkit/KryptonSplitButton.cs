@@ -305,8 +305,7 @@ public class KryptonSplitButton : KryptonButton
     #region Event Handlers
     private void KryptonContextMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
     {
-        KryptonContextMenu? kcm = sender as KryptonContextMenu;
-        if (kcm != null)
+        if (sender is KryptonContextMenu kcm)
         {
             kcm.Closed -= KryptonContextMenu_Closed;
         }
@@ -319,8 +318,7 @@ public class KryptonSplitButton : KryptonButton
 
     private void ContextMenuStrip_Closing(object? sender, ToolStripDropDownClosingEventArgs e)
     {
-        ContextMenuStrip? cms = sender as ContextMenuStrip;
-        if (cms != null)
+        if (sender is ContextMenuStrip cms)
         {
             cms.Closing -= ContextMenuStrip_Closing;
         }

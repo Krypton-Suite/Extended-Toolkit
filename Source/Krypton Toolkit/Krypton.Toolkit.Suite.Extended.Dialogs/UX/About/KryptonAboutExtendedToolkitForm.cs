@@ -342,7 +342,7 @@ internal partial class KryptonAboutExtendedToolkitForm : KryptonForm
             //FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(file);
 
             // Fill data grid view
-            kdgvVersions.Rows.Add(assembly.Name, assembly.Version?.ToString() ?? string.Empty);
+            kdgvVersions.Rows.Add(assembly.Name ?? string.Empty, assembly.Version?.ToString() ?? string.Empty);
         }
     }
 

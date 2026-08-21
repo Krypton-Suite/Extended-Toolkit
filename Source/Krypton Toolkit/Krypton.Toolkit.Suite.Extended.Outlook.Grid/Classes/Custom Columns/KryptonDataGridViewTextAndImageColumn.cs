@@ -148,8 +148,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
                     int count = rows.Count;
                     for (int i = 0; i < count; i++)
                     {
-                        DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
-                        if (cell != null)
+                        if (rows.SharedRow(i).Cells[Index] is DataGridViewTextBoxCell cell)
                         {
                             cell.MaxInputLength = value;
                         }

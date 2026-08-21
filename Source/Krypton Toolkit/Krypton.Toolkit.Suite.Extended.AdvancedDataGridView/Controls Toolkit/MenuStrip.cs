@@ -1354,7 +1354,7 @@ internal partial class MenuStrip : ContextMenuStrip
             {
                 foreach (TreeNodeItemSelector n in treeNodeItemSelectors)
                 {
-                    sb.Append(n.Value?.ToString()?.Replace(",", ".") + appx);
+                    sb.Append((n.Value?.ToString())?.Replace(",", ".") + appx);
                 }
             }
             else if (DataType == typeof(Bitmap))
@@ -1402,23 +1402,24 @@ internal partial class MenuStrip : ContextMenuStrip
         if (vals != null)
         {
             //add select all node
-            TreeNodeItemSelector allnode = TreeNodeItemSelector.CreateNode(
-                $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll.ToString()]}            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
-            allnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
-            ChecklistAddNode(allnode);
+            TreeNodeItemSelector allNode = TreeNodeItemSelector.CreateNode(
+                $"{KryptonAdvancedDataGridView.Translations[nameof(TranslationKey.KryptonAdvancedDataGridViewNodeSelectAll)]}            ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll);
+            allNode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
+            ChecklistAddNode(allNode);
 
-            if (vals.Any())
+            var viewCells = vals as DataGridViewCell[] ?? vals.ToArray();
+            if (viewCells.Any())
             {
-                var nonulls = vals.Where<DataGridViewCell>(c => c.Value != null && c.Value != DBNull.Value);
+                var noNulls = viewCells.Where<DataGridViewCell>(c => c.Value != null && c.Value != DBNull.Value);
 
                 //add select empty node
-                IEnumerable<DataGridViewCell> dataGridViewCells = nonulls as DataGridViewCell[] ?? nonulls.ToArray();
-                if (vals.Count() != dataGridViewCells.Count())
+                IEnumerable<DataGridViewCell> dataGridViewCells = noNulls as DataGridViewCell[] ?? noNulls.ToArray();
+                if (viewCells.Count() != dataGridViewCells.Count())
                 {
-                    TreeNodeItemSelector nullnode = TreeNodeItemSelector.CreateNode(
+                    TreeNodeItemSelector nullNode = TreeNodeItemSelector.CreateNode(
                         $"{KryptonAdvancedDataGridView.Translations[TranslationKey.KryptonAdvancedDataGridViewNodeSelectEmpty.ToString()]}               ", null, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty);
-                    nullnode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
-                    ChecklistAddNode(nullnode);
+                    nullNode.NodeFont = new Font(_checkList.Font, FontStyle.Bold);
+                    ChecklistAddNode(nullNode);
                 }
 
                 //add datetime nodes
@@ -1426,30 +1427,30 @@ internal partial class MenuStrip : ContextMenuStrip
                 {
                     var years =
                         from year in dataGridViewCells
-                        group year by ((DateTime)year.Value).Year into cy
+                        group year by ((DateTime)year.Value!).Year into cy
                         orderby cy.Key ascending
                         select cy;
 
                     foreach (var year in years)
                     {
-                        TreeNodeItemSelector yearnode = TreeNodeItemSelector.CreateNode(year.Key.ToString(), year.Key, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.DateTimeNode);
-                        ChecklistAddNode(yearnode);
+                        TreeNodeItemSelector yearNode = TreeNodeItemSelector.CreateNode(year.Key.ToString(), year.Key, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.DateTimeNode);
+                        ChecklistAddNode(yearNode);
 
-                        var months =
-                            from month in year
-                            group month by ((DateTime)month.Value).Month into cm
-                            orderby cm.Key ascending
-                            select cm;
+                            var months =
+                                from month in year
+                                group month by ((DateTime)month.Value!).Month into cm
+                                orderby cm.Key ascending
+                                select cm;
 
                         foreach (var month in months)
                         {
-                            TreeNodeItemSelector? monthNode = yearnode.CreateChildNode(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month.Key), month.Key);
+                            TreeNodeItemSelector? monthNode = yearNode.CreateChildNode(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month.Key), month.Key);
 
-                            var days =
-                                from day in month
-                                group day by ((DateTime)day.Value).Day into cd
-                                orderby cd.Key ascending
-                                select cd;
+                                var days =
+                                    from day in month
+                                    group day by ((DateTime)day.Value!).Day into cd
+                                    orderby cd.Key ascending
+                                    select cd;
 
                             foreach (var day in days)
                             {
@@ -1463,33 +1464,33 @@ internal partial class MenuStrip : ContextMenuStrip
                                 {
                                     daysNode = monthNode?.CreateChildNode(day.Key.ToString("D2"), day.Key);
 
-                                    var hours =
-                                        from hour in day
-                                        group hour by ((DateTime)hour.Value).Hour into ch
-                                        orderby ch.Key ascending
-                                        select ch;
+                                        var hours =
+                                            from hour in day
+                                            group hour by ((DateTime)hour.Value!).Hour into ch
+                                            orderby ch.Key ascending
+                                            select ch;
 
                                     foreach (var hour in hours)
                                     {
                                         TreeNodeItemSelector? hoursNode = daysNode?.CreateChildNode(
                                             $"{hour.Key:D2} h", hour.Key);
 
-                                        var mins =
-                                            from min in hour
-                                            group min by ((DateTime)min.Value).Minute into cmin
-                                            orderby cmin.Key ascending
-                                            select cmin;
+                                            var mins =
+                                                from min in hour
+                                                group min by ((DateTime)min.Value!).Minute into cmin
+                                                orderby cmin.Key ascending
+                                                select cmin;
 
                                         foreach (var min in mins)
                                         {
                                             TreeNodeItemSelector? minsNode = hoursNode?.CreateChildNode(
                                                 $"{min.Key:D2} m", min.Key);
 
-                                            var secs =
-                                                from sec in min
-                                                group sec by ((DateTime)sec.Value).Second into cs
-                                                orderby cs.Key ascending
-                                                select cs;
+                                                var secs =
+                                                    from sec in min
+                                                    group sec by ((DateTime)sec.Value!).Second into cs
+                                                    orderby cs.Key ascending
+                                                    select cs;
 
                                             foreach (var sec in secs)
                                             {
@@ -1509,7 +1510,7 @@ internal partial class MenuStrip : ContextMenuStrip
                 {
                     var days =
                         from day in dataGridViewCells
-                        group day by ((TimeSpan)day.Value).Days into cd
+                        group day by ((TimeSpan)day.Value!).Days into cd
                         orderby cd.Key ascending
                         select cd;
 
@@ -1518,21 +1519,21 @@ internal partial class MenuStrip : ContextMenuStrip
                         TreeNodeItemSelector daysnode = TreeNodeItemSelector.CreateNode(day.Key.ToString("D2"), day.Key, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.DateTimeNode);
                         ChecklistAddNode(daysnode);
 
-                        var hours =
-                            from hour in day
-                            group hour by ((TimeSpan)hour.Value).Hours into ch
-                            orderby ch.Key ascending
-                            select ch;
+                            var hours =
+                                from hour in day
+                                group hour by ((TimeSpan)hour.Value!).Hours into ch
+                                orderby ch.Key ascending
+                                select ch;
 
                         foreach (var hour in hours)
                         {
                             TreeNodeItemSelector? hoursnode = daysnode.CreateChildNode($"{hour.Key:D2} h", hour.Key);
 
-                            var mins =
-                                from min in hour
-                                group min by ((TimeSpan)min.Value).Minutes into cmin
-                                orderby cmin.Key ascending
-                                select cmin;
+                                var mins =
+                                    from min in hour
+                                    group min by ((TimeSpan)min.Value!).Minutes into cmin
+                                    orderby cmin.Key ascending
+                                    select cmin;
 
                             foreach (var min in mins)
                             {
@@ -1540,7 +1541,7 @@ internal partial class MenuStrip : ContextMenuStrip
 
                                 var secs =
                                     from sec in min
-                                    group sec by ((TimeSpan)sec.Value).Seconds into cs
+                                    group sec by ((TimeSpan)sec.Value!).Seconds into cs
                                     orderby cs.Key ascending
                                     select cs;
 
@@ -1556,7 +1557,7 @@ internal partial class MenuStrip : ContextMenuStrip
                 //add boolean nodes
                 else if (DataType == typeof(bool))
                 {
-                    var values = dataGridViewCells.Where<DataGridViewCell>(c => (bool)c.Value == true);
+                    var values = dataGridViewCells.Where<DataGridViewCell>(c => c.Value is bool and true);
 
                     var gridViewCells = values as DataGridViewCell[] ?? values.ToArray();
                     if (gridViewCells.Count() != dataGridViewCells.Count())
@@ -1606,7 +1607,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <returns></returns>
     private bool HasNodesChecked(TreeNodeItemSelector?[] nodes)
     {
-        bool state = false;
+        bool state;
         state = !string.IsNullOrEmpty(_checkTextFilter.Text) ? nodes.Any(n => n!.CheckState == CheckState.Checked && n.Text.ToLower().Contains(_checkTextFilter.Text.ToLower())) : nodes.Any(n => n!.CheckState == CheckState.Checked);
 
         if (state)
@@ -1641,7 +1642,7 @@ internal partial class MenuStrip : ContextMenuStrip
     {
         if (node != null)
         {
-            node.CheckState = node!.CheckState == CheckState.Checked ? CheckState.Unchecked : CheckState.Checked;
+            node.CheckState = node.CheckState == CheckState.Checked ? CheckState.Unchecked : CheckState.Checked;
 
             if (node.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
             {
@@ -2110,7 +2111,7 @@ internal partial class MenuStrip : ContextMenuStrip
 
         for (int i = 2; i < _customFilterLastFiltersListMenuItem.DropDownItems.Count; i++)
         {
-            if (_customFilterLastFiltersListMenuItem.DropDownItems[i].Text == menuitem?.Text && _customFilterLastFiltersListMenuItem.DropDownItems[i].Tag?.ToString() == menuitem?.Tag?.ToString())
+            if (_customFilterLastFiltersListMenuItem.DropDownItems[i] is ToolStripMenuItem item && menuitem != null && item.Text == menuitem.Text && item.Tag?.ToString() == menuitem.Tag?.ToString())
             {
                 //set current filter preset as active
                 SetCustomFilter(i);
@@ -2352,7 +2353,7 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <param name="e"></param>
     private void CancelSortMenuItem_MouseEnter(object? sender, EventArgs e)
     {
-        if (sender is ToolStripMenuItem menuItem && menuItem.Enabled)
+        if (sender is ToolStripMenuItem { Enabled: true } menuItem)
         {
             menuItem.Select();
         }
@@ -2376,7 +2377,10 @@ internal partial class MenuStrip : ContextMenuStrip
             {
                 ret = gscale.DpiX / 96.0F;
             }
-            catch { };
+            catch
+            {
+                // ignored
+            }
         }
         return ret;
     }
@@ -2384,13 +2388,10 @@ internal partial class MenuStrip : ContextMenuStrip
     /// <summary>
     /// Scale an item
     /// </summary>
-    /// <param name="dimesion"></param>
+    /// <param name="dimension"></param>
     /// <param name="factor"></param>
     /// <returns></returns>
-    private static int Scale(int dimesion, float factor)
-    {
-        return (int)Math.Floor(dimesion * factor);
-    }
+    private static int Scale(int dimension, float factor) => (int)Math.Floor(dimension * factor);
 
     /// <summary>
     /// Resize the box

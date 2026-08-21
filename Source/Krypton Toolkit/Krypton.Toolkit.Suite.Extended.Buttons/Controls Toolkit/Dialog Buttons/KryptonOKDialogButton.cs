@@ -32,6 +32,7 @@ public class KryptonOKDialogButton : KryptonButton
 {
     private KryptonForm? _parent;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public KryptonForm? ParentWindow
     {
         get => _parent;

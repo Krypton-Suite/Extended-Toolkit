@@ -47,8 +47,7 @@ internal class ArcList : RedBackList
         }
         finally
         {
-            IDisposable disposable = enumerator as IDisposable;
-            if (disposable != null)
+            if (enumerator is IDisposable disposable)
             {
                 disposable.Dispose();
             }

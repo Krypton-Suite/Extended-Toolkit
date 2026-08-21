@@ -55,8 +55,7 @@ internal sealed class RuleElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        RuleElement? ruleElement = obj as RuleElement;
-        if (ruleElement == null)
+        if (obj is not RuleElement ruleElement)
         {
             return false;
         }

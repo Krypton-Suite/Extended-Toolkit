@@ -53,8 +53,7 @@ public class KryptonDataGridViewBinaryCell : DataGridViewTextBoxCell
     /// <returns></returns>
     public override object Clone()
     {
-        KryptonDataGridViewBinaryCell? cloned = base.Clone() as KryptonDataGridViewBinaryCell;
-        if (cloned != null)
+        if (base.Clone() is KryptonDataGridViewBinaryCell cloned)
         {
             cloned._editorType = _editorType;
             return cloned;

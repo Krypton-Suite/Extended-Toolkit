@@ -942,14 +942,19 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool AutomateContrastColour { get => _automateContrastColour; set => _automateContrastColour = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool UseForPalettes { get => _useForPalettes; set => _useForPalettes = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool KeepOpacityValues { get => _keepOpacityValues; set => _keepOpacityValues = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Color BaseColour { get => _baseColour; set => _baseColour = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Color ContrastColour { get => _contrastColour; set => _contrastColour = value; }
     #endregion
 

@@ -47,8 +47,7 @@ internal sealed class SemanticKeyElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        SemanticKeyElement semanticKeyElement = obj as SemanticKeyElement;
-        if (semanticKeyElement == null)
+        if (obj is not SemanticKeyElement semanticKeyElement)
         {
             return false;
         }

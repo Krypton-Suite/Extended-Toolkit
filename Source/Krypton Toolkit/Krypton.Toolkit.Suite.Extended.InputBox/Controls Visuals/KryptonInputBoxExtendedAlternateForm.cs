@@ -46,22 +46,30 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     #endregion
 
     #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public static DialogResult Response { get => _response; set => _response = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Image[] IconImages { get => _iconImageArray; private set => _iconImageArray = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Image? CustomImage { get => _customImage; set => _customImage = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonOneResult { get => _buttonOneResult; set => _buttonOneResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonTwoResult { get => _buttonTwoResult; set => _buttonTwoResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonThreeResult { get => _buttonThreeResult; set => _buttonThreeResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
     #endregion
 

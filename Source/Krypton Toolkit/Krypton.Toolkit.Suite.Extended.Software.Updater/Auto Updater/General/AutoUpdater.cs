@@ -333,15 +333,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
         private static object? CheckUpdate(Assembly mainAssembly)
         {
-            var companyAttribute =
-                GetAttribute(mainAssembly, typeof(AssemblyCompanyAttribute)) as AssemblyCompanyAttribute;
-            string appCompany = companyAttribute != null ? companyAttribute.Company : "";
+            string appCompany = GetAttribute(mainAssembly, typeof(AssemblyCompanyAttribute)) is AssemblyCompanyAttribute companyAttribute ? companyAttribute.Company : "";
 
             if (string.IsNullOrEmpty(AppTitle))
             {
-                var titleAttribute =
-                    GetAttribute(mainAssembly, typeof(AssemblyTitleAttribute)) as AssemblyTitleAttribute;
-                AppTitle = titleAttribute != null ? titleAttribute.Title : mainAssembly.GetName().Name;
+                AppTitle = GetAttribute(mainAssembly, typeof(AssemblyTitleAttribute)) is AssemblyTitleAttribute titleAttribute ? titleAttribute.Title : mainAssembly.GetName().Name;
             }
 
             string registryLocation = !string.IsNullOrEmpty(appCompany)
@@ -593,10 +589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             return (Attribute)attributes[0];
         }
 
-        internal static string GetUserAgent()
-        {
-            return string.IsNullOrEmpty(HttpUserAgent) ? "AutoUpdater.NET" : HttpUserAgent;
-        }
+        internal static string? GetUserAgent() => string.IsNullOrEmpty(HttpUserAgent) ? "AutoUpdater.NET" : HttpUserAgent;
 
         internal static void SetTimer(DateTime remindLater)
         {

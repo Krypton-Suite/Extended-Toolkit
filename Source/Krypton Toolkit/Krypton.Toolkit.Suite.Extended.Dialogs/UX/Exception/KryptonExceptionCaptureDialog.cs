@@ -157,6 +157,9 @@ public class KryptonExceptionCaptureDialog : KryptonForm
     #endregion
 
     #region Properties
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public Exception Exception { get => _exception; set => _exception = value; }
     #endregion
 

@@ -47,6 +47,7 @@ internal class MessageButton : InternalKryptonButton
     /// <summary>
     /// Gets and sets the ignoring of Alt+F4
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool IgnoreAltF4 { get; set; }
 
     #endregion

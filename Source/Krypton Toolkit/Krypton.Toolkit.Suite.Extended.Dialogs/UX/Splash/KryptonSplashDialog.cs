@@ -132,6 +132,9 @@ public class KryptonSplashDialog : CommonExtendedKryptonForm
 
     public int LoadingBarIncrement { get; set; } = 1;
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public Image? ApplicationIcon { get; set; }
     #endregion
 

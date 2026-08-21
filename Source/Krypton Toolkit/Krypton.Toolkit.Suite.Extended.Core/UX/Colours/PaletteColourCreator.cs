@@ -777,13 +777,15 @@ public partial class PaletteColourCreator : KryptonForm
     #endregion
 
     #region Properties
-    public Color BaseColour
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public Color BaseColor
     {
         get => _baseColour;
         set => _baseColour = value;
     }
 
-    public bool PaletteColourSelector
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public bool PaletteColorSelector
     {
         get => _paletteColourSelector;
         set => _paletteColourSelector = value;
@@ -824,9 +826,9 @@ public partial class PaletteColourCreator : KryptonForm
     {
         InitializeComponent();
 
-        BaseColour = baseColour;
+        BaseColor = baseColour;
 
-        cpbBaseColourPreview.BackColor = BaseColour;
+        cpbBaseColourPreview.BackColor = BaseColor;
     }
 
     /// <summary>
@@ -837,7 +839,7 @@ public partial class PaletteColourCreator : KryptonForm
     {
         InitializeComponent();
 
-        PaletteColourSelector = paletteColourSelector;
+        PaletteColorSelector = paletteColourSelector;
     }
 
     /// <summary>
@@ -852,7 +854,7 @@ public partial class PaletteColourCreator : KryptonForm
     {
         InitializeComponent();
 
-        PaletteColourSelector = paletteColourSelector;
+        PaletteColorSelector = paletteColourSelector;
 
         knumAlphaChannelValue.Value = alphaValue;
 
@@ -872,11 +874,11 @@ public partial class PaletteColourCreator : KryptonForm
     {
         InitializeComponent();
 
-        PaletteColourSelector = paletteColourSelector;
+        PaletteColorSelector = paletteColourSelector;
 
-        BaseColour = BaseColour;
+        BaseColor = BaseColor;
 
-        cpbBaseColourPreview.BackColor = BaseColour;
+        cpbBaseColourPreview.BackColor = BaseColor;
     }
     #endregion
 
@@ -884,7 +886,7 @@ public partial class PaletteColourCreator : KryptonForm
     {
         _colourSettingsManager.ResetToDefaults();
 
-        if (PaletteColourSelector)
+        if (PaletteColorSelector)
         {
             kbtnDefineIndividualColours.Visible = true;
 

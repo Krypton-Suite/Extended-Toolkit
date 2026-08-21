@@ -1083,8 +1083,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
             popup.Renderer = renderer;
 
             popupHelper = new PopupWindowHelper();
-            KryptonForm? parent = Bar.FindForm() as KryptonForm;
-            if (parent == null)
+            if (Bar.FindForm() is not KryptonForm parent)
             {
                 return;
             }
