@@ -59,9 +59,7 @@ public class FloatablePanelHost : ToolStripPanel
     {
         if (FloatableMenuStrip != null)
         {
-            MenuStrip? ms = e.Control as MenuStrip;
-
-            if (ms != null)
+            if (e.Control is MenuStrip ms)
             {
                 if (Orientation == Orientation.Horizontal)
                 {
@@ -75,9 +73,7 @@ public class FloatablePanelHost : ToolStripPanel
         }
         else if (FloatableToolStrip != null)
         {
-            ToolStrip? ts = e.Control as ToolStrip;
-
-            if (ts != null)
+            if (e.Control is ToolStrip ts)
             {
                 if (Orientation == Orientation.Horizontal)
                 {

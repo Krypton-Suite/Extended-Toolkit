@@ -272,11 +272,10 @@ internal class SrgsDocumentParser : ISrgsParser
         {
             XmlParser.ThrowSrgsException(SRID.InvalidElement);
         }
-        IOneOf oneOf = parent as IOneOf;
-        if (oneOf != null)
+
+        if (parent is IOneOf oneOf)
         {
-            IItem item2 = element as IItem;
-            if (item2 != null)
+            if (element is IItem item2)
             {
                 _parser.AddItem(oneOf, item2);
             }

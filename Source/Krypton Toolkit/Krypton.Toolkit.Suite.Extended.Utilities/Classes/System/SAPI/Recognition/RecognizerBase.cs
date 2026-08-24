@@ -852,8 +852,7 @@ internal class RecognizerBase : IRecognizerInternal, IDisposable, ISpGrammarReso
         }
         try
         {
-            ISpPhoneticAlphabetSelection spPhoneticAlphabetSelection = _sapiContext as ISpPhoneticAlphabetSelection;
-            if (spPhoneticAlphabetSelection != null)
+            if (_sapiContext is ISpPhoneticAlphabetSelection spPhoneticAlphabetSelection)
             {
                 spPhoneticAlphabetSelection.SetAlphabetToUPS(true);
             }

@@ -208,8 +208,7 @@ internal class XmlParser : ISrgsParser
 
     internal static void ThrowSrgsExceptionWithPosition(string filename, XmlReader xmlReader, string sError, Exception innerException)
     {
-        XmlTextReader xmlTextReader = xmlReader as XmlTextReader;
-        if (xmlTextReader != null)
+        if (xmlReader is XmlTextReader xmlTextReader)
         {
             string text = SR.Get(SRID.Line);
             string text2 = SR.Get(SRID.Position);
@@ -1174,8 +1173,7 @@ internal class XmlParser : ISrgsParser
                             case "tag":
                             {
                                 element = ParseTag(parent, reader);
-                                IPropertyTag propertyTag = element as IPropertyTag;
-                                if (propertyTag != null)
+                                if (element is IPropertyTag propertyTag)
                                 {
                                     if (list == null)
                                     {
@@ -1235,15 +1233,13 @@ internal class XmlParser : ISrgsParser
         }
         else
         {
-            IRule rule = parent as IRule;
-            if (rule != null)
+            if (parent is IRule rule)
             {
                 _parser.AddElement(rule, value2);
             }
             else
             {
-                IItem item = parent as IItem;
-                if (item != null)
+                if (parent is IItem item)
                 {
                     _parser.AddElement(item, value2);
                 }
@@ -1261,11 +1257,9 @@ internal class XmlParser : ISrgsParser
     {
         if (child != null)
         {
-            IOneOf oneOf = parent as IOneOf;
-            if (oneOf != null)
+            if (parent is IOneOf oneOf)
             {
-                IItem item = child as IItem;
-                if (item != null)
+                if (child is IItem item)
                 {
                     _parser.AddItem(oneOf, item);
                 }
@@ -1276,15 +1270,13 @@ internal class XmlParser : ISrgsParser
             }
             else
             {
-                IRule rule = parent as IRule;
-                if (rule != null)
+                if (parent is IRule rule)
                 {
                     _parser.AddElement(rule, child);
                 }
                 else
                 {
-                    IItem item2 = parent as IItem;
-                    if (item2 != null)
+                    if (parent is IItem item2)
                     {
                         _parser.AddElement(item2, child);
                     }

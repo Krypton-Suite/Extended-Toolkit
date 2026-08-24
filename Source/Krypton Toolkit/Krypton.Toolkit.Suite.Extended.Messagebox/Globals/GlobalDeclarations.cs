@@ -38,5 +38,6 @@ global using System.Threading;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit;
+global using Krypton.Interop;
 global using Krypton.Toolkit.Suite.Extended.Debug.Tools;
 global using Krypton.Toolkit.Suite.Extended.Shared;

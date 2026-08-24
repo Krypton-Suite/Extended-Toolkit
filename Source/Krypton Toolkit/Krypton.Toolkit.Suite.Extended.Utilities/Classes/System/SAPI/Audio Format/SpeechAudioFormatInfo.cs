@@ -162,8 +162,7 @@ public class SpeechAudioFormatInfo
 
     public override bool Equals(object obj)
     {
-        SpeechAudioFormatInfo speechAudioFormatInfo = obj as SpeechAudioFormatInfo;
-        if (speechAudioFormatInfo == null)
+        if (obj is not SpeechAudioFormatInfo speechAudioFormatInfo)
         {
             return false;
         }

@@ -659,8 +659,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
                         //*************************************************
                         //'SourceColumn' is null after the line of code
                         //below executes... Why? This works fine for rows!!
-                        string? r = drgevent.Data?.GetData(typeof(string)) as string;
-                        if (r != null)
+                        if (drgevent.Data?.GetData(typeof(string)) is string r)
                         {
                             string[] res = r.Split('|');
                             DataGridViewColumn? sourceColumn = Columns[res[0]];

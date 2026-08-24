@@ -406,9 +406,7 @@ public class CalendarSystemRenderer : CalendarRenderer
 
     public override void OnDrawItemText(CalendarRendererBoxEventArgs e)
     {
-        CalendarItemAlternative? item = e.Tag as CalendarItemAlternative;
-
-        if (item is { IsDragging: true })
+        if (e.Tag is CalendarItemAlternative { IsDragging: true } item)
         {
             e.TextColour = Color.FromArgb(120, e.TextColour);
         }

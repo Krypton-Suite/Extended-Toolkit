@@ -175,12 +175,11 @@ internal class EngineSite : ITtsEngineSite, ITtsEventSink
             string localPath;
             using (Stream stream = _resourceLoader.LoadFile(uri, out mimeType, out baseUri, out localPath))
             {
-                int num = (int)stream.Length;
-                MemoryStream memoryStream = new MemoryStream(num);
-                byte[] array = new byte[num];
-                stream.Read(array, 0, array.Length);
+                // Use CopyTo to ensure the entire stream is copied; Stream.Read may read fewer bytes than requested.
+                int capacity = (int)stream.Length;
+                MemoryStream memoryStream = new MemoryStream(capacity);
+                stream.CopyTo(memoryStream);
                 _resourceLoader.UnloadFile(localPath);
-                memoryStream.Write(array, 0, num);
                 memoryStream.Position = 0L;
                 return memoryStream;
             }

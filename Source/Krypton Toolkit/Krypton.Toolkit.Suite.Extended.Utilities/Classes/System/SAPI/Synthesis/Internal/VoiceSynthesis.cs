@@ -518,8 +518,7 @@ internal sealed class VoiceSynthesis : IDisposable
                 Parameters[] array2 = array;
                 foreach (Parameters parameters in array2)
                 {
-                    ParametersSpeak parametersSpeak = parameters._parameter as ParametersSpeak;
-                    if (parametersSpeak != null)
+                    if (parameters._parameter is ParametersSpeak parametersSpeak)
                     {
                         parametersSpeak._prompt._exception = new OperationCanceledException(SR.Get(SRID.PromptAsyncOperationCancelled));
                     }
@@ -684,8 +683,7 @@ internal sealed class VoiceSynthesis : IDisposable
                 if (_pendingSpeakQueue.Count > 0)
                 {
                     parameters = _pendingSpeakQueue.Dequeue();
-                    ParametersSpeak parametersSpeak = parameters._parameter as ParametersSpeak;
-                    if (parametersSpeak != null)
+                    if (parameters._parameter is ParametersSpeak parametersSpeak)
                     {
                         lock (_site)
                         {
@@ -1253,11 +1251,10 @@ internal sealed class VoiceSynthesis : IDisposable
             {
                 return result;
             }
-            ITtsEngineSsml ttsEngineSsml = obj as ITtsEngineSsml;
-            if (ttsEngineSsml == null)
+
+            if (obj is not ITtsEngineSsml ttsEngineSsml)
             {
-                ITtsEngine ttsEngine = obj as ITtsEngine;
-                if (ttsEngine == null)
+                if (obj is not ITtsEngine ttsEngine)
                 {
                     return result;
                 }
@@ -1348,8 +1345,7 @@ internal sealed class VoiceSynthesis : IDisposable
 
     private void ProcessPostData(object arg)
     {
-        TTSEvent tTSEvent = arg as TTSEvent;
-        if (tTSEvent != null)
+        if (arg is TTSEvent tTSEvent)
         {
             lock (_thisObjectLock)
             {

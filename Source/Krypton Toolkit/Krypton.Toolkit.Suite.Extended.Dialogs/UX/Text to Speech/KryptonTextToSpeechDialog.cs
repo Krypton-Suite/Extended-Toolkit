@@ -335,8 +335,12 @@ public class KryptonTextToSpeechDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Properties
+    [DefaultValue(0)]
+    [Description("Gets or sets the speech rate for the synthesizer.")]
     public int SpeechRate { get => _speechRate; set => _speechRate = value; }
 
+    [DefaultValue(50)]
+    [Description("Gets or sets the speech volume for the synthesizer.")]
     public int SpeechVolume { get => _speechVolume; set => _speechVolume = value; }
     #endregion
 

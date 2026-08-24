@@ -728,10 +728,9 @@ public class KryptonCalendar : ScrollableControl
             return;
         }
 
-        CalendarTimeScaleUnit? unitEnd = SelectedElementEnd as CalendarTimeScaleUnit;
         CalendarDayTop? dayTop = SelectedElementEnd as CalendarDayTop;
         CalendarDay? day = SelectedElementEnd as CalendarDay;
-        TimeSpan duration = unitEnd != null ? unitEnd.Duration : new TimeSpan(23, 59, 59);
+        TimeSpan duration = SelectedElementEnd is CalendarTimeScaleUnit unitEnd ? unitEnd.Duration : new TimeSpan(23, 59, 59);
         CalendarItemAlternative item = new CalendarItemAlternative(this);
 
         DateTime dstart = SelectedElementStart.Date;

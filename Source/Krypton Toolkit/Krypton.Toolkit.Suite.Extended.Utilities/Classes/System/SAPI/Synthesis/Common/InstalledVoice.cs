@@ -54,8 +54,7 @@ public class InstalledVoice
 
     public override bool Equals(object obj)
     {
-        InstalledVoice installedVoice = obj as InstalledVoice;
-        if (installedVoice == null)
+        if (obj is not InstalledVoice installedVoice)
         {
             return false;
         }

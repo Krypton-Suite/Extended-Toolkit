@@ -124,8 +124,7 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
 
         _filterEnabled = filterEnabled;
 
-        KryptonColumnHeaderCell? oldCellt = oldCell as KryptonColumnHeaderCell;
-        if (oldCellt is { MenuStrip: not null })
+        if (oldCell is KryptonColumnHeaderCell { MenuStrip: not null } oldCellt)
         {
             MenuStrip = oldCellt.MenuStrip;
             _filterImage = oldCellt._filterImage;
@@ -138,7 +137,10 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         }
         else
         {
-            MenuStrip = new MenuStrip(oldCell.OwningColumn.ValueType);
+            // OwningColumn may be null if the header cell is not attached to a column yet.
+            // Guard against null and use object as a fallback type.
+            Type dataType = oldCell.OwningColumn?.ValueType ?? typeof(object);
+            MenuStrip = new MenuStrip(dataType);
             MenuStrip.FilterChanged += new EventHandler(MenuStrip_FilterChanged);
             MenuStrip.SortChanged += new EventHandler(MenuStrip_SortChanged);
         }
@@ -626,9 +628,9 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         Rectangle cellBounds,
         int rowIndex,
         DataGridViewElementStates cellState,
-        object value,
-        object formattedValue,
-        string errorText,
+        object? value,
+        object? formattedValue,
+        string? errorText,
         DataGridViewCellStyle cellStyle,
         DataGridViewAdvancedBorderStyle advancedBorderStyle,
         DataGridViewPaintParts paintParts)
@@ -643,15 +645,15 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
             errorText, cellStyle, advancedBorderStyle, paintParts);
 
         // Don't display a dropdown for Image columns
-        if (OwningColumn.ValueType == typeof(Bitmap))
+        if (OwningColumn?.ValueType == typeof(Bitmap))
         {
             return;
         }
 
         if (FilterAndSortEnabled && paintParts.HasFlag(DataGridViewPaintParts.ContentBackground))
         {
-            _filterButtonOffsetBounds = GetFilterBounds(true);
-            _filterButtonImageBounds = GetFilterBounds(false);
+            _filterButtonOffsetBounds = GetFilterBounds(withOffset: true);
+            _filterButtonImageBounds = GetFilterBounds(withOffset: false);
             Rectangle buttonBounds = _filterButtonOffsetBounds;
             if (clipBounds.IntersectsWith(buttonBounds))
             {

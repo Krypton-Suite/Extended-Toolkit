@@ -38,9 +38,9 @@ public class ViewDrawCommandLinkButton : ViewComposite
     private IPaletteTriple _paletteNormal;
     private IPaletteTriple _paletteTracking;
     private IPaletteTriple _palettePressed;
-    private IPaletteTriple _paletteCheckedNormal;
-    private IPaletteTriple _paletteCheckedTracking;
-    private IPaletteTriple _paletteCheckedPressed;
+    private IPaletteTriple? _paletteCheckedNormal;
+    private IPaletteTriple? _paletteCheckedTracking;
+    private IPaletteTriple? _paletteCheckedPressed;
     private readonly ViewDrawCanvas _drawCanvas;
     private readonly ViewDrawContent _drawContent;
     private readonly ViewDrawContent _drawImageContent;
@@ -172,7 +172,8 @@ public class ViewDrawCommandLinkButton : ViewComposite
     /// <summary>
     /// Gets access to the currently selected palette.
     /// </summary>
-    public IPaletteTriple CurrentPalette { get; private set; } = null!;
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public IPaletteTriple? CurrentPalette { get; private set; }
 
     #endregion
 
@@ -340,9 +341,9 @@ public class ViewDrawCommandLinkButton : ViewComposite
     /// <param name="paletteCheckedNormal">Palette source for the normal checked state.</param>
     /// <param name="paletteCheckedTracking">Palette source for the tracking checked state.</param>
     /// <param name="paletteCheckedPressed">Palette source for the pressed checked state.</param>
-    public void SetCheckedPalettes(IPaletteTriple paletteCheckedNormal,
-        IPaletteTriple paletteCheckedTracking,
-        IPaletteTriple paletteCheckedPressed)
+    public void SetCheckedPalettes(IPaletteTriple? paletteCheckedNormal,
+        IPaletteTriple? paletteCheckedTracking,
+        IPaletteTriple? paletteCheckedPressed)
     {
         System.Diagnostics.Debug.Assert(paletteCheckedNormal != null);
         System.Diagnostics.Debug.Assert(paletteCheckedTracking != null);
@@ -364,7 +365,7 @@ public class ViewDrawCommandLinkButton : ViewComposite
     /// </summary>
     /// <param name="context">Evaluation context.</param>
     /// <returns>True if transparent areas exist; otherwise false.</returns>
-    public override bool EvalTransparentPaint(ViewContext context)
+    public override bool EvalTransparentPaint(ViewContext? context)
     {
         System.Diagnostics.Debug.Assert(context != null);
 
@@ -372,7 +373,7 @@ public class ViewDrawCommandLinkButton : ViewComposite
         CheckPaletteState(context);
 
         // Ask the renderer to evaluate the given palette
-        return _drawCanvas.EvalTransparentPaint(context);
+        return _drawCanvas.EvalTransparentPaint(context!);
     }
     #endregion
 
@@ -390,7 +391,15 @@ public class ViewDrawCommandLinkButton : ViewComposite
         CheckPaletteState(context);
 
         // Delegate work to the child canvas
-        return _drawCanvas.GetPreferredSize(context);
+        if (_drawCanvas != null)
+        {
+            if (context != null)
+            {
+                return _drawCanvas.GetPreferredSize(context);
+            }
+        }
+
+        return Size.Empty;
     }
 
     /// <summary>
@@ -434,7 +443,10 @@ public class ViewDrawCommandLinkButton : ViewComposite
         CheckPaletteState(context);
 
         // Let base class perform standard rendering
-        base.Render(context);
+        if (context != null)
+        {
+            base.Render(context);
+        }
     }
     #endregion
 
@@ -443,13 +455,13 @@ public class ViewDrawCommandLinkButton : ViewComposite
     /// Check that the palette and state are correct.
     /// </summary>
     /// <param name="context">Reference to the view context.</param>
-    protected virtual void CheckPaletteState(ViewContext context)
+    protected virtual void CheckPaletteState(ViewContext? context)
     {
         // Default to using this element calculated state
         PaletteState buttonState = State;
 
         // If the actual control is not enabled, force to disabled state
-        if (!IsFixed && context.Control is { Enabled: false })
+        if (!IsFixed && context?.Control is { Enabled: false })
         {
             buttonState = PaletteState.Disabled;
         }
@@ -461,18 +473,13 @@ public class ViewDrawCommandLinkButton : ViewComposite
             if (AllowUncheck)
             {
                 // Show feedback on tracking and pressed
-                switch (buttonState)
+                buttonState = buttonState switch
                 {
-                    case PaletteState.Normal:
-                        buttonState = PaletteState.CheckedNormal;
-                        break;
-                    case PaletteState.Tracking:
-                        buttonState = PaletteState.CheckedTracking;
-                        break;
-                    case PaletteState.Pressed:
-                        buttonState = PaletteState.CheckedPressed;
-                        break;
-                }
+                    PaletteState.Normal => PaletteState.CheckedNormal,
+                    PaletteState.Tracking => PaletteState.CheckedTracking,
+                    PaletteState.Pressed => PaletteState.CheckedPressed,
+                    _ => buttonState
+                };
             }
             else
             {
@@ -516,6 +523,21 @@ public class ViewDrawCommandLinkButton : ViewComposite
                 case PaletteState.CheckedTracking:
                     CurrentPalette = _paletteCheckedTracking;
                     break;
+                case PaletteState.Checked:
+                case PaletteState.Context:
+                case PaletteState.ContextNormal:
+                case PaletteState.ContextTracking:
+                case PaletteState.ContextPressed:
+                case PaletteState.ContextCheckedNormal:
+                case PaletteState.ContextCheckedTracking:
+                case PaletteState.Override:
+                case PaletteState.FocusOverride:
+                case PaletteState.NormalDefaultOverride:
+                case PaletteState.LinkVisitedOverride:
+                case PaletteState.LinkNotVisitedOverride:
+                case PaletteState.LinkPressedOverride:
+                case PaletteState.BoldedOverride:
+                case PaletteState.TodayOverride:
                 default:
                     // Should never happen!
                     System.Diagnostics.Debug.Assert(false);
@@ -524,9 +546,12 @@ public class ViewDrawCommandLinkButton : ViewComposite
             }
 
             // Update with the correct palettes
-            _drawCanvas.SetPalettes(CurrentPalette.PaletteBack, CurrentPalette.PaletteBorder!);
+            if (CurrentPalette?.PaletteBack != null)
+            {
+                _drawCanvas.SetPalettes(CurrentPalette?.PaletteBack!, CurrentPalette?.PaletteBorder!);
+            }
 
-            _drawContent.SetPalette(CurrentPalette.PaletteContent!);
+            _drawContent.SetPalette(CurrentPalette?.PaletteContent!);
             //_drawImageContent.SetPalette(CurrentPalette.PaletteContent);
         }
     }

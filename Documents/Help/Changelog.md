@@ -6,6 +6,11 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Resolved [#610](https://github.com/Krypton-Suite/Extended-Toolkit/issues/610), Error when Attempting to upgrade to Ultimate 105.26.7.201
+  - **Ultimate packaging** - Ultimate and Ultimate.Lite no longer declare Extended module packages as NuGet dependencies; assemblies are bundled with `PrivateAssets="all"` on project references
+  - **Native binaries** - Native libraries (e.g. `libSkiaSharp`) are excluded from `lib/` to avoid install failures on .NET Framework
+  - **Runtime packages** - Explicit `Handlebars.Net` and `SkiaSharp` package references retained so native assets and templates still restore correctly
+  - **Software.Updater.Core** - Corrected `PackageId` so it no longer collides with `Krypton.Toolkit.Suite.Extended.Core`
 * Resolved [#533](https://github.com/Krypton-Suite/Extended-Toolkit/issues/533), TreeGridView: Plus/Minus Sign Not Displayed in TreeGrid and Collapse/Expand Behaviors Broken
 * New `Krypton.Toolkit.Suite.Extended.BottomSheet` module - Material-inspired bottom sheets for WinForms
   - **Service API** - `KryptonBottomSheetManager` with `Open`, `OpenAsync`, `OpenNonModal`, and `DismissActive`; `KryptonBottomSheetRef` for `Dismiss()`, `AfterOpened`, `AfterDismissed`, and `AfterDismissedAsync()`

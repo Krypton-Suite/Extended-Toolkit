@@ -143,7 +143,7 @@ internal abstract class AudioBase
                 wAVEFORMATEX.wBitsPerSample = 8;
                 wAVEFORMATEX.cbSize = 0;
                 string mimeType = audio._mimeType;
-                if (!(mimeType == "audio/basic"))
+                if (mimeType != "audio/basic")
                 {
                     if (!(mimeType == "audio/x-alaw-basic"))
                     {
@@ -159,7 +159,7 @@ internal abstract class AudioBase
                 try
                 {
                     byte[] array = new byte[(int)audio._stream.Length];
-                    audio._stream.Read(array, 0, array.Length);
+                    audio._stream?.Read(array, 0, array.Length);
                     Play(array);
                 }
                 finally

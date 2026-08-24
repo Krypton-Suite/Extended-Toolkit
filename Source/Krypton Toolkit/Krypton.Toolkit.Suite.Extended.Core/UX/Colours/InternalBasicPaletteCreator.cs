@@ -649,30 +649,32 @@ public class InternalBasicPaletteCreator : KryptonForm
 
     private RandomNumberGenerator _randomNumberGenerator = new();
 
-    private HSLColour _hslColour = new();
+    private HSLColour _hslColor = new();
 
-    private ColourControlManager _colourControlManager = new();
+    private ColourControlManager _colorControlManager = new();
 
     private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new();
 
-    private AllMergedPaletteColourSettingsManager _colourSettingsManager = new();
+    private AllMergedPaletteColourSettingsManager _colorSettingsManager = new();
 
-    private Color _baseColour;
+    private Color _baseColor;
 
-    private bool _paletteColourSelector;
+    private bool _paletteColorSelector;
     #endregion
 
     #region Properties
-    public Color BaseColour
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public Color BaseColor
     {
-        get => _baseColour;
-        set => _baseColour = value;
+        get => _baseColor;
+        set => _baseColor = value;
     }
 
-    public bool PaletteColourSelector
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public bool PaletteColorSelector
     {
-        get => _paletteColourSelector;
-        set => _paletteColourSelector = value;
+        get => _paletteColorSelector;
+        set => _paletteColorSelector = value;
     }
     #endregion
 
@@ -707,9 +709,9 @@ public class InternalBasicPaletteCreator : KryptonForm
     {
         InitializeComponent();
 
-        BaseColour = baseColour;
+        BaseColor = baseColour;
 
-        cpbxBaseColour.BackColor = BaseColour;
+        cpbxBaseColour.BackColor = BaseColor;
     }
 
     /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
@@ -718,7 +720,7 @@ public class InternalBasicPaletteCreator : KryptonForm
     {
         InitializeComponent();
 
-        PaletteColourSelector = paletteColourSelector;
+        PaletteColorSelector = paletteColourSelector;
     }
 
     /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
@@ -731,7 +733,7 @@ public class InternalBasicPaletteCreator : KryptonForm
     {
         InitializeComponent();
 
-        PaletteColourSelector = paletteColourSelector;
+        PaletteColorSelector = paletteColourSelector;
 
         knudAlphaValue.Value = alphaValue;
 
@@ -749,11 +751,11 @@ public class InternalBasicPaletteCreator : KryptonForm
     {
         InitializeComponent();
 
-        PaletteColourSelector = paletteColourSelector;
+        PaletteColorSelector = paletteColourSelector;
 
-        BaseColour = baseColour;
+        BaseColor = baseColour;
 
-        cpbxBaseColour.BackColor = BaseColour;
+        cpbxBaseColour.BackColor = BaseColor;
     }
     #endregion
 

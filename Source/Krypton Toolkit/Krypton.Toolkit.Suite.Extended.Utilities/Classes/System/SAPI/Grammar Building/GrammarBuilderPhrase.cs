@@ -78,8 +78,7 @@ internal sealed class GrammarBuilderPhrase : GrammarBuilderBase
 
     public override bool Equals(object obj)
     {
-        GrammarBuilderPhrase grammarBuilderPhrase = obj as GrammarBuilderPhrase;
-        if (grammarBuilderPhrase == null)
+        if (obj is not GrammarBuilderPhrase grammarBuilderPhrase)
         {
             return false;
         }

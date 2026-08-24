@@ -1043,8 +1043,7 @@ internal static class SsmlParser
                 if (localName == "alias")
                 {
                     CheckForDuplicates(ref dest, reader);
-                    XmlTextReader xmlTextReader = reader as XmlTextReader;
-                    if (xmlTextReader != null && engine.Ssml != null)
+                    if (reader is XmlTextReader xmlTextReader && engine.Ssml != null)
                     {
                         position = engine.Ssml.IndexOf(reader.Value, xmlTextReader.LinePosition + reader.LocalName.Length, StringComparison.Ordinal);
                     }
@@ -1662,8 +1661,7 @@ internal static class SsmlParser
 
     private static int GetColumnPosition(XmlReader reader)
     {
-        XmlTextReader xmlTextReader = reader as XmlTextReader;
-        if (xmlTextReader == null)
+        if (reader is not XmlTextReader xmlTextReader)
         {
             return 0;
         }

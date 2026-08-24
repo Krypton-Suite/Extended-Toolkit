@@ -513,18 +513,21 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public new ImeMode ImeMode
     {
         get => base.ImeMode;
         set => base.ImeMode = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Image? OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
     /// <summary>Gets or sets a value indicating whether [use as uac elevated button].</summary>
     /// <value>
     ///   <c>true</c> if [use as uac elevated button]; otherwise, <c>false</c>.</value>
     [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool UseAsUACElevatedButton
     {
         get => _useAsUACElevatedButton;
@@ -559,6 +562,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     /// <summary>Gets or sets the size of the UAC shield.</summary>
     /// <value>The size of the UAC shield.</value>
     [Category("Command Link"), Description("Gets or sets the shield icon size of the command link."), DefaultValue(typeof(Size), "15, 15")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Size UACShieldSize
     {
         get => _uacShieldSize;
@@ -577,6 +581,7 @@ public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     /// <summary>Gets or sets the process path to elevate.</summary>
     /// <value>The process to elevate.</value>
     [Category("Command Link"), Description("Gets or sets the process path to elevate."), DefaultValue("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
     #endregion
 
