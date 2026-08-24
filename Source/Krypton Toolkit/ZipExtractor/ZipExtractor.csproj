@@ -18,13 +18,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.8.231-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.8.236-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.6.173-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.8.236-beta" />
 					</ItemGroup>
 				</When>
 
