@@ -38,7 +38,7 @@
 
 Material-inspired `KryptonCard` control with header, title group, image, content, actions, and footer sections. Also includes `KryptonCardList`, `KryptonCardFlowPanel`, and `KryptonCardTablePanel` layout helpers.
 
-Launch the **Card** example from the Examples landing window to see elevated, outlined, clickable, and data-bound cards.
+Launch the **Card** example from the TestForm StartScreen to see elevated, outlined, clickable, and data-bound cards.
 
 ## Command Links
 
@@ -105,7 +105,7 @@ KryptonMessageBoxExtended.Show(
 
 **Comprehensive Documentation:**
 - [KryptonMessageBoxExtended Footer Documentation](../Help/ExtendedKryptonMessageBox-Footer.md)
-- [MessageBox Footer Example Source Code](https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Source/Krypton%20Toolkit/Examples/MessageBoxFooterExample.cs)
+- [MessageBox Footer Example Source Code](https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Source/Krypton%20Toolkit/TestForm/MessageBoxFooterExample.cs)
 
 ## Krypton Colour Mixer
 

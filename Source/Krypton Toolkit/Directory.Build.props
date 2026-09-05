@@ -1,6 +1,16 @@
 <Project>
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
 
+	<!-- MSB3822/3823: binary .resx (images/icons) need preserialized GenerateResource + System.Resources.Extensions.
+	     Defined here (not repo root) so it applies after SDK props. -->
+	<PropertyGroup>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.10" GeneratePathProperty="true" />
+	</ItemGroup>
+
 	<!--Handle AssemblyInfo-->
 	<PropertyGroup>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -235,6 +245,7 @@
 	-->
 	<ItemGroup Condition="'$(UseWindowsForms)' == 'true'">
 		<Reference Include="System.Design" Condition="$(TargetFramework.StartsWith('net4'))" />
+		<Reference Include="System.Net.Http" Condition="$(TargetFramework.StartsWith('net4'))" />
 		<Reference Include="System.Drawing.Design" Condition="$(TargetFramework.StartsWith('net5')) Or $(TargetFramework.StartsWith('net6')) Or $(TargetFramework.StartsWith('net7'))" />
 	</ItemGroup>
 </Project>

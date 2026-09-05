@@ -1,0 +1,22 @@
+<Project DefaultTargets="Build">
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">Canary</Configuration>
+	</PropertyGroup>
+
+	<Import Project="Extended.Orchestration.targets" />
+	<Import Project="Extended.Archive.targets" />
+
+	<PropertyGroup>
+		<ArchiveDir>$(BinDir)\Canary\Zips</ArchiveDir>
+		<ArchiveName>Krypton-Extended-Canary</ArchiveName>
+		<ArchiveSourceDir>$(BinDir)\NuGet Packages\Canary</ArchiveSourceDir>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'CanaryLite'">
+		<NuGetPackagesDir>$(BinDir)\NuGet Packages\Canary</NuGetPackagesDir>
+	</PropertyGroup>
+
+	<Target Name="CreateCanaryZip" DependsOnTargets="CreateZip" />
+	<Target Name="CreateCanaryTar" DependsOnTargets="CreateTar" />
+	<Target Name="CreateAllCanaryArchives" DependsOnTargets="CreateAllArchives" />
+</Project>

@@ -6,6 +6,16 @@
 
 ## 2026-11-xx - Build 2611 - November 2026
 
+* Aligned the local build system and GitHub Actions with Standard Toolkit `alpha` (channel `.proj` files, `Scripts/VS2022` + `Scripts/Current` wrappers, `run.cmd` v5, glob `clean.cmd`, nightly/release/TestForm workflows)
+* Implemented [#443](https://github.com/Krypton-Suite/Extended-Toolkit/issues/443), AdvancedDataGridView filter and sort header dropdowns
+    - Excel-style filter buttons are drawn on Krypton column headers (`▾` idle, `∇` filtered, `▲`/`▼` sort, `★` saved)
+    - Header overlay paints after `KryptonDataGridView` themed header rendering, with palette-aware colours, DPI scaling, and RTL placement
+    - Filter popup uses `KryptonCheckedListBox`, `KryptonButton`, and `KryptonTextBox` so the checklist and Filter/Cancel actions follow the active theme
+    - TestForm demo `AdvancedDataGridViewFilterSortExample` covers glyphs, checklist, custom filter, saved views, search, RTL, and per-column options
+* New `TestForm` developer harness, matching the Standard Toolkit StartScreen (filterable command-link launcher, theme list, dock/restore, registry-saved layout)
+  - Owns all former Examples project forms (including the legacy `MainWindow` launcher)
+  - Included in the Dev, main, and NuGet solutions; the standalone Examples project has been removed
+  - `dotnet run` defaults to `net8.0-windows`; net4x builds use preserialized `.resx` resources (MSB3823)
 * Resolved [#610](https://github.com/Krypton-Suite/Extended-Toolkit/issues/610), Error when Attempting to upgrade to Ultimate 105.26.7.201
   - **Ultimate packaging** - Ultimate and Ultimate.Lite no longer declare Extended module packages as NuGet dependencies; assemblies are bundled with `PrivateAssets="all"` on project references
   - **Native binaries** - Native libraries (e.g. `libSkiaSharp`) are excluded from `lib/` to avoid install failures on .NET Framework
@@ -36,6 +46,7 @@
   - **Designer Support** - `KryptonCardDesigner` with smart-tag actions for appearance, elevation, and clickability; dedicated toolbox bitmap
   - **Examples & Packaging** - New Card example in the Examples app; module included in Ultimate and Ultimate.Lite packages
   - **Tests** - `Krypton.Toolkit.Suite.Extended.Card.Tests` unit test project for rendering and card model behavior
+    - `FilterAndSortEnabled` now applies to existing columns when toggled
 * Implemented [#590](https://github.com/Krypton-Suite/Extended-Toolkit/issues/590), `DataGridView` Grouper panel
 * Implemented [#494](https://github.com/Krypton-Suite/Extended-Toolkit/issues/494), Gantt Chart Control
 * Implemented [#544](https://github.com/Krypton-Suite/Extended-Toolkit/issues/544), Implement a `DropZone` component

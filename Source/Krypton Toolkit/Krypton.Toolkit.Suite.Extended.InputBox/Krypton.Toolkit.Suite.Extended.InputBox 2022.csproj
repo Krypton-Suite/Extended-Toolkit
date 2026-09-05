@@ -100,6 +100,7 @@
 		<Otherwise>
 			<ItemGroup>
 				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Interop\Krypton.Interop.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
