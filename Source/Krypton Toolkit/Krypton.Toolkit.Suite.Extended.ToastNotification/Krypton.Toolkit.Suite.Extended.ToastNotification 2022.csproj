@@ -72,7 +72,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.8.236-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.9.257-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -99,6 +99,7 @@
 			<ItemGroup>
 				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit.Utilities\Krypton.Toolkit.Utilities.csproj" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Interop\Krypton.Interop.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -132,6 +133,10 @@
 	  <Generator>ResXFileCodeGenerator</Generator>
 	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	</EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
   </ItemGroup>
 
 	<!--Optimisation-->

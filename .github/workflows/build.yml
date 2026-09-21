@@ -1,34 +1,39 @@
 name: Build
 
+permissions:
+  contents: read
+
 on:
   push:
-    branches: 
-      - alpha
-      - master
+    branches:
       - '**'
+    paths-ignore:
+      - '.git*'
+      - '.vscode/**'
+      - 'Documents/**'
+      - 'dictionary-en-gb/**'
   pull_request:
-    branches: 
+    branches:
       - alpha
       - master
+      - canary
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build Toolkit
     runs-on: windows-latest
-    
-    strategy:
-      matrix:
-        configuration: [Debug, Release, ReleaseLite, Canary, CanaryLite, Nightly, NightlyLite]
-    
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'workflow_dispatch'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0  # Full history for versioning
+          fetch-depth: 0
 
-      # Extended-Toolkit project refs expect Standard-Toolkit as sibling (..\Standard-Toolkit)
-      - name: Checkout Standard-Toolkit
-        run: git clone --depth 1 https://github.com/Krypton-Suite/Standard-Toolkit.git ../Standard-Toolkit
+      - name: Checkout Standard-Toolkit (sibling)
+        shell: pwsh
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6
@@ -37,53 +42,71 @@ jobs:
             10.0.x
             9.0.x
             8.0.x
-            6.0.x
 
-      # .NET 11 (Preview)
-      - name: Setup .NET 11 (Preview)
+      - name: Setup .NET 11 (stable)
+        id: setup_dotnet11_stable
+        continue-on-error: true
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 11.0.x
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+
+      - name: Setup .NET 11 (preview fallback)
+        if: steps.setup_dotnet11_stable.outcome == 'failure'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
           dotnet-quality: preview
 
-      # global.json dynamically generate (use latest SDK available)
-      - name: Force .NET 11 SDK via global.json
+      - name: Pin SDK via global.json
+        shell: pwsh
+        run: ./Scripts/CI/Pin-DotNetSdk.ps1
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Cache NuGet
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Resolve channel
+        id: channel
+        shell: pwsh
         run: |
-          $sdkVersion = (dotnet --list-sdks | Select-String "11.0").ToString().Split(" ")[0]
-          if (-not $sdkVersion) {
-            # Fallback to .NET 10 if .NET 11 is not available
-            $sdkVersion = (dotnet --list-sdks | Select-String "10.0").ToString().Split(" ")[0]
+          $ErrorActionPreference = 'Stop'
+          $branch = if ($env:GITHUB_EVENT_NAME -eq 'pull_request') { $env:GITHUB_BASE_REF } else { $env:GITHUB_REF_NAME }
+          $config = 'Nightly'
+          $proj = 'Scripts/Build/nightly.proj'
+          switch -Regex ($branch) {
+            '^(master|main)$' { $config = 'Release'; $proj = 'Scripts/Build/build.proj' }
+            '^canary$' { $config = 'Canary'; $proj = 'Scripts/Build/canary.proj' }
           }
-          Write-Output "Using SDK $sdkVersion"
-          @"
-          {
-            "sdk": {
-              "version": "$sdkVersion",
-              "rollForward": "latestFeature"
-            }
-          }
-          "@ | Out-File -Encoding utf8 global.json
+          Write-Host "Branch=$branch Configuration=$config Project=$proj"
+          echo "configuration=$config" >> $env:GITHUB_OUTPUT
+          echo "project=$proj" >> $env:GITHUB_OUTPUT
 
       - name: Print diagnostics
         run: |
           dotnet --list-sdks
           dotnet --info
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -version || msbuild -version || Write-Output "msbuild not found"
+          msbuild -version
 
-      # Use the non-NuGet solution so projects use ProjectReference to Standard-Toolkit (no Krypton.Standard.Toolkit package on nuget.org)
-      - name: Restore using dotnet
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+      - name: Restore
+        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" -p:Configuration=${{ steps.channel.outputs.configuration }}
 
-      - name: Build solution using dotnet
-        run: |
-          dotnet build "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" -c ${{ matrix.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
+      - name: Build
+        run: msbuild /m "${{ steps.channel.outputs.project }}" /t:Build /p:Configuration=${{ steps.channel.outputs.configuration }} /p:Platform="Any CPU" /p:Restore=false
 
       - name: Upload build artifacts
-        if: matrix.configuration != 'Debug'
+        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v7
         with:
-          name: Build-${{ matrix.configuration }}
-          path: |
-            Bin/${{ matrix.configuration }}/
+          name: Build-${{ steps.channel.outputs.configuration }}
+          path: Bin/${{ steps.channel.outputs.configuration }}/
           retention-days: 7
-
+          if-no-files-found: ignore

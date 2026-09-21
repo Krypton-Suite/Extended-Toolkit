@@ -1,4 +1,4 @@
-#region Original License
+﻿#region Original License
 /*
  *
  * Microsoft Public License (Ms-PL)
@@ -113,14 +113,14 @@ internal partial class MenuStrip : ContextMenuStrip
         this._customFilterLastFilter4MenuItem = new System.Windows.Forms.ToolStripMenuItem();
         this._customFilterLastFilter5MenuItem = new System.Windows.Forms.ToolStripMenuItem();
         this._toolStripSeparator3MenuItem = new System.Windows.Forms.ToolStripSeparator();
-        this._checkList = new System.Windows.Forms.TreeView();
-        this._buttonFilter = new System.Windows.Forms.Button();
-        this._buttonUndofilter = new System.Windows.Forms.Button();
+        this._checkList = new KryptonCheckedListBox();
+        this._buttonFilter = new KryptonButton();
+        this._buttonUndofilter = new KryptonButton();
         this._checkFilterListPanel = new System.Windows.Forms.Panel();
         this._checkFilterListButtonsPanel = new System.Windows.Forms.Panel();
         this._checkFilterListButtonsControlHost = new System.Windows.Forms.ToolStripControlHost(_checkFilterListButtonsPanel);
         this._checkFilterListControlHost = new System.Windows.Forms.ToolStripControlHost(_checkFilterListPanel);
-        this._checkTextFilter = new System.Windows.Forms.TextBox();
+        this._checkTextFilter = new KryptonTextBox();
         this._checkTextFilterControlHost = new System.Windows.Forms.ToolStripControlHost(_checkTextFilter);
         this._resizeBoxControlHost = new System.Windows.Forms.ToolStripControlHost(new System.Windows.Forms.Control());
         this.SuspendLayout();
@@ -131,7 +131,7 @@ internal partial class MenuStrip : ContextMenuStrip
         this.AutoSize = false;
         this.Padding = new System.Windows.Forms.Padding(0);
         this.Margin = new System.Windows.Forms.Padding(0);
-        this.Size = new System.Drawing.Size(287, 370);
+        this.Size = new System.Drawing.Size(287, 378);
         this.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(MenuStrip_Closed);
         this.LostFocus += new System.EventHandler(MenuStrip_LostFocus);
         this.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -280,22 +280,20 @@ internal partial class MenuStrip : ContextMenuStrip
         // button_filter
         //
         this._buttonFilter.Name = "_buttonFilter";
-        this._buttonFilter.BackColor = System.Windows.Forms.Button.DefaultBackColor;
-        this._buttonFilter.UseVisualStyleBackColor = true;
+        this._buttonFilter.AutoSize = false;
         this._buttonFilter.Margin = new System.Windows.Forms.Padding(0);
-        this._buttonFilter.Size = new System.Drawing.Size(75, 23);
-        this._buttonFilter.Text = "Filter";
+        this._buttonFilter.Size = new System.Drawing.Size(75, 25);
+        this._buttonFilter.Values.Text = "Filter";
         this._buttonFilter.Click += new System.EventHandler(Button_ok_Click);
         this._buttonFilter.Location = new System.Drawing.Point(this._checkFilterListButtonsPanel.Width - 164, 0);
         //
         // button_undofilter
         //
         this._buttonUndofilter.Name = "_buttonUndofilter";
-        this._buttonUndofilter.BackColor = System.Windows.Forms.Button.DefaultBackColor;
-        this._buttonUndofilter.UseVisualStyleBackColor = true;
+        this._buttonUndofilter.AutoSize = false;
         this._buttonUndofilter.Margin = new System.Windows.Forms.Padding(0);
-        this._buttonUndofilter.Size = new System.Drawing.Size(75, 23);
-        this._buttonUndofilter.Text = "Cancel";
+        this._buttonUndofilter.Size = new System.Drawing.Size(75, 25);
+        this._buttonUndofilter.Values.Text = "Cancel";
         this._buttonUndofilter.Click += new System.EventHandler(Button_cancel_Click);
         this._buttonUndofilter.Location = new System.Drawing.Point(this._checkFilterListButtonsPanel.Width - 79, 0);
         //
@@ -324,7 +322,7 @@ internal partial class MenuStrip : ContextMenuStrip
         //
         this._checkTextFilterControlHost.Name = "_checkTextFilterControlHost";
         this._checkTextFilterControlHost.AutoSize = false;
-        this._checkTextFilterControlHost.Size = new System.Drawing.Size(Width - 35, 20);
+        this._checkTextFilterControlHost.Size = new System.Drawing.Size(Width - 35, 23);
         this._checkTextFilterControlHost.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
         this._checkTextFilterControlHost.Margin = new System.Windows.Forms.Padding(0);
         //
@@ -332,7 +330,7 @@ internal partial class MenuStrip : ContextMenuStrip
         //
         this._checkFilterListButtonsControlHost.Name = "_checkFilterListButtonsControlHost";
         this._checkFilterListButtonsControlHost.AutoSize = false;
-        this._checkFilterListButtonsControlHost.Size = new System.Drawing.Size(Width - 35, 24);
+        this._checkFilterListButtonsControlHost.Size = new System.Drawing.Size(Width - 35, 28);
         this._checkFilterListButtonsControlHost.Padding = new System.Windows.Forms.Padding(0);
         this._checkFilterListButtonsControlHost.Margin = new System.Windows.Forms.Padding(0);
         //
@@ -354,13 +352,11 @@ internal partial class MenuStrip : ContextMenuStrip
         this._checkList.Padding = new System.Windows.Forms.Padding(0);
         this._checkList.Margin = new System.Windows.Forms.Padding(0);
         this._checkList.Bounds = new System.Drawing.Rectangle(4, 4, this._checkFilterListPanel.Width - 8, this._checkFilterListPanel.Height - 8);
-        this._checkList.StateImageList = GetCheckListStateImages();
-        this._checkList.CheckBoxes = false;
+        this._checkList.CheckOnClick = true;
         this._checkList.MouseLeave += new System.EventHandler(CheckList_MouseLeave);
-        this._checkList.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(CheckList_NodeMouseClick);
-        this._checkList.KeyDown += new System.Windows.Forms.KeyEventHandler(CheckList_KeyDown);
+        this._checkList.ItemCheck += CheckList_ItemCheck;
         this._checkList.MouseEnter += CheckList_MouseEnter;
-        this._checkList.NodeMouseDoubleClick += CheckList_NodeMouseDoubleClick;
+        this._checkList.ListBox.MouseDoubleClick += CheckList_MouseDoubleClick;
         //
         // checkTextFilter
         //
@@ -405,15 +401,15 @@ internal partial class MenuStrip : ContextMenuStrip
     private ToolStripMenuItem _customFilterLastFilter3MenuItem;
     private ToolStripMenuItem _customFilterLastFilter4MenuItem;
     private ToolStripMenuItem _customFilterLastFilter5MenuItem;
-    private TreeView _checkList;
-    private Button _buttonFilter;
-    private Button _buttonUndofilter;
+    private KryptonCheckedListBox _checkList;
+    private KryptonButton _buttonFilter;
+    private KryptonButton _buttonUndofilter;
     private ToolStripControlHost _checkFilterListControlHost;
     private ToolStripControlHost _checkFilterListButtonsControlHost;
     private ToolStripControlHost _resizeBoxControlHost;
     private Panel _checkFilterListPanel;
     private Panel _checkFilterListButtonsPanel;
-    private TextBox _checkTextFilter;
+    private KryptonTextBox _checkTextFilter;
     private ToolStripControlHost _checkTextFilterControlHost;
 
     #endregion
@@ -491,6 +487,7 @@ internal partial class MenuStrip : ContextMenuStrip
     private bool _checkTextFilterRemoveNodesOnSearch = DefaultCheckTextFilterRemoveNodesOnSearch;
     private int _maxChecklistNodes = DefaultMaxChecklistNodes;
     private bool _filterclick = false;
+    private bool _syncingChecks;
     private Timer _textFilterTextChangedTimer;
     private int _textFilterTextChangedDelayNodes = DefaultTextFilterTextChangedDelayNodes;
     private int _textFilterTextChangedDelayMs = DefaultTextFilterTextChangedDelayMs;
@@ -656,37 +653,6 @@ internal partial class MenuStrip : ContextMenuStrip
         }
 
         base.OnControlRemoved(e);
-    }
-
-    /// <summary>
-    /// Get all images for checkList
-    /// </summary>
-    /// <returns></returns>
-    private static ImageList GetCheckListStateImages()
-    {
-        ImageList images = new ImageList();
-        Bitmap unCheckImg = new Bitmap(16, 16);
-        Bitmap checkImg = new Bitmap(16, 16);
-        Bitmap mixedImg = new Bitmap(16, 16);
-
-        using (Bitmap img = new Bitmap(16, 16))
-        {
-            using (Graphics g = Graphics.FromImage(img))
-            {
-                CheckBoxRenderer.DrawCheckBox(g, new Point(0, 1), CheckBoxState.UncheckedNormal);
-                unCheckImg = (Bitmap)img.Clone();
-                CheckBoxRenderer.DrawCheckBox(g, new Point(0, 1), CheckBoxState.CheckedNormal);
-                checkImg = (Bitmap)img.Clone();
-                CheckBoxRenderer.DrawCheckBox(g, new Point(0, 1), CheckBoxState.MixedNormal);
-                mixedImg = (Bitmap)img.Clone();
-            }
-        }
-
-        images.Images.Add("uncheck", unCheckImg);
-        images.Images.Add("check", checkImg);
-        images.Images.Add("mixed", mixedImg);
-
-        return images;
     }
 
     #endregion
@@ -1138,52 +1104,83 @@ internal partial class MenuStrip : ContextMenuStrip
     private void ChecklistReloadNodes()
     {
         _checkList.BeginUpdate();
-        _checkList.Nodes.Clear();
+        _checkList.Items.Clear();
         int nodecount = 0;
         foreach (TreeNodeItemSelector? node in _loadedNodes)
         {
-            if (node!.NodeType == TreeNodeItemSelector.CustomNodeType.Default)
+            if (node != null)
             {
-                if (_maxChecklistNodes == 0)
-                {
-                    if (!_removedNodes.Contains(node))
-                    {
-                        _checkList.Nodes.Add(node);
-                    }
-                }
-                else
-                {
-                    if (nodecount < _maxChecklistNodes && !_removedNodes.Contains(node))
-                    {
-                        _checkList.Nodes.Add(node);
-                    }
-                    else if (nodecount == _maxChecklistNodes)
-                    {
-                        _checkList.Nodes.Add("...");
-                    }
+                ChecklistAddVisibleNode(node, ref nodecount);
+            }
+        }
+        _checkList.EndUpdate();
+        SyncChecklistCheckStates();
+    }
 
-                    if (!_removedNodes.Contains(node) || nodecount == _maxChecklistNodes)
-                    {
-                        nodecount++;
-                    }
+    /// <summary>
+    /// Add a node (and DateTime children) to the visible checklist
+    /// </summary>
+    /// <param name="node"></param>
+    /// <param name="nodecount"></param>
+    private void ChecklistAddVisibleNode(TreeNodeItemSelector node, ref int nodecount)
+    {
+        if (node.NodeType == TreeNodeItemSelector.CustomNodeType.Default)
+        {
+            if (_maxChecklistNodes == 0)
+            {
+                if (!_removedNodes.Contains(node))
+                {
+                    _checkList.Items.Add(node);
                 }
             }
             else
             {
-                _checkList.Nodes.Add(node);
+                if (nodecount < _maxChecklistNodes && !_removedNodes.Contains(node))
+                {
+                    _checkList.Items.Add(node);
+                }
+                else if (nodecount == _maxChecklistNodes)
+                {
+                    _checkList.Items.Add("...");
+                }
+
+                if (!_removedNodes.Contains(node) || nodecount == _maxChecklistNodes)
+                {
+                    nodecount++;
+                }
             }
 
+            return;
         }
-        _checkList.EndUpdate();
+
+        _checkList.Items.Add(node);
+        foreach (TreeNodeItemSelector child in node.Nodes.OfType<TreeNodeItemSelector>())
+        {
+            ChecklistAddVisibleNode(child, ref nodecount);
+        }
     }
 
     /// <summary>
-    /// Get checklist nodes
+    /// Copy node CheckState onto the visible checklist
     /// </summary>
-    /// <returns></returns>
-    private TreeNodeCollection ChecklistNodes()
+    private void SyncChecklistCheckStates()
     {
-        return _checkList.Nodes;
+        _syncingChecks = true;
+        try
+        {
+            for (int i = 0; i < _checkList.Items.Count; i++)
+            {
+                if (_checkList.Items[i] is TreeNodeItemSelector node &&
+                    _checkList.GetItemCheckState(i) != node.CheckState)
+                {
+                    _checkList.SetItemCheckState(i, node.CheckState);
+                }
+            }
+        }
+        finally
+        {
+            _syncingChecks = false;
+        }
     }
 
     /// <summary>
@@ -1659,7 +1656,7 @@ internal partial class MenuStrip : ContextMenuStrip
                 }
 
                 //refresh nodes
-                CheckState state = UpdateNodesCheckState(ChecklistNodes());
+                CheckState state = UpdateNodesCheckState(_loadedNodes.OfType<TreeNodeItemSelector>());
                 GetSelectAllNode()!.CheckState = state;
             }
         }
@@ -1691,13 +1688,13 @@ internal partial class MenuStrip : ContextMenuStrip
     /// </summary>
     /// <param name="nodes"></param>
     /// <returns></returns>
-    private CheckState UpdateNodesCheckState(TreeNodeCollection nodes)
+    private CheckState UpdateNodesCheckState(IEnumerable<TreeNodeItemSelector> nodes)
     {
         CheckState result = CheckState.Unchecked;
         bool isFirstNode = true;
         bool isAllNodesSomeCheckState = true;
 
-        foreach (TreeNodeItemSelector n in nodes.OfType<TreeNodeItemSelector>())
+        foreach (TreeNodeItemSelector n in nodes)
         {
             if (n.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
             {
@@ -1706,7 +1703,7 @@ internal partial class MenuStrip : ContextMenuStrip
 
             if (n.Nodes.Count > 0)
             {
-                n.CheckState = UpdateNodesCheckState(n.Nodes);
+                n.CheckState = UpdateNodesCheckState(n.Nodes.OfType<TreeNodeItemSelector>());
             }
 
             if (isFirstNode)
@@ -1734,9 +1731,9 @@ internal partial class MenuStrip : ContextMenuStrip
     {
         TreeNodeItemSelector? result = null;
         int i = 0;
-        foreach (TreeNodeItemSelector? n in ChecklistNodes().OfType<TreeNodeItemSelector>())
+        foreach (TreeNodeItemSelector? n in _loadedNodes)
         {
-            if (n.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
+            if (n?.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
             {
                 result = n;
                 break;
@@ -1762,9 +1759,9 @@ internal partial class MenuStrip : ContextMenuStrip
     {
         TreeNodeItemSelector? result = null;
         int i = 0;
-        foreach (TreeNodeItemSelector? n in ChecklistNodes().OfType<TreeNodeItemSelector>())
+        foreach (TreeNodeItemSelector? n in _loadedNodes)
         {
-            if (n.NodeType == TreeNodeItemSelector.CustomNodeType.SelectEmpty)
+            if (n?.NodeType == TreeNodeItemSelector.CustomNodeType.SelectEmpty)
             {
                 result = n;
                 break;
@@ -1803,52 +1800,88 @@ internal partial class MenuStrip : ContextMenuStrip
     #region checklist filter events
 
     /// <summary>
-    /// CheckList NodeMouseClick event
+    /// CheckList ItemCheck event
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_NodeMouseClick(object? sender, TreeNodeMouseClickEventArgs e)
+    private void CheckList_ItemCheck(object? sender, ItemCheckEventArgs e)
     {
-        TreeViewHitTestInfo hitTestInfo = _checkList.HitTest(e.X, e.Y);
-        if (hitTestInfo is { Location: TreeViewHitTestLocations.StateImage })
+        if (_syncingChecks)
         {
-            //check the node check status
-            NodeCheckChange(e.Node as TreeNodeItemSelector);
-            //set filter button enabled
-            CheckFilterButtonEnabled();
+            return;
         }
+
+        if (e.Index < 0 || e.Index >= _checkList.Items.Count)
+        {
+            return;
+        }
+
+        if (_checkList.Items[e.Index] is not TreeNodeItemSelector node)
+        {
+            e.NewValue = CheckState.Unchecked;
+            return;
+        }
+
+        if (node.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll &&
+            e.CurrentValue == CheckState.Indeterminate)
+        {
+            e.NewValue = CheckState.Checked;
+        }
+
+        node.CheckState = e.NewValue != CheckState.Unchecked ? CheckState.Checked : CheckState.Unchecked;
+
+        if (node.NodeType == TreeNodeItemSelector.CustomNodeType.SelectAll)
+        {
+            SetNodesCheckState(_loadedNodes, node.Checked);
+        }
+        else
+        {
+            if (node.Nodes.Count > 0)
+            {
+                foreach (TreeNodeItemSelector subnode in node.Nodes)
+                {
+                    SetNodesCheckState([subnode], node.Checked);
+                }
+            }
+
+            TreeNodeItemSelector? selectAll = GetSelectAllNode();
+            if (selectAll != null)
+            {
+                selectAll.CheckState = UpdateNodesCheckState(_loadedNodes.OfType<TreeNodeItemSelector>());
+            }
+        }
+
+        BeginInvoke((Action)(() =>
+        {
+            if (IsDisposed)
+            {
+                return;
+            }
+
+            SyncChecklistCheckStates();
+            CheckFilterButtonEnabled();
+        }));
     }
 
     /// <summary>
-    /// CheckList KeyDown event
+    /// CheckList MouseDoubleClick event
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CheckList_KeyDown(object? sender, KeyEventArgs e)
+    private void CheckList_MouseDoubleClick(object? sender, MouseEventArgs e)
     {
-        if (e.KeyCode == Keys.Space)
+        if (_checkList.SelectedItem is not TreeNodeItemSelector n)
         {
-            //check the node check status
-            NodeCheckChange(_checkList.SelectedNode as TreeNodeItemSelector);
-            //set filter button enabled
-            CheckFilterButtonEnabled();
+            return;
         }
-    }
 
-    /// <summary>
-    /// CheckList NodeMouseDoubleClick event
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void CheckList_NodeMouseDoubleClick(object? sender, TreeNodeMouseClickEventArgs e)
-    {
-        TreeNodeItemSelector? n = e.Node as TreeNodeItemSelector;
         //set the new node check status
         SetNodesCheckState(_loadedNodes, false);
-        n!.CheckState = CheckState.Unchecked;
+        n.CheckState = CheckState.Unchecked;
         NodeCheckChange(n);
         //set filter button enabled
         CheckFilterButtonEnabled();
+        SyncChecklistCheckStates();
         //do Filter by checkList
         Button_ok_Click(this, EventArgs.Empty);
     }
@@ -2240,6 +2273,8 @@ internal partial class MenuStrip : ContextMenuStrip
             }
             ChecklistReloadNodes();
         }
+
+        SyncChecklistCheckStates();
     }
 
     #endregion
@@ -2413,10 +2448,10 @@ internal partial class MenuStrip : ContextMenuStrip
         float scalingfactor = GetScalingFactor();
         int w2 = (int)Math.Round(w / scalingfactor, 0);
         int h2 = (int)Math.Round(h / scalingfactor, 0);
-        _checkFilterListControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(h2 - 160 - 25, scalingfactor));
+        _checkFilterListControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(h2 - 160 - 29, scalingfactor));
         _checkFilterListPanel.Size = _checkFilterListControlHost.Size;
-        _checkList.Bounds = new Rectangle(Scale(4, scalingfactor), Scale(4, scalingfactor), Scale(w2 - 35 - 8, scalingfactor), Scale(h2 - 160 - 25 - 8, scalingfactor));
-        _checkFilterListButtonsControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(24, scalingfactor));
+        _checkList.Bounds = new Rectangle(Scale(4, scalingfactor), Scale(4, scalingfactor), Scale(w2 - 35 - 8, scalingfactor), Scale(h2 - 160 - 29 - 8, scalingfactor));
+        _checkFilterListButtonsControlHost.Size = new Size(Scale(w2 - 35, scalingfactor), Scale(28, scalingfactor));
         _buttonFilter.Location = new Point(Scale(w2 - 35 - 164, scalingfactor), 0);
         _buttonUndofilter.Location = new Point(Scale(w2 - 35 - 79, scalingfactor), 0);
         _resizeBoxControlHost.Margin = new Padding(Scale(w2 - 46, scalingfactor), 0, 0, 0);

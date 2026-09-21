@@ -25,6 +25,8 @@
  */
 #endregion
 
+using Krypton.Interop;
+
 namespace Krypton.Toolkit.Suite.Extended.InputBox;
 
 public partial class KryptonInputBoxExtendedForm : KryptonForm

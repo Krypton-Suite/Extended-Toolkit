@@ -355,6 +355,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                 SetFilterDateAndTimeEnabled(column, cell.IsFilterDateAndTimeEnabled);
                 SetSortEnabled(column, cell.IsSortEnabled);
                 SetFilterEnabled(column, cell.IsFilterEnabled);
+                cell.PrepareFilterButtonLayout();
             }
             else
             {
@@ -370,6 +371,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                 }
 
                 column.HeaderCell = cell;
+                cell.PrepareFilterButtonLayout();
             }
         }
     }
@@ -691,7 +693,21 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     public bool FilterAndSortEnabled
     {
         get => _filterAndSortEnabled;
-        set => _filterAndSortEnabled = value;
+        set
+        {
+            if (_filterAndSortEnabled == value)
+            {
+                return;
+            }
+
+            _filterAndSortEnabled = value;
+            foreach (DataGridViewColumn column in Columns)
+            {
+                SetFilterAndSortEnabled(column, value);
+            }
+
+            Invalidate();
+        }
     }
     private bool _filterAndSortEnabled = true;
 
@@ -1217,6 +1233,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         }
 
         e.Column.HeaderCell = cell;
+        cell.PrepareFilterButtonLayout();
 
         base.OnColumnAdded(e);
     }
@@ -1457,6 +1474,43 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     #endregion
 
     #region Protected
+
+    /// <summary>
+    /// Overlay Excel-style filter/sort glyphs after the Krypton header has been painted.
+    /// <see cref="KryptonDataGridView.OnCellPainting"/> marks header painting as handled, so the
+    /// header cell <c>Paint</c> override never runs without this overlay.
+    /// </summary>
+    protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
+    {
+        base.OnCellPainting(e);
+
+        if (e.RowIndex != -1 || e.ColumnIndex < 0 || e.ColumnIndex >= Columns.Count || e.Graphics is null)
+        {
+            return;
+        }
+
+        if (Columns[e.ColumnIndex].HeaderCell is KryptonColumnHeaderCell cell)
+        {
+            cell.PaintFilterButton(e.Graphics, e.CellBounds, e.ClipBounds);
+        }
+    }
+
+    protected override void OnRightToLeftChanged(EventArgs e)
+    {
+        base.OnRightToLeftChanged(e);
+        Invalidate();
+    }
+
+    protected override void OnDpiChangedAfterParent(EventArgs e)
+    {
+        base.OnDpiChangedAfterParent(e);
+        foreach (KryptonColumnHeaderCell cell in FilterableCells)
+        {
+            cell.PrepareFilterButtonLayout();
+        }
+
+        Invalidate();
+    }
 
     protected override void OnHandleDestroyed(EventArgs e)
     {

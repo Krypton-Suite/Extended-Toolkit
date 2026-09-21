@@ -1,0 +1,82 @@
+name: Build TestForm
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    branches: ['**']
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+      - alpha
+      - canary
+    paths:
+      - 'Source/Krypton Toolkit/TestForm/**'
+      - 'Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.*/**'
+      - 'Source/Krypton Toolkit/Directory.Build.*'
+      - 'Directory.Build.*'
+      - '.github/workflows/build-testform.yml'
+      - 'Scripts/**'
+  workflow_dispatch:
+
+jobs:
+  testform:
+    name: Build TestForm
+    runs-on: windows-latest
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Checkout Standard-Toolkit (sibling)
+        shell: pwsh
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: |
+            10.0.x
+            9.0.x
+            8.0.x
+
+      - name: Setup .NET 11 (stable)
+        id: setup_dotnet11_stable
+        continue-on-error: true
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+
+      - name: Setup .NET 11 (preview fallback)
+        if: steps.setup_dotnet11_stable.outcome == 'failure'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+          dotnet-quality: preview
+
+      - name: Pin SDK via global.json
+        shell: pwsh
+        run: ./Scripts/CI/Pin-DotNetSdk.ps1
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Cache NuGet
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-testform-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-testform-
+            ${{ runner.os }}-nuget-
+
+      - name: Restore TestForm
+        run: dotnet restore "Source/Krypton Toolkit/TestForm/TestForm.csproj" -p:Configuration=Debug
+
+      - name: Build TestForm
+        run: msbuild /m Scripts/Build/debug.proj /t:BuildTestForm /p:Configuration=Debug /p:Restore=false

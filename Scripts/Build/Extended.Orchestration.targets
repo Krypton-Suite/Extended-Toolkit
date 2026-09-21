@@ -1,0 +1,289 @@
+<Project>
+	<!--
+		Shared Extended Toolkit orchestration.
+		Imported by Scripts/Build/nightly.proj, canary.proj, build.proj, and debug.proj.
+
+		RepoRoot is this file's directory (Scripts/Build) two levels up, so paths stay
+		correct whether the entry .proj lives in Scripts/Build or a toolset folder.
+	-->
+
+	<Import Project="$(MSBuildThisFileDirectory)..\..\Directory.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)..\..\Directory.Build.props')" />
+
+	<PropertyGroup>
+		<RepoRoot>$(MSBuildThisFileDirectory)..\..\</RepoRoot>
+		<SourceDir>$(RepoRoot)Source\Krypton Toolkit</SourceDir>
+		<BinDir>$(RepoRoot)Bin</BinDir>
+		<LogsDir>$(RepoRoot)Logs</LogsDir>
+		<Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+		<Platform Condition="'$(Platform)' == ''">Any CPU</Platform>
+		<!-- Solutions use "Any CPU"; SDK projects expect AnyCPU. -->
+		<ProjectPlatform Condition="'$(Platform)' == 'Any CPU' or '$(Platform)' == ''">AnyCPU</ProjectPlatform>
+		<ProjectPlatform Condition="'$(ProjectPlatform)' == ''">$(Platform)</ProjectPlatform>
+		<OutputDir>$(BinDir)\$(Configuration)</OutputDir>
+		<NuGetPackagesDir>$(BinDir)\NuGet Packages\$(Configuration)</NuGetPackagesDir>
+
+		<MainSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022.sln</MainSolution>
+		<NuGetSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln</NuGetSolution>
+		<DevSolution>$(SourceDir)\Krypton Toolkit Suite Extended 2022 - VS2022 - Dev.sln</DevSolution>
+		<TestFormProject>$(SourceDir)\TestForm\TestForm.csproj</TestFormProject>
+		<UltimateProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate\Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj</UltimateProject>
+		<UltimateLiteProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate.Lite\Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj</UltimateLiteProject>
+
+		<BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
+		<ContinueOnError Condition="'$(ContinueOnError)' == ''">false</ContinueOnError>
+		<BuildVerbosity Condition="'$(BuildVerbosity)' == ''">minimal</BuildVerbosity>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<IsReleaseBuild Condition="'$(Configuration)' == 'Release' or '$(Configuration)' == 'ReleaseLite' or '$(Configuration)' == 'ReleaseAll' or '$(Configuration)' == 'Stable'">true</IsReleaseBuild>
+		<IsCanaryBuild Condition="'$(Configuration)' == 'Canary' or '$(Configuration)' == 'CanaryLite' or '$(Configuration)' == 'CanaryAll'">true</IsCanaryBuild>
+		<IsNightlyBuild Condition="'$(Configuration)' == 'Nightly' or '$(Configuration)' == 'NightlyLite' or '$(Configuration)' == 'NightlyAll' or '$(Configuration)' == 'Alpha'">true</IsNightlyBuild>
+		<IsDebugBuild Condition="'$(Configuration)' == 'Debug'">true</IsDebugBuild>
+
+		<PackageSuffix Condition="'$(IsCanaryBuild)' == 'true'">-beta</PackageSuffix>
+		<PackageSuffix Condition="'$(IsNightlyBuild)' == 'true'">-alpha</PackageSuffix>
+		<PackageSuffix Condition="'$(IsReleaseBuild)' == 'true'"></PackageSuffix>
+
+		<TargetBranch Condition="'$(IsReleaseBuild)' == 'true'">master</TargetBranch>
+		<TargetBranch Condition="'$(IsCanaryBuild)' == 'true'">canary</TargetBranch>
+		<TargetBranch Condition="'$(IsNightlyBuild)' == 'true'">alpha</TargetBranch>
+
+		<LiteConfiguration Condition="'$(Configuration)' == 'Nightly'">NightlyLite</LiteConfiguration>
+		<LiteConfiguration Condition="'$(Configuration)' == 'Canary'">CanaryLite</LiteConfiguration>
+		<LiteConfiguration Condition="'$(Configuration)' == 'Release'">ReleaseLite</LiteConfiguration>
+		<LiteConfiguration Condition="'$(LiteConfiguration)' == ''">$(Configuration)</LiteConfiguration>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackProject Include="$(SourceDir)\**\*.csproj"
+		             Exclude="$(SourceDir)\TestForm\**\*.csproj;
+		                      $(SourceDir)\ZipExtractor\**\*.csproj;
+		                      $(SourceDir)\AutoUpdateCreator\**\*.csproj;
+		                      $(SourceDir)\**\*Tests*\**\*.csproj;
+		                      $(SourceDir)\**\*Tests.csproj;
+		                      $(SourceDir)\**\Krypton - Backup*.csproj" />
+	</ItemGroup>
+
+	<Target Name="ShowConfiguration">
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="  Krypton Extended Toolkit - Build Configuration" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="Configuration : $(Configuration)" Importance="high" />
+		<Message Text="Platform      : $(Platform)" Importance="high" />
+		<Message Text="Target Branch : $(TargetBranch)" Importance="high" />
+		<Message Text="Package Suffix: $(PackageSuffix)" Importance="high" />
+		<Message Text="Output Dir    : $(OutputDir)" Importance="high" />
+		<Message Text="NuGet Dir     : $(NuGetPackagesDir)" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+	</Target>
+
+	<Target Name="EnsureLogs">
+		<MakeDir Directories="$(LogsDir)" Condition="!Exists('$(LogsDir)')" />
+		<MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
+	</Target>
+
+	<Target Name="RestoreIfNeeded" Condition="'$(Restore)' != 'false'" DependsOnTargets="EnsureLogs">
+		<Message Text="Restoring NuGet packages for $(MainSolution) ($(Configuration))..." Importance="high" />
+		<Exec Command="dotnet restore &quot;$(MainSolution)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)" />
+	</Target>
+
+	<Target Name="RestoreNuGetIfNeeded" Condition="'$(Restore)' != 'false'" DependsOnTargets="EnsureLogs">
+		<Message Text="Restoring NuGet packages for $(NuGetSolution) ($(Configuration))..." Importance="high" />
+		<Exec Command="dotnet restore &quot;$(NuGetSolution)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)" />
+	</Target>
+
+	<Target Name="Restore" DependsOnTargets="RestoreIfNeeded">
+		<Message Text="Restore completed" Importance="high" />
+	</Target>
+
+	<Target Name="Clean" DependsOnTargets="EnsureLogs">
+		<Message Text="Cleaning $(Configuration)..." Importance="high" />
+		<RemoveDir Directories="$(BinDir)" Condition="Exists('$(BinDir)')" />
+		<ItemGroup>
+			<ObjFolders Include="$(SourceDir)\**\obj" />
+		</ItemGroup>
+		<RemoveDir Directories="@(ObjFolders)" />
+		<Delete Files="$(RepoRoot)build.log" Condition="Exists('$(RepoRoot)build.log')" />
+		<Message Text="Clean completed" Importance="high" />
+	</Target>
+
+	<Target Name="Build" DependsOnTargets="ShowConfiguration;RestoreIfNeeded">
+		<Message Text="Building main solution ($(Configuration))..." Importance="high" />
+		<MSBuild Projects="$(MainSolution)"
+		         Properties="Configuration=$(Configuration);Platform=$(Platform)"
+		         Targets="Build"
+		         BuildInParallel="$(BuildInParallel)"
+		         ContinueOnError="$(ContinueOnError)" />
+		<Message Text="Build completed successfully" Importance="high" />
+	</Target>
+
+	<Target Name="BuildNuGet" DependsOnTargets="ShowConfiguration;RestoreNuGetIfNeeded">
+		<Message Text="Building NuGet solution ($(Configuration))..." Importance="high" />
+		<MSBuild Projects="$(NuGetSolution)"
+		         Properties="Configuration=$(Configuration);Platform=$(Platform)"
+		         Targets="Build"
+		         BuildInParallel="$(BuildInParallel)"
+		         ContinueOnError="$(ContinueOnError)" />
+		<Message Text="NuGet solution built successfully" Importance="high" />
+	</Target>
+
+	<Target Name="BuildDev" DependsOnTargets="ShowConfiguration;RestoreIfNeeded">
+		<Message Text="Building Dev solution ($(Configuration))..." Importance="high" />
+		<MSBuild Projects="$(DevSolution)"
+		         Properties="Configuration=$(Configuration);Platform=$(Platform)"
+		         Targets="Build"
+		         BuildInParallel="$(BuildInParallel)"
+		         ContinueOnError="$(ContinueOnError)" />
+		<Message Text="Dev solution built successfully" Importance="high" />
+	</Target>
+
+	<Target Name="BuildTestForm" DependsOnTargets="EnsureLogs">
+		<Message Text="Building TestForm ($(Configuration))..." Importance="high" />
+		<Exec Command="dotnet restore &quot;$(TestFormProject)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)"
+		      Condition="'$(Restore)' != 'false'" />
+		<MSBuild Projects="$(TestFormProject)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform)"
+		         Targets="Build"
+		         BuildInParallel="false"
+		         ContinueOnError="$(ContinueOnError)" />
+		<Message Text="TestForm built successfully" Importance="high" />
+	</Target>
+
+	<Target Name="BuildUltimate" DependsOnTargets="BuildNuGet">
+		<Message Text="Building Ultimate packages ($(Configuration))..." Importance="high" />
+		<MSBuild Projects="$(UltimateProject)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform)"
+		         Targets="Build"
+		         BuildInParallel="false"
+		         ContinueOnError="$(ContinueOnError)"
+		         Condition="Exists('$(UltimateProject)')" />
+		<MSBuild Projects="$(UltimateLiteProject)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform)"
+		         Targets="Build"
+		         BuildInParallel="false"
+		         ContinueOnError="$(ContinueOnError)"
+		         Condition="Exists('$(UltimateLiteProject)')" />
+		<Message Text="Ultimate packages built successfully" Importance="high" />
+	</Target>
+
+	<Target Name="CleanPackages">
+		<ItemGroup>
+			<ExistingPackages Include="$(NuGetPackagesDir)\*.nupkg" />
+			<ExistingPackages Include="$(NuGetPackagesDir)\*.snupkg" />
+		</ItemGroup>
+		<Delete Files="@(ExistingPackages)" />
+	</Target>
+
+	<Target Name="Pack" DependsOnTargets="BuildUltimate;EnsureLogs">
+		<Message Text="Creating NuGet packages ($(Configuration), suffix $(PackageSuffix))..." Importance="high" />
+		<MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
+		<MSBuild Projects="@(PackProject)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);PackageOutputPath=$(NuGetPackagesDir);NoBuild=true"
+		         Targets="Pack"
+		         BuildInParallel="$(BuildInParallel)"
+		         ContinueOnError="$(ContinueOnError)" />
+		<Message Text="NuGet packages created in: $(NuGetPackagesDir)" Importance="high" />
+	</Target>
+
+	<Target Name="PackLite">
+		<Error Text="PackLite is not defined for Configuration=$(Configuration). Use Nightly, Canary, or Release."
+		       Condition="'$(Configuration)' != 'Nightly' and '$(Configuration)' != 'Canary' and '$(Configuration)' != 'Release'" />
+		<Message Text="Packing Lite variant ($(LiteConfiguration))..." Importance="high" />
+		<MSBuild Projects="$(MSBuildProjectFile)"
+		         Properties="Configuration=$(LiteConfiguration);Platform=$(Platform);Restore=$(Restore)"
+		         Targets="Pack"
+		         BuildInParallel="false" />
+	</Target>
+
+	<Target Name="PackAll" DependsOnTargets="Pack;PackLite">
+		<Message Text="Full and Lite packages created for this channel" Importance="high" />
+	</Target>
+
+	<Target Name="PackUltimateOnly" DependsOnTargets="BuildUltimate;EnsureLogs">
+		<MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
+		<Exec Command="dotnet pack &quot;$(UltimateProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build /p:NoWarn=NU1012"
+		      WorkingDirectory="$(RepoRoot)"
+		      Condition="Exists('$(UltimateProject)')" />
+		<Exec Command="dotnet pack &quot;$(UltimateLiteProject)&quot; --configuration $(Configuration) --output &quot;$(NuGetPackagesDir)&quot; --no-build /p:NoWarn=NU1012"
+		      WorkingDirectory="$(RepoRoot)"
+		      Condition="Exists('$(UltimateLiteProject)')" />
+	</Target>
+
+	<Target Name="Rebuild" DependsOnTargets="Clean;Build">
+		<Message Text="Rebuild completed" Importance="high" />
+	</Target>
+
+	<Target Name="CI" DependsOnTargets="ShowConfiguration;Clean;Build;Pack">
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="  CI Build Completed Successfully" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="Configuration : $(Configuration)" Importance="high" />
+		<Message Text="Target Branch : $(TargetBranch)" Importance="high" />
+		<Message Text="Packages Dir  : $(NuGetPackagesDir)" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+	</Target>
+
+	<Target Name="CIAll">
+		<Message Text="Running CI for Nightly, Canary, and Release..." Importance="high" />
+		<MSBuild Projects="$(MSBuildThisFileDirectory)nightly.proj" Targets="CI" BuildInParallel="false" />
+		<MSBuild Projects="$(MSBuildThisFileDirectory)canary.proj" Targets="CI" BuildInParallel="false" />
+		<MSBuild Projects="$(MSBuildThisFileDirectory)build.proj" Targets="CI" BuildInParallel="false" />
+		<Message Text="All CI builds completed" Importance="high" />
+	</Target>
+
+	<Target Name="Debug">
+		<MSBuild Projects="$(MSBuildThisFileDirectory)debug.proj"
+		         Properties="Platform=$(Platform)"
+		         Targets="Rebuild"
+		         BuildInParallel="false" />
+	</Target>
+
+	<Target Name="ListPackages">
+		<ItemGroup>
+			<NuGetPackage Include="$(NuGetPackagesDir)\*.nupkg" Exclude="$(NuGetPackagesDir)\*.symbols.nupkg" />
+			<SymbolPackage Include="$(NuGetPackagesDir)\*.snupkg" />
+		</ItemGroup>
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="  NuGet Packages ($(Configuration))" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="Location: $(NuGetPackagesDir)" Importance="high" />
+		<Message Text="Packages:" Importance="high" />
+		<Message Text="  %(NuGetPackage.Filename)%(NuGetPackage.Extension)" Importance="high" />
+		<Message Text="Symbols:" Importance="high" />
+		<Message Text="  %(SymbolPackage.Filename)%(SymbolPackage.Extension)" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+	</Target>
+
+	<Target Name="Push">
+		<PropertyGroup>
+			<_NuGetApiKey>$(NUGET_API_KEY)</_NuGetApiKey>
+			<_NuGetApiKey Condition="'$(_NuGetApiKey)' == ''">$(NuGetApiKey)</_NuGetApiKey>
+		</PropertyGroup>
+		<ItemGroup>
+			<NugetPkgs Include="$(NuGetPackagesDir)\*.nupkg" Exclude="$(NuGetPackagesDir)\*.symbols.nupkg;$(NuGetPackagesDir)\*.snupkg" />
+		</ItemGroup>
+		<Error Text="NUGET_API_KEY is not set." Condition="'$(_NuGetApiKey)' == ''" />
+		<Exec Command="dotnet nuget push &quot;%(NugetPkgs.Identity)&quot; --api-key $(_NuGetApiKey) --source https://api.nuget.org/v3/index.json --skip-duplicate"
+		      WorkingDirectory="$(RepoRoot)" />
+	</Target>
+
+	<Target Name="Help">
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="  Krypton Extended Toolkit - Build Help" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+		<Message Text="Targets: Restore, Clean, Build, BuildNuGet, BuildDev, BuildTestForm," Importance="high" />
+		<Message Text="         BuildUltimate, Pack, PackLite, PackAll, PackUltimateOnly," Importance="high" />
+		<Message Text="         Rebuild, CI, CIAll, Debug, ListPackages, Push, Help" Importance="high" />
+		<Message Text="" Importance="high" />
+		<Message Text="Entry points:" Importance="high" />
+		<Message Text="  msbuild Scripts\Build\nightly.proj [/t:Build|Pack|CI]" Importance="high" />
+		<Message Text="  msbuild Scripts\Build\canary.proj  [/t:Build|Pack|CI]" Importance="high" />
+		<Message Text="  msbuild Scripts\Build\build.proj   [/t:Build|Pack|PackLite|PackAll|CI]" Importance="high" />
+		<Message Text="  msbuild Scripts\Build\debug.proj   [/t:Build|Rebuild]" Importance="high" />
+		<Message Text="  run.cmd" Importance="high" />
+		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
+	</Target>
+</Project>

@@ -1,10 +1,13 @@
 name: Release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
-      - 'v*'  # Trigger on version tags like v80.25.10.286
-  workflow_dispatch:  # Allow manual triggering
+      - 'v*'
+  workflow_dispatch:
     inputs:
       configuration:
         description: 'Build Configuration'
@@ -18,6 +21,15 @@ on:
           - CanaryLite
           - Nightly
           - NightlyLite
+      pack_mode:
+        description: 'Pack mode (ignored for *Lite configurations)'
+        required: true
+        default: 'Pack'
+        type: choice
+        options:
+          - Pack
+          - PackLite
+          - PackAll
       publish_nuget:
         description: 'Publish to NuGet.org'
         required: true
@@ -28,12 +40,12 @@ jobs:
   build-and-release:
     name: Build and Release Toolkit
     runs-on: windows-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0  # Full history for versioning
+          fetch-depth: 0
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6
@@ -42,149 +54,90 @@ jobs:
             10.0.x
             9.0.x
             8.0.x
-            6.0.x
-          # continue-on-error: true
 
-      # .NET 11 (Preview)
-      - name: Setup .NET 11 (Preview)
+      - name: Setup .NET 11 (stable)
+        id: setup_dotnet11_stable
+        continue-on-error: true
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 11.0.x
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+
+      - name: Setup .NET 11 (preview fallback)
+        if: steps.setup_dotnet11_stable.outcome == 'failure'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
           dotnet-quality: preview
 
-      - name: Force .NET 11 SDK via global.json  # global.json dynamically generated
-        run: |
-          $sdkVersion = (dotnet --list-sdks | Select-String "11.0").ToString().Split(" ")[0]
-          if (-not $sdkVersion) {
-            # Fallback to .NET 10 if .NET 11 is not available
-            $sdkVersion = (dotnet --list-sdks | Select-String "10.0").ToString().Split(" ")[0]
-          }
-          Write-Output "Using SDK $sdkVersion"
-          @"
-          {
-            "sdk": {
-              "version": "$sdkVersion",
-              "rollForward": "latestFeature"
-            }
-          }
-          "@ | Out-File -Encoding utf8 global.json
+      - name: Pin SDK via global.json
+        shell: pwsh
+        run: ./Scripts/CI/Pin-DotNetSdk.ps1
 
-      - name: Print diagnostics
-        run: |
-          dotnet --list-sdks
-          dotnet --info
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe' -version || msbuild -version || Write-Output "msbuild not found"
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
 
-      - name: Determine Configuration
-        id: config
+      - name: Cache NuGet
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Resolve channel
+        id: channel
         shell: pwsh
         run: |
-          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
-            $config = "${{ inputs.configuration }}"
+          $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') {
+            $config = '${{ inputs.configuration }}'
+            $target = '${{ inputs.pack_mode }}'
           } else {
-            # For tag pushes, determine configuration from tag name or default to Release
-            $config = "Release"
+            $config = 'Release'
+            $target = 'PackAll'
           }
+
+          $proj = 'Scripts/Build/build.proj'
+          $packageDir = 'Release'
+          switch -Regex ($config) {
+            '^Nightly' { $proj = 'Scripts/Build/nightly.proj'; $packageDir = 'Nightly' }
+            '^Canary'  { $proj = 'Scripts/Build/canary.proj'; $packageDir = 'Canary' }
+            default    { $proj = 'Scripts/Build/build.proj'; $packageDir = 'Release' }
+          }
+
+          if ($config -match 'Lite$') {
+            $target = 'Pack'
+          }
+
+          Write-Host "Configuration=$config Target=$target Project=$proj"
           echo "configuration=$config" >> $env:GITHUB_OUTPUT
-          echo "Building with configuration: $config"
+          echo "target=$target" >> $env:GITHUB_OUTPUT
+          echo "project=$proj" >> $env:GITHUB_OUTPUT
+          echo "package_dir=$packageDir" >> $env:GITHUB_OUTPUT
 
-      - name: Restore using dotnet (Main Solution)
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
-
-      - name: Build Main Solution using dotnet
-        run: |
-          dotnet build "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" -c ${{ steps.config.outputs.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
-
-      - name: Restore using dotnet (NuGet Solution)
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln"
-
-      - name: Build NuGet Solution using dotnet
-        run: |
-          dotnet build "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln" -c ${{ steps.config.outputs.configuration }} -p:Platform="Any CPU" -v minimal --no-restore
-
-      - name: Build and Pack Ultimate Packages
-        shell: pwsh
-        run: |
-          $config = "${{ steps.config.outputs.configuration }}"
-          $outputDir = "Bin/NuGet Packages/$config"
-
-          # Ultimate Package
-          $ultimateProject = "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj"
-          if (Test-Path $ultimateProject) {
-            Write-Host "Building and packing Ultimate package..."
-            dotnet pack $ultimateProject --configuration $config --output $outputDir /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
-          } else {
-            Write-Warning "Ultimate package project not found at: $ultimateProject"
-          }
-
-          # Ultimate.Lite Package
-          $ultimateLiteProject = "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate.Lite/Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj"
-          if (Test-Path $ultimateLiteProject) {
-            Write-Host "Building and packing Ultimate.Lite package..."
-            dotnet pack $ultimateLiteProject --configuration $config --output $outputDir /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
-          } else {
-            Write-Warning "Ultimate.Lite package project not found at: $ultimateLiteProject"
-          }
-
-      - name: Pack NuGet packages
-        shell: pwsh
-        run: |
-          $config = "${{ steps.config.outputs.configuration }}"
-
-          # Find all .csproj files and pack them
-          # Note: Directory.Build.targets automatically configures all projects to include referenced binaries
-          Get-ChildItem -Path "Source/Krypton Toolkit" -Filter "*.csproj" -Recurse | ForEach-Object {
-            $project = $_.FullName
-            $projectName = $_.Name
-
-            # Skip application projects (not libraries) and Ultimate packages (already packed)
-            if ($projectName -like "*Examples*" -or
-                $projectName -like "*ZipExtractor*" -or
-                $projectName -like "*AutoUpdateCreator*" -or
-                $projectName -like "*Ultimate*") {
-              Write-Host "Skipping: $projectName"
-              return
-            }
-
-            Write-Host "Packing: $project"
-
-            # Pack (settings are applied from Directory.Build.targets)
-            dotnet pack $project --configuration $config --no-build --output "Bin/NuGet Packages/$config"
-          }
-
-          # Verify the Ultimate packages were created
-          $ultimatePackages = Get-ChildItem -Path "Bin/NuGet Packages/$config" -Filter "*Ultimate*.nupkg" -Exclude "*.symbols.nupkg"
-          if ($ultimatePackages) {
-            Write-Host "`n✅ Ultimate packages created successfully:"
-            foreach ($pkg in $ultimatePackages) {
-              Write-Host "   - $($pkg.Name) ($([math]::Round($pkg.Length / 1MB, 2)) MB)"
-            }
-          } else {
-            Write-Warning "⚠️ No Ultimate packages were found!"
-          }
+      - name: Pack
+        run: msbuild /m "${{ steps.channel.outputs.project }}" /t:${{ steps.channel.outputs.target }} /p:Configuration=${{ steps.channel.outputs.configuration }} /p:Platform="Any CPU"
 
       - name: List NuGet packages
         shell: pwsh
         run: |
-          $config = "${{ steps.config.outputs.configuration }}"
-          $nugetDir = "Bin/NuGet Packages/$config"
-          if (Test-Path $nugetDir) {
-            Write-Host "NuGet packages in $nugetDir:"
-            Get-ChildItem -Path $nugetDir -Filter "*.nupkg" | ForEach-Object {
-              Write-Host "  - $($_.Name)"
-            }
-          } else {
-            Write-Host "No NuGet packages directory found at: $nugetDir"
+          $nugetDir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
+          if (-not (Test-Path $nugetDir)) {
+            Write-Error "NuGet packages directory not found: $nugetDir"
           }
+          Get-ChildItem $nugetDir -Filter '*.nupkg' | ForEach-Object { Write-Host "  $($_.Name)" }
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: Release-${{ steps.config.outputs.configuration }}
+          name: Release-${{ steps.channel.outputs.configuration }}
           path: |
-            Bin/${{ steps.config.outputs.configuration }}/
-            Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/
+            Bin/${{ steps.channel.outputs.package_dir }}/
+            Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}/
           retention-days: 30
+          if-no-files-found: error
 
       - name: Publish to NuGet.org
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)
@@ -192,19 +145,14 @@ jobs:
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          $config = "${{ steps.config.outputs.configuration }}"
-          $nugetDir = "Bin/NuGet Packages/$config"
-
-          if (-not (Test-Path $nugetDir)) {
-            Write-Error "NuGet packages directory not found: $nugetDir"
-            exit 1
+          $ErrorActionPreference = 'Stop'
+          $nugetDir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
+          if ([string]::IsNullOrWhiteSpace($env:NUGET_API_KEY)) {
+            Write-Error 'NUGET_API_KEY secret is not set.'
           }
-
-          # Push all .nupkg files (excluding symbol packages which are uploaded automatically)
-          Get-ChildItem -Path $nugetDir -Filter "*.nupkg" -Exclude "*.symbols.nupkg" | ForEach-Object {
-            $package = $_.FullName
-            Write-Host "Publishing: $package"
-            dotnet nuget push $package --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+          Get-ChildItem $nugetDir -Filter '*.nupkg' -Exclude '*.symbols.nupkg' | ForEach-Object {
+            Write-Host "Publishing $($_.Name)"
+            dotnet nuget push $_.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
 
       - name: Create GitHub Release
@@ -212,11 +160,10 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           files: |
-            Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/*.nupkg
-            Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/*.snupkg
+            Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}/*.nupkg
+            Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}/*.snupkg
           draft: false
-          prerelease: ${{ contains(steps.config.outputs.configuration, 'Canary') || contains(steps.config.outputs.configuration, 'Nightly') }}
+          prerelease: ${{ contains(steps.channel.outputs.configuration, 'Canary') || contains(steps.channel.outputs.configuration, 'Nightly') }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

@@ -536,7 +536,7 @@ The `KryptonMessageBoxExtended` class is located in the `Krypton.Toolkit.Suite.E
 ## See Also
 
 - [KryptonMessageBoxExtended API Documentation](../../Source/Krypton%20Toolkit/Krypton.Toolkit.Suite.Extended.Settings/Classes/Other/KryptonMessageBoxExtended.cs)
-- [MessageBox Footer Example](../../Source/Krypton%20Toolkit/Examples/MessageBoxFooterExample.cs)
+- [MessageBox Footer Example](../../Source/Krypton%20Toolkit/TestForm/MessageBoxFooterExample.cs)
 - [Issue #511 - Feature Request](https://github.com/Krypton-Suite/Extended-Toolkit/issues/511)
 - [Changelog](Changelog.md)
 
