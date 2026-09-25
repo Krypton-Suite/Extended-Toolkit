@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
@@ -25,10 +25,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs;
+namespace Krypton.Toolkit.Suite.Extended.Buttons;
 
 [ToolboxBitmap(typeof(KryptonButton))]
-public class KryptonSplitButton : KryptonButton
+public class KryptonSplitButtonExtended : KryptonButton
 {
     #region Constants
     private const int PUSH_BUTTON_WIDTH = 14;
@@ -39,7 +39,7 @@ public class KryptonSplitButton : KryptonButton
 
     private Rectangle _dropDownRectangle = new();
 
-    private string? _processPath;
+    private string _processPath;
     #endregion
 
     #region Readonly
@@ -69,7 +69,8 @@ public class KryptonSplitButton : KryptonButton
     }
 
     /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
-    /// <value><c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+    /// <value>
+    ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
     [DefaultValue(false)]
     public bool UseUACElevation
     {
@@ -83,48 +84,46 @@ public class KryptonSplitButton : KryptonButton
 
                 if (_useUACElevation)
                 {
-                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize)!.ToBitmap();
+                    Icon? shieldIcon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+                    Values.Image = shieldIcon?.ToBitmap();
                 }
                 else
                 {
-                    Values.Image = null!;
+                    Values.Image = null;
                 }
             }
         }
     }
 
-    /// <summary>Gets or sets the process path.</summary>
-    /// <value>The process path.</value>
-    [DefaultValue(null)]
-    public string? ProcessPath { get => _processPath; set => _processPath = value; }
+    [DefaultValue("")]
+    public string ProcessPath { get => _processPath; set => _processPath = value; }
     #endregion
 
     #region Events
     /// <summary></summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-    public delegate void ExecuteProcessAsAdministratorEventHandler(object? sender, ExecuteProcessAsAdministratorEventArgs e);
+    public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
     /// <summary>The execute process as administrator</summary>
-    public event ExecuteProcessAsAdministratorEventHandler? ExecuteProcessAsAdministrator;
+    public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
 
     /// <summary>Executes the process as an administrator.</summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
-    protected virtual void OnExecuteProcessAsAdministrator(object? sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
+    protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
     #endregion
 
     #region Constructor
-    /// <summary>Initializes a new instance of the <see cref="KryptonSplitButton"/> class.</summary>
-    public KryptonSplitButton()
+    /// <summary>Initializes a new instance of the <see cref="KryptonSplitButtonExtended"/> class.</summary>
+    public KryptonSplitButtonExtended()
     {
         AutoSize = true;
 
-        _showSplitOption = true;
+        ShowSplitOption = true;
 
-        _useUACElevation = false;
-
-        _processPath = null;
+        // Default size
+        Size = new(90, 25);
     }
     #endregion
 
@@ -196,10 +195,13 @@ public class KryptonSplitButton : KryptonButton
         }
     }
 
-#pragma warning disable CS8765
-    protected override void OnPaint(PaintEventArgs e)
-#pragma warning restore CS8765
+    protected override void OnPaint(PaintEventArgs? e)
     {
+        if (e == null)
+        {
+            return;
+        }
+
         base.OnPaint(e);
 
         if (!ShowSplitOption)
@@ -289,7 +291,11 @@ public class KryptonSplitButton : KryptonButton
 
         if (KryptonContextMenu != null)
         {
-            KryptonContextMenu.Show(FindForm()!.PointToScreen(Location) + new Size(0, Height));
+            Form? owner = FindForm();
+            if (owner != null)
+            {
+                KryptonContextMenu.Show(owner.PointToScreen(Location) + new Size(0, Height));
+            }
 
             KryptonContextMenu.Closed += KryptonContextMenu_Closed;
         }
