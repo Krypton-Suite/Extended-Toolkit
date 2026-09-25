@@ -119,8 +119,7 @@ public class NaviBarDesigner : ParentControlDesigner
                 {
                     ArrayList list = new ArrayList();
                     list.Add(band);
-                    if (selectionService != null
-                        && selectionService.PrimarySelection is NaviBand selectedBand)
+                    if (selectionService is { PrimarySelection: NaviBand selectedBand })
                     {
                         designingControl.SetActiveBand(selectedBand);
                         selectionService.SetSelectedComponents(list);

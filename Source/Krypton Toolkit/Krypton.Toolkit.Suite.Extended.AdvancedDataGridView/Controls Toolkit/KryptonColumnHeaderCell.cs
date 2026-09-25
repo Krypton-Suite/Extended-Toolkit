@@ -817,7 +817,7 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         Color paletteBorder = header.Border.GetBorderColor1(state);
         Color paletteText = header.Content.GetContentShortTextColor1(state);
 
-        if (!paletteBack.IsEmpty && paletteBack.A > 0)
+        if (paletteBack is { IsEmpty: false, A: > 0 })
         {
             headerBackColor = paletteBack;
             backColor = _filterButtonPressed
@@ -827,7 +827,7 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
                     : ControlPaint.Light(paletteBack, 0.2f);
         }
 
-        if (!paletteBorder.IsEmpty && paletteBorder.A > 0)
+        if (paletteBorder is { IsEmpty: false, A: > 0 })
         {
             borderColor = paletteBorder;
         }
@@ -842,7 +842,7 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         {
             glyphColor = paletteText.IsEmpty || paletteText.A == 0 ? SystemColors.ControlText : paletteText;
         }
-        else if (!paletteText.IsEmpty && paletteText.A > 0)
+        else if (paletteText is { IsEmpty: false, A: > 0 })
         {
             glyphColor = Color.FromArgb(170, paletteText);
         }
