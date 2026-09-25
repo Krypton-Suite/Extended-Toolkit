@@ -326,10 +326,10 @@ public class ViewDrawCommandLinkButton : ViewComposite
         System.Diagnostics.Debug.Assert(palettePressed != null);
 
         // Remember the new palette settings
-        _paletteDisabled = paletteDisabled!;
-        _paletteNormal = paletteNormal!;
-        _paletteTracking = paletteTracking!;
-        _palettePressed = palettePressed!;
+        _paletteDisabled = paletteDisabled;
+        _paletteNormal = paletteNormal;
+        _paletteTracking = paletteTracking;
+        _palettePressed = palettePressed;
 
         // Must force update of palettes to use latest ones provided
         _forcePaletteUpdate = true;
@@ -373,7 +373,7 @@ public class ViewDrawCommandLinkButton : ViewComposite
         CheckPaletteState(context);
 
         // Ask the renderer to evaluate the given palette
-        return _drawCanvas.EvalTransparentPaint(context!);
+        return _drawCanvas.EvalTransparentPaint(context);
     }
     #endregion
 

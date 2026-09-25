@@ -70,7 +70,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
 
         // Create content storage
         Values = CreateButtonValues(NeedPaintDelegate);
-        Values.TextChanged += OnButtonTextChanged!;
+        Values.TextChanged += OnButtonTextChanged;
 
         // Create the palette storage
         StateCommon = new PaletteTripleRedirect(Redirector, PaletteBackStyle.ButtonStandalone, PaletteBorderStyle.ButtonStandalone, PaletteContentStyle.ButtonStandalone, NeedPaintDelegate);
@@ -111,8 +111,8 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
         _drawButton.SourceController = _buttonController;
 
         // Need to know when user clicks the button view or mouse selects it
-        _buttonController.Click += OnButtonClick!;
-        _buttonController.MouseSelect += OnButtonSelect!;
+        _buttonController.Click += OnButtonClick;
+        _buttonController.MouseSelect += OnButtonSelect;
 
         // Create the view manager instance
         ViewManager = new ViewManager(this, _drawButton);

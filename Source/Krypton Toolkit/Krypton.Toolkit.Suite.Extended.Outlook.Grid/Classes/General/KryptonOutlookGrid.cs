@@ -1136,7 +1136,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         OutlookGridColumn? col = _internalColumns.FindFromColumnIndex(_colSelected);
         if (col?.GroupingType is OutlookGridDateTimeGroup dateTimeGroup && item.Tag != null)
         {
-            dateTimeGroup.Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString()!);
+            dateTimeGroup.Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString());
         }
 
         ForceRefreshGroupBox();

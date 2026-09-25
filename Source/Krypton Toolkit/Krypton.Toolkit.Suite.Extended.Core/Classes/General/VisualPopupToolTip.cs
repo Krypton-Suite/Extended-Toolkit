@@ -77,7 +77,7 @@ public class VisualPopupToolTip : VisualPopup
         System.Diagnostics.Debug.Assert(contentValues != null);
 
         // Remember references needed later
-        _contentValues = contentValues!;
+        _contentValues = contentValues;
 
         // Create the triple redirector needed by view elements
         _palette = new(redirector, backStyle, borderStyle, contentStyle, NeedPaintDelegate);

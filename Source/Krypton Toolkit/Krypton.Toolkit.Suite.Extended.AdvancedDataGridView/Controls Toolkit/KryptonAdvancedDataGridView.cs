@@ -1132,13 +1132,13 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
 
                 for (int r = rowIndex; r < RowCount; r++)
                 {
-                    string? value = Rows[r].Cells[c].FormattedValue!.ToString();
+                    string value = Rows[r].Cells[c].FormattedValue!.ToString();
                     if (!isCaseSensitive)
                     {
-                        value = value?.ToLower();
+                        value = value.ToLower();
                     }
 
-                    if ((!isWholeWordSearch && value!.Contains(valueToFind)) || value!.Equals(valueToFind))
+                    if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
                     {
                         return Rows[r].Cells[c];
                     }
@@ -1160,10 +1160,10 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                         string? value = Rows[r].Cells[c].FormattedValue!.ToString();
                         if (!isCaseSensitive)
                         {
-                            value = value?.ToLower();
+                            value = value.ToLower();
                         }
 
-                        if ((!isWholeWordSearch && value!.Contains(valueToFind)) || value!.Equals(valueToFind))
+                        if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
                         {
                             return Rows[r].Cells[c];
                         }

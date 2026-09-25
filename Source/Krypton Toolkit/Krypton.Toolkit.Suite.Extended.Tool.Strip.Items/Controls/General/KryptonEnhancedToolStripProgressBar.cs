@@ -64,7 +64,7 @@ public class KryptonEnhancedToolStripProgressBar : ToolStripProgressBar
 
         Font = _palette.ColorTable.StatusStripFont;
 
-        Control.HandleCreated += Control_HandleCreated!;
+        Control.HandleCreated += Control_HandleCreated;
     }
 
     #endregion

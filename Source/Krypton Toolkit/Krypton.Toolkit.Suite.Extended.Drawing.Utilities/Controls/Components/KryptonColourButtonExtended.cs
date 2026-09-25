@@ -1232,7 +1232,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
             ContextMenuClosed();
 
             // Unhook from item events
-            HookContextMenuEvents(_kryptonContextMenu!.Items, false);
+            HookContextMenuEvents(_kryptonContextMenu.Items, false);
         }
     }
 
@@ -1275,7 +1275,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         if (AutoRecentColours)
         {
             // We do not add to recent colors if it is inside another color columns 
-            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu!.Items)
+            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
             {
                 // Only interested in the non-recent colors color columns
                 if (item != _coloursRecent && item is KryptonContextMenuColorColumns colors)
@@ -1377,7 +1377,7 @@ public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonCont
         if (target.Visible)
         {
             // Check all items before the target
-            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu!.Items)
+            foreach (KryptonContextMenuItemBase item in _kryptonContextMenu.Items)
             {
                 // Finish when we reach the target
                 if (item == target)
