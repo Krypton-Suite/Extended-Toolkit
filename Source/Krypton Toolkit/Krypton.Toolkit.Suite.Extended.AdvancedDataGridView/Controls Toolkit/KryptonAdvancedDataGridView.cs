@@ -1132,13 +1132,13 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
 
                 for (int r = rowIndex; r < RowCount; r++)
                 {
-                    string? value = Rows[r].Cells[c].FormattedValue!.ToString();
+                    string value = Rows[r].Cells[c].FormattedValue!.ToString();
                     if (!isCaseSensitive)
                     {
-                        value = value?.ToLower();
+                        value = value.ToLower();
                     }
 
-                    if ((!isWholeWordSearch && value!.Contains(valueToFind)) || value!.Equals(valueToFind))
+                    if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
                     {
                         return Rows[r].Cells[c];
                     }
@@ -1160,10 +1160,10 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                         string? value = Rows[r].Cells[c].FormattedValue!.ToString();
                         if (!isCaseSensitive)
                         {
-                            value = value?.ToLower();
+                            value = value.ToLower();
                         }
 
-                        if ((!isWholeWordSearch && value!.Contains(valueToFind)) || value!.Equals(valueToFind))
+                        if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
                         {
                             return Rows[r].Cells[c];
                         }
@@ -1337,15 +1337,12 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         {
             DataGridViewColumn? column = Columns[filterOrder];
 
-            if (column != null)
+            if (column is { HeaderCell: KryptonColumnHeaderCell cell })
             {
-                if (column.HeaderCell is KryptonColumnHeaderCell cell)
+                if (cell.FilterAndSortEnabled && cell.ActiveFilterType != MenuStrip.FilterType.None)
                 {
-                    if (cell.FilterAndSortEnabled && cell.ActiveFilterType != MenuStrip.FilterType.None)
-                    {
-                        sb.AppendFormat(appx + "(" + cell.FilterString + ")", column.DataPropertyName);
-                        appx = " AND ";
-                    }
+                    sb.AppendFormat(appx + "(" + cell.FilterString + ")", column.DataPropertyName);
+                    appx = " AND ";
                 }
             }
         }
@@ -1432,15 +1429,12 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         {
             DataGridViewColumn? column = Columns[sortOrder];
 
-            if (column != null)
+            if (column is { HeaderCell: KryptonColumnHeaderCell cell })
             {
-                if (column.HeaderCell is KryptonColumnHeaderCell cell)
+                if (cell.FilterAndSortEnabled && cell.ActiveSortType != MenuStrip.SortType.None)
                 {
-                    if (cell.FilterAndSortEnabled && cell.ActiveSortType != MenuStrip.SortType.None)
-                    {
-                        sb.AppendFormat(appx + cell.SortString, column.DataPropertyName);
-                        appx = ", ";
-                    }
+                    sb.AppendFormat(appx + cell.SortString, column.DataPropertyName);
+                    appx = ", ";
                 }
             }
         }

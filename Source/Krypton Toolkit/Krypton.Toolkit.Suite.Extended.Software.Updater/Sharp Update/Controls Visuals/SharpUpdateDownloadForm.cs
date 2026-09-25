@@ -127,12 +127,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             string byteType = "B";
 
             // Check if best size in KB
-            if (newBytes > 1024 && newBytes < 1048576)
+            if (newBytes is > 1024 and < 1048576)
             {
                 newBytes /= 1024;
                 byteType = "KB";
             }
-            else if (newBytes > 1048576 && newBytes < 1073741824)
+            else if (newBytes is > 1048576 and < 1073741824)
             {
                 // Check if best size in MB
                 newBytes /= 1048576;

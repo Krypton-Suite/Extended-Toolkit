@@ -79,7 +79,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                     //If no date Time let the valDateTime to the min value !
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString()!);
+                        _valDateTime = DateTime.Parse(value.ToString());
                     }
                     else
                     {
@@ -92,7 +92,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                     //If no date Time let the valDateTime to the min value !
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString()!);
+                        _valDateTime = DateTime.Parse(value.ToString());
                         base.Value = _valDateTime.Year;
                     }
                     else
@@ -105,7 +105,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                     //If no date Time let the valDateTime to the min value !
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString()!);
+                        _valDateTime = DateTime.Parse(value.ToString());
                         base.Value = $"{_ti.ToTitleCase(_valDateTime.ToString("MMMM"))} {_valDateTime.Year}";
                     }
                     else
@@ -117,7 +117,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                 case DateInterval.Day:
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString()!);
+                        _valDateTime = DateTime.Parse(value.ToString());
                         base.Value = _valDateTime.Date.ToShortDateString();
                     }
                     else
@@ -129,7 +129,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                 case DateInterval.Quarter:
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString()!);
+                        _valDateTime = DateTime.Parse(value.ToString());
                         base.Value =
                             $"{OutlookGridGroupHelpers.GetQuarterAsString(_valDateTime)} {_valDateTime.Year}";
                     }

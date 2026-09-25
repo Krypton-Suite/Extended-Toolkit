@@ -93,7 +93,7 @@ public class MRUMenuItem : ToolStripMenuItem
             {
                 if (outputControl != null)
                 {
-                    StreamReader sr = new StreamReader(filePath!);
+                    StreamReader sr = new StreamReader(filePath);
 
                     outputControl.Text = sr.ReadToEnd();
 

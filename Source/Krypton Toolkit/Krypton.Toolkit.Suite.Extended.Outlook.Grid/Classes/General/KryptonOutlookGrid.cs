@@ -1136,7 +1136,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
         OutlookGridColumn? col = _internalColumns.FindFromColumnIndex(_colSelected);
         if (col?.GroupingType is OutlookGridDateTimeGroup dateTimeGroup && item.Tag != null)
         {
-            dateTimeGroup.Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString()!);
+            dateTimeGroup.Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString());
         }
 
         ForceRefreshGroupBox();
@@ -1735,7 +1735,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             return;
         }
         //Change the SortIndex and MaxSortIndex only if it is not a grouped column
-        if (!col.IsGrouped && col.SortIndex == -1)
+        if (col is { IsGrouped: false, SortIndex: -1 })
         {
             col.SortIndex = ++_internalColumns.MaxSortIndex;
         }
@@ -2253,7 +2253,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             _menuSortAscending.Checked = col.SortDirection == SortOrder.Ascending ? true : false;
             _menuSortDescending.Checked = col.SortDirection == SortOrder.Descending ? true : false;
             _menuSortDescending.Visible = isSortable;
-            _menuSortBySummary.Visible = col.IsGrouped && col.GroupingType != null;
+            _menuSortBySummary.Visible = col is { IsGrouped: true, GroupingType: not null };
             if (_menuSortBySummary.Visible)
             {
                 _menuSortBySummary.Checked = col.GroupingType!.SortBySummaryCount;
@@ -2323,8 +2323,8 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             _menuGroupByThisColumn.Visible = false;
             _menuGroupInterval.Visible = false;
             _menuUngroupByThisColumn.Visible = false;
-            _menuShowGroupBox.Visible = _groupBox != null && !_groupBox.Visible;
-            _menuHideGroupBox.Visible = _groupBox != null && _groupBox.Visible;
+            _menuShowGroupBox.Visible = _groupBox is { Visible: false };
+            _menuHideGroupBox.Visible = _groupBox is { Visible: true };
             _menuSeparator2.Visible = _menuGroupByThisColumn.Visible || _menuUngroupByThisColumn.Visible || _menuShowGroupBox.Visible || _menuHideGroupBox.Visible;
             _menuBestFitColumn.Visible = false;
             _menuSeparator5.Visible = false;
@@ -2591,7 +2591,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
     private void RecursiveUpwardSetNodeCollapse(OutlookGridRow? r, bool collapsed)
     {
         //No events - for speed
-        if (r != null && r.ParentNode != null)
+        if (r is { ParentNode: not null })
         {
             r.ParentNode.Collapsed = collapsed;
             RecursiveUpwardSetNodeCollapse(r.ParentNode, collapsed);
@@ -3194,7 +3194,7 @@ public partial class KryptonOutlookGrid : KryptonDataGridView
             writer.WriteStartDocument();
             writer.WriteStartElement("OutlookGrid");
             writer.WriteAttributeString("V", version);
-            writer.WriteElementString("GroupBox", (_groupBox != null && _groupBox.Visible).ToString());
+            writer.WriteElementString("GroupBox", (_groupBox is { Visible: true }).ToString());
             writer.WriteElementString("HideColumnOnGrouping", CommonHelper.BoolToString(HideColumnOnGrouping));
             writer.WriteStartElement("Columns");
             for (int i = 0; i < _internalColumns.Count; i++)

@@ -363,7 +363,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 {
                     var parseArgs = new ParseUpdateInfoEventArgs(xml);
                     ParseUpdateInfoEvent(parseArgs);
-                    args = parseArgs.UpdateInfo!;
+                    args = parseArgs.UpdateInfo;
                 }
             }
 
@@ -394,7 +394,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             {
                 // Read the persisted state from the persistence provider.
                 // This method makes the persistence handling independent from the storage method.
-                Version? skippedVersion = PersistenceProvider!.GetSkippedVersion();
+                Version? skippedVersion = PersistenceProvider.GetSkippedVersion();
                 if (skippedVersion != null)
                 {
                     var currentVersion = new Version(args.CurrentVersion);
@@ -406,11 +406,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     if (currentVersion > skippedVersion)
                     {
                         // Update the persisted state. Its no longer makes sense to have this flag set as we are working on a newer application version.
-                        PersistenceProvider!.SetSkippedVersion(null);
+                        PersistenceProvider.SetSkippedVersion(null);
                     }
                 }
 
-                DateTime? remindLaterAt = PersistenceProvider!.GetRemindLater();
+                DateTime? remindLaterAt = PersistenceProvider.GetRemindLater();
                 if (remindLaterAt == null)
                 {
                     return args;

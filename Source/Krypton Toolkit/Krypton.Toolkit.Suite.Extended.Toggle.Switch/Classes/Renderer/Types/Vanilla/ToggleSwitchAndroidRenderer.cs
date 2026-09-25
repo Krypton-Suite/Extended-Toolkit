@@ -63,7 +63,7 @@ public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidVal
 
             if (_palette != null)
             {
-                _palette.PalettePaint += OnPalettePaint!;
+                _palette.PalettePaint += OnPalettePaint;
             }
         }
 
