@@ -80,7 +80,7 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 
     protected override void OnResizeEnd(EventArgs e)
     {
-        if (_dockExtender._overlay.Visible && _dockExtender._overlay.DockHostControl != null) //ok found new docking position
+        if (_dockExtender._overlay is { Visible: true, DockHostControl: not null }) //ok found new docking position
         {
             _dockState.OrgDockingParent = _dockExtender._overlay.DockHostControl;
             if (_dockState.Container != null)
@@ -423,7 +423,7 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
     private void DockFloating()
     {
         // bring dockhost to front first to prevent flickering
-        if (_dockState.OrgDockHost != null && _dockState.OrgDockHost.TopLevelControl != null)
+        if (_dockState.OrgDockHost is { TopLevelControl: not null })
         {
             _dockState.OrgDockHost.TopLevelControl.BringToFront();
         }

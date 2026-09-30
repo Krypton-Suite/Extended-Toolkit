@@ -333,14 +333,14 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
     {
         base.OnSubscribeControlEvents(control);
 
-        ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged!;
+        ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged;
     }
 
     protected override void OnUnsubscribeControlEvents(Control? control)
     {
         base.OnUnsubscribeControlEvents(control);
 
-        ((control as KryptonDateTimePicker)!).ValueChanged -= OnValueChanged!;
+        ((control as KryptonDateTimePicker)!).ValueChanged -= OnValueChanged;
     }
 
     #endregion

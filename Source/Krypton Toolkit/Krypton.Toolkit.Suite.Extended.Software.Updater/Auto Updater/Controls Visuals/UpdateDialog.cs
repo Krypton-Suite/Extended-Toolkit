@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 };
             }
 
-            wvChangelog.CoreWebView2.Navigate(_updateInfoEventArgs.ChangelogURL!);
+            wvChangelog.CoreWebView2.Navigate(_updateInfoEventArgs.ChangelogURL);
         }
 
         private void UseLatestIE()
@@ -234,7 +234,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 _ => DateTime.Now
             };
 
-            AutoUpdater.PersistenceProvider!.SetRemindLater(remindLaterDateTime);
+            AutoUpdater.PersistenceProvider.SetRemindLater(remindLaterDateTime);
             AutoUpdater.SetTimer(remindLaterDateTime);
 
             DialogResult = DialogResult.Cancel;

@@ -260,7 +260,7 @@ public partial class KryptonToastNotificationVersion2 : KryptonForm
 
     private void KryptonToastNotificationVersion2_Load(object? sender, EventArgs e)
     {
-        Location = new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5, Screen.PrimaryScreen!.WorkingArea.Height - Height - 5);
+        Location = new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
 
         FadeIn();
 

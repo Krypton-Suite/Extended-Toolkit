@@ -161,7 +161,7 @@ public partial class StartScreen : KryptonForm
     private void RestoreFormSize()
     {
         Size size = _registryAccess.FormSize;
-        if (size.Width > 0 && size.Height > 0)
+        if (size is { Width: > 0, Height: > 0 })
         {
             Size = _registryAccess.FormSize;
         }

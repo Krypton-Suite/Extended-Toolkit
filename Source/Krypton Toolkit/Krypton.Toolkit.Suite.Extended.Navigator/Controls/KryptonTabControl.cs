@@ -567,7 +567,7 @@ public class KryptonTabControl : TabControl
                     if (HotTrack)
                     {
                         //Redraw only if the state has changed
-                        if (TabPages[i].Tag is bool isHot && !isHot)
+                        if (TabPages[i].Tag is bool and false)
                         {
                             Invalidate();
                         }
@@ -578,7 +578,7 @@ public class KryptonTabControl : TabControl
                 else
                 {
                     //Redraw only if the state has changed
-                    if (TabPages[i].Tag is bool isHot && isHot)
+                    if (TabPages[i].Tag is bool and true)
                     {
                         Invalidate();
                     }
@@ -1693,7 +1693,7 @@ public class KryptonTabControl : TabControl
 
     private void ToolstripItemEvent(object? sender, EventArgs e)
     {
-        if (sender is ToolStripMenuItem tsi && tsi.Tag is TabPage tp)
+        if (sender is ToolStripMenuItem { Tag: TabPage tp })
         {
             SelectedTab = tp;
             Invalidate();

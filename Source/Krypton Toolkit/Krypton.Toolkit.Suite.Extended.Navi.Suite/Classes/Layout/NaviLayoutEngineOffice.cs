@@ -821,7 +821,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     private void Button_Click(object? sender, EventArgs e)
     {
-        if (sender is NaviButton button && button.Band != null)
+        if (sender is NaviButton { Band: not null } button)
         {
             Bar.ActiveBand = button.Band;
         }

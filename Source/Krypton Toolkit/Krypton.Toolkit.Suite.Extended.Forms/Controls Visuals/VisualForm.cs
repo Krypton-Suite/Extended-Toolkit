@@ -1511,7 +1511,7 @@ public abstract class VisualForm : Form, IKryptonDebug
         Point windowPoint = ScreenToWindow(screenPoint);
 
         // Find the view element under the mouse
-        ViewBase? pointView = ViewManager.Root!.ViewFromPoint(windowPoint);
+        ViewBase? pointView = ViewManager.Root.ViewFromPoint(windowPoint);
 
         // Try and find a mouse controller for the active view
         IMouseController? controller = pointView?.FindMouseController();

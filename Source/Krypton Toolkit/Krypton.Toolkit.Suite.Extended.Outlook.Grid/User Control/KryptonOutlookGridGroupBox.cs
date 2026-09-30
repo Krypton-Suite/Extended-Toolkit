@@ -800,7 +800,7 @@ public partial class KryptonOutlookGridGroupBox : UserControl
         KryptonContextMenuItem item = (KryptonContextMenuItem)sender!;
         OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
         OutlookGridColumn colEvent = new(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
-        colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag!.ToString()!) };
+        colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = (DateInterval)Enum.Parse(typeof(DateInterval), item.Tag!.ToString()) };
         col.GroupInterval = ((OutlookGridDateTimeGroup)colEvent.GroupingType).Interval.ToString();
         //Raise event
         OnGroupIntervalClick(new OutlookGridColumnEventArgs(colEvent));

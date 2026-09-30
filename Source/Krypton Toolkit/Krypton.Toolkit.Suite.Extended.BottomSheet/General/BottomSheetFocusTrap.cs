@@ -105,7 +105,7 @@ internal sealed class BottomSheetFocusTrap : IMessageFilter, IDisposable
                 return last;
             }
 
-            if (current.CanSelect && current.TabStop && current.Enabled && current.Visible)
+            if (current is { CanSelect: true, TabStop: true, Enabled: true, Visible: true })
             {
                 last = current;
             }

@@ -397,7 +397,7 @@ public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCel
     /// <param name="paintParts"></param>
     protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object? value, object? formattedValue, string? errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
     {
-        if (Value is TextAndImage tai && tai.Image is Image img)
+        if (Value is TextAndImage { Image: Image img })
         {
             //Padding inheritedPadding = this.InheritedStyle.Padding;
             //this.Style.Padding = new Padding(18, inheritedPadding.Top, inheritedPadding.Right, inheritedPadding.Bottom);

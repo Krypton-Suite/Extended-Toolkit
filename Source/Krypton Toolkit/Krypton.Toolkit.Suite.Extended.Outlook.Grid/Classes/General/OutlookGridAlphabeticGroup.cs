@@ -64,7 +64,7 @@ public sealed class OutlookGridAlphabeticGroup : OutlookGridDefaultGroup
             //Note : value with Clone() is already 1 character, but no problem here
             if (value != null && !string.IsNullOrEmpty(value.ToString())) //useful for text and image object
             {
-                base.Value = value.ToString()!.Substring(0, 1).ToUpper();
+                base.Value = value.ToString().Substring(0, 1).ToUpper();
             }
             else
             {

@@ -218,7 +218,7 @@ public partial class CustomFormatRule : KryptonForm
 
         if (listItem.Tag != null)
         {
-            _conditionalFormatType = (EnumConditionalFormatType)Enum.Parse(typeof(EnumConditionalFormatType), listItem.Tag.ToString()!);
+            _conditionalFormatType = (EnumConditionalFormatType)Enum.Parse(typeof(EnumConditionalFormatType), listItem.Tag.ToString());
         }
 
         UpdateFormatType(_conditionalFormatType);

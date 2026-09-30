@@ -346,18 +346,18 @@ public class KryptonToastNotificationPopup : Component
                 if (Scroll)
                 {
                     _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom;
-                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                 }
                 else
                 {
                     _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
-                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                 }
                 _opacityStart = 0;
                 _opacityStop = 1;
 
                 _frmPopup.Opacity = _opacityStart;
-                _frmPopup.Location = new Point(Screen.PrimaryScreen!.WorkingArea.Right - _frmPopup.Size.Width - 1, _posStart);
+                _frmPopup.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - _frmPopup.Size.Width - 1, _posStart);
                 ShowInactiveTopmost(_frmPopup);
                 _isAppearing = true;
 
@@ -381,7 +381,7 @@ public class KryptonToastNotificationPopup : Component
                     else
                     {
                         _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
-                        _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                        _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                     }
                     _opacityStart = _frmPopup.Opacity;
                     _opacityStop = 1;
@@ -536,12 +536,12 @@ public class KryptonToastNotificationPopup : Component
                 if (Scroll)
                 {
                     _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
-                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom;
+                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom;
                 }
                 else
                 {
                     _posStart = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
-                    _posStop = Screen.PrimaryScreen!.WorkingArea.Bottom - _frmPopup.Height;
+                    _posStop = Screen.PrimaryScreen.WorkingArea.Bottom - _frmPopup.Height;
                 }
                 _opacityStart = 1;
                 _opacityStop = 0;

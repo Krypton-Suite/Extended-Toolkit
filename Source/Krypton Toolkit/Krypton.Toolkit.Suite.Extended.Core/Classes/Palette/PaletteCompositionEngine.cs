@@ -566,7 +566,7 @@ public class PaletteCompositionEngine
 
                 #region Separator Styles
 #pragma warning disable CS8602 // SeparatorStyles graph is populated by palette construction
-                palette.SeparatorStyles!.SeparatorCommon.StateCommon.Back.Color1 = baseColour;
+                palette.SeparatorStyles.SeparatorCommon.StateCommon.Back.Color1 = baseColour;
 
                 palette.SeparatorStyles.SeparatorCommon.StateCommon.Back.Color2 = baseColour;
 
