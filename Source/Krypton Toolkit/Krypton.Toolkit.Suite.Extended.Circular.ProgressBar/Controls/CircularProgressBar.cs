@@ -212,7 +212,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     public override string Text
     {
         get => base.Text;
-        set => base.Text = value!;
+        set => base.Text = value;
     }
 #pragma warning restore CS8765
 

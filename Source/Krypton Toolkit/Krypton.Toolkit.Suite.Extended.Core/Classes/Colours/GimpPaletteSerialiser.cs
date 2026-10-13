@@ -127,7 +127,7 @@ public class GimpPaletteSerialiser : PaletteSerialiser
 
                 if (!string.IsNullOrEmpty(data))
                 {
-                    if (data![0] == '#')
+                    if (data[0] == '#')
                     {
                         // comment
                         readingPalette = true;

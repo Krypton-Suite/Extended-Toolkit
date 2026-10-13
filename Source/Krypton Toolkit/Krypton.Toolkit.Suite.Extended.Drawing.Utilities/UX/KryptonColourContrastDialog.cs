@@ -76,7 +76,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
     private ToolStripMenuItem hexadecimalToolStripMenuItem;
     private KryptonButton kbtnOk;
     private KryptonButton kbtnCancel;
-    private KryptonSplitButton ksbtnPalettes;
+    private KryptonSplitButtonExtended ksbtnPalettes;
     private ContextMenuStrip cmsPaletteUtilities;
     private ToolStripMenuItem useBaseColourToolStripMenuItem;
     private ToolStripSeparator toolStripMenuItem7;
@@ -91,7 +91,7 @@ public class KryptonColourContrastDialog : CommonExtendedKryptonForm
     {
         this.components = new System.ComponentModel.Container();
         this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-        this.ksbtnPalettes = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
+        this.ksbtnPalettes = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButtonExtended();
         this.cmsPaletteUtilities = new System.Windows.Forms.ContextMenuStrip(this.components);
         this.useBaseColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();

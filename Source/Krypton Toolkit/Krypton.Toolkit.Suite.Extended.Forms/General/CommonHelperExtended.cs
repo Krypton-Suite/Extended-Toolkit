@@ -1159,14 +1159,14 @@ public static class CommonHelperExtended
         Debug.Assert(c != null);
 
         // If the control is already inside a control collection, then remove it
-        if (c!.Parent != null)
+        if (c.Parent != null)
         {
             RemoveControlFromParent(c);
         }
         // Then must use the internal method for adding a new instance
 
         // If the control collection is one of our internal collections...
-        if (parent!.Controls is KryptonControlCollection cc)
+        if (parent.Controls is KryptonControlCollection cc)
         {
             cc.AddInternal(c);
         }
@@ -1434,7 +1434,7 @@ public static class CommonHelperExtended
         else
         {
             // Cannot use host for creation, so do it the standard way instead
-            retObj = TypeDescriptor.CreateInstance(host, itemType, null!, null!)!;
+            retObj = TypeDescriptor.CreateInstance(host, itemType, null!, null!);
         }
 
         return retObj!;

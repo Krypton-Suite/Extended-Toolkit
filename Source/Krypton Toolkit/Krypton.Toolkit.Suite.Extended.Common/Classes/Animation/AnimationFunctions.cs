@@ -54,10 +54,10 @@ public static class AnimationFunctions
     public delegate float Function(float time, float beginningValue, float changeInValue, float duration);
 
     /// <summary>
-    ///     Returns a function delegate based on the the passed known animation function
+    ///     Returns a function delegate based on the passed known animation function
     /// </summary>
     /// <param name="knownFunction">The animation function</param>
-    /// <returns>Animation fucntion delegate</returns>
+    /// <returns>Animation function delegate</returns>
     public static Function FromKnown(KnownAnimationFunctions knownFunction)
     {
         switch (knownFunction)
@@ -108,10 +108,9 @@ public static class AnimationFunctions
                 return ExponentialEaseInOut;
             default:
                 throw new ArgumentOutOfRangeException(nameof(knownFunction), knownFunction,
-                    "The passed animation function is unknown.");
+                    @"The passed animation function is unknown.");
         }
     }
-
 
     /// <summary>
     ///     The cubic ease-in animation function.

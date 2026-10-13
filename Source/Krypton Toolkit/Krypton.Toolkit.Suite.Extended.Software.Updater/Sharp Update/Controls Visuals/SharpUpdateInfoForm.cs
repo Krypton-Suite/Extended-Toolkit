@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
         private void krtxtDescription_KeyDown(object? sender, KeyEventArgs e)
         {
             // Only allow Ctrl + C to copy text
-            if (!(e.Control && e.KeyCode == Keys.C))
+            if (!(e is { Control: true, KeyCode: Keys.C }))
             {
                 e.SuppressKeyPress = true;
             }
