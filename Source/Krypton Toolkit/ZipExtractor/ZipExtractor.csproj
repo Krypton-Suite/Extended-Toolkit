@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -89,9 +89,6 @@
 		<PackageReference Include="NSec.Cryptography">
 			<Version>25.4.0</Version>
 		</PackageReference>
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
 
 </Project>

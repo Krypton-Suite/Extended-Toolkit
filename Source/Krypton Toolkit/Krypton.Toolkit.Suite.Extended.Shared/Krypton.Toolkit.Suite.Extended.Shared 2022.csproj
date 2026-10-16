@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
@@ -103,7 +103,6 @@
 		</Otherwise>
 	</Choose>
 
-
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Shared.xml</DocumentationFile>
@@ -116,9 +115,6 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
 
 	<!--Optimisation-->

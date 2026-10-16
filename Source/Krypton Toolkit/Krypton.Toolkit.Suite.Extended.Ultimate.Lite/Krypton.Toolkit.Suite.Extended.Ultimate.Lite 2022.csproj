@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
@@ -219,9 +219,6 @@
 	<ItemGroup>
 		<None Include="..\_shared-assets\License.txt" Pack="true" PackagePath="" Link="License\License.txt" />
 		<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

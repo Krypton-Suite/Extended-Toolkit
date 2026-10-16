@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
 
 	<!-- MSB3822/3823: binary .resx (images/icons) need preserialized GenerateResource + System.Resources.Extensions.
@@ -8,7 +8,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Resources.Extensions" Version="9.0.10" GeneratePathProperty="true" />
+		<!-- Single version for every project. Per-project Update overrides reintroduce NU1605 downgrades. -->
+		<PackageReference Include="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" GeneratePathProperty="true" />
 	</ItemGroup>
 
 	<!--Handle AssemblyInfo-->
