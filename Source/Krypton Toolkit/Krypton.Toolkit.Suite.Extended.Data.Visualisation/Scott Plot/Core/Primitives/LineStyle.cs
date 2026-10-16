@@ -10,7 +10,9 @@ public class LineStyle
     public Color Color { get; set; } = Colors.Black;
     public LinePattern Pattern { get; set; } = LinePattern.Solid;
     public bool IsVisible { get; set; } = true;
+#pragma warning disable WFO2000 // Prototype style; callers mutate their own copy.
     public static LineStyle None => new() { IsVisible = false };
+#pragma warning restore WFO2000
     public bool AntiAlias { get; set; } = true;
 
     public void Render(SKCanvas canvas, SKPaint paint, PixelLine line)

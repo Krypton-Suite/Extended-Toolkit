@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -92,60 +92,70 @@ public class KryptonTrackBarToolStripMenuItem : ToolStripControlHostFixed
     }
 
     #region ... exposed properties ...
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int Value
     {
         get => ((KryptonTrackBar)Control).Value;
         set => ((KryptonTrackBar)Control).Value = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int LargeChange
     {
         get => ((KryptonTrackBar)Control).LargeChange;
         set => ((KryptonTrackBar)Control).LargeChange = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int SmallChange
     {
         get => ((KryptonTrackBar)Control).SmallChange;
         set => ((KryptonTrackBar)Control).SmallChange = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int Maximum
     {
         get => ((KryptonTrackBar)Control).Maximum;
         set => ((KryptonTrackBar)Control).Maximum = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int Minimum
     {
         get => ((KryptonTrackBar)Control).Minimum;
         set => ((KryptonTrackBar)Control).Minimum = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool VolumeControl
     {
         get => ((KryptonTrackBar)Control).VolumeControl;
         set => ((KryptonTrackBar)Control).VolumeControl = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PaletteTrackBarSize TrackBarSize
     {
         get => ((KryptonTrackBar)Control).TrackBarSize;
         set => ((KryptonTrackBar)Control).TrackBarSize = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public TickStyle TickStyle
     {
         get => ((KryptonTrackBar)Control).TickStyle;
         set => ((KryptonTrackBar)Control).TickStyle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int TickFrequency
     {
         get => ((KryptonTrackBar)Control).TickFrequency;
         set => ((KryptonTrackBar)Control).TickFrequency = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Orientation Orientation
     {
         get => ((KryptonTrackBar)Control).Orientation;

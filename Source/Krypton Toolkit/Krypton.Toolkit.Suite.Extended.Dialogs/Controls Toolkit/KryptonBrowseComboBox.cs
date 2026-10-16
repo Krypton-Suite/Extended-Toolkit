@@ -128,6 +128,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
     [DefaultValue(@"Resets the text of the text box."), Description(@">Gets or sets the reset text tool tip description.")]
     public string ResetTextToolTipDescription { get => _resetTextToolTipDescription; set => _resetTextToolTipDescription = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string StandardFilter { get => _standardFilter; set => _standardFilter = value; }
 
     /// <summary>Gets or sets the small reset image.</summary>

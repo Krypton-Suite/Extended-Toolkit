@@ -357,6 +357,7 @@ public class Path3D
     /// <summary>
     ///     Gets the starting point of the path
     /// </summary>
+#pragma warning disable WFO2000 // Snapshot of the current path point.
     public Float3D Start => new Float3D(HorizontalPath!.Start, VerticalPath!.Start, DepthPath!.Start);
 
 
@@ -364,6 +365,7 @@ public class Path3D
     ///     Gets the ending point of the path
     /// </summary>
     public Float3D End => new Float3D(HorizontalPath!.End, VerticalPath!.End, DepthPath!.End);
+#pragma warning restore WFO2000
 
     /// <summary>
     ///     Creates and returns a new <see cref="Path3D" /> based on the current path but in reverse order

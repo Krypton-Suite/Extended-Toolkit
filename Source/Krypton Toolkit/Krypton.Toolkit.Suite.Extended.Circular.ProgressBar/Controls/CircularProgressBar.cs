@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -65,6 +65,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     ///     Sets a known animation function.
     /// </summary>
     [Category("Behavior")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public KnownAnimationFunctions AnimationFunction
     {
         get => _knownAnimationFunction;
@@ -86,6 +87,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public AnimationFunctions.Function CustomAnimationFunction
     {
         private get { return _animationFunction; }
@@ -216,6 +218,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     }
 #pragma warning restore CS8765
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool UseColorTrio { get => _useColorTrio; set => _useColorTrio = value; }
 
     [Category("Appearance"), DefaultValue(typeof(Color), "Color.Red")]

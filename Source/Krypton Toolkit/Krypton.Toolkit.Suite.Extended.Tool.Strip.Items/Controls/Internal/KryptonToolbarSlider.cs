@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -637,6 +637,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
 
     #region "Properties"
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int Value
     {
         get => m_value;
@@ -650,6 +651,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool SingleClick
     {
         get => m_singleClick;
@@ -663,6 +665,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int FireInterval
     {
         get => m_fireInterval;
@@ -676,6 +679,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int Range
     {
         get => m_range;
@@ -688,6 +692,7 @@ public partial class KryptonToolbarSlider : UserControl, IContentValues
             }
         }
     }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int Steps
     {
         get => m_step;

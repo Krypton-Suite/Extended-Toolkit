@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// *****************************************************************************
 // BSD 3-Clause License (https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/LICENSE)
 //
 //  © Component Factory Pty Ltd, 2006 - 2024, (Version 6.8.0.0)
@@ -32,15 +32,15 @@ public static class UltimatePackageInfo
     /// <summary>
     /// Gets the supported frameworks.
     /// </summary>
-    public static string[] SupportedFrameworks => new[]
-    {
+    public static string[] SupportedFrameworks { get; } =
+    [
         "net472",
         "net48",
         "net481",
         "net8.0-windows",
         "net9.0-windows",
         "net10.0-windows"
-    };
+    ];
 
     /// <summary>
     /// Gets the assembly version.
@@ -50,8 +50,8 @@ public static class UltimatePackageInfo
     /// <summary>
     /// Gets information about what's included in this package.
     /// </summary>
-    public static string[] IncludedComponents => new[]
-    {
+    public static string[] IncludedComponents { get; } =
+    [
         "Core & Foundation Components",
         "All Utilities and Tools",
         "Drawing & Effects Libraries",
@@ -66,5 +66,5 @@ public static class UltimatePackageInfo
         "Networking & Update Components",
         "Error Reporting & Debugging Tools",
         "Additional Components (PDF, Scintilla, etc.)"
-    };
+    ];
 }

@@ -25,7 +25,9 @@ public class
         Max = max;
     }
 
+#pragma warning disable WFO2000 // Callers expand the returned range.
     public static CoordinateRangeMutable Infinity => new(double.NegativeInfinity, double.PositiveInfinity);
+#pragma warning restore WFO2000
 
     public override string ToString()
     {
@@ -84,7 +86,9 @@ public class
     /// <summary>
     /// This infinite inverted range is used to indicate a range that has not yet been set
     /// </summary>
+#pragma warning disable WFO2000 // Callers expand the returned range.
     public static CoordinateRangeMutable NotSet => new(double.PositiveInfinity, double.NegativeInfinity);
+#pragma warning restore WFO2000
 
     // TODO: deprecate
     /// <summary>

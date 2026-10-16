@@ -107,6 +107,7 @@ public class KryptonStarRatingControl : Panel
 
     private Image _offImage;
     [Browsable(true), Category("Appearance-Extended")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Image OffImage
     {
         set
@@ -118,6 +119,7 @@ public class KryptonStarRatingControl : Panel
 
     private List<Image> _onImages;
     [Browsable(true), Category("Appearance-Extended")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public List<Image> OnImages
     {
         set
@@ -129,6 +131,7 @@ public class KryptonStarRatingControl : Panel
 
     private int _starCount;
     [Browsable(true), Category("Appearance-Extended")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int StarCount
     {
         get => _starCount;
@@ -141,6 +144,7 @@ public class KryptonStarRatingControl : Panel
 
     private int _currentStarValue;
     [Browsable(true), Category("Appearance-Extended")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int CurrentStarValue
     {
         get => _currentStarValue;

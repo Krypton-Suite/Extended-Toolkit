@@ -108,8 +108,10 @@ public class KryptonColourButtonToolStripMenuItem : ToolStripControlHostFixed
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new string Text { get => KryptonColourButtonControl!.Text; set => KryptonColourButtonControl!.Text = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Rectangle SelectedRect { get => KryptonColourButtonControl!.SelectedRect; set => KryptonColourButtonControl!.SelectedRect = value; }
 
     #endregion

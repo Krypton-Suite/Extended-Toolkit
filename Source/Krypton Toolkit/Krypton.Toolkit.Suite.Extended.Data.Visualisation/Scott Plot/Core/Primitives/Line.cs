@@ -7,7 +7,9 @@ public class Line
 {
     public Coordinates Start { get; set; }
     public Coordinates End { get; set; }
+#pragma warning disable WFO2000 // Prototype line; callers mutate their own copy.
     public static Line Default => new(0, 0, 1, 1);
+#pragma warning restore WFO2000
     public LineStyle Style { get; set; } = new LineStyle();
 
     /// <summary>

@@ -31,6 +31,7 @@ public static class ColourPalettes
 {
     #region Static Properties
 
+#pragma warning disable WFO2000 // Each read returns an independent palette copy callers may store and edit.
     public static ColourCollection HexagonPalette
     {
         get
@@ -843,6 +844,8 @@ public static class ColourPalettes
             });
         }
     }
+
+#pragma warning restore WFO2000
 
     #endregion
 

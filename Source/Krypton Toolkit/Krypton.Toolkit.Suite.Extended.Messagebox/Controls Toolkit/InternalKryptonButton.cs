@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -450,6 +450,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new ImeMode ImeMode
     {
         get => base.ImeMode;

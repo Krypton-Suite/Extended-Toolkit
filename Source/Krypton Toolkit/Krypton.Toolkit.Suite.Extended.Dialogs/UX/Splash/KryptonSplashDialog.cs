@@ -122,14 +122,19 @@ public class KryptonSplashDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ShowProgressBar { get; set; } = false;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string? ApplicationName { get; set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int LoadingBarMaximum { get; set; } = 100;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int LoadingBarMinimum { get; set; } = 0;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int LoadingBarIncrement { get; set; } = 1;
 
     [Browsable(false)]

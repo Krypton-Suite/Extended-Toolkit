@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -54,15 +54,22 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
     #region Properties
     private ActionButtonType ActionButtonType { get => _actionButtonType; set => _actionButtonType = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public ActionType ActionType { get => _actionType; set => _actionType = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string? SoundPath { get; set; }
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Stream? SoundStream { get; set; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int Seconds { get; set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int CornerRadius
     {
         get => _cornerRadius;
@@ -75,10 +82,13 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string ActionButtonText { get => _actionButtonText ?? string.Empty; set => _actionButtonText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string DismissButtonText { get => _dismissButtonText ?? string.Empty; set => _dismissButtonText = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string Title
     {
         get => _title ?? string.Empty;
@@ -91,6 +101,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string DisplayText
     {
         get => _text ?? string.Empty;
@@ -103,8 +114,10 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string ProcessToStart { get => _process ?? string.Empty; set => _process = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Color BorderColourOne
     {
         get => _borderColourOne;
@@ -117,6 +130,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Color BorderColourTwo
     {
         get => _borderColourTwo;
@@ -129,6 +143,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Image? IconImage
     {
         get => _iconImage;
@@ -141,6 +156,7 @@ public partial class KryptonToastNotificationVersion1 : KryptonForm
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public IconType IconType
     {
         get => _iconType;

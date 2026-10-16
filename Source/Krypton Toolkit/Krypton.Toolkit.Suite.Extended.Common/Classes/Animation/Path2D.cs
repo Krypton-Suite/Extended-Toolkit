@@ -302,6 +302,7 @@ public class Path2D
     /// <summary>
     ///     Gets the starting point of the path
     /// </summary>
+#pragma warning disable WFO2000 // Snapshot of the current path point.
     public Float2D Start => new Float2D(HorizontalPath!.Start, VerticalPath!.Start);
 
 
@@ -309,6 +310,7 @@ public class Path2D
     ///     Gets the ending point of the path
     /// </summary>
     public Float2D End => new Float2D(HorizontalPath!.End, VerticalPath!.End);
+#pragma warning restore WFO2000
 
     /// <summary>
     ///     Creates and returns a new <see cref="Path2D" /> based on the current path but in reverse order

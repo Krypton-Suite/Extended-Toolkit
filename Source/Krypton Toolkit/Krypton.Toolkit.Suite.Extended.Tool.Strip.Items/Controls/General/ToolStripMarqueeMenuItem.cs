@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -129,6 +129,7 @@ public class ToolStripMarqueeMenuItem : EnhancedToolStripMenuItem
     /// </summary>
     [Browsable(true)]
     [Description("Sets or gets text value of menu item text.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public new string Text
     {
         get => _text;

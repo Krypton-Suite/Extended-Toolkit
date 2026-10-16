@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -142,10 +142,12 @@ public class KryptonToastNotificationPopup : Component
 
     [Category("Content")]
     [Description("Font of the content text.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Font ContentFont { get; set; }
 
     [Category("Title")]
     [Description("Font of the title.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Font TitleFont { get; set; }
 
     [Category("Image")]
@@ -187,6 +189,7 @@ public class KryptonToastNotificationPopup : Component
 
     [Category("Image")]
     [Description("Icon image to display.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Image? Image { get; set; }
 
     [Category("Header"), DefaultValue(true)]
@@ -199,10 +202,12 @@ public class KryptonToastNotificationPopup : Component
 
     [Category("Content")]
     [Description("Content text to display.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string ContentText { get; set; }
 
     [Category("Title")]
     [Description("Title text to display.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string TitleText { get; set; }
 
     [Category("Title")]
@@ -261,6 +266,7 @@ public class KryptonToastNotificationPopup : Component
 
     [Category("Behavior")]
     [Description("Context menu to open when clicking on the options button.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public ContextMenuStrip OptionsMenu { get; set; }
 
     [Category("Behavior"), DefaultValue(3000)]
@@ -277,10 +283,12 @@ public class KryptonToastNotificationPopup : Component
 
     [Category("Appearance")]
     [Description("Size of the window.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Size Size { get; set; }
 
     [Category("Content")]
     [Description("Show Content Right To Left,نمایش پیغام چپ به راست فعال شود")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool IsRightToLeft { get; set; }
     #endregion
 

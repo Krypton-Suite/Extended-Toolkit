@@ -76,7 +76,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.288-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -114,7 +114,7 @@
 		<PackageReference Include="Handlebars.Net" Version="2.4.3" />
 		<PackageReference Include="ProDotNetZip" Version="1.20.0" />
 		<PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
-		<PackageReference Include="System.Management" Version="11.0.0-rc.1.26425.128" />
+		<PackageReference Include="System.Management" Version="11.0.0-rc.2.26504.105" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net462' Or '$(TargetFramework)' == 'net472' Or '$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'net481'">
@@ -147,7 +147,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.2.26504.105" />
 	</ItemGroup>
 
 

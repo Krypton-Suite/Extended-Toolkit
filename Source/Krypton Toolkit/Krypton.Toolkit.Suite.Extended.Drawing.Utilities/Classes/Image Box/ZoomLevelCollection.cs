@@ -66,6 +66,7 @@ public class ZoomLevelCollection : IList<int>
     /// <summary>
     /// Returns the default zoom levels
     /// </summary>
+#pragma warning disable WFO2000 // Independent default collection; callers store and edit it.
     public static ZoomLevelCollection Default
     {
         get
@@ -75,6 +76,7 @@ public class ZoomLevelCollection : IList<int>
             ]);
         }
     }
+#pragma warning restore WFO2000
 
     #endregion
 

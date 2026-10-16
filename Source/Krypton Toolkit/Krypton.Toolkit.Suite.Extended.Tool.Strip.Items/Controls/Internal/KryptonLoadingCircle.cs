@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -85,6 +85,7 @@ public partial class KryptonLoadingCircle : Control
     [TypeConverter("System.Drawing.ColorConverter"),
      Category("LoadingCircle"),
      Description("Sets the color of spoke.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Color Color
     {
         get => _mColor;
@@ -103,6 +104,7 @@ public partial class KryptonLoadingCircle : Control
     /// <value>The outer circle radius.</value>
     [Description("Gets or sets the radius of outer circle."),
      Category("LoadingCircle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int OuterCircleRadius
     {
         get
@@ -127,6 +129,7 @@ public partial class KryptonLoadingCircle : Control
     /// <value>The inner circle radius.</value>
     [Description("Gets or sets the radius of inner circle."),
      Category("LoadingCircle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int InnerCircleRadius
     {
         get
@@ -151,6 +154,7 @@ public partial class KryptonLoadingCircle : Control
     /// <value>The number of spoke.</value>
     [Description("Gets or sets the number of spoke."),
      Category("LoadingCircle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int NumberSpoke
     {
         get
@@ -181,6 +185,7 @@ public partial class KryptonLoadingCircle : Control
     /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
     [Description("Gets or sets the number of spoke."),
      Category("LoadingCircle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool Active
     {
         get => _mIsTimerActive;
@@ -197,6 +202,7 @@ public partial class KryptonLoadingCircle : Control
     /// <value>The spoke thickness.</value>
     [Description("Gets or sets the thickness of a spoke."),
      Category("LoadingCircle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int SpokeThickness
     {
         get
@@ -221,6 +227,7 @@ public partial class KryptonLoadingCircle : Control
     /// <value>The rotation speed.</value>
     [Description("Gets or sets the rotation speed. Higher the slower."),
      Category("LoadingCircle")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int RotationSpeed
     {
         get => _mTimer.Interval;

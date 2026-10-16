@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -88,6 +88,8 @@ public class ExpandingMenuItem : ToolStripMenuItem
     #endregion
 
     #region Properties
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Timer Timer
     {
         [MethodImpl(MethodImplOptions.Synchronized)]
@@ -116,6 +118,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
     /// </summary>
     /// <value>True if the menu item is a standard item, otherwise false</value>
     /// <returns>True if the menu item is a standard item, otherwise false</returns>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool IsStandardItem { get => _standardItem; set => _standardItem = value; }
 
     /// <summary>
@@ -127,6 +130,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
     /// This is necessary because Visible is used to display menu items.
     /// We can't track it because during OnDropDown it's always false.
     /// </remarks>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool AlwaysHidden { get => _alwaysHidden; set => _alwaysHidden = value; }
     #endregion
 

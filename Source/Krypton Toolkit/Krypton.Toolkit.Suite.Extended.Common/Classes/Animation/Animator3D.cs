@@ -146,10 +146,12 @@ public class Animator3D : IAnimator
     /// <summary>
     ///     Gets the currently active path.
     /// </summary>
+#pragma warning disable WFO2000 // Snapshot of the path that is active on this frame.
     public Path3D ActivePath => new Path3D(
         HorizontalAnimator.ActivePath,
         VerticalAnimator.ActivePath,
         DepthAnimator.ActivePath);
+#pragma warning restore WFO2000
 
     /// <summary>
     ///     Gets the horizontal animator.

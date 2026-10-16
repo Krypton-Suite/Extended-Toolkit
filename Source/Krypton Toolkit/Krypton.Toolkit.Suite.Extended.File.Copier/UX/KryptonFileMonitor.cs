@@ -30,6 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier;
 public partial class KryptonFileMonitor : KryptonForm, ICopyFileDetails
 {
     #region ICopyFileDetails Implementation
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ISynchronizeInvoke SynchronizationObject { get; set; }
 
     public event CopyFiles.DEL_cancelCopy EN_cancelCopy;

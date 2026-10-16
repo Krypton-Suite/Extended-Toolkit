@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -100,6 +100,7 @@ public class ToolStripLabelExtended : ToolStripStatusLabel
         set => _enableBlinking = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool BkClr
     {
         get => _bkClr;
@@ -310,6 +311,7 @@ public class ToolStripLabelExtended : ToolStripStatusLabel
         set => _blinkDuration = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public BlinkState BlinkState
     {
         get => _blinkState;
@@ -317,6 +319,7 @@ public class ToolStripLabelExtended : ToolStripStatusLabel
         set => _blinkState = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public short CycleInterval
     {
         get => _cycleInterval;

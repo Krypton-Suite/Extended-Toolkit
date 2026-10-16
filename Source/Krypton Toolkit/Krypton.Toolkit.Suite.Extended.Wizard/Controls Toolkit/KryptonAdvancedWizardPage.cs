@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -147,6 +147,7 @@ public class KryptonAdvancedWizardPage : KryptonPanel
 
     // get the index of the page before the current page
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int PreviousPage { get; set; }
 
     internal void FirePageShowEvent() => PageShow(this, new WizardPageEventArgs(this));

@@ -53,6 +53,7 @@ public partial class KryptonNumericUpDownToolStripItem : ToolStripControlHost
     /// <value>
     /// The value.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public decimal Value
     {
         get => KryptonNumericUpDownControl!.Value;

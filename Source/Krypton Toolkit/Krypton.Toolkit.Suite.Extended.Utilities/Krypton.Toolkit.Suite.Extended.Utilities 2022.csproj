@@ -75,7 +75,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.288-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -120,7 +120,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.2.26504.105" />
 	</ItemGroup>
 
 	<!--Optimisation-->

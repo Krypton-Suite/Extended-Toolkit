@@ -60,6 +60,8 @@ public class KryptonUACButton : KryptonButton
     #region Properties
     /// <summary>Gets or sets the process to elevate.</summary>
     /// <value>The process to elevate.</value>
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Assembly AssemblyToElevate { get => _assemblyToElevate; set => _assemblyToElevate = value; }
 
     /// <summary>

@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -143,6 +143,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
     public delegate void SliderButtonFireEventHandler(KryptonSliderButton sender, EventArgs e);
 
     //Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool SingleClick
     {
         get => _mSingleClick;
@@ -152,6 +153,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
             Invalidate();
         }
     }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public VisualOrientation Orientation
     {
         get => _mOrientation;
@@ -165,6 +167,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
             }
         }
     }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public ButtonStyles ButtonStyle
     {
         get => _mButtonstyle;
@@ -174,6 +177,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
             Invalidate();
         }
     }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public PaletteBackStyle VisualLook
     {
         get => _mVisuallook;
@@ -186,6 +190,7 @@ public partial class KryptonSliderButton : UserControl, IContentValues
             }
         }
     }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int EventFireRate
     {
         get => FireTimer.Interval;
