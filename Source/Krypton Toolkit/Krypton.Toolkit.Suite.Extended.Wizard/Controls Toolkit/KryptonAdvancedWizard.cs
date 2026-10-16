@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -113,6 +113,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     [Category("Wizard")]
     [Description("Alters the layout of the buttons.")]
     [RefreshProperties(RefreshProperties.Repaint)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public ButtonLayoutKind ButtonLayout
     {
         get => _buttonLayoutKind;
@@ -336,6 +337,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     [Description("Indicates whether the control is enabled.")]
     [Localizable(true)]
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool BackButtonEnabled
     {
         get => _kbtnBack.Enabled;
@@ -350,6 +352,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     [Description("Indicates whether the control is enabled.")]
     [Localizable(true)]
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool NextButtonEnabled
     {
         get => NextButtonEnabledState;
@@ -370,6 +373,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     [Description("Indicates whether the control is enabled.")]
     [Localizable(true)]
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool FinishButtonEnabled
     {
         get => _finishButton ? _kbtnFinish.Enabled : _kbtnNext.Enabled;
@@ -388,6 +392,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
     }
 
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool CurrentPageIsFinishPage
     {
         get => _pageSetAsFinishPage && _lastPage == CurrentPage;
@@ -406,6 +411,7 @@ public partial class KryptonAdvancedWizard : UserControl, IMessageFilter
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Bitmap? WizardHeaderImage
     {
         get => _wizardImage ?? Resources.Installer48;

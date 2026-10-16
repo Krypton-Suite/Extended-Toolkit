@@ -39,6 +39,7 @@ public class Bar
                 bottom: Position - Size / 2,
                 top: Position + Size / 2);
 
+#pragma warning disable WFO2000 // Error bars are computed from the current bar values.
     internal IEnumerable<CoordinateLine> ErrorLines
     {
         get
@@ -60,6 +61,7 @@ public class Bar
             return new List<CoordinateLine>() { center, top, bottom };
         }
     }
+#pragma warning restore WFO2000
 
     internal AxisLimits AxisLimits =>
         Orientation == Orientation.Vertical

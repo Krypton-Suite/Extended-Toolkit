@@ -118,6 +118,7 @@ public class KryptonStatusStrip : StatusStrip
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public ToolStripProgressBar ProgressBar { get => _progressBar; set => _progressBar = value; }
     #endregion
 

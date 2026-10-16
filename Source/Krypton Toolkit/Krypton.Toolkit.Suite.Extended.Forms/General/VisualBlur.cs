@@ -213,60 +213,48 @@ public class VisualBlur : NativeWindow, IDisposable
 
     // some filters fom https://icodebroker.tistory.com/9229
     #region filters
+    private static readonly double[,] Mean3X3Kernel =
+    {
+        { 1, 1, 1 },
+        { 1, 1, 1 },
+        { 1, 1, 1 }
+    };
+
     /// <summary>
     /// MEAN 3X3
     /// </summary>
-    public static double[,] Mean3X3
+    public static double[,] Mean3X3 => Mean3X3Kernel;
+    private static readonly double[,] Mean5X5Kernel =
     {
-        get
-        {
-            return new double[,]
-            {
-                { 1, 1, 1 },
-                { 1, 1, 1 },
-                { 1, 1, 1 }
-            };
-        }
-    }
+        { 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1 }
+    };
+
     /// <summary>
     /// MEAN 5X5
     /// </summary>
-    public static double[,] Mean5X5
+    public static double[,] Mean5X5 => Mean5X5Kernel;
+
+    private static readonly double[,] Mean9X9Kernel =
     {
-        get
-        {
-            return new double[,]
-            {
-                { 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1 }
-            };
-        }
-    }
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+    };
 
     /// <summary>
     /// MEAN 9X9
     /// </summary>
-    public static double[,] Mean9X9
-    {
-        get
-        {
-            return new double[,]
-            {
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-            };
-        }
-    }
+    public static double[,] Mean9X9 => Mean9X9Kernel;
     ///<summary>
     /// Gaussian blur kernel with the size 5x5
     ///</summary>
@@ -278,23 +266,19 @@ public class VisualBlur : NativeWindow, IDisposable
         {1,  4,  7,  4, 1}
     };
 
+    private static readonly double[,] GaussianBlur5X5Kernel =
+    {
+        { 2, 04, 05, 04, 2 },
+        { 4, 09, 12, 09, 4 },
+        { 5, 12, 15, 12, 5 },
+        { 4, 09, 12, 09, 4 },
+        { 2, 04, 05, 04, 2 }
+    };
+
     /// <summary>
     /// GAUSSIAN BLUR 5X5
     /// </summary>
-    public static double[,] GaussianBlur5X5
-    {
-        get
-        {
-            return new double[,]
-            {
-                { 2, 04, 05, 04, 2 },
-                { 4, 09, 12, 09, 4 },
-                { 5, 12, 15, 12, 5 },
-                { 4, 09, 12, 09, 4 },
-                { 2, 04, 05, 04, 2 }
-            };
-        }
-    }
+    public static double[,] GaussianBlur5X5 => GaussianBlur5X5Kernel;
 
     ///<summary>
     /// Gaussian blur kernel with the size 3x3
@@ -306,21 +290,17 @@ public class VisualBlur : NativeWindow, IDisposable
         { 16, 26, 16 }
     };
 
+    private static readonly double[,] GaussianBlur3X3Kernel =
+    {
+        { 1, 2, 1 },
+        { 2, 4, 2 },
+        { 1, 2, 1 }
+    };
+
     /// <summary>
     /// GAUSSIAN BLUR 3X3
     /// </summary>
-    public static double[,] GaussianBlur3X3
-    {
-        get
-        {
-            return new double[,]
-            {
-                { 1, 2, 1 },
-                { 2, 4, 2 },
-                { 1, 2, 1 }
-            };
-        }
-    }
+    public static double[,] GaussianBlur3X3 => GaussianBlur3X3Kernel;
     #endregion filters
 
     // Taken from // filters fom https://icodebroker.tistory.com/9229

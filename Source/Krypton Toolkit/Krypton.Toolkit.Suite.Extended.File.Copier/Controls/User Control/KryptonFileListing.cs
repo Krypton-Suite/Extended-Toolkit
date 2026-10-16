@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -226,6 +226,7 @@ public class KryptonFileListing : UserControl
 
     public List<string> DirectoryContents { get => _directoryContents; private set => _directoryContents = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
     public object? FileItem { get => _fileListItem; private set => _fileListItem = value; }

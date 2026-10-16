@@ -10,7 +10,9 @@ public class Axes : IAxes
     public IYAxis YAxis { get; set; } = null!;
     public PixelRect DataRect { get; set; }
 
+#pragma warning disable WFO2000 // Callers assign axes on the returned instance.
     public static Axes Default => new();
+#pragma warning restore WFO2000
 
     public Axes()
     {

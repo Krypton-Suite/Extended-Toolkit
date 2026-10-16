@@ -39,6 +39,8 @@ public class KryptonSecureTextBox : KryptonTextBox
 
     #region Public
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public SecureString SecuredText { get => _secureString; set => _secureString = value; }
 
     public char[] CharacterData

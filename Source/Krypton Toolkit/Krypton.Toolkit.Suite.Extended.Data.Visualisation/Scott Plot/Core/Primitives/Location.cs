@@ -53,6 +53,7 @@ public class Location
         };
     }
 
+#pragma warning disable WFO2000 // Prototype location; callers may assign coordinates.
     public static Location Unspecified =>
         new()
         {
@@ -60,4 +61,5 @@ public class Location
             Y = double.NaN,
             Unit = LocationUnit.Unspecified
         };
+#pragma warning restore WFO2000
 }

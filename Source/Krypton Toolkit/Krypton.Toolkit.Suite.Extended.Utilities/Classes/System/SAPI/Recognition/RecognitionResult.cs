@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  *
  * MIT License
@@ -95,7 +95,9 @@ public sealed class RecognitionResult : RecognizedPhrase, ISerializable
         }
     }
 
+#pragma warning disable WFO2000 // Alternates are a snapshot of the current recognition.
     public ReadOnlyCollection<RecognizedPhrase> Alternates => new(GetAlternates());
+#pragma warning restore WFO2000
 
     internal IRecognizerInternal Recognizer
     {

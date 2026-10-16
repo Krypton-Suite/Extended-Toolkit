@@ -77,6 +77,8 @@ public class KryptonCheckBoxComboBoxItem : KryptonCheckBox
     /// <summary>
     /// A reference to the Item in ComboBox.Items that this object is extending.
     /// </summary>
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public object ComboBoxItem
     {
         get => _comboBoxItem;

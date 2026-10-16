@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -74,6 +74,8 @@ public partial class KryptonPopUpNotificationWindow : KryptonForm
     #endregion
 
     #region Properties
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public KryptonToastNotificationPopup PopUp { get; set; }
 
     /// <summary>

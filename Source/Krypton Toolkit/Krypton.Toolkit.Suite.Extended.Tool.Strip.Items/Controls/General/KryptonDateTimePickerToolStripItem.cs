@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -38,6 +38,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
 
     #region Exposed Properties
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool AlwaysActive
     {
         get => ((KryptonDateTimePicker)Control).AlwaysActive;
@@ -45,6 +46,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).AlwaysActive = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool AllowButtonSpecToolTips
     {
         get => ((KryptonDateTimePicker)Control).AllowButtonSpecToolTips;
@@ -52,6 +54,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).AllowButtonSpecToolTips = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool AllowButtonSpecToolTipPrioity
     {
         get => ((KryptonDateTimePicker)Control).AllowButtonSpecToolTipPriority;
@@ -59,6 +62,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).AllowButtonSpecToolTipPriority = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool AutoShift
     {
         get => ((KryptonDateTimePicker)Control).AutoShift;
@@ -66,6 +70,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).AutoShift = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool Checked
     {
         get => ((KryptonDateTimePicker)Control).Checked;
@@ -73,6 +78,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).Checked = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ShowUpDown
     {
         get => ((KryptonDateTimePicker)Control).ShowUpDown;
@@ -80,6 +86,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).ShowUpDown = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ShowCheckBox
     {
         get => ((KryptonDateTimePicker)Control).ShowCheckBox;
@@ -87,6 +94,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).ShowCheckBox = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool UseMnemonic
     {
         get => ((KryptonDateTimePicker)Control).UseMnemonic;
@@ -94,6 +102,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).UseMnemonic = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool CalendarShowTodayCircle
     {
         get => ((KryptonDateTimePicker)Control).CalendarShowTodayCircle;
@@ -101,6 +110,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarShowTodayCircle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool CalendarShowWeekNumbers
     {
         get => ((KryptonDateTimePicker)Control).CalendarShowWeekNumbers;
@@ -108,6 +118,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarShowWeekNumbers = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool CalendarCloseOnTodayClick
     {
         get => ((KryptonDateTimePicker)Control).CalendarCloseOnTodayClick;
@@ -115,6 +126,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarCloseOnTodayClick = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool CalendarShowToday
     {
         get => ((KryptonDateTimePicker)Control).CalendarShowToday;
@@ -122,6 +134,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarShowToday = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool RightToLeftLayout
     {
         get => ((KryptonDateTimePicker)Control).RightToLeftLayout;
@@ -135,11 +148,13 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
 
     public bool IsDropped => ((KryptonDateTimePicker)Control).IsDropped;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ShowAdornments
     {
         set => ((KryptonDateTimePicker)Control).ShowAdornments = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ShowBorder
     {
         set => ((KryptonDateTimePicker)Control).ShowBorder = value;
@@ -147,6 +162,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
 
     public CheckBoxImages Images => ((KryptonDateTimePicker)Control).Images;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime? CalendarTodayDate
     {
         get => ((KryptonDateTimePicker)Control).CalendarTodayDate;
@@ -154,6 +170,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarTodayDate = (DateTime)value!;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime[]? CalendarAnnuallyBoldedDates
     {
         get => ((KryptonDateTimePicker)Control).CalendarAnnuallyBoldedDates;
@@ -161,6 +178,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarAnnuallyBoldedDates = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime[]? CalendarMonthlyBoldedDates
     {
         get => ((KryptonDateTimePicker)Control).CalendarMonthlyBoldedDates;
@@ -168,6 +186,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarMonthlyBoldedDates = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime[]? CalendarBoldedDates
     {
         get => ((KryptonDateTimePicker)Control).CalendarBoldedDates;
@@ -175,6 +194,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarBoldedDates = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime Value
     {
         get => ((KryptonDateTimePicker)Control).Value;
@@ -182,6 +202,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).Value = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime MaxDate
     {
         get => ((KryptonDateTimePicker)Control).MaxDate;
@@ -189,6 +210,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).MaxDate = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime MinDate
     {
         get => ((KryptonDateTimePicker)Control).MinDate;
@@ -196,6 +218,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).MinDate = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTimePickerFormat Format
     {
         get => ((KryptonDateTimePicker)Control).Format;
@@ -203,6 +226,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).Format = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Day CalendarFirstDayOfWeek
     {
         get => ((KryptonDateTimePicker)Control).CalendarFirstDayOfWeek;
@@ -213,6 +237,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
     public KryptonDateTimePicker.DateTimePickerButtonSpecCollection ButtonSpecs =>
         ((KryptonDateTimePicker)Control).ButtonSpecs;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public LeftRightAlignment DropDownAlign
     {
         get => ((KryptonDateTimePicker)Control).DropDownAlign;
@@ -220,6 +245,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).DropDownAlign = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public InputControlStyle InputControlStyle
     {
         get => ((KryptonDateTimePicker)Control).InputControlStyle;
@@ -227,6 +253,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).InputControlStyle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public object? ValueNullable
     {
         get => ((KryptonDateTimePicker)Control).ValueNullable;
@@ -234,6 +261,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).ValueNullable = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string CalendarTodayText
     {
         get => ((KryptonDateTimePicker)Control).CalendarTodayText;
@@ -241,6 +269,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarTodayText = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string? CustomFormat
     {
         get => ((KryptonDateTimePicker)Control).CustomFormat;
@@ -248,6 +277,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CustomFormat = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string CustomNullText
     {
         get => ((KryptonDateTimePicker)Control).CustomNullText;
@@ -255,6 +285,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CustomNullText = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string CalendarTodayFormat
     {
         get => ((KryptonDateTimePicker)Control).CalendarTodayFormat;
@@ -262,6 +293,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarTodayFormat = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string ActiveFragment
     {
         get => ((KryptonDateTimePicker)Control).ActiveFragment;
@@ -269,6 +301,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).ActiveFragment = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public HeaderStyle CalendarHeaderStyle
     {
         get => ((KryptonDateTimePicker)Control).CalendarHeaderStyle;
@@ -276,6 +309,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarHeaderStyle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ButtonStyle CalendarDayStyle
     {
         get => ((KryptonDateTimePicker)Control).CalendarDayStyle;
@@ -283,6 +317,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarDayStyle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ButtonStyle CalendarDayOfWeekStyle
     {
         get => ((KryptonDateTimePicker)Control).CalendarDayOfWeekStyle;
@@ -290,6 +325,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).CalendarDayOfWeekStyle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ButtonStyle UpDownButtonStyle
     {
         get => ((KryptonDateTimePicker)Control).UpDownButtonStyle;
@@ -297,6 +333,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
         set => ((KryptonDateTimePicker)Control).UpDownButtonStyle = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ButtonStyle DropButtonStyle
     {
         get => ((KryptonDateTimePicker)Control).DropButtonStyle;

@@ -110,6 +110,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
     /// <summary>
     /// The DataSource of the combobox. Refreshes the CheckBox wrappers when this is set.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public new object? DataSource
     {
         get => base.DataSource;
@@ -126,6 +127,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
     /// <summary>
     /// The ValueMember of the combobox. Refreshes the CheckBox wrappers when this is set.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public new string ValueMember
     {
         get => base.ValueMember;
@@ -145,6 +147,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
     /// a concatenated Text of the items selected. This concatenation however is controlled by the Binded 
     /// object, since it owns that property.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string? DisplayMemberSingleItem
     {
         get
@@ -177,6 +180,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
     /// </summary>
     [Description("The properties that will be assigned to the checkboxes as default values.")]
     [Browsable(true)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public KryptonCheckBoxProperties CheckBoxProperties
     {
         get => _checkBoxProperties;

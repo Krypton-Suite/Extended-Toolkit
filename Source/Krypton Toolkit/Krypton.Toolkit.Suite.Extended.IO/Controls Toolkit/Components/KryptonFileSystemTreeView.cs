@@ -41,8 +41,11 @@ public class KryptonFileSystemTreeView : KryptonTreeView
     #endregion
 
     #region Property
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DriveInfo[] Drives { get => _drives; set => _drives = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Icon? FolderIcon { get => _folderIcon; set => _folderIcon = value; }
     #endregion
 

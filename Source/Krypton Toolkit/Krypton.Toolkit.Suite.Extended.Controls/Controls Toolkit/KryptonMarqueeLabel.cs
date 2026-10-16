@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -33,6 +33,8 @@ public class KryptonMarqueeLabel : KryptonLabel
 
     /// <summary>Gets or sets the marquee timer.</summary>
     /// <value>The marquee timer.</value>
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public System.Windows.Forms.Timer MarqueeTimer { get; set; }
 
     /// <summary>Gets or sets the speed of the marquee.</summary>

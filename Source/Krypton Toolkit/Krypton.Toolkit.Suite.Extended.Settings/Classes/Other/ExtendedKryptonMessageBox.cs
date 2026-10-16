@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  *
  * MIT License
@@ -325,24 +325,28 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <value>
     ///   <c>true</c> if [do not show again option result]; otherwise, <c>false</c>.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool DoNotShowAgainOptionResult
     {
         get => _doNotShowAgainOptionResult;
         set => _doNotShowAgainOptionResult = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ShowDoNotShowAgainOption
     {
         get => _showDoNotShowAgainOption;
         set => _showDoNotShowAgainOption = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool UseTimeOutOption
     {
         get => _useTimeOutOption;
         set => _useTimeOutOption = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public DialogResult DefaultTimeOutResponse
     {
         get => _defaultTimeOutResponse;
@@ -355,6 +359,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <value>
     /// The message box typeface.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Font MessageBoxTypeface
     {
         get => _messageboxTypeface;
@@ -367,6 +372,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <value>
     /// The time out.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int TimeOut
     {
         get => _timeOut;
@@ -379,6 +385,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <value>
     /// The time out timer delay.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int TimeOutTimerDelay
     {
         get => _timeOutTimerDelay;
@@ -391,6 +398,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <value>
     /// The do not show again option text.
     /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string DoNotShowAgainOptionText
     {
         get => _doNotShowAgainOptionText;
@@ -487,6 +495,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         /// <summary>
         /// Gets and sets the ignoring of Alt+F4
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool IgnoreAltF4 { get; set; }
 
         #endregion

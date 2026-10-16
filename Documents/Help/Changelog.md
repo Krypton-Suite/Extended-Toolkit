@@ -1,4 +1,4 @@
-
+﻿
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
@@ -6,6 +6,10 @@
 
 ## 2026-11-30 - Build 2611 - November 2026
 
+* Resolved WinForms designer serialization warnings on Extended controls.
+	- Appearance and behavior properties now state explicitly that the designer should save them
+	- Runtime-only values (timers, streams, synchronization objects, drive lists, secured text, dialog results, and live animation snapshots) are left out of designer code
+	- Tool strip items that already save their hosted control no longer save those same values a second time
 * Implemented [#619](https://github.com/Krypton-Suite/Extended-Toolkit/issues/619), Use pattern matching where possible
 * Aligned the local build system and GitHub Actions with Standard Toolkit `alpha` (channel `.proj` files, `Scripts/VS2022` + `Scripts/Current` wrappers, `run.cmd` v5, glob `clean.cmd`, nightly/release/TestForm workflows)
 * Implemented [#443](https://github.com/Krypton-Suite/Extended-Toolkit/issues/443), AdvancedDataGridView filter and sort header dropdowns

@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -44,6 +44,7 @@ public class MRUMenuItem : ToolStripMenuItem
 
     #region Public
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string DefaultText { get => _defaultText; set { _defaultText = value; Invalidate(); } }
 
     #endregion

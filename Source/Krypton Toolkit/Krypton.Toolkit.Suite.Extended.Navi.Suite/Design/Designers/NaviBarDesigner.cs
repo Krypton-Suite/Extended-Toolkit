@@ -36,6 +36,7 @@ public class NaviBarDesigner : ParentControlDesigner
     private ISelectionService? selectionService;
     private IComponentChangeService? componentChangeService;
     private IDesignerHost? host;
+    private DesignerVerbCollection? _verbs;
 
     #endregion
 
@@ -151,11 +152,16 @@ public class NaviBarDesigner : ParentControlDesigner
     {
         get
         {
-            DesignerVerb[] verbs =
-            [
-                new DesignerVerb("Add band..", AddBandVerbClicked)
-            ];
-            return new DesignerVerbCollection(verbs);
+            if (_verbs == null)
+            {
+                DesignerVerb[] verbs =
+                [
+                    new DesignerVerb("Add band..", AddBandVerbClicked)
+                ];
+                _verbs = new DesignerVerbCollection(verbs);
+            }
+
+            return _verbs;
         }
     }
 

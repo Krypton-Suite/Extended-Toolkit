@@ -39,6 +39,7 @@ public class CommonExtendedKryptonForm : KryptonForm
     #endregion
 
     #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool UseBlur { get; set; }
 
     [DefaultValue(true), Description("")]

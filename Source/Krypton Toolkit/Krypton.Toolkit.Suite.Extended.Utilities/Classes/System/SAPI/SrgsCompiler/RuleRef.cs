@@ -41,11 +41,17 @@ internal class RuleRef : ParseElement, IRuleRef, IElement
 
     private const string szSpecialVoid = "VOID";
 
-    internal static IRuleRef Null => new RuleRef(SpecialRuleRefType.Null, null);
+    private static readonly RuleRef _null = new(SpecialRuleRefType.Null, null);
 
-    internal static IRuleRef Void => new RuleRef(SpecialRuleRefType.Void, null);
+    private static readonly RuleRef _void = new(SpecialRuleRefType.Void, null);
 
-    internal static IRuleRef Garbage => new RuleRef(SpecialRuleRefType.Garbage, null);
+    private static readonly RuleRef _garbage = new(SpecialRuleRefType.Garbage, null);
+
+    internal static IRuleRef Null => _null;
+
+    internal static IRuleRef Void => _void;
+
+    internal static IRuleRef Garbage => _garbage;
 
     private RuleRef(SpecialRuleRefType type, Rule rule)
         : base(rule)

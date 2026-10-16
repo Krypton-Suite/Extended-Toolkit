@@ -46,7 +46,9 @@ public class MarkerStyle
         Size = size;
     }
 
+#pragma warning disable WFO2000 // Prototype styles; callers mutate their own copies.
     public static MarkerStyle Default => new(MarkerShape.FilledCircle, 5);
 
     public static MarkerStyle None => new(MarkerShape.None, 0);
+#pragma warning restore WFO2000
 }

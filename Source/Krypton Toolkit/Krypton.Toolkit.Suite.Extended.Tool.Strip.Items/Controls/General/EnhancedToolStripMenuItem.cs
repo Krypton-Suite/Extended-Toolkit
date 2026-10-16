@@ -46,6 +46,7 @@ public class EnhancedToolStripMenuItem : ToolStripMenuItem
     /// Menu items with radio button display can be used to bind enum values.
     /// This property can be used to store associated Enum value.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Enum AssociatedEnumValue { set; get; }
 
     /// <summary>

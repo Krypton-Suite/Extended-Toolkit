@@ -38,6 +38,7 @@ public class KryptonThemeComboBox : ToolStripComboBox
 
     #region Properties
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public KryptonManager KryptonManager { get => _manager; set => _manager = value; }
 
     #endregion

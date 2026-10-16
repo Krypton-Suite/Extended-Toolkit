@@ -40,6 +40,7 @@ public class KryptonEnhancedToolStrip : ToolStrip
     #region Properties
     /// <summary>Gets or sets whether the ToolStripEx honors item clicks when its containing form does not have input focus.</summary>
     /// <remarks>Default value is false, which is the same behavior provided by the base ToolStrip class.</remarks>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ClickThrough { get => _clickThrough; set => _clickThrough = value; }
     #endregion
 

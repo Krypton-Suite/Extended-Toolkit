@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -37,8 +37,10 @@ public partial class KryptonFileCopier : KryptonForm
     #endregion
 
     #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string SourceDirectory { get => _sourceDirectory; set => _sourceDirectory = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string TargetDirectory { get => _targetDirectory; set => _targetDirectory = value; }
     #endregion
 

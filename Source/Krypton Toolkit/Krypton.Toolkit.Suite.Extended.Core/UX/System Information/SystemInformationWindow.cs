@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  *
  * MIT License
@@ -842,6 +842,8 @@ public partial class SystemInformationWindow : KryptonForm
     #endregion
 
     #region Properties
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Control TargetControl
     {
         get => _targetControl;

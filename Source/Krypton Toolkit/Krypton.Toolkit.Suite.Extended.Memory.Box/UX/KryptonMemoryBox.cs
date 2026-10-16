@@ -43,6 +43,7 @@ public partial class KryptonMemoryBox : CommonExtendedKryptonForm
 
     #region Public
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public KryptonMemoryBoxDialogResult DefaultDialogResult { get => _defaultDialogResult; set => _defaultDialogResult = value; }
 
     #endregion

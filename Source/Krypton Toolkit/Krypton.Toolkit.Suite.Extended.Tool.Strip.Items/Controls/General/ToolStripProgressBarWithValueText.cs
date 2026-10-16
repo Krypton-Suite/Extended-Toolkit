@@ -1,4 +1,4 @@
-#region MIT License
+﻿#region MIT License
 /*
  * MIT License
  *
@@ -44,8 +44,10 @@ public class ToolStripProgressBarWithValueText : ToolStripProgressBar
 
     #region Public
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool DisplayValue { get => _displayValue; set { _displayValue = value; Invalidate(); } }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Color DisplayTextColour { get => _displayTextColour; set => _displayTextColour = value; }
 
     #endregion

@@ -6,7 +6,9 @@
 /// </summary>
 public class Polygon : IPlottable
 {
+#pragma warning disable WFO2000 // The coordinate array is mutable, so each caller needs its own polygon.
     public static Polygon Empty => new();
+#pragma warning restore WFO2000
 
     public bool IsEmpty { get; private set; } = false;
 

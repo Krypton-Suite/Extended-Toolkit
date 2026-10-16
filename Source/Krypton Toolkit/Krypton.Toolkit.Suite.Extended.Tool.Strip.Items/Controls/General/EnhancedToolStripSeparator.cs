@@ -44,6 +44,7 @@ public partial class EnhancedToolStripSeparator : ToolStripMenuItem
     /// Otherwise only text will be displayed.
     /// </summary>
     [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Description("If set to 'true' separator line will be displayed in areas not occupied by text. Otherwise only text will be displayed.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ShowSeparatorLine { get => _showSeparatorLine; set { _showSeparatorLine = value; Invalidate(); } }
 
     /// <summary>
@@ -53,6 +54,7 @@ public partial class EnhancedToolStripSeparator : ToolStripMenuItem
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new bool Checked { set; get; }
 
     /// <summary>
@@ -62,6 +64,7 @@ public partial class EnhancedToolStripSeparator : ToolStripMenuItem
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new CheckState CheckState { set; get; }
 
     /// <summary>
@@ -71,6 +74,7 @@ public partial class EnhancedToolStripSeparator : ToolStripMenuItem
     /// </summary>
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public new ToolStripDropDown DropDown { set; get; }
 
 

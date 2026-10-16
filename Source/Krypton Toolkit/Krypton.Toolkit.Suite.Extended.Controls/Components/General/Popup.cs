@@ -66,6 +66,7 @@ public partial class PopUp : ToolStripDropDown
 
     #region Public
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool UseFadeEffect
     {
         get => _fade;
@@ -83,18 +84,21 @@ public partial class PopUp : ToolStripDropDown
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool FocusOnOpen
     {
         get => _focusOnOpen;
         set => _focusOnOpen = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool AcceptAlt
     {
         get => _acceptAlt;
         set => _acceptAlt = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ReSizable
     {
         get => _resizableControl && _resizable;
@@ -103,14 +107,18 @@ public partial class PopUp : ToolStripDropDown
 
     public Control Content => _content;
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DateTime LastClosedTimeStamp { get; set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public new Size MinimumSize
     {
         get => _minimumSize;
         set => _minimumSize = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public new Size MaximumSize
     {
         get => _maximumSize;
