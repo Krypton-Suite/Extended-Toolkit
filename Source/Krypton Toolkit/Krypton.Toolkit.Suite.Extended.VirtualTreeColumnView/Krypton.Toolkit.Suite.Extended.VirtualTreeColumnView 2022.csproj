@@ -61,7 +61,6 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
 	</ItemGroup>
 
-
 	<PropertyGroup>
 		<Description>
 			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET 8 - 10. This package implements items to create a 'virtual tree column view' for your applications.
@@ -78,7 +77,7 @@
             <Choose>
                 <When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
                     <ItemGroup>
-                        <PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+                        <PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
                     </ItemGroup>
                 </When>
 
@@ -110,7 +109,6 @@
         </Otherwise>
     </Choose>
 
-
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.xml</DocumentationFile>
@@ -137,14 +135,6 @@
 			<Pack>true</Pack>
 		</None>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
-	</ItemGroup>
-
-
-
-
 
 	<!--Optimisation-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">

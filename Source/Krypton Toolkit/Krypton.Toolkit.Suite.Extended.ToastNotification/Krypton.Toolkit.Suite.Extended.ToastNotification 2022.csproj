@@ -72,7 +72,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -135,10 +135,6 @@
 	  <Generator>ResXFileCodeGenerator</Generator>
 	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	</EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
   </ItemGroup>
 
 	<!--Optimisation-->
