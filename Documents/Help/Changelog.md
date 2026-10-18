@@ -8,6 +8,7 @@
 
 * Implemented [#623](https://github.com/Krypton-Suite/Extended-Toolkit/issues/623), Dev and main builds use a pinned Standard Toolkit submodule instead of a sibling clone.
 	- `alpha`, `canary`, `master`, `gold`, and `V105-LTS` each pin the Standard Toolkit branch of the same name. This change sets the `alpha` pin.
+* Resolved Nightly restore failures (NU1605) by pinning `System.Resources.Extensions` to 11.0.0-rc.1.26425.128 for every Extended project.
 * Implemented [#619](https://github.com/Krypton-Suite/Extended-Toolkit/issues/619), Use pattern matching where possible
 * Aligned the local build system and GitHub Actions with Standard Toolkit `alpha` (channel `.proj` files, `Scripts/VS2022` + `Scripts/Current` wrappers, `run.cmd` v5, glob `clean.cmd`, nightly/release/TestForm workflows)
 * Implemented [#443](https://github.com/Krypton-Suite/Extended-Toolkit/issues/443), AdvancedDataGridView filter and sort header dropdowns

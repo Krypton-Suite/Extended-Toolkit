@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
@@ -73,7 +73,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -136,9 +136,6 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
 
 	<!--Optimisation-->

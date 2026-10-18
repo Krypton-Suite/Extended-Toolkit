@@ -23,7 +23,9 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    # WinForms TFMs (net11.0-windows and earlier) need a Windows runner and a .NET 11 SDK.
+    # ubuntu-latest fails with NETSDK1045 (no net11 SDK) and NETSDK1100 (Windows targeting).
+    runs-on: windows-latest
     permissions:
       actions: read
       contents: read
@@ -58,6 +60,34 @@ jobs:
         # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
 
+
+    # Install SDKs after CodeQL init so autobuild is traced, and before autobuild so
+    # net11.0-windows is a known target. Preview fallback matches the other workflows.
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v6
+      with:
+        dotnet-version: |
+          10.0.x
+          9.0.x
+          8.0.x
+
+    - name: Setup .NET 11 (stable)
+      id: setup_dotnet11_stable
+      continue-on-error: true
+      uses: actions/setup-dotnet@v6
+      with:
+        dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+
+    - name: Setup .NET 11 (preview fallback)
+      if: steps.setup_dotnet11_stable.outcome == 'failure'
+      uses: actions/setup-dotnet@v6
+      with:
+        dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+        dotnet-quality: preview
+
+    - name: Pin SDK via global.json
+      shell: pwsh
+      run: ./Scripts/CI/Pin-DotNetSdk.ps1
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
