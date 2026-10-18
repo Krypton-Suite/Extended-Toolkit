@@ -77,7 +77,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -113,7 +113,6 @@
 		<None Include="..\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Data.Visualisation.licenseheader" />
 	</ItemGroup>
 
-
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.GanttChart\Krypton.Toolkit.Suite.Extended.GanttChart.xml</DocumentationFile>
@@ -132,14 +131,6 @@
 			<Pack>true</Pack>
 		</None>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
-	</ItemGroup>
-
-
-
-
 
 	<!--Optimisation-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">

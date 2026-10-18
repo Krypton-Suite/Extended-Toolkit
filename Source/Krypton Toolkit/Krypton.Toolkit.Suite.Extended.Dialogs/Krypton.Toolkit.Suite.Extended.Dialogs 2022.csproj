@@ -76,7 +76,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -148,7 +148,6 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
-
 	<ItemGroup>
 		<None Update="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Krypton Nightly.png" />
 		<None Update="License\License.txt">
@@ -160,15 +159,6 @@
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
 	</ItemGroup>
-
-
-	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
-	</ItemGroup>
-
-
-
-
 
 	<!--Optimisation-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">
