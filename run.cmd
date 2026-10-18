@@ -1,5 +1,5 @@
-:: Krypton Extended Toolkit - Interactive Build System
-:: Last updated: Saturday 29th August, 2026
+﻿:: Krypton Extended Toolkit - Interactive Build System
+:: Last updated: Sunday 18th October, 2026
 
 @echo off
 setlocal EnableExtensions
@@ -16,7 +16,7 @@ goto selectvsversion
 
 :selectvsversion
 cls
-echo Welcome to the Krypton Extended Toolkit Build system, version 5.0.
+echo Welcome to the Krypton Extended Toolkit Build system, version 5.1.
 echo Please select the Visual Studio toolset to target.
 echo:
 echo ==============================================================================================
@@ -70,7 +70,7 @@ exit /b 0
 cls
 if "%VS_SCRIPTS_DIR%"=="" (goto selectvsversion)
 
-echo Krypton Extended Toolkit Build System v5.0
+echo Krypton Extended Toolkit Build System v5.1
 echo Current Visual Studio target: %VS_VERSION%
 echo Script directory............: %VS_SCRIPTS_DIR%
 echo:
@@ -78,7 +78,7 @@ echo 1. Clean project
 echo 2. Build Toolkit
 echo 3. Create NuGet packages
 echo 4. Build and Pack Toolkit
-echo 5. Debug project
+echo 5. Debug / Dev
 echo 6. NuGet Package Manager
 echo 7. Ultimate Package Diagnostic
 echo 8. Create Archives (ZIP/TAR)
@@ -166,14 +166,18 @@ goto buildandpackmenu
 
 :debugmenu
 cls
-echo 1. Debug build
-echo 2. Run TestForm
-echo 3. Go back to main menu
+echo Debug / Dev (ProjectReference to sibling Standard-Toolkit)
 echo:
-set /p answer="Enter number (1 - 3): "
+echo 1. Debug rebuild (Dev solution via debug.proj)
+echo 2. Build Dev solution only (no clean)
+echo 3. Run TestForm
+echo 4. Go back to main menu
+echo:
+set /p answer="Enter number (1 - 4): "
 if "%answer%"=="1" (call "%VS_SCRIPTS_DIR%\debug.cmd" Rebuild & goto debugmenu)
-if "%answer%"=="2" (goto runtestform)
-if "%answer%"=="3" (goto mainmenu)
+if "%answer%"=="2" (call "%VS_SCRIPTS_DIR%\debug.cmd" BuildDev & goto debugmenu)
+if "%answer%"=="3" (goto runtestform)
+if "%answer%"=="4" (goto mainmenu)
 echo Invalid input, please try again.
 pause
 goto debugmenu
