@@ -41,11 +41,9 @@ jobs:
           ref: ${{ github.event_name == 'schedule' && 'alpha' || github.ref }}
           fetch-depth: 0
 
-      # Release-channel arms and some modules still ProjectReference Standard-Toolkit;
-      # Nightly PackageReferences come from nuget.org, but keep the sibling for graph completeness.
-      - name: Checkout Standard-Toolkit (sibling)
+      - name: Checkout Standard-Toolkit submodule
         shell: pwsh
-        run: ./Scripts/CI/Checkout-StandardToolkit.ps1 -Branch alpha
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6

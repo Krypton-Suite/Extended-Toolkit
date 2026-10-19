@@ -1,44 +1,23 @@
-# Clones Standard-Toolkit as a sibling of this repo (../Standard-Toolkit).
-# Extended Dev/main solutions ProjectReference that tree.
-param(
-    [string]$Branch,
-    [string]$Destination
-)
-
+﻿# Checks out the pinned Standard-Toolkit submodule at the repository root.
+# Dev and main solutions ProjectReference that tree. The superproject gitlink is the pin.
+# alpha, canary, master, gold, and V105-LTS each store a SHA from the Standard Toolkit branch of the same name.
+# This script checks out that SHA. It does not select a branch.
 $ErrorActionPreference = 'Stop'
 
-if (-not $Destination) {
-    $repoRoot = if ($env:GITHUB_WORKSPACE) { $env:GITHUB_WORKSPACE } else { (Get-Location).Path }
-    $Destination = Join-Path (Split-Path -Parent $repoRoot) 'Standard-Toolkit'
+$repoRoot = if ($env:GITHUB_WORKSPACE) {
+    $env:GITHUB_WORKSPACE
+} else {
+    Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 }
 
-if (-not $Branch) {
-    if ($env:GITHUB_BASE_REF) { $Branch = $env:GITHUB_BASE_REF }
-    elseif ($env:GITHUB_REF_NAME) { $Branch = $env:GITHUB_REF_NAME }
-    else { $Branch = 'alpha' }
+Set-Location -LiteralPath $repoRoot
+
+if (-not (Test-Path -LiteralPath (Join-Path $repoRoot '.gitmodules'))) {
+    Write-Error 'Missing .gitmodules. Standard-Toolkit must be a submodule of this repository.'
 }
 
-switch -Regex ($Branch) {
-    '^(alpha|canary|master|main|gold)$' { }
-    default { $Branch = 'alpha' }
-}
-
-if ($Branch -eq 'main') { $Branch = 'master' }
-
-Write-Host "Cloning Krypton-Suite/Standard-Toolkit (branch $Branch) to $Destination"
-if (Test-Path -LiteralPath $Destination) {
-    Write-Host "Destination already exists; skipping clone."
-    exit 0
-}
-
-git clone --depth 1 --branch $Branch https://github.com/Krypton-Suite/Standard-Toolkit.git $Destination
+Write-Host 'Checking out pinned Standard-Toolkit submodule'
+git submodule update --init --depth 1 -- Standard-Toolkit
 if ($LASTEXITCODE -ne 0) {
-    Write-Warning "Branch '$Branch' was not available; falling back to alpha."
-    if (Test-Path -LiteralPath $Destination) {
-        Remove-Item -LiteralPath $Destination -Recurse -Force -ErrorAction SilentlyContinue
-    }
-    git clone --depth 1 --branch alpha https://github.com/Krypton-Suite/Standard-Toolkit.git $Destination
-    if ($LASTEXITCODE -ne 0) {
-        Write-Error "Failed to clone Standard-Toolkit."
-    }
+    Write-Error 'Failed to check out the Standard-Toolkit submodule.'
 }

@@ -56,19 +56,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Release/ReleaseLite NuGet arms ProjectReference Standard-Toolkit (stable meta-package not on nuget.org).
-      - name: Checkout Standard-Toolkit (sibling)
+      - name: Checkout Standard-Toolkit submodule
         shell: pwsh
-        run: |
-          $branch = 'master'
-          $config = '${{ inputs.configuration }}'
-          if ($env:GITHUB_EVENT_NAME -ne 'workflow_dispatch') { $config = 'Release' }
-          switch -Regex ($config) {
-            '^Nightly' { $branch = 'alpha' }
-            '^Canary'  { $branch = 'canary' }
-            default    { $branch = 'master' }
-          }
-          ./Scripts/CI/Checkout-StandardToolkit.ps1 -Branch $branch
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6

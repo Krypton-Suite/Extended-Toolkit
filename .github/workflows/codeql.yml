@@ -44,7 +44,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v7
 
-    - name: Checkout Standard-Toolkit (sibling)
+    - name: Checkout Standard-Toolkit submodule
       shell: pwsh
       run: ./Scripts/CI/Checkout-StandardToolkit.ps1
 
