@@ -324,7 +324,7 @@ internal sealed class KryptonBottomSheetHostForm : KryptonForm
 
     private Rectangle GetOwnerClientBounds()
     {
-        if (_ownerControl != null && !_ownerControl.IsDisposed)
+        if (_ownerControl is { IsDisposed: false })
         {
             return _ownerControl.RectangleToScreen(_ownerControl.ClientRectangle);
         }
@@ -536,7 +536,7 @@ internal sealed class KryptonBottomSheetHostForm : KryptonForm
         Hide();
         _sheetRef.NotifyDismissed(_dismissResult);
 
-        if (_config.RestoreFocusOnDismiss && _previousFocus != null && !_previousFocus.IsDisposed)
+        if (_config.RestoreFocusOnDismiss && _previousFocus is { IsDisposed: false })
         {
             _previousFocus.Focus();
         }
@@ -554,7 +554,7 @@ internal sealed class KryptonBottomSheetHostForm : KryptonForm
     {
         return owner switch
         {
-            ContainerControl container when container.ActiveControl != null => container.ActiveControl,
+            ContainerControl { ActiveControl: not null } container => container.ActiveControl,
             Control control => control,
             _ => Form.ActiveForm
         };

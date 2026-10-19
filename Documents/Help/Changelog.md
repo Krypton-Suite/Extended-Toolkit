@@ -1,17 +1,21 @@
-
+﻿
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
 =======
 
-## 2026-11-xx - Build 2611 - November 2026
+## 2026-11-30 - Build 2611 - November 2026
 
+* Implemented [#623](https://github.com/Krypton-Suite/Extended-Toolkit/issues/623), Dev and main builds use a pinned Standard Toolkit submodule instead of a sibling clone.
+	- `alpha`, `canary`, `master`, `gold`, and `V105-LTS` each pin the Standard Toolkit branch of the same name. This change sets the `alpha` pin.
+* Resolved Nightly restore failures (NU1605) by pinning `System.Resources.Extensions` to 11.0.0-rc.1.26425.128 for every Extended project.
+* Implemented [#619](https://github.com/Krypton-Suite/Extended-Toolkit/issues/619), Use pattern matching where possible
 * Aligned the local build system and GitHub Actions with Standard Toolkit `alpha` (channel `.proj` files, `Scripts/VS2022` + `Scripts/Current` wrappers, `run.cmd` v5, glob `clean.cmd`, nightly/release/TestForm workflows)
 * Implemented [#443](https://github.com/Krypton-Suite/Extended-Toolkit/issues/443), AdvancedDataGridView filter and sort header dropdowns
-    - Excel-style filter buttons are drawn on Krypton column headers (`▾` idle, `∇` filtered, `▲`/`▼` sort, `★` saved)
-    - Header overlay paints after `KryptonDataGridView` themed header rendering, with palette-aware colours, DPI scaling, and RTL placement
-    - Filter popup uses `KryptonCheckedListBox`, `KryptonButton`, and `KryptonTextBox` so the checklist and Filter/Cancel actions follow the active theme
-    - TestForm demo `AdvancedDataGridViewFilterSortExample` covers glyphs, checklist, custom filter, saved views, search, RTL, and per-column options
+	- Excel-style filter buttons are drawn on Krypton column headers (`▾` idle, `∇` filtered, `▲`/`▼` sort, `★` saved)
+	- Header overlay paints after `KryptonDataGridView` themed header rendering, with palette-aware colours, DPI scaling, and RTL placement
+	- Filter popup uses `KryptonCheckedListBox`, `KryptonButton`, and `KryptonTextBox` so the checklist and Filter/Cancel actions follow the active theme
+	- TestForm demo `AdvancedDataGridViewFilterSortExample` covers glyphs, checklist, custom filter, saved views, search, RTL, and per-column options
 * New `TestForm` developer harness, matching the Standard Toolkit StartScreen (filterable command-link launcher, theme list, dock/restore, registry-saved layout)
   - Owns all former Examples project forms (including the legacy `MainWindow` launcher)
   - Included in the Dev, main, and NuGet solutions; the standalone Examples project has been removed
@@ -46,7 +50,7 @@
   - **Designer Support** - `KryptonCardDesigner` with smart-tag actions for appearance, elevation, and clickability; dedicated toolbox bitmap
   - **Examples & Packaging** - New Card example in the Examples app; module included in Ultimate and Ultimate.Lite packages
   - **Tests** - `Krypton.Toolkit.Suite.Extended.Card.Tests` unit test project for rendering and card model behavior
-    - `FilterAndSortEnabled` now applies to existing columns when toggled
+	- `FilterAndSortEnabled` now applies to existing columns when toggled
 * Implemented [#590](https://github.com/Krypton-Suite/Extended-Toolkit/issues/590), `DataGridView` Grouper panel
 * Implemented [#494](https://github.com/Krypton-Suite/Extended-Toolkit/issues/494), Gantt Chart Control
 * Implemented [#544](https://github.com/Krypton-Suite/Extended-Toolkit/issues/544), Implement a `DropZone` component

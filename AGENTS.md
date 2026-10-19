@@ -41,7 +41,7 @@ Before considering a task complete:
 - OS: Windows (required for .NET Framework and WinForms `-windows` TFMs)
 - Tools: Visual Studio 2022 (v17) or later, and .NET SDKs covering the TFMs in root `Directory.Build.props` (currently `net472` through `net11.0-windows`)
 - Build scripts are Windows `.cmd` files under `Scripts/`; do not run channel pack/CI scripts unless explicitly instructed (see **Build, Test, and Development Commands**)
-- [Standard-Toolkit](https://github.com/Krypton-Suite/Standard-Toolkit) must exist as a **sibling** clone at `..\Standard-Toolkit` for Dev/main solution `ProjectReference`s. Clone it there if missing (see **Standard-Toolkit Dependency**). Do not copy Standard-Toolkit sources into this repository.
+- [Standard-Toolkit](https://github.com/Krypton-Suite/Standard-Toolkit) is a pinned git submodule at `Standard-Toolkit/` for Dev/main solution `ProjectReference`s. Clone with `git clone --recurse-submodules`, or run `.\Scripts\CI\Checkout-StandardToolkit.ps1` when that folder is empty (see **Standard-Toolkit Dependency**). Do not copy Standard-Toolkit sources into this repository, and do not edit files inside `Standard-Toolkit/`.
 
 ## Project Structure & Module Organization
 
@@ -72,29 +72,46 @@ There is **no** sibling Extended demos repository. `TestForm` is the interactive
 
 ## Standard-Toolkit Dependency
 
-Dev and main solutions `ProjectReference` Standard-Toolkit as a sibling:
+Dev and main solutions `ProjectReference` the pinned submodule at the repository root:
 
 ```
-<parent>\Extended-Toolkit\          # this repository
-<parent>\Standard-Toolkit\          # separate repository (clone here if missing)
+Extended-Toolkit\                    # this repository
+Extended-Toolkit\Standard-Toolkit\   # pinned submodule (gitlink SHA)
 ```
 
-Look only in the parent of this repository for a folder named `Standard-Toolkit`. Do **not** look under `Source\` in this repo, do **not** search other drives, and do **not** copy Standard-Toolkit projects into Extended-Toolkit.
+The superproject records one Standard Toolkit commit per Extended branch. CI checks out that recorded SHA. It does not switch Standard Toolkit branches during the build. Look in `Standard-Toolkit/` at the root of this repository. Do not search other drives, and do not copy Standard-Toolkit projects into Extended-Toolkit source folders.
 
-If the sibling clone is missing:
+The pin on each channel branch comes from the Standard Toolkit branch of the same name:
+
+- `alpha` → Standard Toolkit `alpha`
+- `canary` → Standard Toolkit `canary`
+- `master` → Standard Toolkit `master`
+- `gold` → Standard Toolkit `gold`
+- `V105-LTS` → Standard Toolkit `V105-LTS`
+
+This change pins `alpha`. Merging it onto another channel copies the `alpha` SHA unless the gitlink is moved to that channel's Standard Toolkit branch tip in the same merge.
+
+If `Standard-Toolkit/` is empty after clone:
 
 ```powershell
-$extendedRoot = (Get-Location)   # Extended-Toolkit repo root
-$parentDir = Split-Path $extendedRoot -Parent
-$toolkitRoot = Join-Path $parentDir 'Standard-Toolkit'
-.\Scripts\CI\Checkout-StandardToolkit.ps1 -Destination $toolkitRoot
+.\Scripts\CI\Checkout-StandardToolkit.ps1
 ```
 
-`Scripts/CI/Checkout-StandardToolkit.ps1` clones `Krypton-Suite/Standard-Toolkit` on the matching channel branch (`alpha`, `canary`, `master`; `main` maps to `master`) and falls back to `alpha`.
+`Scripts/CI/Checkout-StandardToolkit.ps1` runs `git submodule update --init --depth 1 -- Standard-Toolkit` and checks out the recorded SHA.
 
-- **Dev/main solutions:** `ProjectReference` `..\..\..\..\Standard-Toolkit\Source\Krypton Components\…`
-- **NuGet solution:** `PackageReference` `Krypton.Standard.Toolkit`, `.Canary`, or `.Nightly` according to configuration
-- Do not change Standard-Toolkit as part of an Extended feature unless the user explicitly asks. If an Extended change requires a Standard API, say so rather than patching the sibling tree by default.
+To move the pin, fetch the matching Standard Toolkit branch (or a specific SHA on it), detach the submodule there, then commit the gitlink in this repository:
+
+```powershell
+git -C Standard-Toolkit fetch --depth 1 origin <branch-or-sha>
+git -C Standard-Toolkit checkout --detach FETCH_HEAD
+git add -- Standard-Toolkit
+```
+
+Use the Extended branch name as `<branch-or-sha>` when retargeting a channel (`alpha`, `canary`, `master`, `gold`, or `V105-LTS`). Pass a full SHA when the pin should stay behind that branch tip.
+
+- **Dev/main solutions:** from a module project, `ProjectReference` `..\..\..\Standard-Toolkit\Source\Krypton Components\…`. From a solution under `Source/Krypton Toolkit/`, `..\..\Standard-Toolkit\Source\Krypton Components\…`.
+- **NuGet solution:** `PackageReference` `Krypton.Standard.Toolkit`, `.Canary`, or `.Nightly` according to configuration. Those package versions are independent of the submodule pin.
+- Do not change Standard-Toolkit as part of an Extended feature unless the user explicitly asks. If an Extended change requires a Standard API, say so rather than patching the submodule by default.
 
 ## New Modules
 

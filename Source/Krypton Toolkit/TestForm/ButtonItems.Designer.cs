@@ -63,7 +63,7 @@ namespace TestForm
             this.kryptonViewButtons1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonViewButtons();
             this.kryptonuacButtonVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2();
             this.kryptonuacButtonVersion11 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1();
-            this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
+            this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButtonExtended();
             this.kryptonokDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonOKDialogButton();
             this.kryptonnoDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonNODialogButton();
             this.kryptonCommandLinkVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkVersion2();
@@ -273,7 +273,7 @@ namespace TestForm
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonViewButtons kryptonViewButtons1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2 kryptonuacButtonVersion21;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kryptonuacButtonVersion11;
-        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton kryptonSplitButton1;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButtonExtended kryptonSplitButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonOKDialogButton kryptonokDialogButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonNODialogButton kryptonnoDialogButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkVersion2 kryptonCommandLinkVersion21;

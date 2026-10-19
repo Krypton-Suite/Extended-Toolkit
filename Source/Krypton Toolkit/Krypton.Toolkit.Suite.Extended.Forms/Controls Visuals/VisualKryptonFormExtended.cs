@@ -286,7 +286,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             if (_allowFormChrome != value)
             {
                 _allowFormChrome = value;
-                if (StateCommon!.Border is PaletteFormBorderExtended formBorder)
+                if (StateCommon.Border is PaletteFormBorderExtended formBorder)
                 {
                     formBorder.UseThemeFormChromeBorderWidth = value;
                 }
@@ -541,7 +541,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                 // Just add to the docking edge requested
                 if (_drawHeading != null)
                 {
-                    _drawHeading.Add(element!, style);
+                    _drawHeading.Add(element, style);
                 }
             }
         }
@@ -576,7 +576,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             else
             {
                 // Just remove the specified elements
-                _drawHeading.Remove(element!);
+                _drawHeading.Remove(element);
             }
         }
     }
@@ -1046,7 +1046,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                 || _buttonManager.GetButtonRectangle(ButtonSpecClose).Contains(pt))
             {
                 // Get the mouse controller for this button
-                ViewBase? viewBase = ViewManager.Root!.ViewFromPoint(pt);
+                ViewBase? viewBase = ViewManager.Root.ViewFromPoint(pt);
                 IMouseController? controller = viewBase!.FindMouseController();
 
                 // Ensure the button shows as 'normal' state when mouse not over and pressed
@@ -1098,7 +1098,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
 
         // Get the elements that contains the mouse point
-        ViewBase? mouseView = ViewManager.Root!.ViewFromPoint(pt);
+        ViewBase? mouseView = ViewManager.Root.ViewFromPoint(pt);
 
         // Scan up the view hierarchy until a recognized element is found
         while (mouseView != null)
@@ -1392,7 +1392,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                     var notNormal = false;
                     foreach (ButtonSpecView bsv in _buttonManager.ButtonSpecViews)
                     {
-                        switch (bsv.ViewButton!.State)
+                        switch (bsv.ViewButton.State)
                         {
                             case PaletteState.Tracking:
                             case PaletteState.Pressed:
@@ -1668,7 +1668,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                 bs == ButtonSpecClose)
             {
                 // Translate the button rectangle into the non client area
-                Rectangle buttonRect = bsView.ViewButton!.ClientRectangle;
+                Rectangle buttonRect = bsView.ViewButton.ClientRectangle;
                 Padding borders = RealWindowBorders;
                 buttonRect.X -= borders.Left;
                 buttonRect.Y -= borders.Top;

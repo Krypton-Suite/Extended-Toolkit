@@ -1538,7 +1538,7 @@ public class CustomTabControl : TabControl
 
     private void ToolstripItemEvent(object? sender, EventArgs e)
     {
-        if (sender is ToolStripMenuItem tsi && tsi.Tag is TabPage tp)
+        if (sender is ToolStripMenuItem { Tag: TabPage tp })
         {
             SelectedTab = tp;
             Invalidate();

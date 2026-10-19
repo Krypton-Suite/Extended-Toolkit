@@ -170,7 +170,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
         //}
 
         // Paint tree lines			
-        if (node?.DataGridView is KryptonOutlookGrid outlookGrid && outlookGrid.ShowLines)
+        if (node?.DataGridView is KryptonOutlookGrid { ShowLines: true })
         {
             using (Pen linePen = new(SystemBrushes.ControlDark, 1.0f))
             {
@@ -277,12 +277,9 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
         base.OnMouseUp(e);
 
         OutlookGridRow? node = OwningNode;
-        if (node != null)
+        if (node is { DataGridView: KryptonOutlookGrid outlookGrid })
         {
-            if (node?.DataGridView is KryptonOutlookGrid outlookGrid)
-            {
-                outlookGrid.InExpandCollapseMouseCapture = false;
-            }
+            outlookGrid.InExpandCollapseMouseCapture = false;
         }
     }
     /// <summary>

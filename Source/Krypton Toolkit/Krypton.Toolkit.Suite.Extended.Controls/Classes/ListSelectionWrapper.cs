@@ -167,7 +167,7 @@ public class ListSelectionWrapper<T> : List<ObjectSelectionWrapper<T>> where T :
 
         object[] parameters = [@object.Current, this];
         object? result = ci.Invoke(parameters);
-        return (ObjectSelectionWrapper<T>)result!;
+        return (ObjectSelectionWrapper<T>)result;
     }
 
     public ObjectSelectionWrapper<T>? FindObjectWithItem(T @object)

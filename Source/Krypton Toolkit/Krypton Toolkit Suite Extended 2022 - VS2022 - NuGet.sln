@@ -302,7 +302,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.DataGridView.Grouper 2022", "Krypton.Toolkit.Suite.Extended.DataGridView.Grouper\Krypton.Toolkit.Suite.Extended.DataGridView.Grouper 2022.csproj", "{C92390F3-3735-4773-AA29-7553130E8F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit 2022", "..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj", "{33A91C43-E540-49F2-B734-F5DED55B0A61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit 2022", "..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj", "{33A91C43-E540-49F2-B734-F5DED55B0A61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
