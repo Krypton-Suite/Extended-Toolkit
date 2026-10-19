@@ -1,7 +1,16 @@
+# NUGET: Trusted publishing via NuGet/login. Secret NUGET_USER is the nuget.org profile name.
+# nuget.org needs a policy for this workflow file and Krypton-Suite/Extended-Toolkit.
+#
+# Discord (optional secrets):
+#   DISCORD_WEBHOOK_MASTER   — Release / ReleaseLite
+#   DISCORD_WEBHOOK_CANARY   — Canary / CanaryLite
+#   DISCORD_WEBHOOK_NIGHTLY  — Nightly / NightlyLite
+
 name: Release
 
 permissions:
   contents: write
+  id-token: write
 
 on:
   push:
@@ -122,7 +131,11 @@ jobs:
           echo "package_dir=$packageDir" >> $env:GITHUB_OUTPUT
 
       - name: Pack
-        run: msbuild /m "${{ steps.channel.outputs.project }}" /t:${{ steps.channel.outputs.target }} /p:Configuration=${{ steps.channel.outputs.configuration }} /p:Platform="Any CPU"
+        run: >
+          msbuild /m "${{ steps.channel.outputs.project }}"
+          /t:${{ steps.channel.outputs.target }}
+          /p:Configuration=${{ steps.channel.outputs.configuration }}
+          /p:Platform="Any CPU"
 
       - name: List NuGet packages
         shell: pwsh
@@ -143,21 +156,41 @@ jobs:
           retention-days: 30
           if-no-files-found: error
 
+      - name: NuGet login (OIDC)
+        if: ((github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)) && github.repository == 'Krypton-Suite/Extended-Toolkit'
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Publish to NuGet.org
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)
+        id: push_nuget
         shell: pwsh
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
         run: |
           $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_REPOSITORY -ne 'Krypton-Suite/Extended-Toolkit') {
+            Write-Warning "NuGet trusted publishing is only configured for Krypton-Suite/Extended-Toolkit - skipping NuGet push"
+            echo "packages_published=false" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
           $nugetDir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
-          if ([string]::IsNullOrWhiteSpace($env:NUGET_API_KEY)) {
-            Write-Error 'NUGET_API_KEY secret is not set.'
+          if (-not $env:NUGET_API_KEY) {
+            Write-Error 'NuGet trusted publishing did not provide an API key. Set the NUGET_USER secret to the nuget.org profile name.'
           }
-          Get-ChildItem $nugetDir -Filter '*.nupkg' -Exclude '*.symbols.nupkg' | ForEach-Object {
-            Write-Host "Publishing $($_.Name)"
-            dotnet nuget push $_.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+          $packages = @(Get-ChildItem $nugetDir -Filter '*.nupkg' -Exclude '*.symbols.nupkg')
+          $publishedAny = $false
+          foreach ($pkg in $packages) {
+            Write-Host "Publishing $($pkg.Name)"
+            $output = dotnet nuget push $pkg.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate 2>&1 | Out-String
+            Write-Host $output
+            if ($output -notmatch 'already exists' -and $output -notmatch 'was not pushed') {
+              $publishedAny = $true
+            }
           }
+          echo "packages_published=$publishedAny" >> $env:GITHUB_OUTPUT
 
       - name: Create GitHub Release
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
@@ -171,3 +204,132 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve package version
+        if: always() && steps.push_nuget.outcome == 'success'
+        id: get_version
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
+          $config = '${{ steps.channel.outputs.configuration }}'
+          $suffix = ''
+          if ($config -match 'Nightly') { $suffix = '.Nightly' }
+          elseif ($config -match 'Canary') { $suffix = '.Canary' }
+          $pattern = "Krypton.Toolkit.Suite.Extended.Ultimate$suffix.*.nupkg"
+          $pkg = Get-ChildItem $dir -Filter $pattern -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -notmatch '\.symbols\.' } |
+            Select-Object -First 1
+          if (-not $pkg) {
+            $pkg = Get-ChildItem $dir -Filter '*.nupkg' |
+              Where-Object { $_.Name -notmatch '\.symbols\.' } |
+              Select-Object -First 1
+          }
+          $version = if ($pkg -and $pkg.BaseName -match '(\d+\.\d+\.\d+\.\d+(?:-[A-Za-z0-9.]+)?)') { $Matches[1] } else { 'unknown' }
+          Write-Host "Version=$version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Announce Release on Discord
+        if: steps.push_nuget.outputs.packages_published == 'True'
+        shell: pwsh
+        env:
+          DISCORD_WEBHOOK_MASTER: ${{ secrets.DISCORD_WEBHOOK_MASTER }}
+          DISCORD_WEBHOOK_CANARY: ${{ secrets.DISCORD_WEBHOOK_CANARY }}
+          DISCORD_WEBHOOK_NIGHTLY: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
+          CHANNEL_CONFIG: ${{ steps.channel.outputs.configuration }}
+          PACKAGE_DIR: ${{ steps.channel.outputs.package_dir }}
+          PACKAGE_VERSION: ${{ steps.get_version.outputs.version }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $config = $env:CHANNEL_CONFIG
+          $webhook = $null
+          $title = $null
+          $description = $null
+          $color = 7863670
+          $changelogRef = 'master'
+          $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate'
+          $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common'
+
+          switch -Regex ($config) {
+            '^Nightly' {
+              $webhook = $env:DISCORD_WEBHOOK_NIGHTLY
+              $title = 'Krypton Extended Toolkit Nightly Release'
+              $description = 'A new Extended Toolkit nightly build is now on NuGet.org.'
+              $color = 10181046
+              $changelogRef = 'alpha'
+              $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Nightly'
+              $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Nightly'
+            }
+            '^Canary' {
+              $webhook = $env:DISCORD_WEBHOOK_CANARY
+              $title = 'Krypton Extended Toolkit Canary Release'
+              $description = 'A new Extended Toolkit canary (beta) build is now on NuGet.org.'
+              $color = 16753920
+              $changelogRef = 'canary'
+              $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Canary'
+              $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Canary'
+            }
+            default {
+              $webhook = $env:DISCORD_WEBHOOK_MASTER
+              $title = 'Krypton Extended Toolkit Stable Release'
+              $description = 'A new Extended Toolkit stable release is now on NuGet.org.'
+              $color = 7863670
+              $changelogRef = 'master'
+            }
+          }
+
+          if (-not $webhook) {
+            Write-Warning "Discord webhook secret not set for configuration '$config' - skipping Discord notification"
+            exit 0
+          }
+
+          $sha = (git rev-parse HEAD).Trim()
+          $shortSha = $sha.Substring(0, [Math]::Min(7, $sha.Length))
+          $commitUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/commit/$sha"
+          $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+          $version = $env:PACKAGE_VERSION
+
+          $payload = @{
+            embeds = @(
+              @{
+                title       = $title
+                url         = $commitUrl
+                description = $description
+                color       = $color
+                fields      = @(
+                  @{ name = 'Version'; value = "``$version``"; inline = $true }
+                  @{ name = 'Configuration'; value = "``$config``"; inline = $true }
+                  @{ name = 'Commit'; value = "[``$shortSha``]($commitUrl)"; inline = $true }
+                  @{
+                    name   = 'NuGet Packages'
+                    value  = @(
+                      "• [Ultimate]($nugetUltimate)"
+                      "• [Common]($nugetCommon)"
+                      '• [Module dashboard](https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md)'
+                    ) -join "`n"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Target Frameworks'
+                    value  = "• .NET Framework 4.7.2 (full configs)`n• .NET Framework 4.8 / 4.8.1`n• .NET 8–11 (windows)"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Changelog'
+                    value  = "[Documents/Help/Changelog.md](https://github.com/Krypton-Suite/Extended-Toolkit/blob/$changelogRef/Documents/Help/Changelog.md)"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Workflow'
+                    value  = "[Run #$env:GITHUB_RUN_NUMBER]($runUrl)"
+                    inline = $false
+                  }
+                )
+                footer    = @{ text = "Extended Toolkit $config" }
+                timestamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+              }
+            )
+          } | ConvertTo-Json -Depth 10
+
+          Invoke-RestMethod -Uri $webhook -Method Post -Body $payload -ContentType 'application/json'
+          Write-Host "Discord announcement sent for $config."

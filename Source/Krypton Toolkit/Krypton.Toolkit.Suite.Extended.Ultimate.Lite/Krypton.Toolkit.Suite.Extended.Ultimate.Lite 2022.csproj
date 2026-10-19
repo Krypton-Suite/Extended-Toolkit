@@ -26,21 +26,21 @@
 
 	<!--Package Data-->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite.Canary</PackageId>
 				<PackageIcon>Krypton Canary.png</PackageIcon>
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite.Nightly</PackageId>
 				<PackageIcon>Krypton Nightly.png</PackageIcon>
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Release'">
+		<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite</PackageId>
 				<PackageIcon>Krypton Stable.png</PackageIcon>
@@ -83,27 +83,29 @@
 
 	<!-- Krypton Toolkit Dependencies -->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
 				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<ItemGroup>
 				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.9.264-beta" />
 			</ItemGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Release'">
+		<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
+			<!-- Stable meta-package Krypton.Standard.Toolkit is not on nuget.org yet; use sibling ProjectReference. -->
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 			</ItemGroup>
 		</When>
 
 		<Otherwise>
+			<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

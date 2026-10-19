@@ -51,8 +51,8 @@
 				<PublishRepositoryUrl>true</PublishRepositoryUrl>
 				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -86,8 +86,8 @@
 				<PublishRepositoryUrl>true</PublishRepositoryUrl>
 				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-				<!--Package genebration-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -123,8 +123,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -158,8 +158,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package genebration-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -194,8 +194,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -230,8 +230,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
