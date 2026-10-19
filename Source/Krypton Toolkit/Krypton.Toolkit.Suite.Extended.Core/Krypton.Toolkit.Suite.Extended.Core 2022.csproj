@@ -98,10 +98,10 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2022.csproj" />
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Docking\Krypton.Docking 2022.csproj" />
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Ribbon\Krypton.Ribbon 2022.csproj" />
+				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2022.csproj" />
+				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Docking\Krypton.Docking 2022.csproj" />
+				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Ribbon\Krypton.Ribbon 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

@@ -35,6 +35,10 @@ jobs:
           ref: ${{ github.event_name == 'schedule' && 'alpha' || github.ref }}
           fetch-depth: 0
 
+      - name: Checkout Standard-Toolkit submodule
+        shell: pwsh
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
+
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6
         with:
