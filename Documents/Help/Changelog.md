@@ -2,6 +2,90 @@
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
+=======
+
+## 2026-11-xx - Build 2611 - November 2026
+
+* Aligned the local build system and GitHub Actions with Standard Toolkit `alpha` (channel `.proj` files, `Scripts/VS2022` + `Scripts/Current` wrappers, `run.cmd` v5, glob `clean.cmd`, nightly/release/TestForm workflows)
+* Implemented [#443](https://github.com/Krypton-Suite/Extended-Toolkit/issues/443), AdvancedDataGridView filter and sort header dropdowns
+    - Excel-style filter buttons are drawn on Krypton column headers (`▾` idle, `∇` filtered, `▲`/`▼` sort, `★` saved)
+    - Header overlay paints after `KryptonDataGridView` themed header rendering, with palette-aware colours, DPI scaling, and RTL placement
+    - Filter popup uses `KryptonCheckedListBox`, `KryptonButton`, and `KryptonTextBox` so the checklist and Filter/Cancel actions follow the active theme
+    - TestForm demo `AdvancedDataGridViewFilterSortExample` covers glyphs, checklist, custom filter, saved views, search, RTL, and per-column options
+* New `TestForm` developer harness, matching the Standard Toolkit StartScreen (filterable command-link launcher, theme list, dock/restore, registry-saved layout)
+  - Owns all former Examples project forms (including the legacy `MainWindow` launcher)
+  - Included in the Dev, main, and NuGet solutions; the standalone Examples project has been removed
+  - `dotnet run` defaults to `net8.0-windows`; net4x builds use preserialized `.resx` resources (MSB3823)
+* Resolved [#610](https://github.com/Krypton-Suite/Extended-Toolkit/issues/610), Error when Attempting to upgrade to Ultimate 105.26.7.201
+  - **Ultimate packaging** - Ultimate and Ultimate.Lite no longer declare Extended module packages as NuGet dependencies; assemblies are bundled with `PrivateAssets="all"` on project references
+  - **Native binaries** - Native libraries (e.g. `libSkiaSharp`) are excluded from `lib/` to avoid install failures on .NET Framework
+  - **Runtime packages** - Explicit `Handlebars.Net` and `SkiaSharp` package references retained so native assets and templates still restore correctly
+  - **Software.Updater.Core** - Corrected `PackageId` so it no longer collides with `Krypton.Toolkit.Suite.Extended.Core`
+* Resolved [#533](https://github.com/Krypton-Suite/Extended-Toolkit/issues/533), TreeGridView: Plus/Minus Sign Not Displayed in TreeGrid and Collapse/Expand Behaviors Broken
+* New `Krypton.Toolkit.Suite.Extended.BottomSheet` module - Material-inspired bottom sheets for WinForms
+  - **Service API** - `KryptonBottomSheetManager` with `Open`, `OpenAsync`, `OpenNonModal`, and `DismissActive`; `KryptonBottomSheetRef` for `Dismiss()`, `AfterOpened`, `AfterDismissed`, and `AfterDismissedAsync()`
+  - **Configuration** - `KryptonBottomSheetConfig` with backdrop, height, focus, animation, and conflict options; global defaults via `KryptonBottomSheetDefaultOptions`
+  - **Display Modes** - Modal (`ShowDialog`) and non-modal (`Show`); `OpenAsync` is non-blocking and completes when the sheet is dismissed
+  - **Backdrop Styles** - `Dim`, `EnhancedDim`, `SoftGradient`, and `Blur` (captures and blurs the owner surface)
+  - **Animations** - Slide up on open and slide down on close with time-based easing; separate open/close durations; synchronized backdrop fade
+  - **Interaction** - Drag handle with distance and velocity dismiss; optional snap heights in pixels or viewport percentages; auto-height and fixed-height modes
+  - **Focus** - Focus trap, focus restore, `AutoFocus` modes, and CSS-style `AutoFocusSelector`
+  - **Conflict Handling** - `BottomSheetConflictMode.Throw`, `Replace` (animated close), and `Queue` (open after active sheet dismisses)
+  - **Modal UX** - `DisableOwnerWhileOpen` disables the owner form while a modal sheet is shown
+  - **Chrome Controls** - `KryptonBottomSheetHeader` (title + close) and `KryptonBottomSheetList` with `BottomSheetListItem` for action rows
+  - **Content Contracts** - `IKryptonBottomSheetContent` and `IKryptonBottomSheetContent<TData>` for typed data passed at open time
+  - **Designer Support** - `KryptonBottomSheetDesigner` with smart-tag actions; dedicated toolbox bitmap on `KryptonBottomSheet`
+  - **Examples & Tests** - Bottom Sheet example in the Examples app (modal, non-modal, and action list); `Krypton.Toolkit.Suite.Extended.BottomSheet.Tests` unit test project
+* New `Krypton.Toolkit.Suite.Extended.Card` module - Material-inspired card controls for WinForms
+  - **New `KryptonCard` Control** - Themed card container with optional header, title group, image, content, actions, and footer sections
+  - **Card Appearances** - `Elevated`, `Outlined`, and `Filled` styles with rounded corners, theme-aware elevation shadow, and optional selection accent
+  - **Section Model** - `KryptonCardHeader`, `KryptonCardTitleGroup`, `KryptonCardImage`, `KryptonCardContent`, `KryptonCardActions`, and `KryptonCardFooter` with automatic empty-section hiding
+  - **Interaction** - Clickable cards, hover elevation animation, ripple feedback, and accessibility support (`AccessibleCardName`, grouping role)
+  - **Expand/Collapse Animation** - Optional slide up/down body animation via `Expandable`, `Expanded`, `ExpandDirection`, and header-click toggling
+  - **Layout Helpers** - `KryptonCardFlowPanel`, `KryptonCardTablePanel`, and data-bound `KryptonCardList` with `CardItem` support
+  - **Designer Support** - `KryptonCardDesigner` with smart-tag actions for appearance, elevation, and clickability; dedicated toolbox bitmap
+  - **Examples & Packaging** - New Card example in the Examples app; module included in Ultimate and Ultimate.Lite packages
+  - **Tests** - `Krypton.Toolkit.Suite.Extended.Card.Tests` unit test project for rendering and card model behavior
+    - `FilterAndSortEnabled` now applies to existing columns when toggled
+* Implemented [#590](https://github.com/Krypton-Suite/Extended-Toolkit/issues/590), `DataGridView` Grouper panel
+* Implemented [#494](https://github.com/Krypton-Suite/Extended-Toolkit/issues/494), Gantt Chart Control
+* Implemented [#544](https://github.com/Krypton-Suite/Extended-Toolkit/issues/544), Implement a `DropZone` component
+* Resolved [#351](https://github.com/Krypton-Suite/Extended-Toolkit/issues/351), Closing a floating toolbar window causes the toolbar to disappear - Closing the floating toolbar or menustrip window (e.g. via the close button) now returns the control to its original host instead of making it disappear. Updated `FloatableToolStrip` and `FloatableMenuStrip` to re-parent the control back to the host in the FormClosing handler, consistent with double-clicking the title bar.
+* Implemented [#57](https://github.com/Krypton-Suite/Extended-Toolkit/issues/57), `Alert.ShowMessage` optional header/title
+  - **New API** - `Alert.ShowMessage(string message, string? headerText = null)` shows a message with an optional header or title
+  - When `headerText` is provided, the alert displays the header in bold with the message below; when omitted, only the message is shown (same behavior as existing typed methods)
+* Resolved [#56](https://github.com/Krypton-Suite/Extended-Toolkit/issues/56), Alert.ShowMessage should be within the bounds of the parent application
+  - **Positioning Fix** - Alerts now appear within the parent application bounds instead of the primary screen bottom-right (fixes unnoticed alerts on 4K monitors or RDP sessions when the app is in a small window)
+  - **Optional Owner Parameter** - All `Alert` methods now accept an optional `IWin32Window? owner` parameter for explicit parent binding
+  - **Smart Fallback** - When no owner is passed, uses `Form.ActiveForm` when available for improved default behavior
+  - **Proper Ownership** - Sets form `Owner` when a Form is passed, ensuring correct z-order and window relationship
+* Resolved [#411](https://github.com/Krypton-Suite/Extended-Toolkit/issues/411), Exapanding a TreeGridView Node takes a long time when there are many children
+  - **Performance Optimization** - Significantly improved expansion/collapse performance for nodes with many children (250+ nodes)
+  - **Batch Operations** - Replaced individual row insertions/removals with optimized batch operations
+  - **Expected Performance** - Reduced expansion time from ~6 seconds to ~0.5 seconds for 250 children (approximately 12x faster)
+  - **Implementation Details**:
+	- Added `SiteNodes()` method for batch inserting child nodes efficiently
+	- Added `UnSiteNodes()` method for batch removing child nodes and descendants
+	- Optimized insertion position calculation to avoid redundant calculations
+	- Improved removal order to prevent index shifting issues
+* Resolved [#25](https://github.com/Krypton-Suite/Extended-Toolkit/issues/25), Can't add outlook grid group box control - Fixed language-related error when adding `KryptonOutlookGridGroupBox` control in Visual Studio designer. Replaced deprecated `LanguageManager.Instance.GetString()` calls with `KryptonOutlookGridLanguageManager.GeneralStrings` for DateInterval enum localization, eliminating dependency on resource files that could fail with EN/GB language settings.
+* Resolved [#156](https://github.com/Krypton-Suite/Extended-Toolkit/issues/156), `KryptonOutlookGrid` Group Header graphic issue with scaling at 150%
+* Implemented [#511](https://github.com/Krypton-Suite/Extended-Toolkit/issues/511), `KryptonMessageBoxExtended` Expandable Footer Feature
+  - **New Expandable Footer** - Similar to Windows TaskDialog, the message box now supports an expandable footer area
+  - **Collapsed/Expanded States** - Footer can start collapsed or expanded, with user toggle capability
+  - **Toggle Button** - "Show details" / "Hide details" button allows users to expand/collapse the footer
+  - **Multiple Content Types** - Footer supports three content types:
+	- **Text** (default) - Uses `KryptonWrapLabel` for simple text content
+	- **CheckBox** - Uses `KryptonCheckBox` for options like "Remember my choice"
+	- **RichTextBox** - Uses `KryptonRichTextBox` for formatted text with configurable height
+  - **Configurable Content** - Developers can specify footer text content, content type, initial expanded state, and RichTextBox height
+  - **Automatic Sizing** - Form automatically adjusts size when footer is expanded/collapsed
+  - **New API Overloads** - Added `Show` method overloads with `footerText`, `footerExpanded`, `footerContentType`, and `footerRichTextBoxHeight` parameters
+  - **Use Cases** - Ideal for displaying stack traces, error details, validation errors, system information, user preferences, and additional context without cluttering the main message
+* Implements [#562](https://github.com/Krypton-Suite/Extended-Toolkit/issues/562), Use `Krypton.Standard.Toolkit` NuGet Packages
+* Implements [#486](https://github.com/Krypton-Suite/Extended-Toolkit/issues/486), Add `ForceDesignerDPIUnaware` option to `csproj` files
+* Support for .NET 11
+* Version bump `100.xx.xx.xx` -> `110.xx.xx.xx`
 
 =======
 

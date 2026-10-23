@@ -91,9 +91,9 @@ public class OutlookGridGroupBoxColumn : IEquatable<OutlookGridGroupBoxColumn>
     /// </summary>
     /// <param name="other">The OutlookGridGroupBoxColumn to compare with.</param>
     /// <returns>True or False.</returns>
-    public bool Equals(OutlookGridGroupBoxColumn other)
+    public bool Equals(OutlookGridGroupBoxColumn? other)
     {
-        return ColumnName.Equals(other.ColumnName);
+        return other != null && ColumnName.Equals(other.ColumnName);
     }
     #endregion
 }

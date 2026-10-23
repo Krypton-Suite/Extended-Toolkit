@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -254,7 +254,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
     private readonly MessageBoxDefaultButton _defaultButton;
     private AnchorStyles _optionalCheckBoxAnchor;
     private MessageBoxOptions _options;
-    private bool _fade, _showOptionalCheckBox, _showCopyButton, _hasTimedOut, _showToolTips;
+    private bool _fade, _showOptionalCheckBox, _showCopyButton, _showToolTips;
     private CheckState _optionalCheckBoxCheckState;
     private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
     private Double _fadeIn, _fadeOut;
@@ -264,7 +264,6 @@ internal class KryptonMessageBoxExtended : KryptonForm
     private KryptonWrapLabel _messageText;
     private KryptonPanel _panelMessageIcon;
     private readonly int _fadeSleepTimer;
-    private int _timeOut;
     private PictureBox _messageIcon;
     private KryptonPanel _panelButtons;
     private MessageButton _button1;
@@ -1911,7 +1910,7 @@ internal class KryptonMessageBoxExtended : KryptonForm
         else
         {
             // Pressing Ctrl+C should copy message text into the clipboard
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
+            if (e is { Modifiers: Keys.Control, KeyCode: Keys.C })
             {
                 StringBuilder sb = new();
 

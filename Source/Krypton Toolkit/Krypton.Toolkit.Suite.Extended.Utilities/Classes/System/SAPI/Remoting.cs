@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -108,9 +108,9 @@ namespace System
                                                                BindingFlags bindingAttr,
                                                                Binder binder,
                                                                object[] args,
-                                                               Globalization.CultureInfo culture,
+                                                               CultureInfo culture,
                                                                object[] activationAttributes,
-                                                               Security.Policy.Evidence securityInfo)
+                                                               Evidence securityInfo)
         {
 #if FEATURE_CAS_POLICY
             Contract.Assert(AppDomain.CurrentDomain.IsLegacyCasPolicyEnabled || securityInfo == null);
@@ -150,7 +150,7 @@ namespace System
                                                      BindingFlags bindingAttr,
                                                      Binder binder,
                                                      object[] args,
-                                                     Globalization.CultureInfo culture,
+                                                     CultureInfo culture,
                                                      object[] activationAttributes)
         {
             return CreateInstanceFromInternal(assemblyFile,
@@ -186,12 +186,12 @@ namespace System
 
         [ResourceExposure(ResourceScope.Machine)]
         [ResourceConsumption(ResourceScope.Machine)]
-        private static ObjectHandle CreateInstanceFrom(AppDomain appDomain, String assemblyFile, String typeName)
+        private static ObjectHandle CreateInstanceFrom(AppDomain appDomain, string assemblyFile, string typeName)
         {
             // the jit doesn't check for that, so we should 
             if (appDomain == null)
             {
-                throw new System.NullReferenceException();
+                throw new NullReferenceException();
             }
 
             Diagnostics.Contracts.Contract.EndContractBlock();
@@ -215,7 +215,7 @@ namespace System
 }
 
 
-namespace System.Runtime.InteropServices
+namespace Krypton.Toolkit.Suite.Extended.Utilities.Interop
 {
 
 

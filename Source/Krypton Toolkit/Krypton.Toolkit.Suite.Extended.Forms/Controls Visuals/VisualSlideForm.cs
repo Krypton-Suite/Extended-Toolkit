@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Forms;
+namespace Krypton.Toolkit.Suite.Extended.Forms;
 
 public partial class VisualSlideForm : KryptonForm
 {
@@ -26,11 +26,13 @@ public partial class VisualSlideForm : KryptonForm
 
     public bool IsExpanded => _expand;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public SlideDirection SlideDirection
     {
         set => _slideDirection = value;
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public float SlideStep
     {
         set => _step = value;
@@ -74,7 +76,7 @@ public partial class VisualSlideForm : KryptonForm
         tmrSlide.Start();
     }
 
-    private void tmrSlide_Tick(object sender, EventArgs e)
+    private void tmrSlide_Tick(object? sender, EventArgs e)
     {
         if (_expand)
         {
@@ -150,21 +152,21 @@ public partial class VisualSlideForm : KryptonForm
         }
     }
 
-    private void VisualSlideForm_Move(object sender, EventArgs e)
+    private void VisualSlideForm_Move(object? sender, EventArgs e)
     {
         UpdateSlideLocation();
 
         UpdateLocation();
     }
 
-    private void VisualSlideForm_Resize(object sender, EventArgs e)
+    private void VisualSlideForm_Resize(object? sender, EventArgs e)
     {
         UpdateSlideLocation();
 
         UpdateLocation();
     }
 
-    private void VisualSlideForm_Closed(object sender, EventArgs e) => Close();
+    private void VisualSlideForm_Closed(object? sender, EventArgs e) => Close();
 
     #endregion
 
@@ -182,7 +184,7 @@ public partial class VisualSlideForm : KryptonForm
 
             _owner.Resize += VisualSlideForm_Resize;
 
-            _owner.Closed += VisualSlideForm_Closed;
+            _owner.FormClosed += VisualSlideForm_Closed;
         }
     }
 

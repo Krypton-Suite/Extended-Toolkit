@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ public static class DrawingMethods
         RectangleF backRect = new RectangleF(0, 1.5f, rect.Width, rect.Height - 2);
 
         // Cannot paint a zero sized area
-        if (backRect.Width > 0 && backRect.Height > 0)
+        if (backRect is { Width: > 0, Height: > 0 })
         {
             using (LinearGradientBrush backBrush = new LinearGradientBrush(backRect,
                        LightColor,
@@ -132,24 +132,19 @@ public static class DrawingMethods
         int nAlphaStart = (int)(185 + 5 * rect.Width / 24),
             nAlphaEnd = (int)(10 + 4 * rect.Width / 24);
 
-        if (nAlphaStart > 255)
+        nAlphaStart = nAlphaStart switch
         {
-            nAlphaStart = 255;
-        }
-        else if (nAlphaStart < 0)
-        {
-            nAlphaStart = 0;
-        }
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaStart
+        };
 
-        if (nAlphaEnd > 255)
+        nAlphaEnd = nAlphaEnd switch
         {
-            nAlphaEnd = 255;
-        }
-        else if (nAlphaEnd < 0)
-        {
-            nAlphaEnd = 0;
-        }
-
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaEnd
+        };
 
         Color ColourBacklight = BaseColour;
         Color ColourBacklightEnd = Color.FromArgb(50, 0, 0, 0);
@@ -197,24 +192,19 @@ public static class DrawingMethods
         int nAlphaStart = (int)(185 + 5 * rect.Height / 24),
             nAlphaEnd = (int)(10 + 4 * rect.Height / 24);
 
-        if (nAlphaStart > 255)
+        nAlphaStart = nAlphaStart switch
         {
-            nAlphaStart = 255;
-        }
-        else if (nAlphaStart < 0)
-        {
-            nAlphaStart = 0;
-        }
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaStart
+        };
 
-        if (nAlphaEnd > 255)
+        nAlphaEnd = nAlphaEnd switch
         {
-            nAlphaEnd = 255;
-        }
-        else if (nAlphaEnd < 0)
-        {
-            nAlphaEnd = 0;
-        }
-
+            > 255 => 255,
+            < 0 => 0,
+            _ => nAlphaEnd
+        };
 
         Color ColorBacklight = BaseColour;
         Color ColorBacklightEnd = Color.FromArgb(50, 0, 0, 0);

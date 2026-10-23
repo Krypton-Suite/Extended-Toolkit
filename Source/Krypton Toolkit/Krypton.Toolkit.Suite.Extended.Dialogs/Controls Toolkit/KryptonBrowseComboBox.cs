@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,23 +51,23 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
     private FileDialogType _fileDialogType;
 
-    private string _initialDirectory;
+    private string _initialDirectory = string.Empty;
 
-    private string _resetText;
+    private string _resetText = string.Empty;
 
-    private string _resetTextToolTipHeading;
+    private string _resetTextToolTipHeading = string.Empty;
 
-    private string _resetTextToolTipDescription;
+    private string _resetTextToolTipDescription = string.Empty;
 
-    private string _standardFilter;
+    private string _standardFilter = string.Empty;
 
-    private Image _smallResetImage;
+    private Image _smallResetImage = null!;
 
-    private Image _largeResetImage;
+    private Image _largeResetImage = null!;
 
-    private KryptonCommand _kcBrowse;
+    private KryptonCommand _kcBrowse = null!;
 
-    private KryptonCommand _kcReset;
+    private KryptonCommand _kcReset = null!;
 
     #endregion
 
@@ -103,6 +103,9 @@ public class KryptonBrowseComboBox : KryptonComboBox
     [DefaultValue(null), Description(@"Gets or sets the file dialog filter collection. Please see 'Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogFilterCollection' for more information.")]
     public CommonFileDialogFilterCollection FileDialogFilterCollection { get => _filterCollection; set => _filterCollection = value; }
 
+    [DefaultValue(FileDialogType.Krypton)]
+    [Description("Gets or sets the file dialog type to use.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
     /// <summary>Gets or sets the initial directory.</summary>
@@ -200,7 +203,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
     /// <summary>Handles the Execute event of the Browse control.</summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void Browse_Execute(object sender, EventArgs e)
+    private void Browse_Execute(object? sender, EventArgs e)
     {
         switch (_fileDialogType)
         {
@@ -221,7 +224,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        Text = Path.GetFullPath(saveFileDialog.FileName);
+                        Text = Path.GetFullPath(saveFileDialog.FileName ?? string.Empty);
                     }
                 }
                 else
@@ -261,7 +264,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        Text = Path.GetFullPath(saveFileDialog.FileName);
+                        Text = Path.GetFullPath(saveFileDialog.FileName ?? string.Empty);
                     }
                 }
                 else
@@ -303,7 +306,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
                     if (saveFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
                     {
-                        Text = Path.GetFullPath(saveFileDialog.FileName);
+                        Text = Path.GetFullPath(saveFileDialog.FileName ?? string.Empty);
                     }
                 }
                 else
@@ -324,7 +327,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
 
                     if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                     {
-                        Text = Path.GetFullPath(dialog.FileName);
+                        Text = Path.GetFullPath(dialog.FileName ?? string.Empty);
                     }
                 }
                 break;
@@ -336,7 +339,7 @@ public class KryptonBrowseComboBox : KryptonComboBox
     /// <summary>Handles the Execute event of the Reset control.</summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-    private void Reset_Execute(object sender, EventArgs e)
+    private void Reset_Execute(object? sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(Text))
         {

@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class SharpUpdateDownloadForm : KryptonForm
     {
@@ -7,7 +7,7 @@
         /// <summary>
         /// The web client to download the update
         /// </summary>
-        private WebClient _webClient;
+        private MyWebClient _webClient;
 
         /// <summary>
         /// The thread to hash the file on
@@ -43,7 +43,7 @@
 
             _md5 = md5;
 
-            _webClient = new WebClient();
+            _webClient = new MyWebClient();
 
             _webClient.DownloadProgressChanged += DownloadProgressChanged;
 
@@ -51,15 +51,17 @@
 
             _bgWorker = new BackgroundWorker();
 
+#pragma warning disable CS8622 // Nullability mismatch with WinForms event handlers
             _bgWorker.DoWork += DoWork;
 
             _bgWorker.RunWorkerCompleted += RunWorkerCompleted;
+#pragma warning restore CS8622
 
             try
             {
                 _webClient.DownloadFileAsync(location, TempFilePath);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DialogResult = DialogResult.No;
 
@@ -67,17 +69,17 @@
             }
         }
 
-        private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void DoWork(object sender, DoWorkEventArgs e)
+        private void DoWork(object? sender, DoWorkEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        private void DownloadFileCompleted(object? sender, AsyncCompletedEventArgs e)
         {
             if (e.Error != null)
             {
@@ -103,7 +105,7 @@
             }
         }
 
-        private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private void DownloadProgressChanged(object? sender, DownloadProgressChangedEventArgs e)
         {
             klblProgress.Text =
                 $"{SharpUpdateLanguageManager.DownloadFormStrings.Downloaded} {FormatBytes(e.BytesReceived, 1, true)} {SharpUpdateLanguageManager.DownloadFormStrings.Of} {FormatBytes(e.TotalBytesToReceive, 1, true)}";

@@ -1,0 +1,22 @@
+<Project DefaultTargets="Build">
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+	</PropertyGroup>
+
+	<Import Project="Extended.Orchestration.targets" />
+	<Import Project="Extended.Archive.targets" />
+
+	<PropertyGroup>
+		<ArchiveDir>$(BinDir)\Release\Zips</ArchiveDir>
+		<ArchiveName>Krypton-Extended-Release</ArchiveName>
+		<ArchiveSourceDir>$(BinDir)\NuGet Packages\Release</ArchiveSourceDir>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'ReleaseLite'">
+		<NuGetPackagesDir>$(BinDir)\NuGet Packages\Release</NuGetPackagesDir>
+	</PropertyGroup>
+
+	<Target Name="CreateReleaseZip" DependsOnTargets="CreateZip" />
+	<Target Name="CreateReleaseTar" DependsOnTargets="CreateTar" />
+	<Target Name="CreateAllReleaseArchives" DependsOnTargets="CreateAllArchives" />
+</Project>

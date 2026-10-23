@@ -174,12 +174,12 @@ public class RegistryConfiguration : Configuration
         else
         {
             // read out                
-            string strCheckForUpdate = key.GetValue("CheckForUpdate", "True") as string;
-            string strLastCheckTime = key.GetValue("LastCheckTime", ConvertDateToString(new DateTime(0))) as string;
-            string strSkipThisVersion = key.GetValue("SkipThisVersion", "") as string;
-            string strDidRunOnc = key.GetValue("DidRunOnce", "False") as string;
-            string strProfileTime = key.GetValue("LastProfileUpdate", ConvertDateToString(new DateTime(0))) as string;
-            string strPreviousVersion = key.GetValue("PreviousVersionRun", "") as string;
+            string strCheckForUpdate = key.GetValue("CheckForUpdate", "True") as string ?? "True";
+            string strLastCheckTime = key.GetValue("LastCheckTime", ConvertDateToString(new DateTime(0))) as string ?? ConvertDateToString(new DateTime(0));
+            string strSkipThisVersion = key.GetValue("SkipThisVersion", "") as string ?? "";
+            string strDidRunOnc = key.GetValue("DidRunOnce", "False") as string ?? "False";
+            string strProfileTime = key.GetValue("LastProfileUpdate", ConvertDateToString(new DateTime(0))) as string ?? ConvertDateToString(new DateTime(0));
+            string strPreviousVersion = key.GetValue("PreviousVersionRun", "") as string ?? "";
 
             // convert the right datatypes
             CheckForUpdate = Convert.ToBoolean(strCheckForUpdate);

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,13 +48,13 @@ internal sealed class Item : ParseElementCollection, IItem, IElement
 
     void IElement.PostParse(IElement parentElement)
     {
-        if (_maxRepeat != _minRepeat && _startArc != null && _startArc == _endArc && _endArc.IsEpsilonTransition && !_endArc.IsPropertylessTransition)
+        if (_maxRepeat != _minRepeat && _startArc != null && _startArc == _endArc && _endArc is { IsEpsilonTransition: true, IsPropertylessTransition: false })
         {
             XmlParser.ThrowSrgsException(SRID.InvalidTagInAnEmptyItem);
         }
         if (_startArc == null || _maxRepeat == 0)
         {
-            if (_maxRepeat == 0 && _startArc != null && _startArc.End != null)
+            if (_maxRepeat == 0 && _startArc is { End: not null })
             {
                 State end = _startArc.End;
                 _startArc.End = null;

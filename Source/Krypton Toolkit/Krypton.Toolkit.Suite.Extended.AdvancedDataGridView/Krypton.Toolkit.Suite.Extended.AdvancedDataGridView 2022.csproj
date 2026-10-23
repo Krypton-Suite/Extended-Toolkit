@@ -74,25 +74,25 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.9.257-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.8.236-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 					</ItemGroup>
 				</When>
 
 				<Otherwise>
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
@@ -115,7 +115,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework.StartsWith(`net4`))'">
 		<Reference Include="System.Web.Extensions" />
 	</ItemGroup>
 	<ItemGroup>
@@ -130,6 +130,9 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
 
 	<!--Optimisation-->

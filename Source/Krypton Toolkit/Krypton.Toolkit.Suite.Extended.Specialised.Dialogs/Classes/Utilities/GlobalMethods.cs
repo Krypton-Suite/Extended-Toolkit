@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -231,16 +231,16 @@ public class GlobalMethods
     {
         try
         {
-            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+            RegistryKey? registryKey = Registry.LocalMachine.OpenSubKey(path);
 
             if (registryKey == null)
             {
                 return string.Empty;
             }
 
-            return (string)registryKey.GetValue(key);
+            return registryKey.GetValue(key) as string ?? string.Empty;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return string.Empty;
         }

@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -384,7 +384,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.AutoScrollChanged;
 
@@ -402,7 +402,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollMarginChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.AutoScrollMarginChanged;
 
@@ -420,7 +420,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollMinSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.AutoScrollPosition = this.AdjustPositionToSize(this.AutoScrollPosition);
         this.AdjustScrollbars();
@@ -441,7 +441,7 @@ public class VirtualScrollableControl : ScrollControl
     /// </param>
     protected virtual void OnAutoScrollPositionChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.AutoScrollPositionChanged;
 
@@ -464,7 +464,7 @@ public class VirtualScrollableControl : ScrollControl
 
         clientRectangle = this.ClientRectangle;
 
-        if (clientRectangle.Width > 1 && clientRectangle.Height > 1)
+        if (clientRectangle is { Width: > 1, Height: > 1 })
         {
             Size scrollSize;
             Size pageSize;

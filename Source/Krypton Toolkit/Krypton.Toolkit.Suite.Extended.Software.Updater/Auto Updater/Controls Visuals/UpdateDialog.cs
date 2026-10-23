@@ -1,4 +1,4 @@
-﻿using Application = System.Windows.Forms.Application;
+using Application = System.Windows.Forms.Application;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
@@ -85,12 +85,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private void WebView_CoreWebView2InitializationCompleted(object sender,
+        private void WebView_CoreWebView2InitializationCompleted(object? sender,
        CoreWebView2InitializationCompletedEventArgs e)
         {
             if (!e.IsSuccess)
             {
-                if (AutoUpdater.ReportErrors)
+                if (AutoUpdater.ReportErrors && e.InitializationException != null)
                 {
                     KryptonMessageBox.Show(this, e.InitializationException.Message, e.InitializationException.GetType().ToString(),
                         KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 return;
             }
 
-            wvChangelog.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            wvChangelog.CoreWebView2!.Settings.AreDefaultContextMenusEnabled = false;
             wvChangelog.CoreWebView2.Settings.IsStatusBarEnabled = false;
             wvChangelog.CoreWebView2.Settings.AreDevToolsEnabled = Debugger.IsAttached;
             wvChangelog.CoreWebView2.Settings.UserAgent = AutoUpdater.GetUserAgent();
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             if (null != AutoUpdater.BasicAuthChangeLog)
             {
                 wvChangelog.CoreWebView2.BasicAuthenticationRequested += delegate (
-                    object _,
+                    object? _,
                     CoreWebView2BasicAuthenticationRequestedEventArgs args)
                 {
                     args.Response.UserName = ((BasicAuthentication)AutoUpdater.BasicAuthChangeLog).Username;
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 };
             }
 
-            wvChangelog.CoreWebView2.Navigate(_updateInfoEventArgs.ChangelogURL);
+            wvChangelog.CoreWebView2.Navigate(_updateInfoEventArgs.ChangelogURL!);
         }
 
         private void UseLatestIE()
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 
             try
             {
-                using RegistryKey registryKey =
+                using RegistryKey? registryKey =
                     Registry.CurrentUser.OpenSubKey(
                         @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION",
                         true);
@@ -174,12 +174,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private void UpdateDialog_Load(object sender, EventArgs e)
+        private void UpdateDialog_Load(object? sender, EventArgs e)
         {
 
         }
 
-        private void kbtnUpdate_Click(object sender, EventArgs e)
+        private void kbtnUpdate_Click(object? sender, EventArgs e)
         {
             if (AutoUpdater.OpenDownloadPage)
             {
@@ -198,12 +198,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
             }
         }
 
-        private void kbtnSkip_Click(object sender, EventArgs e)
+        private void kbtnSkip_Click(object? sender, EventArgs e)
         {
-            AutoUpdater.PersistenceProvider.SetSkippedVersion(new Version(_updateInfoEventArgs.CurrentVersion));
+            AutoUpdater.PersistenceProvider!.SetSkippedVersion(new Version(_updateInfoEventArgs.CurrentVersion));
         }
 
-        private void kbtnRemind_Click(object sender, EventArgs e)
+        private void kbtnRemind_Click(object? sender, EventArgs e)
         {
             if (AutoUpdater.LetUserSelectRemindLater)
             {
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 }
             }
 
-            AutoUpdater.PersistenceProvider.SetSkippedVersion(null);
+            AutoUpdater.PersistenceProvider!.SetSkippedVersion(null);
 
             DateTime remindLaterDateTime = AutoUpdater.RemindLaterTimeSpan switch
             {
@@ -234,18 +234,18 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                 _ => DateTime.Now
             };
 
-            AutoUpdater.PersistenceProvider.SetRemindLater(remindLaterDateTime);
+            AutoUpdater.PersistenceProvider!.SetRemindLater(remindLaterDateTime);
             AutoUpdater.SetTimer(remindLaterDateTime);
 
             DialogResult = DialogResult.Cancel;
         }
 
-        private void UpdateDialog_FormClosed(object sender, FormClosedEventArgs e)
+        private void UpdateDialog_FormClosed(object? sender, FormClosedEventArgs e)
         {
             AutoUpdater.Running = false;
         }
 
-        private void UpdateDialog_FormClosing(object sender, FormClosingEventArgs e)
+        private void UpdateDialog_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.Forced)
             {

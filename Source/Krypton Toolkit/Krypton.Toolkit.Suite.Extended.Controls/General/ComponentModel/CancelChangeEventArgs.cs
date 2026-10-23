@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls;
 /// Provides data for a cancelable value-change event.
 /// </summary>
 /// <typeparam name="T">The type of value being changed.</typeparam>
-public class CancelChangeEventArgs<T> : CancelEventArgs
+public class CancelChangeEventArgs<T> : CancelEventArgs where T : notnull
 {
     public static bool operator ==(CancelChangeEventArgs<T> left,
         CancelChangeEventArgs<T> right)

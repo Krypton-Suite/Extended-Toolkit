@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Themes
 {
     [ToolboxItem(false)]
-    public abstract class CustomPaletteBase : Component, PaletteBase
+    public abstract class CustomPaletteBase : Component
     {
         #region Instance Fields
         private BasePaletteType _basePaletteType;

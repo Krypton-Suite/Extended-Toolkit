@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+using Krypton.Toolkit;
+
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class RemindLaterForm : KryptonForm
     {
@@ -31,7 +33,7 @@
 
             krbYes.Text = AutoUpdaterLanguageManager.LaterWindowStrings.YesText;
 
-            kbtnOk.Text = KryptonLanguageManager.GeneralToolkitStrings.OK;
+            kbtnOk.Text = KryptonGlobalToolkitStrings.GeneralToolkitStrings.OK;
 
             kcmbRemindLater.Items.Add(AutoUpdaterLanguageManager.TimingStrings.ThirtyMinutes);
 
@@ -48,14 +50,14 @@
             kcmbRemindLater.Items.Add(AutoUpdaterLanguageManager.TimingStrings.TenDays);
         }
 
-        private void RemindLaterForm_Load(object sender, EventArgs e)
+        private void RemindLaterForm_Load(object? sender, EventArgs e)
         {
             kcmbRemindLater.SelectedIndex = 0;
 
             krbYes.Checked = true;
         }
 
-        private void kbtnOk_Click(object sender, EventArgs e)
+        private void kbtnOk_Click(object? sender, EventArgs e)
         {
             if (krbYes.Checked)
             {
@@ -99,6 +101,6 @@
             }
         }
 
-        private void krbYes_CheckedChanged(object sender, EventArgs e) => kcmbRemindLater.Enabled = krbYes.Checked;
+        private void krbYes_CheckedChanged(object? sender, EventArgs e) => kcmbRemindLater.Enabled = krbYes.Checked;
     }
 }

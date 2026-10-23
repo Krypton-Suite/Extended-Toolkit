@@ -24,7 +24,8 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
-		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -67,6 +68,41 @@
 		</Description>
 	</PropertyGroup>
 
+	<Choose>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.9.257-alpha" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.8.236-beta" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'Release'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</When>
+
+				<Otherwise>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</Otherwise>
+			</Choose>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Debug.Tools\Krypton.Toolkit.Suite.Extended.Debug.Tools.xml</DocumentationFile>
@@ -74,5 +110,8 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
+	</ItemGroup>
 
 </Project>

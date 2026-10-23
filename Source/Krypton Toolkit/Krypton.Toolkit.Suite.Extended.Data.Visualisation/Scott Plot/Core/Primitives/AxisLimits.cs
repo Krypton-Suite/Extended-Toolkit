@@ -162,17 +162,12 @@ public readonly struct AxisLimits : IEquatable<AxisLimits>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is AxisLimits other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            AxisLimits other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(AxisLimits a, AxisLimits b)

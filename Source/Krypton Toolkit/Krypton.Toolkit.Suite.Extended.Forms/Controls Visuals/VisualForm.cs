@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     #endregion
 
     #region Instance Fields
+#pragma warning disable CS0169, CS0414, CS0649
     private bool _activated;
     private bool _windowActive;
     private bool _trackingMouse;
@@ -67,6 +68,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     private FadeManager _fadeManager;
 
     private readonly FadeController _fadeController;
+#pragma warning restore CS0169, CS0414, CS0649
     #endregion
 
     #region Events
@@ -966,7 +968,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">An EventArgs containing the event data.</param>
-    protected virtual void OnAllowFormChromeChanged(object sender, EventArgs e)
+    protected virtual void OnAllowFormChromeChanged(object? sender, EventArgs e)
     {
     }
 
@@ -1146,7 +1148,7 @@ public abstract class VisualForm : Form, IKryptonDebug
     /// <param name="m">A Windows-based message.</param>
     protected virtual void OnWM_GETMINMAXINFO(ref Message m)
     {
-        PlatformInvoke.MINMAXINFO mmi = (PlatformInvoke.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(PlatformInvoke.MINMAXINFO));
+        PlatformInvoke.MINMAXINFO mmi = (PlatformInvoke.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(PlatformInvoke.MINMAXINFO))!;
 
         // Adjust the maximized size and position to fit the work area of the correct monitor
         const int MONITOR_DEFAULT_TO_NEAREST = 0x00000002;
@@ -1195,7 +1197,7 @@ public abstract class VisualForm : Form, IKryptonDebug
             Padding borders = FormBorderStyle == FormBorderStyle.None ? Padding.Empty : RealWindowBorders;
 
             // Extract the Win32 NCCALCSIZE_PARAMS structure from LPARAM
-            PlatformInvoke.NCCALCSIZE_PARAMS calcsize = (PlatformInvoke.NCCALCSIZE_PARAMS)m.GetLParam(typeof(PlatformInvoke.NCCALCSIZE_PARAMS));
+            PlatformInvoke.NCCALCSIZE_PARAMS calcsize = (PlatformInvoke.NCCALCSIZE_PARAMS)m.GetLParam(typeof(PlatformInvoke.NCCALCSIZE_PARAMS))!;
                 
             // Reduce provided RECT by the borders
             calcsize.rectProposed.left += borders.Left;
@@ -1528,7 +1530,7 @@ public abstract class VisualForm : Form, IKryptonDebug
         Rectangle windowBounds = RealWindowRectangle;
 
         // We can only draw a window that has some size
-        if (windowBounds.Width > 0 && windowBounds.Height > 0)
+        if (windowBounds is { Width: > 0, Height: > 0 })
         {
             // Get the device context for this window
             IntPtr hDC = PlatformInvoke.GetWindowDC(Handle);
@@ -1547,7 +1549,7 @@ public abstract class VisualForm : Form, IKryptonDebug
                     var minimized = CommonHelper.IsFormMinimized(this);
 
                     // After excluding the client area, is there anything left to draw?
-                    if (minimized || (clipClientRect.Width > 0 && clipClientRect.Height > 0))
+                    if (minimized || clipClientRect is { Width: > 0, Height: > 0 })
                     {
                         // If not minimized we need to clip the client area
                         if (!minimized)

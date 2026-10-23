@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,15 +36,15 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     private Rectangle headerTextRectangle; // Defines the header containing 
     private NaviButtonOptions optionsButton;
     private NaviButtonCollapse collapseButton;
-    private NaviBandCollapsed collapsedBand;
-    private NaviBandPopup popup;
+    private NaviBandCollapsed? collapsedBand;
+    private NaviBandPopup? popup;
     private NaviContextMenu optionsMenu;
     private ToolStripMenuItem miShowMoreButtons;
     private ToolStripMenuItem miShowLessButtons;
     private ToolStripMenuItem miShowMoreOptions;
     private ToolStripMenuItem miAddOrRemoveButtons;
     private ToolStripSeparator miSep;
-    private PopupWindowHelper popupHelper = null;
+    private PopupWindowHelper? popupHelper;
     private readonly object threadLock = new object();
     private NaviBandEnumerator ienum;
     private Font headerFont = new Font("Arial", 11F, FontStyle.Bold, GraphicsUnit.Point, (byte)0);
@@ -306,7 +306,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
         CalculateButtonLayout();
         LayoutSplitter();
         LayoutBands(); // First, because of the options menu
-        LayoutButtons(layoutEventArgs != null && layoutEventArgs.AffectedProperty == "OptionsMenu");
+        LayoutButtons(layoutEventArgs is { AffectedProperty: "OptionsMenu" });
         LayoutAdditionalControls();
 
         return true;
@@ -601,7 +601,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
             {
                 menuitem.Image = band.SmallImage;
             }
-            else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+            else if (band is { SmallImageIndex: >= 0, SmallImages: not null }
                      && band.SmallImageIndex < band.SmallImages.Images.Count)
             {
                 menuitem.Image = band.SmallImages.Images[band.SmallImageIndex];
@@ -623,19 +623,15 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
         }
     }
 
-    private void menuitem_Click(object sender, EventArgs e)
+    private void menuitem_Click(object? sender, EventArgs e)
     {
-        if (sender is ToolStripMenuItem)
+        if (sender is ToolStripMenuItem menuItem)
         {
-            ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
-            if (menuItem != null)
+            foreach (NaviBand band in Bar.Bands)
             {
-                foreach (NaviBand band in Bar.Bands)
+                if (band.Text.Equals(menuItem.Text))
                 {
-                    if (band.Text.Equals(menuItem.Text))
-                    {
-                        Bar.SetActiveBand(band);
-                    }
+                    Bar.SetActiveBand(band);
                 }
             }
             Bar.PerformLayout();
@@ -723,13 +719,16 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
         }
         else
         {
-            if (collapsedBand != null && collapsedBand.Visible)
+            if (collapsedBand is { Visible: true })
             {
                 collapsedBand.Visible = false;
             }
         }
-        collapsedBand.Location = new Point(1, Bar.HeaderHeight);
-        collapsedBand.Size = new Size(Bar.Width - 2, splitterRectangle.Y - 1 - Bar.HeaderHeight);
+        if (collapsedBand != null)
+        {
+            collapsedBand.Location = new Point(1, Bar.HeaderHeight);
+            collapsedBand.Size = new Size(Bar.Width - 2, splitterRectangle.Y - 1 - Bar.HeaderHeight);
+        }
     }
 
     #endregion
@@ -744,8 +743,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     {
         if (e != null)
         {
-            if (e.Button == MouseButtons.Left
-                && e.Clicks == 1
+            if (e is { Button: MouseButtons.Left, Clicks: 1 }
                 && MouseInSplitter(e.X, e.Y))
             {
                 splitterDragging = true;
@@ -793,10 +791,16 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
         switch (id)
         {
             case "MouseDown":
-                HandleMouseDown(arguments as MouseEventArgs);
+                if (arguments is MouseEventArgs mouseDownArgs)
+                {
+                    HandleMouseDown(mouseDownArgs);
+                }
                 break;
             case "MouseMove":
-                HandleMouseMove(arguments as MouseEventArgs);
+                if (arguments is MouseEventArgs mouseMoveArgs)
+                {
+                    HandleMouseMove(mouseMoveArgs);
+                }
                 break;
             case "MouseLeave":
                 Bar.Cursor = Cursors.Default;
@@ -815,10 +819,9 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// <summary>
     /// Changes the activeband when the user clicks on a button
     /// </summary>
-    private void Button_Click(object sender, EventArgs e)
+    private void Button_Click(object? sender, EventArgs e)
     {
-        NaviButton button = sender as NaviButton;
-        if (button.Band != null)
+        if (sender is NaviButton button && button.Band != null)
         {
             Bar.ActiveBand = button.Band;
         }
@@ -833,7 +836,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     /// <param name="sender">The button on which this event occured</param>
     /// <param name="e">Additional info</param>
-    private void optionsButton_Click(object sender, EventArgs e)
+    private void optionsButton_Click(object? sender, EventArgs e)
     {
         ShowOptionsMenu();
     }
@@ -934,7 +937,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
             {
                 menuItem.Image = band.SmallImage;
             }
-            else if (band != null && band.SmallImageIndex >= 0 && band.SmallImages != null
+            else if (band is { SmallImageIndex: >= 0, SmallImages: not null }
                      && band.SmallImageIndex < band.SmallImages.Images.Count)
             {
                 menuItem.Image = band.SmallImages.Images[band.SmallImageIndex];
@@ -962,19 +965,15 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     /// <param name="sender">The control on which this event occured</param>
     /// <param name="e">Additional info</param>
-    private void menuItem_CheckedChanged(object sender, EventArgs e)
+    private void menuItem_CheckedChanged(object? sender, EventArgs e)
     {
-        if (sender is ToolStripMenuItem)
+        if (sender is ToolStripMenuItem menuItem)
         {
-            ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
-            if (menuItem != null)
+            foreach (NaviBand band in Bar.Bands)
             {
-                foreach (NaviBand band in Bar.Bands)
+                if (band.Text.Equals(menuItem.Text))
                 {
-                    if (band.Text.Equals(menuItem.Text))
-                    {
-                        band.Visible = menuItem.Checked;
-                    }
+                    band.Visible = menuItem.Checked;
                 }
             }
             Bar.PerformLayout();
@@ -987,7 +986,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     /// <param name="sender">The control on which this event occured</param>
     /// <param name="e">Additional info</param>
-    private void miShowMoreButtons_Click(object sender, EventArgs e)
+    private void miShowMoreButtons_Click(object? sender, EventArgs e)
     {
         Bar.VisibleLargeButtons++;
         Bar.Invalidate();
@@ -998,7 +997,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     /// <param name="sender">The control on which this event occured</param>
     /// <param name="e">Additional info</param>
-    private void miShowLessButtons_Click(object sender, EventArgs e)
+    private void miShowLessButtons_Click(object? sender, EventArgs e)
     {
         Bar.VisibleLargeButtons--;
         Bar.Invalidate();
@@ -1009,7 +1008,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     /// <param name="sender">The control on which this event occured</param>
     /// <param name="e">Additional info</param>
-    private void miShowMoreOptions_Click(object sender, EventArgs e)
+    private void miShowMoreOptions_Click(object? sender, EventArgs e)
     {
         ShowMoreOptionsDialog();
     }
@@ -1037,9 +1036,9 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     public virtual void ClosePopup()
     {
-        if (Bar.Collapsed && popup.Visible)
+        if (Bar.Collapsed && popup is { Visible: true })
         {
-            popupHelper.ClosePopup();
+            popupHelper?.ClosePopup();
         }
     }
 
@@ -1084,7 +1083,11 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
             popup.Renderer = renderer;
 
             popupHelper = new PopupWindowHelper();
-            KryptonForm parent = (KryptonForm)Bar.FindForm();
+            if (Bar.FindForm() is not KryptonForm parent)
+            {
+                return;
+            }
+
             popupHelper.PopupClosed += new PopupClosedEventHandler(popupHelper_PopupClosed);
 
             popupHelper.AssignHandle(parent.Handle);
@@ -1111,6 +1114,11 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// </summary>
     private void HideCollapsedBandPopup()
     {
+        if (popup == null || Bar.ActiveBand == null)
+        {
+            return;
+        }
+
         Control clientArea = popup.Content;
         Bar.ActiveBand.Controls.Add(clientArea);
         clientArea.Invalidate();
@@ -1121,7 +1129,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// <summary>
     /// Switch the collapsion of the Navigation bar
     /// </summary>      
-    private void collapseButton_Click(object sender, EventArgs e)
+    private void collapseButton_Click(object? sender, EventArgs e)
     {
         Bar.Collapsed = !Bar.Collapsed;
     }
@@ -1129,7 +1137,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// <summary>
     /// Shows the band in a popup
     /// </summary>
-    private void CollapsedBand_MouseUp(object sender, MouseEventArgs e)
+    private void CollapsedBand_MouseUp(object? sender, MouseEventArgs e)
     {
         Bar.OnCollapsedBandClick(new EventArgs());
         ShowCollapsedBandPopup();
@@ -1138,7 +1146,7 @@ public class NaviLayoutEngineOffice : NaviLayoutEngine
     /// <summary>
     /// Hides the popup
     /// </summary>
-    private void popupHelper_PopupClosed(object sender, PopupClosedEventArgs e)
+    private void popupHelper_PopupClosed(object? sender, PopupClosedEventArgs e)
     {
         HideCollapsedBandPopup();
     }

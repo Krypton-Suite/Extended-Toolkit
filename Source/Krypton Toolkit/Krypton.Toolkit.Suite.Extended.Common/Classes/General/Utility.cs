@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ public class Utility
 
         Version currentOSVersion = Environment.OSVersion.Version;
 
-        if (currentOSVersion.Major >= 6 && currentOSVersion.Minor >= 1)
+        if (currentOSVersion is { Major: >= 6, Minor: >= 1 })
         {
             result = true;
         }

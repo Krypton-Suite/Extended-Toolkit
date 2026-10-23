@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -95,9 +95,7 @@ public class MenuStripPanelExtended : ToolStripPanel
     {
         base.OnControlAdded(e);
 
-        MenuStrip? menuStrip = e.Control as MenuStrip;
-
-        if (menuStrip != null)
+        if (e.Control is MenuStrip menuStrip)
         {
             if (Orientation == Orientation.Horizontal)
             {

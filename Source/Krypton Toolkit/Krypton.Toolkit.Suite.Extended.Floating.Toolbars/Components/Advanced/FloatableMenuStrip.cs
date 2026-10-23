@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -209,9 +209,24 @@ public class FloatableMenuStrip : MenuStrip
         {
             e.Cancel = true;
 
+            _menuStripContainerWindow.Controls.Remove(this);
+
             _menuStripContainerWindow.Visible = false;
 
-            base.OnVisibleChanged(new EventArgs());
+            if (_originalParent != null)
+            {
+                _originalParent.SuspendLayout();
+
+                base.Dock = DockStyle.None;
+
+                base.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+                _originalParent.Controls.Add(this);
+
+                _originalParent.ResumeLayout();
+            }
+
+            _isFloating = false;
         }
     }
 

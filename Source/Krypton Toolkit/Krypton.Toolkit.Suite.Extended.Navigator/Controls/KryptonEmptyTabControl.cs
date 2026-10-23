@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -141,6 +141,11 @@ public class KryptonEmptyTabControl : TabControl
 
     private void InitColours()
     {
+        if (_palette == null)
+        {
+            return;
+        }
+
         _bgcolor = _palette.ColorTable.MenuStripGradientEnd;
         if (!DesignMode)
         {
@@ -228,7 +233,7 @@ public class KryptonEmptyTabControl : TabControl
     }
 
     #region ... Krypton ...
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
 
         if (_palette != null)
@@ -250,7 +255,7 @@ public class KryptonEmptyTabControl : TabControl
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
 
         Invalidate();

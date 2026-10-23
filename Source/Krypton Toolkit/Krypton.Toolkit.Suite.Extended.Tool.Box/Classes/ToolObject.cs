@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ public class ToolObject
 {
     #region Protected Attributes
     protected Rectangle _rectangle;
-    protected string _toolTip = null;
+    protected string _toolTip = "";
     protected bool _forceCaptionToolTip = false;
     protected bool _captionChecked = false;
 
@@ -141,7 +141,7 @@ public class ToolObject
     [Category("General")]
     public virtual string Caption
     {
-        get => null;
+        get => string.Empty;
         set {; }
     }
 

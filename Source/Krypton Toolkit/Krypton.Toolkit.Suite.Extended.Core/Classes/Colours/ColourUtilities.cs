@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -333,11 +333,7 @@ public static class ColourUtilities
 
         foreach (PropertyInfo propertyInfo in systemColourProperties)
         {
-            object colourObject = propertyInfo.GetValue(null, null);
-
-            Color systemColour = (Color)colourObject;
-
-            if (!allSystemColours.Contains(systemColour))
+            if (propertyInfo.GetValue(null, null) is Color systemColour && !allSystemColours.Contains(systemColour))
             {
                 systemColourSelection.Items.Add(systemColour.Name);
 

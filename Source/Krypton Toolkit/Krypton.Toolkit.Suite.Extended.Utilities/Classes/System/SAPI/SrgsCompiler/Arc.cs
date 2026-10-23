@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -137,7 +137,7 @@ internal class Arc : IComparer<Arc>, IComparable<Arc>
         get => _ruleRef;
         set
         {
-            if ((_start != null && !_start.OutArcs.IsEmpty) || (_end != null && !_end.InArcs.IsEmpty))
+            if (_start is { OutArcs.IsEmpty: false } || _end is { InArcs.IsEmpty: false })
             {
                 throw new InvalidOperationException();
             }

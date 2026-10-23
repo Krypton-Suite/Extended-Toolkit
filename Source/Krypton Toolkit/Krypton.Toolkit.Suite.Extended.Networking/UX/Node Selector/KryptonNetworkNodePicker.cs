@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ public partial class KryptonNetworkNodePicker : KryptonForm
         int index = 0;
 
         // browse for domains
-        _computerEnum = new ComputerEnum(0x80000000, null);
+        _computerEnum = new ComputerEnum(0x80000000, null!);
         {
             for (int i = 0; i < _computerEnum.Length; i++)
             {
@@ -85,7 +85,7 @@ public partial class KryptonNetworkNodePicker : KryptonForm
     {
         Cursor.Current = Cursors.WaitCursor;
         klstServers.Items.Clear();
-        _computerEnum = new ComputerEnum(serverType, kcmbDomainList.SelectedItem.ToString());
+        _computerEnum = new ComputerEnum(serverType, kcmbDomainList.SelectedItem?.ToString());
         int numServer = _computerEnum.Length;
         klstServers.Sorted = true;
 
@@ -135,7 +135,7 @@ public partial class KryptonNetworkNodePicker : KryptonForm
                 }
                 else
                 {
-                    filterVal += int.Parse((string)cb.Tag, NumberStyles.HexNumber);
+                    filterVal += int.Parse((string)(cb.Tag ?? "0"), NumberStyles.HexNumber);
                     itemsChecked = true;
                 }
                 numItemsChecked++;
@@ -160,7 +160,7 @@ public partial class KryptonNetworkNodePicker : KryptonForm
             return true;
         }
         // if the SQLDMO object doesn't exist, we can use SQLDMO
-        catch (COMException comException)
+        catch (COMException)
         {
             return false;
         }
@@ -175,7 +175,6 @@ public partial class KryptonNetworkNodePicker : KryptonForm
         Cursor.Current = Cursors.WaitCursor;
         //SQLDMO.Application app = new SQLDMO.ApplicationClass();
         //SQLDMO.NameList nameList = app.ListAvailableSQLServers();
-        string srvName = "";
         //_sqlServerList = new string[nameList.Count];
 
         //for (int i = 0; i < nameList.Count; i++)

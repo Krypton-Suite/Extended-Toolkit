@@ -25,7 +25,8 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
-		<NeutralLanguage>en</NeutralLanguage>		<LangVersion>preview</LangVersion>
+		<NeutralLanguage>en</NeutralLanguage>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -69,94 +70,42 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.9.257-alpha" />
+					</ItemGroup>
+				</When>
 
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.8.236-beta" />
+					</ItemGroup>
+				</When>
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.11.318-alpha" />
-			</ItemGroup>
+				<When Condition="'$(Configuration)' == 'Release'">
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</When>
+
+				<Otherwise>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
+					</ItemGroup>
+				</Otherwise>
+			</Choose>
 		</When>
-
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
-
-				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.11.318-beta" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Release'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
-
-				<PackageReference Include="Krypton.Navigator" Version="100.25.11.328" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'StableLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Lite" Version="90.25.2.55" />
-
-				<PackageReference Include="Krypton.Navigator.Lite" Version="90.25.2.55" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
-
-				<PackageReference Include="Krypton.Navigator.Signed" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
-
-				<PackageReference Include="Krypton.Navigator.Signed.Lite" Version="65.22.6.152" />
-			</ItemGroup>
-		</When>
-
 		<Otherwise>
-			<!--If all else fails-->
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
-
-				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
+				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
 
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.12" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.15.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -198,24 +147,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>4.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>5.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-			<SpecificVersion>True</SpecificVersion>
-			<Version>6.0.0.0</Version>
-			<TreatAsUsed>True</TreatAsUsed>
-		</Reference>
-		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-		<!--TODO: Need to specify version here-->
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
+
+
+
+
+
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.xml</DocumentationFile>

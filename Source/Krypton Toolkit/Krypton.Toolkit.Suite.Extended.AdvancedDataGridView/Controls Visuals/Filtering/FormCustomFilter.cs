@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -248,7 +248,7 @@ public partial class FormCustomFilter : KryptonForm
 
     #region Implementation
 
-    private void FormCustomFilter_Load(object sender, EventArgs e)
+    private void FormCustomFilter_Load(object? sender, EventArgs e)
     {
 
     }
@@ -455,14 +455,14 @@ public partial class FormCustomFilter : KryptonForm
         return result.Replace("'", "''");
     }
 
-    private void button_cancel_Click(object sender, EventArgs e)
+    private void button_cancel_Click(object? sender, EventArgs e)
     {
         _filterStringDescription = null;
         _filterString = null;
         DialogResult = DialogResult.Cancel;
     }
 
-    private void button_ok_Click(object sender, EventArgs e)
+    private void button_ok_Click(object? sender, EventArgs e)
     {
         if (_valControl1 != null && _valControl2 != null && ((_valControl1.Visible && _valControl1.Tag != null && (bool)_valControl1.Tag) ||
                                                              (_valControl2.Visible && _valControl2.Tag != null && (bool)_valControl2.Tag)))
@@ -500,7 +500,7 @@ public partial class FormCustomFilter : KryptonForm
         Close();
     }
 
-    private void comboBox_filterType_SelectedIndexChanged(object sender, EventArgs e)
+    private void comboBox_filterType_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (_valControl2 != null)
         {
@@ -579,7 +579,7 @@ public partial class FormCustomFilter : KryptonForm
         {
             if (sender == _valControl1)
             {
-                if (_valControl2 != null && _valControl2.Visible)
+                if (_valControl2 is { Visible: true })
                 {
                     _valControl2.Focus();
                 }

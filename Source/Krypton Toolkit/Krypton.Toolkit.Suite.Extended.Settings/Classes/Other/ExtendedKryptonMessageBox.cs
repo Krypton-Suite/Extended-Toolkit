@@ -1,9 +1,9 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,6 +52,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _button1 = new();
         _button2 = new();
         _doNotShowAgainOption = new();
+        _panelFooter = new();
+        _footerBorderEdge = new();
+        _footerText = new();
+        _footerToggleLink = new();
         ((ISupportInitialize)_panelMessage).BeginInit();
         _panelMessage.SuspendLayout();
         ((ISupportInitialize)_panelMessageText).BeginInit();
@@ -198,11 +202,57 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _doNotShowAgainOption.TabIndex = 1;
         _doNotShowAgainOption.Values.Text = @"&Do not show this again";
         // 
+        // _panelFooter
+        // 
+        _panelFooter.Dock = DockStyle.Top;
+        _panelFooter.Location = new(0, 78);
+        _panelFooter.Margin = new(0);
+        _panelFooter.Name = "_panelFooter";
+        _panelFooter.PanelBackStyle = PaletteBackStyle.PanelAlternate;
+        _panelFooter.Size = new(156, 0);
+        _panelFooter.TabIndex = 1;
+        _panelFooter.Visible = false;
+        // 
+        // _footerBorderEdge
+        // 
+        _footerBorderEdge.BorderStyle = PaletteBorderStyle.HeaderPrimary;
+        _footerBorderEdge.Dock = DockStyle.Top;
+        _footerBorderEdge.Location = new(0, 0);
+        _footerBorderEdge.Name = "_footerBorderEdge";
+        _footerBorderEdge.Size = new(156, 1);
+        _footerBorderEdge.Text = @"kryptonBorderEdge2";
+        _panelFooter.Controls.Add(_footerBorderEdge);
+        _panelFooter.Controls.Add(_footerText);
+        _panelFooter.Controls.Add(_footerToggleLink);
+        // 
+        // _footerText
+        // 
+        _footerText.AutoSize = false;
+        _footerText.Location = new(10, 25);
+        _footerText.Margin = new(0);
+        _footerText.Name = "_footerText";
+        _footerText.Size = new(136, 50);
+        _footerText.StateCommon.Font = new(@"Segoe UI", 9F);
+        _footerText.StateCommon.TextColor = Color.FromArgb(30, 57, 91);
+        _footerText.LabelStyle = LabelStyle.NormalPanel;
+        _footerText.Text = @"Footer Text";
+        // 
+        // _footerToggleLink
+        // 
+        _footerToggleLink.AutoSize = true;
+        _footerToggleLink.Location = new(10, 5);
+        _footerToggleLink.Margin = new(0);
+        _footerToggleLink.Name = "_footerToggleLink";
+        _footerToggleLink.Size = new(100, 25);
+        _footerToggleLink.Values.Text = @"Show details";
+        _footerToggleLink.Click += FooterToggleLink_Click;
+        // 
         // KryptonMessageBox
         // 
         AutoScaleDimensions = new(6F, 13F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new(156, 78);
+        Controls.Add(_panelFooter);
         Controls.Add(_panelButtons);
         Controls.Add(_panelMessage);
         FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -248,14 +298,17 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     private MessageButton _button2;
     private MessageButton _button3;
     private KryptonBorderEdge _borderEdge;
-    private HelpInformation _helpInformation; // TODO: What is this used for ?
+    private HelpInformation? _helpInformation; // TODO: What is this used for ?
     private Font _messageboxTypeface;
     private int _timeOut, _timeOutTimerDelay;
-    private Timer _timer;
     private KryptonCheckBox _doNotShowAgainOption;
     private string _doNotShowAgainOptionText;
     private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption;
     private DialogResult _defaultTimeOutResponse;
+    private KryptonPanel _panelFooter;
+    private KryptonBorderEdge _footerBorderEdge;
+    private KryptonWrapLabel _footerText;
+    private KryptonButton _footerToggleLink;
     #endregion
 
     #region Static Fields
@@ -499,12 +552,12 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     /// <param name="button1Text">Sets the text on button 1. (Can be null)</param>
     /// <param name="button2Text">Sets the text on button 2. (Can be null)</param>
     /// <param name="button3Text">Sets the text on button 3. (Can be null)</param>
-    private ExtendedKryptonMessageBox(IWin32Window showOwner, string text, string caption,
+    private ExtendedKryptonMessageBox(IWin32Window? showOwner, string text, string caption,
         MessageBoxButtons buttons, KryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
-        MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy, bool topMost,
-        Font messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
+        MessageBoxOptions options, HelpInformation? helpInformation, bool? showCtrlCopy, bool topMost,
+        Font? messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
         bool useTimeOutOption, int timeOut, int timeOutDelay, DialogResult defaultTimeOutResponse,
-        string button1Text, string button2Text, string button3Text)
+        string? button1Text, string? button2Text, string? button3Text)
     {
         #region Store Values
         _text = text;
@@ -595,6 +648,8 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     #endregion
 
     #region Public
+
+#pragma warning disable CS1573, CS1574 // Show overload XML documents omit optional topMost/messageboxTypeface params.
 
     /// <summary>
     /// Displays a message box with specified text.
@@ -793,6 +848,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     {
         return InternalShow(null, text, caption, buttons, KryptonMessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, 250, DialogResult.OK, button1Text, button2Text, button3Text);
     }
+
 
     /// <summary>
     /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -1047,16 +1103,17 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     {
         return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, timeOut, timeOutDelay, defaultTimeOutResponse);
     }
+#pragma warning restore CS1573, CS1574
     #endregion
 
     #region Implementation
-    private static DialogResult InternalShow(IWin32Window owner,
+    private static DialogResult InternalShow(IWin32Window? owner,
         string text, string caption,
         MessageBoxButtons buttons,
         KryptonMessageBoxIcon icon,
         MessageBoxDefaultButton defaultButton,
         MessageBoxOptions options,
-        HelpInformation helpInformation, bool? showCtrlCopy, bool topMost, Font? messageboxTypeface = null,
+        HelpInformation? helpInformation, bool? showCtrlCopy, bool topMost, Font? messageboxTypeface = null,
         bool showDoNotShowAgainOption = false, string doNotShowAgainOptionText = "Do n&ot show again",
         bool useTimeOutOption = false, int timeOut = 60, int timeOutDelay = 250,
         DialogResult defaultTimeOutResponse = DialogResult.OK,
@@ -1081,7 +1138,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         }
 
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
-        IWin32Window showOwner = null;
+        IWin32Window? showOwner = null;
         if (helpInformation != null || (options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0)
         {
             // If do not have an owner passed in then get the active window and use that instead
@@ -1322,7 +1379,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         }
     }
 
-    private void UpdateButtons(string button1Text, string button2Text, string button3Text)
+    private void UpdateButtons(string? button1Text, string? button2Text, string? button3Text)
     {
         switch (_buttons)
         {
@@ -1423,7 +1480,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         _doNotShowAgainOption.StateCommon.ShortText.Font = MessageBoxTypeface;
 
         // Set up checked changed event
-        _doNotShowAgainOption.CheckedChanged += new(DoNotShowAgainOption_CheckedChanged);
+        _doNotShowAgainOption.CheckedChanged += DoNotShowAgainOption_CheckedChanged;
     }
 
     private void SetUpTimeOutDelayTimer(bool enabled, int ticksInMilliseconds, Timer timeOutTimer)
@@ -1438,10 +1495,10 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         timeOutTimer.Interval = ticksInMilliseconds;
 
         // Setup the Tick event for the 'timeOutTimer'
-        timeOutTimer.Tick += new(TimeOutTimer_Tick);
+        timeOutTimer.Tick += TimeOutTimer_Tick;
     }
 
-    private void UpdateSizing(IWin32Window showOwner)
+    private void UpdateSizing(IWin32Window? showOwner)
     {
         Size messageSizing = UpdateMessageSizing(showOwner);
         Size buttonsSizing = UpdateButtonsSizing();
@@ -1451,13 +1508,13 @@ internal class ExtendedKryptonMessageBox : KryptonForm
             messageSizing.Height + buttonsSizing.Height);
     }
 
-    private Size UpdateMessageSizing(IWin32Window showOwner)
+    private Size UpdateMessageSizing(IWin32Window? showOwner)
     {
         // Update size of the message label but with a maximum width
         using (Graphics g = CreateGraphics())
         {
             // Find size of the label, with a max of 2/3 screen width
-            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen ?? Screen.FromControl(this);
             SizeF scaledMonitorSize = screen.Bounds.Size;
             scaledMonitorSize.Width *= 2 / 3.0f;
             scaledMonitorSize.Height *= 0.95f;
@@ -1594,7 +1651,7 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         else
         {
             // Pressing Ctrl+C should copy message text into the clipboard
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
+            if (e is { Modifiers: Keys.Control, KeyCode: Keys.C })
             {
                 StringBuilder sb = new();
 
@@ -1626,12 +1683,12 @@ internal class ExtendedKryptonMessageBox : KryptonForm
     #endregion
 
     #region Events
-    private void DoNotShowAgainOption_CheckedChanged(object sender, EventArgs e)
+    private void DoNotShowAgainOption_CheckedChanged(object? sender, EventArgs e)
     {
         DoNotShowAgainOptionResult = _doNotShowAgainOption.Checked;
     }
 
-    private void TimeOutTimer_Tick(object sender, EventArgs e)
+    private void TimeOutTimer_Tick(object? sender, EventArgs e)
     {
         //? TODO: Update button text
         while (TimeOut > 0)
@@ -1645,6 +1702,12 @@ internal class ExtendedKryptonMessageBox : KryptonForm
         {
             Hide(); // May need to find a more elegant solution
         }
+    }
+
+    private void FooterToggleLink_Click(object? sender, EventArgs e)
+    {
+        // Toggle footer visibility
+        _panelFooter.Visible = !_panelFooter.Visible;
     }
     #endregion
 }

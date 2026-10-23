@@ -24,7 +24,8 @@
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
-		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -72,25 +73,25 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.9.257-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.8.236-beta" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Release'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 					</ItemGroup>
 				</When>
 
 				<Otherwise>
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+						<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
@@ -121,6 +122,14 @@
 			<Pack>true</Pack>
 		</None>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
+	</ItemGroup>
+
+
+
+
 
 	<!--Optimisation-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Nightly|net48|AnyCPU'">

@@ -25,13 +25,14 @@ public abstract class XAxisBase : AxisBase, IAxis
     private float MeasureTicks()
     {
         using SKPaint paint = new();
+        using SKFont font = TickLabelStyle.CreateFont();
         TickLabelStyle.ApplyToPaint(paint);
 
         float largestTickHeight = 0;
 
         foreach (Tick tick in TickGenerator.Ticks)
         {
-            PixelSize tickLabelSize = Drawing.MeasureString(tick.Label, paint);
+            PixelSize tickLabelSize = Drawing.MeasureString(tick.Label, font);
             largestTickHeight = Math.Max(largestTickHeight, tickLabelSize.Height + 10);
         }
 

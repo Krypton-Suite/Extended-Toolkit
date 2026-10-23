@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ public partial class KryptonViewButtons : UserControl
     /// <summary> 
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components = null;
 
     /// <summary> 
     /// Clean up any resources being used.
@@ -197,6 +197,6 @@ public partial class KryptonViewButtons : UserControl
         this.BackColor = Color.Transparent;
 
         //Set Label Text
-        this.kcmdpercentage.Text = _percentageLabel;
+        kcmdpercentage!.Text = _percentageLabel;
     }
 }

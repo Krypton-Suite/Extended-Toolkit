@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
 
     public override void RenderBorder(Graphics g, Rectangle borderRectangle)
     {
-        Color borderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour.ToGrayScale() : BorderColour;
+        Color borderColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour.ToGrayScale() : BorderColour;
 
         g.SetClip(borderRectangle);
 
@@ -95,7 +95,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                 leftColour = LeftSideColourHovered;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 leftColour = leftColour.ToGrayScale();
             }
@@ -125,18 +125,19 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                         Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                         Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                        if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OnSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)resizedImageSize.Width) / 2),
+                            ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                                (float)resizedImageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -147,18 +148,19 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                     }
                     else
                     {
-                        if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OnSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)imageSize.Width) / 2),
+                            ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                                (float)imageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -172,22 +174,20 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                 {
                     SizeF textSize = g.MeasureString(ToggleSwitch.OnText, ToggleSwitch.OnFont);
 
-                    float textXPos = fullRectangle.X;
-
-                    if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                    float textXPos = ToggleSwitch.OnSideAlignment switch
                     {
-                        textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                    }
-                    else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                    {
-                        textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                    }
+                        ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                        ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                        ToggleSwitchAlignment.Near => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                      (float)textSize.Width,
+                        _ => fullRectangle.X
+                    };
 
                     RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     Color textForeColour = ToggleSwitch.OnForeColour;
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         textForeColour = textForeColour.ToGrayScale();
                     }
@@ -220,7 +220,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                 rightColour = RightSideColourHovered;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 rightColour = rightColour.ToGrayScale();
             }
@@ -250,18 +250,19 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                         Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                         Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                        if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OffSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)resizedImageSize.Width) / 2),
+                            ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                               (float)resizedImageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -272,18 +273,19 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                     }
                     else
                     {
-                        if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OffSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)imageSize.Width) / 2),
+                            ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                               (float)imageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -297,22 +299,20 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
                 {
                     SizeF textSize = g.MeasureString(ToggleSwitch.OffText, ToggleSwitch.OffFont);
 
-                    float textXPos = fullRectangle.X;
-
-                    if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                    float textXPos = ToggleSwitch.OffSideAlignment switch
                     {
-                        textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                    }
-                    else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                    {
-                        textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                    }
+                        ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                        ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                        ToggleSwitchAlignment.Far => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                     (float)textSize.Width,
+                        _ => fullRectangle.X
+                    };
 
                     RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     Color textForeColour = ToggleSwitch.OffForeColour;
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         textForeColour = textForeColour.ToGrayScale();
                     }
@@ -339,7 +339,7 @@ public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetro
             buttonColour = ButtonColourHovered;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonColour = buttonColour.ToGrayScale();
         }

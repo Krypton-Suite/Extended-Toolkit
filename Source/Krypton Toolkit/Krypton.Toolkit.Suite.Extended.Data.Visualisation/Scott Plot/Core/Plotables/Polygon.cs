@@ -126,14 +126,14 @@ public class Polygon : IPlottable
         }
 
         using var paint = new SKPaint();
-        if (FillStyle != null && FillStyle.HasValue)
+        if (FillStyle is { HasValue: true })
         {
             FillStyle.ApplyToPaint(paint);
             paint.Style = SKPaintStyle.Fill;
             rp.Canvas.DrawPath(path, paint);
         }
 
-        if (LineStyle != null && LineStyle.IsVisible && LineStyle.Width > 0)
+        if (LineStyle is { IsVisible: true, Width: > 0 })
         {
             paint.Style = SKPaintStyle.Stroke;
             LineStyle.ApplyToPaint(paint);
@@ -141,7 +141,7 @@ public class Polygon : IPlottable
             Drawing.DrawLines(rp.Canvas, paint, pixels, LineStyle);
         }
 
-        if (MarkerStyle != null && MarkerStyle.IsVisible)
+        if (MarkerStyle is { IsVisible: true })
         {
             Drawing.DrawMarkers(rp.Canvas, paint, pixels, MarkerStyle);
         }

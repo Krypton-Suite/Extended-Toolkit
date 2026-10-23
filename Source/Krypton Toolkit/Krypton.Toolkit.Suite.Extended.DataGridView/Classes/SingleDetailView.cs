@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,14 +42,14 @@ public class SingleDetailView : KryptonDataGridView, IDetailView<KryptonDataGrid
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DataGridViewCell DetailsCurrentCell
     {
-        get => CurrentCell;
+        get => CurrentCell!;
         set => CurrentCell = value;
     }
 
     /// <inheritdoc />
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public DataGridViewRow DetailsCurrentRow => CurrentRow;
+    public DataGridViewRow DetailsCurrentRow => CurrentRow!;
 
     /// <inheritdoc />
     [Browsable(false)]

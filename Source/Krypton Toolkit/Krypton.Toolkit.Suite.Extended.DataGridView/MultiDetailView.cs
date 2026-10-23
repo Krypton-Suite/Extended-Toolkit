@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,14 +45,20 @@ public class MultiDetailView : TabControl, IDetailView<TabControl>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DataGridViewCell DetailsCurrentCell
     {
-        get => ((KryptonDataGridView) SelectedTab.Controls[0]).CurrentCell;
-        set => ((KryptonDataGridView)SelectedTab.Controls[0]).CurrentCell = value;
+        get => ((KryptonDataGridView?)SelectedTab?.Controls[0])?.CurrentCell!;
+        set
+        {
+            if (SelectedTab?.Controls[0] is KryptonDataGridView dgv)
+            {
+                dgv.CurrentCell = value;
+            }
+        }
     }
 
     /// <inheritdoc />
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public DataGridViewRow DetailsCurrentRow => ((KryptonDataGridView)SelectedTab.Controls[0]).CurrentRow;
+    public DataGridViewRow DetailsCurrentRow => ((KryptonDataGridView?)SelectedTab?.Controls[0])?.CurrentRow!;
 
     /// <inheritdoc />
     [Browsable(false)]

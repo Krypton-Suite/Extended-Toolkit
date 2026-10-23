@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater
 {
     public partial class SharpUpdateInfoForm : KryptonForm
     {
@@ -23,9 +23,9 @@
             kbtnBack.Text = SharpUpdateLanguageManager.InfoFormStrings.Back;
         }
 
-        private void kbtnBack_Click(object sender, EventArgs e) => Close();
+        private void kbtnBack_Click(object? sender, EventArgs e) => Close();
 
-        private void krtxtDescription_KeyDown(object sender, KeyEventArgs e)
+        private void krtxtDescription_KeyDown(object? sender, KeyEventArgs e)
         {
             // Only allow Ctrl + C to copy text
             if (!(e.Control && e.KeyCode == Keys.C))

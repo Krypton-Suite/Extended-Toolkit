@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private static bool CharIsPrintable(char c)
         {
             UnicodeCategory unicodeCategory = char.GetUnicodeCategory(c);
-            return unicodeCategory is not UnicodeCategory.Control or UnicodeCategory.OtherNotAssigned;
+            return unicodeCategory is not (UnicodeCategory.Control or UnicodeCategory.OtherNotAssigned);
         }
 
         private void DrawDump(Graphics g, byte[] lineBuffer, int line)
@@ -503,10 +503,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <exception cref="T:System.ArgumentNullException">The specified byte array is null. </exception>
         public virtual void SetBytes(byte[] bytes)
         {
-            if (_dataBuf != null)
-            {
-                _dataBuf = null;
-            }
             _dataBuf = bytes ?? throw new ArgumentNullException("bytes");
             InitState();
             SetDisplayMode(_displayMode);

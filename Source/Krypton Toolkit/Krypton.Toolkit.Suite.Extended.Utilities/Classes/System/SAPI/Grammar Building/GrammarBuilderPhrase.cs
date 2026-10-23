@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ internal sealed class GrammarBuilderPhrase : GrammarBuilderBase
 
     private GrammarBuilderPhrase(string phrase, bool subsetMatching, SubsetMatchingMode subsetMatchingCriteria)
     {
-        _phrase = string.Copy(phrase);
+        _phrase = phrase;
         _subsetMatching = subsetMatching;
         switch (subsetMatchingCriteria)
         {
@@ -71,15 +71,14 @@ internal sealed class GrammarBuilderPhrase : GrammarBuilderBase
 
     private GrammarBuilderPhrase(string phrase, bool subsetMatching, MatchMode matchMode)
     {
-        _phrase = string.Copy(phrase);
+        _phrase = phrase;
         _subsetMatching = subsetMatching;
         _matchMode = matchMode;
     }
 
     public override bool Equals(object obj)
     {
-        GrammarBuilderPhrase grammarBuilderPhrase = obj as GrammarBuilderPhrase;
-        if (grammarBuilderPhrase == null)
+        if (obj is not GrammarBuilderPhrase grammarBuilderPhrase)
         {
             return false;
         }

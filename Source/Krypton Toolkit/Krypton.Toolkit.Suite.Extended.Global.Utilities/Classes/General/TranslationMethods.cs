@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -273,9 +273,12 @@ public class TranslationMethods
             stringCollection.Add(item);
         }
 
-        foreach (string item2 in stringCollection)
+        foreach (string? item2 in stringCollection)
         {
-            itemList.Add(item2);
+            if (item2 is not null)
+            {
+                itemList.Add(item2);
+            }
         }
 
         tmp = itemList.ToArray();

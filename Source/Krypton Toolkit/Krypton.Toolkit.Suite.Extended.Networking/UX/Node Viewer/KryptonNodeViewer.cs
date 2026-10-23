@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,14 @@ public partial class KryptonNodeViewer : KryptonForm
         {
             NetworkNodeBrowser nb = new NetworkNodeBrowser();
 
-            foreach (string pc in nb.GetNetworkComputers())
+            ArrayList? computers = nb.GetNetworkComputers();
+
+            if (computers is null)
+            {
+                return;
+            }
+
+            foreach (string pc in computers)
             {
                 kcmbNodeList.Items.Add(pc);
             }

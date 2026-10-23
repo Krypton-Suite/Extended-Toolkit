@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -707,7 +707,7 @@ public class ColourCollection : Collection<Color>, ICloneable, IEquatable<Colour
     /// </summary>
     /// <param name="obj">The <see cref="T:System.Object" /> to test.</param>
     /// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="ColourCollection"/> and has the same values as this <see cref="ColourCollection"/>.</returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return obj is ColourCollection && this.Equals((ColourCollection)obj);
     }

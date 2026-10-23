@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -79,4 +79,33 @@ public class CircularPictureBox : PictureBox, IContentValues
     public string GetShortText() => throw new NotImplementedException();
 
     public string GetLongText() => throw new NotImplementedException();
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Size GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
 }

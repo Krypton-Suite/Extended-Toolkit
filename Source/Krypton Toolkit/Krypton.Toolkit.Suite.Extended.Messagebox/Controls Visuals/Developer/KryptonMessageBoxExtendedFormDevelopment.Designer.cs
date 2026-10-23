@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer components = null!;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -357,23 +357,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #endregion
 
-        private KryptonPanel kpnlBase;
-        private TableLayoutPanel tableLayoutPanel1;
-        private KryptonPanel kpnlButtons;
-        private KryptonBorderEdge kryptonBorderEdge1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private MessageButton _button4;
-        private MessageButton _button3;
-        private MessageButton _button2;
-        private MessageButton _button1;
-        private MessageButton _button5;
-        private PictureBox _messageIcon;
-        private TableLayoutPanel tableLayoutPanel4;
-        private KryptonCheckBox kcbOptionalCheckBox;
-        private KryptonPanel kpnlContent;
-        private KryptonWrapLabel kwlblMessageText;
-        private KryptonLinkWrapLabel klwlblMessageText;
-        private KryptonRichTextBox krtbMessageText;
+        private KryptonPanel kpnlBase = null!;
+        private TableLayoutPanel tableLayoutPanel1 = null!;
+        private KryptonPanel kpnlButtons = null!;
+        private KryptonBorderEdge kryptonBorderEdge1 = null!;
+        private TableLayoutPanel tableLayoutPanel2 = null!;
+        private TableLayoutPanel tableLayoutPanel3 = null!;
+        private MessageButton _button4 = null!;
+        private MessageButton _button3 = null!;
+        private MessageButton _button2 = null!;
+        private MessageButton _button1 = null!;
+        private MessageButton _button5 = null!;
+        private PictureBox _messageIcon = null!;
+        private TableLayoutPanel tableLayoutPanel4 = null!;
+        private KryptonCheckBox kcbOptionalCheckBox = null!;
+        private KryptonPanel kpnlContent = null!;
+        private KryptonWrapLabel kwlblMessageText = null!;
+        private KryptonLinkWrapLabel klwlblMessageText = null!;
+        private KryptonRichTextBox krtbMessageText = null!;
     }
 }

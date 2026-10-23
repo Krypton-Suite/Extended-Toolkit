@@ -22,16 +22,11 @@ public class Year : ITimeUnit
 
         int newYear = dateTime.Year + increment;
 
-        if (newYear <= 100)
+        return newYear switch
         {
-            return new DateTime(100, 1, 1);
-        }
-
-        if (newYear > 10_000)
-        {
-            return new DateTime(9_999, 1, 1);
-        }
-
-        return dateTime.AddYears(increment);
+            <= 100 => new DateTime(100, 1, 1),
+            > 10_000 => new DateTime(9_999, 1, 1),
+            _ => dateTime.AddYears(increment)
+        };
     }
 }

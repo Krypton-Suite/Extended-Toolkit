@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,8 @@ public class KryptonSplitButton : KryptonButton
     #endregion
 
     #region Properties
-    public bool ShowSplitOption
+    [DefaultValue(true)]
+    public new bool ShowSplitOption
     {
         get => _showSplitOption;
 
@@ -70,6 +71,7 @@ public class KryptonSplitButton : KryptonButton
     /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
     /// <value>
     ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+    [DefaultValue(false)]
     public bool UseUACElevation
     {
         get => _useUACElevation;
@@ -82,7 +84,8 @@ public class KryptonSplitButton : KryptonButton
 
                 if (_useUACElevation)
                 {
-                    Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                    Icon? shieldIcon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+                    Values.Image = shieldIcon?.ToBitmap();
                 }
                 else
                 {
@@ -92,6 +95,7 @@ public class KryptonSplitButton : KryptonButton
         }
     }
 
+    [DefaultValue("")]
     public string ProcessPath { get => _processPath; set => _processPath = value; }
     #endregion
 
@@ -191,8 +195,13 @@ public class KryptonSplitButton : KryptonButton
         }
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
+        if (e == null)
+        {
+            return;
+        }
+
         base.OnPaint(e);
 
         if (!ShowSplitOption)
@@ -282,7 +291,11 @@ public class KryptonSplitButton : KryptonButton
 
         if (KryptonContextMenu != null)
         {
-            KryptonContextMenu.Show(FindForm().PointToScreen(Location) + new Size(0, Height));
+            Form? owner = FindForm();
+            if (owner != null)
+            {
+                KryptonContextMenu.Show(owner.PointToScreen(Location) + new Size(0, Height));
+            }
 
             KryptonContextMenu.Closed += KryptonContextMenu_Closed;
         }
@@ -296,10 +309,9 @@ public class KryptonSplitButton : KryptonButton
     #endregion
 
     #region Event Handlers
-    private void KryptonContextMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+    private void KryptonContextMenu_Closed(object? sender, ToolStripDropDownClosedEventArgs e)
     {
-        KryptonContextMenu kcm = sender as KryptonContextMenu;
-        if (kcm != null)
+        if (sender is KryptonContextMenu kcm)
         {
             kcm.Closed -= KryptonContextMenu_Closed;
         }
@@ -310,10 +322,9 @@ public class KryptonSplitButton : KryptonButton
         //} 
     }
 
-    private void ContextMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+    private void ContextMenuStrip_Closing(object? sender, ToolStripDropDownClosingEventArgs e)
     {
-        ContextMenuStrip cms = sender as ContextMenuStrip;
-        if (cms != null)
+        if (sender is ContextMenuStrip cms)
         {
             cms.Closing -= ContextMenuStrip_Closing;
         }

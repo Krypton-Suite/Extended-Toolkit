@@ -92,10 +92,14 @@ public static class SkiaSharpExtensions
     {
         paint.Shader = null;
         paint.IsStroke = false;
-        paint.Typeface = fontStyle.Typeface;
-        paint.TextSize = fontStyle.Size;
         paint.Color = fontStyle.Color.ToSkColor();
         paint.IsAntialias = fontStyle.AntiAlias;
-        paint.FakeBoldText = fontStyle.Bold;
+    }
+
+    public static void ApplyToFont(this FontStyle fontStyle, SKFont font)
+    {
+        font.Typeface = fontStyle.Typeface;
+        font.Size = fontStyle.Size;
+        font.Embolden = fontStyle.Bold;
     }
 }

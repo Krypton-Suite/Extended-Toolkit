@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,8 @@
  *
  */
 #endregion
+
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Networking;
 
@@ -77,7 +79,10 @@ internal class NetStat
     {
         ListView statView = (ListView)_updatePanel.Controls[0];
 
-        List<ConnectionDetails> details = (List<ConnectionDetails>)e.Result;
+        if (e.Result is not List<ConnectionDetails> details)
+        {
+            return;
+        }
 
         foreach (ConnectionDetails info in details)
         {
@@ -97,7 +102,7 @@ internal class NetStat
         }
     }
 
-    private void Worker_DoWork(object sender, DoWorkEventArgs e)
+    private void Worker_DoWork(object? sender, DoWorkEventArgs e)
     {
         IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
         TcpConnectionInformation[] connections = properties.GetActiveTcpConnections();
@@ -119,7 +124,7 @@ internal class NetStat
                 {
                     host = info.RemoteEndPoint.Address.ToString();
 
-                    KryptonExceptionDialog.Show(ex, null, null);
+                    KryptonExceptionHandler.CaptureException(ex);
                 }
             }
             else

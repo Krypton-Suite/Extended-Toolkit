@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  *
  */
 #endregion
+
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings;
 
@@ -285,7 +287,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
 
@@ -329,7 +331,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
     #endregion

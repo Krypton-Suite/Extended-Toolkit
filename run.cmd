@@ -1,810 +1,248 @@
 :: Krypton Extended Toolkit - Interactive Build System
-:: Last updated: Wednesday 15th January, 2025
+:: Last updated: Saturday 29th August, 2026
 
 @echo off
+setlocal EnableExtensions
 
 title Krypton Extended Toolkit Build System
 
-:: Try to find MSBuild
-set MSBUILD=
+set "REPO_ROOT=%~dp0"
+set "VS_VERSION="
+set "VS_SCRIPTS_DIR="
 
-:: Check Visual Studio 2022 Enterprise
-if exist "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" (
-    set MSBUILD=C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe
-    goto :found
-)
+goto selectvsversion
 
-:: Check Visual Studio 2022 Professional
-if exist "C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe" (
-    set MSBUILD=C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe
-    goto :found
-)
+:: ===================================================================================================
 
-:: Check Visual Studio 2022 Community
-if exist "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" (
-    set MSBUILD=C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
-    goto :found
-)
-
-:: Try to use MSBuild from PATH
-where msbuild.exe >nul 2>&1
-if %ERRORLEVEL% == 0 (
-    set MSBUILD=msbuild.exe
-    goto :found
-)
-
-:: MSBuild not found
-echo ERROR: MSBuild.exe not found!
-echo.
-echo Please install Visual Studio 2022 or ensure MSBuild is in your PATH.
-echo.
-pause
-exit /b 1
-
-:found
-
+:selectvsversion
 cls
-
-@echo Welcome to the Krypton Extended Toolkit Build system, version: 4.0 (MSBuild Edition)
-echo Using MSBuild: %MSBUILD%
+echo Welcome to the Krypton Extended Toolkit Build system, version 5.0.
+echo Please select the Visual Studio toolset to target.
 echo:
-@echo ==============================================================================================
+echo ==============================================================================================
 echo:
-echo 1. Clean project
-echo 2. Build Toolkit
-echo 3. Create NuGet packages  
-echo 4. Build and Pack Toolkit
-echo 5. Debug project
-echo 6. Rebuild project
-echo 7. NuGet Package Manager
-echo 8. Ultimate Package Diagnostic
-echo 9. Show build information
-echo 10. Create Archives (ZIP/TAR)
-echo 11. End
+echo 1. Visual Studio 2022 (Scripts\VS2022)
+echo 2. Visual Studio 2026 (Scripts\Current)
+echo 3. End
 echo:
-set /p answer="Enter number (1 - 11): "
-if %answer%==1 (goto cleanproject)
-if %answer%==2 (goto buildproject)
-if %answer%==3 (goto createnugetpackages)
-if %answer%==4 (goto buildandpacktoolkit)
-if %answer%==5 (goto debugproject)
-if %answer%==6 (goto rebuildproject)
-if %answer%==7 (goto nugetmanager)
-if %answer%==8 (goto ultimatediagnostic)
-if %answer%==9 (goto showbuildinfo)
-if %answer%==10 (goto createarchives)
-if %answer%==11 (goto exitbuildsystem)
-
-@echo Invalid input, please try again.
+set /p answer="Enter number (1 - 3): "
+if "%answer%"=="1" (goto usevs2022)
+if "%answer%"=="2" (goto usevscurrent)
+if "%answer%"=="3" (goto exitbuildsystem)
+echo Invalid input, please try again.
 pause
+goto selectvsversion
+
+:usevs2022
+call :configurevsversion VS2022
+if errorlevel 1 (goto selectvsversion)
 goto mainmenu
+
+:usevscurrent
+call :configurevsversion Current
+if errorlevel 1 (goto selectvsversion)
+goto mainmenu
+
+:configurevsversion
+set "VS_VERSION=%~1"
+set "VS_SCRIPTS_DIR=%REPO_ROOT%Scripts\%~1"
+if not exist "%VS_SCRIPTS_DIR%" (
+    echo.
+    echo ERROR: Could not find "%VS_SCRIPTS_DIR%".
+    pause
+    set "VS_VERSION="
+    set "VS_SCRIPTS_DIR="
+    exit /b 1
+)
+echo.
+echo Using %VS_VERSION% scripts located at "%VS_SCRIPTS_DIR%".
+echo.
+exit /b 0
+
+:cleanworkspace
+echo Cleaning Bin, obj, and Logs...
+call "%REPO_ROOT%clean.cmd" /q
+exit /b 0
 
 :: ===================================================================================================
 
 :mainmenu
-
 cls
+if "%VS_SCRIPTS_DIR%"=="" (goto selectvsversion)
 
-echo Krypton Extended Toolkit Build System v4.0
-echo Using MSBuild: %MSBUILD%
+echo Krypton Extended Toolkit Build System v5.0
+echo Current Visual Studio target: %VS_VERSION%
+echo Script directory............: %VS_SCRIPTS_DIR%
 echo:
 echo 1. Clean project
 echo 2. Build Toolkit
 echo 3. Create NuGet packages
 echo 4. Build and Pack Toolkit
 echo 5. Debug project
-echo 6. Rebuild project
-echo 7. NuGet Package Manager
-echo 8. Ultimate Package Diagnostic
-echo 9. Show build information
-echo 10. Create Archives (ZIP/TAR)
-echo 11. End
+echo 6. NuGet Package Manager
+echo 7. Ultimate Package Diagnostic
+echo 8. Create Archives (ZIP/TAR)
+echo 9. Change Visual Studio target
+echo 10. End
 echo:
-set /p answer="Enter number (1 - 11): "
-if %answer%==1 (goto cleanproject)
-if %answer%==2 (goto buildproject)
-if %answer%==3 (goto createnugetpackages)
-if %answer%==4 (goto buildandpacktoolkit)
-if %answer%==5 (goto debugproject)
-if %answer%==6 (goto rebuildproject)
-if %answer%==7 (goto nugetmanager)
-if %answer%==8 (goto ultimatediagnostic)
-if %answer%==9 (goto showbuildinfo)
-if %answer%==10 (goto createarchives)
-if %answer%==11 (goto exitbuildsystem)
-
-@echo Invalid input, please try again.
+set /p answer="Enter number (1 - 10): "
+if "%answer%"=="1" (goto cleanproject)
+if "%answer%"=="2" (goto buildmenu)
+if "%answer%"=="3" (goto packmenu)
+if "%answer%"=="4" (goto buildandpackmenu)
+if "%answer%"=="5" (goto debugmenu)
+if "%answer%"=="6" (goto nugetmanager)
+if "%answer%"=="7" (goto ultimatediagnostic)
+if "%answer%"=="8" (goto createarchives)
+if "%answer%"=="9" (goto selectvsversion)
+if "%answer%"=="10" (goto exitbuildsystem)
+echo Invalid input, please try again.
 pause
 goto mainmenu
 
-:: ===================================================================================================
-
 :buildmenu
 cls
-
-echo Build Menu - Select Configuration:
-echo:
-echo 1. Build Nightly version (alpha branch, -alpha suffix)
-echo 2. Build Canary version (canary branch, -beta suffix) 
-echo 3. Build Stable version (master branch, stable packages)
-echo 4. Build Debug version
+echo 1. Build nightly version (alpha, -alpha)
+echo 2. Build canary version (canary, -beta)
+echo 3. Build stable version (master)
+echo 4. Rebuild nightly
 echo 5. Go back to main menu
 echo:
 set /p answer="Enter number (1 - 5): "
-if %answer%==1 (goto buildnightly)
-if %answer%==2 (goto buildcanary)
-if %answer%==3 (goto buildstable)
-if %answer%==4 (goto builddebug)
-if %answer%==5 (goto mainmenu)
-
-@echo Invalid input, please try again.
+if "%answer%"=="1" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" & goto buildmenu)
+if "%answer%"=="2" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" & goto buildmenu)
+if "%answer%"=="3" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" & goto buildmenu)
+if "%answer%"=="4" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" Rebuild & goto buildmenu)
+if "%answer%"=="5" (goto mainmenu)
+echo Invalid input, please try again.
 pause
 goto buildmenu
 
 :packmenu
 cls
-
-echo Pack Menu - Select Configuration:
+echo 1. Pack nightly (full)
+echo 2. Pack nightly lite
+echo 3. Pack nightly full + lite
+echo 4. Pack canary (full)
+echo 5. Pack canary lite
+echo 6. Pack canary full + lite
+echo 7. Pack stable (full)
+echo 8. Pack stable lite
+echo 9. Pack stable full + lite
+echo 10. Go back to main menu
 echo:
-echo 1. Pack Nightly version (alpha packages)
-echo 2. Pack Canary version (beta packages)
-echo 3. Pack Stable version (release packages)
-echo 4. Go back to main menu
-echo:
-set /p answer="Enter number (1 - 4): "
-if %answer%==1 (goto packnightly)
-if %answer%==2 (goto packcanary)
-if %answer%==3 (goto packstable)
-if %answer%==4 (goto mainmenu)
-
-@echo Invalid input, please try again.
+set /p answer="Enter number (1 - 10): "
+if "%answer%"=="1" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" Pack & goto packmenu)
+if "%answer%"=="2" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" PackLite & goto packmenu)
+if "%answer%"=="3" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" PackAll & goto packmenu)
+if "%answer%"=="4" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" Pack & goto packmenu)
+if "%answer%"=="5" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" PackLite & goto packmenu)
+if "%answer%"=="6" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" PackAll & goto packmenu)
+if "%answer%"=="7" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" Pack & goto packmenu)
+if "%answer%"=="8" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" PackLite & goto packmenu)
+if "%answer%"=="9" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" PackAll & goto packmenu)
+if "%answer%"=="10" (goto mainmenu)
+echo Invalid input, please try again.
 pause
 goto packmenu
 
 :buildandpackmenu
 cls
-
-echo Build and Pack Menu - Select Configuration:
-echo:
-echo 1. Build and Pack Nightly (Complete CI)
-echo 2. Build and Pack Canary (Complete CI)
-echo 3. Build and Pack Stable (Complete CI)
-echo 4. Build and Pack All Configurations
+echo 1. Build and pack nightly
+echo 2. Build and pack canary
+echo 3. Build and pack stable
+echo 4. Build and pack all channels
 echo 5. Go back to main menu
 echo:
 set /p answer="Enter number (1 - 5): "
-if %answer%==1 (goto buildandpacknightly)
-if %answer%==2 (goto buildandpackcanary)
-if %answer%==3 (goto buildandpackstable)
-if %answer%==4 (goto buildandpackall)
-if %answer%==5 (goto mainmenu)
-
-@echo Invalid input, please try again.
+if "%answer%"=="1" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" CI & goto buildandpackmenu)
+if "%answer%"=="2" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" CI & goto buildandpackmenu)
+if "%answer%"=="3" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" CI & goto buildandpackmenu)
+if "%answer%"=="4" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" CIAll & goto buildandpackmenu)
+if "%answer%"=="5" (goto mainmenu)
+echo Invalid input, please try again.
 pause
 goto buildandpackmenu
+
+:debugmenu
+cls
+echo 1. Debug build
+echo 2. Run TestForm
+echo 3. Go back to main menu
+echo:
+set /p answer="Enter number (1 - 3): "
+if "%answer%"=="1" (call "%VS_SCRIPTS_DIR%\debug.cmd" Rebuild & goto debugmenu)
+if "%answer%"=="2" (goto runtestform)
+if "%answer%"=="3" (goto mainmenu)
+echo Invalid input, please try again.
+pause
+goto debugmenu
 
 :createarchives
 cls
-
-echo Archive Creation Menu:
-echo:
 echo 1. Create ZIP archive (Nightly)
-echo 2. Create ZIP archive (Canary)
-echo 3. Create ZIP archive (Stable)
-echo 4. Create ZIP archives (All configurations)
-echo 5. Show package locations
-echo 6. Go back to main menu
+echo 2. Create TAR archive (Nightly)
+echo 3. Create both (Nightly)
+echo 4. Create ZIP archive (Canary)
+echo 5. Create TAR archive (Canary)
+echo 6. Create both (Canary)
+echo 7. Create ZIP archive (Stable)
+echo 8. Create TAR archive (Stable)
+echo 9. Create both (Stable)
+echo 10. Go back to main menu
 echo:
-set /p answer="Enter number (1 - 6): "
-if %answer%==1 (goto createzipnightly)
-if %answer%==2 (goto createzipcanary)
-if %answer%==3 (goto createzipstable)
-if %answer%==4 (goto createzipall)
-if %answer%==5 (goto showpackagelocations)
-if %answer%==6 (goto mainmenu)
-
-@echo Invalid input, please try again.
+set /p answer="Enter number (1 - 10): "
+if "%answer%"=="1" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" CreateNightlyZip & goto createarchives)
+if "%answer%"=="2" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" CreateNightlyTar & goto createarchives)
+if "%answer%"=="3" (call "%VS_SCRIPTS_DIR%\build-nightly.cmd" CreateAllArchives & goto createarchives)
+if "%answer%"=="4" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" CreateCanaryZip & goto createarchives)
+if "%answer%"=="5" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" CreateCanaryTar & goto createarchives)
+if "%answer%"=="6" (call "%VS_SCRIPTS_DIR%\build-canary.cmd" CreateAllCanaryArchives & goto createarchives)
+if "%answer%"=="7" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" CreateReleaseZip & goto createarchives)
+if "%answer%"=="8" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" CreateReleaseTar & goto createarchives)
+if "%answer%"=="9" (call "%VS_SCRIPTS_DIR%\build-stable.cmd" CreateAllReleaseArchives & goto createarchives)
+if "%answer%"=="10" (goto mainmenu)
+echo Invalid input, please try again.
 pause
 goto createarchives
 
-:: ===================================================================================================
-:: Main Actions
-:: ===================================================================================================
-
 :cleanproject
 cls
-echo ========================================================================
-echo   Cleaning Project
-echo ========================================================================
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Clean /v:minimal
-"%MSBUILD%" Build.proj /t:Clean /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Clean completed successfully!
-) else (
-    echo:
-    echo ❌ Clean failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:buildproject
-goto buildmenu
-
-:createnugetpackages
-goto packmenu
-
-:buildandpacktoolkit
-goto buildandpackmenu
-
-:debugproject
-cls
-echo ========================================================================
-echo   Debug Build
-echo ========================================================================
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Debug /v:minimal
-"%MSBUILD%" Build.proj /t:Debug /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Debug build completed successfully!
-    echo Output: Bin\Debug\
-) else (
-    echo:
-    echo ❌ Debug build failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:rebuildproject
-cls
-echo ========================================================================
-echo   Rebuild Project (Clean + Build)
-echo ========================================================================
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Rebuild /v:minimal
-"%MSBUILD%" Build.proj /t:Rebuild /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Rebuild completed successfully!
-) else (
-    echo:
-    echo ❌ Rebuild failed!
-)
-
-echo:
+call :cleanworkspace
 pause
 goto mainmenu
 
 :nugetmanager
 cls
-echo ========================================================================
-echo   Launching NuGet Package Manager
-echo ========================================================================
-echo:
-
-if exist "update-nuget.cmd" (
-    call update-nuget.cmd
-    cls
-    goto mainmenu
+if exist "%REPO_ROOT%update-nuget.cmd" (
+    call "%REPO_ROOT%update-nuget.cmd"
 ) else (
-    echo ❌ Error: update-nuget.cmd not found!
-    echo:
-    echo Please ensure update-nuget.cmd is in the same directory as run.cmd
-    echo:
+    echo update-nuget.cmd not found.
     pause
-    goto mainmenu
 )
+goto mainmenu
 
 :ultimatediagnostic
 cls
-echo ========================================================================
-echo   Launching Ultimate Package Diagnostic Tool
-echo ========================================================================
-echo:
-
-if exist "ultimate-diagnostic.cmd" (
-    call ultimate-diagnostic.cmd
-    cls
-    goto mainmenu
+if exist "%REPO_ROOT%ultimate-diagnostic.cmd" (
+    call "%REPO_ROOT%ultimate-diagnostic.cmd"
 ) else (
-    echo ❌ Error: ultimate-diagnostic.cmd not found!
-    echo:
-    echo Please ensure ultimate-diagnostic.cmd is in the same directory as run.cmd
-    echo:
+    echo ultimate-diagnostic.cmd not found.
     pause
-    goto mainmenu
 )
-
-:showbuildinfo
-cls
-echo ========================================================================
-echo   Build System Information
-echo ========================================================================
-echo:
-echo MSBuild: %MSBUILD%
-echo Build Project: Build.proj
-echo:
-echo Release Channels:
-echo   - Nightly ^(alpha branch, -alpha suffix^)
-echo   - Canary ^(canary branch, -beta suffix^)
-echo   - Stable ^(master branch, no suffix^)
-echo:
-echo Output Locations:
-echo   - Binaries: Bin\{Configuration}\
-echo   - Packages: Bin\NuGet Packages\{Configuration}\
-echo:
-echo Available Targets:
-echo   - Clean: Remove all build outputs
-echo   - Build: Build main solution
-echo   - Pack: Create NuGet packages
-echo   - CI: Complete CI pipeline ^(Clean + Build + Pack^)
-echo   - Debug: Build Debug configuration
-echo   - Rebuild: Clean + Build
-echo:
-pause
 goto mainmenu
+
+:runtestform
+cls
+if exist "%REPO_ROOT%run-testform.cmd" (
+    call "%REPO_ROOT%run-testform.cmd"
+) else (
+    echo run-testform.cmd not found.
+    pause
+)
+goto debugmenu
 
 :exitbuildsystem
-cls
-echo ========================================================================
-echo   Thank you for using the Krypton Extended Toolkit Build System!
-echo ========================================================================
-echo:
-echo Build system v4.0 with MSBuild integration
-echo Have a great day! 🎉
-echo:
+echo Exiting the build system. Bye!
 pause
-exit
-
-:: ===================================================================================================
-:: Build Actions
-:: ===================================================================================================
-
-:buildnightly
-cls
-echo ========================================================================
-echo   Building Nightly Configuration
-echo ========================================================================
-echo Target: alpha branch, -alpha package suffix
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Build /p:Configuration=Nightly /v:minimal
-"%MSBUILD%" Build.proj /t:Build /p:Configuration=Nightly /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Nightly build completed successfully!
-    echo Output: Bin\Nightly\
-) else (
-    echo:
-    echo ❌ Nightly build failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:buildcanary
-cls
-echo ========================================================================
-echo   Building Canary Configuration
-echo ========================================================================
-echo Target: canary branch, -beta package suffix
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Build /p:Configuration=Canary /v:minimal
-"%MSBUILD%" Build.proj /t:Build /p:Configuration=Canary /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Canary build completed successfully!
-    echo Output: Bin\Canary\
-) else (
-    echo:
-    echo ❌ Canary build failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:buildstable
-cls
-echo ========================================================================
-echo   Building Stable Configuration
-echo ========================================================================
-echo Target: master branch, stable packages
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Build /p:Configuration=Release /v:minimal
-"%MSBUILD%" Build.proj /t:Build /p:Configuration=Release /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Stable build completed successfully!
-    echo Output: Bin\Release\
-) else (
-    echo:
-    echo ❌ Stable build failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:builddebug
-cls
-echo ========================================================================
-echo   Building Debug Configuration
-echo ========================================================================
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Build /p:Configuration=Debug /v:minimal
-"%MSBUILD%" Build.proj /t:Build /p:Configuration=Debug /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Debug build completed successfully!
-    echo Output: Bin\Debug\
-) else (
-    echo:
-    echo ❌ Debug build failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:: ===================================================================================================
-:: Pack Actions
-:: ===================================================================================================
-
-:packnightly
-cls
-echo ========================================================================
-echo   Creating Nightly Packages
-echo ========================================================================
-echo Target: alpha packages with -alpha suffix
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Pack /p:Configuration=Nightly /v:minimal
-"%MSBUILD%" Build.proj /t:Pack /p:Configuration=Nightly /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Nightly packages created successfully!
-    echo Output: Bin\NuGet Packages\Nightly\
-) else (
-    echo:
-    echo ❌ Nightly packaging failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:packcanary
-cls
-echo ========================================================================
-echo   Creating Canary Packages
-echo ========================================================================
-echo Target: beta packages with -beta suffix
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Pack /p:Configuration=Canary /v:minimal
-"%MSBUILD%" Build.proj /t:Pack /p:Configuration=Canary /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Canary packages created successfully!
-    echo Output: Bin\NuGet Packages\Canary\
-) else (
-    echo:
-    echo ❌ Canary packaging failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:packstable
-cls
-echo ========================================================================
-echo   Creating Stable Packages
-echo ========================================================================
-echo Target: stable packages with no suffix
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:Pack /p:Configuration=Release /v:minimal
-"%MSBUILD%" Build.proj /t:Pack /p:Configuration=Release /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Stable packages created successfully!
-    echo Output: Bin\NuGet Packages\Release\
-) else (
-    echo:
-    echo ❌ Stable packaging failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:: ===================================================================================================
-:: Build and Pack Actions (Complete CI)
-:: ===================================================================================================
-
-:buildandpacknightly
-cls
-echo ========================================================================
-echo   Complete CI: Nightly (Clean + Build + Pack)
-echo ========================================================================
-echo Target: alpha branch, -alpha packages
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:CI /p:Configuration=Nightly /v:minimal
-"%MSBUILD%" Build.proj /t:CI /p:Configuration=Nightly /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Nightly CI completed successfully!
-    echo Binaries: Bin\Nightly\
-    echo Packages: Bin\NuGet Packages\Nightly\
-) else (
-    echo:
-    echo ❌ Nightly CI failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:buildandpackcanary
-cls
-echo ========================================================================
-echo   Complete CI: Canary (Clean + Build + Pack)
-echo ========================================================================
-echo Target: canary branch, -beta packages
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:CI /p:Configuration=Canary /v:minimal
-"%MSBUILD%" Build.proj /t:CI /p:Configuration=Canary /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Canary CI completed successfully!
-    echo Binaries: Bin\Canary\
-    echo Packages: Bin\NuGet Packages\Canary\
-) else (
-    echo:
-    echo ❌ Canary CI failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:buildandpackstable
-cls
-echo ========================================================================
-echo   Complete CI: Stable (Clean + Build + Pack)
-echo ========================================================================
-echo Target: master branch, stable packages
-echo:
-
-echo Running: "%MSBUILD%" Build.proj /t:CI /p:Configuration=Release /v:minimal
-"%MSBUILD%" Build.proj /t:CI /p:Configuration=Release /v:minimal
-
-if %ERRORLEVEL% == 0 (
-    echo:
-    echo ✅ Stable CI completed successfully!
-    echo Binaries: Bin\Release\
-    echo Packages: Bin\NuGet Packages\Release\
-) else (
-    echo:
-    echo ❌ Stable CI failed!
-)
-
-echo:
-pause
-goto mainmenu
-
-:buildandpackall
-cls
-echo ========================================================================
-echo   Complete CI: All Configurations
-echo ========================================================================
-echo Building Nightly, Canary, and Stable configurations
-echo:
-
-echo Step 1/3: Building Nightly...
-"%MSBUILD%" Build.proj /t:CI /p:Configuration=Nightly /v:minimal
-
-echo:
-echo Step 2/3: Building Canary...
-"%MSBUILD%" Build.proj /t:CI /p:Configuration=Canary /v:minimal
-
-echo:
-echo Step 3/3: Building Stable...
-"%MSBUILD%" Build.proj /t:CI /p:Configuration=Release /v:minimal
-
-echo:
-echo ✅ All configurations completed!
-echo:
-echo Output locations:
-echo   Nightly - Bin\Nightly\ and Bin\NuGet Packages\Nightly\
-echo   Canary  - Bin\Canary\ and Bin\NuGet Packages\Canary\
-echo   Stable  - Bin\Release\ and Bin\NuGet Packages\Release\
-
-echo:
-pause
-goto mainmenu
-
-:: ===================================================================================================
-:: Archive Actions
-:: ===================================================================================================
-
-:createzipnightly
-cls
-echo ========================================================================
-echo   Creating Nightly ZIP Archive
-echo ========================================================================
-echo:
-
-if not exist "Bin\NuGet Packages\Nightly" (
-    echo ❌ Nightly packages not found! Please build first.
-    pause
-    goto mainmenu
-)
-
-echo Creating ZIP archive from Nightly packages...
-if exist "NightlyPackages.zip" del "NightlyPackages.zip"
-powershell -command "Compress-Archive -Path 'Bin\NuGet Packages\Nightly\*' -DestinationPath 'NightlyPackages.zip'"
-
-if exist "NightlyPackages.zip" (
-    echo ✅ Nightly ZIP archive created: NightlyPackages.zip
-) else (
-    echo ❌ Failed to create ZIP archive
-)
-
-echo:
-pause
-goto mainmenu
-
-:createzipcanary
-cls
-echo ========================================================================
-echo   Creating Canary ZIP Archive
-echo ========================================================================
-echo:
-
-if not exist "Bin\NuGet Packages\Canary" (
-    echo ❌ Canary packages not found! Please build first.
-    pause
-    goto mainmenu
-)
-
-echo Creating ZIP archive from Canary packages...
-if exist "CanaryPackages.zip" del "CanaryPackages.zip"
-powershell -command "Compress-Archive -Path 'Bin\NuGet Packages\Canary\*' -DestinationPath 'CanaryPackages.zip'"
-
-if exist "CanaryPackages.zip" (
-    echo ✅ Canary ZIP archive created: CanaryPackages.zip
-) else (
-    echo ❌ Failed to create ZIP archive
-)
-
-echo:
-pause
-goto mainmenu
-
-:createzipstable
-cls
-echo ========================================================================
-echo   Creating Stable ZIP Archive
-echo ========================================================================
-echo:
-
-if not exist "Bin\NuGet Packages\Release" (
-    echo ❌ Stable packages not found! Please build first.
-    pause
-    goto mainmenu
-)
-
-echo Creating ZIP archive from Stable packages...
-if exist "StablePackages.zip" del "StablePackages.zip"
-powershell -command "Compress-Archive -Path 'Bin\NuGet Packages\Release\*' -DestinationPath 'StablePackages.zip'"
-
-if exist "StablePackages.zip" (
-    echo ✅ Stable ZIP archive created: StablePackages.zip
-) else (
-    echo ❌ Failed to create ZIP archive
-)
-
-echo:
-pause
-goto mainmenu
-
-:createzipall
-cls
-echo ========================================================================
-echo   Creating ZIP Archives for All Configurations
-echo ========================================================================
-echo:
-
-if exist "Bin\NuGet Packages\Nightly" (
-    echo Creating Nightly ZIP...
-    if exist "NightlyPackages.zip" del "NightlyPackages.zip"
-    powershell -command "Compress-Archive -Path 'Bin\NuGet Packages\Nightly\*' -DestinationPath 'NightlyPackages.zip'"
-)
-
-if exist "Bin\NuGet Packages\Canary" (
-    echo Creating Canary ZIP...
-    if exist "CanaryPackages.zip" del "CanaryPackages.zip"
-    powershell -command "Compress-Archive -Path 'Bin\NuGet Packages\Canary\*' -DestinationPath 'CanaryPackages.zip'"
-)
-
-if exist "Bin\NuGet Packages\Release" (
-    echo Creating Stable ZIP...
-    if exist "StablePackages.zip" del "StablePackages.zip"
-    powershell -command "Compress-Archive -Path 'Bin\NuGet Packages\Release\*' -DestinationPath 'StablePackages.zip'"
-)
-
-echo:
-echo ✅ ZIP archive creation completed!
-echo Created archives: *.zip files in current directory
-
-echo:
-pause
-goto mainmenu
-
-:showpackagelocations
-cls
-echo ========================================================================
-echo   Package Locations
-echo ========================================================================
-echo:
-
-echo Current directory: %CD%
-echo:
-
-if exist "Bin\NuGet Packages\Nightly" (
-    echo ✅ Nightly packages: Bin\NuGet Packages\Nightly\
-) else (
-    echo ❌ Nightly packages: Not built
-)
-
-if exist "Bin\NuGet Packages\Canary" (
-    echo ✅ Canary packages: Bin\NuGet Packages\Canary\
-) else (
-    echo ❌ Canary packages: Not built
-)
-
-if exist "Bin\NuGet Packages\Release" (
-    echo ✅ Stable packages: Bin\NuGet Packages\Release\
-) else (
-    echo ❌ Stable packages: Not built
-)
-
-echo:
-echo ZIP Archives:
-if exist "NightlyPackages.zip" (echo ✅ NightlyPackages.zip) else (echo ❌ NightlyPackages.zip)
-if exist "CanaryPackages.zip" (echo ✅ CanaryPackages.zip) else (echo ❌ CanaryPackages.zip)
-if exist "StablePackages.zip" (echo ✅ StablePackages.zip) else (echo ❌ StablePackages.zip)
-
-echo:
-pause
-goto mainmenu
+exit /b 0

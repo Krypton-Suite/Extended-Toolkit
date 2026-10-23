@@ -114,11 +114,11 @@ public class OutlookGridGroupCollection
         //We must return null if no group exist, then the OutlookGrid will create one. But we must return a group even for a null value.
         if (value == null)
         {
-            return _groupList.Find(x => x != null && x.Value == null);
+            return _groupList.Find(x => x is { Value: null });
             //return null;
         }
         //return groupList.Find(x => x.Value.Equals(value));
-        return _groupList.Find(x => x != null && x.Value != null && x.Value.Equals(value));
+        return _groupList.Find(x => x is { Value: not null } && x.Value.Equals(value));
     }
 
     #endregion

@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -78,7 +78,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// <summary>
     ///     Gets or sets the animation speed in milliseconds.
     /// </summary>
-    [Category("Behavior")]
+    [Category("Behavior"), DefaultValue(500)]
     public int AnimationSpeed { get; set; }
 
     /// <summary>
@@ -109,116 +109,113 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// </returns>
     [EditorBrowsable(EditorBrowsableState.Always)]
     [Browsable(true)]
-    public override Font? Font
+#pragma warning disable CS8765 // Nullability of overridden Font matches Control base on all TFMs.
+    public override Font Font
     {
         get => base.Font;
-        set
-        {
-            if (value != null)
-            {
-                base.Font = value;
-            }
-        }
+        set => base.Font = value;
     }
+#pragma warning restore CS8765
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color InnerColor { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(2)]
     public int InnerMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(-1)]
     public int InnerWidth { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color OuterColor { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(-25)]
     public int OuterMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(26)]
     public int OuterWidth { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance"), DefaultValue(typeof(Color), "_palette.ColorTable.ButtonCheckedGradientBegin")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ProgressColor { get => _progressColor; set => _progressColor = value; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(25)]
     public int ProgressWidth { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Font SecondaryFont { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DefaultValue(270)]
     public int StartAngle { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color SubscriptColor { get; set; }
 
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding SubscriptMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DefaultValue("")]
     public string SubscriptText { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color SuperscriptColor { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Layout")]
+    [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Padding SuperscriptMargin { get; set; }
 
     /// <summary>
     /// </summary>
-    [Category("Appearance")]
+    [Category("Appearance"), DefaultValue("")]
     public string SuperscriptText { get; set; }
+
+    /// <summary>
+    /// </summary>
+    [Category("Layout"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Padding TextMargin { get; set; }
 
     /// <summary>
     ///     Gets or sets the text in the <see cref="CircularProgressBar" />.
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Always)]
     [Browsable(true)]
+#pragma warning disable CS8765 // Nullability of overridden Text matches Control base on all TFMs.
     public override string Text
     {
         get => base.Text;
-        set => base.Text = value;
+        set => base.Text = value!;
     }
+#pragma warning restore CS8765
 
-    /// <summary>
-    /// </summary>
-    [Category("Layout")]
-    public Padding TextMargin { get; set; }
-
-    [Category("Appearance"), DefaultValue(false), Description("Use three colors to depict the current values.")]
     public bool UseColorTrio { get => _useColorTrio; set => _useColorTrio = value; }
 
     [Category("Appearance"), DefaultValue(typeof(Color), "Color.Red")]
@@ -250,9 +247,9 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
         DoubleBuffered = true;
 
-        Font = new Font(Font.FontFamily, 72, FontStyle.Bold);
+        Font = new Font((Font ?? SystemFonts.DefaultFont).FontFamily, 72, FontStyle.Bold);
 
-        SecondaryFont = new Font(Font.FontFamily, (float)(Font.Size * .5), FontStyle.Regular);
+        SecondaryFont = new Font((Font ?? SystemFonts.DefaultFont).FontFamily, (float)((Font ?? SystemFonts.DefaultFont).Size * .5), FontStyle.Regular);
 
         OuterMargin = -25;
 
@@ -421,14 +418,14 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="invalidateEventArgs"></param>
-    protected virtual void ParentOnInvalidated(object sender, InvalidateEventArgs invalidateEventArgs) => RecreateBackgroundBrush();
+    protected virtual void ParentOnInvalidated(object? sender, InvalidateEventArgs invalidateEventArgs) => RecreateBackgroundBrush();
 
     /// <summary>
     ///     Occurs when the parent resized.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="eventArgs"></param>
-    protected virtual void ParentOnResize(object sender, EventArgs eventArgs) => RecreateBackgroundBrush();
+    protected virtual void ParentOnResize(object? sender, EventArgs eventArgs) => RecreateBackgroundBrush();
 
     /// <summary>
     ///     Update or create the brush used for drawing the background
@@ -445,7 +442,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
                 return;
             }
 
-            if (Parent != null && Parent.Width > 0 && Parent.Height > 0)
+            if (Parent is { Width: > 0, Height: > 0 })
             {
                 using (var parentImage = new Bitmap(Parent.Width, Parent.Height))
                 {
@@ -553,7 +550,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
                         Alignment = StringAlignment.Center,
                         LineAlignment = StringAlignment.Near
                     };
-                var textSize = g.MeasureString(Text, Font);
+                var textSize = g.MeasureString(Text, Font ?? SystemFonts.DefaultFont);
                 var textPoint = new PointF(
                     point.X + (size.Width - textSize.Width) / 2,
                     point.Y + (size.Height - textSize.Height) / 2);
@@ -615,7 +612,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
                 g.DrawString(
                     Text,
-                    Font,
+                    Font ?? SystemFonts.DefaultFont,
                     new SolidBrush(ForeColor),
                     new RectangleF(textPoint, textSize),
                     stringFormat);
@@ -665,18 +662,12 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
 
             if (_useColorTrio)
             {
-                if (Value <= 33)
+                ProgressColor = Value switch
                 {
-                    ProgressColor = _firstValueColor;
-                }
-                else if (Value <= 66)
-                {
-                    ProgressColor = _secondValueColor; // _palette.ColorTable.ButtonCheckedGradientBegin;
-                }
-                else
-                {
-                    ProgressColor = _thirdValueColor;
-                }
+                    <= 33 => _firstValueColor,
+                    <= 66 => _secondValueColor,
+                    _ => _thirdValueColor
+                };
             }
             else
             {
@@ -740,7 +731,7 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
         SubscriptColor = _palette.ColorTable.StatusStripText;
     }
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -756,6 +747,6 @@ public class CircularProgressBar : System.Windows.Forms.ProgressBar
         Invalidate();
     }
 
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e) => Invalidate();
     #endregion
 }

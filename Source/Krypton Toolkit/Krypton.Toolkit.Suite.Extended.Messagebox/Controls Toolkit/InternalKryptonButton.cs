@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -156,6 +156,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// Gets or sets the text associated with this control. 
     /// </summary>
     [Editor(@"System.ComponentModel.Design.MultilineStringEditor", typeof(UITypeEditor))]
+    [System.Diagnostics.CodeAnalysis.AllowNull]
     public override string Text
     {
         get => Values.Text;
@@ -469,6 +470,36 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// <returns>String value.</returns>
     public string GetLongText() => KryptonCommand?.ExtraText ?? Values.GetLongText();
 
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Size GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Gets the content image.
     /// </summary>
@@ -483,6 +514,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// <returns>Colour value.</returns>
     public Color GetImageTransparentColor(PaletteState state) =>
         KryptonCommand?.ImageTransparentColor ?? Values.GetImageTransparentColor(state);
+
     #endregion
 
     #region Protected Overrides
@@ -723,7 +755,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">A PropertyChangedEventArgs that contains the event data.</param>
-    protected virtual void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
+    protected virtual void OnCommandPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         switch (e.PropertyName)
         {
@@ -747,9 +779,9 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
     #endregion
 
     #region Implementation
-    private void OnButtonTextChanged(object sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
+    private void OnButtonTextChanged(object? sender, EventArgs e) => OnTextChanged(EventArgs.Empty);
 
-    private void OnButtonClick(object sender, MouseEventArgs e)
+    private void OnButtonClick(object? sender, MouseEventArgs e)
     {
         // Raise the standard click event
         OnClick(EventArgs.Empty);
@@ -758,7 +790,7 @@ internal class InternalKryptonButton : VisualSimpleBase, IButtonControl, IConten
         OnMouseClick(e);
     }
 
-    private void OnButtonSelect(object sender, MouseEventArgs e)
+    private void OnButtonSelect(object? sender, MouseEventArgs e)
     {
         // Take the focus if allowed
         if (CanFocus)

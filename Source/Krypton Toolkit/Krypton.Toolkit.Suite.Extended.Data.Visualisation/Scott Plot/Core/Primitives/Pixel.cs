@@ -62,17 +62,12 @@ public struct Pixel : IEquatable<Pixel>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is Pixel other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            Pixel other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(Pixel a, Pixel b)

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ internal class HelpInfo
     /// <param name="helpFilePath">Value for HelpFilePath.</param>
     /// <param name="navigator">Value for Navigator</param>
     /// <param name="param"></param>
-    public HelpInfo(string helpFilePath, HelpNavigator navigator, object? param = null)
+    public HelpInfo(string? helpFilePath, HelpNavigator navigator, object? param = null)
         : this(helpFilePath, null, navigator, param)
     {
 
@@ -66,12 +66,12 @@ internal class HelpInfo
     /// <param name="navigator">Value for Navigator</param>
     /// <param name="keyword">Value for Keyword</param>
     /// <param name="param"></param>
-    private HelpInfo(string helpFilePath, string keyword, HelpNavigator navigator, object param)
+    private HelpInfo(string? helpFilePath, string? keyword, HelpNavigator navigator, object? param)
     {
-        HelpFilePath = helpFilePath;
-        Keyword = keyword;
+        HelpFilePath = helpFilePath ?? string.Empty;
+        Keyword = keyword ?? string.Empty;
         Navigator = navigator;
-        Param = param;
+        Param = param ?? string.Empty;
     }
     #endregion
 
@@ -94,7 +94,7 @@ internal class HelpInfo
     /// <summary>
     /// Gets the Param property.
     /// </summary>
-    public object Param { get; }
+    public object? Param { get; }
 
     #endregion
 }

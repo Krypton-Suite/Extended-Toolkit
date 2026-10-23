@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -192,15 +192,17 @@ public class FileUtilityMethods
     {
         string url = onlineFileUrl, fileType = url.Substring(url.LastIndexOf(".", StringComparison.Ordinal) + 1, url.Length - url.LastIndexOf(".", StringComparison.Ordinal) - 1), fileName = url.Substring(url.LastIndexOf("/", StringComparison.Ordinal) + 1, url.Length - url.LastIndexOf("/", StringComparison.Ordinal) - 1);
 
-        WebRequest request = (HttpWebRequest)WebRequest.Create(onlineFileUrl);
-
-        request.Method = "HEAD";
-
-        WebResponse response = (HttpWebResponse)request.GetResponse();
+        using HttpClient client = new();
+        using HttpRequestMessage request = new(HttpMethod.Head, onlineFileUrl);
+#if NETFRAMEWORK
+        using HttpResponseMessage response = client.SendAsync(request).GetAwaiter().GetResult();
+#else
+        using HttpResponseMessage response = client.Send(request);
+#endif
 
         long contentLength = 0, result;
 
-        if (long.TryParse(response.Headers.Get("Content-Length"), out contentLength))
+        if (long.TryParse(response.Content.Headers.ContentLength?.ToString(), out contentLength))
         {
             if (contentLength >= 1073741824)
             {
@@ -347,7 +349,8 @@ public class FileUtilityMethods
             }
             else
             {
-                fileContent = File.OpenRead(filePath).ToString();
+                using StreamReader reader = new(filePath);
+                fileContent = reader.ReadToEnd();
             }
         }
         catch (Exception exc)
@@ -457,6 +460,6 @@ public static class FileUtilityMethodsExtended
             return ".NET 2, 3 or 3.5";
         }
 
-        return targetFrameAttribute.FrameworkDisplayName.Replace(".NET Framework", ".NET");
+        return targetFrameAttribute.FrameworkDisplayName?.Replace(".NET Framework", ".NET") ?? ".NET";
     }
 }

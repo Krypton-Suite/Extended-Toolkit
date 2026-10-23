@@ -157,17 +157,12 @@ public class
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is CoordinateRangeMutable other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            CoordinateRangeMutable other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(CoordinateRangeMutable a, CoordinateRangeMutable b)

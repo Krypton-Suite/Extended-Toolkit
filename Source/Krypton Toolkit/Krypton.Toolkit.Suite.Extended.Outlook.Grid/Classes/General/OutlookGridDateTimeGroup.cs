@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -60,7 +60,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
     ///<summary>
     ///Gets or sets the displayed text.
     ///</summary>
-    public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
+    public override string Text => $"{Column!.DataGridViewColumn!.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
 
     private DateTime _valDateTime;
 
@@ -79,7 +79,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                     //If no date Time let the valDateTime to the min value !
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString());
+                        _valDateTime = DateTime.Parse(value.ToString()!);
                     }
                     else
                     {
@@ -92,7 +92,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                     //If no date Time let the valDateTime to the min value !
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString());
+                        _valDateTime = DateTime.Parse(value.ToString()!);
                         base.Value = _valDateTime.Year;
                     }
                     else
@@ -105,7 +105,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                     //If no date Time let the valDateTime to the min value !
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString());
+                        _valDateTime = DateTime.Parse(value.ToString()!);
                         base.Value = $"{_ti.ToTitleCase(_valDateTime.ToString("MMMM"))} {_valDateTime.Year}";
                     }
                     else
@@ -117,7 +117,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                 case DateInterval.Day:
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString());
+                        _valDateTime = DateTime.Parse(value.ToString()!);
                         base.Value = _valDateTime.Date.ToShortDateString();
                     }
                     else
@@ -129,7 +129,7 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
                 case DateInterval.Quarter:
                     if (value != null && value != DBNull.Value)
                     {
-                        _valDateTime = DateTime.Parse(value.ToString());
+                        _valDateTime = DateTime.Parse(value.ToString()!);
                         base.Value =
                             $"{OutlookGridGroupHelpers.GetQuarterAsString(_valDateTime)} {_valDateTime.Year}";
                     }
@@ -180,23 +180,15 @@ public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public override int CompareTo(object obj)
+    public override int CompareTo(object? obj)
     {
-        int orderModifier = Column.SortDirection == SortOrder.Ascending ? 1 : -1;
-        DateTime val;
-        if (obj is DateTime)
+        int orderModifier = Column!.SortDirection == SortOrder.Ascending ? 1 : -1;
+        DateTime val = obj switch
         {
-            //TODO necessary ??? 
-            val = DateTime.Parse(obj.ToString());
-        }
-        else if (obj is OutlookGridDateTimeGroup)
-        {
-            val = ((OutlookGridDateTimeGroup)obj)._valDateTime;
-        }
-        else
-        {
-            val = new DateTime();
-        }
+            DateTime dt => dt,
+            OutlookGridDateTimeGroup dateGroup => dateGroup._valDateTime,
+            _ => new DateTime()
+        };
 
         switch (Interval)
         {

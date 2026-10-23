@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<!-- TargetFrameworks is now set dynamically in Directory.Build.props based on Configuration -->
@@ -11,13 +11,14 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\_shared-assets\StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<UseWindowsForms>true</UseWindowsForms>		<LangVersion>preview</LangVersion>
+		<UseWindowsForms>true</UseWindowsForms>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		
 		<!-- Suppress NuGet pack validation warning NU1012 (TFMs missing platform version) -->
-		<NoWarn>$(NoWarn);NU1012</NoWarn>
+		<NoWarn>$(NoWarn);NU1012;NU1701;NU5118</NoWarn>
 		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 		<WarningsNotAsErrors>NU1012</WarningsNotAsErrors>
@@ -28,23 +29,27 @@
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite.Canary</PackageId>
+				<PackageIcon>Krypton Canary.png</PackageIcon>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite.Nightly</PackageId>
+				<PackageIcon>Krypton Nightly.png</PackageIcon>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite</PackageId>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.Lite</PackageId>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
@@ -73,7 +78,6 @@
 			To view all of the extended toolkit package latest version information, please visit: 
 			https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
 		</Description>
-		<PackageIcon>Krypton Stable.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
@@ -81,40 +85,36 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="100.25.11.318-alpha" />
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.11.318-alpha" />
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="100.25.11.318-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="100.25.11.318-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.9.257-alpha" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="100.25.11.318-beta" />
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.11.318-beta" />
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="100.25.11.318-beta" />
-				<PackageReference Include="Krypton.Navigator.Canary" Version="100.25.11.318-beta" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.8.236-beta" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Release'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="100.25.11.328" />
-				<PackageReference Include="Krypton.Toolkit" Version="100.25.11.328" />
-				<PackageReference Include="Krypton.Ribbon" Version="100.25.11.328" />
-				<PackageReference Include="Krypton.Navigator" Version="100.25.11.328" />
+				<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 			</ItemGroup>
 		</When>
 
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking" Version="95.25.10.293" />
-				<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
-				<PackageReference Include="Krypton.Ribbon" Version="95.25.10.293" />
-				<PackageReference Include="Krypton.Navigator" Version="95.25.10.293" />
+				<PackageReference Include="Krypton.Standard.Toolkit" Version="110.26.11.328" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
+
+	<!-- Runtime packages needed by bundled modules (ProjectReferences use PrivateAssets=all). -->
+	<!-- SkiaSharp must remain a PackageReference so native assets are installed correctly. -->
+	<ItemGroup>
+		<PackageReference Include="Handlebars.Net" Version="2.4.3" />
+		<PackageReference Include="SkiaSharp" Version="4.150.1" />
+		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.150.1" />
+	</ItemGroup>
 
 	<!-- All Extended Toolkit Project References -->
 	<ItemGroup>
@@ -147,6 +147,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Card\Krypton.Toolkit.Suite.Extended.Card.csproj" />
 
 		<!-- Data Visualization -->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2022.csproj" />
@@ -164,7 +165,7 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj" />
 		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast 2022.csproj" />-->
-		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.ToastNotification\Krypton.Toolkit.Suite.Extended.ToastNotification 2022.csproj" />
+		<!--<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.ToastNotification\Krypton.Toolkit.Suite.Extended.ToastNotification 2022.csproj" />-->
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2022.csproj" />
 
 		<!-- Navigation & Layout -->
@@ -207,10 +208,20 @@
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj" />
 	</ItemGroup>
 
-	<!-- Package Assets -->
+	<!-- Bundle assemblies into this package; do not emit Extended modules as NuGet dependencies (#610). -->
 	<ItemGroup>
-		<None Include="..\..\..\README.md" Pack="true" PackagePath="\" />
+		<ProjectReference Update="@(ProjectReference)" PrivateAssets="all" />
+	</ItemGroup>
+
+	<!-- Package Assets -->
+	<!-- Note: README.md and icons are handled centrally in Directory.Build.props -->
+	<!-- Ultimate projects use a different license file location -->
+	<ItemGroup>
 		<None Include="..\_shared-assets\License.txt" Pack="true" PackagePath="" Link="License\License.txt" />
+		<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->
@@ -224,12 +235,13 @@
 		<!-- Force inclusion of all dependencies -->
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<IncludeBuildOutput>true</IncludeBuildOutput>
-		<IncludeReferencedProjects>true</IncludeReferencedProjects>
+		<!-- Project refs use PrivateAssets=all; assemblies are packed via IncludeAllDependenciesInPackage -->
+		<IncludeReferencedProjects>false</IncludeReferencedProjects>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		
 		<!-- Suppress NuGet pack validation warning NU1012 (TFMs missing platform version) -->
-		<NoWarn>$(NoWarn);NU1012</NoWarn>
+		<NoWarn>$(NoWarn);NU1012;NU1701;NU5118</NoWarn>
 		<_SuppressTfmSupportBuildWarnings>true</_SuppressTfmSupportBuildWarnings>
 		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 		
@@ -238,29 +250,21 @@
 		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeAllDependenciesInPackage</TargetsForTfmSpecificContentInPackage>
 	</PropertyGroup>
 
-	<!-- Custom target to include ALL dependencies in the package -->
+	<!-- Bundle managed dependency assemblies; exclude framework + native binaries from lib/ -->
 	<Target Name="IncludeAllDependenciesInPackage" DependsOnTargets="ResolveReferences">
 		<ItemGroup>
-			<!-- Include ONLY non-framework assemblies (exclude System.*, Microsoft.VisualBasic.*, mscorlib, netstandard, WindowsBase, etc.) -->
 			<_AllReferences Include="@(ReferenceCopyLocalPaths)" />
 			
-			<!-- Filter out framework assemblies -->
-			<_FrameworkAssemblies Include="@(_AllReferences)" Condition="$([System.String]::new('%(Filename)').StartsWith('System.')) OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR &#xD;&#xA;						   '%(Filename)' == 'mscorlib' OR &#xD;&#xA;						   '%(Filename)' == 'netstandard' OR &#xD;&#xA;						   '%(Filename)' == 'WindowsBase' OR &#xD;&#xA;						   '%(Filename)' == 'PresentationCore' OR &#xD;&#xA;						   '%(Filename)' == 'PresentationFramework' OR &#xD;&#xA;						   $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR &#xD;&#xA;						   '%(Filename)' == 'PresentationUI' OR &#xD;&#xA;						   '%(Filename)' == 'ReachFramework' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationClient' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationClientSideProviders' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationProvider' OR &#xD;&#xA;						   '%(Filename)' == 'UIAutomationTypes' OR &#xD;&#xA;						   '%(Filename)' == 'Accessibility'" />
+			<_ExcludedFromPackageLib Include="@(_AllReferences)" Condition="'%(Extension)' != '.dll' OR &#xD;&#xA;         $([System.String]::new('%(Filename)').StartsWith('System.')) OR &#xD;&#xA;         $([System.String]::new('%(Filename)').StartsWith('Microsoft.VisualBasic')) OR &#xD;&#xA;         $([System.String]::new('%(Filename)').StartsWith('Microsoft.Win32.')) OR &#xD;&#xA;         $([System.String]::new('%(Filename)').StartsWith('Microsoft.CSharp')) OR &#xD;&#xA;         $([System.String]::new('%(Filename)').StartsWith('lib')) OR &#xD;&#xA;         $([System.String]::Copy('%(Identity)').Contains('\native\')) OR &#xD;&#xA;         $([System.String]::Copy('%(Identity)').Contains('/native/')) OR &#xD;&#xA;         '%(Filename)' == 'mscorlib' OR &#xD;&#xA;         '%(Filename)' == 'netstandard' OR &#xD;&#xA;         '%(Filename)' == 'WindowsBase' OR &#xD;&#xA;         '%(Filename)' == 'PresentationCore' OR &#xD;&#xA;         '%(Filename)' == 'PresentationFramework' OR &#xD;&#xA;         $([System.String]::new('%(Filename)').StartsWith('PresentationFramework.')) OR &#xD;&#xA;         '%(Filename)' == 'PresentationUI' OR &#xD;&#xA;         '%(Filename)' == 'ReachFramework' OR &#xD;&#xA;         '%(Filename)' == 'UIAutomationClient' OR &#xD;&#xA;         '%(Filename)' == 'UIAutomationClientSideProviders' OR &#xD;&#xA;         '%(Filename)' == 'UIAutomationProvider' OR &#xD;&#xA;         '%(Filename)' == 'UIAutomationTypes' OR &#xD;&#xA;         '%(Filename)' == 'Accessibility' OR &#xD;&#xA;         '%(Filename)' == 'e_sqlite3'" />
 			
-			<!-- Include only non-framework assemblies -->
-			<_NonFrameworkAssemblies Include="@(_AllReferences)" Exclude="@(_FrameworkAssemblies)" />
+			<_ManagedAssembliesForPackage Include="@(_AllReferences)" Exclude="@(_ExcludedFromPackageLib)" />
 			
-			<BuildOutputInPackage Include="@(_NonFrameworkAssemblies)" />
-			<TfmSpecificPackageFile Include="@(_NonFrameworkAssemblies)" PackagePath="lib/$(TargetFramework)/" />
+			<BuildOutputInPackage Include="@(_ManagedAssembliesForPackage)" />
+			<TfmSpecificPackageFile Include="@(_ManagedAssembliesForPackage)" PackagePath="lib/$(_PackageLibTfm)/" />
 		</ItemGroup>
 		
 		<Message Text="Including %(TfmSpecificPackageFile.Identity) in package" Importance="low" />
 	</Target>
-	
-	<!-- Exclude the Ultimate Lite project's own output from the package -->
-	<PropertyGroup>
-		<IncludeBuildOutput>false</IncludeBuildOutput>
-	</PropertyGroup>
 
 	<!-- Note: UltimateLitePackageInfo.cs is automatically included by the SDK -->
 

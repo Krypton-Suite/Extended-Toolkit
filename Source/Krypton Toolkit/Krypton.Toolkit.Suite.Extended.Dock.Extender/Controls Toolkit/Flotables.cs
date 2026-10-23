@@ -1,14 +1,16 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
+﻿using System.Linq;
+
+namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
 
 public class Flotables : List<IFloatable>
 {
     #region Implementation
 
-    public IFloatable FindFloatables(Control control)
+    public IFloatable? FindFloatables(Control control)
     {
-        foreach (KryptonFloatableForm floatable in this)
+        foreach (KryptonFloatableForm floatable in this.Cast<KryptonFloatableForm>())
         {
-            if (floatable.DockState.Container.Equals(control))
+            if (floatable.DockState.Container != null && floatable.DockState.Container.Equals(control))
             {
                 return floatable;
             }

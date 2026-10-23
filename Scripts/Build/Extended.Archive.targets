@@ -1,0 +1,45 @@
+<Project>
+	<!--
+		Shared ZIP/TAR archive helpers. Channel .proj files set ArchiveDir, ArchiveName,
+		and ArchiveSourceDir, then wire Create*Zip / Create*Tar names for run.cmd.
+	-->
+	<PropertyGroup>
+		<ArchiveDir Condition="'$(ArchiveDir)' == ''">$(BinDir)\$(Configuration)\Zips</ArchiveDir>
+		<ArchiveName Condition="'$(ArchiveName)' == ''">Krypton-Extended-$(Configuration)</ArchiveName>
+		<ArchiveSourceDir Condition="'$(ArchiveSourceDir)' == ''">$(NuGetPackagesDir)</ArchiveSourceDir>
+		<_SevenZip>C:\Program Files\7-Zip\7z.exe</_SevenZip>
+	</PropertyGroup>
+
+	<Target Name="CreateZip">
+		<PropertyGroup>
+			<StringDate>$([System.DateTime]::Now.ToString('yyyyMMdd'))</StringDate>
+			<_ZipPath>$(ArchiveDir)\$(ArchiveName)_$(StringDate).zip</_ZipPath>
+		</PropertyGroup>
+		<Error Text="Nothing to archive at $(ArchiveSourceDir)." Condition="!Exists('$(ArchiveSourceDir)')" />
+		<MakeDir Directories="$(ArchiveDir)" Condition="!Exists('$(ArchiveDir)')" />
+		<Exec Command="&quot;$(_SevenZip)&quot; a -tzip &quot;$(_ZipPath)&quot; &quot;$(ArchiveSourceDir)\*&quot; -x!*.json -x!*.pdb"
+		      Condition="Exists('$(_SevenZip)')" />
+		<Exec Command="powershell.exe -NoProfile -Command &quot;Compress-Archive -Path '$(ArchiveSourceDir)\*' -DestinationPath '$(_ZipPath)' -Force&quot;"
+		      Condition="!Exists('$(_SevenZip)')" />
+		<Message Text="Created $(_ZipPath)" Importance="high" />
+	</Target>
+
+	<Target Name="CreateTar">
+		<PropertyGroup>
+			<StringDate>$([System.DateTime]::Now.ToString('yyyyMMdd'))</StringDate>
+			<_TarPath>$(ArchiveDir)\$(ArchiveName)_$(StringDate).tar.gz</_TarPath>
+		</PropertyGroup>
+		<Error Text="Nothing to archive at $(ArchiveSourceDir)." Condition="!Exists('$(ArchiveSourceDir)')" />
+		<MakeDir Directories="$(ArchiveDir)" Condition="!Exists('$(ArchiveDir)')" />
+		<Exec Command="&quot;$(_SevenZip)&quot; a -ttar &quot;$(ArchiveDir)\$(ArchiveName)_$(StringDate).tar&quot; &quot;$(ArchiveSourceDir)\*&quot; -x!*.json -x!*.pdb"
+		      Condition="Exists('$(_SevenZip)')" />
+		<Exec Command="&quot;$(_SevenZip)&quot; a -tgzip &quot;$(_TarPath)&quot; &quot;$(ArchiveDir)\$(ArchiveName)_$(StringDate).tar&quot;"
+		      Condition="Exists('$(_SevenZip)')" />
+		<Delete Files="$(ArchiveDir)\$(ArchiveName)_$(StringDate).tar" Condition="Exists('$(_SevenZip)')" />
+		<Exec Command="tar -czf &quot;$(_TarPath)&quot; -C &quot;$(ArchiveSourceDir)&quot; ."
+		      Condition="!Exists('$(_SevenZip)') and Exists('C:\Windows\System32\tar.exe')" />
+		<Message Text="Created $(_TarPath)" Importance="high" />
+	</Target>
+
+	<Target Name="CreateAllArchives" DependsOnTargets="CreateZip;CreateTar" />
+</Project>

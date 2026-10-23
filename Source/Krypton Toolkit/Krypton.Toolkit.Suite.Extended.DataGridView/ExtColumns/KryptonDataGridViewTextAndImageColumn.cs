@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,8 +77,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
     /// <returns></returns>
     public override object Clone()
     {
-        KryptonDataGridViewTextAndImageColumn? cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
-        if (cloned != null)
+        if (base.Clone() is KryptonDataGridViewTextAndImageColumn cloned)
         {
             cloned.imageValue = imageValue;
             cloned.ImageSize = ImageSize;
@@ -155,15 +154,14 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
         {
             if (MaxInputLength != value)
             {
-                TextBoxCellTemplate.MaxInputLength = value;
+                TextBoxCellTemplate?.MaxInputLength = value;
                 if (DataGridView != null)
                 {
                     DataGridViewRowCollection rows = DataGridView.Rows;
                     int count = rows.Count;
                     for (int i = 0; i < count; i++)
                     {
-                        DataGridViewTextBoxCell? cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
-                        if (cell != null)
+                        if (rows.SharedRow(i).Cells[Index] is DataGridViewTextBoxCell cell)
                         {
                             cell.MaxInputLength = value;
                         }
@@ -188,7 +186,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public override DataGridViewCell CellTemplate
+    public override DataGridViewCell? CellTemplate
     {
         get => base.CellTemplate;
 
@@ -214,7 +212,7 @@ public class KryptonDataGridViewTextAndImageColumn : DataGridViewColumn
     #endregion
 
     #region Private
-    private KryptonDataGridViewTextAndImageCell TextBoxCellTemplate => (KryptonDataGridViewTextAndImageCell)CellTemplate;
+    private KryptonDataGridViewTextAndImageCell? TextBoxCellTemplate => (KryptonDataGridViewTextAndImageCell)CellTemplate!;
 
     #endregion
 
@@ -297,9 +295,9 @@ public class TextAndImage : IComparable<TextAndImage>
     /// </summary>
     /// <param name="other">The other.</param>
     /// <returns></returns>
-    public int CompareTo(TextAndImage other)
+    public int CompareTo(TextAndImage? other)
     {
-        return string.Compare(Text, other.Text, StringComparison.Ordinal);
+        return other is null ? 1 : string.Compare(Text, other.Text, StringComparison.Ordinal);
     }
 }
 
@@ -345,8 +343,7 @@ public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCel
     /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
     public override object Clone()
     {
-        KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-        if (c != null)
+        if (base.Clone() is KryptonDataGridViewTextAndImageCell c)
         {
             c._imageValue = _imageValue;
             c._imageSize = _imageSize;
@@ -398,17 +395,20 @@ public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCel
     /// <param name="cellStyle"></param>
     /// <param name="advancedBorderStyle"></param>
     /// <param name="paintParts"></param>
-    protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
+    protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object? value, object? formattedValue, string? errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
     {
-        //TODO : improve we assume it is a 16x16 image 
-        if (((TextAndImage)Value)?.Image != null)
+        if (Value is TextAndImage tai && tai.Image is Image img)
         {
             //Padding inheritedPadding = this.InheritedStyle.Padding;
             //this.Style.Padding = new Padding(18, inheritedPadding.Top, inheritedPadding.Right, inheritedPadding.Bottom);
-            // Draw the image clipped to the cell.
+            // Draw the image clipped to the cell, sized to the image's actual dimensions.
+            int imgWidth = img.Width;
+            int imgHeight = img.Height;
+            int x = cellBounds.X + 2;
+            int y = cellBounds.Y + (cellBounds.Height - imgHeight) / 2;
             GraphicsContainer container = graphics.BeginContainer();
             graphics.SetClip(cellBounds);
-            graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + (cellBounds.Height - 16) / 2 - 1, 16, 16));
+            graphics.DrawImage(img, new Rectangle(x, y, imgWidth, imgHeight));
             graphics.EndContainer(container);
         }
 

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -72,22 +72,13 @@ internal static class SsmlParserHelpers
         }
         else if (int.TryParse(sAge, out result2))
         {
-            if (result2 <= 12)
+            age = result2 switch
             {
-                age = VoiceAge.Child;
-            }
-            else if (result2 <= 22)
-            {
-                age = VoiceAge.Teen;
-            }
-            else if (result2 <= 47)
-            {
-                age = VoiceAge.Adult;
-            }
-            else
-            {
-                age = VoiceAge.Senior;
-            }
+                <= 12 => VoiceAge.Child,
+                <= 22 => VoiceAge.Teen,
+                <= 47 => VoiceAge.Adult,
+                _ => VoiceAge.Senior
+            };
             result = true;
         }
         return result;
