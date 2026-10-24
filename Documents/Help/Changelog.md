@@ -4,6 +4,14 @@
 <!--* New `Krypton.Toolkit.Suite.Extended.Themes` module, contains controls such as `KryptonManagerExtended`, which supports existing themes plus new application style themes such as Access Purple/Red, Word Blue and more. (**Note:** The controls in this module will only work with `KryptonFormExtended` found in the `Krypton.Toolkit.Suite.Extended.Forms` module)-->
 =======
 
+## 2027-11-xx - Build 2711 (V120 Nightly) - November 2027
+
+- Added support for .NET 12
+- Removed support for .NET 8 and 9
+- Version bump `115.xx.xx.xxx` to `120.xx.xx.xxx`
+
+=======
+
 ## 2026-11-30 - Build 2611 - November 2026
 
 * Implemented [#623](https://github.com/Krypton-Suite/Extended-Toolkit/issues/623), Dev and main builds use a pinned Standard Toolkit submodule instead of a sibling clone.
@@ -89,7 +97,7 @@
 * Implements [#562](https://github.com/Krypton-Suite/Extended-Toolkit/issues/562), Use `Krypton.Standard.Toolkit` NuGet Packages
 * Implements [#486](https://github.com/Krypton-Suite/Extended-Toolkit/issues/486), Add `ForceDesignerDPIUnaware` option to `csproj` files
 * Support for .NET 11
-* Version bump `100.xx.xx.xx` -> `110.xx.xx.xx`
+* Version bump `105.xx.xx.xx` -> `110.xx.xx.xx`
 
 =======
 
