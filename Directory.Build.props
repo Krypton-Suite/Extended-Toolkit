@@ -19,28 +19,28 @@
 		 <!-- Full framework support for Release, Nightly, Canary, and Debug configurations -->
 		 <When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Debug'">
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- Lite framework support for ReleaseLite, CanaryLite, and NightlyLite configurations -->
 		 <When Condition="'$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'NightlyLite'">
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- All configurations (Full+Lite) - Uses Full TFMs, but helper scripts build both -->
 		 <When Condition="'$(Configuration)' == 'ReleaseAll' Or '$(Configuration)' == 'CanaryAll' Or '$(Configuration)' == 'NightlyAll'">
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- Default: Full framework support for any other configurations -->
 		 <Otherwise>
 			 <PropertyGroup>
-				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
+				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </Otherwise>
 	 </Choose>
@@ -51,10 +51,10 @@
 	 -->
 	 <PropertyGroup>
 		 <!-- Full framework support (all projects by default) -->
-		 <ExtendedToolkitTFMs>net472;net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ExtendedToolkitTFMs>
+		 <ExtendedToolkitTFMs>net472;net48;net481;net10.0-windows;net11.0-windows</ExtendedToolkitTFMs>
 		 
 		 <!-- Lite framework support (excludes net472 for smaller packages) -->
-		 <ExtendedToolkitLiteTFMs>net48;net481;net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ExtendedToolkitLiteTFMs>
+		 <ExtendedToolkitLiteTFMs>net48;net481;net10.0-windows;net11.0-windows</ExtendedToolkitLiteTFMs>
 		 
 		 <!-- Modern frameworks only (net8+) -->
 		 <ExtendedToolkitModernTFMs>net8.0-windows;net9.0-windows;net10.0-windows;net11.0-windows</ExtendedToolkitModernTFMs>
@@ -82,10 +82,10 @@
 				1 = Revision - Day of release (day of year)
 				-beta = Indicates a pre-release package
 				-->
-				 <LibraryVersion>110.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				 <LibraryVersion>120.$(Minor).$(Build).$(Revision)</LibraryVersion>
 
 				 <!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-				 <PackageVersion>110.$(Minor).$(Build).$(Revision)-beta</PackageVersion>
+				 <PackageVersion>120.$(Minor).$(Build).$(Revision)-beta</PackageVersion>
 			 </PropertyGroup>
 		 </When>
 
@@ -103,11 +103,11 @@
 				1 = Revision - Day of release (day of year)
 				-alpha = Indicates a pre-release package
 				-->
-				 <LibraryVersion>110.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				 <LibraryVersion>120.$(Minor).$(Build).$(Revision)</LibraryVersion>
 
 				 <!--Nightly-->
 				 <!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-				 <PackageVersion>110.$(Minor).$(Build).$(Revision)-alpha</PackageVersion>
+				 <PackageVersion>120.$(Minor).$(Build).$(Revision)-alpha</PackageVersion>
 			 </PropertyGroup>
 		 </When>
 
@@ -124,11 +124,11 @@
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
-				<LibraryVersion>110.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<LibraryVersion>120.$(Minor).$(Build).$(Revision)</LibraryVersion>
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Release/ReleaseLite/ReleaseAll (stable packages)-->
-				<PackageVersion>110.$(Minor).$(Build).$(Revision)</PackageVersion>
+				<PackageVersion>120.$(Minor).$(Build).$(Revision)</PackageVersion>
 			</PropertyGroup>
 		</When>
 
@@ -145,11 +145,11 @@
 				01 = Build - Month of release
 				1 = Revision - Day of release (day of year)
 				-->
-				<LibraryVersion>110.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<LibraryVersion>120.$(Minor).$(Build).$(Revision)</LibraryVersion>
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Debug and other configurations-->
-				<PackageVersion>110.$(Minor).$(Build).$(Revision)</PackageVersion>
+				<PackageVersion>120.$(Minor).$(Build).$(Revision)</PackageVersion>
 			</PropertyGroup>
 		</Otherwise>
 	 </Choose>
