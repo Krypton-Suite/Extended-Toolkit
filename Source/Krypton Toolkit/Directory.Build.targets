@@ -3,13 +3,16 @@
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../../'))" />
 
 	<!--
-		Build reliability: do not pack during ordinary Build.
 		Channel scripts pack via Scripts/Build/*.proj Pack targets (NoBuild=true).
-		This overrides per-project GeneratePackageOnBuild=True so parallel builds do not
-		race on package outputs while compiling.
+		Keep ordinary command-line builds from packing concurrently. In Visual Studio,
+		package-producing configurations build every TFM before creating a package.
 	-->
 	<PropertyGroup>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' And '$(IsPackable)' != 'false' And ('$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite')">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AccelerateBuildsInVisualStudio>false</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
 	<!--
@@ -36,7 +39,7 @@
 	</Target>
 	
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<PropertyGroup>
 				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
 				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
@@ -67,7 +70,7 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<PropertyGroup>
 				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
 				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
@@ -164,7 +167,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId).Canary</PackageId>
+				<PackageId Condition="'$(TFMs)' == 'all' And !$([System.String]::Copy('$(PackageId)').EndsWith('.Canary'))">$(PackageId).Canary</PackageId>
 
 
 				<Description Condition="'$(TFMs)' == 'all'">
@@ -182,7 +185,7 @@
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId).Nightly</PackageId>
+				<PackageId Condition="'$(TFMs)' == 'all' And !$([System.String]::Copy('$(PackageId)').EndsWith('.Nightly'))">$(PackageId).Nightly</PackageId>
 
 				<Description Condition="'$(TFMs)' == 'all'">
 					An extension to the Standard Toolkit, which supports .NET Framework 4.7.2 - 4.8.1 and .NET 8 - 11. $(Description)
@@ -199,7 +202,8 @@
 
 		<When Condition="'$(Configuration)' == 'CanaryLite'">
 			<PropertyGroup>
-				<PackageId>$(PackageId).Lite.Canary</PackageId>
+				<PackageId Condition="$([System.String]::Copy('$(PackageId)').EndsWith('.Canary')) And !$([System.String]::Copy('$(PackageId)').EndsWith('.Lite.Canary'))">$([System.String]::Copy('$(PackageId)').Replace('.Canary', '.Lite.Canary'))</PackageId>
+				<PackageId Condition="!$([System.String]::Copy('$(PackageId)').EndsWith('.Canary')) And !$([System.String]::Copy('$(PackageId)').EndsWith('.Lite.Canary'))">$(PackageId).Lite.Canary</PackageId>
 
 				<Description>
 					An extension to the Standard Toolkit, which supports .NET Framework 4.8 - 4.8.1 and .NET 8 - 11 (Canary Lite Configuration). $(Description)
@@ -216,7 +220,8 @@
 
 		<When Condition="'$(Configuration)' == 'NightlyLite'">
 			<PropertyGroup>
-				<PackageId>$(PackageId).Lite.Nightly</PackageId>
+				<PackageId Condition="$([System.String]::Copy('$(PackageId)').EndsWith('.Nightly')) And !$([System.String]::Copy('$(PackageId)').EndsWith('.Lite.Nightly'))">$([System.String]::Copy('$(PackageId)').Replace('.Nightly', '.Lite.Nightly'))</PackageId>
+				<PackageId Condition="!$([System.String]::Copy('$(PackageId)').EndsWith('.Nightly')) And !$([System.String]::Copy('$(PackageId)').EndsWith('.Lite.Nightly'))">$(PackageId).Lite.Nightly</PackageId>
 
 				<Description>
 					An extension to the Standard Toolkit, which supports .NET Framework 4.8 - 4.8.1 and .NET 8 - 11 (Nightly Lite Configuration). $(Description)
@@ -233,7 +238,7 @@
 
 		<When Condition="'$(Configuration)' == 'ReleaseLite'">
 			<PropertyGroup>
-				<PackageId>$(PackageId).Lite</PackageId>
+				<PackageId Condition="!$([System.String]::Copy('$(PackageId)').EndsWith('.Lite'))">$(PackageId).Lite</PackageId>
 
 				<Description>
 					An extension to the Standard Toolkit, which supports .NET Framework 4.8 - 4.8.1 and .NET 8 - 11 (Release Lite Configuration). $(Description)
