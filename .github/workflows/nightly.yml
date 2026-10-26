@@ -1,7 +1,13 @@
+# NUGET: Trusted publishing via NuGet/login. Secret NUGET_USER is the nuget.org profile name.
+# nuget.org needs a policy for this workflow file and Krypton-Suite/Extended-Toolkit.
+#
+# Discord: Set secret DISCORD_WEBHOOK_NIGHTLY (optional). Announces after a successful NuGet publish.
+
 name: Nightly Release
 
 permissions:
   contents: read
+  id-token: write
 
 on:
   schedule:
@@ -34,6 +40,10 @@ jobs:
         with:
           ref: ${{ github.event_name == 'schedule' && 'alpha' || github.ref }}
           fetch-depth: 0
+
+      - name: Checkout Standard-Toolkit submodule
+        shell: pwsh
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v6
@@ -70,16 +80,17 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          key: ${{ runner.os }}-nuget-nightly-${{ hashFiles('**/*.csproj') }}
           restore-keys: |
+            ${{ runner.os }}-nuget-nightly-
             ${{ runner.os }}-nuget-
 
       - name: Pack Nightly
-        run: msbuild /m Scripts/Build/nightly.proj /t:Pack /p:Platform="Any CPU"
+        run: msbuild /m Scripts/Build/nightly.proj /t:Pack /p:Configuration=Nightly /p:Platform="Any CPU"
 
       - name: Pack NightlyLite
         if: github.event_name == 'workflow_dispatch' && inputs.pack_lite
-        run: msbuild /m Scripts/Build/nightly.proj /t:PackLite /p:Platform="Any CPU"
+        run: msbuild /m Scripts/Build/nightly.proj /t:PackLite /p:Configuration=Nightly /p:Platform="Any CPU"
 
       - name: List packages
         shell: pwsh
@@ -100,17 +111,118 @@ jobs:
             Bin/NuGet Packages/Nightly/*.snupkg
           retention-days: 14
 
+      - name: NuGet login (OIDC)
+        if: github.event_name == 'workflow_dispatch' && inputs.publish_nuget && github.repository == 'Krypton-Suite/Extended-Toolkit'
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Publish to NuGet.org
         if: github.event_name == 'workflow_dispatch' && inputs.publish_nuget
+        id: push_nuget
         shell: pwsh
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
         run: |
           $ErrorActionPreference = 'Stop'
-          if ([string]::IsNullOrWhiteSpace($env:NUGET_API_KEY)) {
-            Write-Error 'NUGET_API_KEY secret is not set.'
+          if ($env:GITHUB_REPOSITORY -ne 'Krypton-Suite/Extended-Toolkit') {
+            Write-Warning "NuGet trusted publishing is only configured for Krypton-Suite/Extended-Toolkit - skipping NuGet push"
+            echo "packages_published=false" >> $env:GITHUB_OUTPUT
+            exit 0
           }
-          Get-ChildItem 'Bin/NuGet Packages/Nightly' -Filter '*.nupkg' -Exclude '*.symbols.nupkg' | ForEach-Object {
-            Write-Host "Publishing $($_.Name)"
-            dotnet nuget push $_.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+          if (-not $env:NUGET_API_KEY) {
+            Write-Error 'NuGet trusted publishing did not provide an API key. Set the NUGET_USER secret to the nuget.org profile name.'
           }
+          $packages = @(Get-ChildItem 'Bin/NuGet Packages/Nightly' -Filter '*.nupkg' -Exclude '*.symbols.nupkg')
+          $publishedAny = $false
+          foreach ($pkg in $packages) {
+            Write-Host "Publishing $($pkg.Name)"
+            $output = dotnet nuget push $pkg.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate 2>&1 | Out-String
+            Write-Host $output
+            if ($output -notmatch 'already exists' -and $output -notmatch 'was not pushed') {
+              $publishedAny = $true
+            }
+          }
+          echo "packages_published=$publishedAny" >> $env:GITHUB_OUTPUT
+
+      - name: Resolve package version
+        if: always() && steps.push_nuget.outcome == 'success'
+        id: get_version
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $pkg = Get-ChildItem 'Bin/NuGet Packages/Nightly' -Filter 'Krypton.Toolkit.Suite.Extended.Ultimate.Nightly.*.nupkg' |
+            Where-Object { $_.Name -notmatch '\.symbols\.' } |
+            Select-Object -First 1
+          if (-not $pkg) {
+            $pkg = Get-ChildItem 'Bin/NuGet Packages/Nightly' -Filter '*.nupkg' |
+              Where-Object { $_.Name -notmatch '\.symbols\.' } |
+              Select-Object -First 1
+          }
+          $version = if ($pkg -and $pkg.BaseName -match '(\d+\.\d+\.\d+\.\d+(?:-[A-Za-z0-9.]+)?)') { $Matches[1] } else { 'unknown' }
+          Write-Host "Version=$version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Announce Nightly Release on Discord
+        if: steps.push_nuget.outputs.packages_published == 'True'
+        shell: pwsh
+        env:
+          DISCORD_WEBHOOK_NIGHTLY: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (-not $env:DISCORD_WEBHOOK_NIGHTLY) {
+            Write-Warning 'DISCORD_WEBHOOK_NIGHTLY not set - skipping Discord notification'
+            exit 0
+          }
+
+          $sha = (git rev-parse HEAD).Trim()
+          $shortSha = $sha.Substring(0, [Math]::Min(7, $sha.Length))
+          $commitUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/commit/$sha"
+          $version = '${{ steps.get_version.outputs.version }}'
+          $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+
+          $payload = @{
+            embeds = @(
+              @{
+                title       = 'Krypton Extended Toolkit Nightly Release'
+                url         = $commitUrl
+                description = 'A new Extended Toolkit nightly build is now on NuGet.org.'
+                color       = 10181046
+                fields      = @(
+                  @{ name = 'Version'; value = "``$version``"; inline = $true }
+                  @{ name = 'Commit'; value = "[``$shortSha``]($commitUrl)"; inline = $true }
+                  @{
+                    name   = 'NuGet Packages'
+                    value  = @(
+                      '• [Ultimate.Nightly](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Nightly)'
+                      '• [Common.Nightly](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Nightly)'
+                      '• [Controls.Nightly](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Controls.Nightly)'
+                      '• [Module dashboard](https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md)'
+                    ) -join "`n"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Target Frameworks'
+                    value  = "• .NET Framework 4.7.2`n• .NET Framework 4.8`n• .NET Framework 4.8.1`n• .NET 8–11 (windows)"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Changelog'
+                    value  = '[Documents/Help/Changelog.md](https://github.com/Krypton-Suite/Extended-Toolkit/blob/alpha/Documents/Help/Changelog.md)'
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Workflow'
+                    value  = "[Run #$env:GITHUB_RUN_NUMBER]($runUrl)"
+                    inline = $false
+                  }
+                )
+                footer    = @{ text = 'Extended Toolkit Nightly' }
+                timestamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+              }
+            )
+          } | ConvertTo-Json -Depth 10
+
+          Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK_NIGHTLY -Method Post -Body $payload -ContentType 'application/json'
+          Write-Host 'Discord nightly announcement sent.'

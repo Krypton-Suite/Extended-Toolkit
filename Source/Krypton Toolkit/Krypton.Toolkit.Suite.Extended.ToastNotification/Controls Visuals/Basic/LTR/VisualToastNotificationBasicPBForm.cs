@@ -199,7 +199,7 @@ internal partial class VisualToastNotificationBasicPBForm : KryptonForm
     {
         //Once loaded, position the form, or position it to the bottom left of the screen with added padding
         Location = _toastNotificationData.NotificationLocation ?? new Point(Screen.PrimaryScreen!.WorkingArea.Width - Width - 5,
-            Screen.PrimaryScreen!.WorkingArea.Height - Height - 5);
+            Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
     }
 
     private void ShowCloseButton() => kbtnClose.Visible = _toastNotificationData.ShowCloseButton ?? false;

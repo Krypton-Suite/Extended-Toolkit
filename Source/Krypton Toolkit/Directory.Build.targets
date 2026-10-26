@@ -1,10 +1,29 @@
-<Project>
+﻿<Project>
 	<!-- Import root Directory.Build.targets for global dependency inclusion system -->
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../../'))" />
 
+	<!--
+		Build reliability: do not pack during ordinary Build.
+		Channel scripts pack via Scripts/Build/*.proj Pack targets (NoBuild=true).
+		This overrides per-project GeneratePackageOnBuild=True so parallel builds do not
+		race on package outputs while compiling.
+	-->
+	<PropertyGroup>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<!--
+		Multi-TFM race fix: many projects set DocumentationFile to a shared path under
+		Bin\$(Configuration)\…\ without a TFM folder. Parallel TFM builds then fight over
+		the same .xml (MSB3021/MSB3027). Redirect into the per-TFM OutputPath instead.
+	-->
+	<PropertyGroup Condition="'$(DocumentationFile)' != '' And '$(TargetFramework)' != '' And '$(OutputPath)' != ''">
+		<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
 		<_KryptonSystemResourcesExtensionsPath Condition="'$(_KryptonSystemResourcesExtensionsPath)' == '' And '$(PkgSystem_Resources_Extensions)' != ''">$(PkgSystem_Resources_Extensions)\lib\net462\System.Resources.Extensions.dll</_KryptonSystemResourcesExtensionsPath>
-		<_KryptonSystemResourcesExtensionsPath Condition="'$(_KryptonSystemResourcesExtensionsPath)' == '' And '$(NuGetPackageRoot)' != ''">$(NuGetPackageRoot)system.resources.extensions\9.0.10\lib\net462\System.Resources.Extensions.dll</_KryptonSystemResourcesExtensionsPath>
+		<_KryptonSystemResourcesExtensionsPath Condition="'$(_KryptonSystemResourcesExtensionsPath)' == '' And '$(NuGetPackageRoot)' != ''">$(NuGetPackageRoot)system.resources.extensions\11.0.0-rc.1.26425.128\lib\net462\System.Resources.Extensions.dll</_KryptonSystemResourcesExtensionsPath>
 	</PropertyGroup>
 
 	<Target Name="KryptonAddSystemResourcesExtensionsToGenerateResourceReferences"

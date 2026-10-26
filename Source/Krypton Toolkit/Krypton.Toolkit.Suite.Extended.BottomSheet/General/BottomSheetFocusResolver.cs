@@ -68,7 +68,7 @@ internal static class BottomSheetFocusResolver
                 return null;
             }
 
-            if (current.CanSelect && current.TabStop && current.Enabled && current.Visible)
+            if (current is { CanSelect: true, TabStop: true, Enabled: true, Visible: true })
             {
                 return current;
             }

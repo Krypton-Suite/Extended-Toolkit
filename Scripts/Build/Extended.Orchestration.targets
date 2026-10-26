@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
 	<!--
 		Shared Extended Toolkit orchestration.
 		Imported by Scripts/Build/nightly.proj, canary.proj, build.proj, and debug.proj.
@@ -28,6 +28,15 @@
 		<TestFormProject>$(SourceDir)\TestForm\TestForm.csproj</TestFormProject>
 		<UltimateProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate\Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj</UltimateProject>
 		<UltimateLiteProject>$(SourceDir)\Krypton.Toolkit.Suite.Extended.Ultimate.Lite\Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj</UltimateLiteProject>
+
+		<!--
+			Projects switch Standard-Toolkit PackageReference vs ProjectReference via
+			SolutionName.EndsWith('NuGet'). Pass this when building/packing individual
+			.csproj files outside the NuGet solution so PackageReferences stay selected.
+		-->
+		<NuGetSolutionName>Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet</NuGetSolutionName>
+		<StandardToolkitRoot>$(RepoRoot)..\Standard-Toolkit\</StandardToolkitRoot>
+		<StandardToolkitSolution>$(StandardToolkitRoot)Source\Krypton Components\Krypton Toolkit Suite 2022 - VS2022.sln</StandardToolkitSolution>
 
 		<BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
 		<ContinueOnError Condition="'$(ContinueOnError)' == ''">false</ContinueOnError>
@@ -86,12 +95,42 @@
 		<Message Text="Restoring NuGet packages for $(MainSolution) ($(Configuration))..." Importance="high" />
 		<Exec Command="dotnet restore &quot;$(MainSolution)&quot; -p:Configuration=$(Configuration)"
 		      WorkingDirectory="$(RepoRoot)" />
+		<!-- Sibling Standard-Toolkit ProjectReferences need their own restore on first Dev/Main builds. -->
+		<Exec Command="dotnet restore &quot;$(StandardToolkitSolution)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)"
+		      Condition="Exists('$(StandardToolkitSolution)')" />
+	</Target>
+
+	<Target Name="RestoreDevIfNeeded" Condition="'$(Restore)' != 'false'" DependsOnTargets="EnsureLogs">
+		<Message Text="Restoring NuGet packages for $(DevSolution) ($(Configuration))..." Importance="high" />
+		<Exec Command="dotnet restore &quot;$(DevSolution)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)" />
+		<Exec Command="dotnet restore &quot;$(StandardToolkitSolution)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)"
+		      Condition="Exists('$(StandardToolkitSolution)')" />
 	</Target>
 
 	<Target Name="RestoreNuGetIfNeeded" Condition="'$(Restore)' != 'false'" DependsOnTargets="EnsureLogs">
-		<Message Text="Restoring NuGet packages for $(NuGetSolution) ($(Configuration))..." Importance="high" />
-		<Exec Command="dotnet restore &quot;$(NuGetSolution)&quot; -p:Configuration=$(Configuration)"
-		      WorkingDirectory="$(RepoRoot)" />
+		<!--
+			dotnet restore on the .sln does not reliably apply Configuration to every project, so Choose
+			arms fall through to missing Krypton.Standard.Toolkit. Restore packable projects individually
+			with Configuration + SolutionName so Nightly/Canary PackageReferences are selected.
+		-->
+		<Message Text="Restoring NuGet-mode projects ($(Configuration), SolutionName=$(NuGetSolutionName))..." Importance="high" />
+		<ItemGroup>
+			<_NuGetRestoreProjects Include="@(PackProject)" />
+			<_NuGetRestoreProjects Include="$(UltimateProject)" Condition="Exists('$(UltimateProject)')" />
+			<_NuGetRestoreProjects Include="$(UltimateLiteProject)" Condition="Exists('$(UltimateLiteProject)')" />
+		</ItemGroup>
+		<MSBuild Projects="@(_NuGetRestoreProjects)"
+		         Targets="Restore"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);SolutionName=$(NuGetSolutionName)"
+		         BuildInParallel="$(BuildInParallel)"
+		         ContinueOnError="$(ContinueOnError)" />
+		<!-- Release/ReleaseLite NuGet arms use sibling ProjectReferences; restore Standard-Toolkit too. -->
+		<Exec Command="dotnet restore &quot;$(StandardToolkitSolution)&quot; -p:Configuration=$(Configuration)"
+		      WorkingDirectory="$(RepoRoot)"
+		      Condition="Exists('$(StandardToolkitSolution)') and ('$(Configuration)' == 'Release' or '$(Configuration)' == 'ReleaseLite')" />
 	</Target>
 
 	<Target Name="Restore" DependsOnTargets="RestoreIfNeeded">
@@ -120,16 +159,25 @@
 	</Target>
 
 	<Target Name="BuildNuGet" DependsOnTargets="ShowConfiguration;RestoreNuGetIfNeeded">
-		<Message Text="Building NuGet solution ($(Configuration))..." Importance="high" />
-		<MSBuild Projects="$(NuGetSolution)"
-		         Properties="Configuration=$(Configuration);Platform=$(Platform)"
+		<!--
+			Build packable module projects (not the full NuGet.sln). The .sln also contains TestForm /
+			helpers that can fail on unrelated version skew and are excluded from Pack anyway.
+		-->
+		<Message Text="Building NuGet-mode pack projects ($(Configuration))..." Importance="high" />
+		<ItemGroup>
+			<_NuGetBuildProjects Include="@(PackProject)" />
+			<_NuGetBuildProjects Include="$(UltimateProject)" Condition="Exists('$(UltimateProject)')" />
+			<_NuGetBuildProjects Include="$(UltimateLiteProject)" Condition="Exists('$(UltimateLiteProject)')" />
+		</ItemGroup>
+		<MSBuild Projects="@(_NuGetBuildProjects)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);SolutionName=$(NuGetSolutionName)"
 		         Targets="Build"
 		         BuildInParallel="$(BuildInParallel)"
 		         ContinueOnError="$(ContinueOnError)" />
-		<Message Text="NuGet solution built successfully" Importance="high" />
+		<Message Text="NuGet-mode pack projects built successfully" Importance="high" />
 	</Target>
 
-	<Target Name="BuildDev" DependsOnTargets="ShowConfiguration;RestoreIfNeeded">
+	<Target Name="BuildDev" DependsOnTargets="ShowConfiguration;RestoreDevIfNeeded">
 		<Message Text="Building Dev solution ($(Configuration))..." Importance="high" />
 		<MSBuild Projects="$(DevSolution)"
 		         Properties="Configuration=$(Configuration);Platform=$(Platform)"
@@ -155,13 +203,13 @@
 	<Target Name="BuildUltimate" DependsOnTargets="BuildNuGet">
 		<Message Text="Building Ultimate packages ($(Configuration))..." Importance="high" />
 		<MSBuild Projects="$(UltimateProject)"
-		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);SolutionName=$(NuGetSolutionName);BuildProjectReferences=false"
 		         Targets="Build"
 		         BuildInParallel="false"
 		         ContinueOnError="$(ContinueOnError)"
 		         Condition="Exists('$(UltimateProject)')" />
 		<MSBuild Projects="$(UltimateLiteProject)"
-		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform)"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);SolutionName=$(NuGetSolutionName);BuildProjectReferences=false"
 		         Targets="Build"
 		         BuildInParallel="false"
 		         ContinueOnError="$(ContinueOnError)"
@@ -181,7 +229,7 @@
 		<Message Text="Creating NuGet packages ($(Configuration), suffix $(PackageSuffix))..." Importance="high" />
 		<MakeDir Directories="$(NuGetPackagesDir)" Condition="!Exists('$(NuGetPackagesDir)')" />
 		<MSBuild Projects="@(PackProject)"
-		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);PackageOutputPath=$(NuGetPackagesDir);NoBuild=true"
+		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);PackageOutputPath=$(NuGetPackagesDir);NoBuild=true;SolutionName=$(NuGetSolutionName)"
 		         Targets="Pack"
 		         BuildInParallel="$(BuildInParallel)"
 		         ContinueOnError="$(ContinueOnError)" />
@@ -257,6 +305,10 @@
 		<Message Text="════════════════════════════════════════════════════════════" Importance="high" />
 	</Target>
 
+	<!--
+		Local/manual push helper. CI uses NuGet/login (OIDC) with secrets.NUGET_USER and passes the
+		ephemeral key as NUGET_API_KEY. For local pushes, set NUGET_API_KEY to a personal API key.
+	-->
 	<Target Name="Push">
 		<PropertyGroup>
 			<_NuGetApiKey>$(NUGET_API_KEY)</_NuGetApiKey>
@@ -265,7 +317,7 @@
 		<ItemGroup>
 			<NugetPkgs Include="$(NuGetPackagesDir)\*.nupkg" Exclude="$(NuGetPackagesDir)\*.symbols.nupkg;$(NuGetPackagesDir)\*.snupkg" />
 		</ItemGroup>
-		<Error Text="NUGET_API_KEY is not set." Condition="'$(_NuGetApiKey)' == ''" />
+		<Error Text="NUGET_API_KEY is not set (CI: from NuGet/login via NUGET_USER; local: set a personal API key)." Condition="'$(_NuGetApiKey)' == ''" />
 		<Exec Command="dotnet nuget push &quot;%(NugetPkgs.Identity)&quot; --api-key $(_NuGetApiKey) --source https://api.nuget.org/v3/index.json --skip-duplicate"
 		      WorkingDirectory="$(RepoRoot)" />
 	</Target>

@@ -169,7 +169,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
 
                 itemCount += 1;
 
-                if (item is ExpandingMenuItem expandingMenuItem && !expandingMenuItem.IsStandardItem)
+                if (item is ExpandingMenuItem { IsStandardItem: false } expandingMenuItem)
                 {
                     hasExpandable = true;
 
@@ -245,7 +245,7 @@ public class ExpandingMenuItem : ToolStripMenuItem
                     return false;
                 }
                 // If its not an ExpandingMenuItem, we didn't hide it
-                if (item is ExpandingMenuItem menuItem && !menuItem.AlwaysHidden)
+                if (item is ExpandingMenuItem { AlwaysHidden: false } menuItem)
                 {
                     menuItem.Visible = true;
                 }

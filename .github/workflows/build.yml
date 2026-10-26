@@ -21,7 +21,7 @@ on:
 
 jobs:
   build:
-    name: Build Toolkit
+    name: Build Extended Toolkit
     runs-on: windows-latest
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'workflow_dispatch'
 
@@ -31,7 +31,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout Standard-Toolkit (sibling)
+      - name: Checkout Standard-Toolkit submodule
         shell: pwsh
         run: ./Scripts/CI/Checkout-StandardToolkit.ps1
 
@@ -97,10 +97,20 @@ jobs:
           msbuild -version
 
       - name: Restore
-        run: dotnet restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" -p:Configuration=${{ steps.channel.outputs.configuration }}
+        # Dev solution for Debug-like local parity; Main for channel builds (ProjectReference to Standard-Toolkit).
+        run: >
+          dotnet restore
+          "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
+          -p:Configuration=${{ steps.channel.outputs.configuration }}
 
       - name: Build
-        run: msbuild /m "${{ steps.channel.outputs.project }}" /t:Build /p:Configuration=${{ steps.channel.outputs.configuration }} /p:Platform="Any CPU" /p:Restore=false
+        # Restore=false: restore already ran. GeneratePackageOnBuild is off; packing is a separate workflow.
+        run: >
+          msbuild /m "${{ steps.channel.outputs.project }}"
+          /t:Build
+          /p:Configuration=${{ steps.channel.outputs.configuration }}
+          /p:Platform="Any CPU"
+          /p:Restore=false
 
       - name: Upload build artifacts
         if: github.event_name != 'pull_request'

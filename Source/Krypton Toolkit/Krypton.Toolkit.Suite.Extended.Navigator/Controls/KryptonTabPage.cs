@@ -148,7 +148,7 @@ public class KryptonTabPageDesigner : ParentControlDesigner
     private ISelectionService SelectionService =>
         m_SelectionService ??= (ISelectionService)GetService(typeof(ISelectionService))!;
 
-    private KryptonTabPage KryptonTabPage => (KryptonTabPage)Component!;
+    private KryptonTabPage KryptonTabPage => (KryptonTabPage)Component;
 }
 
 public class KryptonTabPageDesignList : DesignerActionList
