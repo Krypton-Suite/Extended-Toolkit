@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -303,29 +303,29 @@ public class ColourKnobDialog : CommonExtendedKryptonForm
     public virtual void OnGeneratedColour(ColourGenerationEventArgs e) => GeneratedColour?.Invoke(e);
     #endregion
 
-    private void ColourKnobDialog_Load(object sender, EventArgs e)
+    private void ColourKnobDialog_Load(object? sender, EventArgs e)
     {
         // TODO: DevelopmentUtilities.UnderConstruction(this);
     }
 
-    private void kbtnOk_Click(object sender, EventArgs e)
+    private void kbtnOk_Click(object? sender, EventArgs e)
     {
         ColourGenerationEventArgs colourGenerationEvent = new ColourGenerationEventArgs(255, (byte)kKnobRed.Value, (byte)kKnobGreen.Value, (byte)kKnobBlue.Value);
 
         OnGeneratedColour(colourGenerationEvent);
     }
 
-    private void kKnobRed_ValueChanged(object sender, Common.KnobValueChangedEventArgs e)
+    private void kKnobRed_ValueChanged(object? sender, Common.KnobValueChangedEventArgs e)
     {
 
     }
 
-    private void kKnobGreen_ValueChanged(object sender, Common.KnobValueChangedEventArgs e)
+    private void kKnobGreen_ValueChanged(object? sender, Common.KnobValueChangedEventArgs e)
     {
 
     }
 
-    private void kKnobBlue_ValueChanged(object sender, Common.KnobValueChangedEventArgs e)
+    private void kKnobBlue_ValueChanged(object? sender, Common.KnobValueChangedEventArgs e)
     {
 
     }

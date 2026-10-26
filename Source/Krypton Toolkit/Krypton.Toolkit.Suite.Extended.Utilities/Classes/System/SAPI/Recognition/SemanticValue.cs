@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -125,8 +125,7 @@ public sealed class SemanticValue : IDictionary<string, SemanticValue>, ICollect
 
     public override bool Equals(object obj)
     {
-        SemanticValue semanticValue = obj as SemanticValue;
-        if (semanticValue == null || semanticValue.Count != Count || (semanticValue.Value == null && Value != null) || (semanticValue.Value != null && !semanticValue.Value.Equals(Value)))
+        if (obj is not SemanticValue semanticValue || semanticValue.Count != Count || (semanticValue.Value == null && Value != null) || (semanticValue.Value != null && !semanticValue.Value.Equals(Value)))
         {
             return false;
         }

@@ -103,7 +103,7 @@ public struct KryptonBasicToastNotificationData
 
     /// <summary>Gets or sets the notification icon.</summary>
     /// <value>The notification icon.</value>
-    public KryptonToastNotificationIcon? NotificationIcon { get; set; }
+    public KryptonToastIcon? NotificationIcon { get; set; }
 
     public PaletteRelativeAlign? TitleAlignment { get; set; }
 
@@ -135,9 +135,9 @@ public struct KryptonBasicToastNotificationData
 
         CountDownTimerInterval = 1000;
 
-        BorderColor1 = GlobalStaticValues.EMPTY_COLOR;
+        BorderColor1 = SharedStaticVariables.EMPTY_COLOR;
 
-        BorderColor2 = GlobalStaticValues.EMPTY_COLOR;
+        BorderColor2 = SharedStaticVariables.EMPTY_COLOR;
 
         OptionalCheckBoxText = KryptonManager.Strings.CustomStrings.DoNotShowAgain;
 

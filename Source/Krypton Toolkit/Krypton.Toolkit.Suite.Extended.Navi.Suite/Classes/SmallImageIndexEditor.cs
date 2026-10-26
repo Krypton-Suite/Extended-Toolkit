@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,33 +29,38 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite;
 
 public class SmallImageIndexEditor : UITypeEditor
 {
-    object instance;
+    object? instance;
 
-    public override bool GetPaintValueSupported(ITypeDescriptorContext context)
+    public override bool GetPaintValueSupported(ITypeDescriptorContext? context)
     {
-        instance = context.Instance;
-        return true;
+        instance = context?.Instance;
+        return context?.Instance != null;
     }
 
     public override void PaintValue(PaintValueEventArgs pe)
     {
-        Image image = null;
-        int imageIndex = 0;
-
-        if (!int.TryParse(pe.Value.ToString(), out imageIndex))
+        if (instance == null)
         {
             return;
         }
 
-        ImageList imageList = null;
+        Image? image = null;
+        int imageIndex = 0;
+
+        if (!int.TryParse(pe.Value?.ToString(), out imageIndex))
+        {
+            return;
+        }
+
+        ImageList? imageList = null;
 
         PropertyDescriptorCollection PropertyCollection
             = TypeDescriptor.GetProperties(instance);
 
-        PropertyDescriptor property;
+        PropertyDescriptor? property;
         if ((property = PropertyCollection.Find("SmallImages", false)) != null)
         {
-            imageList = (ImageList)property.GetValue(instance);
+            imageList = property.GetValue(instance) as ImageList;
         }
 
         if (imageList != null && imageList.Images.Count > imageIndex && imageIndex >= 0)

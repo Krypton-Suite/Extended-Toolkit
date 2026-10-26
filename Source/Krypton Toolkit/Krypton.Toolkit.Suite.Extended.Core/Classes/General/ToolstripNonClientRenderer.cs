@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,15 +59,15 @@ public class ToolstripNonClientRenderer : ToolStripSystemRenderer
     /// <param name="e">A <see cref="T:System.Windows.Forms.ToolStripItemTextRenderEventArgs"/> that contains the event data.</param>
     protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
     {
-        if (e.ToolStrip.IsDropDown)
+        if (e.ToolStrip?.IsDropDown == true)
         {
             base.OnRenderItemText(e);
         }
-        else
+        else if (e.TextFont?.FontFamily is FontFamily fontFamily)
         {
             using (GraphicsPath path = new())
             {
-                path.AddString(e.Text, e.TextFont.FontFamily, (int)e.TextFont.Style, e.TextFont.Size + 2, e.TextRectangle.Location, new());
+                path.AddString(e.Text ?? string.Empty, fontFamily, (int)e.TextFont.Style, e.TextFont.Size + 2, e.TextRectangle.Location, new());
 
                 e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 

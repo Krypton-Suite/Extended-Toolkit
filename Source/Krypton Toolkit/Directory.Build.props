@@ -1,12 +1,23 @@
-<Project>
+﻿<Project>
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
+
+	<!-- MSB3822/3823: binary .resx (images/icons) need preserialized GenerateResource + System.Resources.Extensions.
+	     Defined here (not repo root) so it applies after SDK props. -->
+	<PropertyGroup>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Single version for every project. Per-project Update overrides reintroduce NU1605 downgrades. -->
+		<PackageReference Include="System.Resources.Extensions" Version="11.0.0-rc.1.26425.128" GeneratePathProperty="true" />
+	</ItemGroup>
 
 	<!--Handle AssemblyInfo-->
 	<PropertyGroup>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Authors>Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), et al.</Authors>
-		<Copyright>© Component Factory Pty Ltd, 2006 - 2016. Then modifications by Peter Wagner (aka Wagnerp) and Simon Coghlan (aka Smurf-IV) 2017 - 2025. All rights reserved.</Copyright>
+		<Copyright>© Component Factory Pty Ltd, 2006 - 2016. Then modifications by Peter Wagner (aka Wagnerp) and Simon Coghlan (aka Smurf-IV) 2017 - 2026. All rights reserved.</Copyright>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -18,9 +29,14 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Krypton Canary.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -35,8 +51,8 @@
 				<PublishRepositoryUrl>true</PublishRepositoryUrl>
 				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -48,9 +64,14 @@
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Krypton Nightly.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -65,8 +86,8 @@
 				<PublishRepositoryUrl>true</PublishRepositoryUrl>
 				<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-				<!--Package genebration-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -78,9 +99,14 @@
 
 		<When Condition="'$(Configuration)' == 'CanaryLite'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Krypton Canary.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -97,8 +123,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -108,9 +134,14 @@
 
 		<When Condition="'$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Krypton Nightly.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -127,8 +158,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package genebration-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -138,9 +169,14 @@
 
 		<When Condition="'$(Configuration)' == 'ReleaseLite'">
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Krypton Stable.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -158,8 +194,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -169,9 +205,14 @@
 
 		<Otherwise>
 			<ItemGroup>
-				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Krypton Stable.png" Pack="true" PackagePath="" />
 
-				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -189,8 +230,8 @@
 				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
 				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
 
-				<!--Package generation-->
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 				<PackageLicenseFile>License.md</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
@@ -198,4 +239,14 @@
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
+
+	<!--
+		Centralized designer assembly references for WinForms projects.
+		Unversioned references avoid MSB3243 conflicts between pinned assembly versions.
+	-->
+	<ItemGroup Condition="'$(UseWindowsForms)' == 'true'">
+		<Reference Include="System.Design" Condition="$(TargetFramework.StartsWith('net4'))" />
+		<Reference Include="System.Net.Http" Condition="$(TargetFramework.StartsWith('net4'))" />
+		<Reference Include="System.Drawing.Design" Condition="$(TargetFramework.StartsWith('net5')) Or $(TargetFramework.StartsWith('net6')) Or $(TargetFramework.StartsWith('net7'))" />
+	</ItemGroup>
 </Project>

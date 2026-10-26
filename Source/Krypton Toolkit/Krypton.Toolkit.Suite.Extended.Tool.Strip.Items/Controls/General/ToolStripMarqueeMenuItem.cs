@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -184,7 +184,7 @@ public class ToolStripMarqueeMenuItem : EnhancedToolStripMenuItem
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    void timer_Tick(object sender, EventArgs e)
+    void timer_Tick(object? sender, EventArgs e)
     {
         //Change offset only when menu item is visible, mouse is not hovering over or StopScrollOnMouseOver is not set to 'false'
         if (Visible && (!Selected || !StopScrollOnMouseOver))
@@ -244,7 +244,11 @@ public class ToolStripMarqueeMenuItem : EnhancedToolStripMenuItem
         base.OnPaint(e);
 
         //Paint scrolling text
-        ToolStrip parent = GetCurrentParent();
+        if (GetCurrentParent() is not ToolStrip parent)
+        {
+            return;
+        }
+
         Rectangle displayRect = parent.DisplayRectangle;
         int horizPadding = parent.Padding.Horizontal;
 

@@ -161,6 +161,11 @@ public class JSONConfiguration : Configuration
 #else
                 var data = JsonConvert.DeserializeObject<SavedConfigurationData>(json);
 #endif
+                if (data is null)
+                {
+                    return false;
+                }
+
                 CheckForUpdate = true;
                 LastCheckTime = data.LastCheckTime;
                 LastVersionSkipped = data.LastVersionSkipped;

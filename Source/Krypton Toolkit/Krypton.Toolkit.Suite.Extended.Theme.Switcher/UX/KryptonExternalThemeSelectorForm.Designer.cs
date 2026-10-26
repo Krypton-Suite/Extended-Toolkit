@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     partial class KryptonExternalThemeSelectorForm
     {

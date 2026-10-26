@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ public partial class KryptonFileCopier : KryptonForm
 {
     #region Variables
 
-    private FileDialogType _fileDialogType;
+    private FileDialogType _fileDialogType = FileDialogType.Standard;
 
     private string _sourceDirectory, _targetDirectory;
     #endregion
@@ -94,11 +94,16 @@ public partial class KryptonFileCopier : KryptonForm
 
                     if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
                     {
-                        tempPath = Path.GetFullPath(cofd.FileName);
+                        tempPath = Path.GetFullPath(cofd.FileName ?? string.Empty);
                     }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+
+            if (tempPath is null)
+            {
+                return;
             }
 
             CopyFiles copy = new(tempFiles, tempPath);
@@ -112,7 +117,7 @@ public partial class KryptonFileCopier : KryptonForm
     }
     #endregion
 
-    private void kbtnCopyFiles_Click(object sender, EventArgs e)
+    private void kbtnCopyFiles_Click(object? sender, EventArgs e)
     {
         if (kchkUseDebugConsole.Checked)
         {
@@ -123,7 +128,7 @@ public partial class KryptonFileCopier : KryptonForm
                 files.Add(item);
             }
 
-            KryptonDeveloperDebugConsole debugConsole = new(HelperUtilities.ReturnDirectoryListing(files));
+            KryptonDeveloperDebugConsole debugConsole = new(HelperUtilities.ReturnDirectoryListing(files) ?? []);
 
             debugConsole.Show();
         }

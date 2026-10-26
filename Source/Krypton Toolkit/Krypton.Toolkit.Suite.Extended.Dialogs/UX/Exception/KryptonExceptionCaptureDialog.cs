@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -157,6 +157,9 @@ public class KryptonExceptionCaptureDialog : KryptonForm
     #endregion
 
     #region Properties
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public Exception Exception { get => _exception; set => _exception = value; }
     #endregion
 
@@ -201,7 +204,7 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
         else if (showInnerException)
         {
-            ktxtException.Text = exception.InnerException.ToString();
+            ktxtException.Text = exception.InnerException?.ToString() ?? string.Empty;
         }
 
         if (showFullDetails)
@@ -249,7 +252,7 @@ public class KryptonExceptionCaptureDialog : KryptonForm
     }
     #endregion
 
-    private void kbtnExportException_Click(object sender, EventArgs e)
+    private void kbtnExportException_Click(object? sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(ktxtException.Text))
         {
@@ -285,12 +288,12 @@ public class KryptonExceptionCaptureDialog : KryptonForm
         }
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
         Close();
     }
 
-    private void kchkDarkMode_CheckedChanged(object sender, EventArgs e)
+    private void kchkDarkMode_CheckedChanged(object? sender, EventArgs e)
     {
         ToggleDarkMode(kchkDarkMode.Checked);
     }

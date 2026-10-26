@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -188,10 +188,7 @@ public static class ColourPalettes
 
             foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
             {
-                Color color;
-
-                color = (Color)property.GetValue(typeof(Color), null);
-                if (!color.IsEmpty)
+                if (property.GetValue(typeof(Color), null) is Color { IsEmpty: false } color)
                 {
                     results.Add(color);
                 }

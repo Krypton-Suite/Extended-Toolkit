@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,8 +57,7 @@ internal abstract class BuilderElements : GrammarBuilderBase
 
     public override bool Equals(object obj)
     {
-        BuilderElements builderElements = obj as BuilderElements;
-        if (builderElements == null)
+        if (obj is not BuilderElements builderElements)
         {
             return false;
         }
@@ -199,8 +198,7 @@ internal abstract class BuilderElements : GrammarBuilderBase
     {
         foreach (GrammarBuilderBase item in Items)
         {
-            BuilderElements builderElements = item as BuilderElements;
-            if (builderElements != null)
+            if (item is BuilderElements builderElements)
             {
                 if (!dict.ContainsKey(builderElements.Count))
                 {
@@ -216,8 +214,7 @@ internal abstract class BuilderElements : GrammarBuilderBase
     {
         foreach (GrammarBuilderBase item in Items)
         {
-            BuilderElements builderElements = item as BuilderElements;
-            if (builderElements != null)
+            if (item is BuilderElements builderElements)
             {
                 builderElements.RemoveDictionaryElements(dict);
                 dict[builderElements.Count].Remove(builderElements);

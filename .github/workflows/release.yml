@@ -1,10 +1,22 @@
+# NUGET: Trusted publishing via NuGet/login. Secret NUGET_USER is the nuget.org profile name.
+# nuget.org needs a policy for this workflow file and Krypton-Suite/Extended-Toolkit.
+#
+# Discord (optional secrets):
+#   DISCORD_WEBHOOK_MASTER   — Release / ReleaseLite
+#   DISCORD_WEBHOOK_CANARY   — Canary / CanaryLite
+#   DISCORD_WEBHOOK_NIGHTLY  — Nightly / NightlyLite
+
 name: Release
+
+permissions:
+  contents: write
+  id-token: write
 
 on:
   push:
     tags:
-      - 'v*'  # Trigger on version tags like v80.25.10.286
-  workflow_dispatch:  # Allow manual triggering
+      - 'v*'
+  workflow_dispatch:
     inputs:
       configuration:
         description: 'Build Configuration'
@@ -18,6 +30,15 @@ on:
           - CanaryLite
           - Nightly
           - NightlyLite
+      pack_mode:
+        description: 'Pack mode (ignored for *Lite configurations)'
+        required: true
+        default: 'Pack'
+        type: choice
+        options:
+          - Pack
+          - PackLite
+          - PackAll
       publish_nuget:
         description: 'Publish to NuGet.org'
         required: true
@@ -28,173 +49,287 @@ jobs:
   build-and-release:
     name: Build and Release Toolkit
     runs-on: windows-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Full history for versioning
-    
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: |
-          10.0.x
-          9.0.x
-          8.0.x
-          6.0.x
-       # continue-on-error: true
-        
-      - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
-      with:
-        vs-version: 'latest'
-    
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v2
-      with:
-        nuget-version: 'latest'
-    
-    - name: Determine Configuration
-      id: config
-      shell: pwsh
-      run: |
-        if ("${{ github.event_name }}" -eq "workflow_dispatch") {
-          $config = "${{ inputs.configuration }}"
-        } else {
-          # For tag pushes, determine configuration from tag name or default to Release
-          $config = "Release"
-        }
-        echo "configuration=$config" >> $env:GITHUB_OUTPUT
-        echo "Building with configuration: $config"
-    
-    - name: Restore NuGet packages (Main Solution)
-      run: nuget restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln"
-    
-    - name: Build Main Solution
-      run: msbuild "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022.sln" /p:Configuration=${{ steps.config.outputs.configuration }} /p:Platform="Any CPU" /m /v:minimal
-    
-    - name: Restore NuGet packages (NuGet Solution)
-      run: nuget restore "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln"
-    
-    - name: Build NuGet Solution
-      run: msbuild "Source/Krypton Toolkit/Krypton Toolkit Suite Extended 2022 - VS2022 - NuGet.sln" /p:Configuration=${{ steps.config.outputs.configuration }} /p:Platform="Any CPU" /m /v:minimal
-    
-    - name: Build and Pack Ultimate Packages
-      shell: pwsh
-      run: |
-        $config = "${{ steps.config.outputs.configuration }}"
-        $outputDir = "Bin/NuGet Packages/$config"
-        
-        # Ultimate Package
-        $ultimateProject = "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate/Krypton.Toolkit.Suite.Extended.Ultimate 2022.csproj"
-        if (Test-Path $ultimateProject) {
-          Write-Host "Building and packing Ultimate package..."
-          dotnet pack $ultimateProject --configuration $config --output $outputDir /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
-        } else {
-          Write-Warning "Ultimate package project not found at: $ultimateProject"
-        }
-        
-        # Ultimate.Lite Package  
-        $ultimateLiteProject = "Source/Krypton Toolkit/Krypton.Toolkit.Suite.Extended.Ultimate.Lite/Krypton.Toolkit.Suite.Extended.Ultimate.Lite 2022.csproj"
-        if (Test-Path $ultimateLiteProject) {
-          Write-Host "Building and packing Ultimate.Lite package..."
-          dotnet pack $ultimateLiteProject --configuration $config --output $outputDir /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg
-        } else {
-          Write-Warning "Ultimate.Lite package project not found at: $ultimateLiteProject"
-        }
-    
-    - name: Pack NuGet packages
-      shell: pwsh
-      run: |
-        $config = "${{ steps.config.outputs.configuration }}"
-        
-        # Find all .csproj files and pack them
-        # Note: Directory.Build.targets automatically configures all projects to include referenced binaries
-        Get-ChildItem -Path "Source/Krypton Toolkit" -Filter "*.csproj" -Recurse | ForEach-Object {
-          $project = $_.FullName
-          $projectName = $_.Name
-          
-          # Skip application projects (not libraries) and Ultimate packages (already packed)
-          if ($projectName -like "*Examples*" -or 
-              $projectName -like "*ZipExtractor*" -or 
-              $projectName -like "*AutoUpdateCreator*" -or
-              $projectName -like "*Ultimate*") {
-            Write-Host "Skipping: $projectName"
-            return
-          }
-          
-          Write-Host "Packing: $project"
-          
-          # Pack (settings are applied from Directory.Build.targets)
-          dotnet pack $project --configuration $config --no-build --output "Bin/NuGet Packages/$config"
-        }
-        
-        # Verify the Ultimate packages were created
-        $ultimatePackages = Get-ChildItem -Path "Bin/NuGet Packages/$config" -Filter "*Ultimate*.nupkg" -Exclude "*.symbols.nupkg"
-        if ($ultimatePackages) {
-          Write-Host "`n✅ Ultimate packages created successfully:"
-          foreach ($pkg in $ultimatePackages) {
-            Write-Host "   - $($pkg.Name) ($([math]::Round($pkg.Length / 1MB, 2)) MB)"
-          }
-        } else {
-          Write-Warning "⚠️ No Ultimate packages were found!"
-        }
-    
-    - name: List NuGet packages
-      shell: pwsh
-      run: |
-        $config = "${{ steps.config.outputs.configuration }}"
-        $nugetDir = "Bin/NuGet Packages/$config"
-        if (Test-Path $nugetDir) {
-          Write-Host "NuGet packages in $nugetDir:"
-          Get-ChildItem -Path $nugetDir -Filter "*.nupkg" | ForEach-Object {
-            Write-Host "  - $($_.Name)"
-          }
-        } else {
-          Write-Host "No NuGet packages directory found at: $nugetDir"
-        }
-    
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Release-${{ steps.config.outputs.configuration }}
-        path: |
-          Bin/${{ steps.config.outputs.configuration }}/
-          Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/
-        retention-days: 30
-    
-    - name: Publish to NuGet.org
-      if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)
-      shell: pwsh
-      env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: |
-        $config = "${{ steps.config.outputs.configuration }}"
-        $nugetDir = "Bin/NuGet Packages/$config"
-        
-        if (-not (Test-Path $nugetDir)) {
-          Write-Error "NuGet packages directory not found: $nugetDir"
-          exit 1
-        }
-        
-        # Push all .nupkg files (excluding symbol packages which are uploaded automatically)
-        Get-ChildItem -Path $nugetDir -Filter "*.nupkg" -Exclude "*.symbols.nupkg" | ForEach-Object {
-          $package = $_.FullName
-          Write-Host "Publishing: $package"
-          dotnet nuget push $package --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
-        }
-    
-    - name: Create GitHub Release
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
-      uses: softprops/action-gh-release@v2
-      with:
-        files: |
-          Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/*.nupkg
-          Bin/NuGet Packages/${{ steps.config.outputs.configuration }}/*.snupkg
-        draft: false
-        prerelease: ${{ contains(steps.config.outputs.configuration, 'Canary') || contains(steps.config.outputs.configuration, 'Nightly') }}
-        generate_release_notes: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Checkout Standard-Toolkit submodule
+        shell: pwsh
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: |
+            10.0.x
+            9.0.x
+            8.0.x
+
+      - name: Setup .NET 11 (stable)
+        id: setup_dotnet11_stable
+        continue-on-error: true
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+
+      - name: Setup .NET 11 (preview fallback)
+        if: steps.setup_dotnet11_stable.outcome == 'failure'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+          dotnet-quality: preview
+
+      - name: Pin SDK via global.json
+        shell: pwsh
+        run: ./Scripts/CI/Pin-DotNetSdk.ps1
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Cache NuGet
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Resolve channel
+        id: channel
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') {
+            $config = '${{ inputs.configuration }}'
+            $target = '${{ inputs.pack_mode }}'
+          } else {
+            $config = 'Release'
+            $target = 'PackAll'
+          }
+
+          $proj = 'Scripts/Build/build.proj'
+          $packageDir = 'Release'
+          switch -Regex ($config) {
+            '^Nightly' { $proj = 'Scripts/Build/nightly.proj'; $packageDir = 'Nightly' }
+            '^Canary'  { $proj = 'Scripts/Build/canary.proj'; $packageDir = 'Canary' }
+            default    { $proj = 'Scripts/Build/build.proj'; $packageDir = 'Release' }
+          }
+
+          if ($config -match 'Lite$') {
+            $target = 'Pack'
+          }
+
+          Write-Host "Configuration=$config Target=$target Project=$proj"
+          echo "configuration=$config" >> $env:GITHUB_OUTPUT
+          echo "target=$target" >> $env:GITHUB_OUTPUT
+          echo "project=$proj" >> $env:GITHUB_OUTPUT
+          echo "package_dir=$packageDir" >> $env:GITHUB_OUTPUT
+
+      - name: Pack
+        run: >
+          msbuild /m "${{ steps.channel.outputs.project }}"
+          /t:${{ steps.channel.outputs.target }}
+          /p:Configuration=${{ steps.channel.outputs.configuration }}
+          /p:Platform="Any CPU"
+
+      - name: List NuGet packages
+        shell: pwsh
+        run: |
+          $nugetDir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
+          if (-not (Test-Path $nugetDir)) {
+            Write-Error "NuGet packages directory not found: $nugetDir"
+          }
+          Get-ChildItem $nugetDir -Filter '*.nupkg' | ForEach-Object { Write-Host "  $($_.Name)" }
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Release-${{ steps.channel.outputs.configuration }}
+          path: |
+            Bin/${{ steps.channel.outputs.package_dir }}/
+            Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: NuGet login (OIDC)
+        if: ((github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)) && github.repository == 'Krypton-Suite/Extended-Toolkit'
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publish to NuGet.org
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)
+        id: push_nuget
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_REPOSITORY -ne 'Krypton-Suite/Extended-Toolkit') {
+            Write-Warning "NuGet trusted publishing is only configured for Krypton-Suite/Extended-Toolkit - skipping NuGet push"
+            echo "packages_published=false" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
+          $nugetDir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
+          if (-not $env:NUGET_API_KEY) {
+            Write-Error 'NuGet trusted publishing did not provide an API key. Set the NUGET_USER secret to the nuget.org profile name.'
+          }
+          $packages = @(Get-ChildItem $nugetDir -Filter '*.nupkg' -Exclude '*.symbols.nupkg')
+          $publishedAny = $false
+          foreach ($pkg in $packages) {
+            Write-Host "Publishing $($pkg.Name)"
+            $output = dotnet nuget push $pkg.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate 2>&1 | Out-String
+            Write-Host $output
+            if ($output -notmatch 'already exists' -and $output -notmatch 'was not pushed') {
+              $publishedAny = $true
+            }
+          }
+          echo "packages_published=$publishedAny" >> $env:GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}/*.nupkg
+            Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}/*.snupkg
+          draft: false
+          prerelease: ${{ contains(steps.channel.outputs.configuration, 'Canary') || contains(steps.channel.outputs.configuration, 'Nightly') }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve package version
+        if: always() && steps.push_nuget.outcome == 'success'
+        id: get_version
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dir = "Bin/NuGet Packages/${{ steps.channel.outputs.package_dir }}"
+          $config = '${{ steps.channel.outputs.configuration }}'
+          $suffix = ''
+          if ($config -match 'Nightly') { $suffix = '.Nightly' }
+          elseif ($config -match 'Canary') { $suffix = '.Canary' }
+          $pattern = "Krypton.Toolkit.Suite.Extended.Ultimate$suffix.*.nupkg"
+          $pkg = Get-ChildItem $dir -Filter $pattern -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -notmatch '\.symbols\.' } |
+            Select-Object -First 1
+          if (-not $pkg) {
+            $pkg = Get-ChildItem $dir -Filter '*.nupkg' |
+              Where-Object { $_.Name -notmatch '\.symbols\.' } |
+              Select-Object -First 1
+          }
+          $version = if ($pkg -and $pkg.BaseName -match '(\d+\.\d+\.\d+\.\d+(?:-[A-Za-z0-9.]+)?)') { $Matches[1] } else { 'unknown' }
+          Write-Host "Version=$version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Announce Release on Discord
+        if: steps.push_nuget.outputs.packages_published == 'True'
+        shell: pwsh
+        env:
+          DISCORD_WEBHOOK_MASTER: ${{ secrets.DISCORD_WEBHOOK_MASTER }}
+          DISCORD_WEBHOOK_CANARY: ${{ secrets.DISCORD_WEBHOOK_CANARY }}
+          DISCORD_WEBHOOK_NIGHTLY: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
+          CHANNEL_CONFIG: ${{ steps.channel.outputs.configuration }}
+          PACKAGE_DIR: ${{ steps.channel.outputs.package_dir }}
+          PACKAGE_VERSION: ${{ steps.get_version.outputs.version }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $config = $env:CHANNEL_CONFIG
+          $webhook = $null
+          $title = $null
+          $description = $null
+          $color = 7863670
+          $changelogRef = 'master'
+          $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate'
+          $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common'
+
+          switch -Regex ($config) {
+            '^Nightly' {
+              $webhook = $env:DISCORD_WEBHOOK_NIGHTLY
+              $title = 'Krypton Extended Toolkit Nightly Release'
+              $description = 'A new Extended Toolkit nightly build is now on NuGet.org.'
+              $color = 10181046
+              $changelogRef = 'alpha'
+              $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Nightly'
+              $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Nightly'
+            }
+            '^Canary' {
+              $webhook = $env:DISCORD_WEBHOOK_CANARY
+              $title = 'Krypton Extended Toolkit Canary Release'
+              $description = 'A new Extended Toolkit canary (beta) build is now on NuGet.org.'
+              $color = 16753920
+              $changelogRef = 'canary'
+              $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Canary'
+              $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Canary'
+            }
+            default {
+              $webhook = $env:DISCORD_WEBHOOK_MASTER
+              $title = 'Krypton Extended Toolkit Stable Release'
+              $description = 'A new Extended Toolkit stable release is now on NuGet.org.'
+              $color = 7863670
+              $changelogRef = 'master'
+            }
+          }
+
+          if (-not $webhook) {
+            Write-Warning "Discord webhook secret not set for configuration '$config' - skipping Discord notification"
+            exit 0
+          }
+
+          $sha = (git rev-parse HEAD).Trim()
+          $shortSha = $sha.Substring(0, [Math]::Min(7, $sha.Length))
+          $commitUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/commit/$sha"
+          $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+          $version = $env:PACKAGE_VERSION
+
+          $payload = @{
+            embeds = @(
+              @{
+                title       = $title
+                url         = $commitUrl
+                description = $description
+                color       = $color
+                fields      = @(
+                  @{ name = 'Version'; value = "``$version``"; inline = $true }
+                  @{ name = 'Configuration'; value = "``$config``"; inline = $true }
+                  @{ name = 'Commit'; value = "[``$shortSha``]($commitUrl)"; inline = $true }
+                  @{
+                    name   = 'NuGet Packages'
+                    value  = @(
+                      "• [Ultimate]($nugetUltimate)"
+                      "• [Common]($nugetCommon)"
+                      '• [Module dashboard](https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md)'
+                    ) -join "`n"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Target Frameworks'
+                    value  = "• .NET Framework 4.7.2 (full configs)`n• .NET Framework 4.8 / 4.8.1`n• .NET 8–11 (windows)"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Changelog'
+                    value  = "[Documents/Help/Changelog.md](https://github.com/Krypton-Suite/Extended-Toolkit/blob/$changelogRef/Documents/Help/Changelog.md)"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Workflow'
+                    value  = "[Run #$env:GITHUB_RUN_NUMBER]($runUrl)"
+                    inline = $false
+                  }
+                )
+                footer    = @{ text = "Extended Toolkit $config" }
+                timestamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+              }
+            )
+          } | ConvertTo-Json -Depth 10
+
+          Invoke-RestMethod -Uri $webhook -Method Post -Body $payload -ContentType 'application/json'
+          Write-Host "Discord announcement sent for $config."

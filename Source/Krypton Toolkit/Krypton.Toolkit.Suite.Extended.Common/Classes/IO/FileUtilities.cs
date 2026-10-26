@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -117,7 +117,7 @@ public class FileUtilities
 
     /// <summary>
     /// Gets the file size on disk.
-    /// Code from: https://stackoverflow.com/questions/3750590/get-size-of-file-on-disk & https://stackoverflow.com/questions/5959983/how-to-check-logical-and-physical-file-size-on-disk-using-c-sharp-file-api
+    /// Code from: https://stackoverflow.com/questions/3750590/get-size-of-file-on-disk and https://stackoverflow.com/questions/5959983/how-to-check-logical-and-physical-file-size-on-disk-using-c-sharp-file-api
     /// </summary>
     /// <param name="filePath">The file path.</param>
     /// <returns></returns>
@@ -155,9 +155,7 @@ public class FileUtilities
 
         using (StreamReader reader = new StreamReader(filePath))
         {
-            string line;
-
-            while ((line = reader.ReadLine()) != null)
+            while (reader.ReadLine() is { } line)
             {
                 fileData.Add(line);
             }

@@ -192,12 +192,17 @@ public class XMLAppCast : IAppCastHandler
         Title = channel?.Element("title")?.Value ?? string.Empty;
         Language = channel?.Element("language")?.Value ?? "en";
 
-        var items = doc.Descendants(itemNode);
+        var items = doc?.Descendants(itemNode) ?? Enumerable.Empty<XElement>();
         foreach (var item in items)
         {
             var currentItem = AppCastItem.Parse(_config.InstalledVersion, _config.ApplicationName, _castUrl, item, _logWriter);
+            if (currentItem is null)
+            {
+                continue;
+            }
+
             _logWriter.PrintMessage("Found an item in the app cast: version {0} ({1}) -- os = {2}",
-                currentItem?.Version, currentItem?.ShortVersion, currentItem.OperatingSystemString);
+                currentItem.Version, currentItem.ShortVersion, currentItem.OperatingSystemString);
             Items.Add(currentItem);
         }
 

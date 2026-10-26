@@ -56,8 +56,8 @@ public class SegmentedTree<T> where T : struct, IComparable
         var bodyMin = Expression.Condition(Expression.LessThanOrEqual(paramA, paramB), paramA, paramB);
         var bodyMax = Expression.Condition(Expression.GreaterThanOrEqual(paramA, paramB), paramA, paramB);
         var bodyEqual = Expression.Equal(paramA, paramB);
-        var bodyMaxValue = Expression.MakeMemberAccess(null, typeof(T).GetField("MaxValue"));
-        var bodyMinValue = Expression.MakeMemberAccess(null, typeof(T).GetField("MinValue"));
+        var bodyMaxValue = Expression.MakeMemberAccess(null, typeof(T).GetField("MaxValue")!);
+        var bodyMinValue = Expression.MakeMemberAccess(null, typeof(T).GetField("MinValue")!);
         var bodyLessThan = Expression.LessThan(paramA, paramB);
         var bodyGreaterThan = Expression.GreaterThan(paramA, paramB);
         // compile it

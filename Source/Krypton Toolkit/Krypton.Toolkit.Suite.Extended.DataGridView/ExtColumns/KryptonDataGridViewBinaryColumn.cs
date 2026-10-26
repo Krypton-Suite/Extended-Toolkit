@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -81,7 +81,7 @@ public class KryptonDataGridViewBinaryColumn : KryptonDataGridViewIconColumn
     /// <returns></returns>
     public override object Clone()
     {
-        KryptonDataGridViewBinaryColumn cloned = base.Clone() as KryptonDataGridViewBinaryColumn;
+        KryptonDataGridViewBinaryColumn cloned = (KryptonDataGridViewBinaryColumn)base.Clone();
 
         // Move the button specs over to the new clone
         cloned._editorType = _editorType;
@@ -120,7 +120,7 @@ public class KryptonDataGridViewBinaryColumn : KryptonDataGridViewIconColumn
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public override DataGridViewCell CellTemplate
+    public override DataGridViewCell? CellTemplate
     {
         get => base.CellTemplate;
 
@@ -180,7 +180,7 @@ public class KryptonDataGridViewBinaryColumn : KryptonDataGridViewIconColumn
 
     #region Private
 
-    private KryptonDataGridViewBinaryCell BinaryCellTemplate => (KryptonDataGridViewBinaryCell)CellTemplate;
+    private KryptonDataGridViewBinaryCell? BinaryCellTemplate => CellTemplate as KryptonDataGridViewBinaryCell;
 
     #endregion
 

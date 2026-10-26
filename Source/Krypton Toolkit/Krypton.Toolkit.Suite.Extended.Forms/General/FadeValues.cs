@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,13 +38,13 @@ public class FadeValues : Storage
 
     private int _fadeInterval;
 
-    private KryptonFormExtended _currentWindow;
+    private KryptonFormExtended? _currentWindow;
 
-    private KryptonFormExtended _nextWindow;
+    private KryptonFormExtended? _nextWindow;
 
-    private VisualForm _currentVirtualWindow;
+    private VisualForm? _currentVirtualWindow;
 
-    private VisualForm _nextVirtualWindow;
+    private VisualForm? _nextVirtualWindow;
 
     #endregion
 
@@ -100,10 +100,10 @@ public class FadeValues : Storage
     [Browsable(false)]
     public override bool IsDefault => UseFade == false &&
                                       FadeInterval.Equals(50) &&
-                                      CurrentWindow!.Equals(null) &&
-                                      NextWindow!.Equals(null) &&
-                                      CurrentVirtualWindow!.Equals(null) &&
-                                      NextVirtualWindow!.Equals(null);
+                                      CurrentWindow == null &&
+                                      NextWindow == null &&
+                                      CurrentVirtualWindow == null &&
+                                      NextVirtualWindow == null;
 
     #endregion
 }

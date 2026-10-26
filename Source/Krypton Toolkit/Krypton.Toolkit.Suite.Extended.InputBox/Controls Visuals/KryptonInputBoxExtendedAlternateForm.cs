@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,29 +39,37 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
 
     private Image[] _iconImageArray = new Image[7];
 
-    private Image _customImage;
+    private Image? _customImage;
 
     private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult, _buttonFourResult;
 
     #endregion
 
     #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public static DialogResult Response { get => _response; set => _response = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Image[] IconImages { get => _iconImageArray; private set => _iconImageArray = value; }
 
-    public Image CustomImage { get => _customImage; set => _customImage = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public Image? CustomImage { get => _customImage; set => _customImage = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonOneResult { get => _buttonOneResult; set => _buttonOneResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonTwoResult { get => _buttonTwoResult; set => _buttonTwoResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonThreeResult { get => _buttonThreeResult; set => _buttonThreeResult = value; }
 
     [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
     #endregion
 
@@ -183,6 +191,10 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     /// <param name="noText">The no text.</param>
     /// <param name="cancelText">The cancel text.</param>
     /// <param name="hintText">The hint text.</param>
+    /// <param name="buttonOneResult">The dialog result for button one.</param>
+    /// <param name="buttonTwoResult">The dialog result for button two.</param>
+    /// <param name="buttonThreeResult">The dialog result for button three.</param>
+    /// <param name="buttonFourResult">The dialog result for button four.</param>
     public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
         Image? image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok,
         InputBoxInputType type = InputBoxInputType.None, string[]? listItems = null, bool showInTaskBar = false,
@@ -238,6 +250,10 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     /// <param name="cancelText">The cancel text.</param>
     /// <param name="hintText">The hint text.</param>
     /// <param name="startPosition">The start position.</param>
+    /// <param name="buttonOneResult">The dialog result for button one.</param>
+    /// <param name="buttonTwoResult">The dialog result for button two.</param>
+    /// <param name="buttonThreeResult">The dialog result for button three.</param>
+    /// <param name="buttonFourResult">The dialog result for button four.</param>
     public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
         Image? image = null, InputBoxLanguage language = InputBoxLanguage.English,
         InputBoxButtons buttons = InputBoxButtons.Ok, InputBoxInputType type = InputBoxInputType.None, string[]? listItems = null,
@@ -296,6 +312,10 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     /// <param name="cancelText">The cancel text.</param>
     /// <param name="hintText">The hint text.</param>
     /// <param name="textAlignment">The text alignment.</param>
+    /// <param name="buttonOneResult">The dialog result for button one.</param>
+    /// <param name="buttonTwoResult">The dialog result for button two.</param>
+    /// <param name="buttonThreeResult">The dialog result for button three.</param>
+    /// <param name="buttonFourResult">The dialog result for button four.</param>
     public KryptonInputBoxExtendedAlternateForm(string message, string title = "", InputBoxIconType icon = InputBoxIconType.Information,
         Image? image = null, InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok,
         InputBoxInputType type = InputBoxInputType.None, string[]? listItems = null, bool showInTaskBar = false,
@@ -356,6 +376,10 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     /// <param name="hintText">The hint text.</param>
     /// <param name="startPosition">The start position.</param>
     /// <param name="textAlignment">The text alignment.</param>
+    /// <param name="buttonOneResult">The dialog result for button one.</param>
+    /// <param name="buttonTwoResult">The dialog result for button two.</param>
+    /// <param name="buttonThreeResult">The dialog result for button three.</param>
+    /// <param name="buttonFourResult">The dialog result for button four.</param>
     public KryptonInputBoxExtendedAlternateForm(Point iconLocation, string message, string title = "",
         InputBoxIconType icon = InputBoxIconType.Information, Image? image = null,
         InputBoxLanguage language = InputBoxLanguage.English, InputBoxButtons buttons = InputBoxButtons.Ok,
@@ -417,7 +441,13 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
 
     /// <summary>Sets the message typeface.</summary>
     /// <param name="typeface">The typeface.</param>
-    private void SetMessageTypeface(Font typeface) => kwlMessage.StateCommon.Font = typeface;
+    private void SetMessageTypeface(Font? typeface)
+    {
+        if (typeface != null)
+        {
+            kwlMessage.StateCommon.Font = typeface;
+        }
+    }
 
     /// <summary>Sets the show in taskbar.</summary>
     /// <param name="showInTaskbar">if set to <c>true</c> [show in taskbar].</param>
@@ -431,8 +461,13 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
 
     /// <summary>Sets the control typeface.</summary>
     /// <param name="typeface">The typeface.</param>
-    private void SetControlTypeface(Font typeface)
+    private void SetControlTypeface(Font? typeface)
     {
+        if (typeface == null)
+        {
+            return;
+        }
+
         kbtnButtonThree.StateCommon.Content.ShortText.Font = typeface;
 
         kbtnButtonFour.StateCommon.Content.ShortText.Font = typeface;
@@ -500,9 +535,12 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-    private void Button_Click(object sender, EventArgs e)
+    private void Button_Click(object? sender, EventArgs e)
     {
-        KryptonButton button = (KryptonButton)sender;
+        if (sender is not KryptonButton button)
+        {
+            return;
+        }
 
         switch (button.Name)
         {
@@ -683,7 +721,7 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     /// <summary>Adapts the UI.</summary>
     /// <param name="type">The type.</param>
     /// <param name="itemList">The item list.</param>
-    private void AdaptUI(InputBoxInputType type, string[] itemList)
+    private void AdaptUI(InputBoxInputType type, string[]? itemList)
     {
         if (itemList != null)
         {
@@ -1099,7 +1137,7 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
     #endregion
 
     #region Event Handlers
-    private void KryptonInputBoxExtendedAlternateForm_FormClosing(object sender, FormClosingEventArgs e)
+    private void KryptonInputBoxExtendedAlternateForm_FormClosing(object? sender, FormClosingEventArgs e)
     {
         if (Response != DialogResult.None)
         {
@@ -1111,18 +1149,18 @@ public partial class KryptonInputBoxExtendedAlternateForm : KryptonForm
         }
     }
 
-    private void ktxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+    private void ktxtInput_KeyDown(object? sender, KeyEventArgs e) => ResultKeyDown(e);
 
-    private void kbtnButtonOne_Click(object sender, EventArgs e) => kbtnButtonOne.DialogResult = _buttonOneResult;
+    private void kbtnButtonOne_Click(object? sender, EventArgs e) => kbtnButtonOne.DialogResult = _buttonOneResult;
 
-    private void kbtnButtonTwo_Click(object sender, EventArgs e) => kbtnButtonTwo.DialogResult = _buttonTwoResult;
+    private void kbtnButtonTwo_Click(object? sender, EventArgs e) => kbtnButtonTwo.DialogResult = _buttonTwoResult;
 
-    private void kbtnButtonThree_Click(object sender, EventArgs e) => kbtnButtonThree.DialogResult = _buttonThreeResult;
+    private void kbtnButtonThree_Click(object? sender, EventArgs e) => kbtnButtonThree.DialogResult = _buttonThreeResult;
 
-    private void kbtnButtonFour_Click(object sender, EventArgs e) => kbtnButtonFour.DialogResult = _buttonFourResult;
+    private void kbtnButtonFour_Click(object? sender, EventArgs e) => kbtnButtonFour.DialogResult = _buttonFourResult;
 
-    private void kmtxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+    private void kmtxtInput_KeyDown(object? sender, KeyEventArgs e) => ResultKeyDown(e);
 
-    private void kcmbInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+    private void kcmbInput_KeyDown(object? sender, KeyEventArgs e) => ResultKeyDown(e);
     #endregion
 }

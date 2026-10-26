@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ public class KryptonProgressBarExtendedVersion1 : UserControl
     /// <summary> 
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.Container components = null;
+    private System.ComponentModel.Container? components = null;
 
     /// <summary> 
     /// Required method for Designer support - do not modify 
@@ -303,7 +303,7 @@ public class KryptonProgressBarExtendedVersion1 : UserControl
     /// <summary>
     /// When the Value property is changed.
     /// </summary>
-    public delegate void ValueChangedHandler(object sender, EventArgs e);
+    public delegate void ValueChangedHandler(object? sender, EventArgs e);
     /// <summary>
     /// When the Value property is changed.
     /// </summary>
@@ -312,7 +312,7 @@ public class KryptonProgressBarExtendedVersion1 : UserControl
     /// <summary>
     /// When the MinValue property is changed.
     /// </summary>
-    public delegate void MinChangedHandler(object sender, EventArgs e);
+    public delegate void MinChangedHandler(object? sender, EventArgs e);
     /// <summary>
     /// When the MinValue property is changed.
     /// </summary>
@@ -321,7 +321,7 @@ public class KryptonProgressBarExtendedVersion1 : UserControl
     /// <summary>
     /// When the MaxValue property is changed.
     /// </summary>
-    public delegate void MaxChangedHandler(object sender, EventArgs e);
+    public delegate void MaxChangedHandler(object? sender, EventArgs e);
     /// <summary>
     /// When the MaxValue property is changed.
     /// </summary>
@@ -542,7 +542,7 @@ public class KryptonProgressBarExtendedVersion1 : UserControl
         return Color.FromArgb(a, r, g, b);
     }
 
-    private void KryptonProgressBarExtended_Paint(object sender, PaintEventArgs e)
+    private void KryptonProgressBarExtended_Paint(object? sender, PaintEventArgs e)
     {
         e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
         e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -557,7 +557,7 @@ public class KryptonProgressBarExtendedVersion1 : UserControl
         DrawOuterStroke(e.Graphics);
     }
 
-    private void GlowAnimationTimer_Tick(object sender, EventArgs e)
+    private void GlowAnimationTimer_Tick(object? sender, EventArgs e)
     {
         if (Animate)
         {

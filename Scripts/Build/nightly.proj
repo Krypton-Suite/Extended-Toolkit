@@ -1,0 +1,21 @@
+<Project DefaultTargets="Build">
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">Nightly</Configuration>
+	</PropertyGroup>
+
+	<Import Project="Extended.Orchestration.targets" />
+	<Import Project="Extended.Archive.targets" />
+
+	<PropertyGroup>
+		<ArchiveDir>$(BinDir)\Nightly\Zips</ArchiveDir>
+		<ArchiveName>Krypton-Extended-Nightly</ArchiveName>
+		<ArchiveSourceDir>$(BinDir)\NuGet Packages\Nightly</ArchiveSourceDir>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'NightlyLite'">
+		<NuGetPackagesDir>$(BinDir)\NuGet Packages\Nightly</NuGetPackagesDir>
+	</PropertyGroup>
+
+	<Target Name="CreateNightlyZip" DependsOnTargets="CreateZip" />
+	<Target Name="CreateNightlyTar" DependsOnTargets="CreateTar" />
+</Project>

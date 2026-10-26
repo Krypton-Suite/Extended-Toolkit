@@ -123,17 +123,12 @@ public struct CoordinateRect : IEquatable<CoordinateRect>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is CoordinateRect other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            CoordinateRect other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(CoordinateRect a, CoordinateRect b)

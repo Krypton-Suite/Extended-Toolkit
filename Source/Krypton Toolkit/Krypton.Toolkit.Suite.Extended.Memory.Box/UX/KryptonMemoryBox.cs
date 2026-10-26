@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -284,7 +284,7 @@ public partial class KryptonMemoryBox : CommonExtendedKryptonForm
         using (Graphics g = CreateGraphics())
         {
             // Find size of the label, with a max of 2/3 screen width
-            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+            Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen!;
             SizeF scaledMonitorSize = screen.Bounds.Size;
             scaledMonitorSize.Width *= 2 / 3.0f;
             scaledMonitorSize.Height *= 0.95f;

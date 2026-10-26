@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
 {
     #region Constructor
 
-    private GraphicsPath _innerControlPath = null;
+    private GraphicsPath _innerControlPath = null!;
 
        
 
@@ -116,7 +116,7 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
         {
             g.SetClip(outerBorderPath);
 
-            Color outerBorderColor = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
+            Color outerBorderColor = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
 
             using (Brush outerBorderBrush = new SolidBrush(outerBorderColor))
             {
@@ -133,8 +133,8 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
         {
             g.SetClip(innerBorderPath);
 
-            Color borderColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
-            Color borderColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
+            Color borderColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
+            Color borderColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
 
             using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
             {
@@ -160,8 +160,8 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
         int gradientRectWidth = leftRectangle.Width + buttonWidth / 2;
         Rectangle gradientRectangle = new Rectangle(leftRectangle.X, leftRectangle.Y, gradientRectWidth, leftRectangle.Height);
 
-        Color leftSideBackColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
-        Color leftSideBackColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
+        Color leftSideBackColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
+        Color leftSideBackColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
 
         if (_innerControlPath != null)
         {
@@ -230,18 +230,19 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                     Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OnSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width -
+                                                               (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                            (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -252,18 +253,19 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                 }
                 else
                 {
-                    if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OnSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width - (float)imageSize.Width) /
+                                                              2),
+                        ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                            (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -277,22 +279,20 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
             {
                 SizeF textSize = g.MeasureString(ToggleSwitch.OnText, ToggleSwitch.OnFont);
 
-                float textXPos = fullRectangle.X;
-
-                if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                float textXPos = ToggleSwitch.OnSideAlignment switch
                 {
-                    textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                }
-                else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                {
-                    textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                }
+                    ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                    ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                    ToggleSwitchAlignment.Near => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                  (float)textSize.Width,
+                    _ => fullRectangle.X
+                };
 
                 RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                 Color textForeColour = ToggleSwitch.OnForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColour = textForeColour.ToGrayScale();
                 }
@@ -319,8 +319,8 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
         int gradientRectWidth = rightRectangle.Width + buttonWidth / 2;
         Rectangle gradientRectangle = new Rectangle(rightRectangle.X - buttonWidth / 2, rightRectangle.Y, gradientRectWidth, rightRectangle.Height);
 
-        Color rightSideBackColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
-        Color rightSideBackColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
+        Color rightSideBackColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
+        Color rightSideBackColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
 
         if (_innerControlPath != null)
         {
@@ -389,18 +389,19 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                     Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OffSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width -
+                                                               (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                           (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -411,18 +412,19 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                 }
                 else
                 {
-                    if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                    imageXPos = ToggleSwitch.OffSideAlignment switch
                     {
-                        imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                    {
-                        imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                              ((float)fullRectangle.Width - (float)imageSize.Width) /
+                                                              2),
+                        ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                           (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -436,22 +438,20 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
             {
                 SizeF textSize = g.MeasureString(ToggleSwitch.OffText, ToggleSwitch.OffFont);
 
-                float textXPos = fullRectangle.X;
-
-                if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                float textXPos = ToggleSwitch.OffSideAlignment switch
                 {
-                    textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                }
-                else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                {
-                    textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                }
+                    ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                    ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                    ToggleSwitchAlignment.Far => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                 (float)textSize.Width,
+                    _ => fullRectangle.X
+                };
 
                 RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                 Color textForeColour = ToggleSwitch.OffForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     textForeColour = textForeColour.ToGrayScale();
                 }
@@ -499,7 +499,7 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                 buttonSurfaceColour2 = ButtonHoverSurfaceColour2;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 buttonSurfaceColour1 = buttonSurfaceColour1.ToGrayScale();
                 buttonSurfaceColour2 = buttonSurfaceColour2.ToGrayScale();
@@ -525,7 +525,7 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                 buttonBorderColour2 = ButtonHoverBorderColour2;
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
             {
                 buttonBorderColour1 = buttonBorderColour1.ToGrayScale();
                 buttonBorderColour2 = buttonBorderColour2.ToGrayScale();
@@ -563,18 +563,19 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                     Size canvasSize = buttonRectangle.Size;
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)buttonRectangle.X + ((float)buttonRectangle.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)buttonRectangle.X + (float)buttonRectangle.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)buttonRectangle.X +
+                                                                    ((float)buttonRectangle.Width -
+                                                                     (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)buttonRectangle.X +
+                            (float)buttonRectangle.Width - (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -585,18 +586,19 @@ public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable,
                 }
                 else
                 {
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)buttonRectangle.X + ((float)buttonRectangle.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)buttonRectangle.X + (float)buttonRectangle.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)buttonRectangle.X +
+                                                                    ((float)buttonRectangle.Width -
+                                                                     (float)imageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)buttonRectangle.X +
+                            (float)buttonRectangle.Width - (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + ((float)buttonRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }

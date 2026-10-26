@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +77,7 @@ public class KryptonButtonPanel : UserControl
 
     #region Instance Fields
 
-    private KryptonButton[] _buttons;
+    private KryptonButton[]? _buttons;
 
     private PaletteBackStyle _panelPaletteBackStyle;
 
@@ -87,10 +87,13 @@ public class KryptonButtonPanel : UserControl
 
     #region Properties
 
-    public KryptonButton[] Buttons { get => _buttons; set => _buttons = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public KryptonButton[]? Buttons { get => _buttons; set => _buttons = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PaletteBackStyle PanelPaletteBackStyle { get => _panelPaletteBackStyle; set { _panelPaletteBackStyle = value; Invalidate(); } }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PaletteBorderStyle EdgeBorderStyle { get => _edgeBorderStyle; set { _edgeBorderStyle = value; Invalidate(); } }
 
     #endregion
@@ -101,7 +104,7 @@ public class KryptonButtonPanel : UserControl
     {
         InitializeComponent();
 
-        _buttons = null;
+        _buttons = null!;
 
         _panelPaletteBackStyle = PaletteBackStyle.PanelAlternate;
 

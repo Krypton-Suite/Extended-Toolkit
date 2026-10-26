@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ public abstract class PaletteSerialiser : IPaletteSerialiser
                 CreateFilters();
             }
 
-            return _defaultOpenFilter;
+            return _defaultOpenFilter!;
         }
     }
 
@@ -88,7 +88,7 @@ public abstract class PaletteSerialiser : IPaletteSerialiser
                 CreateFilters();
             }
 
-            return _defaultSaveFileter;
+            return _defaultSaveFileter!;
         }
     }
 
@@ -96,9 +96,9 @@ public abstract class PaletteSerialiser : IPaletteSerialiser
 
     #region Static Methods
 
-    public static IPaletteSerialiser GetSerialiser(string fileName)
+    public static IPaletteSerialiser? GetSerialiser(string fileName)
     {
-        IPaletteSerialiser result;
+        IPaletteSerialiser? result;
 
         if (string.IsNullOrEmpty(fileName))
         {
@@ -225,7 +225,7 @@ public abstract class PaletteSerialiser : IPaletteSerialiser
         }
         catch (ReflectionTypeLoadException ex)
         {
-            return ex.Types.Where(x => x != null);
+            return ex.Types.Where(t => t != null).Cast<Type>();
         }
     }
 
@@ -238,11 +238,14 @@ public abstract class PaletteSerialiser : IPaletteSerialiser
         _defaultOpenFilter = null;
         _defaultSaveFileter = null;
 
-        foreach (Type type in AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => GetLoadableTypes(assembly).Where(type => !type.IsAbstract && type.IsPublic && typeof(IPaletteSerialiser).IsAssignableFrom(type))))
+        foreach (Type type in AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => GetLoadableTypes(assembly).Where(type => type is { IsAbstract: false, IsPublic: true } && typeof(IPaletteSerialiser).IsAssignableFrom(type))))
         {
             try
             {
-                _serializerCache.Add((IPaletteSerialiser)Activator.CreateInstance(type));
+                if (Activator.CreateInstance(type) is IPaletteSerialiser serialiser)
+                {
+                    _serializerCache.Add(serialiser);
+                }
             }
             // ReSharper disable EmptyGeneralCatchClause
             catch
@@ -491,9 +494,9 @@ public abstract class PaletteSerialiser : IPaletteSerialiser
 
     #region Other
 
-    private static string _defaultOpenFilter;
+    private static string? _defaultOpenFilter;
 
-    private static string _defaultSaveFileter;
+    private static string? _defaultSaveFileter;
 
     #endregion
 }

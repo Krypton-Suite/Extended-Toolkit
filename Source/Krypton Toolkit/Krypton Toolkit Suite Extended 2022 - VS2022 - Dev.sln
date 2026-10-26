@@ -183,7 +183,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects to Work On", "Proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.PDF 2022", "Krypton.Toolkit.Suite.Extended.PDF\Krypton.Toolkit.Suite.Extended.PDF 2022.csproj", "{A59A87BE-E92A-4717-92DC-A2286EE812EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Examples.csproj", "{744D6A50-F8DB-4D5F-B571-34B0597E03B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestForm", "TestForm\TestForm.csproj", "{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022", "Krypton.Toolkit.Suite.Extended.Scintilla.NET\Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj", "{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}"
 EndProject
@@ -245,15 +245,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Issue Templates", "Issue Te
 		..\..\.github\ISSUE_TEMPLATE\post-a-question.md = ..\..\.github\ISSUE_TEMPLATE\post-a-question.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Docking 2022", "..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Docking\Krypton.Docking 2022.csproj", "{8F8E1B19-EFA1-4BC2-AEB3-8985B07A6A2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Docking 2022", "..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Docking\Krypton.Docking 2022.csproj", "{8F8E1B19-EFA1-4BC2-AEB3-8985B07A6A2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Navigator 2022", "..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2022.csproj", "{39E6D9FC-E30F-4F4A-9EAC-F1234226FE2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Navigator 2022", "..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2022.csproj", "{39E6D9FC-E30F-4F4A-9EAC-F1234226FE2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Ribbon 2022", "..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Ribbon\Krypton.Ribbon 2022.csproj", "{B48CAFB1-659A-4898-8004-3F909B788E56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Ribbon 2022", "..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Ribbon\Krypton.Ribbon 2022.csproj", "{B48CAFB1-659A-4898-8004-3F909B788E56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit 2022", "..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj", "{76250480-3D16-4CC7-9F38-18EA880B8150}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit 2022", "..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj", "{76250480-3D16-4CC7-9F38-18EA880B8150}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Workspace 2022", "..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Workspace\Krypton.Workspace 2022.csproj", "{3CD6AC31-4080-4E66-B3C5-91068408765A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Workspace 2022", "..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Workspace\Krypton.Workspace 2022.csproj", "{3CD6AC31-4080-4E66-B3C5-91068408765A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022", "Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2022.csproj", "{BEC93DAB-1442-4DA9-A43A-2285BC584343}"
 EndProject
@@ -446,16 +446,16 @@ Global
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Nightly|Any CPU.Build.0 = Debug|Any CPU
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Canary|Any CPU.Build.0 = Debug|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Installer|Any CPU.ActiveCfg = Release|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Installer|Any CPU.Build.0 = Release|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Nightly|Any CPU.Build.0 = Debug|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Installer|Any CPU.ActiveCfg = Release|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Installer|Any CPU.Build.0 = Release|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -799,7 +799,7 @@ Global
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32} = {ADF53878-BE1F-43A3-A890-E11190BE5465}
 		{BA86BDC7-D11C-4E74-875C-B284E740B599} = {A7A69BC2-7682-43FB-8E7C-C42FDAA2A215}
 		{A59A87BE-E92A-4717-92DC-A2286EE812EC} = {ADF53878-BE1F-43A3-A890-E11190BE5465}
-		{744D6A50-F8DB-4D5F-B571-34B0597E03B8} = {0703388D-5FBE-4345-94B0-5FA9FD043079}
+		{9F60B7BF-D045-402C-BB83-33C11AD2A2C7} = {0703388D-5FBE-4345-94B0-5FA9FD043079}
 		{BE0F9864-6A7F-4712-B5C4-C33267EB1C1F} = {ADF53878-BE1F-43A3-A890-E11190BE5465}
 		{26A8A753-BC4B-4E42-B124-8EA3FA64303F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{7A73097A-73B3-4EE5-9D57-1B25AF2A1A27} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}

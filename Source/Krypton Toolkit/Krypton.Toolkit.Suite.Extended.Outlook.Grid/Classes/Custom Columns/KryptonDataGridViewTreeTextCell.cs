@@ -81,7 +81,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
     {
         OutlookGridRow? node = OwningNode;
         //Console.WriteLine(DateTime.Now.ToString() + " " + node.ToString());
-        bool hasChildNodes = node != null && node.HasChildren;
+        bool hasChildNodes = node is { HasChildren: true };
         int level = Level;
         int plus = 0;
         //if (hasChildNodes)
@@ -170,7 +170,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
         //}
 
         // Paint tree lines			
-        if (node != null && ((KryptonOutlookGrid)node.DataGridView).ShowLines)
+        if (node?.DataGridView is KryptonOutlookGrid { ShowLines: true })
         {
             using (Pen linePen = new(SystemBrushes.ControlDark, 1.0f))
             {
@@ -226,7 +226,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
 
                     while (previousNode != null)//.IsRoot)
                     {
-                        if (previousNode.HasChildren && !previousNode.IsLastSibling)
+                        if (previousNode is { HasChildren: true, IsLastSibling: false })
                         {
                             // paint vertical line
                             graphics.DrawLine(linePen, horizontalStop, cellBounds.Top, horizontalStop, cellBounds.Bottom);
@@ -239,7 +239,7 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
             }
         }
 
-        if (node != null && node.HasChildren)
+        if (node is { HasChildren: true })
         {
             // Paint node glyphs	
             if (node.Collapsed)
@@ -277,9 +277,9 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
         base.OnMouseUp(e);
 
         OutlookGridRow? node = OwningNode;
-        if (node != null)
+        if (node is { DataGridView: KryptonOutlookGrid outlookGrid })
         {
-            ((KryptonOutlookGrid)node.DataGridView).InExpandCollapseMouseCapture = false;
+            outlookGrid.InExpandCollapseMouseCapture = false;
         }
     }
     /// <summary>
@@ -288,6 +288,11 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
     /// <param name="e">The <see cref="DataGridViewCellMouseEventArgs"/> instance containing the event data.</param>
     protected override void OnMouseDown(DataGridViewCellMouseEventArgs e)
     {
+        if (DataGridView == null)
+        {
+            return;
+        }
+
         Rectangle dis = DataGridView.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
         Rectangle glyphRect = new(dis.X + GlyphMargin, dis.Y, INDENT_WIDTH, dis.Height - 1);
 
@@ -299,9 +304,9 @@ public class KryptonDataGridViewTreeTextCell : KryptonDataGridViewTextBoxCell
             // Expand the node
             //TODO: Calculate more precise location
             OutlookGridRow? node = OwningNode;
-            if (node != null)
+            if (node?.DataGridView is KryptonOutlookGrid outlookGrid)
             {
-                ((KryptonOutlookGrid)node.DataGridView).InExpandCollapseMouseCapture = true;
+                outlookGrid.InExpandCollapseMouseCapture = true;
 
                 if (node.Collapsed)
                 {

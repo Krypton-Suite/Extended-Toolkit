@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,8 +55,7 @@ internal sealed class RuleElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        RuleElement? ruleElement = obj as RuleElement;
-        if (ruleElement == null)
+        if (obj is not RuleElement ruleElement)
         {
             return false;
         }

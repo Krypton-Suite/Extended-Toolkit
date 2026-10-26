@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,10 +33,11 @@ public class KryptonPanelExtended : KryptonPanel
     #region Intsance Fields
     private int _cornerRadius;
 
-    private Pen _pen;
+    private Pen? _pen;
     #endregion
 
     #region Public
+    [DefaultValue(0)]
     public int CornerRadius { get => _cornerRadius; set { _cornerRadius = value; Invalidate(); } }
     #endregion
 
@@ -47,6 +48,8 @@ public class KryptonPanelExtended : KryptonPanel
         DoubleBuffered = true;
 
         CornerRadius = 0;
+
+        _pen = new Pen(ForeColor);
     }
     #endregion
 
@@ -90,6 +93,11 @@ public class KryptonPanelExtended : KryptonPanel
 
     private void DrawSingleBorder(Graphics graphics)
     {
+        if (_pen is null)
+        {
+            return;
+        }
+
         graphics.DrawArc(_pen, new Rectangle(0, 0, CornerRadius, CornerRadius), 180, 90);
 
         graphics.DrawArc(_pen, new Rectangle(Width - CornerRadius - 1, -1, CornerRadius, CornerRadius), 270, 90);

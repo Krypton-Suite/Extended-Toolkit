@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,9 +31,9 @@ public class NaviGroupDesigner : ParentControlDesigner
 {
     #region Fields
 
-    private IComponentChangeService changeService = null;
-    private ISelectionService selectionService = null;
-    private NaviGroup m_designingControl;
+    private IComponentChangeService? changeService;
+    private ISelectionService? selectionService;
+    private NaviGroup? m_designingControl;
 
     #endregion
 
@@ -61,7 +61,7 @@ public class NaviGroupDesigner : ParentControlDesigner
 
     private void CheckHeaderClick(Point location)
     {
-        if (m_designingControl != null)
+        if (m_designingControl != null && selectionService != null)
         {
             if (m_designingControl.HeaderRegion.IsVisible(location))
             {
@@ -89,8 +89,18 @@ public class NaviGroupDesigner : ParentControlDesigner
 
     private void SetControlProperty(string propName, object value)
     {
-        PropertyDescriptor propDesc =
+        if (m_designingControl == null)
+        {
+            return;
+        }
+
+        PropertyDescriptor? propDesc =
             TypeDescriptor.GetProperties(m_designingControl)[propName];
+
+        if (propDesc == null)
+        {
+            return;
+        }
 
         if (changeService != null)
         {
@@ -99,7 +109,7 @@ public class NaviGroupDesigner : ParentControlDesigner
         }
 
         // Change to desired value
-        object oldValue = propDesc.GetValue(m_designingControl);
+        object? oldValue = propDesc.GetValue(m_designingControl);
         propDesc.SetValue(m_designingControl, value);
 
         if (changeService != null)

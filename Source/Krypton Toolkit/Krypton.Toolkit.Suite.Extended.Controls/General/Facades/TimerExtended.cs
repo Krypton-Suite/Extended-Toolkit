@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -140,7 +140,7 @@ public class TimerExtended : ITimer
     /// Gets the object used to marshal events raised by the
     /// <see cref="TimerExtended"/>.
     /// </summary>
-    public ISynchronizeInvoke SynchronizingObject => native.SynchronizingObject;
+    public ISynchronizeInvoke? SynchronizingObject => native.SynchronizingObject;
 
     /// <summary>
     /// Disposes resources acquired by the <see cref="TimerExtended"/>.

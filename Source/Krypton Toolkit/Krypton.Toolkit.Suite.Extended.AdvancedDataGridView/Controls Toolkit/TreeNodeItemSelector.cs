@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -110,6 +110,22 @@ internal class TreeNodeItemSelector : TreeNode
 
 
     #region public clone method
+
+    /// <summary>
+    /// Display text for checklist hosts that use <see cref="object.ToString"/>.
+    /// </summary>
+    /// <returns></returns>
+    public override string ToString()
+    {
+        int depth = 0;
+        for (TreeNodeItemSelector? parent = Parent; parent != null; parent = parent.Parent)
+        {
+            depth++;
+        }
+
+        string text = Text ?? string.Empty;
+        return depth == 0 ? text : new string(' ', depth * 2) + text;
+    }
 
     /// <summary>
     /// Clone a Node

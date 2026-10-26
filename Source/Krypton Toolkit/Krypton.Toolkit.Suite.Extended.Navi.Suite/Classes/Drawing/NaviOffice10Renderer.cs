@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -72,16 +72,13 @@ public class NaviOffice10Renderer : NaviRenderer
         bool rightToLeft, InputState state)
     {
         // Gradient background
-        Color[] endColors = [ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2];
 
-        if (state == InputState.Clicked)
+        Color[] endColors = state switch
         {
-            endColors = [ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1];
-        }
-        else if (state == InputState.Hovered)
-        {
-            endColors = [ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1];
-        }
+            InputState.Clicked => [ColourTable.BandCollapsedClickedColor1, ColourTable.BandCollapsedClickedColor1],
+            InputState.Hovered => [ColourTable.BandCollapsedHoveredColor1, ColourTable.BandCollapsedHoveredColor1],
+            _ => [ColourTable.BandCollapsedBgColor1, ColourTable.BandCollapsedBgColor2]
+        };
 
         float[] ColorPositions = [0.0f, 1.0f];
         ExtDrawing.DrawVertGradient(g, bounds, endColors, ColorPositions);
@@ -215,7 +212,6 @@ public class NaviOffice10Renderer : NaviRenderer
     /// </summary>
     /// <param name="g">The graphics surface to draw on</param>
     /// <param name="bounds">The bounds that the drawing should apply to</param>
-    /// <param name="state"></param>
     public override void DrawNaviBandClientAreaBg(Graphics g, Rectangle bounds)
     {
         // Gradient background

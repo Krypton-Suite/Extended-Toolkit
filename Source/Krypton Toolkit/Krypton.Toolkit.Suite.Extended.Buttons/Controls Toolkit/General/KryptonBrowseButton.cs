@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ public class KryptonBrowseButton : KryptonButton
 
     private BrowseButtonAction _browseButtonAction;
 
-    private IEnumerable<string> _fileNames;
+    private IEnumerable<string?> _fileNames;
 
     private FileDialogType _fileDialogType;
 
@@ -49,58 +49,73 @@ public class KryptonBrowseButton : KryptonButton
     #endregion
 
     #region Properties
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool UseAsOpenFileBrowseButton { get => _openFile; set => _openFile = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool UseAsSaveFileBrowseButton { get => _saveFile; set => _saveFile = value; }
 
     /// <summary>Gets or sets a value indicating whether [use system folder browser].</summary>
     /// <value><c>true</c> if [use system folder browser]; otherwise, <c>false</c>.</value>
     [DefaultValue(true), Description("Use the standard WinForms folder browser dialog.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool UseSystemFolderBrowser { get => _useSystemFolderBrowser; set => _useSystemFolderBrowser = value; }
 
     /// <summary>Gets or sets a value indicating whether [show new folder button on dialog].</summary>
     /// <value><c>true</c> if [show new folder button on dialog]; otherwise, <c>false</c>.</value>
     [DefaultValue(false), Description("Shows the new folder button on the standard WinForms folder browser dialog.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool ShowNewFolderButtonOnDialog { get => _showNewFolderButtonOnDialog; set => _showNewFolderButtonOnDialog = value; }
 
 
     [DefaultValue(false), Description("Allows the user to select multiple files in a open file dialog. To be used in conjunction with the Windows API Code Pack version.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool AllowMultiSelect { get => _allowMultiSelect; set => _allowMultiSelect = value; }
 
     /// <summary>Gets or sets the dialog title.</summary>
     /// <value>The dialog title.</value>
     [DefaultValue(""), Description("The title of the dialog.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string DialogTitle { get => _dialogTitle; set => _dialogTitle = value; }
 
     /// <summary>Gets the file path.</summary>
     /// <value>The file path.</value>
     [DefaultValue(""), Description("Displays the complete file path of the object.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string FilePath { get => _filePath; private set => _filePath = value; }
 
     /// <summary>Gets or sets the folder browser dialog description.</summary>
     /// <value>The folder browser dialog description.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string FolderBrowserDialogDescription { get => _folderBrowserDialogDescription; set => _folderBrowserDialogDescription = value; }
 
     /// <summary>Gets or sets the display name of the raw.</summary>
     /// <value>The display name of the raw.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string RawDisplayName { get => _rawDisplayName; set => _rawDisplayName = value; }
 
     /// <summary>Gets or sets the extension list.</summary>
     /// <value>The extension list.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public string ExtensionList { get => _extensionList; set => _extensionList = value; }
 
     /// <summary>Gets or sets the dialog filter.</summary>
     /// <value>The dialog filter.</value>
-    public string[] DialogFilter { get => _dialogFilter; set => _dialogFilter = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public string[]? DialogFilter { get => _dialogFilter; set => _dialogFilter = value; }
 
     /// <summary>Gets or sets the browse button action.</summary>
     /// <value>The browse button action.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public BrowseButtonAction BrowseButtonAction { get => _browseButtonAction; set => _browseButtonAction = value; }
 
     /// <summary>Gets or sets the file names.</summary>
     /// <value>The file names.</value>
-    public IEnumerable<string> FileNames { get => _fileNames; set => _fileNames = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public IEnumerable<string?> FileNames { get => _fileNames; set => _fileNames = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public FileDialogType FileDialogType { get => _fileDialogType; set => _fileDialogType = value; }
 
     #endregion
@@ -277,7 +292,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             ofd.Title = _dialogTitle;
 
-                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(ofd.FileName))
                             {
                                 _filePath = Path.GetFullPath(ofd.FileName);
 
@@ -290,7 +305,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             ofd.Title = _dialogTitle;
 
-                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (ofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(ofd.FileName))
                             {
                                 _filePath = Path.GetFullPath(ofd.FileName);
 
@@ -307,7 +322,7 @@ public class KryptonBrowseButton : KryptonButton
 
                         cofd.IsFolderPicker = true;
 
-                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                        if (cofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(cofd.FileName))
                         {
                             _filePath = Path.GetFullPath(cofd.FileName);
                         }
@@ -321,7 +336,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             csfd.Filters.Add(new CommonFileDialogFilter(_rawDisplayName, _extensionList));
 
-                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                             {
                                 _filePath = Path.GetFullPath(csfd.FileName);
                             }
@@ -332,7 +347,7 @@ public class KryptonBrowseButton : KryptonButton
 
                             csfd.Title = _dialogTitle;
 
-                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                            if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                             {
                                 _filePath = Path.GetFullPath(csfd.FileName);
                             }
@@ -350,7 +365,12 @@ public class KryptonBrowseButton : KryptonButton
     }
 
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public override string Text { get; set; }
+    [AllowNull]
+    public override string Text
+    {
+        get => base.Text;
+        set => base.Text = value;
+    }
 
     #endregion
 }

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 - 2024 Krypton Suite
+ * Copyright (c) 2024 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
 
     public event EventHandler CheckBoxCheckedChanged;
 
-    protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+    protected void OnCheckBoxCheckedChanged(object? sender, EventArgs e)
     {
         EventHandler handler = CheckBoxCheckedChanged;
         if (handler != null)
@@ -65,7 +65,7 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
         }
     }
 
-    private void item_CheckedChanged(object sender, EventArgs e)
+    private void item_CheckedChanged(object? sender, EventArgs e)
     {
         OnCheckBoxCheckedChanged(sender, e);
     }
@@ -77,14 +77,14 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
     [Obsolete("Do not add items to this list directly. Use the ComboBox items instead.", false)]
     public new void Add(KryptonCheckBoxComboBoxItem item)
     {
-        item.CheckedChanged += new EventHandler(item_CheckedChanged);
+        item.CheckedChanged += item_CheckedChanged;
         base.Add(item);
     }
 
     public new void AddRange(IEnumerable<KryptonCheckBoxComboBoxItem> collection)
     {
         foreach (KryptonCheckBoxComboBoxItem item in collection)
-            item.CheckedChanged += new EventHandler(item_CheckedChanged);
+            item.CheckedChanged += item_CheckedChanged;
         base.AddRange(collection);
     }
 
@@ -116,8 +116,7 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
             int startIndex =
                 // An invisible item exists in this scenario to help 
                 // with the Text displayed in the TextBox of the Combo
-                _checkBoxComboBox.DropDownStyle == ComboBoxStyle.DropDownList
-                && _checkBoxComboBox.DataSource == null
+                _checkBoxComboBox is { DropDownStyle: ComboBoxStyle.DropDownList, DataSource: null }
                     ? 1 // Ubiklou : 2008-04-28 : Ignore first item. (http://www.codeproject.com/KB/combobox/extending_combobox.aspx?fid=476622&df=90&mpp=25&noise=3&sort=Position&view=Quick&select=2526813&fr=1#xx2526813xx)
                     : 0;
             for (int index = startIndex; index <= Count - 1; index++)
@@ -132,10 +131,10 @@ public class KryptonCheckBoxComboBoxItemList : List<KryptonCheckBoxComboBoxItem>
                     && item.DataBindings["Text"] != null
                    )
                 {
-                    PropertyInfo propertyInfo
+                    PropertyInfo? propertyInfo
                         = item.ComboBoxItem.GetType().GetProperty(
                             item.DataBindings["Text"].BindingMemberInfo.BindingMember);
-                    text = (string)propertyInfo.GetValue(item.ComboBoxItem, null);
+                    text = propertyInfo?.GetValue(item.ComboBoxItem, null)?.ToString() ?? string.Empty;
                 }
                 else
                 {

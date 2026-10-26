@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 #endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
+
+#pragma warning disable CS0618 // PaletteSerializer retained for backward compatibility.
 
 public class ColourGridDialog : CommonExtendedKryptonForm
 {
@@ -139,11 +141,11 @@ public class ColourGridDialog : CommonExtendedKryptonForm
     #endregion
 
     #region Event
-    public delegate void SelectedColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+    public delegate void SelectedColourChangedEventHandler(object? sender, ColourChangedEventArgs e);
 
     public event SelectedColourChangedEventHandler SelectedColourChanged;
 
-    protected virtual void OnSelectedColourChanged(object sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
+    protected virtual void OnSelectedColourChanged(object? sender, ColourChangedEventArgs e) => SelectedColourChanged?.Invoke(sender, e);
     #endregion
 
     #region Variables
@@ -200,24 +202,24 @@ public class ColourGridDialog : CommonExtendedKryptonForm
     }
     #endregion
 
-    private void ColourGridDialog_Load(object sender, EventArgs e)
+    private void ColourGridDialog_Load(object? sender, EventArgs e)
     {
 
     }
 
-    private void cgColour_AutoAddColorsChanged(object sender, EventArgs e)
+    private void cgColour_AutoAddColorsChanged(object? sender, EventArgs e)
     {
         AdjustWindow();
     }
 
     private void AdjustWindow()
     {
-        Width = ColourGrid.Width;
+        Width = ColourGrid!.Width;
 
         Height = ColourGrid.Height;
     }
 
-    private void tsbSavePalette_Click(object sender, EventArgs e)
+    private void tsbSavePalette_Click(object? sender, EventArgs e)
     {
         using (FileDialog fd = new SaveFileDialog { Filter = PaletteSerializer.DefaultSaveFilter, DefaultExt = "pal", Title = "Save custom palette as:" })
         {
@@ -227,19 +229,16 @@ public class ColourGridDialog : CommonExtendedKryptonForm
 
                 serializer = Cyotek.Windows.Forms.PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(fd.FilterIndex - 1);
 
-                if (serializer != null)
+                if (serializer is { CanWrite: false })
                 {
-                    if (!serializer.CanWrite)
-                    {
-                        throw new InvalidOperationException("Serializer does not support writing palettes.");
-                    }
+                    throw new InvalidOperationException("Serializer does not support writing palettes.");
                 }
 
                 try
                 {
                     using (FileStream fs = File.OpenWrite(fd.FileName))
                     {
-                        serializer.Serialize(fs, cgColour.Colors);
+                        serializer?.Serialize(fs, cgColour!.Colors!);
                     }
                 }
                 catch (Exception exc)
@@ -254,7 +253,7 @@ public class ColourGridDialog : CommonExtendedKryptonForm
         }
     }
 
-    private void tsbLoadPalette_Click(object sender, EventArgs e)
+    private void tsbLoadPalette_Click(object? sender, EventArgs e)
     {
         using (FileDialog fd = new OpenFileDialog { Filter = PaletteSerializer.DefaultOpenFilter, DefaultExt = "pal", Title = "Open a custom palette file:" })
         {
@@ -292,7 +291,7 @@ public class ColourGridDialog : CommonExtendedKryptonForm
                                 colours.Add(Color.White);
                             }
 
-                            cgColour.Colors = colours;
+                            cgColour!.Colors = colours;
                         }
                     }
                     else
@@ -308,8 +307,10 @@ public class ColourGridDialog : CommonExtendedKryptonForm
         }
     }
 
-    private void cgColour_ColorChanged(object sender, EventArgs e)
+    private void cgColour_ColorChanged(object? sender, EventArgs e)
     {
-        Colour = ColourGrid.Color;
+        Colour = ColourGrid!.Color;
     }
 }
+
+#pragma warning restore CS0618

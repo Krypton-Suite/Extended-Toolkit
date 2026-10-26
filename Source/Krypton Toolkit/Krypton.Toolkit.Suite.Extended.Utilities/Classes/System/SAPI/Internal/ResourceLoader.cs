@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  *
  */
 #endregion
+
+using System.Net.Http;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 
@@ -78,19 +80,11 @@ internal class ResourceLoader
 
     private static Stream DownloadData(Uri uri, out Uri redirectedUri)
     {
-        WebRequest webRequest = WebRequest.Create(uri);
-        webRequest.Credentials = CredentialCache.DefaultCredentials;
-        using (HttpWebResponse httpWebResponse = (HttpWebResponse)webRequest.GetResponse())
-        {
-            using (httpWebResponse.GetResponseStream())
-            {
-                redirectedUri = httpWebResponse.ResponseUri;
-                using (WebClient webClient = new WebClient())
-                {
-                    webClient.UseDefaultCredentials = true;
-                    return new MemoryStream(webClient.DownloadData(redirectedUri));
-                }
-            }
-        }
+        HttpClientHandler handler = new() { UseDefaultCredentials = true };
+        using HttpClient httpClient = new(handler);
+        using HttpResponseMessage response = httpClient.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead).GetAwaiter().GetResult();
+        redirectedUri = response.RequestMessage?.RequestUri ?? uri;
+        byte[] data = response.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult();
+        return new MemoryStream(data);
     }
 }

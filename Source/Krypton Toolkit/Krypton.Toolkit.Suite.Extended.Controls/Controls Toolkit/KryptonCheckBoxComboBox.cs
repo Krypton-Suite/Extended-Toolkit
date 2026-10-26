@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 - 2024 Krypton Suite
+ * Copyright (c) 2024 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -213,7 +213,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
         return listText;
     }
 
-    private void Items_CheckBoxCheckedChanged(object sender, EventArgs e)
+    private void Items_CheckBoxCheckedChanged(object? sender, EventArgs e)
     {
         OnCheckBoxCheckedChanged(sender, e);
     }
@@ -246,7 +246,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
         }
     }
 
-    private void CheckBoxProperties_PropertyChanged(object sender, EventArgs e)
+    private void CheckBoxProperties_PropertyChanged(object? sender, EventArgs e)
     {
         foreach (KryptonCheckBoxComboBoxItem item in CheckBoxItems)
         {
@@ -258,7 +258,7 @@ public partial class KryptonCheckBoxComboBox : KryptonPopUpComboBox
 
     #region Protected
 
-    protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+    protected void OnCheckBoxCheckedChanged(object? sender, EventArgs e)
     {
         string ListText = GetCsvText(true);
         // The DropDownList style seems to require that the text

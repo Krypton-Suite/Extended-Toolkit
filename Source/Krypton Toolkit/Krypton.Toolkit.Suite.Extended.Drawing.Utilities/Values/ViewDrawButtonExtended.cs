@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -123,7 +123,7 @@ public class ViewDrawButtonExtended : ViewComposite
 
         // Create the drop down view
         _drawDropDown = new ViewLayoutCenter(1);
-        _drawDropDownButton = new ViewDrawDropDownButton(_paletteNormal.PaletteContent);
+        _drawDropDownButton = new ViewDrawDropDownButton(_paletteNormal.PaletteContent!);
         _drawDropDown.Add(_drawDropDownButton);
         _drawOuterSeparator = new ViewLayoutSeparator(1);
 
@@ -422,10 +422,10 @@ public class ViewDrawButtonExtended : ViewComposite
         System.Diagnostics.Debug.Assert(palettePressed != null);
 
         // Remember the new palette settings
-        _paletteDisabled = paletteDisabled!;
-        _paletteNormal = paletteNormal!;
-        _paletteTracking = paletteTracking!;
-        _palettePressed = palettePressed!;
+        _paletteDisabled = paletteDisabled;
+        _paletteNormal = paletteNormal;
+        _paletteTracking = paletteTracking;
+        _palettePressed = palettePressed;
 
         // Must force update of palettes to use latest ones provided
         _forcePaletteUpdate = true;
@@ -561,20 +561,20 @@ public class ViewDrawButtonExtended : ViewComposite
     #endregion
 
     #region Paint
-    public override void Render(RenderContext context)
+    public override void Render(RenderContext? context)
     {
         System.Diagnostics.Debug.Assert(context != null);
 
         // Ensure that child elements have correct palette state
-        CheckPaletteState(context!);
+        CheckPaletteState(context);
 
         // Let base class perform standard rendering
-        base.Render(context!);
+        base.Render(context);
     }
     #endregion
 
     #region Protected
-    protected virtual void CheckPaletteState(ViewContext context)
+    protected virtual void CheckPaletteState(ViewContext? context)
     {
         // Default to using this element calculated state
         PaletteState buttonState = State;

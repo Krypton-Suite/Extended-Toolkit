@@ -20,7 +20,7 @@
         /// <summary>
         /// The current assembly
         /// </summary>
-        public Assembly ApplicationAssembly { get; }
+        public Assembly? ApplicationAssembly { get; }
 
         /// <summary>
         /// The application's icon to be displayed in the top left
@@ -51,9 +51,9 @@
             ApplicationPath = job.FilePath;
             ApplicationName = Path.GetFileNameWithoutExtension(ApplicationPath);
             ApplicationAssembly = ass;
-            ApplicationIcon = f.Icon;
+            ApplicationIcon = f?.Icon;
             Context = f;
-            Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version : job.Version;
+            Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version! : job.Version!;
             _tag = job.Tag;
         }
 
@@ -61,10 +61,19 @@
         {
             ApplicationPath = job.FilePath;
             ApplicationName = Path.GetFileNameWithoutExtension(ApplicationPath);
-            ApplicationAssembly = (job.Tag == JobType.UPDATE) ? Assembly.Load(ApplicationName) : null;
+            if (job.Tag == JobType.UPDATE)
+            {
+                ApplicationAssembly = Assembly.Load(ApplicationName);
+                Version = ApplicationAssembly.GetName().Version!;
+            }
+            else
+            {
+                ApplicationAssembly = null;
+                Version = job.Version!;
+            }
+
             ApplicationIcon = null;
             Context = null;
-            Version = (job.Tag == JobType.UPDATE) ? ApplicationAssembly.GetName().Version : job.Version;
             _tag = job.Tag;
         }
 

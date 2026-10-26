@@ -63,7 +63,7 @@ public interface IOutlookGridGroup : IComparable, ICloneable
     /// <summary>
     /// specifies which column is associated with this group
     /// </summary>
-    OutlookGridColumn Column { get; set; }
+    OutlookGridColumn? Column { get; set; }
 
     /// <summary>
     /// The list of the rows contained in a group
@@ -93,7 +93,7 @@ public interface IOutlookGridGroup : IComparable, ICloneable
     /// <summary>
     /// Image associated to the group if any
     /// </summary>
-    Image GroupImage { get; set; }
+    Image? GroupImage { get; set; }
 
     /// <summary>
     /// The text associated for the group text (1 item)
@@ -118,5 +118,5 @@ public interface IOutlookGridGroup : IComparable, ICloneable
     ///// <summary>
     ///// Gets or sets the items comparer, if overriding the default IComparable<T> is needed
     ///// </summary>
-    IComparer ItemsComparer { get; set; }
+    IComparer? ItemsComparer { get; set; }
 }

@@ -142,35 +142,29 @@ public static class ColourHelper
     /// <returns></returns>
     public static Color FromHSV(float h, float s, float v)
     {
-        // Hue checking
-        if (h < 0f)
+        h = h switch
         {
-            h = 0f;
-        }
-        else if (h > 360f)
-        {
-            h = 360f;
-        }
+            // Hue checking
+            < 0f => 0f,
+            > 360f => 360f,
+            _ => h
+        };
 
-        // Saturation checking
-        if (s < 0f)
+        s = s switch
         {
-            s = 0f;
-        }
-        else if (s > 1f)
-        {
-            s = 1f;
-        }
+            // Saturation checking
+            < 0f => 0f,
+            > 1f => 1f,
+            _ => s
+        };
 
-        // Value/Brightness checking
-        if (v < 0f)
+        v = v switch
         {
-            v = 0f;
-        }
-        else if (v > 1f)
-        {
-            v = 1f;
-        }
+            // Value/Brightness checking
+            < 0f => 0f,
+            > 1f => 1f,
+            _ => v
+        };
 
         // === Conversion ===
         float fRed = 0f;
@@ -314,35 +308,29 @@ public static class ColourHelper
     /// <returns></returns>
     public static Color FromHSL(float h, float s, float l)
     {
-        // Hue checking
-        if (h < 0f)
+        h = h switch
         {
-            h = 0f;
-        }
-        else if (h > 360f)
-        {
-            h = 360f;
-        }
+            // Hue checking
+            < 0f => 0f,
+            > 360f => 360f,
+            _ => h
+        };
 
-        // Saturation checking
-        if (s < 0f)
+        s = s switch
         {
-            s = 0f;
-        }
-        else if (s > 1f)
-        {
-            s = 1f;
-        }
+            // Saturation checking
+            < 0f => 0f,
+            > 1f => 1f,
+            _ => s
+        };
 
-        // Lightness checking
-        if (l < 0f)
+        l = l switch
         {
-            l = 0f;
-        }
-        else if (l > 1f)
-        {
-            l = 1f;
-        }
+            // Lightness checking
+            < 0f => 0f,
+            > 1f => 1f,
+            _ => l
+        };
 
         // === Conversion ===
         if (s == 0)

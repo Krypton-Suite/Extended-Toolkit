@@ -20,17 +20,17 @@ public class Benchmark : IPlottable
         string message =
             $"Rendered in {rp.Elapsed.TotalMilliseconds:0.000} ms ({1e3 / rp.Elapsed.TotalMilliseconds:N0} FPS)";
 
+        using SKFont font = new(SKTypeface.FromFamilyName("consolas"), 12);
         using SKPaint paint = new()
         {
             IsAntialias = true,
-            Typeface = SKTypeface.FromFamilyName("consolas")
         };
 
-        PixelSize textSize = Drawing.MeasureString(message, paint);
+        PixelSize textSize = Drawing.MeasureString(message, font);
         float margin = 5;
         SKRect textRect = new(
             left: rp.DataRect.Left + margin,
-            top: rp.DataRect.Bottom - paint.TextSize * .9f - 5 - margin,
+            top: rp.DataRect.Bottom - font.Size * .9f - 5 - margin,
             right: rp.DataRect.Left + 5 * 2 + textSize.Width + margin,
             bottom: rp.DataRect.Bottom - margin);
 
@@ -48,6 +48,8 @@ public class Benchmark : IPlottable
             text: message,
             x: rp.DataRect.Left + 4 + margin,
             y: rp.DataRect.Bottom - 4 - margin,
+            textAlign: SKTextAlign.Left,
+            font: font,
             paint: paint);
     }
 }

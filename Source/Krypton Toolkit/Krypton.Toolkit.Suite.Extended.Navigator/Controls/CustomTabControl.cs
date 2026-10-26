@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ public class CustomTabControl : TabControl
     private ImageList? _leftRightImages = null;
     private const int N_MARGIN = 5;
 
-    private Rectangle _mCloseRect;
+    private Rectangle _mCloseRect = new Rectangle();
 
     #endregion
 
@@ -56,7 +56,7 @@ public class CustomTabControl : TabControl
     public new TabPageCollection TabPages => base.TabPages;
 
     private Boolean _preserveTabColour;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean PreserveTabColour
     {
         get => _preserveTabColour;
@@ -64,7 +64,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _buttonsBackColour = Color.FromArgb(191, 219, 255);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonsBackColour
     {
         get => _buttonsBackColour;
@@ -72,7 +72,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _buttonsBorderColour = Color.FromArgb(111, 157, 217);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ButtonsBorderColour
     {
         get => _buttonsBorderColour;
@@ -80,7 +80,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _borderColour = SystemColors.ControlDark;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color BorderColour
     {
         get => _borderColour;
@@ -88,7 +88,7 @@ public class CustomTabControl : TabControl
     }
 
     private int _borderWidth = 1;
-    [Browsable(false), Category("Appearance-Extended")]
+    [Browsable(false), Category("Appearance-Extended"), DefaultValue(1)]
     public int BorderWidth
     {
         get => _borderWidth;
@@ -96,7 +96,7 @@ public class CustomTabControl : TabControl
     }
 
     private int _cornerRoundRadiusWidth = 12;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(12)]
     public int CornerRoundRadiusWidth
     {
         get => _cornerRoundRadiusWidth;
@@ -104,7 +104,7 @@ public class CustomTabControl : TabControl
     }
 
     private DrawingMethods.CornerType _cornerType = DrawingMethods.CornerType.Rounded;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DrawingMethods.CornerType CornerType
     {
         get => _cornerType;
@@ -112,7 +112,7 @@ public class CustomTabControl : TabControl
     }
 
     private bool _useExtendedLayout;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public bool UseExtendedLayout
     {
         get => _useExtendedLayout;
@@ -141,7 +141,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourHotLight = Color.FromArgb(255, 241, 196);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourHotLight
     {
         get => _tabColourHotLight;
@@ -149,7 +149,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourHotDark = Color.FromArgb(255, 215, 83);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourHotDark
     {
         get => _tabColourHotDark;
@@ -157,7 +157,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourSelectedLight = Color.FromArgb(255, 229, 196);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourSelectedLight
     {
         get => _tabColourSelectedLight;
@@ -165,7 +165,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourSelectedDark = Color.FromArgb(254, 182, 93);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourSelectedDark
     {
         get => _tabColourSelectedDark;
@@ -173,7 +173,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourPressedLight = Color.FromArgb(255, 229, 196);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourPressedLight
     {
         get => _tabColourPressedLight;
@@ -181,7 +181,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourPressedDark = Color.FromArgb(254, 182, 93);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourPressedDark
     {
         get => _tabColourPressedDark;
@@ -189,7 +189,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourDefaultLight = Color.FromArgb(227, 239, 255);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourDefaultLight
     {
         get => _tabColourDefaultLight;
@@ -197,7 +197,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabColourDefaultDark = Color.FromArgb(191, 219, 255);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabColourDefaultDark
     {
         get => _tabColourDefaultDark;
@@ -205,7 +205,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabHotForeColour = SystemColors.HotTrack;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabHotForeColour
     {
         get => _tabHotForeColour;
@@ -213,7 +213,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabSelectedForeColour = SystemColors.Highlight;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabSelectedForeColour
     {
         get => _tabSelectedForeColour;
@@ -221,7 +221,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _tabForeColour = Color.FromArgb(61, 66, 139);
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabForeColour
     {
         get => _tabForeColour;
@@ -229,7 +229,7 @@ public class CustomTabControl : TabControl
     }
 
     private Color _standardBackColour = SystemColors.Control;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color StandardBackColour
     {
         get => _standardBackColour;
@@ -239,7 +239,7 @@ public class CustomTabControl : TabControl
     private int _cornerWidth = 2;
     private int _cornerLeftWidth;
     private int _cornerRightWidth;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public CornWidth CornerWidth
     {
         get => (CornWidth)_cornerWidth;
@@ -273,7 +273,7 @@ public class CustomTabControl : TabControl
     }
 
     private int _cornerSymmetry;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public CornSymmetry CornerSymmetry
     {
         get => (CornSymmetry)_cornerSymmetry;
@@ -308,7 +308,7 @@ public class CustomTabControl : TabControl
 
     private int _allowSelectedTabHighSize;
     private Boolean _allowSelectedTabHigh;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowSelectedTabHigh
     {
         get => _allowSelectedTabHigh;
@@ -316,7 +316,7 @@ public class CustomTabControl : TabControl
     }
 
     private Boolean _allowCloseButton;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowCloseButton
     {
         get => _allowCloseButton;
@@ -325,7 +325,7 @@ public class CustomTabControl : TabControl
 
     private Boolean _allowInternalNavigatorButtons;
     private Boolean _allowNavigatorButtons;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(false)]
     public Boolean AllowNavigatorButtons
     {
         get => _allowNavigatorButtons;
@@ -333,7 +333,7 @@ public class CustomTabControl : TabControl
     }
 
     private Boolean _allowContextButton = true;
-    [Browsable(true), Category("Appearance-Extended")]
+    [Browsable(true), Category("Appearance-Extended"), DefaultValue(true)]
     public Boolean AllowContextButton
     {
         get => _allowContextButton;
@@ -446,7 +446,7 @@ public class CustomTabControl : TabControl
         //selected, if so, do not process the base event.
         try
         {
-            if (!e.TabPage.ClientRectangle.Contains(_mCloseRect))
+            if (e.TabPage == null || !e.TabPage.ClientRectangle.Contains(_mCloseRect))
             { base.OnSelecting(e); }
         }
         catch (Exception ex)
@@ -516,13 +516,13 @@ public class CustomTabControl : TabControl
 
         base.OnMouseClick(e);
     }
-    private void this_MouseClick(object sender, MouseEventArgs e)
+    private void this_MouseClick(object? sender, MouseEventArgs e)
     {
         Point mouse;
         try
         {
             mouse = e.Location;
-            if (sender.Equals(Parent))
+            if (sender != null && sender.Equals(Parent))
             {
                 mouse.Y = e.Location.Y - Location.Y;
                 mouse.X = e.Location.X - Location.X;
@@ -540,11 +540,11 @@ public class CustomTabControl : TabControl
 
     }
 
-    private void this_ParentChanged(object sender, EventArgs e)
+    private void this_ParentChanged(object? sender, EventArgs e)
     {
         try
         {
-            Parent.MouseClick += this_MouseClick;
+            Parent?.MouseClick += this_MouseClick;
         }
         catch (Exception ex)
         {
@@ -570,7 +570,7 @@ public class CustomTabControl : TabControl
 
     //bool FlagControl = false;
 
-    private void FlatTabControl_KeyDown(object sender, KeyEventArgs e)
+    private void FlatTabControl_KeyDown(object? sender, KeyEventArgs e)
     {
 
         if (e.KeyCode == Keys.Menu)
@@ -750,15 +750,12 @@ public class CustomTabControl : TabControl
 
         //bool bHotselected = false;
 
-        if (bSelected && !bHot)
+        status = bSelected switch
         {
-            status = DrawingMethods.TabHeaderStatus.Selected;
-        }
-        else if (bSelected && bHot)
-        {
-            status = DrawingMethods.TabHeaderStatus.HotSelected;
-            //bHotselected = true;
-        }
+            true when !bHot => DrawingMethods.TabHeaderStatus.Selected,
+            true when bHot => DrawingMethods.TabHeaderStatus.HotSelected,
+            _ => status
+        };
 
         //Selected tab has to be highter?
         if (!_allowSelectedTabHigh)
@@ -1230,7 +1227,6 @@ public class CustomTabControl : TabControl
     }
 
     //TabControl overrides dispose to clean up the component list.
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     protected override void Dispose(bool disposing)
     {
         if (disposing)
@@ -1283,7 +1279,6 @@ public class CustomTabControl : TabControl
     }
 
 
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     protected override void WndProc(ref Message m)
     {
         if (m.Msg == WIN32.WM_PARENTNOTIFY)
@@ -1541,13 +1536,13 @@ public class CustomTabControl : TabControl
         base.OnControlAdded(e);
     }
 
-    private void ToolstripItemEvent(object sender, EventArgs e)
+    private void ToolstripItemEvent(object? sender, EventArgs e)
     {
-        ToolStripMenuItem tsi = (ToolStripMenuItem)sender;
-        //tsi.Checked = true;
-        TabPage tp = (TabPage)tsi.Tag;
-        SelectedTab = tp;
-        Invalidate();
+        if (sender is ToolStripMenuItem { Tag: TabPage tp })
+        {
+            SelectedTab = tp;
+            Invalidate();
+        }
     }
 
     protected override void OnSelectedIndexChanged(EventArgs e)
@@ -1560,7 +1555,7 @@ public class CustomTabControl : TabControl
         base.OnControlRemoved(e);
     }
 
-    private void Scroller_ScrollLeft(Object sender, EventArgs e)
+    private void Scroller_ScrollLeft(object? sender, EventArgs e)
     {
         if (TabCount == 0)
         {
@@ -1574,7 +1569,7 @@ public class CustomTabControl : TabControl
     }
 
 
-    private void Scroller_ScrollRight(Object sender, EventArgs e)
+    private void Scroller_ScrollRight(object? sender, EventArgs e)
     {
         if (TabCount == 0)
         {
@@ -1593,7 +1588,7 @@ public class CustomTabControl : TabControl
     }
 
 
-    private void Scroller_TabClose(Object sender, EventArgs e)
+    private void Scroller_TabClose(object? sender, EventArgs e)
     {
         if (SelectedTab != null)
         {
@@ -1601,7 +1596,7 @@ public class CustomTabControl : TabControl
         }
     }
 
-    private void Scroller_ContextMenuButton(Object sender, EventArgs e)
+    private void Scroller_ContextMenuButton(object? sender, EventArgs e)
     {
         _scroller.ContextMenuStrip1.DropShadowEnabled = true;
 
@@ -1778,7 +1773,7 @@ public class CustomTabControl : TabControl
         public event EventHandler? ScrollRight;
         public event EventHandler? ContextualMenu;
 
-        private void TabScroller_Resize(object sender, EventArgs e)
+        private void TabScroller_Resize(object? sender, EventArgs e)
         {
             //LeftScroller.Width = this.Width / 3;
             //RightScroller.Width = this.Width / 3;
@@ -1786,7 +1781,7 @@ public class CustomTabControl : TabControl
         }
 
 
-        private void LeftScroller_Click(object sender, EventArgs e)
+        private void LeftScroller_Click(object? sender, EventArgs e)
         {
             if (ScrollLeft != null)
             {
@@ -1795,7 +1790,7 @@ public class CustomTabControl : TabControl
         }
 
 
-        private void RightScroller_Click(object sender, EventArgs e)
+        private void RightScroller_Click(object? sender, EventArgs e)
         {
             if (ScrollRight != null)
             {
@@ -1804,7 +1799,7 @@ public class CustomTabControl : TabControl
         }
 
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object? sender, EventArgs e)
         {
             if (TabClose != null)
             {
@@ -1812,7 +1807,7 @@ public class CustomTabControl : TabControl
             }
         }
 
-        private void ContextMenuButton_Click(object sender, EventArgs e)
+        private void ContextMenuButton_Click(object? sender, EventArgs e)
         {
             if (TabClose != null && ContextualMenu != null)
             {
@@ -1843,17 +1838,15 @@ public class CustomTabControl : TabControl
             public int x, y, cx, cy, flags;
         }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg is WM_DESTROY or WM_NCDESTROY)
             {
                 ReleaseHandle();
             }
-            else if (m.Msg == WM_WINDOWPOSCHANGING)
+            else if (m.Msg == WM_WINDOWPOSCHANGING && m.GetLParam(typeof(Windowpos)) is Windowpos wp)
             {
                 //Move the updown control off the edge so it's not visible
-                Windowpos wp = (Windowpos)m.GetLParam(typeof(Windowpos));
                 wp.x += wp.cx;
                 Marshal.StructureToPtr(wp, m.LParam, true);
                 _bounds = new Rectangle(wp.x, wp.y, wp.cx, wp.cy);

@@ -98,18 +98,20 @@ public static class ColourFormatting
             percent = (value - min) / (max - min);
         }
 
-        if (percent == 0.5)
+        return percent switch
         {
-            return par.MediumColour;
-        }
-        else if (percent <= 0.5)
-        {
-            return Color.FromArgb((int)Math.Round(par.MinimumColour.A + (par.MediumColour.A - par.MinimumColour.A) * percent), (int)Math.Round(par.MinimumColour.R + (par.MediumColour.R - par.MinimumColour.R) * percent), (int)Math.Round(par.MinimumColour.G + (par.MediumColour.G - par.MinimumColour.G) * percent), (int)Math.Round(par.MinimumColour.B + (par.MediumColour.B - par.MinimumColour.B) * percent));
-        }
-        else
-        {
-            return Color.FromArgb((int)Math.Round(par.MediumColour.A + (par.MaximumColour.A - par.MediumColour.A) * percent), (int)Math.Round(par.MediumColour.R + (par.MaximumColour.R - par.MediumColour.R) * percent), (int)Math.Round(par.MediumColour.G + (par.MaximumColour.G - par.MediumColour.G) * percent), (int)Math.Round(par.MediumColour.B + (par.MaximumColour.B - par.MediumColour.B) * percent));
-        }
+            0.5 => par.MediumColour,
+            <= 0.5 => Color.FromArgb(
+                (int)Math.Round(par.MinimumColour.A + (par.MediumColour.A - par.MinimumColour.A) * percent),
+                (int)Math.Round(par.MinimumColour.R + (par.MediumColour.R - par.MinimumColour.R) * percent),
+                (int)Math.Round(par.MinimumColour.G + (par.MediumColour.G - par.MinimumColour.G) * percent),
+                (int)Math.Round(par.MinimumColour.B + (par.MediumColour.B - par.MinimumColour.B) * percent)),
+            _ => Color.FromArgb(
+                (int)Math.Round(par.MediumColour.A + (par.MaximumColour.A - par.MediumColour.A) * percent),
+                (int)Math.Round(par.MediumColour.R + (par.MaximumColour.R - par.MediumColour.R) * percent),
+                (int)Math.Round(par.MediumColour.G + (par.MaximumColour.G - par.MediumColour.G) * percent),
+                (int)Math.Round(par.MediumColour.B + (par.MaximumColour.B - par.MediumColour.B) * percent))
+        };
     }
 
     private static ColourHelper.HSVColour ColourToHSV(Color colour)

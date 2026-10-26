@@ -45,7 +45,9 @@ public class NetSparkleException : Exception
     /// </summary>
     /// <param name="info">The serialized exception information</param>
     /// <param name="context">the context of the serialization operation for this exception</param>
+#pragma warning disable SYSLIB0051 // Binary serialization is obsolete; retained for [Serializable] compatibility.
     protected NetSparkleException(SerializationInfo info, StreamingContext context) : base(info, context)
+#pragma warning restore SYSLIB0051
     {
     }
 }

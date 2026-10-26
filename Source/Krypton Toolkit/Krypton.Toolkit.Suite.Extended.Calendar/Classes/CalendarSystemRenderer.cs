@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -159,27 +159,21 @@ public class CalendarSystemRenderer : CalendarRenderer
 
     public override void OnDrawDayTop(CalendarRendererDayEventArgs e)
     {
-        bool s = e.Day != null && e.Day.DayTop != null && e.Day.DayTop.Selected;
+        bool s = e.Day is { DayTop.Selected: true };
 
         using (Brush b = new SolidBrush(s ? ColourTable.DayTopSelectedBackground : ColourTable.DayTopBackground))
         {
-            if (e.Day != null && e.Day.DayTop != null)
+            if (e is { Day: { DayTop: not null }, Graphics: not null })
             {
-                if (e.Graphics != null)
-                {
-                    e.Graphics.FillRectangle(b, e.Day.DayTop.Bounds);
-                }
+                e.Graphics.FillRectangle(b, e.Day.DayTop.Bounds);
             }
         }
 
         using (Pen p = new Pen(s ? ColourTable.DayTopSelectedBorder : ColourTable.DayTopBorder))
         {
-            if (e.Day != null && e.Day.DayTop != null)
+            if (e is { Day: { DayTop: not null }, Graphics: not null })
             {
-                if (e.Graphics != null)
-                {
-                    e.Graphics.DrawRectangle(p, e.Day.DayTop.Bounds);
-                }
+                e.Graphics.DrawRectangle(p, e.Day.DayTop.Bounds);
             }
         }
 
@@ -192,12 +186,9 @@ public class CalendarSystemRenderer : CalendarRenderer
 
         using (Brush b = new SolidBrush(today ? ColourTable.TodayTopBackground : ColourTable.DayHeaderBackground))
         {
-            if (e.Day != null)
+            if (e is { Day: not null, Graphics: not null })
             {
-                if (e.Graphics != null)
-                {
-                    e.Graphics.FillRectangle(b, e.Day.HeaderBounds);
-                }
+                e.Graphics.FillRectangle(b, e.Day.HeaderBounds);
             }
         }
 
@@ -233,32 +224,24 @@ public class CalendarSystemRenderer : CalendarRenderer
 
         using (SolidBrush b = new SolidBrush(ColourTable.TimeUnitBackground))
         {
-            if (e.Unit != null && e.Unit.Selected)
+            b.Color = e.Unit switch
             {
-                b.Color = ColourTable.TimeUnitSelectedBackground;
-            }
-            else if (e.Unit != null && e.Unit.Highlighted)
-            {
-                b.Color = ColourTable.TimeUnitHighlightedBackground;
-            }
+                { Selected: true } => ColourTable.TimeUnitSelectedBackground,
+                { Highlighted: true } => ColourTable.TimeUnitHighlightedBackground,
+                _ => b.Color
+            };
 
-            if (e.Unit != null)
+            if (e is { Unit: not null, Graphics: not null })
             {
-                if (e.Graphics != null)
-                {
-                    e.Graphics.FillRectangle(b, e.Unit.Bounds);
-                }
+                e.Graphics.FillRectangle(b, e.Unit.Bounds);
             }
         }
 
-        using (Pen p = new Pen(e.Unit != null && e.Unit.Minutes == 0 ? ColourTable.TimeUnitBorderDark : ColourTable.TimeUnitBorderLight))
+        using (Pen p = new Pen(e.Unit is { Minutes: 0 } ? ColourTable.TimeUnitBorderDark : ColourTable.TimeUnitBorderLight))
         {
-            if (e.Unit != null)
+            if (e is { Unit: not null, Graphics: not null })
             {
-                if (e.Graphics != null)
-                {
-                    e.Graphics.DrawLine(p, e.Unit.Bounds.Location, new Point(e.Unit.Bounds.Right, e.Unit.Bounds.Top));
-                }
+                e.Graphics.DrawLine(p, e.Unit.Bounds.Location, new Point(e.Unit.Bounds.Right, e.Unit.Bounds.Top));
             }
         }
 
@@ -279,7 +262,7 @@ public class CalendarSystemRenderer : CalendarRenderer
         {
             CalendarTimeScaleUnit? unit = e.Calendar?.Days[0]!.TimeUnits[i];
 
-            if (unit != null && !unit.Visible)
+            if (unit is { Visible: false })
             {
                 continue;
             }
@@ -306,10 +289,8 @@ public class CalendarSystemRenderer : CalendarRenderer
         }
 
         if (e.Calendar!.DaysMode == CalendarDaysMode.Expanded
-            && e.Calendar?.Days != null
-            && e.Calendar?.Days.Length > 0
-            && e.Calendar?.Days[0]?.TimeUnits != null
-            && e.Calendar?.Days[0]?.TimeUnits.Length > 0
+            && e.Calendar?.Days is { Length: > 0 }
+            && e.Calendar?.Days[0]?.TimeUnits is { Length: > 0 }
            )
         {
             top = e.Calendar!.Days[0]!.BodyBounds.Top;
@@ -341,7 +322,7 @@ public class CalendarSystemRenderer : CalendarRenderer
 
         int alpha = 255;
 
-        if (e.Item != null && e.Item.IsDragging)
+        if (e.Item is { IsDragging: true })
         {
             alpha = 120;
         }
@@ -351,9 +332,9 @@ public class CalendarSystemRenderer : CalendarRenderer
         }
 
         Color colour1 = Color.White;
-        Color colour2 = e.Item != null && e.Item.Selected ? ColourTable.ItemSelectedBackground : ColourTable.ItemBackground;
+        Color colour2 = e.Item is { Selected: true } ? ColourTable.ItemSelectedBackground : ColourTable.ItemBackground;
 
-        if (e.Item != null && !e.Item.BackgroundColourLighter.IsEmpty)
+        if (e.Item is { BackgroundColourLighter.IsEmpty: false })
         {
             if (e.Item != null)
             {
@@ -361,7 +342,7 @@ public class CalendarSystemRenderer : CalendarRenderer
             }
         }
 
-        if (e.Item != null && !e.Item.BackgroundColour.IsEmpty)
+        if (e.Item is { BackgroundColour.IsEmpty: false })
         {
             if (e.Item != null)
             {
@@ -395,7 +376,7 @@ public class CalendarSystemRenderer : CalendarRenderer
     {
         base.OnDrawItemBorder(e);
 
-        Color a = e.Item != null && e.Item.BorderColour.IsEmpty ? ColourTable.ItemBorder : e.Item!.BorderColour;
+        Color a = e.Item is { BorderColour.IsEmpty: true } ? ColourTable.ItemBorder : e.Item!.BorderColour;
         Color b = e.Item.Selected && !e.Item.IsDragging ? ColourTable.ItemSelectedBorder : a;
         Color c = Color.FromArgb(e.Item.IsDragging ? 120 : 255, b);
 
@@ -425,14 +406,9 @@ public class CalendarSystemRenderer : CalendarRenderer
 
     public override void OnDrawItemText(CalendarRendererBoxEventArgs e)
     {
-        CalendarItemAlternative? item = e.Tag as CalendarItemAlternative;
-
-        if (item != null)
+        if (e.Tag is CalendarItemAlternative { IsDragging: true } item)
         {
-            if (item.IsDragging)
-            {
-                e.TextColour = Color.FromArgb(120, e.TextColour);
-            }
+            e.TextColour = Color.FromArgb(120, e.TextColour);
         }
 
         base.OnDrawItemText(e);
@@ -472,7 +448,7 @@ public class CalendarSystemRenderer : CalendarRenderer
                 ]);
             }
 
-            using (Brush b = new SolidBrush(e.Day != null && e.Day.OverflowEndSelected ? ColourTable.DayOverflowSelectedBackground : ColourTable.DayOverflowBackground))
+            using (Brush b = new SolidBrush(e.Day is { OverflowEndSelected: true } ? ColourTable.DayOverflowSelectedBackground : ColourTable.DayOverflowBackground))
             {
                 if (e.Graphics != null)
                 {

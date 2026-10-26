@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,9 +38,9 @@ public abstract class MasterDetailGridView<T> : MasterDetailGridViewBase where T
 
     internal abstract IDetailView<T> ChildView { get; }
 
-    private protected override void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+    private protected override void MasterDetailGridView_RowPostPaint(object? sender, DataGridViewRowPostPaintEventArgs e)
     {
-        var grid = (System.Windows.Forms.DataGridView)sender;
+        var grid = (System.Windows.Forms.DataGridView)sender!;
         bool found = true;
         if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
         {
@@ -94,7 +94,7 @@ public abstract class MasterDetailGridView<T> : MasterDetailGridViewBase where T
         }
     }
 
-    private protected override void MasterDetailGridView_SelectionChanged(object sender, EventArgs e)
+    private protected override void MasterDetailGridView_SelectionChanged(object? sender, EventArgs e)
     {
         if (RowCount == 0
             || CurrentRow == null
@@ -108,7 +108,7 @@ public abstract class MasterDetailGridView<T> : MasterDetailGridViewBase where T
             var s = string.Format(CultureInfo.InvariantCulture, FilterFormat, this[ForeignKey, CurrentRow.Index].Value);
             foreach (var cGrid in ChildView.ChildGrids)
             {
-                ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{s}";
+                if (cGrid.Key.DataSource is IBindingListView blv) { blv.Filter = $@"{cGrid.Value}{s}"; }
                 if (SelectionMode == DataGridViewSelectionMode.FullRowSelect)
                 {
                     cGrid.Key.ClearSelection();
@@ -129,7 +129,7 @@ public abstract class MasterDetailGridView<T> : MasterDetailGridViewBase where T
         var s = string.Format(CultureInfo.InvariantCulture, FilterFormat, this[ForeignKey, rowIndex].Value);
         foreach (var cGrid in ChildView.ChildGrids)
         {
-            var bindingListView = (IBindingListView)cGrid.Key.DataSource;
+            if (cGrid.Key.DataSource is not IBindingListView bindingListView) { continue; }
             //var filterBefore = bindingListView.Filter;
             bindingListView.Filter = $@"{cGrid.Value}{s}";
             //noDetails = (bindingListView.Count <= 0);

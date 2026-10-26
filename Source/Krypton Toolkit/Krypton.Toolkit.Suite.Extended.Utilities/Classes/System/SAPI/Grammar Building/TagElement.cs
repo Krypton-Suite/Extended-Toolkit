@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,8 +53,7 @@ internal sealed class TagElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        TagElement tagElement = obj as TagElement;
-        if (tagElement == null)
+        if (obj is not TagElement tagElement)
         {
             return false;
         }
@@ -79,8 +78,7 @@ internal sealed class TagElement : BuilderElements
 
     internal override IElement CreateElement(IElementFactory elementFactory, IElement parent, IRule rule, IdentifierCollection ruleIds)
     {
-        IItem item = parent as IItem;
-        if (item != null)
+        if (parent is IItem item)
         {
             CreateChildrenElements(elementFactory, item, rule, ruleIds);
         }

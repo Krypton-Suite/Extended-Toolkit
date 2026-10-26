@@ -187,13 +187,18 @@ public class Heatmap : IPlottable, IHasColorAxis
             Update(); // automatically generate the bitmap on first render if it was not generated manually
         }
 
-        using SKPaint paint = new()
-        {
-            FilterQuality = Smooth ? SKFilterQuality.High : SKFilterQuality.None
-        };
+        using SKPaint paint = new();
 
         SKRect rect = Axes.GetPixelRect(AlignedExtent).ToSkRect();
 
-        rp.Canvas.DrawBitmap(_bitmap, rect, paint);
+        if (Smooth)
+        {
+            using SKImage image = SKImage.FromBitmap(_bitmap!);
+            rp.Canvas.DrawImage(image, rect, new SKSamplingOptions(SKCubicResampler.Mitchell), paint);
+        }
+        else
+        {
+            rp.Canvas.DrawBitmap(_bitmap, rect, paint);
+        }
     }
 }

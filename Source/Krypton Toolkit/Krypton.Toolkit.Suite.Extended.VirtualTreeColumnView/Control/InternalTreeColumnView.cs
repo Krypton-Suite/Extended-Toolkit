@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -95,6 +95,7 @@ public partial class InternalTreeColumnView : UserControl
     /// <summary>
     /// Gets and sets if the mouse is currently over the combo box.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool MouseOver
     {
         get => _mouseOver;
@@ -320,7 +321,7 @@ public partial class InternalTreeColumnView : UserControl
 
     internal string SelectedImageKey { get; set; } = string.Empty;
 
-    internal VirtualTreeRowNode SelectedNode
+    internal VirtualTreeRowNode? SelectedNode
     {
         get => _selectedNodeSet.FirstOrDefault();
         set
@@ -359,8 +360,13 @@ public partial class InternalTreeColumnView : UserControl
 
     internal bool Sorted { get; set; }
 
-    internal void AddSelected(VirtualTreeRowNode selected)
+    internal void AddSelected(VirtualTreeRowNode? selected)
     {
+        if (selected is null)
+        {
+            return;
+        }
+
         selected.RowNodeState |= RowNodeState.Selected;
         _selectedNodeSet.Add(selected);
     }
@@ -499,7 +505,7 @@ public partial class InternalTreeColumnView : UserControl
     }
 
 
-    internal VirtualTreeRowNode GetRowNodeAt(int x, int y)
+    internal VirtualTreeRowNode? GetRowNodeAt(int x, int y)
     {
         var hdrHeight = 0;
         if (_kryptonVirtualTreeColumnView.Header.Visible)
@@ -1189,7 +1195,7 @@ public partial class InternalTreeColumnView : UserControl
             // Do we draw any plus/minus images in indent bounds?
             if (ShowPlusMinus && rowNode.Children.Count > 0)
             {
-                Image drawImage =
+                Image? drawImage =
                     _kryptonVirtualTreeColumnView._redirectImages.GetTreeViewImage(rowNode.RowNodeState.HasFlag(RowNodeState.Expanded));
                 if (drawImage != null)
                 {
@@ -1204,7 +1210,7 @@ public partial class InternalTreeColumnView : UserControl
         // Do we draw an image for the node?
         if (ImageList != null)
         {
-            Image drawImage = null;
+            Image? drawImage = null;
             var imageCount = ImageList.Images.Count;
 
             try

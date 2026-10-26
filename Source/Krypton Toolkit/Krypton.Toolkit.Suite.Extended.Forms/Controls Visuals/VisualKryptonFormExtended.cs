@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -108,7 +108,9 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     private bool _firstCheckView;
     private bool _lastNotNormal;
     private bool _useDropShadow;
+#pragma warning disable CS0169
     private bool _useWindows11StyleCornerRounding;
+#pragma warning restore CS0169
     private StatusStrip? _statusStrip;
     private Bitmap? _cacheBitmap;
     private Icon? _cacheIcon;
@@ -147,7 +149,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         _buttonSpecsFixed.AddRange([ButtonSpecMin, ButtonSpecMax, ButtonSpecClose]);
 
         // Create the palette storage
-        StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate, null);
+        StateCommon = new PaletteFormRedirect(Redirector, NeedPaintDelegate, null!);
         StateInactive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
         StateActive = new PaletteForm(StateCommon, StateCommon.Header, NeedPaintDelegate);
 
@@ -284,7 +286,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             if (_allowFormChrome != value)
             {
                 _allowFormChrome = value;
-                if (StateCommon!.Border is PaletteFormBorderExtended formBorder)
+                if (StateCommon.Border is PaletteFormBorderExtended formBorder)
                 {
                     formBorder.UseThemeFormChromeBorderWidth = value;
                 }
@@ -539,7 +541,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                 // Just add to the docking edge requested
                 if (_drawHeading != null)
                 {
-                    _drawHeading.Add(element!, style);
+                    _drawHeading.Add(element, style);
                 }
             }
         }
@@ -574,7 +576,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             else
             {
                 // Just remove the specified elements
-                _drawHeading.Remove(element!);
+                _drawHeading.Remove(element);
             }
         }
     }
@@ -785,6 +787,36 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     /// <returns>Title string.</returns>
     public string GetLongText() => _textExtra;
 
+    public Image? GetOverlayImage(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Color GetOverlayImageTransparentColor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImagePosition GetOverlayImagePosition(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OverlayImageScaleMode GetOverlayImageScaleMode(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public float GetOverlayImageScaleFactor(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Size GetOverlayImageFixedSize(PaletteState state)
+    {
+        throw new NotImplementedException();
+    }
+
     #endregion
 
     #region Protected Override
@@ -951,7 +983,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     /// </summary>
     /// <param name="sender">Source of the event.</param>
     /// <param name="e">An EventArgs containing the event data.</param>
-    protected override void OnAllowFormChromeChanged(object sender, EventArgs e) =>
+    protected override void OnAllowFormChromeChanged(object? sender, EventArgs e) =>
         // Test if we need to change the custom chrome usage
         UpdateUseThemeFormChromeBorderWidthDecision();
 
@@ -1001,7 +1033,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     protected override IntPtr WindowChromeHitTest(Point pt, bool composition)
     {
         Point originalPt = pt;
-        if (CustomCaptionArea != null && CustomCaptionArea.Contains(pt))
+        if (!CustomCaptionArea.IsEmpty && CustomCaptionArea.Contains(pt))
         {
             return (IntPtr)PlatformInvoke.HT.CAPTION;
         }
@@ -1014,7 +1046,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                 || _buttonManager.GetButtonRectangle(ButtonSpecClose).Contains(pt))
             {
                 // Get the mouse controller for this button
-                ViewBase? viewBase = ViewManager.Root!.ViewFromPoint(pt);
+                ViewBase? viewBase = ViewManager.Root.ViewFromPoint(pt);
                 IMouseController? controller = viewBase!.FindMouseController();
 
                 // Ensure the button shows as 'normal' state when mouse not over and pressed
@@ -1031,7 +1063,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             return (IntPtr)PlatformInvoke.HT.CLIENT;
         }
 
-        using (ViewLayoutContext context = new(this, Renderer))
+        using (ViewLayoutContext context = new(this, Renderer!))
         {
             // Discover if the form icon is being Displayed
             if (_drawContent.IsImageDisplayed(context))
@@ -1066,7 +1098,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
 
         // Get the elements that contains the mouse point
-        ViewBase? mouseView = ViewManager.Root!.ViewFromPoint(pt);
+        ViewBase? mouseView = ViewManager.Root.ViewFromPoint(pt);
 
         // Scan up the view hierarchy until a recognized element is found
         while (mouseView != null)
@@ -1157,7 +1189,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
     /// <returns>True if the message was processed; otherwise false.</returns>
     protected override bool OnWM_NCLBUTTONDOWN(ref Message m)
     {
-        using ViewLayoutContext context = new(this, Renderer);
+        using ViewLayoutContext context = new(this, Renderer!);
         // Discover if the form icon is being Displayed
         if (_drawContent.IsImageDisplayed(context))
         {
@@ -1192,7 +1224,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         var ret = base.WindowChromeLeftMouseDown(windowPoint);
 
         // Has pressing down made a view active and indicated it also wants to capture mouse?
-        if (ViewManager.ActiveView != null && ViewManager.MouseCaptured)
+        if (ViewManager is { ActiveView: not null, MouseCaptured: true })
         {
             StartCapture(ViewManager.ActiveView);
             ret = true;
@@ -1360,7 +1392,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                     var notNormal = false;
                     foreach (ButtonSpecView bsv in _buttonManager.ButtonSpecViews)
                     {
-                        switch (bsv.ViewButton!.State)
+                        switch (bsv.ViewButton.State)
                         {
                             case PaletteState.Tracking:
                             case PaletteState.Pressed:
@@ -1382,7 +1414,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                    )
                 {
                     // Ask the view to perform a layout
-                    using (var context = new ViewLayoutContext(ViewManager, this, RealWindowRectangle, Renderer))
+                    using (var context = new ViewLayoutContext(ViewManager, this, RealWindowRectangle, Renderer!))
                     {
                         ViewManager.Layout(context);
                     }
@@ -1401,7 +1433,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                         _regionWindowState = WindowState;
 
                         // Get the path for the border so we can shape the form using it
-                        using RenderContext context = new(this, null, Bounds, Renderer);
+                        using RenderContext context = new(this, null, Bounds, Renderer!);
                         using GraphicsPath? path = _drawDocker.GetOuterBorderPath(context);
                         if (!_firstCheckView)
                         {
@@ -1444,7 +1476,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             _drawHeading.DrawCanvas = true;
 
             // Perform actual painting of the view
-            ViewManager.Paint(Renderer, new PaintEventArgs(g, rect));
+            ViewManager.Paint(Renderer!, new PaintEventArgs(g, rect));
         }
     }
 
@@ -1483,7 +1515,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
 
         // Cache the current region setting
-        Region oldRegion = Region;
+        Region? oldRegion = Region;
 
         // Use the new region
         Region = newRegion;
@@ -1499,7 +1531,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
             // Decide if we should have custom chrome applied
             var needChrome = UseThemeFormChromeBorderWidth &&
                              KryptonManager.UseThemeFormChromeBorderWidth &&
-                             GetResolvedPalette().UseThemeFormChromeBorderWidth == InheritBool.True;
+                             GetResolvedPalette()!.UseThemeFormChromeBorderWidth == InheritBool.True;
 
             // Is there a change in custom chrome requirement?
             if (UseThemeFormChromeBorderWidth != needChrome
@@ -1545,7 +1577,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
     }
 
-    private void OnShowToolTip(object sender, ToolTipEventArgs e)
+    private void OnShowToolTip(object? sender, ToolTipEventArgs e)
     {
         if (!IsDisposed)
         {
@@ -1593,7 +1625,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                     // Create the actual tooltip popup object
                     _visualPopupToolTip = new VisualPopupToolTip(Redirector,
                         sourceContent,
-                        Renderer,
+                        Renderer!,
                         PaletteBackStyle.ControlToolTip,
                         PaletteBorderStyle.ControlToolTip,
                         CommonHelper.ContentStyleFromLabelStyle(toolTipStyle),
@@ -1608,14 +1640,14 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
     }
 
-    private void OnCancelToolTip(object sender, EventArgs e) =>
+    private void OnCancelToolTip(object? sender, EventArgs e) =>
         // Remove any currently showing tooltip
         _visualPopupToolTip?.Dispose();
 
-    private void OnVisualPopupToolTipDisposed(object sender, EventArgs e)
+    private void OnVisualPopupToolTipDisposed(object? sender, EventArgs e)
     {
         // Unhook events from the specific instance that generated event
-        VisualPopupToolTip popupToolTip = (VisualPopupToolTip)sender;
+        VisualPopupToolTip popupToolTip = (VisualPopupToolTip)sender!;
         popupToolTip.Disposed -= OnVisualPopupToolTipDisposed;
 
         // Not showing a popup page any more
@@ -1636,7 +1668,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
                 bs == ButtonSpecClose)
             {
                 // Translate the button rectangle into the non client area
-                Rectangle buttonRect = bsView.ViewButton!.ClientRectangle;
+                Rectangle buttonRect = bsView.ViewButton.ClientRectangle;
                 Padding borders = RealWindowBorders;
                 buttonRect.X -= borders.Left;
                 buttonRect.Y -= borders.Top;
@@ -1650,7 +1682,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         OnNeedPaint(sender, e);
     }
 
-    private void OnStatusDockChanged(object sender, EventArgs e)
+    private void OnStatusDockChanged(object? sender, EventArgs e)
     {
         if (StatusStripMerging)
         {
@@ -1658,7 +1690,7 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
     }
 
-    private void OnStatusVisibleChanged(object sender, EventArgs e)
+    private void OnStatusVisibleChanged(object? sender, EventArgs e)
     {
         if (StatusStripMerging)
         {
@@ -1666,9 +1698,9 @@ public abstract class VisualKryptonFormExtended : VisualForm, IContentValues
         }
     }
 
-    private void OnGlobalUseThemeFormChromeBorderWidthChanged(object sender, EventArgs e) => UpdateUseThemeFormChromeBorderWidthDecision();
+    private void OnGlobalUseThemeFormChromeBorderWidthChanged(object? sender, EventArgs e) => UpdateUseThemeFormChromeBorderWidthDecision();
 
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         // We only care if we are using the global palette
         if (PaletteMode == PaletteMode.Global)
