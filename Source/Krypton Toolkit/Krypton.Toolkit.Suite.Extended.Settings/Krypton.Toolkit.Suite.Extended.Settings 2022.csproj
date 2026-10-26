@@ -73,13 +73,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.299-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.9.264-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.10.299-beta" />
 					</ItemGroup>
 				</When>
 
@@ -197,6 +197,10 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>ToolkitSettingsResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.3.26522.148" />
 	</ItemGroup>
 
 	<!--Optimisation-->
