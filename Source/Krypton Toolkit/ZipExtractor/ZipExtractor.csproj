@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net481;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net481;net10.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>		
@@ -18,13 +18,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.300-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.9.264-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.10.299-beta" />
 					</ItemGroup>
 				</When>
 
@@ -91,6 +91,9 @@
 		<PackageReference Include="NSec.Cryptography">
 			<Version>25.4.0</Version>
 		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.3.26522.148" />
 	</ItemGroup>
 
 </Project>
