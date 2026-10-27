@@ -85,7 +85,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.299-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.300-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -114,8 +114,8 @@
 	<!-- SkiaSharp must remain a PackageReference so native assets are installed correctly. -->
 	<ItemGroup>
 		<PackageReference Include="Handlebars.Net" Version="2.4.3" />
-		<PackageReference Include="SkiaSharp" Version="4.150.1" />
-		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.150.1" />
+		<PackageReference Include="SkiaSharp" Version="4.153.1" />
+		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.153.1" />
 	</ItemGroup>
 
 	<!-- All Extended Toolkit Project References -->
