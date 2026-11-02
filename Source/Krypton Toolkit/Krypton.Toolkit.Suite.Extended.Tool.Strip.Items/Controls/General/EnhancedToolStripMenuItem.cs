@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -96,7 +96,7 @@ public class EnhancedToolStripMenuItem : ToolStripMenuItem
                 {
                     EnhancedToolStripMenuItem menuItem = (EnhancedToolStripMenuItem)items;
 
-                    if (menuItem.DisplayStyle == CheckMarkDisplayStyle.RadioButton && menuItem.CheckOnClick && menuItem.RadioButtonGroupName == RadioButtonGroupName)
+                    if (menuItem is { DisplayStyle: CheckMarkDisplayStyle.RadioButton, CheckOnClick: true } && menuItem.RadioButtonGroupName == RadioButtonGroupName)
                     {
                         menuItem.Checked = false;
                     }

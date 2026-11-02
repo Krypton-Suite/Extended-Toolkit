@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,6 +51,7 @@ public class KryptonUACButtonVersion2 : KryptonButton
     #endregion
 
     #region Properties
+    [DefaultValue(false)]
     public bool UseAsUACElevatedButton
     {
         get => _useAsUACElevatedButton;
@@ -65,10 +66,13 @@ public class KryptonUACButtonVersion2 : KryptonButton
         }
     }
 
+    [DefaultValue("")]
     public string PathToElevatedObject { get => _pathToElevatedObject; set => _pathToElevatedObject = value; }
 
+    [DefaultValue("")]
     public string ExtraArguments { get => _extraArguments; set => _extraArguments = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Size CustomShieldSize { get => _customShieldSize; set { _customShieldSize = value; ShowUACShield(_useAsUACElevatedButton, UACShieldSize.Custom, value.Height, value.Width); UACShieldSize = UACShieldSize.Custom; } }
 
     [DefaultValue(typeof(UACShieldSize), "UACShieldSize.SMALL")]
@@ -113,7 +117,8 @@ public class KryptonUACButtonVersion2 : KryptonButton
 
             if (shieldSize == UACShieldSize.Small)
             {
-                Values.Image = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                Icon? shieldIcon = GraphicsExtensions.LoadIcon(IconType.Shield, SystemInformation.SmallIconSize);
+                Values.Image = shieldIcon?.ToBitmap();
 
                 Invalidate();
             }
@@ -150,7 +155,7 @@ public class KryptonUACButtonVersion2 : KryptonButton
     #endregion
 
     #region Overrides
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         //if (_useAsUACElevatedButton)
         //{

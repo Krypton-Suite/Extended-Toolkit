@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,24 +67,28 @@ public class KryptonTrackBarToolStripMenuItem : ToolStripControlHostFixed
     /// Subscribes events from the hosted control.
     /// </summary>
     /// <param name="control">The control from which to subscribe events.</param>
-    protected override void OnSubscribeControlEvents(Control control)
+    protected override void OnSubscribeControlEvents(Control? control)
     {
         base.OnSubscribeControlEvents(control);
 
-        //Add your code here to subsribe to Control Events
-        ((KryptonTrackBar)control).ValueChanged += OnValueChanged;
+        if (control is KryptonTrackBar trackBar)
+        {
+            trackBar.ValueChanged += OnValueChanged;
+        }
     }
 
     /// <summary>
     /// Unsubscribes events from the hosted control.
     /// </summary>
     /// <param name="control">The control from which to unsubscribe events.</param>
-    protected override void OnUnsubscribeControlEvents(Control control)
+    protected override void OnUnsubscribeControlEvents(Control? control)
     {
         base.OnUnsubscribeControlEvents(control);
 
-        //Add your code here to unsubscribe from control events.
-        ((KryptonTrackBar)control).ValueChanged -= OnValueChanged;
+        if (control is KryptonTrackBar trackBar)
+        {
+            trackBar.ValueChanged -= OnValueChanged;
+        }
     }
 
     #region ... exposed properties ...
@@ -151,7 +155,7 @@ public class KryptonTrackBarToolStripMenuItem : ToolStripControlHostFixed
 
     #region ... exposed events ...
     public event EventHandler? ValueChanged;
-    protected void OnValueChanged(object sender, EventArgs e) => ValueChanged?.Invoke(this, e);
+    protected void OnValueChanged(object? sender, EventArgs e) => ValueChanged?.Invoke(this, e);
 
     #endregion
 }

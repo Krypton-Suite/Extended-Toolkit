@@ -95,7 +95,7 @@ internal static class FlashWindowExListener
         {
             try
             {
-                if (_forms.TryGetValue(wParam, out Form f))
+                if (_forms.TryGetValue(wParam, out Form? f) && f is not null)
                 {
                     FlashEvent(f, (int)lParam == 1);
                 }

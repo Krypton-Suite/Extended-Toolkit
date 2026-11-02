@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ internal class BlurManager
         _parentForm = kryptonForm;
         _blurValues = blurValues;
 
-        _parentForm.Closing += KryptonFormOnClosing;
+        _parentForm.FormClosing += KryptonFormOnClosing;
         _detectIsActiveTimer = new Timer { Enabled = false, Interval = 200 };
         _detectIsActiveTimer.Tick += DetectIsTopMost;
 
@@ -80,12 +80,11 @@ internal class BlurManager
 
     #endregion Identity
 
-    private void KryptonFormOnClosing(object sender, /*Cancel*/EventArgs e) => RemoveBlur();
+    private void KryptonFormOnClosing(object? sender, /*Cancel*/EventArgs e) => RemoveBlur();
 
     private void RemoveBlur()
     {
-        if (!_parentForm.IsDisposed
-            && !_parentForm.Disposing
+        if (_parentForm is { IsDisposed: false, Disposing: false }
             && _parentBeforeOpacity.HasValue
            )
         {
@@ -153,7 +152,7 @@ internal class BlurManager
         }
     }
 
-    private void BlurValuesOnOpacityChanged(object sender, EventArgs e)
+    private void BlurValuesOnOpacityChanged(object? sender, EventArgs e)
     {
         if (_visualBlur != null)
         {
@@ -162,7 +161,7 @@ internal class BlurManager
         }
     }
 
-    private void BlurValues_EnableBlurChanged(object sender, EventArgs e)
+    private void BlurValues_EnableBlurChanged(object? sender, EventArgs e)
     {
         if (!_blurValues.BlurWhenFocusLost)
         {
@@ -170,7 +169,7 @@ internal class BlurManager
         }
     }
 
-    private void DetectIsTopMost(object sender, EventArgs e)
+    private void DetectIsTopMost(object? sender, EventArgs e)
     {
         if (_visualBlur != null
             && IsOverlapped()

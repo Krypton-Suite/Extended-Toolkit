@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,16 +30,16 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars;
 internal class MenuStripPanelCollectionEditor : UITypeEditor
 {
     #region Overrides
-    public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
+    public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext? context)
     {
         return base.GetEditStyle(context);
     }
 
-    public override object? EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+    public override object? EditValue(ITypeDescriptorContext? context, IServiceProvider provider, object? value)
     {
         IWindowsFormsEditorService? service = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
 
-        FloatableMenuStrip? floatableMenuStrip = context.Instance as FloatableMenuStrip;
+        FloatableMenuStrip? floatableMenuStrip = context?.Instance as FloatableMenuStrip;
 
         if (floatableMenuStrip != null)
         {

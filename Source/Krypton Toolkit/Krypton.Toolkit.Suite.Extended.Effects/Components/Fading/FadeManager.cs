@@ -1,9 +1,9 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,15 +33,19 @@ public class FadeManager : Component
     #region Variables
     private float _fadeSpeed;
 
-    private KryptonForm _windowToFade, _parentWindow;
+    private KryptonForm? _windowToFade;
+    private KryptonForm? _parentWindow;
     #endregion
 
     #region Properties
+    [DefaultValue(0f)]
     public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
 
-    public KryptonForm WindowToFade { get => _windowToFade; set => _windowToFade = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public KryptonForm? WindowToFade { get => _windowToFade; set => _windowToFade = value; }
 
-    public KryptonForm ParentWindow { get => _parentWindow; set => _parentWindow = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public KryptonForm? ParentWindow { get => _parentWindow; set => _parentWindow = value; }
     #endregion
 
     #region Custom Events
@@ -71,6 +75,6 @@ public class FadeManager : Component
     public void FadeOutAndClose() => FadeController.FadeOutAndClose(_windowToFade, _fadeSpeed);
 
     /// <summary>Fades the dialog.</summary>
-    public void FadeDialog() => FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
+    public void FadeDialog() => _ = FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
     #endregion
 }

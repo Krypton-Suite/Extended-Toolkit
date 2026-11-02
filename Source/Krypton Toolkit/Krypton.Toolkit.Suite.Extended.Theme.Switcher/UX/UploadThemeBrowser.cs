@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ public class UploadThemeBrowser : KryptonForm
     }
     #endregion
 
-    private void UploadThemeBrowser_Load(object sender, EventArgs e)
+    private void UploadThemeBrowser_Load(object? sender, EventArgs e)
     {
         DebugUtilities.NotImplemented(@"This feature has not been implemented yet.");
 

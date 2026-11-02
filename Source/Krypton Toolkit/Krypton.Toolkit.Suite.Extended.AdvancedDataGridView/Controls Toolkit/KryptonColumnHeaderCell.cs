@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,14 +70,15 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
 {
     #region Instance Fields
 
-    private Image _filterImage = Properties.Resources.ColumnHeader_UnFiltered;
     private Size _filterButtonImageSize = new Size(16, 16);
-    private bool _filterButtonPressed = false;
-    private bool _filterButtonOver = false;
+    private bool _filterButtonPressed;
+    private bool _filterButtonOver;
     private Rectangle _filterButtonOffsetBounds = Rectangle.Empty;
     private Rectangle _filterButtonImageBounds = Rectangle.Empty;
     private Padding _filterButtonMargin = new Padding(3, 4, 3, 4);
-    private bool _filterEnabled = false;
+    private bool _filterEnabled;
+    private Font? _glyphFont;
+    private float _glyphFontSize;
 
     /// <summary>
     /// Get the MenuStrip for this ColumnHeaderCell
@@ -93,6 +94,13 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// Default behaviour for Date and Time filter
     /// </summary>
     private const bool FILTER_DATE_AND_TIME_DEFAULT_ENABLED = false;
+
+    private const string GlyphUnfiltered = "▾";
+    private const string GlyphFiltered = "∇";
+    private const string GlyphSortAsc = "▲";
+    private const string GlyphSortDesc = "▼";
+    private const string GlyphSaved = "★";
+    private const int FilterButtonBaseSize = 16;
 
     #endregion
 
@@ -124,11 +132,9 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
 
         _filterEnabled = filterEnabled;
 
-        KryptonColumnHeaderCell? oldCellt = oldCell as KryptonColumnHeaderCell;
-        if (oldCellt != null && oldCellt.MenuStrip != null)
+        if (oldCell is KryptonColumnHeaderCell { MenuStrip: not null } oldCellt)
         {
             MenuStrip = oldCellt.MenuStrip;
-            _filterImage = oldCellt._filterImage;
             _filterButtonPressed = oldCellt._filterButtonPressed;
             _filterButtonOver = oldCellt._filterButtonOver;
             _filterButtonOffsetBounds = oldCellt._filterButtonOffsetBounds;
@@ -138,7 +144,10 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         }
         else
         {
-            MenuStrip = new MenuStrip(oldCell.OwningColumn.ValueType);
+            // OwningColumn may be null if the header cell is not attached to a column yet.
+            // Guard against null and use object as a fallback type.
+            Type dataType = oldCell.OwningColumn?.ValueType ?? typeof(object);
+            MenuStrip = new MenuStrip(dataType);
             MenuStrip.FilterChanged += new EventHandler(MenuStrip_FilterChanged);
             MenuStrip.SortChanged += new EventHandler(MenuStrip_SortChanged);
         }
@@ -156,6 +165,8 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
             MenuStrip.FilterChanged -= MenuStrip_FilterChanged;
             MenuStrip.SortChanged -= MenuStrip_SortChanged;
         }
+
+        _glyphFont?.Dispose();
     }
 
     #endregion
@@ -195,6 +206,8 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
                     RepaintCell();
                 }
             }
+
+            PrepareFilterButtonLayout();
         }
     }
 
@@ -205,7 +218,6 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     public void SetLoadedMode(bool enabled)
     {
         MenuStrip.SetLoadedMode(enabled);
-        RefreshImage();
         RepaintCell();
     }
 
@@ -217,7 +229,6 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         if (MenuStrip != null && FilterAndSortEnabled)
         {
             MenuStrip.CleanSort();
-            RefreshImage();
             RepaintCell();
         }
     }
@@ -230,7 +241,6 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
         if (MenuStrip != null && FilterAndSortEnabled)
         {
             MenuStrip.CleanFilter();
-            RefreshImage();
             RepaintCell();
         }
     }
@@ -341,9 +351,15 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// <summary>
     /// Get the Minimum size
     /// </summary>
-    public Size MinimumSize =>
-        new(_filterButtonImageSize.Width + _filterButtonMargin.Left + _filterButtonMargin.Right,
-            _filterButtonImageSize.Height + _filterButtonMargin.Bottom + _filterButtonMargin.Top);
+    public Size MinimumSize
+    {
+        get
+        {
+            UpdateScaledMetrics();
+            return new(_filterButtonImageSize.Width + _filterButtonMargin.Left + _filterButtonMargin.Right,
+                _filterButtonImageSize.Height + _filterButtonMargin.Bottom + _filterButtonMargin.Top);
+        }
+    }
 
     /// <summary>
     /// Get or Set the Sort enabled status
@@ -532,9 +548,8 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void MenuStrip_FilterChanged(object sender, EventArgs e)
+    private void MenuStrip_FilterChanged(object? sender, EventArgs e)
     {
-        RefreshImage();
         RepaintCell();
         if (FilterAndSortEnabled && FilterChanged != null)
         {
@@ -547,9 +562,8 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void MenuStrip_SortChanged(object sender, EventArgs e)
+    private void MenuStrip_SortChanged(object? sender, EventArgs e)
     {
-        RefreshImage();
         RepaintCell();
         if (FilterAndSortEnabled && SortChanged != null)
         {
@@ -564,6 +578,8 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     {
         MenuStrip.FilterChanged -= MenuStrip_FilterChanged;
         MenuStrip.SortChanged -= MenuStrip_SortChanged;
+        _glyphFont?.Dispose();
+        _glyphFont = null;
     }
 
 
@@ -584,72 +600,71 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     }
 
     /// <summary>
-    /// Refrash the Cell image
+    /// Draw the filter/sort dropdown after Krypton has painted the header.
     /// </summary>
-    private void RefreshImage()
+    internal void PaintFilterButton(Graphics graphics, Rectangle cellBounds, Rectangle clipBounds)
     {
-        if (ActiveFilterType == MenuStrip.FilterType.Loaded)
+        if (SortGlyphDirection != SortOrder.None)
         {
-            _filterImage = Properties.Resources.ColumnHeader_SavedFilters;
+            SortGlyphDirection = SortOrder.None;
         }
-        else
+
+        if (!CanShowFilterButton)
         {
-            if (ActiveFilterType == MenuStrip.FilterType.None)
-            {
-                if (ActiveSortType == MenuStrip.SortType.None)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_UnFiltered;
-                }
-                else if (ActiveSortType == MenuStrip.SortType.Asc)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_OrderedASC;
-                }
-                else
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_OrderedDESC;
-                }
-            }
-            else
-            {
-                if (ActiveSortType == MenuStrip.SortType.None)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_Filtered;
-                }
-                else if (ActiveSortType == MenuStrip.SortType.Asc)
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_FilteredAndOrderedASC;
-                }
-                else
-                {
-                    _filterImage = Properties.Resources.ColumnHeader_FilteredAndOrderedDESC;
-                }
-            }
+            return;
         }
+
+        UpdateFilterButtonBounds(cellBounds);
+
+        Rectangle buttonBounds = _filterButtonOffsetBounds;
+        if (!clipBounds.IntersectsWith(buttonBounds) && !cellBounds.IntersectsWith(buttonBounds))
+        {
+            return;
+        }
+
+        GetFilterButtonColors(out Color backColor, out Color borderColor, out Color glyphColor, out Color headerBackColor);
+
+        // Cover header text that would otherwise sit under the button.
+        Rectangle eraseBounds = buttonBounds;
+        eraseBounds.Inflate(_filterButtonMargin.Right, 0);
+        eraseBounds.Intersect(cellBounds);
+        using (var headerBrush = new SolidBrush(headerBackColor))
+        {
+            graphics.FillRectangle(headerBrush, eraseBounds);
+        }
+
+        ControlPaint.DrawBorder(graphics, buttonBounds, borderColor, ButtonBorderStyle.Solid);
+        Rectangle faceBounds = buttonBounds;
+        faceBounds.Inflate(-1, -1);
+        using (var faceBrush = new SolidBrush(backColor))
+        {
+            graphics.FillRectangle(faceBrush, faceBounds);
+        }
+
+        string glyph = FilterGlyph;
+        float fontSize = Math.Max(8f, faceBounds.Height * (glyph.Length > 1 ? 0.52f : 0.68f));
+        Font glyphFont = GetGlyphFont(fontSize);
+        TextRenderer.DrawText(
+            graphics,
+            glyph,
+            glyphFont,
+            faceBounds,
+            glyphColor,
+            TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding | TextFormatFlags.SingleLine | TextFormatFlags.NoPrefix);
     }
 
     /// <summary>
     /// Pain method
     /// </summary>
-    /// <param name="graphics"></param>
-    /// <param name="clipBounds"></param>
-    /// <param name="cellBounds"></param>
-    /// <param name="rowIndex"></param>
-    /// <param name="cellState"></param>
-    /// <param name="value"></param>
-    /// <param name="formattedValue"></param>
-    /// <param name="errorText"></param>
-    /// <param name="cellStyle"></param>
-    /// <param name="advancedBorderStyle"></param>
-    /// <param name="paintParts"></param>
     protected override void Paint(
         Graphics graphics,
         Rectangle clipBounds,
         Rectangle cellBounds,
         int rowIndex,
         DataGridViewElementStates cellState,
-        object value,
-        object formattedValue,
-        string errorText,
+        object? value,
+        object? formattedValue,
+        string? errorText,
         DataGridViewCellStyle cellStyle,
         DataGridViewAdvancedBorderStyle advancedBorderStyle,
         DataGridViewPaintParts paintParts)
@@ -663,42 +678,212 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
             cellState, value, formattedValue,
             errorText, cellStyle, advancedBorderStyle, paintParts);
 
-        // Don't display a dropdown for Image columns
-        if (OwningColumn.ValueType == typeof(Bitmap))
+        if (paintParts.HasFlag(DataGridViewPaintParts.ContentBackground))
         {
-            return;
-        }
-
-        if (FilterAndSortEnabled && paintParts.HasFlag(DataGridViewPaintParts.ContentBackground))
-        {
-            _filterButtonOffsetBounds = GetFilterBounds(true);
-            _filterButtonImageBounds = GetFilterBounds(false);
-            Rectangle buttonBounds = _filterButtonOffsetBounds;
-            if (clipBounds.IntersectsWith(buttonBounds))
-            {
-                ControlPaint.DrawBorder(graphics, buttonBounds, Color.Gray, ButtonBorderStyle.Solid);
-                buttonBounds.Inflate(-1, -1);
-                using (Brush b = new SolidBrush(_filterButtonOver ? Color.WhiteSmoke : Color.White))
-                    graphics.FillRectangle(b, buttonBounds);
-                graphics.DrawImage(_filterImage, buttonBounds);
-            }
+            PaintFilterButton(graphics, cellBounds, clipBounds);
         }
     }
 
     /// <summary>
-    /// Get the ColumnHeaderCell Bounds
+    /// Ensure column min width and header height can host the filter button.
     /// </summary>
-    /// <param name="withOffset"></param>
-    /// <returns></returns>
-    private Rectangle GetFilterBounds(bool withOffset = true)
+    internal void PrepareFilterButtonLayout()
     {
-        Rectangle cell = DataGridView!.GetCellDisplayRectangle(ColumnIndex, -1, false);
+        UpdateScaledMetrics();
 
-        Point p = new Point(
-            (withOffset ? cell.Right : cell.Width) - _filterButtonImageSize.Width - _filterButtonMargin.Right,
-            (withOffset ? cell.Bottom : cell.Height) - _filterButtonImageSize.Height - _filterButtonMargin.Bottom);
+        if (OwningColumn is null || DataGridView is null)
+        {
+            return;
+        }
 
-        return new Rectangle(p, _filterButtonImageSize);
+        Size min = MinimumSize;
+        OwningColumn.MinimumWidth = Math.Max(OwningColumn.MinimumWidth, min.Width);
+        if (DataGridView.ColumnHeadersHeight < min.Height)
+        {
+            DataGridView.ColumnHeadersHeight = min.Height;
+        }
+    }
+
+    private bool CanShowFilterButton =>
+        FilterAndSortEnabled
+        && OwningColumn is not null
+        && OwningColumn.ValueType != typeof(Bitmap)
+        && OwningColumn.ValueType != typeof(Image);
+
+    private bool IsRightToLeft => DataGridView?.RightToLeft == RightToLeft.Yes;
+
+    private string FilterGlyph
+    {
+        get
+        {
+            if (ActiveFilterType == MenuStrip.FilterType.Loaded)
+            {
+                return GlyphSaved;
+            }
+
+            bool filtered = ActiveFilterType != MenuStrip.FilterType.None;
+            return (filtered, ActiveSortType) switch
+            {
+                (true, MenuStrip.SortType.Asc) => GlyphFiltered + GlyphSortAsc,
+                (true, MenuStrip.SortType.Desc) => GlyphFiltered + GlyphSortDesc,
+                (true, _) => GlyphFiltered,
+                (false, MenuStrip.SortType.Asc) => GlyphSortAsc,
+                (false, MenuStrip.SortType.Desc) => GlyphSortDesc,
+                _ => GlyphUnfiltered
+            };
+        }
+    }
+
+    private void UpdateScaledMetrics()
+    {
+        int dpi = DataGridView?.DeviceDpi ?? 96;
+        int side = Math.Max(FilterButtonBaseSize, (FilterButtonBaseSize * dpi) / 96);
+        int width = FilterGlyph.Length > 1 ? (side * 3) / 2 + 4 : side;
+        _filterButtonImageSize = new Size(width, side);
+
+        int h = Math.Max(1, (3 * dpi) / 96);
+        int v = Math.Max(2, (4 * dpi) / 96);
+        _filterButtonMargin = new Padding(h, v, h, v);
+    }
+
+    private void UpdateFilterButtonBounds(Rectangle? cellBounds = null)
+    {
+        UpdateScaledMetrics();
+
+        Rectangle cell = cellBounds ?? (DataGridView is not null
+            ? DataGridView.GetCellDisplayRectangle(ColumnIndex, -1, false)
+            : Rectangle.Empty);
+
+        if (cell.IsEmpty)
+        {
+            _filterButtonOffsetBounds = Rectangle.Empty;
+            _filterButtonImageBounds = Rectangle.Empty;
+            return;
+        }
+
+        int xOffset = IsRightToLeft
+            ? cell.Left + _filterButtonMargin.Left
+            : cell.Right - _filterButtonImageSize.Width - _filterButtonMargin.Right;
+        int yOffset = cell.Bottom - _filterButtonImageSize.Height - _filterButtonMargin.Bottom;
+        _filterButtonOffsetBounds = new Rectangle(new Point(xOffset, yOffset), _filterButtonImageSize);
+
+        int xLocal = IsRightToLeft
+            ? _filterButtonMargin.Left
+            : cell.Width - _filterButtonImageSize.Width - _filterButtonMargin.Right;
+        int yLocal = cell.Height - _filterButtonImageSize.Height - _filterButtonMargin.Bottom;
+        _filterButtonImageBounds = new Rectangle(new Point(xLocal, yLocal), _filterButtonImageSize);
+    }
+
+    private void GetFilterButtonColors(out Color backColor, out Color borderColor, out Color glyphColor, out Color headerBackColor)
+    {
+        backColor = _filterButtonOver ? Color.WhiteSmoke : Color.White;
+        borderColor = Color.Gray;
+        glyphColor = Color.DimGray;
+        headerBackColor = SystemColors.Control;
+
+        if (DataGridView is not KryptonDataGridView kdgv)
+        {
+            if (DataGridView is not null)
+            {
+                headerBackColor = DataGridView.ColumnHeadersDefaultCellStyle.BackColor;
+            }
+
+            if (ActiveFilterType != MenuStrip.FilterType.None)
+            {
+                glyphColor = SystemColors.Highlight;
+            }
+            else if (ActiveSortType != MenuStrip.SortType.None)
+            {
+                glyphColor = SystemColors.ControlText;
+            }
+
+            return;
+        }
+
+        PaletteState state = _filterButtonPressed
+            ? PaletteState.Pressed
+            : _filterButtonOver
+                ? PaletteState.Tracking
+                : PaletteState.Normal;
+
+        PaletteDataGridViewTripleStates header = state switch
+        {
+            PaletteState.Pressed => kdgv.StatePressed.HeaderColumn,
+            PaletteState.Tracking => kdgv.StateTracking.HeaderColumn,
+            _ => kdgv.StateNormal.HeaderColumn
+        };
+
+        Color paletteBack = header.Back.GetBackColor1(state);
+        Color paletteBorder = header.Border.GetBorderColor1(state);
+        Color paletteText = header.Content.GetContentShortTextColor1(state);
+
+        if (paletteBack is { IsEmpty: false, A: > 0 })
+        {
+            headerBackColor = paletteBack;
+            backColor = _filterButtonPressed
+                ? ControlPaint.Dark(paletteBack, 0.02f)
+                : _filterButtonOver
+                    ? ControlPaint.Light(paletteBack, 0.45f)
+                    : ControlPaint.Light(paletteBack, 0.2f);
+        }
+
+        if (paletteBorder is { IsEmpty: false, A: > 0 })
+        {
+            borderColor = paletteBorder;
+        }
+
+        bool filtered = ActiveFilterType != MenuStrip.FilterType.None;
+        bool sorted = ActiveSortType != MenuStrip.SortType.None;
+        if (filtered)
+        {
+            glyphColor = SystemColors.Highlight;
+        }
+        else if (sorted)
+        {
+            glyphColor = paletteText.IsEmpty || paletteText.A == 0 ? SystemColors.ControlText : paletteText;
+        }
+        else if (paletteText is { IsEmpty: false, A: > 0 })
+        {
+            glyphColor = Color.FromArgb(170, paletteText);
+        }
+    }
+
+    private Font GetGlyphFont(float pixelSize)
+    {
+        if (_glyphFont is not null && Math.Abs(_glyphFontSize - pixelSize) < 0.5f)
+        {
+            return _glyphFont;
+        }
+
+        _glyphFont?.Dispose();
+        _glyphFont = CreateSymbolFont(pixelSize);
+        _glyphFontSize = pixelSize;
+        return _glyphFont;
+    }
+
+    private static Font CreateSymbolFont(float pixelSize)
+    {
+        string[] families = ["Segoe UI Symbol", "Segoe UI", "Microsoft Sans Serif"];
+        foreach (string family in families)
+        {
+            try
+            {
+                var font = new Font(family, pixelSize, FontStyle.Regular, GraphicsUnit.Pixel);
+                if (string.Equals(font.Name, family, StringComparison.OrdinalIgnoreCase)
+                    || font.FontFamily.Name.IndexOf("Segoe", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return font;
+                }
+
+                font.Dispose();
+            }
+            catch
+            {
+                // Try the next installed family.
+            }
+        }
+
+        return new Font(FontFamily.GenericSansSerif, pixelSize, FontStyle.Regular, GraphicsUnit.Pixel);
     }
 
     #endregion
@@ -712,8 +897,9 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// <param name="e"></param>
     protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
     {
-        if (FilterAndSortEnabled)
+        if (CanShowFilterButton)
         {
+            UpdateFilterButtonBounds();
             if (_filterButtonImageBounds.Contains(e.X, e.Y) && !_filterButtonOver)
             {
                 _filterButtonOver = true;
@@ -734,7 +920,12 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// <param name="e"></param>
     protected override void OnMouseDown(DataGridViewCellMouseEventArgs e)
     {
-        if (FilterAndSortEnabled && _filterButtonImageBounds.Contains(e.X, e.Y))
+        if (CanShowFilterButton)
+        {
+            UpdateFilterButtonBounds();
+        }
+
+        if (CanShowFilterButton && _filterButtonImageBounds.Contains(e.X, e.Y))
         {
             if (e.Button == MouseButtons.Left && !_filterButtonPressed)
             {
@@ -755,7 +946,12 @@ internal class KryptonColumnHeaderCell : DataGridViewColumnHeaderCell
     /// <param name="e"></param>
     protected override void OnMouseUp(DataGridViewCellMouseEventArgs e)
     {
-        if (FilterAndSortEnabled && e.Button == MouseButtons.Left && _filterButtonPressed)
+        if (CanShowFilterButton)
+        {
+            UpdateFilterButtonBounds();
+        }
+
+        if (CanShowFilterButton && e.Button == MouseButtons.Left && _filterButtonPressed)
         {
             _filterButtonPressed = false;
             _filterButtonOver = false;

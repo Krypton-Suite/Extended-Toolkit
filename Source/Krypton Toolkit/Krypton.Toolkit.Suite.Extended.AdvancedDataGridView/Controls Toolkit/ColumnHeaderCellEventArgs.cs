@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -69,9 +69,9 @@ internal class ColumnHeaderCellEventArgs : EventArgs
 {
     public MenuStrip FilterMenu { get; private set; }
 
-    public DataGridViewColumn Column { get; private set; }
+    public DataGridViewColumn? Column { get; private set; }
 
-    public ColumnHeaderCellEventArgs(MenuStrip filterMenu, DataGridViewColumn column)
+    public ColumnHeaderCellEventArgs(MenuStrip filterMenu, DataGridViewColumn? column)
     {
         FilterMenu = filterMenu;
         Column = column;

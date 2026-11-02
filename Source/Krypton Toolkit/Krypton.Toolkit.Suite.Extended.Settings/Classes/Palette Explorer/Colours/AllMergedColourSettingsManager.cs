@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  *
  */
 #endregion
+
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings;
 
@@ -857,11 +859,16 @@ public class AllMergedColourSettingsManager
     {
         AllMergedColourSettingsManager manager = new();
 
+        if (string.IsNullOrEmpty(colourConfigurationFilePath))
+        {
+            return;
+        }
+
         try
         {
             if (!File.Exists(colourConfigurationFilePath))
             {
-                File.Create(colourConfigurationFilePath);
+                File.Create(colourConfigurationFilePath).Dispose();
             }
 
             StreamWriter writer = new(colourConfigurationFilePath);
@@ -946,11 +953,16 @@ public class AllMergedColourSettingsManager
     {
         AllMergedColourSettingsManager manager = new();
 
+        if (string.IsNullOrEmpty(colourConfigurationFilePath))
+        {
+            return;
+        }
+
         try
         {
             if (!File.Exists(colourConfigurationFilePath))
             {
-                File.Create(colourConfigurationFilePath);
+                File.Create(colourConfigurationFilePath).Dispose();
             }
 
             StreamWriter writer = new(colourConfigurationFilePath);
@@ -1104,7 +1116,7 @@ public class AllMergedColourSettingsManager
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
 
@@ -1175,7 +1187,7 @@ public class AllMergedColourSettingsManager
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
         }
     }
     #endregion

@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -304,7 +304,7 @@ public partial class KryptonLoadingCircle : Control
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-    private void LoadingCircle_Resize(object sender, EventArgs e)
+    private void LoadingCircle_Resize(object? sender, EventArgs e)
     {
         GetControlCenterPoint();
     }
@@ -314,7 +314,7 @@ public partial class KryptonLoadingCircle : Control
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-    private void aTimer_Tick(object sender, EventArgs e)
+    private void aTimer_Tick(object? sender, EventArgs e)
     {
         _mProgressValue = ++_mProgressValue % _mNumberOfSpoke;
         Invalidate();
@@ -389,6 +389,7 @@ public partial class KryptonLoadingCircle : Control
     /// </summary>
     /// <param name="objColor">Color of the lightest spoke.</param>
     /// <param name="blnShadeColor">if set to <c>true</c> the color will be shaded on X spoke.</param>
+    /// <param name="intNbSpoke">The number of spokes in the loading circle.</param>
     /// <returns>An array of color used to draw the circle.</returns>
     private Color[] GenerateColoursPallet(Color objColor, bool blnShadeColor, int intNbSpoke)
     {

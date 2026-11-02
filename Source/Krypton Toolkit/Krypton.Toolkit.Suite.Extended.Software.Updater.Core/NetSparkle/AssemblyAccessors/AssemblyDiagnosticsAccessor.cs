@@ -32,12 +32,12 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
 /// </summary>
 public class AssemblyDiagnosticsAccessor : IAssemblyAccessor
 {
-    private string _fileVersion;
-    private string _productVersion;
-    private string _productName;
-    private string _companyName;
-    private string _legalCopyright;
-    private string _fileDescription;
+    private string _fileVersion = "";
+    private string _productVersion = "";
+    private string _productName = "";
+    private string _companyName = "";
+    private string _legalCopyright = "";
+    private string _fileDescription = "";
 
     /// <summary>
     /// Create a new diagnostics accessor and parse the assembly's information
@@ -57,12 +57,12 @@ public class AssemblyDiagnosticsAccessor : IAssemblyAccessor
                 throw new FileNotFoundException();
             }
             var info = FileVersionInfo.GetVersionInfo(assemblyName);
-            _fileVersion = info.FileVersion;
-            _productVersion = info.ProductVersion;
-            _productName = info.ProductName;
-            _companyName = info.CompanyName;
-            _legalCopyright = info.LegalCopyright;
-            _fileDescription = info.FileDescription;
+            _fileVersion = info.FileVersion ?? "";
+            _productVersion = info.ProductVersion ?? "";
+            _productName = info.ProductName ?? "";
+            _companyName = info.CompanyName ?? "";
+            _legalCopyright = info.LegalCopyright ?? "";
+            _fileDescription = info.FileDescription ?? "";
         }
     }
 

@@ -88,9 +88,9 @@ public class LocalFileDownloader : IUpdateDownloader, IDisposable
     }
 
     /// <inheritdoc/>
-    public async Task<string> RetrieveDestinationFileNameAsync(AppCastItem? item)
+    public async Task<string?> RetrieveDestinationFileNameAsync(AppCastItem? item)
     {
-        return await Task.Run(() => Path.GetFileName(item.DownloadLink));
+        return await Task.Run(() => Path.GetFileName(item?.DownloadLink ?? ""));
     }
 
     /// <inheritdoc/>

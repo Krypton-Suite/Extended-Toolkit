@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,10 +37,12 @@ public class KryptonMarqueeLabel : KryptonLabel
 
     /// <summary>Gets or sets the speed of the marquee.</summary>
     /// <value>The speed.</value>
+    [DefaultValue(1)]
     public int Speed { get; set; }
 
     /// <summary>Gets or sets the y offset.</summary>
     /// <value>The y offset.</value>
+    [DefaultValue(0)]
     public int YOffset { get; set; }
 
     /// <summary>Initializes a new instance of the <see cref="KryptonMarqueeLabel" /> class.</summary>

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 - 2024 Krypton Suite
+ * Copyright (c) 2024 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1159,14 +1159,14 @@ public static class CommonHelperExtended
         Debug.Assert(c != null);
 
         // If the control is already inside a control collection, then remove it
-        if (c!.Parent != null)
+        if (c.Parent != null)
         {
             RemoveControlFromParent(c);
         }
         // Then must use the internal method for adding a new instance
 
         // If the control collection is one of our internal collections...
-        if (parent!.Controls is KryptonControlCollection cc)
+        if (parent.Controls is KryptonControlCollection cc)
         {
             cc.AddInternal(c);
         }
@@ -1437,7 +1437,7 @@ public static class CommonHelperExtended
             retObj = TypeDescriptor.CreateInstance(host, itemType, null!, null!);
         }
 
-        return retObj ?? false;
+        return retObj!;
     }
 
     /// <summary>
@@ -1495,7 +1495,7 @@ public static class CommonHelperExtended
                 BindingFlags.NonPublic);
         }
 
-        return (bool)_cachedDesignModePI!.GetValue(c, null);
+        return (bool)_cachedDesignModePI!.GetValue(c, null)!;
     }
 
     /// <summary>
@@ -1510,7 +1510,7 @@ public static class CommonHelperExtended
     /// </summary>
     /// <param name="s">String to convert.</param>
     /// <returns>Double value.</returns>
-    public static double StringToDouble(string s) => (double)_dc.ConvertFromInvariantString(s);
+    public static double StringToDouble(string s) => (double)_dc.ConvertFromInvariantString(s)!;
 
     /// <summary>
     /// Convert a Size to a culture invariant string value.
@@ -1524,7 +1524,7 @@ public static class CommonHelperExtended
     /// </summary>
     /// <param name="s">String to convert.</param>
     /// <returns>Size value.</returns>
-    public static Size StringToSize(string s) => (Size)_sc.ConvertFromInvariantString(s);
+    public static Size StringToSize(string s) => (Size)_sc.ConvertFromInvariantString(s)!;
 
     /// <summary>
     /// Convert a Point to a culture invariant string value.
@@ -1538,7 +1538,7 @@ public static class CommonHelperExtended
     /// </summary>
     /// <param name="s">String to convert.</param>
     /// <returns>Point value.</returns>
-    public static Point StringToPoint(string? s) => (Point)_pc.ConvertFromInvariantString(s);
+    public static Point StringToPoint(string? s) => (Point)_pc.ConvertFromInvariantString(s!)!;
 
     /// <summary>
     /// Convert a Boolean to a culture invariant string value.
@@ -1552,7 +1552,7 @@ public static class CommonHelperExtended
     /// </summary>
     /// <param name="s">String to convert.</param>
     /// <returns>Boolean value.</returns>
-    public static bool StringToBool(string s) => (bool)_bc.ConvertFromInvariantString(s);
+    public static bool StringToBool(string s) => (bool)_bc.ConvertFromInvariantString(s)!;
 
     /// <summary>
     /// Convert a Color to a culture invariant string value.
@@ -1566,7 +1566,7 @@ public static class CommonHelperExtended
     /// </summary>
     /// <param name="s">String to convert.</param>
     /// <returns>Color value.</returns>
-    public static Color StringToColor(string s) => (Color)_cc.ConvertFromInvariantString(s);
+    public static Color StringToColor(string s) => (Color)_cc.ConvertFromInvariantString(s)!;
 
     /// <summary>
     /// Convert a client mouse position inside a windows message into a screen position.

@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,10 @@
  *
  */
 #endregion
+
+#pragma warning disable CS0169 // Field is never used
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
+#pragma warning disable CS0414 // Field is assigned but its value is never used
 
 using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
 
@@ -130,6 +134,14 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
     private readonly PaletteRelativeAlign _richTextBoxTextAlignment;
 
+    private readonly string? _footerText;
+
+    private readonly bool _footerExpanded;
+
+    private readonly ExtendedKryptonMessageBoxFooterContentType _footerContentType;
+
+    private readonly int? _footerRichTextBoxHeight;
+
     #endregion
 
     #region Identity
@@ -175,7 +187,11 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         bool? useOptionalCheckBoxThreeState,
         bool? useTimeOut,
         int? timeOut,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         // Store incoming values
         _text = text;
@@ -221,6 +237,10 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         _optionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
         _checkBoxText = optionalCheckBoxText ?? string.Empty;
         _useOptionalCheckBoxThreeState = useOptionalCheckBoxThreeState ?? false;
+        _footerText = footerText;
+        _footerExpanded = footerExpanded;
+        _footerContentType = footerContentType;
+        _footerRichTextBoxHeight = footerRichTextBoxHeight;
 
         // Create the form contents
         InitializeComponent();
@@ -238,6 +258,8 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         UpdateContentLinkArea(contentLinkArea);
 
         SetupOptionalCheckBox();
+
+        SetupFooter(_footerText, _footerExpanded, _footerContentType, _footerRichTextBoxHeight);
 
         // Finally calculate and set form sizing
         UpdateSizing(showOwner);
@@ -349,7 +371,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
                 break;
             case ExtendedKryptonMessageBoxIcon.None:
                 // Windows XP and before will Beep, Vista and above do not!
-                if (GlobalStaticValues.OS_MAJOR_VERSION < 6)
+                if (SharedStaticVariables.OS_MAJOR_VERSION < 6)
                 {
                     SystemSounds.Beep.Play();
                 }
@@ -692,10 +714,37 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
     {
         Size messageSizing = UpdateMessageSizing(showOwner);
         Size buttonsSizing = UpdateButtonsSizing();
+        Size footerSizing = UpdateFooterSizing();
 
         // Size of window is calculated from the client area
-        ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
-            messageSizing.Height + buttonsSizing.Height);
+        ClientSize = new Size(Math.Max(Math.Max(messageSizing.Width, buttonsSizing.Width), footerSizing.Width),
+            messageSizing.Height + buttonsSizing.Height + footerSizing.Height);
+    }
+
+    /// <summary>
+    /// Updates the footer panel sizing based on its content and expanded state.
+    /// </summary>
+    /// <returns>The size of the footer panel.</returns>
+    private Size UpdateFooterSizing()
+    {
+        if (!_panelFooter.Visible)
+        {
+            return Size.Empty;
+        }
+
+        // Calculate width to match message box width
+        int footerWidth = Math.Max(UpdateMessageSizing(Owner).Width, UpdateButtonsSizing().Width);
+
+        // Height is already set in UpdateFooterExpandedState, but ensure minimum width
+        _panelFooter.Width = footerWidth;
+        int contentWidth = footerWidth - 20; // Account for padding
+        
+        // Update width for all content controls
+        _footerWrapLabel.Width = contentWidth;
+        _footerCheckBox.Width = contentWidth;
+        _footerRichTextBox.Width = contentWidth;
+
+        return new Size(footerWidth, _panelFooter.Height);
     }
 
     private Size UpdateMessageSizing(IWin32Window? showOwner)
@@ -741,14 +790,14 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
         // Button1 is always visible
         Size button1Size = _button1.GetPreferredSize(Size.Empty);
-        Size maxButtonSize = new(button1Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING, button1Size.Height);
+        Size maxButtonSize = new(button1Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING, button1Size.Height);
 
         // If Button2 is visible
         if (_button2.Enabled)
         {
             numButtons++;
             Size button2Size = _button2.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
         }
 
@@ -757,7 +806,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         {
             numButtons++;
             Size button3Size = _button3.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
         }
         // If Button4 is visible
@@ -765,49 +814,49 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         {
             numButtons++;
             Size button4Size = _button4.GetPreferredSize(Size.Empty);
-            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             maxButtonSize.Height = Math.Max(maxButtonSize.Height, button4Size.Height);
         }
 
         // Start positioning buttons 10 pixels from right edge
-        var right = _panelButtons.Right - GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+        var right = _panelButtons.Right - SharedStaticConstants.GLOBAL_BUTTON_PADDING;
 
         // If Button4 is visible
         if (_button4.Enabled)
         {
-            _button4.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            _button4.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             _button4.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // If Button3 is visible
         if (_button3.Enabled)
         {
-            _button3.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            _button3.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             _button3.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // If Button2 is visible
         if (_button2.Enabled)
         {
-            _button2.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+            _button2.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
             _button2.Size = maxButtonSize;
-            right -= maxButtonSize.Width + GlobalStaticValues.GLOBAL_BUTTON_PADDING;
+            right -= maxButtonSize.Width + SharedStaticConstants.GLOBAL_BUTTON_PADDING;
         }
 
         // Button1 is always visible
-        _button1.Location = new Point(right - maxButtonSize.Width, GlobalStaticValues.GLOBAL_BUTTON_PADDING);
+        _button1.Location = new Point(right - maxButtonSize.Width, SharedStaticConstants.GLOBAL_BUTTON_PADDING);
         _button1.Size = maxButtonSize;
 
         // Size the panel for the buttons
-        _panelButtons.Size = new Size(maxButtonSize.Width * numButtons + GlobalStaticValues.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticValues.GLOBAL_BUTTON_PADDING * 2);
+        _panelButtons.Size = new Size(maxButtonSize.Width * numButtons + SharedStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + SharedStaticConstants.GLOBAL_BUTTON_PADDING * 2);
 
         // Button area is the number of buttons with GLOBAL_BUTTON_PADDINGs between them and 10 pixels around all edges
-        return new Size(maxButtonSize.Width * numButtons + GlobalStaticValues.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + GlobalStaticValues.GLOBAL_BUTTON_PADDING * 2);
+        return new Size(maxButtonSize.Width * numButtons + SharedStaticConstants.GLOBAL_BUTTON_PADDING * (numButtons + 1), maxButtonSize.Height + SharedStaticConstants.GLOBAL_BUTTON_PADDING * 2);
     }
 
-    private void AnyKeyDown(object sender, KeyEventArgs e)
+    private void AnyKeyDown(object? sender, KeyEventArgs e)
     {
         // Escape key kills the dialog if we allow it to be closed
         if (ControlBox
@@ -856,13 +905,17 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
     }
 
-    private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
     {
         try
         {
             if (_openInExplorer)
             {
-                OpenInExplorer(e!.Link.LinkData.ToString());
+                string? path = e.Link?.LinkData?.ToString();
+                if (!string.IsNullOrEmpty(path))
+                {
+                    OpenInExplorer(path);
+                }
             }
             else
             {
@@ -882,10 +935,15 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         }
     }
 
-    private void OpenInExplorer(string path)
+    private void OpenInExplorer(string? path)
     {
         try
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
             Process.Start(@"explorer.exe", path);
         }
         catch (Exception e)
@@ -945,7 +1003,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
 
         if (_showOwner != null)
         {
-            _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, AppDomain.GetCurrentThreadId());
+            _hHook = PlatformEvents.SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, PlatformInvoke.GetCurrentThreadId());
         }
     }
 
@@ -956,7 +1014,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
             return PlatformEvents.CallNextHookEx(_hHook, nCode, wParam, lParam);
         }
 
-        CWPRETSTRUCT msg = (CWPRETSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPRETSTRUCT));
+        CWPRETSTRUCT msg = Marshal.PtrToStructure<CWPRETSTRUCT>(lParam);
         IntPtr hook = _hHook;
 
         if (msg.message == (int)CbtHookAction.HCBT_ACTIVATE)
@@ -1027,6 +1085,149 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         kcbOptionalCheckBox.ThreeState = _useOptionalCheckBoxThreeState;
     }
 
+    /// <summary>
+    /// Sets up the expandable footer with the specified content and initial expanded state.
+    /// </summary>
+    /// <param name="footerText">The text content to display in the footer. If null or empty, footer will not be shown (unless footerContentType is CheckBox).</param>
+    /// <param name="expanded">If true, the footer will be expanded initially; otherwise, it will be collapsed.</param>
+    /// <param name="contentType">The type of content to display in the footer (Text, CheckBox, or RichTextBox).</param>
+    /// <param name="richTextBoxHeight">The height for the RichTextBox when contentType is RichTextBox. If null, uses default height.</param>
+    private void SetupFooter(string? footerText, bool expanded, ExtendedKryptonMessageBoxFooterContentType contentType, int? richTextBoxHeight)
+    {
+        bool showFooter = !string.IsNullOrEmpty(footerText) || contentType == ExtendedKryptonMessageBoxFooterContentType.CheckBox;
+        _panelFooter.Visible = showFooter;
+        _footerToggleButton.Visible = showFooter;
+
+        if (!showFooter)
+        {
+            _panelFooter.Height = 0;
+            return;
+        }
+
+        // Hide all footer content controls initially
+        _footerWrapLabel.Visible = false;
+        _footerCheckBox.Visible = false;
+        _footerRichTextBox.Visible = false;
+
+        // Configure based on content type
+        switch (contentType)
+        {
+            case ExtendedKryptonMessageBoxFooterContentType.Text:
+                _footerWrapLabel.Text = footerText ?? string.Empty;
+                if (_messageBoxTypeface != null)
+                {
+                    _footerWrapLabel.StateCommon.Font = _messageBoxTypeface;
+                }
+                break;
+
+            case ExtendedKryptonMessageBoxFooterContentType.CheckBox:
+                _footerCheckBox.Text = footerText ?? string.Empty;
+                if (_messageBoxTypeface != null)
+                {
+                    _footerCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
+                }
+                break;
+
+            case ExtendedKryptonMessageBoxFooterContentType.RichTextBox:
+                _footerRichTextBox.Text = footerText ?? string.Empty;
+                if (_messageBoxTypeface != null)
+                {
+                    _footerRichTextBox.StateCommon.Content.Font = _messageBoxTypeface;
+                }
+                // Set RichTextBox height if specified
+                if (richTextBoxHeight is > 0)
+                {
+                    _footerRichTextBox.Height = richTextBoxHeight.Value;
+                }
+                break;
+        }
+
+        // Set initial expanded state
+        UpdateFooterExpandedState(expanded, contentType);
+    }
+
+    /// <summary>
+    /// Updates the footer expanded state, adjusting visibility and toggle button text.
+    /// </summary>
+    /// <param name="expanded">If true, footer is expanded; otherwise, collapsed.</param>
+    /// <param name="contentType">The type of content displayed in the footer.</param>
+    private void UpdateFooterExpandedState(bool expanded, ExtendedKryptonMessageBoxFooterContentType contentType)
+    {
+        if (!_panelFooter.Visible)
+        {
+            return;
+        }
+
+        // Hide all content controls first
+        _footerWrapLabel.Visible = false;
+        _footerCheckBox.Visible = false;
+        _footerRichTextBox.Visible = false;
+
+        // Show the appropriate content control based on type and expanded state
+        if (expanded)
+        {
+            switch (contentType)
+            {
+                case ExtendedKryptonMessageBoxFooterContentType.Text:
+                    _footerWrapLabel.Visible = true;
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.CheckBox:
+                    _footerCheckBox.Visible = true;
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.RichTextBox:
+                    _footerRichTextBox.Visible = true;
+                    break;
+            }
+        }
+
+        // Update toggle button text
+        _footerToggleButton.Values.Text = expanded ? @"Hide details" : @"Show details";
+
+        // Calculate footer height based on expanded state and content type
+        if (expanded)
+        {
+            int contentHeight = 0;
+            switch (contentType)
+            {
+                case ExtendedKryptonMessageBoxFooterContentType.Text:
+                    // Measure the footer text to determine required height
+                    using (Graphics g = CreateGraphics())
+                    {
+                        Font footerFont = _footerWrapLabel.Font ?? _messageBoxTypeface ?? KryptonManager.CurrentGlobalPalette.BaseFont;
+                        SizeF textSize = g.MeasureString(_footerWrapLabel.Text, footerFont, _footerWrapLabel.Width);
+                        contentHeight = (int)Math.Ceiling(textSize.Height);
+                    }
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.CheckBox:
+                    contentHeight = _footerCheckBox.Height;
+                    break;
+                case ExtendedKryptonMessageBoxFooterContentType.RichTextBox:
+                    contentHeight = _footerRichTextBox.Height;
+                    break;
+            }
+            int footerHeight = contentHeight + 40; // Add padding for toggle button and borders
+            _panelFooter.Height = Math.Max(footerHeight, 50); // Minimum height
+        }
+        else
+        {
+            // Collapsed state - just show the toggle button
+            _panelFooter.Height = 30;
+        }
+
+        // Recalculate form size (owner can be null, UpdateSizing handles it)
+        IWin32Window? owner = Owner;
+        UpdateSizing(owner);
+    }
+
+    /// <summary>
+    /// Handles the footer toggle button click event to expand or collapse the footer.
+    /// </summary>
+    private void FooterToggleButton_Click(object? sender, EventArgs e)
+    {
+        bool currentExpanded = _footerWrapLabel.Visible || _footerCheckBox.Visible || _footerRichTextBox.Visible;
+        UpdateFooterExpandedState(!currentExpanded, _footerContentType);
+    }
+
     internal static bool ReturnCheckBoxCheckedValue()
     {
         VisualMessageBoxExtendedRtlAwareForm messageBoxExtendedForm = new VisualMessageBoxExtendedRtlAwareForm();
@@ -1041,7 +1242,7 @@ internal partial class VisualMessageBoxExtendedRtlAwareForm : KryptonForm
         return messageBoxExtendedForm.kcbOptionalCheckBox.CheckState;
     }
 
-    private void OptionalCheckBox_CheckedChanged(object sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
+    private void OptionalCheckBox_CheckedChanged(object? sender, EventArgs e) => _optionalCheckBoxChecked = kcbOptionalCheckBox.Checked;
 
     private void UpdateCloseButtonVisibility(bool? visible) => CloseBox = visible ?? true;
 

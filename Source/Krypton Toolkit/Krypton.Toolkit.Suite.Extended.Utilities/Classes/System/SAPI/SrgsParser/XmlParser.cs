@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -93,7 +93,7 @@ internal class XmlParser : ISrgsParser
     {
         _reader = reader;
         _xmlTextReader = reader as XmlTextReader;
-        if (uri == null && _xmlTextReader != null && _xmlTextReader.BaseURI.Length > 0)
+        if (uri == null && _xmlTextReader is { BaseURI.Length: > 0 })
         {
             try
             {
@@ -118,7 +118,7 @@ internal class XmlParser : ISrgsParser
             bool flag = false;
             while (_reader.Read())
             {
-                if (_reader.NodeType == XmlNodeType.Element && _reader.LocalName == "grammar")
+                if (_reader is { NodeType: XmlNodeType.Element, LocalName: "grammar" })
                 {
                     if (_reader.NamespaceURI != "http://www.w3.org/2001/06/grammar")
                     {
@@ -208,8 +208,7 @@ internal class XmlParser : ISrgsParser
 
     internal static void ThrowSrgsExceptionWithPosition(string filename, XmlReader xmlReader, string sError, Exception innerException)
     {
-        XmlTextReader xmlTextReader = xmlReader as XmlTextReader;
-        if (xmlTextReader != null)
+        if (xmlReader is XmlTextReader xmlTextReader)
         {
             string text = SR.Get(SRID.Line);
             string text2 = SR.Get(SRID.Position);
@@ -688,7 +687,7 @@ internal class XmlParser : ISrgsParser
         {
             bool flag = false;
             string namespaceURI = reader.NamespaceURI;
-            if ((namespaceURI != null && namespaceURI.Length == 0) || namespaceURI == "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
+            if (namespaceURI is { Length: 0 } || namespaceURI == "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
             {
                 flag = true;
             }
@@ -922,7 +921,7 @@ internal class XmlParser : ISrgsParser
         {
             bool flag = false;
             string namespaceURI = reader.NamespaceURI;
-            if ((namespaceURI != null && namespaceURI.Length == 0) || namespaceURI == "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
+            if (namespaceURI is { Length: 0 } || namespaceURI == "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions")
             {
                 flag = true;
             }
@@ -1174,8 +1173,7 @@ internal class XmlParser : ISrgsParser
                             case "tag":
                             {
                                 element = ParseTag(parent, reader);
-                                IPropertyTag propertyTag = element as IPropertyTag;
-                                if (propertyTag != null)
+                                if (element is IPropertyTag propertyTag)
                                 {
                                     if (list == null)
                                     {
@@ -1235,15 +1233,13 @@ internal class XmlParser : ISrgsParser
         }
         else
         {
-            IRule rule = parent as IRule;
-            if (rule != null)
+            if (parent is IRule rule)
             {
                 _parser.AddElement(rule, value2);
             }
             else
             {
-                IItem item = parent as IItem;
-                if (item != null)
+                if (parent is IItem item)
                 {
                     _parser.AddElement(item, value2);
                 }
@@ -1261,11 +1257,9 @@ internal class XmlParser : ISrgsParser
     {
         if (child != null)
         {
-            IOneOf oneOf = parent as IOneOf;
-            if (oneOf != null)
+            if (parent is IOneOf oneOf)
             {
-                IItem item = child as IItem;
-                if (item != null)
+                if (child is IItem item)
                 {
                     _parser.AddItem(oneOf, item);
                 }
@@ -1276,15 +1270,13 @@ internal class XmlParser : ISrgsParser
             }
             else
             {
-                IRule rule = parent as IRule;
-                if (rule != null)
+                if (parent is IRule rule)
                 {
                     _parser.AddElement(rule, child);
                 }
                 else
                 {
-                    IItem item2 = parent as IItem;
-                    if (item2 != null)
+                    if (parent is IItem item2)
                     {
                         _parser.AddElement(item2, child);
                     }

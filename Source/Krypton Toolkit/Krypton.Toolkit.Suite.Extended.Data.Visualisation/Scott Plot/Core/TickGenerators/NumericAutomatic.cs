@@ -49,8 +49,8 @@ public class NumericAutomatic : ITickGenerator
         string[] majorTickLabels = majorTickPositions.Select(x => LabelFormatter(x)).ToArray();
 
         // determine if the actual tick labels are larger than predicted (suggesting density is too high and overlapping may occur)
-        using SKPaint paint = new();
-        PixelSize measuredLabel = Drawing.MeasureLargestString(majorTickLabels, paint);
+        using SKFont font = new(SKTypeface.Default, 12);
+        PixelSize measuredLabel = Drawing.MeasureLargestString(majorTickLabels, font);
         PixelSize largestLabel = new(
             width: Math.Max(predictedTickSize.Width, measuredLabel.Width),
             height: Math.Max(predictedTickSize.Height, measuredLabel.Height));
@@ -112,19 +112,12 @@ public class NumericAutomatic : ITickGenerator
         double initialSpace = Math.Pow(radix, exponent);
         List<double> tickSpacings = [initialSpace, initialSpace, initialSpace];
 
-        double[] divBy;
-        if (radix == 10)
+        double[] divBy = radix switch
         {
-            divBy = [2, 2, 2.5]; // 10, 5, 2.5, 1
-        }
-        else if (radix == 16)
-        {
-            divBy = [2, 2, 2, 2]; // 16, 8, 4, 2, 1
-        }
-        else
-        {
-            throw new ArgumentException($"radix {radix} is not supported");
-        }
+            10 => [2, 2, 2.5],
+            16 => [2, 2, 2, 2],
+            _ => throw new ArgumentException($"radix {radix} is not supported")
+        };
 
         int divisions = 0;
         int tickCount = 0;

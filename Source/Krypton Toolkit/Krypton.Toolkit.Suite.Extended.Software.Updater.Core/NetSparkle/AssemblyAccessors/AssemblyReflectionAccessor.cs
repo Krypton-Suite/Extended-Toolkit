@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Core;
 /// </summary>
 public class AssemblyReflectionAccessor : IAssemblyAccessor
 {
-    private Assembly _assembly;
+    private Assembly? _assembly;
     private List<Attribute> _assemblyAttributes = [];
 
     /// <summary>
@@ -44,11 +44,11 @@ public class AssemblyReflectionAccessor : IAssemblyAccessor
     /// <exception cref="FileNotFoundException">Thrown when the path to the assembly with the given name doesn't exist</exception>
     /// <exception cref="ArgumentNullException">Thrown when the assembly can't be loaded</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the assembly doesn't have any readable attributes</exception>
-    public AssemblyReflectionAccessor(string assemblyName)
+    public AssemblyReflectionAccessor(string? assemblyName)
     {
         if (assemblyName == null)
         {
-            _assembly = Assembly.GetEntryAssembly();
+            _assembly = Assembly.GetEntryAssembly() ?? throw new ArgumentNullException(nameof(assemblyName));
         }
         else
         {
@@ -154,7 +154,7 @@ public class AssemblyReflectionAccessor : IAssemblyAccessor
     }
 
     /// <inheritdoc/>
-    public string AssemblyVersion => _assembly.GetName().Version.ToString();
+    public string AssemblyVersion => _assembly?.GetName().Version?.ToString() ?? "";
 
     /// <inheritdoc/>
     public string AssemblyDescription

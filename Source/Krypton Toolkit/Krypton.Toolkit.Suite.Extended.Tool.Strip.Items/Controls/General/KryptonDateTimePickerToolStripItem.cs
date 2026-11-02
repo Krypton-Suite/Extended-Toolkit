@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -312,7 +312,7 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
 
     public event EventHandler? ValueChanged;
 
-    protected void OnValueChanged(object sender, EventArgs e)
+    protected void OnValueChanged(object? sender, EventArgs e)
     {
         ValueChanged?.Invoke(this, e);
     }
@@ -333,14 +333,14 @@ public class KryptonDateTimePickerToolStripItem : ToolStripControlHostFixed
     {
         base.OnSubscribeControlEvents(control);
 
-        ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged!;
+        ((control as KryptonDateTimePicker)!).ValueChanged += OnValueChanged;
     }
 
     protected override void OnUnsubscribeControlEvents(Control? control)
     {
         base.OnUnsubscribeControlEvents(control);
 
-        ((control as KryptonDateTimePicker)!).ValueChanged -= OnValueChanged!;
+        ((control as KryptonDateTimePicker)!).ValueChanged -= OnValueChanged;
     }
 
     #endregion

@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -202,15 +202,14 @@ public class NetworkDrives
         {
             iHandle = poParentForm.Handle.ToInt32();
         }
-        //show dialog
-        if (piDialog == 1)
+
+        i = piDialog switch
         {
-            i = WNetConnectionDialog(iHandle, ResourcetypeDisk);
-        }
-        else if (piDialog == 2)
-        {
-            i = WNetDisconnectDialog(iHandle, ResourcetypeDisk);
-        }
+            //show dialog
+            1 => WNetConnectionDialog(iHandle, ResourcetypeDisk),
+            2 => WNetDisconnectDialog(iHandle, ResourcetypeDisk),
+            _ => i
+        };
         if (i > 0) { throw new Win32Exception(i); }
         //set focus on parent form
         poParentForm?.BringToFront();

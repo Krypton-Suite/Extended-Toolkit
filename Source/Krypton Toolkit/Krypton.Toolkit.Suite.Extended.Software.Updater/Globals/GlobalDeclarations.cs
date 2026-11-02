@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,7 @@ global using System.Diagnostics.CodeAnalysis;
 global using System.Drawing;
 global using System.IO;
 global using System.Net;
+global using System.Net.Http;
 global using System.Net.Cache;
 global using System.Net.Mime;
 global using System.Reflection;
@@ -44,6 +45,7 @@ global using System.Runtime.InteropServices;
 global using System.Security.Cryptography;
 global using System.Text;
 global using System.Threading;
+global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Forms;
 global using System.Windows.Interop;

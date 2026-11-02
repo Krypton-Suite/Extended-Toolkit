@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -272,11 +272,10 @@ internal class SrgsDocumentParser : ISrgsParser
         {
             XmlParser.ThrowSrgsException(SRID.InvalidElement);
         }
-        IOneOf oneOf = parent as IOneOf;
-        if (oneOf != null)
+
+        if (parent is IOneOf oneOf)
         {
-            IItem item2 = element as IItem;
-            if (item2 != null)
+            if (element is IItem item2)
             {
                 _parser.AddItem(oneOf, item2);
             }

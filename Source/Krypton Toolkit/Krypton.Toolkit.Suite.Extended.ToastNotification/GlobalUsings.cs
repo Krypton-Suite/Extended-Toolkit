@@ -3,7 +3,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,3 +35,6 @@ global using System.Media;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.ToastNotification.Properties;
+global using Krypton.Toolkit.Utilities;
+global using Krypton.Interop;
+global using Krypton.Toolkit;

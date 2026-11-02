@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,8 +85,8 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
         {
             g.SetClip(outerControlPath);
 
-            Color borderColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour1.ToGrayScale() : BorderColour1;
-            Color borderColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour2.ToGrayScale() : BorderColour2;
+            Color borderColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour1.ToGrayScale() : BorderColour1;
+            Color borderColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour2.ToGrayScale() : BorderColour2;
 
             using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
             {
@@ -103,8 +103,8 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
         {
             g.SetClip(innerControlPath);
 
-            Color backColour1 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BackColour1.ToGrayScale() : BackColour1;
-            Color backColour2 = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BackColour2.ToGrayScale() : BackColour2;
+            Color backColour1 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BackColour1.ToGrayScale() : BackColour1;
+            Color backColour2 = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BackColour2.ToGrayScale() : BackColour2;
 
             using (Brush backgroundBrush = new LinearGradientBrush(borderRectangle, backColour1, backColour2, LinearGradientMode.Horizontal))
             {
@@ -156,18 +156,19 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
                         Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                         Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                        if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OnSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)resizedImageSize.Width) / 2),
+                            ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                                (float)resizedImageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -178,18 +179,19 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
                     }
                     else
                     {
-                        if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OnSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)imageSize.Width) / 2),
+                            ToggleSwitchAlignment.Near => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                                (float)imageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -203,22 +205,20 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
                 {
                     SizeF textSize = g.MeasureString(ToggleSwitch.OnText, ToggleSwitch.OnFont);
 
-                    float textXPos = fullRectangle.X;
-
-                    if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Center)
+                    float textXPos = ToggleSwitch.OnSideAlignment switch
                     {
-                        textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                    }
-                    else if (ToggleSwitch.OnSideAlignment == ToggleSwitchAlignment.Near)
-                    {
-                        textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                    }
+                        ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                        ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                        ToggleSwitchAlignment.Near => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                      (float)textSize.Width,
+                        _ => fullRectangle.X
+                    };
 
                     RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     Color textForeColour = ToggleSwitch.OnForeColour;
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         textForeColour = textForeColour.ToGrayScale();
                     }
@@ -265,18 +265,19 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
                         Size canvasSize = new Size((int)fullRectangle.Width, (int)fullRectangle.Height);
                         Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                        if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OffSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)resizedImageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)resizedImageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)resizedImageSize.Width) / 2),
+                            ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                               (float)resizedImageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -287,18 +288,19 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
                     }
                     else
                     {
-                        if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                        imageXPos = ToggleSwitch.OffSideAlignment switch
                         {
-                            imageXPos = (int)((float)fullRectangle.X + ((float)fullRectangle.Width - (float)imageSize.Width) / 2);
-                        }
-                        else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                        {
-                            imageXPos = (int)((float)fullRectangle.X + (float)fullRectangle.Width - (float)imageSize.Width);
-                        }
+                            ToggleSwitchAlignment.Center => (int)((float)fullRectangle.X +
+                                                                  ((float)fullRectangle.Width -
+                                                                   (float)imageSize.Width) / 2),
+                            ToggleSwitchAlignment.Far => (int)((float)fullRectangle.X + (float)fullRectangle.Width -
+                                                               (float)imageSize.Width),
+                            _ => imageXPos
+                        };
 
                         imageRectangle = new Rectangle(imageXPos, (int)((float)fullRectangle.Y + ((float)fullRectangle.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                         {
                             g.DrawImage(ToggleSwitch.OnSideImage, imageRectangle, 0, 0, ToggleSwitch.OnSideImage.Width, ToggleSwitch.OnSideImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                         }
@@ -312,22 +314,20 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
                 {
                     SizeF textSize = g.MeasureString(ToggleSwitch.OffText, ToggleSwitch.OffFont);
 
-                    float textXPos = fullRectangle.X;
-
-                    if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Center)
+                    float textXPos = ToggleSwitch.OffSideAlignment switch
                     {
-                        textXPos = (float)fullRectangle.X + ((float)fullRectangle.Width - (float)textSize.Width) / 2;
-                    }
-                    else if (ToggleSwitch.OffSideAlignment == ToggleSwitchAlignment.Far)
-                    {
-                        textXPos = (float)fullRectangle.X + (float)fullRectangle.Width - (float)textSize.Width;
-                    }
+                        ToggleSwitchAlignment.Center => (float)fullRectangle.X +
+                                                        ((float)fullRectangle.Width - (float)textSize.Width) / 2,
+                        ToggleSwitchAlignment.Far => (float)fullRectangle.X + (float)fullRectangle.Width -
+                                                     (float)textSize.Width,
+                        _ => fullRectangle.X
+                    };
 
                     RectangleF textRectangle = new RectangleF(textXPos, (float)fullRectangle.Y + ((float)fullRectangle.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
                     Color textForeColour = ToggleSwitch.OffForeColour;
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         textForeColour = textForeColour.ToGrayScale();
                     }
@@ -363,7 +363,7 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
             buttonSurfaceColor = ButtonHoverSurfaceColour;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonSurfaceColor = buttonSurfaceColor.ToGrayScale();
         }
@@ -430,7 +430,7 @@ public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrush
             buttonBorderColor = ButtonHoverBorderColour;
         }
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonBorderColor = buttonBorderColor.ToGrayScale();
         }

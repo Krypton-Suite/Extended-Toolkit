@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,8 +53,7 @@ public class KryptonDataGridViewBinaryCell : DataGridViewTextBoxCell
     /// <returns></returns>
     public override object Clone()
     {
-        KryptonDataGridViewBinaryCell? cloned = base.Clone() as KryptonDataGridViewBinaryCell;
-        if (cloned != null)
+        if (base.Clone() is KryptonDataGridViewBinaryCell cloned)
         {
             cloned._editorType = _editorType;
             return cloned;
@@ -127,8 +126,8 @@ public class KryptonDataGridViewBinaryCell : DataGridViewTextBoxCell
     /// Customized implementation of the GetFormattedValue function in order to include  the decimal and thousand separator 
     /// characters in the formatted representation of the cell value.
     /// </summary>
-    protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle,
-        TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter,
+    protected override object? GetFormattedValue(object? value, int rowIndex, ref DataGridViewCellStyle cellStyle,
+        TypeConverter? valueTypeConverter, TypeConverter? formattedValueTypeConverter,
         DataGridViewDataErrorContexts context)
     {
         if (value is byte[] bytes)

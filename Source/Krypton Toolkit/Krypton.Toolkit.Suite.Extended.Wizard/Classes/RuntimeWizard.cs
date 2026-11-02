@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,7 @@ public class RuntimeWizardStrategy : WizardStrategy
         }
     }
 
-    public override void Back(ISelectionService selection)
+    public override void Back(ISelectionService? selection)
     {
         if (UserAllowsMoveToProceed(Direction.Backward, out var args))
         {
@@ -93,7 +93,7 @@ public class RuntimeWizardStrategy : WizardStrategy
         }
     }
 
-    public override void Next(ISelectionService selection)
+    public override void Next(ISelectionService? selection)
     {
         if (Finishing())
         {

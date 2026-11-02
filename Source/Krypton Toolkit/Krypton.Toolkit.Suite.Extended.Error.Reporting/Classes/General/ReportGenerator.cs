@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ public class ReportGenerator
             _info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
         }
 
-        _info.AppName = _info!.AppName.IsEmpty() ? _info.AppAssembly.GetName().Name : _info!.AppName;
+        _info.AppName = _info.AppName.IsEmpty() ? _info.AppAssembly!.GetName().Name ?? string.Empty : _info.AppName;
         _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
         _info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
     }

@@ -1,9 +1,9 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
  *
  */
 #endregion
+
 
 namespace Krypton.Toolkit.Suite.Extended.Shared;
 
@@ -231,9 +232,9 @@ public class ToolTipManager
                 _stopTimer.Stop();
                 _stopTimer.Start();
             }
-            catch (Exception e)
+            catch
             {
-                KryptonExceptionDialog.Show(e, null, null);
+                // ignored
             }
         }
     }

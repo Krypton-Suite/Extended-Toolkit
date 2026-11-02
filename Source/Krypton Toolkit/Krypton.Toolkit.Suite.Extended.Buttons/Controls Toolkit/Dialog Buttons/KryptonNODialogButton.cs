@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,16 +30,27 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons;
 [ToolboxBitmap(typeof(KryptonButton))]
 public class KryptonNODialogButton : KryptonButton
 {
-    private KryptonForm _parent;
+    private KryptonForm? _parent;
 
-    public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new(this, value); OnParentWindowChanged(null, e); } }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+    public KryptonForm? ParentWindow
+    {
+        get => _parent;
+        set
+        {
+            _parent = value;
+            Invalidate();
+            OwnerWindowChangedEventArgs e = new(this, value);
+            OnParentWindowChanged(this, e);
+        }
+    }
 
     #region Custom Events
-    public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+    public delegate void ParentWindowChangedEventHandler(object? sender, OwnerWindowChangedEventArgs e);
 
-    public event ParentWindowChangedEventHandler ParentWindowChanged;
+    public event ParentWindowChangedEventHandler? ParentWindowChanged;
 
-    protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+    protected virtual void OnParentWindowChanged(object? sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
     #endregion
 
     public KryptonNODialogButton()
@@ -51,7 +62,7 @@ public class KryptonNODialogButton : KryptonButton
         ParentChanged += KryptonNODialogButton_ParentChanged;
     }
 
-    private void KryptonNODialogButton_ParentChanged(object sender, EventArgs e)
+    private void KryptonNODialogButton_ParentChanged(object? sender, EventArgs e)
     {
         Control? parent = Parent;
 
@@ -60,15 +71,13 @@ public class KryptonNODialogButton : KryptonButton
             parent = parent.Parent;
         }
 
-        if (parent is KryptonForm)
+        if (parent is KryptonForm form)
         {
-            KryptonForm form = (KryptonForm)parent;
-
             form.CancelButton = this;
         }
     }
 
-    private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
+    private void KryptonNODialogButton_TextChanged(object? sender, EventArgs e)
     {
         if (Text == Name)
         {
@@ -76,7 +85,7 @@ public class KryptonNODialogButton : KryptonButton
         }
     }
 
-    protected override void OnPaint(PaintEventArgs e)
+    protected override void OnPaint(PaintEventArgs? e)
     {
         if (ParentWindow != null)
         {

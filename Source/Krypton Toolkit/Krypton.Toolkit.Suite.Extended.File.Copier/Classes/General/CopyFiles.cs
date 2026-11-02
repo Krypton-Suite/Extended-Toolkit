@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -204,7 +204,7 @@ public class CopyFiles
         if (_digWindow != null)
         {
             //Are we going to send the update on the correct thread?
-            if (_digWindow.SynchronizationObject != null && _digWindow.SynchronizationObject.InvokeRequired)
+            if (_digWindow.SynchronizationObject is { InvokeRequired: true })
             {
                 _digWindow.SynchronizationObject.Invoke(new CopyProgressRoutine(CopyProgressHandler),
                 [total, transferred, streamSize, StreamByteTrans, dwStreamNumber, reason, hSourceFile, hDestinationFile, lpData
@@ -225,7 +225,7 @@ public class CopyFiles
         if (_digWindow != null)
         {
             //Are we going to send the update on the correct thread?
-            if (_digWindow.SynchronizationObject != null && _digWindow.SynchronizationObject.InvokeRequired)
+            if (_digWindow.SynchronizationObject is { InvokeRequired: true })
             {
                 _digWindow.SynchronizationObject.Invoke(new DEL_ShowDiag(ShowDiag),
                     [diag]);
@@ -243,7 +243,7 @@ public class CopyFiles
         if (_digWindow != null)
         {
             //Are we going to send the update on the correct thread?
-            if (_digWindow.SynchronizationObject != null && _digWindow.SynchronizationObject.InvokeRequired)
+            if (_digWindow.SynchronizationObject is { InvokeRequired: true })
             {
                 _digWindow.SynchronizationObject.Invoke(new DEL_HideDiag(HideDiag),
                     [diag]);
@@ -455,7 +455,7 @@ public class CopyFiles
     {
         _digWindow = diag;
 
-        if (_digWindow != null && _digWindow.SynchronizationObject == null)
+        if (_digWindow is { SynchronizationObject: null })
         {
             throw new("Dialog window sent with no SynchronizationObject");
         }

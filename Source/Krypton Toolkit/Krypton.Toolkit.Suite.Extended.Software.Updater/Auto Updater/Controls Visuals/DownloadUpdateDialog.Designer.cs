@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
+            this.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
             this.ClientSize = new System.Drawing.Size(413, 111);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -155,8 +155,10 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Software Update";
+#pragma warning disable CS8622 // Nullability mismatch with WinForms event handlers
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DownloadUpdateDialog_FormClosing);
             this.Load += new System.EventHandler(this.DownloadUpdateDialog_Load);
+#pragma warning restore CS8622
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonTableLayoutPanel1.ResumeLayout(false);

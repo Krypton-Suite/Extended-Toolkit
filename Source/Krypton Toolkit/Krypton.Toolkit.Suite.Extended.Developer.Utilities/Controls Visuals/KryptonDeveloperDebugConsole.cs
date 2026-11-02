@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -155,7 +155,7 @@ public class KryptonDeveloperDebugConsole : KryptonForm
 
     #region Instance Fields
 
-    private FileDialogType _fileDialogType;
+    private FileDialogType _fileDialogType = FileDialogType.Krypton;
 
     #endregion
 
@@ -204,16 +204,16 @@ public class KryptonDeveloperDebugConsole : KryptonForm
     }
     #endregion
 
-    private void krtbDebugBox_TextChanged(object sender, EventArgs e) => kbtnClose.Enabled = string.IsNullOrWhiteSpace(krtbDebugBox.Text);
+    private void krtbDebugBox_TextChanged(object? sender, EventArgs e) => kbtnClose.Enabled = string.IsNullOrWhiteSpace(krtbDebugBox.Text);
 
-    private void kbtnCopy_Click(object sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
+    private void kbtnCopy_Click(object? sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
 
-    private void kbtnClose_Click(object sender, EventArgs e)
+    private void kbtnClose_Click(object? sender, EventArgs e)
     {
         Close();
     }
 
-    private void kbtnSaveToFile_Click(object sender, EventArgs e)
+    private void kbtnSaveToFile_Click(object? sender, EventArgs e)
     {
         switch (_fileDialogType)
         {
@@ -243,12 +243,12 @@ public class KryptonDeveloperDebugConsole : KryptonForm
                 break;
             case FileDialogType.WindowsAPICodePack:
 
-                CommonSaveFileDialog csfd = new();
-
-                csfd.Filters.Add(new("Exception Captures", "txt"));
-
-                csfd.DefaultFileName = $"Exception Capture - {DateTime.Now}";
-
+                CommonSaveFileDialog csfd = new CommonSaveFileDialog()
+                {
+                    Filters = { new CommonFileDialogFilter("Exception Captures", "txt") },
+                    DefaultFileName = $"Exception Capture - {DateTime.Now}"
+                };
+                
                 if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     if (csfd.FileName != null)

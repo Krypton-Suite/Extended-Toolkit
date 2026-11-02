@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ public class PopupClosedEventArgs : EventArgs
     /// <summary>
     /// The popup form.
     /// </summary>
-    private KryptonForm _popup = null;
+    private KryptonForm _popup;
 
     /// <summary>
     /// Gets the popup form which is being closed.
@@ -56,4 +56,4 @@ public class PopupClosedEventArgs : EventArgs
 /// <summary>
 /// Represents the method which responds to a <see cref="PopupClosedEventArgs"/> event.
 /// </summary>
-public delegate void PopupClosedEventHandler(object sender, PopupClosedEventArgs e);
+public delegate void PopupClosedEventHandler(object? sender, PopupClosedEventArgs e);

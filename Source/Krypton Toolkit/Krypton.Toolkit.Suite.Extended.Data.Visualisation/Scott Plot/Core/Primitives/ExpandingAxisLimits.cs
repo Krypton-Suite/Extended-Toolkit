@@ -183,17 +183,12 @@ public class ExpandingAxisLimits : IEquatable<ExpandingAxisLimits>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is ExpandingAxisLimits other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            ExpandingAxisLimits other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(ExpandingAxisLimits a, ExpandingAxisLimits b)

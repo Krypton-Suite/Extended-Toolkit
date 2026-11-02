@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
 				<!-- Use centralized TFM configuration from Directory.Build.props -->
 		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
@@ -25,7 +25,10 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
-		<NeutralLanguage>en</NeutralLanguage>		<LangVersion>preview</LangVersion>
+		<UseWPF>true</UseWPF>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+		<NeutralLanguage>en</NeutralLanguage>		
+		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<WarningLevel>6</WarningLevel>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
@@ -33,19 +36,19 @@
 
 	<!--Package Data-->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Nightly'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Release'">
+		<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater</PackageId>
 			</PropertyGroup>
@@ -71,34 +74,36 @@
 	<Choose>
 		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<Choose>
-				<When Condition="'$(Configuration)' == 'Nightly'">
+				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="100.25.6.167-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
 					</ItemGroup>
 				</When>
 
-				<When Condition="'$(Configuration)' == 'Canary'">
+				<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Canary" Version="100.25.6.171-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.10.299-beta" />
 					</ItemGroup>
 				</When>
 
-				<When Condition="'$(Configuration)' == 'Release'">
+				<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
+					<!-- Stable meta-package Krypton.Standard.Toolkit is not on nuget.org yet; use sibling ProjectReference. -->
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
+						<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 					</ItemGroup>
 				</When>
 
 				<Otherwise>
+					<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit" Version="95.25.10.293" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -116,12 +121,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Drawing.Common" Version="10.0.0" />
-		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.44.1">
+		<PackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" />
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.48">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3595.46" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="4.2.0" />
 	</ItemGroup>
@@ -160,7 +165,7 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'net481'">
 		<Reference Include="PresentationCore" />
 		<Reference Include="PresentationFramework">
 			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\PresentationFramework.dll</HintPath>
@@ -174,6 +179,10 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.3.26522.148" />
 	</ItemGroup>
 
 	<!--Optimisation-->
@@ -201,5 +210,20 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|net7.0-windows|AnyCPU'">
 		<Optimize>True</Optimize>
 	</PropertyGroup>
+
+	<!-- Resources.resx links ..\Resources\ZipExtractor.exe; ensure it exists before CoreResGen -->
+	<Target Name="PrepareZipExtractorResources" BeforeTargets="CoreResGen">
+		<PropertyGroup>
+			<_ZipExtractorTfm Condition="$(TargetFramework.StartsWith('net4'))">net481</_ZipExtractorTfm>
+			<_ZipExtractorTfm Condition="!$(TargetFramework.StartsWith('net4'))">net8.0-windows</_ZipExtractorTfm>
+			<_ZipExtractorCsproj>$(MSBuildThisFileDirectory)..\ZipExtractor\ZipExtractor.csproj</_ZipExtractorCsproj>
+			<_ZipExtractorExe>$(MSBuildThisFileDirectory)..\..\..\Bin\$(Configuration)\ZipExtractor\$(_ZipExtractorTfm)\ZipExtractor.exe</_ZipExtractorExe>
+			<_ResourcesDir>$(MSBuildThisFileDirectory)Resources</_ResourcesDir>
+		</PropertyGroup>
+		<MSBuild Projects="$(_ZipExtractorCsproj)" Targets="Build" Properties="Configuration=$(Configuration);TargetFramework=$(_ZipExtractorTfm)" />
+		<MakeDir Directories="$(_ResourcesDir)" />
+		<Copy SourceFiles="$(_ZipExtractorExe)" DestinationFiles="$(_ResourcesDir)\ZipExtractor.exe" SkipUnchangedFiles="true" Condition="Exists('$(_ZipExtractorExe)')" />
+		<Error Text="ZipExtractor payload missing. Expected: $(_ZipExtractorExe)" Condition="!Exists('$(_ZipExtractorExe)')" />
+	</Target>
 
 </Project>

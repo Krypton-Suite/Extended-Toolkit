@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,8 +47,7 @@ internal sealed class SemanticKeyElement : BuilderElements
 
     public override bool Equals(object obj)
     {
-        SemanticKeyElement semanticKeyElement = obj as SemanticKeyElement;
-        if (semanticKeyElement == null)
+        if (obj is not SemanticKeyElement semanticKeyElement)
         {
             return false;
         }

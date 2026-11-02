@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -238,11 +238,14 @@ public partial class HexadecimalToRGBConverter : KryptonForm
     #endregion
 
     #region Properties
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool Modified
     {
         get => _modified;
         set => _modified = value;
     }
+    
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public Color TargetColour
     {
         get => _targetColour;
@@ -255,7 +258,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         InitializeComponent();
     }
 
-    private void HexadecimalToRGBConverter_Load(object sender, EventArgs e)
+    private void HexadecimalToRGBConverter_Load(object? sender, EventArgs e)
     {
         Modified = false;
 
@@ -268,7 +271,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         _editTimer.Tick += EditTimer_Tick;
     }
 
-    private void EditTimer_Tick(object sender, EventArgs e)
+    private void EditTimer_Tick(object? sender, EventArgs e)
     {
         if (klbColours.Items.Count > 0)
         {
@@ -280,7 +283,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         }
     }
 
-    private void kbtnConvertToRGB_Click(object sender, EventArgs e)
+    private void kbtnConvertToRGB_Click(object? sender, EventArgs e)
     {
         TargetColour = ColorTranslator.FromHtml($"#{ktxtHexValue.Text}");
 
@@ -297,13 +300,13 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         ktxtHexValue.Focus();
     }
 
-    private void kbtnExport_Click(object sender, EventArgs e)
+    private void kbtnExport_Click(object? sender, EventArgs e)
     {
         CommonSaveFileDialog csfd = new();
 
         csfd.Filters.Add(new("Normal Text Files", ".txt"));
 
-        if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+        if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
         {
             if (!File.Exists(Path.GetFullPath(csfd.FileName)))
             {
@@ -323,7 +326,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         Modified = false;
     }
 
-    private void kbtnOk_Click(object sender, EventArgs e)
+    private void kbtnOk_Click(object? sender, EventArgs e)
     {
         if (Modified)
         {
@@ -340,12 +343,12 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         }
     }
 
-    private void kbtnCancel_Click(object sender, EventArgs e)
+    private void kbtnCancel_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void ktxtHexValue_TextChanged(object sender, EventArgs e)
+    private void ktxtHexValue_TextChanged(object? sender, EventArgs e)
     {
         if (ktxtHexValue.Text.Length == 6)
         {
@@ -353,7 +356,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         }
     }
 
-    private void kbtnLoadFromFile_Click(object sender, EventArgs e)
+    private void kbtnLoadFromFile_Click(object? sender, EventArgs e)
     {
         ArrayList fileContents = new();
 
@@ -363,11 +366,9 @@ public partial class HexadecimalToRGBConverter : KryptonForm
 
         int counter = 0;
 
-        string line;
-
-        if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+        if (cofd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(cofd.FileName))
         {
-            StreamReader reader = new(cofd.FileName, Encoding.UTF8);
+            using StreamReader reader = new(cofd.FileName, Encoding.UTF8);
 
             if (new FileInfo(cofd.FileName).Length == 0)
             {
@@ -375,6 +376,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
             }
             else
             {
+                string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     klbColours.Items.Add(line);
@@ -387,7 +389,7 @@ public partial class HexadecimalToRGBConverter : KryptonForm
         }
     }
 
-    private void removeSelectedColourToolStripMenuItem_Click(object sender, EventArgs e)
+    private void removeSelectedColourToolStripMenuItem_Click(object? sender, EventArgs e)
     {
         klbColours.Items.RemoveAt(klbColours.SelectedIndex);
     }

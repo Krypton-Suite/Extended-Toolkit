@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,8 @@ internal class SysInfoRetriever
         foreach (var o in _sysInfoSearcher.Get())
         {
             var managementObject = (ManagementObject)o;
-            _sysInfoResult.AddNode(managementObject.GetPropertyValue(_sysInfoQuery.DisplayField).ToString().Trim());
+            var displayValue = managementObject.GetPropertyValue(_sysInfoQuery.DisplayField);
+            _sysInfoResult.AddNode(Convert.ToString(displayValue)?.Trim() ?? string.Empty);
             _sysInfoResult.AddChildren(GetChildren(managementObject));
         }
         return _sysInfoResult;

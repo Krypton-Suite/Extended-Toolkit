@@ -1,0 +1,19 @@
+﻿<Project DefaultTargets="BuildDev">
+	<!--
+		Debug builds use the Dev solution (ProjectReference to sibling Standard-Toolkit).
+		Main/NuGet solutions include Ultimate, which PackageReferences Krypton.Standard.Toolkit
+		and are not suitable for a local Debug restore when those channel packages are unavailable.
+	-->
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+	</PropertyGroup>
+
+	<Import Project="Extended.Orchestration.targets" />
+
+	<Target Name="Rebuild" DependsOnTargets="Clean;BuildDev">
+		<Message Text="Debug rebuild completed" Importance="high" />
+	</Target>
+
+	<!-- Keep Build as an alias for BuildDev so /t:Build still works for this entry point. -->
+	<Target Name="Build" DependsOnTargets="BuildDev" />
+</Project>

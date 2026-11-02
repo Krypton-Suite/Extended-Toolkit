@@ -58,7 +58,7 @@ public class FadeValues : Storage
     /// <value>The fade speed.</value>
     [Category(@"Data")]
     [Description(@"Controls the fading speed. Default is '0.5'. (Use this if you are using .NET FrameWork 4.x)")]
-    [DefaultValue(DEFAULT_FADE_SPEED)]
+    [DefaultValue(0.5f)]
     public float FadeSpeed { get; set; }
 
     private bool ShouldSerializeFadeSpeed() => !FadeSpeed.Equals(DEFAULT_FADE_SPEED);
@@ -69,7 +69,7 @@ public class FadeValues : Storage
     /// <value>The duration of the fade.</value>
     [Category(@"Data")]
     [Description(@"Controls the fading duration. Default is '50'. (Use this if you are using .NET)")]
-    [DefaultValue(DEFAULT_FADE_DURATION)]
+    [DefaultValue(50)]
     public int FadeDuration { get; set; }
 
     private bool ShouldSerializeFadeDuration() => !FadeDuration.Equals(DEFAULT_FADE_DURATION);
@@ -98,7 +98,6 @@ public class FadeValues : Storage
     public FadeValues()
     {
         throw new Exception( "FadeValues is disabled until proven stable. Further development in V100" );
-        Reset();
     }
 
     #endregion

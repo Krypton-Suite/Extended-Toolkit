@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -241,7 +241,7 @@ public class KryptonPasswordTextBox : KryptonTextBox
             {
                 System.Diagnostics.Debug.WriteLine($"Ignoring {GetType().FullName}#PasswordCharDelay property setting {value} at:");
 #if DEBUG
-                    Utilities.DebugWithIndentation(() => Utilities.DebugStackTrace());
+                    System.Diagnostics.Debug.WriteLine(Environment.StackTrace);
 #endif
                 return;
             }
@@ -488,7 +488,7 @@ public class KryptonPasswordTextBox : KryptonTextBox
     #region Overrides
 
     /// <summary>
-    /// Raises the <see cref="TextBox.TextChanged"/> event with the
+    /// Raises the TextChanged event with the
     /// specified <see cref="EventArgs"/>.
     /// </summary>
     /// <param name="e">An <see cref="EventArgs"/>.</param>
@@ -529,7 +529,7 @@ public class KryptonPasswordTextBox : KryptonTextBox
     /// <param name="position"></param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="position"/>
     /// is less than zero or not less than
-    /// <see cref="KryptonPasswordTextBox.TextLength"/>.</exception>
+    /// is less than zero or not less than TextLength.</exception>
     protected void PaintUnobscured(string @string, int position)
     {
         if ((position < 0) || (TextLength <= position))
@@ -599,7 +599,7 @@ public class KryptonPasswordTextBox : KryptonTextBox
     }
 
     // ReSharper disable once InconsistentNaming
-    private void timer_Elapsed(object sender, ElapsedEventArgs e)
+    private void timer_Elapsed(object? sender, ElapsedEventArgs e)
     {
         Invalidate();
     }

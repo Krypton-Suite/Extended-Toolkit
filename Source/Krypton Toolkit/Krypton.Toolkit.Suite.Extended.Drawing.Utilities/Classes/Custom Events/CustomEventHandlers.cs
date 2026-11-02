@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
 
 public class ColourEvents
 {
-    public delegate void SelectedColourChangedEventHandler(object sender, EventArgs e);
+    public delegate void SelectedColourChangedEventHandler(object? sender, EventArgs e);
 
     public event SelectedColourChangedEventHandler SelectedColourChanged;
 

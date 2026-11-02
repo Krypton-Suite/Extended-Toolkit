@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -199,8 +199,7 @@ public class VoiceInfo
 
     public override bool Equals(object obj)
     {
-        VoiceInfo voiceInfo = obj as VoiceInfo;
-        if (voiceInfo != null && _name == voiceInfo._name && (_age == voiceInfo._age || _age == VoiceAge.NotSet || voiceInfo._age == VoiceAge.NotSet) && (_gender == voiceInfo._gender || _gender == VoiceGender.NotSet || voiceInfo._gender == VoiceGender.NotSet))
+        if (obj is VoiceInfo voiceInfo && _name == voiceInfo._name && (_age == voiceInfo._age || _age == VoiceAge.NotSet || voiceInfo._age == VoiceAge.NotSet) && (_gender == voiceInfo._gender || _gender == VoiceGender.NotSet || voiceInfo._gender == VoiceGender.NotSet))
         {
             if (_culture != null && voiceInfo._culture != null)
             {

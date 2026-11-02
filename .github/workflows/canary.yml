@@ -1,0 +1,242 @@
+﻿# KILL-SWITCH: Set repository variable CANARY_DISABLED=true to disable.
+# Runs on push to canary (or workflow_dispatch). Does not run on a schedule.
+#
+# NUGET: Trusted publishing via NuGet/login. Secret NUGET_USER is the nuget.org profile name.
+# nuget.org needs a policy for this workflow file and Krypton-Suite/Extended-Toolkit.
+#
+# Discord: Set secret DISCORD_WEBHOOK_CANARY (optional). Announces after a successful NuGet publish.
+
+name: Canary Release
+
+permissions:
+  contents: read
+  id-token: write
+
+on:
+  push:
+    branches:
+      - canary
+  workflow_dispatch:
+    inputs:
+      pack_lite:
+        description: Also pack CanaryLite packages
+        required: false
+        default: false
+        type: boolean
+      publish_nuget:
+        description: Publish to NuGet.org
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  canary:
+    name: Pack Canary
+    runs-on: windows-latest
+    if: vars.CANARY_DISABLED != 'true'
+    concurrency:
+      group: canary-release
+      cancel-in-progress: true
+
+    steps:
+      - name: Verify branch
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_REF -ne 'refs/heads/canary') {
+            Write-Error "Canary release only runs from branch 'canary'. Current ref: '$env:GITHUB_REF'. For manual run, select branch 'canary' in the workflow dispatch."
+          }
+          Write-Host "Branch verified: $env:GITHUB_REF"
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: canary
+          fetch-depth: 0
+
+      # Canary PackageReferences come from nuget.org; keep sibling for graph completeness.
+      - name: Checkout Standard-Toolkit (sibling)
+        shell: pwsh
+        run: ./Scripts/CI/Checkout-StandardToolkit.ps1 -Branch canary
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: |
+            10.0.x
+            9.0.x
+            8.0.x
+
+      - name: Setup .NET 11 (stable)
+        id: setup_dotnet11_stable
+        continue-on-error: true
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+
+      - name: Setup .NET 11 (preview fallback)
+        if: steps.setup_dotnet11_stable.outcome == 'failure'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ vars.DOTNET_PREVIEW_SETUP_VERSION != '' && vars.DOTNET_PREVIEW_SETUP_VERSION || '11.0.x' }}
+          dotnet-quality: preview
+
+      - name: Pin SDK via global.json
+        shell: pwsh
+        run: ./Scripts/CI/Pin-DotNetSdk.ps1
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Cache NuGet
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-canary-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-canary-
+            ${{ runner.os }}-nuget-
+
+      - name: Pack Canary
+        run: msbuild /m Scripts/Build/canary.proj /t:Pack /p:Configuration=Canary /p:Platform="Any CPU"
+
+      - name: Pack CanaryLite
+        if: github.event_name == 'workflow_dispatch' && inputs.pack_lite
+        run: msbuild /m Scripts/Build/canary.proj /t:PackLite /p:Configuration=Canary /p:Platform="Any CPU"
+
+      - name: List packages
+        shell: pwsh
+        run: |
+          $dir = 'Bin/NuGet Packages/Canary'
+          if (Test-Path $dir) {
+            Get-ChildItem $dir -Filter '*.nupkg' | ForEach-Object { Write-Host $_.Name }
+          } else {
+            Write-Error "No packages produced at $dir"
+          }
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: Canary-packages
+          path: |
+            Bin/NuGet Packages/Canary/*.nupkg
+            Bin/NuGet Packages/Canary/*.snupkg
+          retention-days: 30
+
+      - name: NuGet login (OIDC)
+        if: (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)) && github.repository == 'Krypton-Suite/Extended-Toolkit'
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publish to NuGet.org
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish_nuget)
+        id: push_nuget
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($env:GITHUB_REPOSITORY -ne 'Krypton-Suite/Extended-Toolkit') {
+            Write-Warning "NuGet trusted publishing is only configured for Krypton-Suite/Extended-Toolkit - skipping NuGet push"
+            echo "packages_published=false" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
+          if (-not $env:NUGET_API_KEY) {
+            Write-Error 'NuGet trusted publishing did not provide an API key. Set the NUGET_USER secret to the nuget.org profile name.'
+          }
+          $packages = @(Get-ChildItem 'Bin/NuGet Packages/Canary' -Filter '*.nupkg' -Exclude '*.symbols.nupkg')
+          $publishedAny = $false
+          foreach ($pkg in $packages) {
+            Write-Host "Publishing $($pkg.Name)"
+            $output = dotnet nuget push $pkg.FullName --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate 2>&1 | Out-String
+            Write-Host $output
+            if ($output -notmatch 'already exists' -and $output -notmatch 'was not pushed') {
+              $publishedAny = $true
+            }
+          }
+          echo "packages_published=$publishedAny" >> $env:GITHUB_OUTPUT
+
+      - name: Resolve package version
+        if: always() && steps.push_nuget.outcome == 'success'
+        id: get_version
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $pkg = Get-ChildItem 'Bin/NuGet Packages/Canary' -Filter 'Krypton.Toolkit.Suite.Extended.Ultimate.Canary.*.nupkg' |
+            Where-Object { $_.Name -notmatch '\.symbols\.' } |
+            Select-Object -First 1
+          if (-not $pkg) {
+            $pkg = Get-ChildItem 'Bin/NuGet Packages/Canary' -Filter '*.nupkg' |
+              Where-Object { $_.Name -notmatch '\.symbols\.' } |
+              Select-Object -First 1
+          }
+          $version = if ($pkg -and $pkg.BaseName -match '(\d+\.\d+\.\d+\.\d+(?:-[A-Za-z0-9.]+)?)') { $Matches[1] } else { 'unknown' }
+          Write-Host "Version=$version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Announce Canary Release on Discord
+        if: steps.push_nuget.outputs.packages_published == 'True'
+        shell: pwsh
+        env:
+          DISCORD_WEBHOOK_CANARY: ${{ secrets.DISCORD_WEBHOOK_CANARY }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (-not $env:DISCORD_WEBHOOK_CANARY) {
+            Write-Warning 'DISCORD_WEBHOOK_CANARY not set - skipping Discord notification'
+            exit 0
+          }
+
+          $sha = (git rev-parse HEAD).Trim()
+          $shortSha = $sha.Substring(0, [Math]::Min(7, $sha.Length))
+          $commitUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/commit/$sha"
+          $version = '${{ steps.get_version.outputs.version }}'
+          $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+
+          $payload = @{
+            embeds = @(
+              @{
+                title       = 'Krypton Extended Toolkit Canary Release'
+                url         = $commitUrl
+                description = 'A new Extended Toolkit canary (beta) build is now on NuGet.org.'
+                color       = 16753920
+                fields      = @(
+                  @{ name = 'Version'; value = "``$version``"; inline = $true }
+                  @{ name = 'Commit'; value = "[``$shortSha``]($commitUrl)"; inline = $true }
+                  @{
+                    name   = 'NuGet Packages'
+                    value  = @(
+                      '• [Ultimate.Canary](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Canary)'
+                      '• [Common.Canary](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Canary)'
+                      '• [Controls.Canary](https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Controls.Canary)'
+                      '• [Module dashboard](https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md)'
+                    ) -join "`n"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Target Frameworks'
+                    value  = "• .NET Framework 4.7.2`n• .NET Framework 4.8`n• .NET Framework 4.8.1`n• .NET 8–11 (windows)"
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Changelog'
+                    value  = '[Documents/Help/Changelog.md](https://github.com/Krypton-Suite/Extended-Toolkit/blob/canary/Documents/Help/Changelog.md)'
+                    inline = $false
+                  }
+                  @{
+                    name   = 'Workflow'
+                    value  = "[Run #$env:GITHUB_RUN_NUMBER]($runUrl)"
+                    inline = $false
+                  }
+                )
+                footer    = @{ text = 'Extended Toolkit Canary' }
+                timestamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
+              }
+            )
+          } | ConvertTo-Json -Depth 10
+
+          Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK_CANARY -Method Post -Body $payload -ContentType 'application/json'
+          Write-Host 'Discord canary announcement sent.'

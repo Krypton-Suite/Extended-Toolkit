@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -131,7 +131,8 @@ public class KryptonRedValueLabel : KryptonLabel
     #endregion
 
     #region Overrides
-    protected override void OnPaint(PaintEventArgs? e)
+#pragma warning disable CS8765 // OnPaint parameter matches Control base on all TFMs.
+    protected override void OnPaint(PaintEventArgs e)
     {
         ShowCurrentColourValueOnLabel(_showCurrentColourValue, _extraText, _showColon);
 
@@ -140,6 +141,7 @@ public class KryptonRedValueLabel : KryptonLabel
         AlterLabelUI(_useAccessibleUI);
 
         base.OnPaint(e);
+#pragma warning restore CS8765
     }
     #endregion
 }

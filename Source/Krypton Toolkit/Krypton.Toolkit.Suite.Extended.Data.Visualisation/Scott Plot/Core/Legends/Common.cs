@@ -11,6 +11,7 @@ public static class Common
     public static void RenderItem(
         SKCanvas canvas,
         SKPaint paint,
+        SKFont font,
         SizedLegendItem sizedItem,
         float x,
         float y,
@@ -20,7 +21,7 @@ public static class Common
     {
         LegendItem item = sizedItem.Item;
 
-        SKPoint textPoint = new(x, y + paint.TextSize);
+        SKPoint textPoint = new(x, y + font.Size);
         float ownHeight = sizedItem.Size.OwnSize.Height;
 
         if (item.HasSymbol)
@@ -39,14 +40,14 @@ public static class Common
         using SKAutoCanvasRestore _ = new(canvas);
         if (!string.IsNullOrEmpty(item.Label))
         {
-            canvas.DrawText(item.Label, textPoint, paint);
+            canvas.DrawText(item.Label, textPoint, SKTextAlign.Left, font, paint);
             canvas.Translate(itemPadding.Left, 0);
         }
 
         y += ownHeight;
         foreach (var curr in sizedItem.Children)
         {
-            RenderItem(canvas, paint, curr, x, y, symbolWidth, symbolPadRight, itemPadding);
+            RenderItem(canvas, paint, font, curr, x, y, symbolWidth, symbolPadRight, itemPadding);
             y += curr.Size.WithChildren.Height;
         }
     }
@@ -93,6 +94,7 @@ public static class Common
     public static LegendItemSize Measure(
         LegendItem item,
         SKPaint paint,
+        SKFont font,
         SizedLegendItem[] children,
         float symbolWidth,
         float symbolPadRight,
@@ -100,12 +102,12 @@ public static class Common
         PixelPadding itemPadding)
     {
         PixelSize labelRect = !string.IsNullOrWhiteSpace(item.Label)
-            ? Drawing.MeasureString(item.Label ?? string.Empty, paint)
+            ? Drawing.MeasureString(item.Label ?? string.Empty, font)
             : new(0, 0);
 
         float width2 = item.HasSymbol ? symbolWidth : 0;
         float width = width2 + symbolPadRight + labelRect.Width + itemPadding.Horizontal;
-        float height = paint.TextSize + padding.Vertical;
+        float height = font.Size + padding.Vertical;
 
         PixelSize ownSize = new(width, height);
 

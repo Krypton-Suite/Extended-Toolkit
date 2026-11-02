@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -300,7 +300,7 @@ internal static class SsmlParser
             bool flag = false;
             while (reader.Read())
             {
-                if (reader.NodeType == XmlNodeType.Element && reader.LocalName == "speak")
+                if (reader is { NodeType: XmlNodeType.Element, LocalName: "speak" })
                 {
                     if (flag)
                     {
@@ -445,7 +445,7 @@ internal static class SsmlParser
     {
         SsmlAttributes ssmlAttributes = default(SsmlAttributes);
         ssmlAttributes = ssmAttributesParent;
-        if (extraAttributes != null && extraAttributes.Count > 0)
+        if (extraAttributes is { Count: > 0 })
         {
             engine.StartProcessUnknownAttributes(ssmlAttributes._voice, ref ssmlAttributes._fragmentState, sElement, extraAttributes);
         }
@@ -496,7 +496,7 @@ internal static class SsmlParser
             }
             while (reader.NodeType != XmlNodeType.EndElement && reader.NodeType != 0);
         }
-        if (extraAttributes != null && extraAttributes.Count > 0)
+        if (extraAttributes is { Count: > 0 })
         {
             engine.EndProcessUnknownAttributes(ssmlAttributes._voice, ref ssmlAttributes._fragmentState, sElement, extraAttributes);
         }
@@ -1043,8 +1043,7 @@ internal static class SsmlParser
                 if (localName == "alias")
                 {
                     CheckForDuplicates(ref dest, reader);
-                    XmlTextReader xmlTextReader = reader as XmlTextReader;
-                    if (xmlTextReader != null && engine.Ssml != null)
+                    if (reader is XmlTextReader xmlTextReader && engine.Ssml != null)
                     {
                         position = engine.Ssml.IndexOf(reader.Value, xmlTextReader.LinePosition + reader.LocalName.Length, StringComparison.Ordinal);
                     }
@@ -1138,7 +1137,7 @@ internal static class SsmlParser
                         break;
                 }
             }
-            else if (reader.Prefix == "xmlns" && reader.Value == "http://schemas.microsoft.com/Speech/2003/03/PromptEngine")
+            else if (reader is { Prefix: "xmlns", Value: "http://schemas.microsoft.com/Speech/2003/03/PromptEngine" })
             {
                 CheckForDuplicates(ref dest6, reader);
             }
@@ -1272,7 +1271,7 @@ internal static class SsmlParser
         ssmlAttributes = ssmAttributesParent;
         while (reader.MoveToNextAttribute())
         {
-            if (reader.NamespaceURI == "http://www.w3.org/2000/xmlns/" && reader.Value == "http://schemas.microsoft.com/Speech/2003/03/PromptEngine")
+            if (reader is { NamespaceURI: "http://www.w3.org/2000/xmlns/", Value: "http://schemas.microsoft.com/Speech/2003/03/PromptEngine" })
             {
                 engine.ContainsPexml(reader.LocalName);
             }
@@ -1455,7 +1454,7 @@ internal static class SsmlParser
                 }
                 if (list.Count == 0)
                 {
-                    if (number.Number > 0f && number.Number < 100f)
+                    if (number.Number is > 0f and < 100f)
                     {
                         list.Add(new ContourPoint(0f, number2.Number, ContourPointChangeType.Hz));
                     }
@@ -1464,7 +1463,7 @@ internal static class SsmlParser
                 {
                     return null;
                 }
-                if (number.Number >= 0f && number.Number <= 1f)
+                if (number.Number is >= 0f and <= 1f)
                 {
                     list.Add(new ContourPoint(number.Number, number2.Number, !isHz ? ContourPointChangeType.Percentage : ContourPointChangeType.Hz));
                 }
@@ -1662,8 +1661,7 @@ internal static class SsmlParser
 
     private static int GetColumnPosition(XmlReader reader)
     {
-        XmlTextReader xmlTextReader = reader as XmlTextReader;
-        if (xmlTextReader == null)
+        if (reader is not XmlTextReader xmlTextReader)
         {
             return 0;
         }
