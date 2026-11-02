@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,7 @@ public class KryptonColourButtonToolStripMenuItem : ToolStripControlHostFixed
 {
     #region Instance Fields
 
+#pragma warning disable CS0169, CS0649, CS0067
     private Color _selectedColor;
 
     private Color _emptyBorderColor;
@@ -60,6 +61,7 @@ public class KryptonColourButtonToolStripMenuItem : ToolStripControlHostFixed
     [Category(@"Action")]
     [Description(@"Occurs when user selects the more colors option.")]
     public event CancelEventHandler MoreColors;
+#pragma warning restore CS0169, CS0649, CS0067
 
     #endregion
 

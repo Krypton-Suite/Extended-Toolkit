@@ -8,12 +8,12 @@
         /// <summary>
         /// The update version #
         /// </summary>
-        public Version Version { get; }
+        public Version? Version { get; }
 
         /// <summary>
         /// The location of the update binary
         /// </summary>
-        public Uri Uri { get; }
+        public Uri? Uri { get; }
 
         /// <summary>
         /// The file path of the binary
@@ -24,7 +24,7 @@
         /// <summary>
         /// The MD5 of the update's binary
         /// </summary>
-        public string MD5 { get; }
+        public string? MD5 { get; }
 
         /// <summary>
         /// The update's description
@@ -44,7 +44,7 @@
         /// <summary>
         /// Creates a new SharpUpdateXml object
         /// </summary>
-        public SharpUpdateXml(Version version, Uri uri, string filePath, string md5, string description, string launchArgs, JobType t)
+        public SharpUpdateXml(Version? version, Uri? uri, string filePath, string? md5, string description, string launchArgs, JobType t)
         {
             Version = version;
             Uri = uri;
@@ -60,7 +60,7 @@
         /// </summary>
         /// <param name="version">Application's current version</param>
         /// <returns>If the update's version # is newer</returns>
-        public bool IsNewerThan(Version version) => Version > version;
+        public bool IsNewerThan(Version version) => Version! > version;
 
         /// <summary>
         /// Checks the Uri to make sure file exist
@@ -77,8 +77,10 @@
             {
                 try
                 {
+#pragma warning disable SYSLIB0014 // WebRequest retained for update.xml reachability check
                     // Request the update.xml
                     HttpWebRequest req = (HttpWebRequest)WebRequest.Create(location.AbsoluteUri);
+#pragma warning restore SYSLIB0014
                     // Read for response
                     HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
                     resp.Close();
@@ -110,57 +112,72 @@
                 // Gets the appId's node with the update info
                 // This allows you to store all program's update nodes in one file
                 // XmlNode updateNode = doc.DocumentElement.SelectSingleNode("//update[@appID='" + appID + "']");
-                XmlNodeList? updateNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/update");
-                foreach (XmlNode updateNode in updateNodes)
+                XmlNodeList? updateNodes = doc.DocumentElement?.SelectNodes("/sharpUpdate/update");
+                if (updateNodes != null)
                 {
-                    // If the node doesn't exist, there is no update
-                    if (updateNode == null)
-                        return null;
+                    foreach (XmlNode updateNode in updateNodes)
+                    {
+                        // If the node doesn't exist, there is no update
+                        if (updateNode == null)
+                        {
+                            return null;
+                        }
 
-                    // Parse data
-                    version = Version.Parse(updateNode["version"].InnerText);
-                    url = updateNode["url"].InnerText;
-                    filePath = updateNode["filePath"].InnerText;
-                    md5 = updateNode["md5"].InnerText;
-                    description = updateNode["description"].InnerText;
-                    launchArgs = updateNode["launchArgs"].InnerText;
+                        // Parse data
+                        version = Version.Parse(updateNode["version"]!.InnerText);
+                        url = updateNode["url"]!.InnerText;
+                        filePath = updateNode["filePath"]!.InnerText;
+                        md5 = updateNode["md5"]!.InnerText;
+                        description = updateNode["description"]!.InnerText;
+                        launchArgs = updateNode["launchArgs"]!.InnerText;
 
-                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs,
-                        JobType.UPDATE));
+                        result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs,
+                            JobType.UPDATE));
+                    }
                 }
 
-                XmlNodeList? addNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/add");
-                foreach (XmlNode addNode in addNodes)
+                XmlNodeList? addNodes = doc.DocumentElement?.SelectNodes("/sharpUpdate/add");
+                if (addNodes != null)
                 {
-                    // If the node doesn't exist, there is no add
-                    if (addNode == null)
-                        return null;
+                    foreach (XmlNode addNode in addNodes)
+                    {
+                        // If the node doesn't exist, there is no add
+                        if (addNode == null)
+                        {
+                            return null;
+                        }
 
-                    // Parse data
-                    version = Version.Parse(addNode["version"].InnerText);
-                    url = addNode["url"].InnerText;
-                    filePath = addNode["filePath"].InnerText;
-                    md5 = addNode["md5"].InnerText;
-                    description = addNode["description"].InnerText;
-                    launchArgs = addNode["launchArgs"].InnerText;
+                        // Parse data
+                        version = Version.Parse(addNode["version"]!.InnerText);
+                        url = addNode["url"]!.InnerText;
+                        filePath = addNode["filePath"]!.InnerText;
+                        md5 = addNode["md5"]!.InnerText;
+                        description = addNode["description"]!.InnerText;
+                        launchArgs = addNode["launchArgs"]!.InnerText;
 
-                    result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs,
-                        JobType.ADD));
+                        result.Add(new SharpUpdateXml(version, new Uri(url), filePath, md5, description, launchArgs,
+                            JobType.ADD));
+                    }
                 }
 
-                XmlNodeList? removeNodes = doc.DocumentElement.SelectNodes("/sharpUpdate/remove");
-                foreach (XmlNode removeNode in removeNodes)
+                XmlNodeList? removeNodes = doc.DocumentElement?.SelectNodes("/sharpUpdate/remove");
+                if (removeNodes != null)
                 {
-                    // If the node doesn't exist, there is no remove
-                    if (removeNode == null)
-                        return null;
+                    foreach (XmlNode removeNode in removeNodes)
+                    {
+                        // If the node doesn't exist, there is no remove
+                        if (removeNode == null)
+                        {
+                            return null;
+                        }
 
-                    // Parse data
-                    filePath = removeNode["filePath"].InnerText;
-                    description = removeNode["description"].InnerText;
-                    launchArgs = removeNode["launchArgs"].InnerText;
+                        // Parse data
+                        filePath = removeNode["filePath"]!.InnerText;
+                        description = removeNode["description"]!.InnerText;
+                        launchArgs = removeNode["launchArgs"]!.InnerText;
 
-                    result.Add(new SharpUpdateXml(null, null, filePath, null, description, launchArgs, JobType.REMOVE));
+                        result.Add(new SharpUpdateXml(null, null, filePath, null, description, launchArgs, JobType.REMOVE));
+                    }
                 }
 
                 return result.ToArray();

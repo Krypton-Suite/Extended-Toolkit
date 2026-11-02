@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -108,6 +108,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color GradientBorderColour
     {
         get => _gradientBorderColor;
@@ -149,6 +150,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HotGradientBorderColour
     {
         get => _hotGradientBorderColor;
@@ -162,6 +164,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color HotForeColour
     {
         get => _hotForeColor;
@@ -201,6 +204,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color PressedGradientBorderColour
     {
         get => _pressedGradientBorderColor;
@@ -214,6 +218,7 @@ public class CustomButton : Button
 
     [Category("Appearance-Extended")]
     [Description("The color to use for the bottom portion of the gradient fill of the component.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color PressedForeColour
     {
         get => _pressedForeColor;
@@ -352,7 +357,7 @@ public class CustomButton : Button
 
     #region Custom Painting
 
-    private Point _locPoint;
+    private Point _locPoint = Point.Empty;
     protected override void OnPaint(PaintEventArgs pevent)
     {
         Graphics g = pevent.Graphics;
@@ -551,7 +556,7 @@ public class CustomButton : Button
         }
     }
 
-    private void animateButtonHighlightedTimer_Tick(object sender, EventArgs e)
+    private void animateButtonHighlightedTimer_Tick(object? sender, EventArgs e)
     {
         /*
         if (increasingAlpha)
@@ -609,7 +614,7 @@ public class CustomButton : Button
         }
     }
 
-    private void animateResumeNormalTimer_Tick(object sender, EventArgs e)
+    private void animateResumeNormalTimer_Tick(object? sender, EventArgs e)
     {
         /*
          bool modified = false;

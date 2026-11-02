@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -89,6 +89,9 @@ public class ExceptionHandler
     /// <param name="defaultButton">The default button.</param>
     /// <param name="icon">The icon.</param>
     /// <param name="options">The options.</param>
+    /// <param name="kryptonMessageBoxIcon">The krypton message box icon.</param>
+    /// <param name="kryptonMessageBoxDefaultButton">The krypton message box default button.</param>
+    /// <param name="win32Buttons">The win32 buttons.</param>
     public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel? toolStripLabel = null, object? args = null, string caption = "Exception Caught", KryptonMessageBoxButtons buttons = KryptonMessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, KryptonMessageBoxIcon kryptonMessageBoxIcon = KryptonMessageBoxIcon.Error, KryptonMessageBoxDefaultButton kryptonMessageBoxDefaultButton = KryptonMessageBoxDefaultButton.Button4, MessageBoxButtons win32Buttons = MessageBoxButtons.OK)
     {
         if (useKryptonMessageBox)
@@ -118,7 +121,7 @@ public class ExceptionHandler
     {
         try
         {
-            ExceptionDispatchInfo exceptionInfo = null;
+            ExceptionDispatchInfo? exceptionInfo = null;
 
             if (!File.Exists(fileName))
             {
@@ -135,7 +138,7 @@ public class ExceptionHandler
 
             writer.Dispose();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
             throw;
@@ -164,7 +167,7 @@ public class ExceptionHandler
 
             writer.Dispose();
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             throw;

@@ -73,5 +73,5 @@ public class TextAndImage : IComparable<TextAndImage>
     /// </summary>
     /// <param name="other">The other.</param>
     /// <returns></returns>
-    public int CompareTo(TextAndImage other) => Text.CompareTo(other.Text);
+    public int CompareTo(TextAndImage? other) => string.Compare(Text, other?.Text, StringComparison.CurrentCulture);
 }

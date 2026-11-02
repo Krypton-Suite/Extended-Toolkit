@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1169,7 +1169,7 @@ public class InternalKryptonMessageBoxExtended : KryptonForm
         else
         {
             // Pressing Ctrl+C should copy message text into the clipboard
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
+            if (e is { Modifiers: Keys.Control, KeyCode: Keys.C })
             {
                 StringBuilder sb = new StringBuilder();
 

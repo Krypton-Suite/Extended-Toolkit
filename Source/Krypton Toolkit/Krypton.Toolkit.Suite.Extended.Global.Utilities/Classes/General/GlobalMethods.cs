@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  *
  */
 #endregion
+
+using Krypton.Toolkit;
 
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
@@ -243,11 +245,11 @@ public class GlobalMethods
                 return string.Empty;
             }
 
-            return (string)registryKey.GetValue(key);
+            return registryKey.GetValue(key) as string ?? string.Empty;
         }
         catch (Exception e)
         {
-            KryptonExceptionDialog.Show(e, null, null);
+            KryptonExceptionHandler.CaptureException(e);
 
             return string.Empty;
         }
@@ -449,7 +451,7 @@ public static class GlobalMethodsStatic
         }
         catch (Exception exc)
         {
-            KryptonExceptionDialog.Show(exc, null, null);
+            KryptonExceptionHandler.CaptureException(exc);
 
             SetIsTargetPlatformSupported(false);
         }
@@ -529,7 +531,7 @@ public static class GlobalMethodsStatic
             }
             catch (Win32Exception wexc)
             {
-                KryptonExceptionDialog.Show(wexc, null, null);
+                KryptonExceptionHandler.CaptureException(wexc);
 
                 DebugUtilities.NotImplemented(wexc.ToString());
             }
@@ -565,11 +567,11 @@ public static class GlobalMethodsStatic
                 return string.Empty;
             }
 
-            return (string)registryKey.GetValue(key);
+            return registryKey.GetValue(key) as string ?? string.Empty;
         }
         catch (Exception e)
         {
-            KryptonExceptionDialog.Show(e, null, null);
+            KryptonExceptionHandler.CaptureException(e);
 
             return string.Empty;
         }

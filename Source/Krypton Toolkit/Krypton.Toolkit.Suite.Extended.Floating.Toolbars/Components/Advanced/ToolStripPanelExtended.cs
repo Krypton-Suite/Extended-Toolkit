@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -83,9 +83,7 @@ public class ToolStripPanelExtended : ToolStripPanel
     {
         base.OnControlAdded(e);
 
-        ToolStrip? toolStrip = e.Control as ToolStrip;
-
-        if (toolStrip != null)
+        if (e.Control is ToolStrip toolStrip)
         {
             if (Orientation == Orientation.Horizontal)
             {

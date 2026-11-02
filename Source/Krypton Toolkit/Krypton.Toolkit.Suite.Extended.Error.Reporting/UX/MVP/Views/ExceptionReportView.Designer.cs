@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     partial class ExceptionReportView
     {
@@ -588,9 +588,9 @@
         private KryptonButton kbtnCopy;
         private KryptonButton kbtnSave;
         private KryptonPanel kpnlMain;
-        private Navigator.KryptonNavigator kryptonNavigator1;
-        private Navigator.KryptonPage kpGeneral;
-        private Navigator.KryptonPage kpExceptions;
+        private Krypton.Navigator.KryptonNavigator kryptonNavigator1;
+        private Krypton.Navigator.KryptonPage kpGeneral;
+        private Krypton.Navigator.KryptonPage kpExceptions;
         private KryptonTextBox ktxtUserExplanation;
         private KryptonLabel klblExplanation;
         private KryptonTextBox ktxtTime;
@@ -603,9 +603,9 @@
         private KryptonLabel kryptonLabel1;
         private KryptonTextBox ktxtExceptionMessage;
         private PictureBox picGeneral;
-        private Navigator.KryptonPage kpAssemblies;
+        private Krypton.Navigator.KryptonPage kpAssemblies;
         private KryptonListView klvAssemblies;
-        private Navigator.KryptonPage kpSystemInformation;
+        private Krypton.Navigator.KryptonPage kpSystemInformation;
         private KryptonTreeView ktvEnvironment;
         private KryptonPanel kpnlLessDetails;
         private KryptonTextBox ktxtExceptionMessageLarge2;

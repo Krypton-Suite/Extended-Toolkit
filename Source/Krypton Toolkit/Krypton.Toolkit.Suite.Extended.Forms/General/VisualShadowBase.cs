@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,8 +143,7 @@ internal class VisualShadowBase : NativeWindow, IDisposable
     public void ReCalcShadow(Bitmap sourceBitmap, Rectangle windowBounds)
     {
         Rectangle clipRect = CalcRectangle(windowBounds);
-        if (clipRect.Width > 0
-            && clipRect.Height > 0)
+        if (clipRect is { Width: > 0, Height: > 0 })
         {
             _shadowClip = sourceBitmap.Clone(clipRect, sourceBitmap.PixelFormat);
         }

@@ -46,17 +46,12 @@ public struct Coordinates : IEquatable<Coordinates>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is Coordinates other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            Coordinates other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(Coordinates a, Coordinates b)

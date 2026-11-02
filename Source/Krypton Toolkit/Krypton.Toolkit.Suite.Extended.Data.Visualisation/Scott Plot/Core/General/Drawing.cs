@@ -5,32 +5,30 @@
 /// </summary>
 public static class Drawing
 {
-    public static PixelSize MeasureString(string text, SKPaint paint)
+    public static PixelSize MeasureString(string text, SKFont font)
     {
         var strings = text.Split('\n');
         if (strings.Length > 1)
         {
             return strings
-                .Select(s => MeasureString(s, paint))
+                .Select(s => MeasureString(s, font))
                 .Aggregate((a, b) => new PixelSize(Math.Max(a.Width, b.Width), a.Height + b.Height));
         }
 
         SKRect bounds = new();
-        paint.MeasureText(text, ref bounds);
-
-        var width = bounds.Width;
+        var width = font.MeasureText(text, out bounds);
         var height = bounds.Height;
         return new PixelSize(width, height);
     }
 
-    public static PixelSize MeasureLargestString(string[] strings, SKPaint paint)
+    public static PixelSize MeasureLargestString(string[] strings, SKFont font)
     {
         float maxWidth = 0;
         float maxHeight = 0;
 
         for (var i = 0; i < strings.Length; i++)
         {
-            PixelSize tickSize = MeasureString(strings[i], paint);
+            PixelSize tickSize = MeasureString(strings[i], font);
             maxWidth = Math.Max(maxWidth, tickSize.Width);
             maxHeight = Math.Max(maxHeight, tickSize.Height);
         }

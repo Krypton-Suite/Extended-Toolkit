@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -137,12 +137,12 @@ public class ColourGridUserControl : UserControl
     }
     #endregion
 
-    private void kbtnOpenPalette_Click(object sender, EventArgs e)
+    private void kbtnOpenPalette_Click(object? sender, EventArgs e)
     {
 
     }
 
-    private void kbtnSavePalette_Click(object sender, EventArgs e)
+    private void kbtnSavePalette_Click(object? sender, EventArgs e)
     {
 
     }

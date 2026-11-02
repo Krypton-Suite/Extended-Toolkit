@@ -131,6 +131,7 @@ public class MarkdownOptions
 /// Markdown allows you to write using an easy-to-read, easy-to-write plain text format, 
 /// then convert it to structurally valid XHTML (or HTML).
 /// </summary>
+#pragma warning disable CS8714, CS8600, CS8604 // Vendored MarkdownSharp uses nullable dictionary keys.
 public class Markdown
 {
     private const string VERSION = "1.13";
@@ -1854,3 +1855,4 @@ public class Markdown
         return sb.ToString();
     }
 }
+#pragma warning restore CS8714, CS8600, CS8604

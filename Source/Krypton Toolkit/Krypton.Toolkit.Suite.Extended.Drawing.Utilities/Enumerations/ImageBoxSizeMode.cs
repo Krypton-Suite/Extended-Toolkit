@@ -1,7 +1,7 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities;
 
 /// <summary>
-/// Determines the sizing mode of an image hosted in an <see cref="ImageBox" /> control.
+/// Determines the sizing mode of an image hosted in an <see cref="ImageBoxExtended" /> control.
 /// </summary>
 public enum ImageBoxSizeMode
 {

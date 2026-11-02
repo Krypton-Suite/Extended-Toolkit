@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -126,6 +126,23 @@ public enum ExtendedKryptonMessageBoxMessageContainerType
     Normal = 0,
     RichTextBox = 1,
     HyperLink = 2
+}
+
+#endregion
+
+#region Enum ExtendedKryptonMessageBoxFooterContentType
+
+/// <summary>Specifies the content type for the footer in <see cref="KryptonMessageBoxExtended"/>.</summary>
+public enum ExtendedKryptonMessageBoxFooterContentType
+{
+    /// <summary>Footer displays text using a KryptonWrapLabel (default).</summary>
+    Text = 0,
+
+    /// <summary>Footer displays a KryptonCheckBox.</summary>
+    CheckBox = 1,
+
+    /// <summary>Footer displays a KryptonRichTextBox.</summary>
+    RichTextBox = 2
 }
 
 #endregion

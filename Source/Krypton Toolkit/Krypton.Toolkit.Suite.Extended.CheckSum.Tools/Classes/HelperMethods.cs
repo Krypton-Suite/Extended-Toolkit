@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,36 +29,31 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 
 public class HelperMethods
 {
-    #region Variables
-    private string[] _hashTypes = ["MD5", "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160"], _safeNETCoreAndNewerHashTypes =
-        ["MD5", "SHA1", "SHA256", "SHA384", "SHA512"];
-    #endregion
+	#region Properties
+	public string[] HashTypes { get; } = ["MD5", "SHA1", "SHA256", "SHA384", "SHA512", "RIPEMD160"];
 
-    #region Properties
-    public string[] HashTypes => _hashTypes;
-
-    public string[] SafeNetCoreAndNewerHashTypes => _safeNETCoreAndNewerHashTypes;
+    public string[] SafeNetCoreAndNewerHashTypes { get; } = ["MD5", "SHA1", "SHA256", "SHA384", "SHA512"];
 
     #endregion
 
-    #region Methods
-    public static void PropagateHashBox(KryptonComboBox hashBox)
-    {
-        HelperMethods helperMethods = new HelperMethods();
+	#region Methods
+	public static void PropagateHashBox(KryptonComboBox hashBox)
+	{
+		HelperMethods helperMethods = new HelperMethods();
 
 #if NETCOREAPP3_0_OR_GREATER
-            foreach (string hashType in helperMethods.SafeNetCoreAndNewerHashTypes)
-	        {
-                hashBox.Items.Add(hashType);
-	        }
+			foreach (string hashType in helperMethods.SafeNetCoreAndNewerHashTypes)
+			{
+				hashBox.Items.Add(hashType);
+			}
 #else
-        foreach (string hashType in helperMethods.HashTypes)
-        {
-            hashBox.Items.Add(hashType);
-        }
+		foreach (string hashType in helperMethods.HashTypes)
+		{
+			hashBox.Items.Add(hashType);
+		}
 #endif
-    }
+	}
 
-    public static bool IsValid(string fileCheckSum, string checkSumToCompare) => checkSumToCompare.Contains(fileCheckSum);
-    #endregion
+	public static bool IsValid(string fileCheckSum, string checkSumToCompare) => checkSumToCompare.Contains(fileCheckSum);
+	#endregion
 }

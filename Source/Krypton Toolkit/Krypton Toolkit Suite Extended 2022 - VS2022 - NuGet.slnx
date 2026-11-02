@@ -16,7 +16,7 @@
     <Project Path="../Documentation/Extended Toolkit API Documentation/Extended Toolkit API Documentation.shfbproj" Type="7cf6df6d-3b04-46f8-a40b-537d21bca0b4" />
   </Folder>
   <Folder Name="/Examples/">
-    <Project Path="Examples/Examples.csproj">
+    <Project Path="TestForm/TestForm.csproj">
       <BuildDependency Project="Krypton.Toolkit.Suite.Extended.Wizard/Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
       <BuildType Solution="Canary|*" Project="Debug" />
       <BuildType Solution="Nightly|*" Project="Debug" />
@@ -24,10 +24,14 @@
   </Folder>
   <Folder Name="/Main/">
     <Project Path="Krypton.Toolkit.Suite.Extended.AdvancedDataGridView/Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet/Krypton.Toolkit.Suite.Extended.BottomSheet.csproj" Id="4d1baadc-875b-471d-839d-51cb47926c03" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet.Tests/Krypton.Toolkit.Suite.Extended.BottomSheet.Tests.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Buttons/Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj">
       <BuildDependency Project="Krypton.Toolkit.Suite.Extended.Debug.Tools/Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
     </Project>
     <Project Path="Krypton.Toolkit.Suite.Extended.Calendar/Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Card.Tests/Krypton.Toolkit.Suite.Extended.Card.Tests.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.Card/Krypton.Toolkit.Suite.Extended.Card.csproj" Id="c0f11ccf-1708-48ae-9bfd-41d34569ff47" />
     <Project Path="Krypton.Toolkit.Suite.Extended.CheckSum.Tools/Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Circular.ProgressBar/Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.ComboBox/Krypton.Toolkit.Suite.Extended.ComboBox 2022.csproj" />
@@ -41,6 +45,7 @@
     <Project Path="Krypton.Toolkit.Suite.Extended.File.Copier/Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Floating.Toolbars/Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Forms/Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.GanttChart/Krypton.Toolkit.Suite.Extended.GanttChart.csproj" Id="5418be02-ad21-4285-93c0-85f77ecd0351" />
     <Project Path="Krypton.Toolkit.Suite.Extended.InputBox/Krypton.Toolkit.Suite.Extended.InputBox 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.IO/Krypton.Toolkit.Suite.Extended.IO 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Memory.Box/Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj" />
@@ -71,10 +76,7 @@
       <BuildType Solution="Nightly|*" Project="Debug" />
     </Project>
     <Project Path="Krypton.Toolkit.Suite.Extended.Scintilla.NET/Krypton.Toolkit.Suite.Extended.Scintilla.NET 2022.csproj" />
-    <Project Path="Krypton.Toolkit.Suite.Extended.Security/Krypton.Toolkit.Suite.Extended.Security 2022.csproj">
-      <BuildType Solution="Canary|*" Project="Release" />
-      <BuildType Solution="Nightly|*" Project="Release" />
-    </Project>
+    <Project Path="Krypton.Toolkit.Suite.Extended.Security/Krypton.Toolkit.Suite.Extended.Security 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Software.Updater/Krypton.Toolkit.Suite.Extended.Software.Updater 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.TaskDialogs/Krypton.Toolkit.Suite.Extended.TaskDialogs 2022.csproj" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Themes/Krypton.Toolkit.Suite.Extended.Themes 2022.csproj" />
@@ -152,6 +154,7 @@
     <File Path="../../purge.cmd" />
   </Folder>
   <Folder Name="/Repository Items/Build System/Generate Packages/">
+    <File Path="../../Directory.Build.props" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
   </Folder>

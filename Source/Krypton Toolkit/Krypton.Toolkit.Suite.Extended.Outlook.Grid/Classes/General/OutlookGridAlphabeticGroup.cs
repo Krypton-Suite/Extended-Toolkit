@@ -51,7 +51,7 @@ public sealed class OutlookGridAlphabeticGroup : OutlookGridDefaultGroup
     /// <summary>
     /// Gets or sets the displayed text.
     /// </summary>
-    public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
+    public override string Text => $"{Column!.DataGridViewColumn!.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XxxItemsText)})";
 
     /// <summary>
     /// Gets or sets the Alphabetic value
@@ -108,18 +108,16 @@ public sealed class OutlookGridAlphabeticGroup : OutlookGridDefaultGroup
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public override int CompareTo(object obj)
+    public override int CompareTo(object? obj)
     {
-        int orderModifier = Column.SortDirection == SortOrder.Ascending ? 1 : -1;
+        int orderModifier = Column!.SortDirection == SortOrder.Ascending ? 1 : -1;
 
-        if (obj is OutlookGridAlphabeticGroup)
+        if (obj is OutlookGridAlphabeticGroup other)
         {
-            return string.Compare(Value.ToString(), ((OutlookGridAlphabeticGroup)obj).Value.ToString()) * orderModifier;
+            return string.Compare(Value?.ToString(), other.Value?.ToString()) * orderModifier;
         }
-        else
-        {
-            return 0;
-        }
+
+        return 0;
     }
     #endregion IComparable Members
 }

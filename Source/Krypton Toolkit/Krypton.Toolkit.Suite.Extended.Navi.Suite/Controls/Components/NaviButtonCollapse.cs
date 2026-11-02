@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ public partial class NaviButtonCollapse : NaviButton
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        Renderer.DrawButtonCollapseBg(e.Graphics, ClientRectangle, inputState,
+        Renderer?.DrawButtonCollapseBg(e.Graphics, ClientRectangle, inputState,
             RightToLeft == RightToLeft.Yes, collapsed);
     }
 

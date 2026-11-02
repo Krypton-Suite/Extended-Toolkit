@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -131,9 +131,12 @@ internal class PortScan
     #endregion
 
     #region Event Handlers
-    void btnScan_Click(object sender, EventArgs e)
+    void btnScan_Click(object? sender, EventArgs e)
     {
-        Button btn = (Button)sender;
+        if (sender is not Button btn)
+        {
+            return;
+        }
 
         if (_txtStartPort.Text == string.Empty || _txtStopPort.Text == string.Empty)
         {
@@ -166,14 +169,17 @@ internal class PortScan
         }
     }
 
-    void _worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    void _worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
         MessageBox.Show("Port scan has completed");
     }
 
-    void _worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    void _worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
     {
-        PortState state = (PortState)e.UserState;
+        if (e.UserState is not PortState state)
+        {
+            return;
+        }
 
         if (state.IsOpen)
         {
@@ -185,7 +191,7 @@ internal class PortScan
         }
     }
 
-    void _worker_DoWork(object sender, DoWorkEventArgs e)
+    void _worker_DoWork(object? sender, DoWorkEventArgs e)
     {
         try
         {

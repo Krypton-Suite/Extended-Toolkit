@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 - 2024 Krypton Suite
+ * Copyright (c) 2024 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ using VisualStyleRender = System.Windows.Forms.VisualStyles;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls;
 
-[ToolboxItem(false), CLSCompliant(true)]
+[ToolboxItem(false)]
 public partial class PopUp : ToolStripDropDown
 {
     #region Instance Fields
@@ -160,18 +160,18 @@ public partial class PopUp : ToolStripDropDown
             
         Items.Add(_host);
 
-        content.Disposed += delegate (object sender, EventArgs e)
+        content.Disposed += delegate (object? sender, EventArgs e)
         {
             content = null;
             Dispose(true);
         };
   
-        content.RegionChanged += delegate (object sender, EventArgs e)
+        content.RegionChanged += delegate (object? sender, EventArgs e)
         {
             UpdateRegion();
         };
             
-        content.Paint += delegate (object sender, PaintEventArgs e)
+        content.Paint += delegate (object? sender, PaintEventArgs e)
         {
             PaintSizeGrip(e);
         };
@@ -392,7 +392,7 @@ public partial class PopUp : ToolStripDropDown
 
     private bool InternalProcessResizing(ref Message m, bool contentControl)
     {
-        if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup != null && _childPopup.Visible)
+        if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && _childPopup is { Visible: true })
         {
             _childPopup.Hide();
         }
@@ -400,20 +400,18 @@ public partial class PopUp : ToolStripDropDown
         {
             return false;
         }
-        if (m.Msg == NativeMethods.WM_NCHITTEST)
+
+        return m.Msg switch
         {
-            return OnNcHitTest(ref m, contentControl);
-        }
-        else if (m.Msg == NativeMethods.WM_GETMINMAXINFO)
-        {
-            return OnGetMinMaxInfo(ref m);
-        }
-        return false;
+            NativeMethods.WM_NCHITTEST => OnNcHitTest(ref m, contentControl),
+            NativeMethods.WM_GETMINMAXINFO => OnGetMinMaxInfo(ref m),
+            _ => false
+        };
     }
 
     private bool OnGetMinMaxInfo(ref Message m)
     {
-        NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO));
+        NativeMethods.MINMAXINFO minmax = (NativeMethods.MINMAXINFO)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.MINMAXINFO))!;
         minmax.MaximumTrackSize = this.MaximumSize;
         minmax.MinimumTrackSize = this.MinimumSize;
         Marshal.StructureToPtr(minmax, m.LParam, false);
@@ -508,7 +506,7 @@ public partial class PopUp : ToolStripDropDown
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    private System.ComponentModel.IContainer? components;
 
     /// <summary>
     /// Clean up any resources being used.

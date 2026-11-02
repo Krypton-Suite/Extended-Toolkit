@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -241,14 +241,13 @@ internal class SapiRecognizer : IDisposable
             sAPIErrorCodes = (SAPIErrorCodes)sapiRecognizer.GetPropertyString(name, out ppCoMemValue);
             obj = ppCoMemValue;
         }
-        if (sAPIErrorCodes == SAPIErrorCodes.S_FALSE)
+
+        return sAPIErrorCodes switch
         {
-            throw new KeyNotFoundException(SR.Get(SRID.RecognizerSettingNotSupported));
-        }
-        if (sAPIErrorCodes < SAPIErrorCodes.S_OK)
-        {
-            throw RecognizerBase.ExceptionFromSapiCreateRecognizerError(new COMException(SR.Get(SRID.RecognizerSettingUpdateError), (int)sAPIErrorCodes));
-        }
-        return obj;
+            SAPIErrorCodes.S_FALSE => throw new KeyNotFoundException(SR.Get(SRID.RecognizerSettingNotSupported)),
+            < SAPIErrorCodes.S_OK => throw RecognizerBase.ExceptionFromSapiCreateRecognizerError(
+                new COMException(SR.Get(SRID.RecognizerSettingUpdateError), (int)sAPIErrorCodes)),
+            _ => obj
+        };
     }
 }

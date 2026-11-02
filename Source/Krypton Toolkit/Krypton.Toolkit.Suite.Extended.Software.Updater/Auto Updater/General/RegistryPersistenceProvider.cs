@@ -29,12 +29,12 @@
         {
             try
             {
-                using RegistryKey updateKey = Registry.CurrentUser.OpenSubKey(RegistryLocation);
-                object skippedVersionValue = updateKey?.GetValue(SkippedVersionValueName);
+                using RegistryKey? updateKey = Registry.CurrentUser.OpenSubKey(RegistryLocation);
+                object? skippedVersionValue = updateKey?.GetValue(SkippedVersionValueName);
 
                 if (skippedVersionValue != null)
                 {
-                    return new Version(skippedVersionValue.ToString());
+                    return new Version(skippedVersionValue.ToString() ?? "0.0.0.0");
                 }
             }
             catch (Exception)
@@ -49,8 +49,8 @@
         /// <inheritdoc />
         public DateTime? GetRemindLater()
         {
-            using RegistryKey updateKey = Registry.CurrentUser.OpenSubKey(RegistryLocation);
-            object remindLaterValue = updateKey?.GetValue(RemindLaterValueName);
+            using RegistryKey? updateKey = Registry.CurrentUser.OpenSubKey(RegistryLocation);
+            object? remindLaterValue = updateKey?.GetValue(RemindLaterValueName);
 
             if (remindLaterValue == null)
             {
@@ -59,7 +59,7 @@
 
             try
             {
-                return Convert.ToDateTime(remindLaterValue.ToString(),
+                return Convert.ToDateTime(remindLaterValue.ToString() ?? string.Empty,
                     CultureInfo.CreateSpecificCulture("en-US").DateTimeFormat);
             }
             catch (FormatException)
@@ -73,14 +73,14 @@
         /// <inheritdoc />
         public void SetSkippedVersion(Version? version)
         {
-            using RegistryKey autoUpdaterKey = Registry.CurrentUser.CreateSubKey(RegistryLocation);
+            using RegistryKey? autoUpdaterKey = Registry.CurrentUser.CreateSubKey(RegistryLocation);
             autoUpdaterKey?.SetValue(SkippedVersionValueName, version != null ? version.ToString() : string.Empty);
         }
 
         /// <inheritdoc />
         public void SetRemindLater(DateTime? remindLaterAt)
         {
-            using RegistryKey autoUpdaterKey = Registry.CurrentUser.CreateSubKey(RegistryLocation);
+            using RegistryKey? autoUpdaterKey = Registry.CurrentUser.CreateSubKey(RegistryLocation);
             autoUpdaterKey?.SetValue(RemindLaterValueName,
                 remindLaterAt != null
                     ? remindLaterAt.Value.ToString(CultureInfo.CreateSpecificCulture("en-US").DateTimeFormat)

@@ -67,17 +67,12 @@ public struct PixelSize : IEquatable<PixelSize>
 
     public override bool Equals(object? obj)
     {
-        if (obj is null)
+        return obj switch
         {
-            return false;
-        }
-
-        if (obj is PixelSize other)
-        {
-            return Equals(other);
-        }
-
-        return false;
+            null => false,
+            PixelSize other => Equals(other),
+            _ => false
+        };
     }
 
     public static bool operator ==(PixelSize a, PixelSize b)

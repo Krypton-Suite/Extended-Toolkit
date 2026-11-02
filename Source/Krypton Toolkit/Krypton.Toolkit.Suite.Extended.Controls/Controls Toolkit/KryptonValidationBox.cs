@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,17 +39,22 @@ public class KryptonValidationBox : KryptonTextBox
     #endregion
 
     #region Properties
+    [DefaultValue(false)]
     public bool ValidateEntry { get => _validateEntry; set => _validateEntry = value; }
 
+    [DefaultValue(false)]
     public bool UseAccessibilityColours { get => _useAccessibilityColours; set => _useAccessibilityColours = value; }
 
+    [DefaultValue(false)]
     public bool ModifyBackgroundColour { get => _modifyBackgroundColour; set => _modifyBackgroundColour = value; }
 
+    [DefaultValue(false)]
     public bool UseIntermediateColour { get => _useIntermediateColour; set => _useIntermediateColour = value; }
 
-    [DefaultValue("Color.FromArgb(255, 128, 0)"), Description("")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Description("")]
     public Color IntermediateColour { get => _intermediateColour; set => _intermediateColour = value; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string ValidValue { get => _validValue; private set => _validValue = value; }
     #endregion
 

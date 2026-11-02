@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,7 @@ internal class MessageButton : InternalKryptonButton
     /// <summary>
     /// Gets and sets the ignoring of Alt+F4
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
     public bool IgnoreAltF4 { get; set; }
 
     #endregion

@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             this.components = new System.ComponentModel.Container();
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.ksbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonSplitButton();
+            this.ksbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonSplitButtonExtended();
             this.kcmRunOptions = new Krypton.Toolkit.KryptonContextMenu();
             this.kryptonContextMenuItems2 = new Krypton.Toolkit.KryptonContextMenuItems();
             this.kryptonContextMenuItem3 = new Krypton.Toolkit.KryptonContextMenuItem();
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonContextMenuSeparator kryptonContextMenuSeparator1;
         private KryptonContextMenuItem kryptonContextMenuItem2;
         private KryptonContextMenuHeading kryptonContextMenuHeading1;
-        private Dialogs.KryptonSplitButton ksbRun;
+        private Dialogs.KryptonSplitButtonExtended ksbRun;
         private KryptonContextMenu kcmRunOptions;
         private KryptonContextMenuItems kryptonContextMenuItems2;
         private KryptonContextMenuItem kryptonContextMenuItem3;

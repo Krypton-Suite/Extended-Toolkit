@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,8 @@ public class ToolBoxXmlSerializationEventArgs : EventArgs
 {
     #region Private Attributes
     private bool _isLoading;
-    private object _object;
-    private XmlNode _xmlNode;
+    private object? _object;
+    private XmlNode _xmlNode = null!;
     #endregion //Private Attributes
 
     #region Properties
@@ -42,7 +42,7 @@ public class ToolBoxXmlSerializationEventArgs : EventArgs
 
     public XmlNode Node => _xmlNode;
 
-    public object Object
+    public object? Object
     {
         get => _object;
         set => _object = value;
@@ -51,7 +51,7 @@ public class ToolBoxXmlSerializationEventArgs : EventArgs
     #endregion //Properties
 
     #region Construction
-    public ToolBoxXmlSerializationEventArgs(object o, XmlNode node, bool isLoading)
+    public ToolBoxXmlSerializationEventArgs(object? o, XmlNode node, bool isLoading)
     {
         _object = o;
         _xmlNode = node;

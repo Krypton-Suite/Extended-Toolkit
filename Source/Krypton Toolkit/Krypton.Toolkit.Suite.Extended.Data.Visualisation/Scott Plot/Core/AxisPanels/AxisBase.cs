@@ -100,8 +100,6 @@ public abstract class AxisBase
         using SKPaint paint = new();
         label.ApplyToPaint(paint);
 
-        paint.TextAlign = SKTextAlign.Center;
-
         foreach (Tick tick in ticks)
         {
             // draw tick
@@ -117,13 +115,13 @@ public abstract class AxisBase
             // draw label
             if (!string.IsNullOrWhiteSpace(tick.Label))
             {
-                var fontSpacing = axis.Edge == Edge.Bottom ? paint.TextSize : -4;
+                var fontSpacing = axis.Edge == Edge.Bottom ? label.FontSize : -4;
                 foreach (string line in tick.Label.Split('\n'))
                 {
                     label.Text = line;
                     Pixel px = new(xPx, yEdge + fontSpacing);
                     label.Render(rp.Canvas, px);
-                    fontSpacing += paint.TextSize;
+                    fontSpacing += label.FontSize;
                 }
             }
         }
@@ -158,13 +156,13 @@ public abstract class AxisBase
             if (!string.IsNullOrWhiteSpace(tick.Label))
             {
                 string[] lines = tick.Label.Split('\n');
-                double fontSpacing = -paint.TextSize * (lines.Length - 1) / 2;
+                double fontSpacing = -label.FontSize * (lines.Length - 1) / 2;
                 foreach (var line in lines)
                 {
                     label.Text = line;
                     Pixel px = new(labelPos, y + fontSpacing);
                     label.Render(rp.Canvas, px);
-                    fontSpacing += paint.TextSize;
+                    fontSpacing += label.FontSize;
                 }
             }
         }

@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -58,6 +58,7 @@ public static class KryptonMessageBoxExtended
     /// <param name="icon">The icon.</param>
     /// <param name="showCtrlCopy">The show control copy.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
     /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
@@ -88,8 +89,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
         ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
@@ -131,8 +134,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(string messageText, string caption = @"",
         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -183,8 +188,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(string messageText, string caption,
         ExtendedMessageBoxButtons buttons,
@@ -234,8 +241,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -313,8 +322,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(IWin32Window owner, string messageText, string caption,
         ExtendedMessageBoxButtons buttons,
@@ -370,8 +381,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(string messageText, string caption = @"",
         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -442,8 +455,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
+    /// <param name="timeOutInterval">Sets the interval of the 'time out' timer. Default is 1000.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
     public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
         ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
@@ -494,6 +509,71 @@ public static class KryptonMessageBoxExtended
                 richTextBoxTextAlignment, messageTextBoxAlignment,
                 useTimeOut, timeOut, timeOutInterval, timerResult);
 
+    /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/> with expandable footer.</summary>
+    /// <param name="messageText">The message text.</param>
+    /// <param name="caption">The caption.</param>
+    /// <param name="buttons">The buttons.</param>
+    /// <param name="icon">The icon.</param>
+    /// <param name="footerText">The text to display in the expandable footer. If null or empty, footer will not be shown (unless footerContentType is CheckBox).</param>
+    /// <param name="footerExpanded">If true, the footer will be expanded by default; otherwise, it will be collapsed.</param>
+    /// <param name="footerContentType">The type of content to display in the footer (Text, CheckBox, or RichTextBox).</param>
+    /// <param name="footerRichTextBoxHeight">The height for the RichTextBox when footerContentType is RichTextBox. If null, uses default height.</param>
+    /// <param name="showCtrlCopy">The show control copy.</param>
+    /// <param name="messageBoxTypeface">The message box typeface.</param>
+    /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+    public static DialogResult Show(string messageText, string caption = @"",
+        ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
+        ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null,
+        bool? showCtrlCopy = null,
+        Font? messageBoxTypeface = null)
+        =>
+            ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
+                0, null, showCtrlCopy, messageBoxTypeface, null, null, null,
+                [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
+                null, null, null, null, string.Empty, string.Empty,
+                string.Empty, string.Empty, string.Empty,
+                ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                null, null, null, null, ContentAlignment.MiddleLeft, null, null,
+                null, null, null, null,
+                footerText, footerExpanded, footerContentType, footerRichTextBoxHeight);
+
+    /// <summary>Shows a <seealso cref="KryptonMessageBoxExtended"/> with expandable footer.</summary>
+    /// <param name="owner">The owner.</param>
+    /// <param name="messageText">The message text.</param>
+    /// <param name="caption">The caption.</param>
+    /// <param name="buttons">The buttons.</param>
+    /// <param name="icon">The icon.</param>
+    /// <param name="footerText">The text to display in the expandable footer. If null or empty, footer will not be shown (unless footerContentType is CheckBox).</param>
+    /// <param name="footerExpanded">If true, the footer will be expanded by default; otherwise, it will be collapsed.</param>
+    /// <param name="footerContentType">The type of content to display in the footer (Text, CheckBox, or RichTextBox).</param>
+    /// <param name="footerRichTextBoxHeight">The height for the RichTextBox when footerContentType is RichTextBox. If null, uses default height.</param>
+    /// <param name="showCtrlCopy">The show control copy.</param>
+    /// <param name="messageBoxTypeface">The message box typeface.</param>
+    /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+    public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
+        ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
+        ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null,
+        bool? showCtrlCopy = null,
+        Font? messageBoxTypeface = null)
+        =>
+            ShowCore(owner, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1,
+                0, null, showCtrlCopy, messageBoxTypeface, null, null, null,
+                [Color.Empty, Color.Empty, Color.Empty, Color.Empty],
+                null, null, null, null, string.Empty, string.Empty,
+                string.Empty, string.Empty, string.Empty,
+                ExtendedKryptonMessageBoxMessageContainerType.Normal,
+                null, null, null, null, ContentAlignment.MiddleLeft, null, null,
+                null, null, null, null,
+                footerText, footerExpanded, footerContentType, footerRichTextBoxHeight);
+
     #endregion
 
     #region Implementation
@@ -529,7 +609,11 @@ public static class KryptonMessageBoxExtended
         bool? useTimeOut,
         int? timeOut,
         int? timeOutInterval,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -566,7 +650,11 @@ public static class KryptonMessageBoxExtended
                 useOptionalCheckBoxThreeState,
                 useTimeOut,
                 timeOut,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return true;
         }
@@ -607,7 +695,11 @@ public static class KryptonMessageBoxExtended
                 useTimeOut,
                 timeOut,
                 timeOutInterval,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             kmbe.Show();
 
@@ -646,6 +738,7 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">The open in explorer.</param>
     /// <param name="messageTextAlignment">The message text alignment.</param>
     /// <param name="richTextBoxTextAlignment">The rich text box text alignment.</param>
+    /// <param name="messageTextBoxAlignment">The message text box alignment.</param>
     /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
     /// <param name="initialDoNotShowAgainCheckBoxChecked">The initial do not show again CheckBox checked.</param>
     /// <param name="initialDoNotShowAgainCheckBoxCheckState">Initial state of the do not show again CheckBox check.</param>
@@ -655,6 +748,10 @@ public static class KryptonMessageBoxExtended
     /// <param name="timeOut">The time out.</param>
     /// <param name="timeOutInterval">The time out interval.</param>
     /// <param name="timerResult">The timer result.</param>
+    /// <param name="footerText">The text to display in the expandable footer.</param>
+    /// <param name="footerExpanded">If true, the footer will be expanded by default.</param>
+    /// <param name="footerContentType">The type of content to display in the footer.</param>
+    /// <param name="footerRichTextBoxHeight">The height for the RichTextBox when footerContentType is RichTextBox.</param>
     /// <returns>
     ///   <br />
     /// </returns>
@@ -689,7 +786,11 @@ public static class KryptonMessageBoxExtended
         bool? useTimeOut,
         int? timeOut,
         int? timeOutInterval,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -726,7 +827,11 @@ public static class KryptonMessageBoxExtended
                 useOptionalCheckBoxThreeState,
                 useTimeOut,
                 timeOut,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return CheckState.Unchecked;
         }
@@ -767,7 +872,11 @@ public static class KryptonMessageBoxExtended
                 useTimeOut,
                 timeOut,
                 timeOutInterval,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             kmbe.Show();
 
@@ -806,10 +915,15 @@ public static class KryptonMessageBoxExtended
     /// <param name="openInExplorer">If set to true, then this will launch Windows Explorer and select the file.</param>
     /// <param name="messageTextAlignment">Specifies how the message text should be aligned. See <see cref="System.Drawing.ContentAlignment"/> for supported values.</param>
     /// <param name="richTextBoxTextAlignment">Specifies how the message text should be aligned, when a <see cref="KryptonTextBox"/> is being used. See <see cref="PaletteRelativeAlign"/> for supported values.</param>
+    /// <param name="messageTextBoxAlignment">Specifies how the message text should be aligned when a <see cref="KryptonTextBox"/> is being used. See <see cref="HorizontalAlignment"/> for supported values.</param>
     /// <param name="useTimeOut">Use the 'time out' facility, default value is false.</param>
     /// <param name="timeOut">Specifies the 'time out' time, default is 60.</param>
     /// <param name="timeOutInterval">Sets the interval of the 'time out' timer.</param>
     /// <param name="timerResult">Specifies the <seealso cref="DialogResult"/> action to trigger, once the <seealso cref="KryptonMessageBoxExtended"/> has timed out.</param>
+    /// <param name="footerText">The text to display in the expandable footer.</param>
+    /// <param name="footerExpanded">If true, the footer will be expanded by default.</param>
+    /// <param name="footerContentType">The type of content to display in the footer.</param>
+    /// <param name="footerRichTextBoxHeight">The height for the RichTextBox when footerContentType is RichTextBox.</param>
     /// <returns>One of the <see cref="DialogResult"/> values.</returns>
     internal static DialogResult ShowCore(IWin32Window? owner, string text, string caption,
         ExtendedMessageBoxButtons buttons,
@@ -837,7 +951,11 @@ public static class KryptonMessageBoxExtended
         bool? useTimeOut,
         int? timeOut,
         int? timeOutInterval,
-        DialogResult? timerResult)
+        DialogResult? timerResult,
+        string? footerText = null,
+        bool footerExpanded = false,
+        ExtendedKryptonMessageBoxFooterContentType footerContentType = ExtendedKryptonMessageBoxFooterContentType.Text,
+        int? footerRichTextBoxHeight = null)
     {
         IWin32Window? showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -874,7 +992,11 @@ public static class KryptonMessageBoxExtended
                 null,
                 useTimeOut,
                 timeOut,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return kmbertl.ShowDialog(showOwner);
         }
@@ -915,7 +1037,11 @@ public static class KryptonMessageBoxExtended
                 useTimeOut,
                 timeOut,
                 timeOutInterval,
-                timerResult);
+                timerResult,
+                footerText,
+                footerExpanded,
+                footerContentType,
+                footerRichTextBoxHeight);
 
             return kmbe.ShowDialog(showOwner);
         }

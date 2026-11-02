@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
+namespace Krypton.Toolkit.Suite.Extended.Dock.Extender;
 
 public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 {
@@ -49,7 +49,9 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 
     internal DockState DockState => _dockState;
 
+    [DefaultValue(false)]
     public bool DockOnHostOnly { get => _dockOnHostOnly; set => _dockOnHostOnly = value; }
+    [DefaultValue(false)]
     public bool DockOnInside { get => _dockOnInside; set => _dockOnInside = value; }
 
     #endregion
@@ -78,7 +80,7 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 
     protected override void OnResizeEnd(EventArgs e)
     {
-        if (_dockExtender._overlay.Visible && _dockExtender._overlay.DockHostControl != null) //ok found new docking position
+        if (_dockExtender._overlay is { Visible: true, DockHostControl: not null }) //ok found new docking position
         {
             _dockState.OrgDockingParent = _dockExtender._overlay.DockHostControl;
             if (_dockState.Container != null)
@@ -128,13 +130,13 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
         base.OnMove(e);
     }
 
-    protected override void OnClosing(CancelEventArgs e)
+    protected override void OnFormClosing(FormClosingEventArgs e)
     {
         e.Cancel = true;
 
         Hide();
 
-        base.OnClosing(e);
+        base.OnFormClosing(e);
     }
 
     #endregion
@@ -421,7 +423,7 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
     private void DockFloating()
     {
         // bring dockhost to front first to prevent flickering
-        if (_dockState.OrgDockHost != null && _dockState.OrgDockHost.TopLevelControl != null)
+        if (_dockState.OrgDockHost is { TopLevelControl: not null })
         {
             _dockState.OrgDockHost.TopLevelControl.BringToFront();
         }
@@ -493,11 +495,11 @@ public sealed partial class KryptonFloatableForm : KryptonForm, IFloatable
 
     #region Tracking
 
-    void Handle_MouseHover(object sender, EventArgs e) => _startFloating = true;
+    void Handle_MouseHover(object? sender, EventArgs e) => _startFloating = true;
 
-    void Handle_MouseLeave(object sender, EventArgs e) => _startFloating = false;
+    void Handle_MouseLeave(object? sender, EventArgs e) => _startFloating = false;
 
-    void Handle_MouseMove(object sender, MouseEventArgs e)
+    void Handle_MouseMove(object? sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left && _startFloating)
         {

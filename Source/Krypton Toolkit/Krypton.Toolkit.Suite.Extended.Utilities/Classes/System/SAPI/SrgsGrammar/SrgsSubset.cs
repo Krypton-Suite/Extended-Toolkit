@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -101,7 +101,7 @@ public class SrgsSubset : SrgsElement, ISubset, IElement
             }
             writer.WriteAttributeString("sapi", "match", "http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions", value);
         }
-        if (_text != null && _text.Length > 0)
+        if (_text is { Length: > 0 })
         {
             writer.WriteString(_text);
         }

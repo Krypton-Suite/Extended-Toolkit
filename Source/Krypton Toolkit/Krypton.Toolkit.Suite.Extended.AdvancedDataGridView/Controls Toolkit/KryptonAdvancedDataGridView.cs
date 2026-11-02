@@ -40,7 +40,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -315,8 +315,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 if (cell.FilterAndSortEnabled && (cell.SortString!.Length > 0 || cell.FilterString!.Length > 0))
                 {
@@ -343,8 +342,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 if (!cell.FilterAndSortEnabled && (cell.FilterString!.Length > 0 || cell.SortString!.Length > 0))
                 {
@@ -357,6 +355,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                 SetFilterDateAndTimeEnabled(column, cell.IsFilterDateAndTimeEnabled);
                 SetSortEnabled(column, cell.IsSortEnabled);
                 SetFilterEnabled(column, cell.IsFilterEnabled);
+                cell.PrepareFilterButtonLayout();
             }
             else
             {
@@ -372,6 +371,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                 }
 
                 column.HeaderCell = cell;
+                cell.PrepareFilterButtonLayout();
             }
         }
     }
@@ -401,8 +401,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetFilterChecklistEnabled(false);
             }
@@ -417,8 +416,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetFilterChecklistEnabled(true);
             }
@@ -451,8 +449,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetFilterChecklistNodesMax(maxnodes);
             }
@@ -480,8 +477,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.EnabledFilterChecklistNodesMax(enabled);
             }
@@ -508,8 +504,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetFilterCustomEnabled(false);
             }
@@ -524,8 +519,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetFilterCustomEnabled(true);
             }
@@ -558,8 +552,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.TextFilterTextChangedDelayNodes = numnodes;
             }
@@ -586,8 +579,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetTextFilterTextChangedDelayNodesDisabled();
             }
@@ -614,8 +606,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetTextFilterTextChangedDelayMs(milliseconds);
             }
@@ -702,7 +693,21 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     public bool FilterAndSortEnabled
     {
         get => _filterAndSortEnabled;
-        set => _filterAndSortEnabled = value;
+        set
+        {
+            if (_filterAndSortEnabled == value)
+            {
+                return;
+            }
+
+            _filterAndSortEnabled = value;
+            foreach (DataGridViewColumn column in Columns)
+            {
+                SetFilterAndSortEnabled(column, value);
+            }
+
+            Invalidate();
+        }
     }
     private bool _filterAndSortEnabled = true;
 
@@ -752,8 +757,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         //sort datasource
         if (sortEventArgs.Cancel == false)
         {
-            BindingSource? datasource = DataSource as BindingSource;
-            if (datasource != null)
+            if (DataSource is BindingSource datasource)
             {
                 datasource.Sort = sortEventArgs.SortString;
             }
@@ -777,8 +781,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetSortEnabled(enabled);
             }
@@ -792,8 +795,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SortASC();
             }
@@ -807,8 +809,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SortDESC();
             }
@@ -824,8 +825,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null && FilterableCells.Contains(cell))
+            if (column.HeaderCell is KryptonColumnHeaderCell cell && FilterableCells.Contains(cell))
             {
                 cell.CleanSort();
                 //remove column from sorted list
@@ -937,12 +937,9 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
             {
                 dataview.RowFilter = filterEventArgs.FilterString;
             }
-            else if (DataSource is DataTable datatable)
+            else if (DataSource is DataTable { DefaultView: not null } datatable)
             {
-                if (datatable.DefaultView != null)
-                {
-                    datatable.DefaultView.RowFilter = filterEventArgs.FilterString;
-                }
+                datatable.DefaultView.RowFilter = filterEventArgs.FilterString;
             }
         }
         //invoke FilterStringChanged
@@ -964,8 +961,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.IsFilterDateAndTimeEnabled = enabled;
             }
@@ -981,8 +977,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetFilterEnabled(enabled);
             }
@@ -998,8 +993,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SetChecklistTextFilterRemoveNodesOnSearchMode(enabled);
             }
@@ -1015,8 +1009,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.CleanFilter();
                 //remove column from filtered list
@@ -1080,8 +1073,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.DoesTextFilterRemoveNodesOnSearch = enabled;
             }
@@ -1096,8 +1088,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         bool? ret = null;
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 ret = cell.DoesTextFilterRemoveNodesOnSearch;
             }
@@ -1141,13 +1132,13 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
 
                 for (int r = rowIndex; r < RowCount; r++)
                 {
-                    string? value = Rows[r].Cells[c].FormattedValue!.ToString();
+                    string value = Rows[r].Cells[c].FormattedValue!.ToString();
                     if (!isCaseSensitive)
                     {
-                        value = value?.ToLower();
+                        value = value.ToLower();
                     }
 
-                    if ((!isWholeWordSearch && value!.Contains(valueToFind)) || value!.Equals(valueToFind))
+                    if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
                     {
                         return Rows[r].Cells[c];
                     }
@@ -1169,10 +1160,10 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
                         string? value = Rows[r].Cells[c].FormattedValue!.ToString();
                         if (!isCaseSensitive)
                         {
-                            value = value?.ToLower();
+                            value = value.ToLower();
                         }
 
-                        if ((!isWholeWordSearch && value!.Contains(valueToFind)) || value!.Equals(valueToFind))
+                        if ((!isWholeWordSearch && value.Contains(valueToFind)) || value.Equals(valueToFind))
                         {
                             return Rows[r].Cells[c];
                         }
@@ -1199,8 +1190,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     {
         if (Columns.Contains(column))
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 Cell_FilterPopup(cell, new ColumnHeaderCellEventArgs(cell.MenuStrip, column));
             }
@@ -1217,7 +1207,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     private IEnumerable<KryptonColumnHeaderCell> FilterableCells =>
         from DataGridViewColumn c in Columns
-        where c.HeaderCell != null && c.HeaderCell is KryptonColumnHeaderCell
+        where c.HeaderCell is KryptonColumnHeaderCell
         select c.HeaderCell as KryptonColumnHeaderCell;
 
     #endregion
@@ -1243,6 +1233,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         }
 
         e.Column.HeaderCell = cell;
+        cell.PrepareFilterButtonLayout();
 
         base.OnColumnAdded(e);
     }
@@ -1257,8 +1248,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         _filterOrderList.Remove(e.Column.Name);
         _sortOrderList.Remove(e.Column.Name);
 
-        KryptonColumnHeaderCell? cell = e.Column.HeaderCell as KryptonColumnHeaderCell;
-        if (cell != null)
+        if (e.Column.HeaderCell is KryptonColumnHeaderCell cell)
         {
             cell.SortChanged -= Cell_SortChanged;
             cell.FilterChanged -= Cell_FilterChanged;
@@ -1321,7 +1311,7 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// <param name="e"></param>
     protected override void OnCellValueChanged(DataGridViewCellEventArgs e)
     {
-        if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+        if (e is { RowIndex: >= 0, ColumnIndex: >= 0 })
         {
             _filteredColumns.Remove(Columns[e.ColumnIndex].Name);
         }
@@ -1347,16 +1337,12 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         {
             DataGridViewColumn? column = Columns[filterOrder];
 
-            if (column != null)
+            if (column is { HeaderCell: KryptonColumnHeaderCell cell })
             {
-                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-                if (cell != null)
+                if (cell.FilterAndSortEnabled && cell.ActiveFilterType != MenuStrip.FilterType.None)
                 {
-                    if (cell.FilterAndSortEnabled && cell.ActiveFilterType != MenuStrip.FilterType.None)
-                    {
-                        sb.AppendFormat(appx + "(" + cell.FilterString + ")", column.DataPropertyName);
-                        appx = " AND ";
-                    }
+                    sb.AppendFormat(appx + "(" + cell.FilterString + ")", column.DataPropertyName);
+                    appx = " AND ";
                 }
             }
         }
@@ -1368,12 +1354,11 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cell_FilterPopup(object sender, ColumnHeaderCellEventArgs e)
+    private void Cell_FilterPopup(object? sender, ColumnHeaderCellEventArgs e)
     {
-        if (Columns.Contains(e.Column))
+        if (e.Column is DataGridViewColumn column && Columns.Contains(column))
         {
             MenuStrip filterMenu = e.FilterMenu;
-            DataGridViewColumn column = e.Column;
 
             Rectangle rect = GetCellDisplayRectangle(column.Index, -1, true);
 
@@ -1401,12 +1386,11 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cell_FilterChanged(object sender, ColumnHeaderCellEventArgs e)
+    private void Cell_FilterChanged(object? sender, ColumnHeaderCellEventArgs e)
     {
-        if (Columns.Contains(e.Column))
+        if (e.Column is DataGridViewColumn column && Columns.Contains(column))
         {
             MenuStrip filterMenu = e.FilterMenu;
-            DataGridViewColumn column = e.Column;
 
             _filterOrderList.Remove(column.Name);
             if (filterMenu.ActiveFilterType != MenuStrip.FilterType.None)
@@ -1445,16 +1429,12 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
         {
             DataGridViewColumn? column = Columns[sortOrder];
 
-            if (column != null)
+            if (column is { HeaderCell: KryptonColumnHeaderCell cell })
             {
-                KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-                if (cell != null)
+                if (cell.FilterAndSortEnabled && cell.ActiveSortType != MenuStrip.SortType.None)
                 {
-                    if (cell.FilterAndSortEnabled && cell.ActiveSortType != MenuStrip.SortType.None)
-                    {
-                        sb.AppendFormat(appx + cell.SortString, column.DataPropertyName);
-                        appx = ", ";
-                    }
+                    sb.AppendFormat(appx + cell.SortString, column.DataPropertyName);
+                    appx = ", ";
                 }
             }
         }
@@ -1467,12 +1447,11 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cell_SortChanged(object sender, ColumnHeaderCellEventArgs e)
+    private void Cell_SortChanged(object? sender, ColumnHeaderCellEventArgs e)
     {
-        if (Columns.Contains(e.Column))
+        if (e.Column is DataGridViewColumn column && Columns.Contains(column))
         {
             MenuStrip filterMenu = e.FilterMenu;
-            DataGridViewColumn column = e.Column;
 
             _sortOrderList.Remove(column.Name);
             if (filterMenu.ActiveSortType != MenuStrip.SortType.None)
@@ -1490,13 +1469,48 @@ public class KryptonAdvancedDataGridView : KryptonDataGridView
 
     #region Protected
 
+    /// <summary>
+    /// Overlay Excel-style filter/sort glyphs after the Krypton header has been painted.
+    /// <see cref="KryptonDataGridView.OnCellPainting"/> marks header painting as handled, so the
+    /// header cell <c>Paint</c> override never runs without this overlay.
+    /// </summary>
+    protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
+    {
+        base.OnCellPainting(e);
+
+        if (e.RowIndex != -1 || e.ColumnIndex < 0 || e.ColumnIndex >= Columns.Count || e.Graphics is null)
+        {
+            return;
+        }
+
+        if (Columns[e.ColumnIndex].HeaderCell is KryptonColumnHeaderCell cell)
+        {
+            cell.PaintFilterButton(e.Graphics, e.CellBounds, e.ClipBounds);
+        }
+    }
+
+    protected override void OnRightToLeftChanged(EventArgs e)
+    {
+        base.OnRightToLeftChanged(e);
+        Invalidate();
+    }
+
+    protected override void OnDpiChangedAfterParent(EventArgs e)
+    {
+        base.OnDpiChangedAfterParent(e);
+        foreach (KryptonColumnHeaderCell cell in FilterableCells)
+        {
+            cell.PrepareFilterButtonLayout();
+        }
+
+        Invalidate();
+    }
+
     protected override void OnHandleDestroyed(EventArgs e)
     {
         foreach (DataGridViewColumn column in Columns)
         {
-            KryptonColumnHeaderCell? cell = column.HeaderCell as KryptonColumnHeaderCell;
-
-            if (cell != null)
+            if (column.HeaderCell is KryptonColumnHeaderCell cell)
             {
                 cell.SortChanged -= Cell_SortChanged;
                 cell.FilterChanged -= Cell_FilterChanged;

@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -184,7 +184,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected override void OnMouseWheel(MouseEventArgs e)
     {
-        MouseEventHandler handler;
+        MouseEventHandler? handler;
 
         if (this.WheelScrollsControl)
         {
@@ -196,7 +196,7 @@ public partial class ScrollControl : Control
             y = this.VerticalScroll.Value;
 
             // TODO: Find if we are hovering over a horizontal scrollbar and scroll that instead of the default vertical.
-            if (this.VerticalScroll.Visible && this.VerticalScroll.Enabled)
+            if (this.VerticalScroll is { Visible: true, Enabled: true })
             {
                 if (ModifierKeys == Keys.Control)
                 {
@@ -209,7 +209,7 @@ public partial class ScrollControl : Control
 
                 y += e.Delta > 0 ? -delta : delta;
             }
-            else if (this.HorizontalScroll.Visible && this.HorizontalScroll.Enabled)
+            else if (this.HorizontalScroll is { Visible: true, Enabled: true })
             {
                 if (ModifierKeys == Keys.Control)
                 {
@@ -601,7 +601,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnBorderStyleChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         base.UpdateStyles();
 
@@ -621,7 +621,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnPageSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateScrollbars();
 
@@ -641,7 +641,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnScroll(ScrollEventArgs e)
     {
-        ScrollEventHandler handler;
+        ScrollEventHandler? handler;
 
         this.UpdateHorizontalScroll();
         this.UpdateVerticalScroll();
@@ -662,7 +662,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnScrollSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         this.UpdateScrollbars();
 
@@ -682,7 +682,7 @@ public partial class ScrollControl : Control
     /// </param>
     protected virtual void OnStepSizeChanged(EventArgs e)
     {
-        EventHandler handler;
+        EventHandler? handler;
 
         handler = this.StepSizeChanged;
 

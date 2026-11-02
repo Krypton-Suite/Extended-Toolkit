@@ -7,6 +7,8 @@
 
         internal static void AppendArgument(ref StringBuilder stringBuilder, string? argument)
         {
+            argument ??= string.Empty;
+
             if (stringBuilder.Length != 0)
             {
                 stringBuilder.Append(' ');
@@ -77,7 +79,7 @@
             }
         }
 
-        private static bool ContainsNoWhitespaceOrQuotes(string? s)
+        private static bool ContainsNoWhitespaceOrQuotes(string s)
         {
             return s.All(c => !char.IsWhiteSpace(c) && c != Quote);
         }

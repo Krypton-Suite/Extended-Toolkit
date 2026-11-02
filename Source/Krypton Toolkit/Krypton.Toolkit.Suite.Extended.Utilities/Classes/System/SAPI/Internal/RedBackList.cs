@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -153,7 +153,7 @@ internal abstract class RedBackList : IEnumerable
     {
         get
         {
-            if (_root != null && _root.Left == null)
+            if (_root is { Left: null })
             {
                 return _root.Right == null;
             }
@@ -388,15 +388,12 @@ internal abstract class RedBackList : IEnumerable
             return null;
         }
         int num = CompareTo(key, node.Key);
-        if (num == 0)
+        return num switch
         {
-            return node;
-        }
-        if (num < 0)
-        {
-            return FindItem(node.Left, key);
-        }
-        return FindItem(node.Right, key);
+            0 => node,
+            < 0 => FindItem(node.Left, key),
+            _ => FindItem(node.Right, key)
+        };
     }
 
     private TreeNode FindRoot(TreeNode node)

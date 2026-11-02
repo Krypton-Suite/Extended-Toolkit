@@ -1,4 +1,4 @@
-﻿#region BSD License
+#region BSD License
 /*
  * Use of this source code is governed by a BSD-style
  * license or other governing licenses that can be found in the LICENSE.md file or at
@@ -59,17 +59,12 @@ public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCel
     /// Overrides Clone
     /// </summary>
     /// <returns>The cloned KryptonDataGridViewTextAndImageCell</returns>
-    public override object? Clone()
+    public override object Clone()
     {
-        KryptonDataGridViewTextAndImageCell? c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-        if (c != null)
-        {
-            c._imageValue = _imageValue;
-            c._imageSize = _imageSize;
-            return c;
-        }
-
-        return null;
+        KryptonDataGridViewTextAndImageCell c = (KryptonDataGridViewTextAndImageCell)base.Clone();
+        c._imageValue = _imageValue;
+        c._imageSize = _imageSize;
+        return c;
     }
 
     /// <summary>

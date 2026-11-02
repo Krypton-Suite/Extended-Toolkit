@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,10 +32,10 @@ public class NaviBarDesigner : ParentControlDesigner
 {
     #region Fields
 
-    private NaviBar designingControl;
-    private ISelectionService selectionService;
-    private IComponentChangeService componentChangeService;
-    private IDesignerHost host;
+    private NaviBar? designingControl;
+    private ISelectionService? selectionService;
+    private IComponentChangeService? componentChangeService;
+    private IDesignerHost? host;
 
     #endregion
 
@@ -54,8 +54,13 @@ public class NaviBarDesigner : ParentControlDesigner
     /// <param name="value">The new value of the property</param>
     private void SetValue(string propName, object value)
     {
+        if (designingControl == null)
+        {
+            return;
+        }
+
         PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(designingControl);
-        PropertyDescriptor property = properties.Find(propName, true);
+        PropertyDescriptor? property = properties.Find(propName, true);
         if (property != null)
         {
             property.SetValue(designingControl, value);
@@ -66,10 +71,15 @@ public class NaviBarDesigner : ParentControlDesigner
     /// Gets the value of a given property
     /// </summary>
     /// <param name="propName">The name of the property</param>
-    private object GetValue(string propName)
+    private object? GetValue(string propName)
     {
+        if (designingControl == null)
+        {
+            return null;
+        }
+
         PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(designingControl);
-        PropertyDescriptor property = properties.Find(propName, true);
+        PropertyDescriptor? property = properties.Find(propName, true);
         if (property != null)
         {
             return property.GetValue(designingControl);
@@ -85,7 +95,7 @@ public class NaviBarDesigner : ParentControlDesigner
         selectionService = GetService(typeof(ISelectionService)) as ISelectionService;
         if (selectionService != null)
         {
-            selectionService.SelectionChanged += new System.EventHandler(selectionService_SelectionChanged);
+            selectionService.SelectionChanged += selectionService_SelectionChanged;
         }
 
         componentChangeService = GetService(typeof(IComponentChangeService))
@@ -95,7 +105,7 @@ public class NaviBarDesigner : ParentControlDesigner
             //componentChangeService.ComponentChanged += new ComponentChangedEventHandler(componentChangeService_ComponentChanged);
         }
 
-        host = (IDesignerHost)GetService(typeof(IDesignerHost));
+        host = GetService(typeof(IDesignerHost)) as IDesignerHost;
     }
 
     private bool HandleClickEvent(int x, int y)
@@ -109,10 +119,9 @@ public class NaviBarDesigner : ParentControlDesigner
                 {
                     ArrayList list = new ArrayList();
                     list.Add(band);
-                    if (selectionService != null)
+                    if (selectionService is { PrimarySelection: NaviBand selectedBand })
                     {
-                        designingControl.SetActiveBand(
-                            selectionService.PrimarySelection as NaviBand);
+                        designingControl.SetActiveBand(selectedBand);
                         selectionService.SetSelectedComponents(list);
                         return true;
                     }
@@ -144,8 +153,7 @@ public class NaviBarDesigner : ParentControlDesigner
         {
             DesignerVerb[] verbs =
             [
-                new DesignerVerb("Add band..",
-                    new EventHandler(AddBandVerbClicked))
+                new DesignerVerb("Add band..", AddBandVerbClicked)
             ];
             return new DesignerVerbCollection(verbs);
         }
@@ -157,7 +165,7 @@ public class NaviBarDesigner : ParentControlDesigner
 
         if (selectionService != null)
         {
-            selectionService.SelectionChanged -= new System.EventHandler(selectionService_SelectionChanged);
+            selectionService.SelectionChanged -= selectionService_SelectionChanged;
         }
     }
 
@@ -182,20 +190,24 @@ public class NaviBarDesigner : ParentControlDesigner
 
     #region Event Handling
 
-    private void selectionService_SelectionChanged(object sender, EventArgs e)
+    private void selectionService_SelectionChanged(object? sender, EventArgs e)
     {
-        if (selectionService.PrimarySelection is NaviBand)
+        if (designingControl != null
+            && selectionService?.PrimarySelection is NaviBand selectedBand)
         {
-            designingControl.SetActiveBand(
-                selectionService.PrimarySelection as NaviBand);
+            designingControl.SetActiveBand(selectedBand);
             designingControl.PerformLayout();
         }
     }
 
-    private void AddBandVerbClicked(object sender, EventArgs e)
+    private void AddBandVerbClicked(object? sender, EventArgs e)
     {
-        NaviBand band = host.CreateComponent(typeof(NaviBand)) as NaviBand;
-        if (band != null)
+        if (host == null || designingControl == null)
+        {
+            return;
+        }
+
+        if (host.CreateComponent(typeof(NaviBand)) is NaviBand band)
         {
             designingControl.Controls.Add(band);
         }

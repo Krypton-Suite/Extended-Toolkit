@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
 
     public override void RenderBorder(Graphics g, Rectangle borderRectangle)
     {
-        Color borderColour = !ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled ? BorderColour.ToGrayScale() : BorderColour;
+        Color borderColour = ToggleSwitch is { Enabled: false, GrayWhenDisabled: true } ? BorderColour.ToGrayScale() : BorderColour;
 
         g.SetClip(borderRectangle);
 
@@ -79,7 +79,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
     {
         Color leftColour = LeftSideColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             leftColour = leftColour.ToGrayScale();
         }
@@ -106,7 +106,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
     {
         Color rightColour = RightSideColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             rightColour = rightColour.ToGrayScale();
         }
@@ -162,7 +162,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
         Color buttonColour = ToggleSwitch.Checked ? OnButtonColour : OffButtonColour;
         Color buttonBorderColour = ToggleSwitch.Checked ? OnButtonBorderColour : OffButtonBorderColour;
 
-        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+        if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
         {
             buttonColour = buttonColour.ToGrayScale();
             buttonBorderColour = buttonBorderColour.ToGrayScale();
@@ -199,18 +199,19 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
                     Size canvasSize = adjustedButtonRect.Size;
                     Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
 
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)resizedImageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)resizedImageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)adjustedButtonRect.X +
+                                                                    ((float)adjustedButtonRect.Width -
+                                                                     (float)resizedImageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)adjustedButtonRect.X +
+                            (float)adjustedButtonRect.Width - (float)resizedImageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)resizedImageSize.Height) / 2), resizedImageSize.Width, resizedImageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -221,18 +222,19 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
                 }
                 else
                 {
-                    if (alignment == ToggleSwitchButtonAlignment.Center)
+                    imageXPos = alignment switch
                     {
-                        imageXPos = (int)((float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)imageSize.Width) / 2);
-                    }
-                    else if (alignment == ToggleSwitchButtonAlignment.Right)
-                    {
-                        imageXPos = (int)((float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)imageSize.Width);
-                    }
+                        ToggleSwitchButtonAlignment.Center => (int)((float)adjustedButtonRect.X +
+                                                                    ((float)adjustedButtonRect.Width -
+                                                                     (float)imageSize.Width) / 2),
+                        ToggleSwitchButtonAlignment.Right => (int)((float)adjustedButtonRect.X +
+                            (float)adjustedButtonRect.Width - (float)imageSize.Width),
+                        _ => imageXPos
+                    };
 
                     imageRectangle = new Rectangle(imageXPos, (int)((float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)imageSize.Height) / 2), imageSize.Width, imageSize.Height);
 
-                    if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                    if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                     {
                         g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
                     }
@@ -247,23 +249,21 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
                 Font buttonFont = ToggleSwitch.Checked ? ToggleSwitch.OnFont : ToggleSwitch.OffFont;
                 Color buttonForeColour = ToggleSwitch.Checked ? ToggleSwitch.OnForeColour : ToggleSwitch.OffForeColour;
 
-                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                if (ToggleSwitch is { Enabled: false, GrayWhenDisabled: true })
                 {
                     buttonForeColour = buttonForeColour.ToGrayScale();
                 }
 
                 SizeF textSize = g.MeasureString(buttonText, buttonFont);
 
-                float textXPos = adjustedButtonRect.X;
-
-                if (alignment == ToggleSwitchButtonAlignment.Center)
+                float textXPos = alignment switch
                 {
-                    textXPos = (float)adjustedButtonRect.X + ((float)adjustedButtonRect.Width - (float)textSize.Width) / 2;
-                }
-                else if (alignment == ToggleSwitchButtonAlignment.Right)
-                {
-                    textXPos = (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width - (float)textSize.Width;
-                }
+                    ToggleSwitchButtonAlignment.Center => (float)adjustedButtonRect.X +
+                                                          ((float)adjustedButtonRect.Width - (float)textSize.Width) / 2,
+                    ToggleSwitchButtonAlignment.Right => (float)adjustedButtonRect.X + (float)adjustedButtonRect.Width -
+                                                         (float)textSize.Width,
+                    _ => adjustedButtonRect.X
+                };
 
                 RectangleF textRectangle = new RectangleF(textXPos, (float)adjustedButtonRect.Y + ((float)adjustedButtonRect.Height - (float)textSize.Height) / 2, textSize.Width, textSize.Height);
 
@@ -337,7 +337,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
     #region ... Krypton ...
 
     //Kripton Palette Events
-    private void OnGlobalPaletteChanged(object sender, EventArgs e)
+    private void OnGlobalPaletteChanged(object? sender, EventArgs e)
     {
         if (_palette != null)
         {
@@ -357,7 +357,7 @@ public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAnd
     }
 
     //Kripton Palette Events
-    private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+    private void OnPalettePaint(object? sender, PaletteLayoutEventArgs e)
     {
 
     }

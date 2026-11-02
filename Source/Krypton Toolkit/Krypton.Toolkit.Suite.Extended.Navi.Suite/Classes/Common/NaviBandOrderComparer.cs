@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ public class NaviBandOrderComparer : IComparer
 {
     #region IComparer Members
 
-    public int Compare(object x, object y)
+    public int Compare(object? x, object? y)
     {
         if (!(x is NaviBand) || !(y is NaviBand))
         {

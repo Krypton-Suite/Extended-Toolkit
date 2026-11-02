@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,7 +143,7 @@ internal abstract class AudioBase
                 wAVEFORMATEX.wBitsPerSample = 8;
                 wAVEFORMATEX.cbSize = 0;
                 string mimeType = audio._mimeType;
-                if (!(mimeType == "audio/basic"))
+                if (mimeType != "audio/basic")
                 {
                     if (!(mimeType == "audio/x-alaw-basic"))
                     {
@@ -159,7 +159,7 @@ internal abstract class AudioBase
                 try
                 {
                     byte[] array = new byte[(int)audio._stream.Length];
-                    audio._stream.Read(array, 0, array.Length);
+                    audio._stream?.Read(array, 0, array.Length);
                     Play(array);
                 }
                 finally

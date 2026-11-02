@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -181,8 +181,7 @@ internal class ObjectToken : RegistryDataKey, ISpObjectToken, ISpDataKey
 
     public override bool Equals(object obj)
     {
-        ObjectToken objectToken = obj as ObjectToken;
-        if (objectToken != null)
+        if (obj is ObjectToken objectToken)
         {
             return string.Compare(base.Id, objectToken.Id, StringComparison.OrdinalIgnoreCase) == 0;
         }
@@ -284,8 +283,7 @@ internal class ObjectToken : RegistryDataKey, ISpObjectToken, ISpDataKey
         {
             Type typeFromCLSID = Type.GetTypeFromCLSID(new Guid(value));
             val = (T)Activator.CreateInstance(typeFromCLSID);
-            ISpObjectWithToken spObjectWithToken = val as ISpObjectWithToken;
-            if (spObjectWithToken == null)
+            if (val is not ISpObjectWithToken spObjectWithToken)
             {
                 return val;
             }

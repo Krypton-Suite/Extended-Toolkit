@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,12 +54,12 @@ public class KryptonFadeForm : KryptonForm
     #region Constructor
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FadeForm"/> class.
+    /// Initializes a new instance of the <see cref="KryptonFadeForm"/> class.
     /// </summary>
     public KryptonFadeForm() : this(false) { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FadeForm"/> class.
+    /// Initializes a new instance of the <see cref="KryptonFadeForm"/> class.
     /// </summary>
     /// <param name="useSlideAnimation">if set to <c>true</c> [use slide animation].</param>
     public KryptonFadeForm(bool useSlideAnimation)
@@ -82,12 +82,12 @@ public class KryptonFadeForm : KryptonForm
     }
 
     /// <summary>
-    /// Raises the <see cref="E:System.Windows.Forms.Form.Closing"/> event.
+    /// Raises the <see cref="E:System.Windows.Forms.Form.FormClosing"/> event.
     /// </summary>
-    /// <param name="e">A <see cref="T:System.ComponentModel.CancelEventArgs"/> that contains the event data.</param>
-    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+    /// <param name="e">A <see cref="T:System.Windows.Forms.FormClosingEventArgs"/> that contains the event data.</param>
+    protected override void OnFormClosing(FormClosingEventArgs e)
     {
-        base.OnClosing(e);
+        base.OnFormClosing(e);
         if (e.Cancel == false)
         {
             AnimateWindow(this.Handle, 1000, AW_HIDE | (_UseSlideAnimation ? AW_HOR_NEGATIVE | AW_SLIDE : AW_BLEND));

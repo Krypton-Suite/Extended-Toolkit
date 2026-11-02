@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -386,7 +386,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                     csfd.DefaultExtension = "ccf";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                     {
                         WriteARGBColoursToFile(csfd.FileName);
                     }
@@ -463,7 +463,7 @@ Do you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxI
 
                     csfd.DefaultExtension = "ccf";
 
-                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                    if (csfd.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(csfd.FileName))
                     {
                         WriteRGBColoursToFile(csfd.FileName);
                     }

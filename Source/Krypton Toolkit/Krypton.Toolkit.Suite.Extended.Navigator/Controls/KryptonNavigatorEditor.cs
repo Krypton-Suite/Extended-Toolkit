@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ public class KryptonNavigatorEditor : KryptonNavigator
 {
     #region Properties
 
-    public KryptonRichTextBox KryptonRichTextBox => GeKryptonRichTextBox(SelectedPage);
+    public KryptonRichTextBox? KryptonRichTextBox => GeKryptonRichTextBox(SelectedPage);
 
     public string? SelectedText => SelectedPage?.Controls[0].Text;
 
@@ -81,7 +81,7 @@ public class KryptonNavigatorEditor : KryptonNavigator
     {
         base.OnControlAdded(e);
 
-        e.Control.Controls.Add(CreateKryptonRichTextBox());
+        e.Control?.Controls.Add(CreateKryptonRichTextBox());
     }
 
     protected override void OnTextChanged(EventArgs e)

@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,8 +46,7 @@ internal sealed class GrammarBuilderRuleRef : GrammarBuilderBase
 
     public override bool Equals(object obj)
     {
-        GrammarBuilderRuleRef grammarBuilderRuleRef = obj as GrammarBuilderRuleRef;
-        if (grammarBuilderRuleRef == null)
+        if (obj is not GrammarBuilderRuleRef grammarBuilderRuleRef)
         {
             return false;
         }

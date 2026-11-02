@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ public class KryptonToolStripTextBox : ToolStripControlHost
     #endregion
 
     #region Overrides
-    protected override void OnSubscribeControlEvents(Control control)
+    protected override void OnSubscribeControlEvents(Control? control)
     {
         var kryptonTextBox = control as KryptonTextBox;
 
@@ -56,7 +56,7 @@ public class KryptonToolStripTextBox : ToolStripControlHost
         base.OnSubscribeControlEvents(control);
     }
 
-    protected override void OnUnsubscribeControlEvents(Control control)
+    protected override void OnUnsubscribeControlEvents(Control? control)
     {
         var kryptonTextBox = control as KryptonTextBox;
 
@@ -83,7 +83,7 @@ public class KryptonToolStripTextBox : ToolStripControlHost
     #endregion
 
     #region Event Handlers
-    private void Text_Changed(object sender, EventArgs e)
+    private void Text_Changed(object? sender, EventArgs e)
     {
         //if (KryptonTextBox.TextChanged)
         //{
@@ -91,12 +91,12 @@ public class KryptonToolStripTextBox : ToolStripControlHost
         //}
     }
 
-    private void TextAlignChanged(object sender, EventArgs e)
+    private void TextAlignChanged(object? sender, EventArgs e)
     {
         throw new NotImplementedException();
     }
 
-    private void FontChanged(object sender, EventArgs e)
+    private void FontChanged(object? sender, EventArgs e)
     {
         throw new NotImplementedException();
     }

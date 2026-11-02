@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ public class UtilityMethods
 
     #region Methods
     /// <summary>
-    /// Elevates the application to use administrative privileges. To be used with <see cref="Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
+    /// Elevates the application to use administrative privileges. To be used with UAC elevation button click.
     /// </summary>
     /// <param name="processName">The process name that you wish to elevate.</param>
     public static void ElevateProcessWithAdministrativeRights(string processName)

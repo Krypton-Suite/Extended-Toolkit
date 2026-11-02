@@ -1,8 +1,8 @@
-﻿#region MIT License
+#region MIT License
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,8 @@
  *
  */
 #endregion
+
+#nullable disable
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Box;
 
@@ -153,7 +155,7 @@ public class KryptonToolBox : UserControl
         {
             imgList = null;
         }
-        return imgList;
+        return imgList!;
     }
 
     public static void DrawBorders(Graphics g, Rectangle rect, bool bDepressed)
@@ -195,7 +197,7 @@ public class KryptonToolBox : UserControl
 
     #region Private Attributes
 
-    private ToolBoxTabCollection _toolBoxTabs = null;
+    private ToolBoxTabCollection _toolBoxTabs = null!;
 
     private int _tabHeight = 18;
     private int _itemHeight = 20;
@@ -214,14 +216,14 @@ public class KryptonToolBox : UserControl
     private int _scrollWait = 500;
     private int _scrollDelay = 60;
 
-    private ToolScrollButton _upScroll = null;
-    private ToolScrollButton _dnScroll = null;
-    private ToolTip _toolTip = null;
-    private ToolBoxTab _selectedTab = null;
-    private ToolBoxTab _oldselectedTab = null;
-    private ToolBoxItem _patBltItem = null;
-    private ToolBoxItem _dragItem = null;
-    private ToolBoxItem _dropItem = null;
+    private ToolScrollButton _upScroll = null!;
+    private ToolScrollButton _dnScroll = null!;
+    private ToolTip _toolTip = null!;
+    private ToolBoxTab _selectedTab = null!;
+    private ToolBoxTab _oldselectedTab = null!;
+    private ToolBoxItem _patBltItem = null!;
+    private ToolBoxItem _dragItem = null!;
+    private ToolBoxItem _dropItem = null!;
 
     private Color _itemBgColour = Color.Empty;
     private Color _itemBorderColour = Color.Empty;         // #0A246A XP
@@ -247,33 +249,33 @@ public class KryptonToolBox : UserControl
     private bool _allowDragSwap = true;
     private bool _useItemClrInRename = false;
 
-    private ImageList _smallImageList = null;
-    private ImageList _largeImageList = null;
+    private ImageList _smallImageList = null!;
+    private ImageList _largeImageList = null!;
 
     [NonSerialized]
-    private TextBox _textBox = null;
+    private TextBox _textBox = null!;
 
     [NonSerialized]
-    private System.Windows.Forms.Timer _timer = null;
+    private System.Windows.Forms.Timer _timer = null!;
 
     [NonSerialized]
-    private ImageAttributes _dImgAttr = null;
+    private ImageAttributes _dImgAttr = null!;
 
     [NonSerialized]
-    private LayoutFinished _layoutFinished = null;
+    private LayoutFinished _layoutFinished = null!;
 
     #region Krypton Variables
     private KryptonManager _manager = new();
 
-    private PaletteBackInheritRedirect _paletteBack;
+    private PaletteBackInheritRedirect _paletteBack = null!;
 
-    private PaletteBorderInheritRedirect _paletteBorder;
+    private PaletteBorderInheritRedirect _paletteBorder = null!;
 
-    private PaletteContentInheritRedirect _paletteContent;
+    private PaletteContentInheritRedirect _paletteContent = null!;
 
-    private PaletteBase _palette;
+    private PaletteBase _palette = null!;
 
-    private PaletteRedirect _paletteRedirect;
+    private PaletteRedirect _paletteRedirect = null!;
     #endregion
 
     #endregion //Private Attributes
@@ -401,28 +403,28 @@ public class KryptonToolBox : UserControl
 
     #region Properties
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(10)]
     public int LayoutDelay
     {
         get => _layoutDelay;
         set => _layoutDelay = value;
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(60)]
     public int ScrollDelay
     {
         get => _scrollDelay;
         set => _scrollDelay = value;
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(500)]
     public int InitialScrollDelay
     {
         get => _scrollWait;
         set => _scrollWait = value;
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemBackgroundColour
     {
         get => _itemBgColour;
@@ -436,7 +438,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemBorderColour
     {
         get => _itemBorderColour;
@@ -450,7 +452,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemSelectedColour
     {
         get => _selectedItemColour;
@@ -464,7 +466,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(false)]
     public bool ShowOnlyOneItemPerRow
     {
         get => _onlyOneItemPerRow;
@@ -479,7 +481,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemHoverColour
     {
         get => _itemHoverColour;
@@ -493,7 +495,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemNormalColour
     {
         get => _itemNormalColour;
@@ -507,7 +509,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabSelectedTextColour
     {
         get => _tabTxtSelectColour.IsEmpty ? SystemColors.ControlText : _tabTxtSelectColour;
@@ -528,7 +530,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabNormalTextColour
     {
         get => _tabTxtNormalColour.IsEmpty ? SystemColors.ControlText : _tabTxtNormalColour;
@@ -549,7 +551,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TabHoverTextColour
     {
         get => _tabTxtHoverColour.IsEmpty ? SystemColors.ControlText : _tabTxtHoverColour;
@@ -570,7 +572,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemSelectedTextColour
     {
         get => _itemTxtSelectColour.IsEmpty ? SystemColors.ControlText : _itemTxtSelectColour;
@@ -591,7 +593,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemNormalTextColour
     {
         get => _itemTxtNormalColour.IsEmpty ? SystemColors.ControlText : _itemTxtNormalColour;
@@ -612,7 +614,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ItemHoverTextColour
     {
         get => _itemTxtHoverColor.IsEmpty ? SystemColors.ControlText : _itemTxtHoverColor;
@@ -665,7 +667,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(18)]
     public int TabHeight
     {
         get => _tabHeight;
@@ -681,7 +683,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(20)]
     public int ItemHeight
     {
         get => _itemHeight;
@@ -698,7 +700,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Size LargeItemSize
     {
         get => _largeItemSize;
@@ -715,7 +717,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Size SmallItemSize
     {
         get => _smallItemSize;
@@ -732,7 +734,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(2)]
     public int ItemSpacing
     {
         get => _itemSpacing;
@@ -747,7 +749,7 @@ public class KryptonToolBox : UserControl
         }
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(1)]
     public int TabSpacing
     {
         get => _tabSpacing;
@@ -795,7 +797,7 @@ public class KryptonToolBox : UserControl
             {
                 tab = null;
             }
-            return tab;
+            return tab!;
         }
     }
 
@@ -820,7 +822,7 @@ public class KryptonToolBox : UserControl
             catch
             {
             }
-            return tab;
+            return tab!;
         }
     }
 
@@ -828,9 +830,9 @@ public class KryptonToolBox : UserControl
     public ToolBoxTab SelectedTab => _selectedTab;
 
     [Category("ToolBox"), Browsable(false), XmlIgnore]
-    public ToolBoxItem EditingItem => _textBox.Tag as ToolBoxItem;
+    public ToolBoxItem EditingItem => (_textBox.Tag as ToolBoxItem)!;
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(-1)]
     public int SelectedTabIndex
     {
         get
@@ -917,23 +919,23 @@ public class KryptonToolBox : UserControl
     public ToolScrollButton DownScroll => _dnScroll;
 
     [Category("ToolBox"), Browsable(false), XmlIgnore]
-    public bool LayoutTimerActive => null != _timer && _timerIsForLayout;
+    public bool LayoutTimerActive => _timer is not null && _timerIsForLayout;
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(true)]
     public bool SelectAllTextWhileRenaming
     {
         get => _selAllTextInRename;
         set => _selAllTextInRename = value;
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(true)]
     public bool AllowSwappingByDragDrop
     {
         get => _allowDragSwap;
         set => _allowDragSwap = value;
     }
 
-    [Category("ToolBox")]
+    [Category("ToolBox"), DefaultValue(false)]
     public bool UseItemColorInRename
     {
         get => _useItemClrInRename;
@@ -966,11 +968,11 @@ public class KryptonToolBox : UserControl
 
         try
         {
-            if (null != _patBltItem || null != item)
+            if (_patBltItem is not null || item is not null)
             {
                 g = CreateGraphics();
                 hdc = g.GetHdc();
-                if (null != _patBltItem)
+                if (_patBltItem is not null)
                 {
                     rct = _patBltItem.Rectangle;
                     if (_patBltItem.ParentItem is ToolBoxTab)
@@ -988,7 +990,7 @@ public class KryptonToolBox : UserControl
 
                     PatBlt(hdc, rct.X + 1, rct.Y + 1, rct.Width - 2, rct.Height - 2, DSTINVERT);
                 }
-                if (_patBltItem != item && null != item)
+                if (_patBltItem != item && item is not null)
                 {
                     rct = item.Rectangle;
                     if (item.ParentItem is ToolBoxTab)
@@ -1030,18 +1032,18 @@ public class KryptonToolBox : UserControl
 
     internal void StopTimer()
     {
-        if (null != _timer)
+        if (_timer is not null)
         {
             _timer.Enabled = false;
 
             if (_timerIsForLayout)
             {
-                _oldselectedTab = null;
+                _oldselectedTab = null!;
                 DoLayout(false, true);
             }
             _timer.Dispose();
         }
-        _timer = null;
+        _timer = null!;
     }
 
     internal void UpdateToolTip(ToolObject obj)
@@ -1100,7 +1102,7 @@ public class KryptonToolBox : UserControl
 
                     if (null != TabSelectionChanged)
                     {
-                        TabSelectionChanged(tab, null);
+                        TabSelectionChanged(tab, EventArgs.Empty);
                     }
                 }
                 else
@@ -1194,7 +1196,7 @@ public class KryptonToolBox : UserControl
         {
             if (item.GetType() != typeof(ToolBoxTab))
             {
-                bOK = null != _selectedTab && _selectedTab.Contains(item);
+                bOK = _selectedTab is not null && _selectedTab.Contains(item);
 
                 if (bOK && item.Renamable)
                 {
@@ -1230,7 +1232,7 @@ public class KryptonToolBox : UserControl
                     ptLocation.Y += (item.Height - _textBox.Height) / 2;
                 }
 
-                if (null != tab)
+                if (tab is not null)
                 {
                     ptLocation.Y += tab.ItemArea.Y;
                 }
@@ -1242,8 +1244,7 @@ public class KryptonToolBox : UserControl
                 imgList = _smallImageList;
 
                 if (-1 != item.SmallImageIndex &&
-                    null != this._smallImageList &&
-                    0 < this._smallImageList.Images.Count &&
+                    this._smallImageList is { Images.Count: > 0 } &&
                     item.SmallImageIndex < this._smallImageList.Images.Count)
                 {
                     _textBox.Width -= imgList.ImageSize.Width + 4;
@@ -1252,7 +1253,7 @@ public class KryptonToolBox : UserControl
                     imageFound = true;
                 }
 
-                if (null != tab)
+                if (tab is not null)
                 {
                     ptLocation.X += 4;
                 }
@@ -1357,13 +1358,13 @@ public class KryptonToolBox : UserControl
         {
         }
 
-        if (null != _patBltItem)
+        if (_patBltItem is not null)
         {
             _patBltItem.Invalidate();
         }
 
-        _patBltItem = null;
-        _dragItem = null;
+        _patBltItem = null!;
+        _dragItem = null!;
 
         return e;
     }
@@ -1498,7 +1499,7 @@ public class KryptonToolBox : UserControl
 
         LayoutTabs(false);
 
-        if (null != _selectedTab)
+        if (_selectedTab is not null)
         {
             _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
             _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
@@ -1657,7 +1658,7 @@ public class KryptonToolBox : UserControl
 
                 tab.UnRegisterEvents();
 
-                if (null != tab.Control)
+                if (tab.Control is not null)
                 {
                     this.Controls.Remove(tab.Control);
                 }
@@ -1680,7 +1681,7 @@ public class KryptonToolBox : UserControl
                         tab = this[0];
                     }
 
-                    if (null != tab)
+                    if (tab is not null)
                     {
                         if (null != _oldselectedTab)
                         {
@@ -1696,7 +1697,7 @@ public class KryptonToolBox : UserControl
                             // Invoke tab selection changed event.
                             if (null != TabSelectionChanged)
                             {
-                                TabSelectionChanged(_selectedTab, null);
+                                TabSelectionChanged(_selectedTab, EventArgs.Empty);
                             }
                         }
                         catch
@@ -1705,7 +1706,7 @@ public class KryptonToolBox : UserControl
                     }
                     else
                     {
-                        _selectedTab = null;
+                        _selectedTab = null!;
                     }
                 }
                 DoLayout(true, bRedraw);
@@ -1736,7 +1737,7 @@ public class KryptonToolBox : UserControl
         {
             for (iLoop1 = 0; iLoop1 < _toolBoxTabs.Count;)
             {
-                if (null != _toolBoxTabs[iLoop1].Control)
+                if (_toolBoxTabs[iLoop1].Control is not null)
                 {
                     this.Controls.Remove(_toolBoxTabs[iLoop1].Control);
                 }
@@ -1899,7 +1900,7 @@ public class KryptonToolBox : UserControl
 
     private void HandleScrollTimerElapsed(ToolBoxScrollDirection dir, ToolBoxTab tab, ToolScrollButton sb)
     {
-        if (null != tab)
+        if (tab is not null)
         {
             tab.ScrollItems(dir);
 
@@ -1910,7 +1911,7 @@ public class KryptonToolBox : UserControl
                 sb.Enabled = false;
                 Invalidate(sb.Rectangle);
             }
-            else if (null != _timer && _scrollWait == _timer.Interval)
+            else if (_timer is not null && _scrollWait == _timer.Interval)
             {
                 _timer.Interval = _scrollDelay;
             }
@@ -1943,13 +1944,13 @@ public class KryptonToolBox : UserControl
             selItemAreaBad = true;
         }
 
-        if (null != _selectedTab.Control && !_selectedTab.ItemArea.IsEmpty && _selectedTab.ItemArea.Bottom < _dnScroll.Bottom)
+        if (_selectedTab is { Control: not null, ItemArea.IsEmpty: false } && _selectedTab.ItemArea.Bottom < _dnScroll.Bottom)
         {
             _selectedTab.Control.Visible = true;
             this.Controls.Add(_selectedTab.Control);
         }
 
-        if (null != _selectedTab.Control)
+        if (_selectedTab.Control is not null)
         {
             DebugUtilities.WriteLine(
                 $"Control Location {_selectedTab.Control.Location} Item Area {_selectedTab.ItemArea}");
@@ -1989,7 +1990,7 @@ public class KryptonToolBox : UserControl
                 _selectedTab.Width = DisplayRectangle.Width - 2 - (_upScroll.Width + 1);
                 _oldselectedTab.Width = DisplayRectangle.Width - 2;
                 tab = this[selTabIndex + 1];
-                if (null != tab)
+                if (tab is not null)
                 {
                     tab.Width = DisplayRectangle.Width - 2 - (_upScroll.Width + 1);
                     _dnScroll.Y = tab.Y;
@@ -2044,7 +2045,7 @@ public class KryptonToolBox : UserControl
 
                 tab = this[oldTabIndex + 1];
 
-                if (null != tab)
+                if (tab is not null)
                 {
                     tab.Width = DisplayRectangle.Width - 2;
                     paintRect.Height = tab.Bottom - paintRect.Y;
@@ -2097,7 +2098,7 @@ public class KryptonToolBox : UserControl
                     this.Controls.Remove(_oldselectedTab.Control);
                 }
 
-                if (null != _selectedTab.Control)
+                if (_selectedTab.Control is not null)
                 {
                     _selectedTab.Control.TabIndex = 1;
                     _selectedTab.Control.Visible = true;
@@ -2179,7 +2180,7 @@ public class KryptonToolBox : UserControl
                 tab1.Rectangle = rect;
                 tab1.ItemArea = Rectangle.Empty; //ATTN
 
-                if (null != tab2)
+                if (tab2 is not null)
                 {
                     tab2 = null;
                     tab1.Width = tab1.Width - (_dnScroll.Width + 1);
@@ -2197,7 +2198,7 @@ public class KryptonToolBox : UserControl
                     tab2 = this[iLoop + 1];
                     bScrollUpSet = true;
 
-                    if (null != tab2)
+                    if (tab2 is not null)
                     {
                         newY = DisplayRectangle.Bottom - (_tabHeight + _tabSpacing) * (_toolBoxTabs.Count - iLoop);
                         newY = newY <= rect.Y + _itemHeight + _itemSpacing ? rect.Y + _itemHeight + _itemSpacing : newY;
@@ -2229,7 +2230,7 @@ public class KryptonToolBox : UserControl
                 _dnScroll.Y = rect.Y - (_tabHeight + _tabSpacing);
             }
 
-            if (null != _selectedTab)
+            if (_selectedTab is not null)
             {
                 rcItem.X = _selectedTab.X;
                 rcItem.Y = _selectedTab.Bottom;
@@ -2241,15 +2242,15 @@ public class KryptonToolBox : UserControl
 
         }
 
-        if (null != _oldselectedTab && null != _oldselectedTab.Control)
+        if (_oldselectedTab is { Control: not null })
         {
             _oldselectedTab.Control.Visible = false;
             this.Controls.Remove(_oldselectedTab.Control);
         }
 
-        if (null != _selectedTab)
+        if (_selectedTab is not null)
         {
-            if (null != _selectedTab.Control)
+            if (_selectedTab.Control is not null)
             {
                 this.Controls.Add(_selectedTab.Control);
                 _selectedTab.Control.TabIndex = 1;
@@ -2262,7 +2263,7 @@ public class KryptonToolBox : UserControl
                 _selectedTab.UpdateItemRects(false);
             }
 
-            if (null != _selectedTab.Control)
+            if (_selectedTab.Control is not null)
             {
                 _selectedTab.Control.Visible = true;
                 _selectedTab.Control.Focus();
@@ -2319,11 +2320,11 @@ public class KryptonToolBox : UserControl
 
         if (forLargeIcons)
         {
-            minHeight = Math.Max(minHeight, null != _largeImageList ? _largeImageList.ImageSize.Height : 0);
+            minHeight = Math.Max(minHeight, _largeImageList is not null ? _largeImageList.ImageSize.Height : 0);
         }
         else
         {
-            minHeight = Math.Max(minHeight, null != _smallImageList ? _smallImageList.ImageSize.Height : 0);
+            minHeight = Math.Max(minHeight, _smallImageList is not null ? _smallImageList.ImageSize.Height : 0);
         }
 
         return minHeight;
@@ -2336,7 +2337,7 @@ public class KryptonToolBox : UserControl
 
     private void LayoutTabs(bool redraw)
     {
-        LayoutTabs(redraw, null);
+        LayoutTabs(redraw, null!);
     }
 
     private void LayoutTabs(bool redraw, ToolBoxTab skipTab)
@@ -2483,7 +2484,7 @@ public class KryptonToolBox : UserControl
 
         try
         {
-            if (null != color && 0 < color.Length)
+            if (color is { Length: > 0 })
             {
                 if (color.StartsWith("#"))
                 {
@@ -2556,7 +2557,7 @@ public class KryptonToolBox : UserControl
             dragTab = null;
         }
 
-        if (null != dragTab && !dragTab.Movable)
+        if (dragTab is { Movable: false })
         {
             index = -1;
             dragTab = null;
@@ -2564,7 +2565,7 @@ public class KryptonToolBox : UserControl
 
         e.Effect = -1 != index ? DragDropEffects.Move : DragDropEffects.None;
 
-        if (null != dragTab && _patBltItem != dragTab)
+        if (dragTab is not null && _patBltItem != dragTab)
         {
             PatBltOnItem(dragTab);
         }
@@ -2587,7 +2588,7 @@ public class KryptonToolBox : UserControl
         ptPos.Y = e.Y;
         ptPos = PointToClient(ptPos);
 
-        if (null != _selectedTab)
+        if (_selectedTab is not null)
         {
             if (ptPos.X < _selectedTab.ItemArea.X + 4)
             {
@@ -2613,16 +2614,16 @@ public class KryptonToolBox : UserControl
                 dragItem = null;
             }
 
-            if (null != dragItem && !dragItem.Movable)
+            if (dragItem is { Movable: false })
             {
                 dragItem = null;
             }
 
-            e.Effect = null != dragItem ? DragDropEffects.Move : DragDropEffects.None;
+            e.Effect = dragItem is not null ? DragDropEffects.Move : DragDropEffects.None;
 
             //DebugUtilities.WriteLine(Environment.TickCount + " Drag item index " + index + " Item " + dragItem + " in " + ptPos);
 
-            if (null != dragItem && _patBltItem != dragItem)
+            if (dragItem is not null && _patBltItem != dragItem)
             {
                 PatBltOnItem(dragItem);
             }
@@ -2671,7 +2672,7 @@ public class KryptonToolBox : UserControl
 
         try
         {
-            if (null != _timer && _timer.Enabled)
+            if (_timer is { Enabled: true })
             {
                 doSwitch = false;
             }
@@ -2703,7 +2704,7 @@ public class KryptonToolBox : UserControl
 
         // Caption
         element2 = xmlDoc.CreateElement(Xml_Caption_Node);
-        if (null != item.Caption && 0 < item.Caption.Length)
+        if (item.Caption is { Length: > 0 })
         {
             element2.AppendChild(xmlDoc.CreateTextNode(item.Caption));
         }
@@ -2717,7 +2718,7 @@ public class KryptonToolBox : UserControl
 
         // Tool tip
         element2 = xmlDoc.CreateElement(Xml_ToolTip_Node);
-        if (null != item.ToolTip && 0 < item.ToolTip.Length)
+        if (item.ToolTip is { Length: > 0 })
         {
             element2.AppendChild(xmlDoc.CreateTextNode(item.ToolTip));
         }
@@ -2750,7 +2751,7 @@ public class KryptonToolBox : UserControl
         element2 = (XmlElement)itemNode.SelectSingleNode(Xml_Caption_Node);
         tempString = element2.InnerText;
 
-        if (null != tempString && 0 < tempString.Length)
+        if (tempString is { Length: > 0 })
         {
             item.Caption = tempString;
         }
@@ -2760,7 +2761,7 @@ public class KryptonToolBox : UserControl
         tempString = element2.InnerText.Replace("\t", "").Trim();
         //tempString        = tempString.Replace("\t","");
 
-        if (null != tempString && 0 < tempString.Length)
+        if (tempString is { Length: > 0 })
         {
             item.ToolTip = tempString;
         }
@@ -2857,11 +2858,11 @@ public class KryptonToolBox : UserControl
 
         ctrlPressed = Keys.Control == (ModifierKeys & Keys.Control);
 
-        if (null != _selectedTab)
+        if (_selectedTab is not null)
         {
             if (Keys.F2 == e.KeyCode)
             {
-                if (!ctrlPressed && null != _selectedTab.SelectedItem)
+                if (!ctrlPressed && _selectedTab.SelectedItem is not null)
                 {
                     _selectedTab.SelectedItem.Rename();
                 }
@@ -2891,7 +2892,7 @@ public class KryptonToolBox : UserControl
     {
         try
         {
-            if (null != _selectedTab && null != ItemKeyPress)
+            if (_selectedTab is not null && null != ItemKeyPress)
             {
                 ItemKeyPress(_selectedTab.SelectedItem, e);
             }
@@ -2911,7 +2912,7 @@ public class KryptonToolBox : UserControl
         {
             moveMsgLocked = false;
 
-            if (null != _selectedTab)
+            if (_selectedTab is not null)
             {
                 _selectedTab.HandleKeyUp(e);
 
@@ -2937,7 +2938,7 @@ public class KryptonToolBox : UserControl
 
     protected override void OnLostFocus(EventArgs e)
     {
-        if (moveMsgLocked && null != _selectedTab)
+        if (moveMsgLocked && _selectedTab is not null)
         {
             _selectedTab.HandleKeyUp(new KeyEventArgs(Keys.Enter));
         }
@@ -2954,7 +2955,7 @@ public class KryptonToolBox : UserControl
 
         ctrlPressed = Keys.Control == (Keys.Control & keyData);
 
-        if (ctrlPressed && null != _selectedTab)
+        if (ctrlPressed && _selectedTab is not null)
         {
             if (Keys.Tab == (Keys.Tab & keyData))
             {
@@ -2991,7 +2992,7 @@ public class KryptonToolBox : UserControl
             tab.UpdateItemRects(ToolBoxViewMode.List != tab.View, true, false);
         }
 
-        if (null != _selectedTab)
+        if (_selectedTab is not null)
         {
             _upScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Up);
             _dnScroll.Enabled = _selectedTab.CanScroll(ToolBoxScrollDirection.Down);
@@ -3045,7 +3046,7 @@ public class KryptonToolBox : UserControl
             //UpdateToolTip("");
             if (_upScroll.HitTest(e.X, e.Y))
             {
-                if (null != _selectedTab)
+                if (_selectedTab is not null)
                 {
                     _selectedTab.CancelHotItemHover();
                     _selectedTab.CancelHover();
@@ -3054,7 +3055,7 @@ public class KryptonToolBox : UserControl
             }
             else if (_dnScroll.HitTest(e.X, e.Y))
             {
-                if (null != _selectedTab)
+                if (_selectedTab is not null)
                 {
                     _selectedTab.CancelHotItemHover();
                     _selectedTab.CancelHover();
@@ -3084,7 +3085,7 @@ public class KryptonToolBox : UserControl
 
         UpdateItemFromTextBox();
 
-        if (!LayoutTimerActive && null != _selectedTab)
+        if (!LayoutTimerActive && _selectedTab is not null)
         {
             if (0 < e.Delta)
             {
@@ -3267,7 +3268,7 @@ public class KryptonToolBox : UserControl
         if (_allowDragSwap)
         {
             PatBltOnItem(_patBltItem);
-            _patBltItem = null;
+            _patBltItem = null!;
         }
         base.OnDragLeave(e);
     }
@@ -3284,7 +3285,7 @@ public class KryptonToolBox : UserControl
             HandleToolBoxItemDrop(e);
         }
 
-        _dropItem = null;
+        _dropItem = null!;
 
         base.OnDragDrop(e);
 
@@ -3312,13 +3313,13 @@ public class KryptonToolBox : UserControl
             {
                 _timer.Stop();
                 _timer.Dispose();
-                _timer = null;
-                if (null != _selectedTab)
+                _timer = null!;
+                if (_selectedTab is not null)
                 {
                     if (null != _layoutFinished)
                     {
                         _layoutFinished();
-                        _layoutFinished = null;
+                        _layoutFinished = null!;
                     }
                     else
                     {
@@ -3331,7 +3332,7 @@ public class KryptonToolBox : UserControl
         {
             _timer.Stop();
             _timer.Dispose();
-            _timer = null;
+            _timer = null!;
             DoLayout(true, true);
         }
     }
@@ -3346,7 +3347,7 @@ public class KryptonToolBox : UserControl
 
     private void OnTextBox_LostFocus(object sender, EventArgs e)
     {
-        if (_textBox.Visible && !_textBox.Focused)
+        if (_textBox is { Visible: true, Focused: false })
         {
             EndRenameItem(true, false);
         }
@@ -3883,7 +3884,7 @@ public class KryptonToolBox : UserControl
             element2 = (XmlElement)itemElement.SelectSingleNode(Xml_ToolTip_Node);
             tempString = element2.InnerText;
 
-            if (null != tempString && 0 < tempString.Length)
+            if (tempString is { Length: > 0 })
             {
                 _upScroll.ToolTip = tempString;
             }
@@ -3894,7 +3895,7 @@ public class KryptonToolBox : UserControl
             element2 = (XmlElement)itemElement.SelectSingleNode(Xml_ToolTip_Node);
             tempString = element2.InnerText;
 
-            if (null != tempString && 0 < tempString.Length)
+            if (tempString is { Length: > 0 })
             {
                 _dnScroll.ToolTip = tempString;
             }
@@ -4022,14 +4023,14 @@ public class KryptonToolBox : UserControl
             {
                 _selectedTab = this[selTabIdx];
 
-                if (null != _selectedTab)
+                if (_selectedTab is not null)
                 {
                     _selectedTab.Selected = true;
                 }
 
                 RefreshTabs();
 
-                if (null != _selectedTab)
+                if (_selectedTab is not null)
                 {
                     _selectedTab.EnsureItemVisible(_selectedTab.SelectedItemIndex);
                 }

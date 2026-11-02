@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,9 +59,7 @@ public class FloatablePanelHost : ToolStripPanel
     {
         if (FloatableMenuStrip != null)
         {
-            MenuStrip? ms = e.Control as MenuStrip;
-
-            if (ms != null)
+            if (e.Control is MenuStrip ms)
             {
                 if (Orientation == Orientation.Horizontal)
                 {
@@ -75,9 +73,7 @@ public class FloatablePanelHost : ToolStripPanel
         }
         else if (FloatableToolStrip != null)
         {
-            ToolStrip? ts = e.Control as ToolStrip;
-
-            if (ts != null)
+            if (e.Control is ToolStrip ts)
             {
                 if (Orientation == Orientation.Horizontal)
                 {

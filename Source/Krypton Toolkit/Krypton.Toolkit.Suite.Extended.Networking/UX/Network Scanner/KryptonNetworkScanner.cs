@@ -2,7 +2,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -129,10 +129,10 @@ public partial class KryptonNetworkScanner : KryptonForm
             IPHostEntry hostInfo = Dns.GetHostEntry(strMachineName);
             return hostInfo.AddressList[0];
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             InternalKryptonMessageBoxExtended.Show($"Unable to connect with the system: {strMachineName}");
-            throw ex;
+            throw;
         }
     }//getIPByName()
     #endregion

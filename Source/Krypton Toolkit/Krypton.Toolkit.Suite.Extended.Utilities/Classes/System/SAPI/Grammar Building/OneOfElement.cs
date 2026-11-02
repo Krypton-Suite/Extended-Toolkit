@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,8 +63,7 @@ internal sealed class OneOfElement : BuilderElements
         IOneOf oneOf = elementFactory.CreateOneOf(parent, rule);
         foreach (GrammarBuilderBase item2 in base.Items)
         {
-            ItemElement itemElement = item2 as ItemElement;
-            if (itemElement == null)
+            if (item2 is not ItemElement itemElement)
             {
                 itemElement = new ItemElement(item2);
             }

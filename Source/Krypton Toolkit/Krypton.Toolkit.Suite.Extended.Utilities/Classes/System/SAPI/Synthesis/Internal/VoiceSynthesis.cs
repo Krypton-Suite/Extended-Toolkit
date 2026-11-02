@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -518,8 +518,7 @@ internal sealed class VoiceSynthesis : IDisposable
                 Parameters[] array2 = array;
                 foreach (Parameters parameters in array2)
                 {
-                    ParametersSpeak parametersSpeak = parameters._parameter as ParametersSpeak;
-                    if (parametersSpeak != null)
+                    if (parameters._parameter is ParametersSpeak parametersSpeak)
                     {
                         parametersSpeak._prompt._exception = new OperationCanceledException(SR.Get(SRID.PromptAsyncOperationCancelled));
                     }
@@ -684,8 +683,7 @@ internal sealed class VoiceSynthesis : IDisposable
                 if (_pendingSpeakQueue.Count > 0)
                 {
                     parameters = _pendingSpeakQueue.Dequeue();
-                    ParametersSpeak parametersSpeak = parameters._parameter as ParametersSpeak;
-                    if (parametersSpeak != null)
+                    if (parameters._parameter is ParametersSpeak parametersSpeak)
                     {
                         lock (_site)
                         {
@@ -745,7 +743,7 @@ internal sealed class VoiceSynthesis : IDisposable
                                         FragmentState fragState = default(FragmentState);
                                         fragState.Action = TtsEngineAction.Speak;
                                         fragState.Prosody = new Prosody();
-                                        TextFragment textFragment = new TextFragment(fragState, string.Copy(parametersSpeak2._textToSpeak));
+                                        TextFragment textFragment = new TextFragment(fragState, parametersSpeak2._textToSpeak);
                                         speakInfo.AddText(ttsVoice, textFragment);
                                     }
                                     else
@@ -992,7 +990,7 @@ internal sealed class VoiceSynthesis : IDisposable
                 if (defaultVoice != null || defaultVoiceId != null)
                 {
                     viDefault = InstalledVoice.Find(_installedVoices, defaultVoice != null ? defaultVoice.VoiceInfo : defaultVoiceId);
-                    if (viDefault != null && viDefault.Enabled && variant == 1)
+                    if (viDefault is { Enabled: true } && variant == 1)
                     {
                         VoiceInfo voiceInfo = viDefault.VoiceInfo;
                         if (viDefault.Enabled && voiceInfo.Culture.Equals(culture) && (gender == VoiceGender.NotSet || gender == VoiceGender.Neutral || gender == voiceInfo.Gender) && (age == VoiceAge.NotSet || age == voiceInfo.Age))
@@ -1253,11 +1251,10 @@ internal sealed class VoiceSynthesis : IDisposable
             {
                 return result;
             }
-            ITtsEngineSsml ttsEngineSsml = obj as ITtsEngineSsml;
-            if (ttsEngineSsml == null)
+
+            if (obj is not ITtsEngineSsml ttsEngineSsml)
             {
-                ITtsEngine ttsEngine = obj as ITtsEngine;
-                if (ttsEngine == null)
+                if (obj is not ITtsEngine ttsEngine)
                 {
                     return result;
                 }
@@ -1327,7 +1324,7 @@ internal sealed class VoiceSynthesis : IDisposable
             {
                 foreach (ObjectToken item in objectTokenCategory.FindMatchingTokens(null, null))
                 {
-                    if (item != null && item.Attributes != null)
+                    if (item is { Attributes: not null })
                     {
                         list.Add(new InstalledVoice(voiceSynthesizer, new VoiceInfo(item)));
                     }
@@ -1348,8 +1345,7 @@ internal sealed class VoiceSynthesis : IDisposable
 
     private void ProcessPostData(object arg)
     {
-        TTSEvent tTSEvent = arg as TTSEvent;
-        if (tTSEvent != null)
+        if (arg is TTSEvent tTSEvent)
         {
             lock (_thisObjectLock)
             {

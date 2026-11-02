@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2017 - 2024 Krypton Suite
+ * Copyright (c) 2017 - 2026 Krypton Suite
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -110,13 +110,15 @@ public class NetworkUtilities
     {
         try
         {
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(fileLocation.AbsoluteUri);
+            using HttpClient client = new();
+            using HttpRequestMessage request = new(HttpMethod.Head, fileLocation);
+#if NETFRAMEWORK
+            using HttpResponseMessage response = client.SendAsync(request).GetAwaiter().GetResult();
+#else
+            using HttpResponseMessage response = client.Send(request);
+#endif
 
-            HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-            webResponse.Close();
-
-            return webResponse.StatusCode == HttpStatusCode.OK;
+            return response.IsSuccessStatusCode;
         }
         catch (Exception ex)
         {
