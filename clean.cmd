@@ -8,7 +8,7 @@ if /I "%~1"=="-q" goto clean
 if /I "%~1"=="/y" goto clean
 
 echo You are about to delete Bin, obj, and build logs. Continue? (Y/N)
-set /P INPUT=Type input:
+set /P INPUT=Type input: 
 if /I "%INPUT%"=="y" goto clean
 echo Cancelled.
 goto :eof
