@@ -1,10 +1,11 @@
-# NUGET: Trusted publishing via NuGet/login. Secret NUGET_USER is the nuget.org profile name.
+﻿# NUGET: Trusted publishing via NuGet/login. Secret NUGET_USER is the nuget.org profile name.
 # nuget.org needs a policy for this workflow file and Krypton-Suite/Extended-Toolkit.
 #
 # Discord (optional secrets):
 #   DISCORD_WEBHOOK_MASTER   — Release / ReleaseLite
 #   DISCORD_WEBHOOK_CANARY   — Canary / CanaryLite
 #   DISCORD_WEBHOOK_NIGHTLY  — Nightly / NightlyLite
+#   DISCORD_WEBHOOK_LTS      — LTS / LTSLite
 
 name: Release
 
@@ -30,6 +31,8 @@ on:
           - CanaryLite
           - Nightly
           - NightlyLite
+          - LTS
+          - LTSLite
       pack_mode:
         description: 'Pack mode (ignored for *Lite configurations)'
         required: true
@@ -117,6 +120,7 @@ jobs:
           switch -Regex ($config) {
             '^Nightly' { $proj = 'Scripts/Build/nightly.proj'; $packageDir = 'Nightly' }
             '^Canary'  { $proj = 'Scripts/Build/canary.proj'; $packageDir = 'Canary' }
+            '^LTS'     { $proj = 'Scripts/Build/lts.proj'; $packageDir = 'LTS' }
             default    { $proj = 'Scripts/Build/build.proj'; $packageDir = 'Release' }
           }
 
@@ -216,6 +220,7 @@ jobs:
           $suffix = ''
           if ($config -match 'Nightly') { $suffix = '.Nightly' }
           elseif ($config -match 'Canary') { $suffix = '.Canary' }
+          elseif ($config -match 'LTS') { $suffix = '.LTS' }
           $pattern = "Krypton.Toolkit.Suite.Extended.Ultimate$suffix.*.nupkg"
           $pkg = Get-ChildItem $dir -Filter $pattern -ErrorAction SilentlyContinue |
             Where-Object { $_.Name -notmatch '\.symbols\.' } |
@@ -236,6 +241,7 @@ jobs:
           DISCORD_WEBHOOK_MASTER: ${{ secrets.DISCORD_WEBHOOK_MASTER }}
           DISCORD_WEBHOOK_CANARY: ${{ secrets.DISCORD_WEBHOOK_CANARY }}
           DISCORD_WEBHOOK_NIGHTLY: ${{ secrets.DISCORD_WEBHOOK_NIGHTLY }}
+          DISCORD_WEBHOOK_LTS: ${{ secrets.DISCORD_WEBHOOK_LTS }}
           CHANNEL_CONFIG: ${{ steps.channel.outputs.configuration }}
           PACKAGE_DIR: ${{ steps.channel.outputs.package_dir }}
           PACKAGE_VERSION: ${{ steps.get_version.outputs.version }}
@@ -268,6 +274,16 @@ jobs:
               $changelogRef = 'canary'
               $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.Canary'
               $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.Canary'
+            }
+            '^LTS' {
+              $webhook = $env:DISCORD_WEBHOOK_LTS
+              if (-not $webhook) { $webhook = $env:DISCORD_WEBHOOK_MASTER }
+              $title = 'Krypton Extended Toolkit LTS Release'
+              $description = 'A new Extended Toolkit long-term support (LTS) build is now on NuGet.org.'
+              $color = 3050327
+              $changelogRef = 'V120-LTS'
+              $nugetUltimate = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Ultimate.LTS'
+              $nugetCommon = 'https://www.nuget.org/packages/Krypton.Toolkit.Suite.Extended.Common.LTS'
             }
             default {
               $webhook = $env:DISCORD_WEBHOOK_MASTER

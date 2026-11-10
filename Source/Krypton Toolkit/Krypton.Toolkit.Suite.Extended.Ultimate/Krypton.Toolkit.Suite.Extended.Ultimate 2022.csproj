@@ -40,7 +40,12 @@
 				<PackageIcon>Krypton Nightly.png</PackageIcon>
 			</PropertyGroup>
 		</When>
-
+		<When Condition="'$(Configuration)' == 'LTS' Or '$(Configuration)' == 'LTSLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.LTS</PackageId>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+			</PropertyGroup>
+		</When>
 		<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate</PackageId>

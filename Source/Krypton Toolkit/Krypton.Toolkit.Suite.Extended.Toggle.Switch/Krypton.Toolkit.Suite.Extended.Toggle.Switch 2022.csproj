@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'Debug'">
+		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'LTS' Or '$(Configuration)' == 'LTSLite' Or '$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'Debug'">
 			<PropertyGroup>
 				<!-- Use centralized TFM configuration from Directory.Build.props -->
 		<TargetFrameworks>$(ActiveExtendedToolkitTFMs)</TargetFrameworks>
@@ -45,7 +45,11 @@
 				<PackageId>Krypton.Toolkit.Suite.Extended.Toggle.Switch.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
-
+		<When Condition="'$(Configuration)' == 'LTS' Or '$(Configuration)' == 'LTSLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Toggle.Switch.LTS</PackageId>
+			</PropertyGroup>
+		</When>
 		<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Toggle.Switch</PackageId>
@@ -81,6 +85,13 @@
 				<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 					<ItemGroup>
 						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.9.264-beta" />
+					</ItemGroup>
+				</When>
+
+				<When Condition="'$(Configuration)' == 'LTS' Or '$(Configuration)' == 'LTSLite'">
+					<!-- LTS uses the pinned Standard-Toolkit ProjectReference until a Standard LTS meta-package exists. -->
+					<ItemGroup>
+						<ProjectReference Include="..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 					</ItemGroup>
 				</When>
 

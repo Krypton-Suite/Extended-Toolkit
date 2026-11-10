@@ -1,4 +1,4 @@
-name: Build
+﻿name: Build
 
 permissions:
   contents: read
@@ -17,6 +17,8 @@ on:
       - alpha
       - master
       - canary
+      - V120-LTS
+      - V105-LTS
   workflow_dispatch:
 
 jobs:
@@ -85,6 +87,7 @@ jobs:
           switch -Regex ($branch) {
             '^(master|main)$' { $config = 'Release'; $proj = 'Scripts/Build/build.proj' }
             '^canary$' { $config = 'Canary'; $proj = 'Scripts/Build/canary.proj' }
+            '^V\d+-LTS$' { $config = 'LTS'; $proj = 'Scripts/Build/lts.proj' }
           }
           Write-Host "Branch=$branch Configuration=$config Project=$proj"
           echo "configuration=$config" >> $env:GITHUB_OUTPUT
