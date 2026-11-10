@@ -1,4 +1,4 @@
-# Krypton Extended Toolkit - Build System Documentation
+﻿# Krypton Extended Toolkit - Build System Documentation
 
 This document describes how to use the MSBuild project file (`Build.proj`) to build the Krypton Extended Toolkit.
 
@@ -8,13 +8,14 @@ The `Build.proj` file is a master MSBuild project that orchestrates building the
 
 ## 🌿 Release Channels
 
-The toolkit supports three release channels, each mapped to a specific branch and package suffix:
+The toolkit supports four release channels, each mapped to a specific branch and package suffix:
 
 | Configuration | Branch | Package Suffix | Purpose |
 |--------------|--------|----------------|---------|
 | **Release** | `master` | _(none)_ | Stable production releases |
 | **Canary** | `canary` | `-beta` | Beta pre-releases for testing |
 | **Nightly** | `alpha` | `-alpha` | Alpha builds for early adopters |
+| **LTS** | `V120-LTS` | _(none)_ (PackageId `.LTS`) | Long-term support packages |
 
 Additionally, there's a **Debug** configuration for local development.
 

@@ -1,7 +1,7 @@
 ﻿<Project>
 	<!--
 		Shared Extended Toolkit orchestration.
-		Imported by Scripts/Build/nightly.proj, canary.proj, build.proj, and debug.proj.
+		Imported by Scripts/Build/nightly.proj, canary.proj, build.proj, lts.proj, and debug.proj.
 
 		RepoRoot is this file's directory (Scripts/Build) two levels up, so paths stay
 		correct whether the entry .proj lives in Scripts/Build or a toolset folder.
@@ -47,19 +47,23 @@
 		<IsReleaseBuild Condition="'$(Configuration)' == 'Release' or '$(Configuration)' == 'ReleaseLite' or '$(Configuration)' == 'ReleaseAll' or '$(Configuration)' == 'Stable'">true</IsReleaseBuild>
 		<IsCanaryBuild Condition="'$(Configuration)' == 'Canary' or '$(Configuration)' == 'CanaryLite' or '$(Configuration)' == 'CanaryAll'">true</IsCanaryBuild>
 		<IsNightlyBuild Condition="'$(Configuration)' == 'Nightly' or '$(Configuration)' == 'NightlyLite' or '$(Configuration)' == 'NightlyAll' or '$(Configuration)' == 'Alpha'">true</IsNightlyBuild>
+		<IsLtsBuild Condition="'$(Configuration)' == 'LTS' or '$(Configuration)' == 'LTSLite' or '$(Configuration)' == 'LTSAll'">true</IsLtsBuild>
 		<IsDebugBuild Condition="'$(Configuration)' == 'Debug'">true</IsDebugBuild>
 
 		<PackageSuffix Condition="'$(IsCanaryBuild)' == 'true'">-beta</PackageSuffix>
 		<PackageSuffix Condition="'$(IsNightlyBuild)' == 'true'">-alpha</PackageSuffix>
 		<PackageSuffix Condition="'$(IsReleaseBuild)' == 'true'"></PackageSuffix>
+		<PackageSuffix Condition="'$(IsLtsBuild)' == 'true'"></PackageSuffix>
 
 		<TargetBranch Condition="'$(IsReleaseBuild)' == 'true'">master</TargetBranch>
 		<TargetBranch Condition="'$(IsCanaryBuild)' == 'true'">canary</TargetBranch>
 		<TargetBranch Condition="'$(IsNightlyBuild)' == 'true'">alpha</TargetBranch>
+		<TargetBranch Condition="'$(IsLtsBuild)' == 'true'">V120-LTS</TargetBranch>
 
 		<LiteConfiguration Condition="'$(Configuration)' == 'Nightly'">NightlyLite</LiteConfiguration>
 		<LiteConfiguration Condition="'$(Configuration)' == 'Canary'">CanaryLite</LiteConfiguration>
 		<LiteConfiguration Condition="'$(Configuration)' == 'Release'">ReleaseLite</LiteConfiguration>
+		<LiteConfiguration Condition="'$(Configuration)' == 'LTS'">LTSLite</LiteConfiguration>
 		<LiteConfiguration Condition="'$(LiteConfiguration)' == ''">$(Configuration)</LiteConfiguration>
 	</PropertyGroup>
 
@@ -127,10 +131,10 @@
 		         Properties="Configuration=$(Configuration);Platform=$(ProjectPlatform);SolutionName=$(NuGetSolutionName)"
 		         BuildInParallel="$(BuildInParallel)"
 		         ContinueOnError="$(ContinueOnError)" />
-		<!-- Release/ReleaseLite NuGet arms use sibling ProjectReferences; restore Standard-Toolkit too. -->
+		<!-- Release/LTS NuGet arms use sibling ProjectReferences; restore Standard-Toolkit too. -->
 		<Exec Command="dotnet restore &quot;$(StandardToolkitSolution)&quot; -p:Configuration=$(Configuration)"
 		      WorkingDirectory="$(RepoRoot)"
-		      Condition="Exists('$(StandardToolkitSolution)') and ('$(Configuration)' == 'Release' or '$(Configuration)' == 'ReleaseLite')" />
+		      Condition="Exists('$(StandardToolkitSolution)') and ('$(Configuration)' == 'Release' or '$(Configuration)' == 'ReleaseLite' or '$(Configuration)' == 'LTS' or '$(Configuration)' == 'LTSLite')" />
 	</Target>
 
 	<Target Name="Restore" DependsOnTargets="RestoreIfNeeded">
@@ -237,8 +241,8 @@
 	</Target>
 
 	<Target Name="PackLite">
-		<Error Text="PackLite is not defined for Configuration=$(Configuration). Use Nightly, Canary, or Release."
-		       Condition="'$(Configuration)' != 'Nightly' and '$(Configuration)' != 'Canary' and '$(Configuration)' != 'Release'" />
+		<Error Text="PackLite is not defined for Configuration=$(Configuration). Use Nightly, Canary, Release, or LTS."
+		       Condition="'$(Configuration)' != 'Nightly' and '$(Configuration)' != 'Canary' and '$(Configuration)' != 'Release' and '$(Configuration)' != 'LTS'" />
 		<Message Text="Packing Lite variant ($(LiteConfiguration))..." Importance="high" />
 		<MSBuild Projects="$(MSBuildProjectFile)"
 		         Properties="Configuration=$(LiteConfiguration);Platform=$(Platform);Restore=$(Restore)"

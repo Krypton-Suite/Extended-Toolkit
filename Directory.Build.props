@@ -1,10 +1,10 @@
- <Project>
+﻿ <Project>
 	 <!-- 
 		 Centralized Build Configurations
 		 All Extended Toolkit projects use these configurations
 	 -->
 	 <PropertyGroup>
-		 <Configurations>Debug;Release;ReleaseLite;ReleaseAll;Canary;CanaryLite;CanaryAll;Nightly;NightlyLite;NightlyAll</Configurations>
+		 <Configurations>Debug;Release;ReleaseLite;ReleaseAll;Canary;CanaryLite;CanaryAll;Nightly;NightlyLite;NightlyAll;LTS;LTSLite;LTSAll</Configurations>
 	 </PropertyGroup>
 	 
 	 <!-- 
@@ -16,22 +16,22 @@
 		 Dynamic TFM selection based on build configuration using Choose pattern
 	 -->
 	 <Choose>
-		 <!-- Full framework support for Release, Nightly, Canary, and Debug configurations -->
-		 <When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'Debug'">
+		 <!-- Full framework support for Release, Nightly, Canary, LTS, and Debug configurations -->
+		 <When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'Canary' Or '$(Configuration)' == 'LTS' Or '$(Configuration)' == 'Debug'">
 			 <PropertyGroup>
 				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
-		 <!-- Lite framework support for ReleaseLite, CanaryLite, and NightlyLite configurations -->
-		 <When Condition="'$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'NightlyLite'">
+		 <!-- Lite framework support for ReleaseLite, CanaryLite, NightlyLite, and LTSLite configurations -->
+		 <When Condition="'$(Configuration)' == 'ReleaseLite' Or '$(Configuration)' == 'CanaryLite' Or '$(Configuration)' == 'NightlyLite' Or '$(Configuration)' == 'LTSLite'">
 			 <PropertyGroup>
 				 <ActiveExtendedToolkitTFMs>net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
 		 </When>
 		 
 		 <!-- All configurations (Full+Lite) - Uses Full TFMs, but helper scripts build both -->
-		 <When Condition="'$(Configuration)' == 'ReleaseAll' Or '$(Configuration)' == 'CanaryAll' Or '$(Configuration)' == 'NightlyAll'">
+		 <When Condition="'$(Configuration)' == 'ReleaseAll' Or '$(Configuration)' == 'CanaryAll' Or '$(Configuration)' == 'NightlyAll' Or '$(Configuration)' == 'LTSAll'">
 			 <PropertyGroup>
 				 <ActiveExtendedToolkitTFMs>net472;net48;net481;net10.0-windows;net11.0-windows</ActiveExtendedToolkitTFMs>
 			 </PropertyGroup>
@@ -128,6 +128,27 @@
 				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 
 				<!--Release/ReleaseLite/ReleaseAll (stable packages)-->
+				<PackageVersion>120.$(Minor).$(Build).$(Revision)</PackageVersion>
+			</PropertyGroup>
+		</When>
+
+		<!-- LTS configurations (long-term support packages; stable version, .LTS PackageId) -->
+		<When Condition="'$(Configuration)' == 'LTS' OR '$(Configuration)' == 'LTSLite' OR '$(Configuration)' == 'LTSAll'">
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
+				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
+				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
+
+				<!--Version layout schema:
+				120 = Major
+				26 = Minor - Year of release
+				01 = Build - Month of release
+				1 = Revision - Day of release (day of year)
+				-->
+				<LibraryVersion>120.$(Minor).$(Build).$(Revision)</LibraryVersion>
+				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+
+				<!--LTS/LTSLite/LTSAll (stable LTS packages; PackageId carries .LTS)-->
 				<PackageVersion>120.$(Minor).$(Build).$(Revision)</PackageVersion>
 			</PropertyGroup>
 		</When>

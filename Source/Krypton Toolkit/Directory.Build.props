@@ -203,6 +203,74 @@
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'LTS'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton LTS.png" Link="Krypton LTS.png" Pack="true" PackagePath="" />
+
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
+			</ItemGroup>
+
+			<PropertyGroup>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .NET Toolkit LTS</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit - LTS (long-term support)</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<PublishRepositoryUrl>true</PublishRepositoryUrl>
+				<EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+				<PackageLicenseFile>License.md</PackageLicenseFile>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+				<LangVersion>latest</LangVersion>
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\LTS</PackageOutputPath>
+				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'LTSLite'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton LTS.png" Link="Krypton LTS.png" Pack="true" PackagePath="" />
+
+				<!-- License file (excluded for Ultimate projects which use their own) -->
+				<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" Condition="!$([System.String]::Copy('$(MSBuildProjectName)').Contains('Ultimate'))" />
+				
+				<!-- Include README.md if it exists in the project directory (use README.md only to avoid duplicate with Readme.md on case-insensitive FS) -->
+				<None Include="README.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+				<None Include="Readme.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildProjectDirectory)\Readme.md') AND !Exists('$(MSBuildProjectDirectory)\README.md')" />
+			</ItemGroup>
+
+			<PropertyGroup>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .NET Toolkit Lite LTS</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit - LTS Lite (long-term support, excludes net472)</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<PublishRepositoryUrl>true</PublishRepositoryUrl>
+				<EmbedUntrackedSources>true</EmbedUntrackedSources>
+				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+
+				<!-- Pack via orchestration Pack target only; packing during Build causes parallel file-lock flakes. -->
+				<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+				<PackageLicenseFile>License.md</PackageLicenseFile>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+				<LangVersion>latest</LangVersion>
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\LTS</PackageOutputPath>
+			</PropertyGroup>
+		</When>
+
 		<Otherwise>
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Krypton Stable.png" Pack="true" PackagePath="" />
