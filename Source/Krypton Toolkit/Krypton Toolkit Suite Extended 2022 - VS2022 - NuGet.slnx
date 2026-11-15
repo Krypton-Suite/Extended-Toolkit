@@ -3,6 +3,8 @@
     <BuildType Name="Canary" />
     <BuildType Name="CanaryLite" />
     <BuildType Name="Debug" />
+    <BuildType Name="LTS" />
+    <BuildType Name="LTSLite" />
     <BuildType Name="Nightly" />
     <BuildType Name="NightlyLite" />
     <BuildType Name="Release" />

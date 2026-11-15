@@ -197,6 +197,24 @@
 			</PropertyGroup>
 		</When>
 
+		<When Condition="'$(Configuration)' == 'LTS'">
+			<PropertyGroup>
+				<!-- csproj already sets ….LTS; only append when TFMs=all and the id has no channel suffix yet. -->
+				<PackageId Condition="'$(TFMs)' == 'all' And !$(PackageId.EndsWith('.LTS'))">$(PackageId).LTS</PackageId>
+
+				<Description Condition="'$(TFMs)' == 'all'">
+					An extension to the Standard Toolkit, which supports .NET Framework 4.7.2 - 4.8.1 and .NET 8 - 11. $(Description)
+
+					This package supports all .NET Framework versions starting .NET Framework 4.7.2 - 4.8.1 and .NET 8 - 11.
+					Also, all libraries are included targeting each specific framework version for performance purposes.
+
+					To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+
+					This package is the long-term support (LTS) channel. Please use $(PackageId) if the stable non-LTS line is intended.
+				</Description>
+			</PropertyGroup>
+		</When>
+
 		<When Condition="'$(Configuration)' == 'CanaryLite'">
 			<PropertyGroup>
 				<PackageId>$(PackageId).Lite.Canary</PackageId>
@@ -225,6 +243,26 @@
 					All libraries are included targeting each specific framework version for performance purposes.
 
 					This package is for those who want to try out the latest cutting edge features before deployment in a lighter package. Please use $(PackageId) if full framework support or stable deployment is intended.
+
+					To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+				</Description>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'LTSLite'">
+			<PropertyGroup>
+				<!-- csproj sets ….LTS (or ….LTS.Lite for Ultimate.LTS.Lite); normalize to ….LTS.Lite without double-suffix. -->
+				<PackageId Condition="$(PackageId.EndsWith('.LTS.Lite'))">$(PackageId)</PackageId>
+				<PackageId Condition="$(PackageId.EndsWith('.LTS')) And !$(PackageId.EndsWith('.LTS.Lite'))">$([System.String]::Copy('$(PackageId)').Replace('.LTS', '.LTS.Lite'))</PackageId>
+				<PackageId Condition="!$(PackageId.EndsWith('.LTS'))">$(PackageId).LTS.Lite</PackageId>
+
+				<Description>
+					An extension to the Standard Toolkit, which supports .NET Framework 4.8 - 4.8.1 and .NET 8 - 11 (LTS Lite Configuration). $(Description)
+
+					This package supports .NET Framework 4.8 - 4.8.1 and .NET 8 - 11 (excludes .NET Framework 4.7.2 for smaller package size).
+					All libraries are included targeting each specific framework version for performance purposes.
+
+					This package is the long-term support (LTS) lite channel. Please use $(PackageId) if full framework support or the non-LTS line is intended.
 
 					To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
 				</Description>

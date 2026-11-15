@@ -1,4 +1,4 @@
-# Build System Files Index
+﻿# Build System Files Index
 
 This document provides an index of all build-related files in the Krypton Extended Toolkit.
 
@@ -35,7 +35,8 @@ Double-click these files to build without using the command line:
 | **[build-release.cmd](build-release.cmd)** | Release | master | _(none)_ |
 | **[build-canary.cmd](build-canary.cmd)** | Canary | canary | -beta |
 | **[build-nightly.cmd](build-nightly.cmd)** | Nightly | alpha | -alpha |
-| **[build-all.cmd](build-all.cmd)** | All three | All | All |
+| **[build-lts.cmd](build-lts.cmd)** | LTS | V120-LTS | _(none)_ (PackageId `.LTS`) |
+| **[build-all.cmd](build-all.cmd)** | All channels | All | All |
 
 Each batch file:
 - ✅ Automatically finds MSBuild (VS 2022 Enterprise/Professional/Community)

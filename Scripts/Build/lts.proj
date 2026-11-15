@@ -1,0 +1,22 @@
+﻿<Project DefaultTargets="Build">
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">LTS</Configuration>
+	</PropertyGroup>
+
+	<Import Project="Extended.Orchestration.targets" />
+	<Import Project="Extended.Archive.targets" />
+
+	<PropertyGroup>
+		<ArchiveDir>$(BinDir)\LTS\Zips</ArchiveDir>
+		<ArchiveName>Krypton-Extended-LTS</ArchiveName>
+		<ArchiveSourceDir>$(BinDir)\NuGet Packages\LTS</ArchiveSourceDir>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'LTSLite'">
+		<NuGetPackagesDir>$(BinDir)\NuGet Packages\LTS</NuGetPackagesDir>
+	</PropertyGroup>
+
+	<Target Name="CreateLtsZip" DependsOnTargets="CreateZip" />
+	<Target Name="CreateLtsTar" DependsOnTargets="CreateTar" />
+	<Target Name="CreateAllLtsArchives" DependsOnTargets="CreateAllArchives" />
+</Project>
