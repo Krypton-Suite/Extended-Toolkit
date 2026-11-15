@@ -80,7 +80,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -107,7 +107,7 @@
 				<Otherwise>
 					<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
@@ -126,7 +126,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="System.Speech" Version="11.0.0-rc.1.26425.128" />
+		<PackageReference Include="System.Speech" Version="11.0.0" />
 		<PackageReference Include="WindowsAPICodePackShell" Version="8.0.15.2" />
 	</ItemGroup>
 
@@ -169,6 +169,10 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0" />
 	</ItemGroup>
 
 	<!--Optimisation-->

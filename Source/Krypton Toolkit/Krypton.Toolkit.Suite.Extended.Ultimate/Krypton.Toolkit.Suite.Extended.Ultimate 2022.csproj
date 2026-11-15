@@ -87,7 +87,7 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -107,7 +107,7 @@
 		<Otherwise>
 			<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -116,8 +116,8 @@
 	<!-- SkiaSharp must remain a PackageReference so native assets are installed correctly. -->
 	<ItemGroup>
 		<PackageReference Include="Handlebars.Net" Version="2.4.3" />
-		<PackageReference Include="SkiaSharp" Version="4.150.1" />
-		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.150.1" />
+		<PackageReference Include="SkiaSharp" Version="4.156.1" />
+		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.156.1" />
 	</ItemGroup>
 
 	<!-- All Extended Toolkit Project References -->
@@ -223,6 +223,9 @@
 	<ItemGroup>
 		<None Include="..\_shared-assets\License.txt" Pack="true" PackagePath="" Link="License\License.txt" />
 		<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

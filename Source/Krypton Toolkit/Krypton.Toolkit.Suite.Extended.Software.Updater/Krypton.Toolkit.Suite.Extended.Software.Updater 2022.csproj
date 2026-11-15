@@ -80,7 +80,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -107,7 +107,7 @@
 				<Otherwise>
 					<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
@@ -132,12 +132,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Drawing.Common" Version="11.0.0-rc.1.26425.128" />
+		<PackageReference Include="System.Drawing.Common" Version="11.0.0" />
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.48">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="4.2.0" />
 	</ItemGroup>
@@ -190,6 +190,10 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0" />
 	</ItemGroup>
 
 	<!--Optimisation-->

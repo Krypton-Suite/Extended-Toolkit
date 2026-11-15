@@ -79,7 +79,7 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 					</ItemGroup>
 				</When>
 
@@ -106,7 +106,7 @@
 				<Otherwise>
 					<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 					</ItemGroup>
 				</Otherwise>
 			</Choose>
@@ -131,6 +131,9 @@
 			<PackagePath></PackagePath>
 			<Pack>true</Pack>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0" />
 	</ItemGroup>
 
 	<!--Optimisation-->
