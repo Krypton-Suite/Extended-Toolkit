@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater
                     try
                     {
                         contentDisposition =
-                            new ContentDisposition(_webClient.ResponseHeaders["Content-Disposition"]!);
+                            new ContentDisposition(disposition: _webClient.ResponseHeaders["Content-Disposition"]!);
                     }
                     catch (FormatException)
                     {

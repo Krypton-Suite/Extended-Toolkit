@@ -45,6 +45,13 @@ internal sealed class BottomSheetBackdropPanel : Panel
         TabStop = false;
     }
 
+    /// <summary>
+    /// Gets or sets the visual style of the backdrop.
+    /// </summary>
+    [Category("Appearance")]
+    [Description("The style of the backdrop.")]
+    [DefaultValue(BottomSheetBackdropStyle.Dim)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public BottomSheetBackdropStyle BackdropStyle
     {
         get => _style;
@@ -58,6 +65,14 @@ internal sealed class BottomSheetBackdropPanel : Panel
         }
     }
 
+    /// <summary>
+    /// Gets or sets the opacity of the backdrop.
+    /// </summary>
+    /// <remarks>Values are constrained to the range 0.05 through 1.0.</remarks>
+    [Category("Appearance")]
+    [Description("The opacity of the backdrop.")]
+    [DefaultValue(0.5)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public double BackdropOpacity
     {
         get => _opacity;
@@ -72,8 +87,21 @@ internal sealed class BottomSheetBackdropPanel : Panel
         }
     }
 
+    /// <summary>
+    /// Gets or sets the backdrop opacity during animation.
+    /// </summary>
+    [Category("Appearance")]
+    [Description("The opacity of the backdrop during animation.")]
+    [DefaultValue(1d)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public double AnimationOpacity { get; set; } = 1d;
 
+    /// <summary>
+    /// Gets or sets the image used for the blur effect.
+    /// </summary>
+    [Category("Appearance")]
+    [Description("The image used for the blur effect.")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Image? BlurImage
     {
         get => _blurImage;

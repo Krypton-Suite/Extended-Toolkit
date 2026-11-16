@@ -26,8 +26,8 @@
   </Folder>
   <Folder Name="/Main/">
     <Project Path="Krypton.Toolkit.Suite.Extended.AdvancedDataGridView/Krypton.Toolkit.Suite.Extended.AdvancedDataGridView 2022.csproj" />
-    <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet/Krypton.Toolkit.Suite.Extended.BottomSheet.csproj" Id="4d1baadc-875b-471d-839d-51cb47926c03" />
     <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet.Tests/Krypton.Toolkit.Suite.Extended.BottomSheet.Tests.csproj" />
+    <Project Path="Krypton.Toolkit.Suite.Extended.BottomSheet/Krypton.Toolkit.Suite.Extended.BottomSheet.csproj" Id="4d1baadc-875b-471d-839d-51cb47926c03" />
     <Project Path="Krypton.Toolkit.Suite.Extended.Buttons/Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj">
       <BuildDependency Project="Krypton.Toolkit.Suite.Extended.Debug.Tools/Krypton.Toolkit.Suite.Extended.Debug.Tools 2022.csproj" />
     </Project>
@@ -157,6 +157,7 @@
   </Folder>
   <Folder Name="/Repository Items/Build System/Generate Packages/">
     <File Path="../../Directory.Build.props" />
+    <File Path="../../Directory.Build.targets" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
   </Folder>
