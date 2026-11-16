@@ -6,6 +6,7 @@
 
 ## 2027-11-xx - Build 2711 (V120 Nightly) - November 2027
 
+- Resolved package-producing Release, Canary, Nightly, and LTS builds not generating NuGet packages when invoked from the command line.
 - Implemented [#635](https://github.com/Krypton-Suite/Extended-Toolkit/issues/635), LTS / LTSLite / LTSAll build configurations for long-term support NuGet packages.
   - PackageIds use Extended channel naming: `….LTS` and `….Lite.LTS` (stable `120.yy.MM.dayOfYear` versions)
   - Channel scripts (`Scripts/Build/lts.proj`, `build-lts.cmd`) and GitHub Actions (`lts.yml`, `build.yml` / `release.yml` wiring)
