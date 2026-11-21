@@ -40,7 +40,12 @@
 				<PackageIcon>Krypton Nightly.png</PackageIcon>
 			</PropertyGroup>
 		</When>
-
+		<When Condition="'$(Configuration)' == 'LTS' Or '$(Configuration)' == 'LTSLite'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate.LTS</PackageId>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+			</PropertyGroup>
+		</When>
 		<When Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseLite'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Ultimate</PackageId>
@@ -82,13 +87,13 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.290-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.320-alpha" />
 			</ItemGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.10.299-beta" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.9.264-beta" />
 			</ItemGroup>
 		</When>
 
@@ -102,7 +107,7 @@
 		<Otherwise>
 			<!-- Fallback when Configuration is unexpected under NuGet mode. -->
 			<ItemGroup>
-				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="110.26.10.285-alpha" />
+				<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.317-alpha" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -111,8 +116,8 @@
 	<!-- SkiaSharp must remain a PackageReference so native assets are installed correctly. -->
 	<ItemGroup>
 		<PackageReference Include="Handlebars.Net" Version="2.4.3" />
-		<PackageReference Include="SkiaSharp" Version="4.150.1" />
-		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.150.1" />
+		<PackageReference Include="SkiaSharp" Version="4.156.1" />
+		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="4.156.1" />
 	</ItemGroup>
 
 	<!-- All Extended Toolkit Project References -->
@@ -220,7 +225,7 @@
 		<None Include="..\..\..\Documents\License\License.md" Link="License.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0-rc.3.26522.148" />
+	  <PackageReference Update="System.Resources.Extensions" Version="11.0.0" />
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

@@ -172,7 +172,7 @@ When adding a new shipped module (not a one-off harness):
   - Direct VS2022 presets: `.\Scripts\VS2022\debug.cmd`, `.\Scripts\VS2022\build-stable.cmd`, `.\Scripts\VS2022\build-canary.cmd`, `.\Scripts\VS2022\build-nightly.cmd`.
   - Direct VS2026 presets: `.\Scripts\Current\debug.cmd`, `.\Scripts\Current\build-stable.cmd`, `.\Scripts\Current\build-canary.cmd`, `.\Scripts\Current\build-nightly.cmd`.
   - Build scripts locate MSBuild via `Scripts\Common\find-msbuild.cmd` (`vswhere.exe`, then standard install paths). Override with `MSBUILDPATH` or `MSBUILD_PATH`.
-- Configurations (root `Directory.Build.props`): `Debug`; `Release` / `Canary` / `Nightly` (full TFMs including `net472`); `ReleaseLite` / `CanaryLite` / `NightlyLite` (excludes `net472`); `*All` variants build full+lite via helper scripts.
+- Configurations (root `Directory.Build.props`): `Debug`; `Release` / `Canary` / `Nightly` / `LTS` (full TFMs including `net472`); `ReleaseLite` / `CanaryLite` / `NightlyLite` / `LTSLite` (excludes `net472`); `*All` variants build full+lite via helper scripts. LTS packages use PackageIds `….LTS` / `….Lite.LTS` with stable (non-prerelease) versioning.
 - Outputs land under `Bin\<Configuration>\` by default; packages under `Bin\NuGet Packages\<Channel>\`.
 - New files must use the current MIT license header (`#region MIT License` … `Copyright (c) 2017 - 2026 Krypton Suite`). Do not add a ComponentFactory / Standard Toolkit BSD header.
 

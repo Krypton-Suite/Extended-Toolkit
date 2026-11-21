@@ -25,6 +25,9 @@
  */
 #endregion
 
+using Graphics = System.Drawing.Graphics;
+using Size = System.Drawing.Size;
+
 namespace Krypton.Toolkit.Suite.Extended.Ribbon;
 
 /// <summary>
@@ -377,14 +380,14 @@ public class RibbonMerger
     /// </summary>
     public void FixGroupWidths()
     {
-        using var g = Drawing.Graphics.FromHwnd(TargetRibbon.Parent!.Handle);
+        using var g = Graphics.FromHwnd(TargetRibbon.Parent!.Handle);
         double dpi = g.DpiY / 96.0;
 
         foreach (KryptonRibbonTab tab in TargetRibbon.RibbonTabs)
         {
             foreach (KryptonRibbonGroup grp in tab.Groups)
             {
-                Drawing.Size size = TextRenderer.MeasureText(g, grp.TextLine1 + (string.IsNullOrWhiteSpace(grp.TextLine2) ? $" {grp.TextLine2}"
+                Size size = TextRenderer.MeasureText(g, grp.TextLine1 + (string.IsNullOrWhiteSpace(grp.TextLine2) ? $" {grp.TextLine2}"
                     : string.Empty), TargetRibbon.Parent.Font);
                 grp.MinimumWidth = size.Width + (int)(8 * dpi);
             }
