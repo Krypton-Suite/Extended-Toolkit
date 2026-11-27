@@ -80,13 +80,13 @@
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Nightly' Or '$(Configuration)' == 'NightlyLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.320-alpha" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Nightly" Version="120.26.11.330-alpha" />
 					</ItemGroup>
 				</When>
 
 				<When Condition="'$(Configuration)' == 'Canary' Or '$(Configuration)' == 'CanaryLite'">
 					<ItemGroup>
-						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="110.26.9.264-beta" />
+						<PackageReference Include="Krypton.Standard.Toolkit.Canary" Version="120.26.11.327-beta" />
 					</ItemGroup>
 				</When>
 
@@ -137,7 +137,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4370.26" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="ZipStorer" Version="4.2.0" />
 	</ItemGroup>
